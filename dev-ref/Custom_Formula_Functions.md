@@ -1,4 +1,7 @@
-\_\_TOC\_\_
+---
+title: 'Custom Formula Functions'
+---
+Available in Keikai Spreadsheet EE only
 
 # Overview
 
