@@ -128,18 +128,16 @@ Few points need to be noticed:
 
 ## Keep Cell Selection
 
-` since 3.8.1`
-
 Default value: **true**
 
 Set the property to `false` and Keikai will set default value of
-*keepCellSelection* attribute to false. Before version 3.8.1, when ZK
+*keepCellSelection* attribute to false. Before older version, when Keikai
 Spreadsheet component loses its focus, it will hide the cell selection
 mark automatically. However, sometimes an end user would need to know
 which range is selected when he/she is operating on another control
 component (e.g. a dialog window). We have set the default value of
 `keepCellSelection` to true to avoid the confusion. However, if you
-would like Keikai to behavior as before version 3.8.1, you can set this
+would like Keikai to behave as before, you can set this
 property to `false`.
 
 ``` xml
