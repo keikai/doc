@@ -1,3 +1,7 @@
+---
+title: 'HandlingData Model'
+---
+
 Spreadsheet data model is the place where all Spreadsheet cell data
 stores. Spreadsheet is like a painter which paints its data model in
 grid-like layout for you. Every action you take on a Spreadsheet (e.g.
@@ -9,7 +13,7 @@ For each cell/row/column operation, you need to get a Range object. The
 helper class `Ranges` supports various methods to create a Range object
 like:
 
-``` java
+{% highlight java linenos %}
         // a book
         Ranges.range(spreadsheet.getBook());
         // a sheet
@@ -21,4 +25,4 @@ like:
         Ranges.range(spreadsheet.getSelectedSheet(), 0, 0, 3, 1);
         // a cell
         Ranges.range(spreadsheet.getSelectedSheet(),  3, 3);
-```
+{% endhighlight %}
