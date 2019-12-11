@@ -75,11 +75,9 @@ This property only works under Spreadsheet EE. The default value is
 **`true`**, and Spreadsheet uses ColorPicker of EE. If it's `false`,
 Spreadsheet uses OSE's ColorPicker.
 
-ColorPicker of EE:<br/> <center>![
-center](/assets/images/dev-ref/Keikai-essentials-configuration-colorPickerEE.JPG " center")</center>
+ColorPicker of EE:<br/> ![center](/assets/images/dev-ref/Keikai-essentials-configuration-colorPickerEE.JPG)
 
-ColorPicker of OSE (fewer color choices):<br/> <center>![
-center](/assets/images/dev-ref/Keikai-essentials-configuration-colorPickerCE.JPG " center")</center>
+ColorPicker of OSE (fewer color choices):<br/> ![center](/assets/images/dev-ref/Keikai-essentials-configuration-colorPickerCE.JPG)
 
 **Example in zk.xml**
 
@@ -92,25 +90,6 @@ center](/assets/images/dev-ref/Keikai-essentials-configuration-colorPickerCE.JPG
 
   - The configuration above will make Spreadsheet use Color Picker of
     CE.
-
-## Preferred Theme
-
-`since 3.5.0`
-
-Currently, Keikai provides the following different themes: **Default**
-(built-in theme) and **Classic** from
-<https://github.com/zkoss/zssthemes/releases>
-
-![ left | thumb | 300px | Default](/assets/images/dev-ref/skyline-look-and-feel.png
-" left | thumb | 300px | Default") ![ left | thumb | 300px |
-Classic](/assets/images/dev-ref/classic-look-and-feel.png " left | thumb | 300px | Classic")
-
-<div style="clear: both">
-
-</div>
-
-Library property could be used to assign a preferred theme which is
-registered.
 
 **Example in zk.xml**
 
