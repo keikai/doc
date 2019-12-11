@@ -76,10 +76,10 @@ This property only works under Spreadsheet EE. The default value is
 Spreadsheet uses OSE's ColorPicker.
 
 ColorPicker of EE: ![
-center](/assets/images/dev-ref/zss-essentials-configuration-colorPickerEE.png " center")
+center](/assets/images/dev-ref/Keikai-essentials-configuration-colorPickerEE.JPG " center")
 
 ColorPicker of OSE (fewer color choices): ![
-center](/assets/images/dev-ref/zss-essentials-configuration-colorPickerCE.png " center")
+center](/assets/images/dev-ref/Keikai-essentials-configuration-colorPickerCE.JPG " center")
 
 **Example in zk.xml**
 
