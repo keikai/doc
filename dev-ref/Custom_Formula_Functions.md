@@ -95,7 +95,7 @@ center](/assets/images/dev-ref/zss-essentials-customFormula-mysubtotal.png " cen
 
 First, we create a class to implement my subtotal function:
 
-``` java
+{% highlight java linenos %}
 public class MySubtotal extends MultiOperandNumericFunction{
 
     protected MySubtotal() {
@@ -122,7 +122,7 @@ public class MySubtotal extends MultiOperandNumericFunction{
         return sum;
     }
 }
-```
+{% endhighlight %}
 
   - Line 19: The overloading `evaluate(ValueEval[], int, int)` it
     inherits from `MultiOperandNumericFunction` will process all
@@ -136,7 +136,7 @@ public class MySubtotal extends MultiOperandNumericFunction{
 Then, create a static method with previously-mentioned signature and
 delegate method calling to `MySubtotal`.
 
-``` java
+{% highlight java linenos %}
 public class MyCustomFunctions {
 
     private static Function MY_SUBTOTAL = new MySubtotal();
@@ -152,7 +152,7 @@ public class MyCustomFunctions {
         return MY_SUBTOTAL.evaluate(args, srcCellRow, srcCellCol); 
     }
 }
-```
+{% endhighlight %}
 
   - Line 13: Delegate method calling to to `MySubtotal` which implements
     the function actually.
