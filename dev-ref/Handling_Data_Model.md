@@ -1,5 +1,5 @@
 ---
-title: 'HandlingData Model'
+title: 'Handling Data Model'
 ---
 
 Spreadsheet data model is the place where all Spreadsheet cell data
