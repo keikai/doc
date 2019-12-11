@@ -1,3 +1,7 @@
+---
+title: 'License'
+---
+
 Only Keikai EE requires a license file. You can choose one of the following
 ways to put a license file:
 
