@@ -131,7 +131,7 @@ Few points need to be noticed:
 Default value: **true**
 
 Set the property to `false` and Keikai will set default value of
-*keepCellSelection* attribute to false. Before older version, when Keikai
+*keepCellSelection* attribute to false. In older versions, when Keikai
 Spreadsheet component loses its focus, it will hide the cell selection
 mark automatically. However, sometimes an end user would need to know
 which range is selected when he/she is operating on another control
