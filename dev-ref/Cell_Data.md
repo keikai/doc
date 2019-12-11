@@ -9,7 +9,7 @@ you actually enter in a cell and the value being evaluated. To get
 get <javadoc directory="keikai">io.keikai.api.model.CellData</javadoc>
 to obtain various data of a cell including its text, type, and value.
 
-``` java
+{% highlight java linenos %}
 Range range = Ranges.range(spreadsheet.getSelectedSheet(),row,col);
 CellData cellData = range.getCellData();
 
@@ -39,7 +39,7 @@ Date dateValue = cellData.getDateValue();
 Double doubleValue = cellData.getDoubleValue();
 Boolean booleanValue = cellData.getBooleanValue();
 String stringValue = cellData.getStringValue();
-```
+{% endhighlight %}
 
   - Line 6: You may catch
     <javadoc directory="keikai">io.keikai.api.IllegalFormulaException</javadoc>
@@ -60,8 +60,7 @@ number.
 
 **Example application's ZUL page**
 
-``` xml
-
+{% highlight java linenos %}
     <window hflex="1" vflex="1"
         apply="io.keikai.essential.CellDataComposer">
         <hlayout hflex="1" vflex="1">
@@ -81,7 +80,7 @@ number.
             </vlayout>
         </hlayout>
     </window>
-```
+{% endhighlight %}
 
   - Line 4: We set Spreadsheet's id to "ss" that can be used in `@Wire`
     in our controller.
