@@ -9,10 +9,10 @@ ways to put a license file:
 
 Keikai loads a license file from the default path:
 
-**`WEB-INF/classes/metainfo/zss/license/`**
+**`WEB-INF/classes/metainfo/keikai/license/`**
 
 Create the path above if it does not exist, and put the license key into
-the path. This is the simplest way if you just have one zss-based web
+the path. This is the simplest way if you just have one keikai-based web
 application.
 
 # Specify an Absolute Path with a Library Property
