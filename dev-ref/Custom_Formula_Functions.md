@@ -52,14 +52,14 @@ center](/assets/images/dev-ref/zss-essentials-customFormula-exchange.png " cente
 
 The custom function can be implemented like:
 
-``` java
+{% highlight java linenos %}
 public class MyCustomFunctions {
 
     public static double exchange(double money, double exchangeRate) {
         return money * exchangeRate;
     }   
 }
-```
+{% endhighlight %}
 
 After declaring it in a ZUL page, you can use this function like
 `=EXCHANGE(10, 31.3)` or `=EXCHANGE(C3, D3)`. Spreadsheet will evaluate
