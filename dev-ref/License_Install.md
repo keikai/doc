@@ -22,12 +22,12 @@ file in the default path. Then you can specify the absolute path of the
 license with the following library property in `zk.xml` and copy your
 Keikai license file there.
 
-``` xml
+{% highlight java linenos %}
 <library-property>
     <name>io.keikait.Runtime.directory</name>
     <value>c:/systemAbsolutePath/my-licenses/</value>
 </library-property>
-```
+{% endhighlight %}
 
 It's also a way that multiple Keikai-bases applications can load the same
 license file.
@@ -42,9 +42,9 @@ license file path to Keikai via a system property.
 For example in a Tomcat, you can add a `setenv.sh` (or `setenv.bat`)
 that contains
 
-``` text
+{% highlight java linenos %}
 export CATALINA_OPTS="$CATALINA_OPTS -Dio.keikait.Runtime.directory=/absolutePathToYourLicenseFilePath/"
-```
+{% endhighlight %}
 
 Tomcat `catalina.sh` will invoke this script if exists.
 
@@ -59,7 +59,7 @@ If the license is loaded successfully, you should see a license
 information like below printed in your application server's console when
 the server starts like:
 
-``` text
+{% highlight java linenos %}
 *** Potix Corporation License Information ***
 
      Licensed Company: my company
@@ -68,4 +68,4 @@ the server starts like:
      ...
 
      To renew, obtain more licenses, or if you require help, please contact info@zkoss.org.
-```
+{% endhighlight %}
