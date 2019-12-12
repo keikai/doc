@@ -1,5 +1,5 @@
 ---
-title:'Spreadsheet Data Model'
+title: 'Spreadsheet Data Model'
 ---
 # Book Model Overview
 
