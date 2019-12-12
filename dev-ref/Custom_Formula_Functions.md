@@ -270,7 +270,7 @@ following ways to bring it in a ZUL page before using it in Spreadsheet.
 ## Using EL Method
 
 Use xel-method directive is quite straight out. Just write it on the ZUL
-page with prefix **zss** and that is done. Please refer to
+page with prefix **keikai** and that is done. Please refer to
 [ZUML\_Reference/ZUML/Processing\_Instructions/xel-method](ZUML_Reference/ZUML/Processing_Instructions/xel-method "wikilink")
 for complete explanation of each attribute.
 
@@ -278,16 +278,16 @@ For our custom function, we can write:
 
 {% highlight java linenos %}
 
-<?xel-method prefix="zss" name="EXCHANGE"
+<?xel-method prefix="keikai" name="EXCHANGE"
     class="io.keikai.essential.advanced.MyCustomFunctions"  
     signature="double exchange(double,double)"?>
-<?xel-method prefix="zss" name="MYSUBTOTAL"
+<?xel-method prefix="keikai" name="MYSUBTOTAL"
     class="io.keikai.essential.advanced.MyCustomFunctions"  
     signature="org.zkoss.poi.ss.formula.eval.ValueEval mySubtotal(org.zkoss.poi.ss.formula.eval.ValueEval[], int, int)"?>
-<?xel-method prefix="zss" name="CHAIN"
+<?xel-method prefix="keikai" name="CHAIN"
     class="io.keikai.essential.advanced.MyCustomFunctions"  
     signature="org.zkoss.poi.ss.formula.eval.ValueEval chain(org.zkoss.poi.ss.formula.eval.ValueEval[], int, int)"?>
-<?taglib uri="/WEB-INF/tld/function.tld" prefix="zss" ?>    
+<?taglib uri="/WEB-INF/tld/function.tld" prefix="keikai" ?>    
 <zk>
     <window title="Keikai spreadsheet" border="normal" height="100%">
         <spreadsheet src="/WEB-INF/books/customFunction.xlsx" 
@@ -297,7 +297,7 @@ For our custom function, we can write:
 </zk>
 {% endhighlight %}
 
-  - Line 1: Notice that "prefix" attribute must be set to "zss" for ZK
+  - Line 1: Notice that "prefix" attribute must be set to "keikai" for ZK
     Spreadsheet to find custom functions.
 
 After declaring them, you can use them in a cell like
@@ -307,7 +307,7 @@ After declaring them, you can use them in a cell like
 
 To use taglib directive, we should create a taglib file and specify its
 file path in `uri` attribute of taglib directive and set "prefix" to
-**zss**. Please refer to
+**keikai**. Please refer to
 [ZUML\_Reference/ZUML/Processing\_Instructions/taglib/Custom\_Taglib](ZUML_Reference/ZUML/Processing_Instructions/taglib/Custom_Taglib "wikilink")
 for details. We list our sample configuration here:
 
@@ -317,7 +317,7 @@ for details. We list our sample configuration here:
 
 <?xml version="1.0" encoding="UTF-8" ?>
 <taglib>
-    <uri>http://www.zkoss.org/zss/essentials/custom</uri> http://www.zkoss.org/zss/essentials/custom</uri>
+    <uri>http://www.zkoss.org/keikai/essentials/custom</uri> http://www.zkoss.org/keikai/essentials/custom</uri>
     <description>
         User defined functions.
     </description>
@@ -345,7 +345,7 @@ for details. We list our sample configuration here:
 Declare it in a ZUL page.
 
 {% highlight java linenos %}
-<?taglib uri="/WEB-INF/tld/function.tld" prefix="zss" ?>    
+<?taglib uri="/WEB-INF/tld/function.tld" prefix="keikai" ?>    
 <zk>
     <window title="Keikai spreadsheet" border="normal" height="100%">
         <spreadsheet src="/WEB-INF/books/customFunction.xlsx" 
@@ -355,7 +355,7 @@ Declare it in a ZUL page.
 </zk>
 {% endhighlight %}
 
-  - Line 1: Notice that "prefix" attribute must be set to "zss" for ZK
+  - Line 1: Notice that "prefix" attribute must be set to "keikai" for ZK
     Spreadsheet to find custom functions.
 
 After completing above steps, you can use this custom function in
@@ -370,7 +370,7 @@ customized function will be invoked instead of built-in one.
 **Override LEN()**
 
 {% highlight java linenos %}
-<?xel-method prefix="zss" name="LEN"
+<?xel-method prefix="keikai" name="LEN"
     class="io.keikai.essential.advanced.MyCustomFunctions"  
     signature="org.zkoss.poi.ss.formula.eval.ValueEval myLen(org.zkoss.poi.ss.formula.eval.ValueEval[], int, int)"?>
 <zk>
