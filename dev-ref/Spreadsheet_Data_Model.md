@@ -1,40 +1,39 @@
+---
+title:'Spreadsheet Data Model'
+---
 # Book Model Overview
 
 When Spreadsheet loads an Excel file, the file is converted to
 Spreadsheet's data model (*book model*) stored in memory. The root of
 the data model is a book
-(<javadoc directory="keikai">io.keikai.api.model.Book</javadoc>) and a
+(`io.keikai.api.model.Book`) and a
 book contains one or more sheets
-(<javadoc directory="keikai">io.keikai.api.model.Sheet</javadoc>) which
+(`io.keikai.api.model.Sheet`) which
 may contain many cells
-(<javadoc directory="keikai">io.keikai.api.model.CellData</javadoc>),
+(`io.keikai.api.model.CellData`),
 styles
-(<javadoc directory="keikai">io.keikai.api.model.CellStyle</javadoc>,
-<javadoc directory="keikai">io.keikai.api.model.Color</javadoc>), fonts
-(<javadoc directory="keikai">io.keikai.api.model.Font</javadoc>),
+(`io.keikai.api.model.CellStyle`,
+`io.keikai.api.model.Color`), fonts
+(`io.keikai.api.model.Font`),
 charts
-(<javadoc directory="keikai">io.keikai.api.model.Chart</javadoc>), and
+(`io.keikai.api.model.Chart`), and
 pictures
-(<javadoc directory="keikai">io.keikai.api.model.Picture</javadoc>).
+(`io.keikai.api.model.Picture`).
 
 You can directly access model objects like `Book` or `Sheet`. However,
-you should modify data on cells (or rows and columns)via
-<javadoc directory="keikai">io.keikai.api.Range</javadoc> interface,
+you should modify cell data (or rows and columns)via the
+`io.keikai.api.Range` interface,
 then Spreadsheet will handle subsequent synchronization stuff for you,
 e.g. notify other referenced cells. A `Range` may represent a cell, a
 row, a column, or a selection of cells containing one or more contiguous
-blocks of cells, or a 3-D reference. \[1\] Because of underlying
+blocks of cells, or a 3-D reference( Read more about 3-D reference in the [Reference Section](Reference)).  Because the underlying
 implementation is complicated, you only can obtain a `Range` object
-through a facade class named
-<javadoc directory="keikai">io.keikai.api.Ranges</javadoc>.
+through a facade class named `io.keikai.api.Ranges`.
 
 In this section, we will introduce some commonly-used API with examples.
 For complete information, you can browse Javadoc under
 `io.keikai.api.*` and `io.keikai.api.model.*`. To understand
-example codes, we assume you have known what is a composer and how it
-work with components. If you don't, please read [ZK Developer's
-Reference/MVC/Controller/Composer](ZK_Developer's_Reference/MVC/Controller/Composer "wikilink")
-first.
+example codes, we assume you already know what a composer is and how it works with components. If you are new to composer, please read [ZK Developer Reference](https://www.zkoss.org/wiki/ZK_Developer%27s_Reference/MVC/Controller/Composer)first.
 
 # Load A Book Model
 
@@ -42,15 +41,14 @@ In most cases, we create a book model by loading an Excel file instead
 of creating it directly. Specifying an Excel file's path in Spreadsheet
 component's attribute is the simplest way, and Spreadsheet will import
 the file and construct a book model object. You can also use
-<javadoc  directory="keikai">io.keikai.api.Importer</javadoc> to
+`io.keikai.api.Importer` to
 construct a Book object by your own and provide it to one or more
 Spreadsheet components by `setBook()`. After Spreadsheet loads a book
 model, we can get it by `Spreadsheet.getBook()`.
 
 ## By Spreadsheet src Attribute
 
-The <javadoc directory="keikai">io.keikai.ui.Spreadsheet</javadoc>'s
-`setSrc(java.lang.String)` can be called to display an Excel file
+The `io.keikai.ui.Spreadsheet`'s `setSrc(java.lang.String)` can be called to display an Excel file
 programmatically. Similar to `src` attribute, this method accepts
 relative file path.
 
@@ -60,7 +58,7 @@ relative file path.
 
 Load by API
 
-``` java
+{% highlight java linenos %}
 public class MyComposer extends SelectorComposer<Component> {
 
     @Wire
@@ -74,25 +72,23 @@ public class MyComposer extends SelectorComposer<Component> {
 
     }
 }
-```
+{% endhighlight %}
 
   - Line 3: The annotation `@Wire` injects matched component object's
-    reference to annotated variable according to selector syntax. In
+    reference to annotated variable according to the selector syntax. In
     this case, ZK injects a Spreadsheet component whose id is "ss" on
-    the ZUL page. For details, please refer to [ZK Developer's
-    Reference/MVC/Controller/Wire
-    Components](ZK_Developer's_Reference/MVC/Controller/Wire_Components "wikilink").
+    the ZUL page. For details, please refer to [ZK Developer Reference](https://www.zkoss.org/wiki/ZK_Developer%27s_Reference/MVC/Controller/Wire_Components).
 
 To reload the same file, you should set src to null first and set it
-back to original file.
+back to the original file.
 
 ## By Importer
 
-In case your Excel file may not come from a static file path, importer
+In the case where your Excel file is not from a static file path, the importer
 interface along with `Spreadsheet.setBook()`can be used. Normally one
 would obtain Book instance by importing an Excel book file. Use
 `imports()` of
-<javadoc directory="keikai">io.keikai.api.Importer</javadoc> to import
+`io.keikai.api.Importer` to import
 an Excel file. It returns `Book` instance which can be passed to
 `setBook(Book)` to display the imported Excel file.
 
@@ -120,16 +116,15 @@ public class ImporterComposer extends SelectorComposer<Component> {
 # Create a New Book
 
 You need to load a blank book file to create a new book instead of
-instantiating a Book object. Please refer to
-<https://github.com/zkoss/zssessentials/blob/master/src/main/java/org/zkoss/zss/essential/util/BookUtil.java#L14>.
+instantiating a Book object. Please refer to BookUtil.java in Keikai Essentials.
 
 # Access Sheets
 
 The `Book` object is the root of Spreadsheet's data model, and we can
-retrieve sheets from it, e.g. by index `getSheetAt()`, or by name
-`getSheet()`. One book object might contains one or more sheets, and we
-can know how many sheets it have by `getNumberOfSheets()`. However,
-Spreadsheet only displays one sheet at one time and the
+retrieve sheets from it, e.g. by its index `getSheetAt()`, or by the name
+`getSheet()`. One book object might contain one or more sheets, and we
+can know how many sheets it has by `getNumberOfSheets()`. However,
+Spreadsheet only displays one sheet at a time and the
 currently-displayed sheet is the *selected sheet*. We can get selected
 sheet via `Spreadsheet.getSelectedSheet()` or set it via
 `Spreadsheet.setSelectedSheet()`.
@@ -142,16 +137,13 @@ row's width, column's height, charts, and pictures which the sheet
 contains.
 
 You can also `createSheet()`, `deleteSheet()`, `cloneSheet()`, and even
-clone a sheet from another book by `cloneSheetFrom()`. Please refer to
-<https://github.com/zkoss/zssessentials/blob/master/src/main/webapp/copySheet.zul>.
+clone a sheet from another book by `cloneSheetFrom()`. Please refer to copySheet.zul in Keikai Essentials Project.
 
 ## Switch Sheets Example
 
-Now, we present basic usage with a custom sheet switching example. Users
-can use the listbox with sheet name to switch the current selected sheet
-of the Spreadsheet.
+Here we demonstate a basic usage: allowing users to use a listbox outside of the spreadsheet to select and switch to the selected sheet.
 
-[center ](/assets/images/dev-ref/File:zss-essentials-book-sheet.png "wikilink")
+![center](/assets/images/dev-ref/File:Zss-essentials-book-sheet.png)
 
 **setSheet.zul**
 
@@ -169,7 +161,7 @@ apply="io.keikai.essential.BookSheetComposer">
 Then we listen the Listbox's onSelect event to change current selected
 sheet.
 
-``` java
+{% highlight java linenos %}
 
 public class BookSheetComposer extends SelectorComposer<Component>{
     
@@ -197,7 +189,7 @@ public class BookSheetComposer extends SelectorComposer<Component>{
         spreadsheet.setSelectedSheet(selected);
     }
 }
-```
+{% endhighlight %}
 
   - Line 14,15: Get each sheet's name from Spreadsheet's book model.
   - Line 18: Set name list to the Listbox.
@@ -205,22 +197,20 @@ public class BookSheetComposer extends SelectorComposer<Component>{
     onSelect event of the Listbox whose id is `sheetBox`. That means
     when a user selects a sheet in the Listbox, the method
     `selectSheet()` will be invoked.(For complete syntax, please refer
-    to [ZK Developer's Reference/MVC/Controller/Wire Event
-    Listeners](ZK_Developer's_Reference/MVC/Controller/Wire_Event_Listeners "wikilink"))
+    to [ZK Developer Reference](http://www.zkoss.org/wiki/ZK_Developer%27s_Reference/MVC/Controller/Wire_Event_Listeners)
   - Line 23,24: Change Spreadsheet's selected sheet when users select a
     sheet.
 
 # Access Cells
 
-When you want to change some data in book or sheet, you can directly
+When you want to change some data in a book or a sheet, you can directly
 access their corresponding model objects, `Book` or `Sheet`. However,
-there is no such a cell object for you to access. Because one cell might
-be referenced by other cells, accessing it may need to notify other
-cells. This issue can be more complicated if you select multiple cells.
+there is not a cell object for you to access. Because a cell might
+be referenced by other cells, accessing it directly may need to notify other
+cells. This issue can get more complicated if you select multiple cells.
 
-Hence, in order to encapsulate these complicated detail, Spreadsheet
-provides 2 classes, `Ranges` and `Range` (Notice that there is one more
-"s" in the first one's class name.). The `Ranges` is a facade class that
+Hence, in order to encapsulate these complicated details, Spreadsheet
+provides 2 classes, `Ranges` and `Range` (Notice that the first one ends with an S). The `Ranges` is a facade class that
 has 2 kinds of method. One is used to select a range of cells and it
 will return a `Range` object that can represent a cell, a row, a column,
 or a selection of cells containing one or more contiguous blocks of
@@ -286,23 +276,13 @@ range.toRowRange();
 range.toColumnRange();
 ```
 
-There are still many methods that we don't mention here. They will be
-introduced in later sections.
+More methods will be introduced in later sections.
 
 ## Utility Class
 
-`Ranges` and `Range` provides major APIs to access cells. Because of
-referencing relationship among cells mentioned at the beginning of this
-section, we also provides utility classes,
-<javadoc directory="keikai">io.keikai.api.CellOperationUtil</javadoc>
-and
-<javadoc directory="keikai">io.keikai.api.SheetOperationUtil</javadoc>,
-to help you change cell data and styles. You can use them without
-knowing more details about underlying implementation, and they will
-handle those details for you such as synchronization and checking. We
-will introduce these 2 utility classes more in the later sections.
+`Ranges` and `Range` provide major APIs to access cells. In order to deal with the referencing relationships among cells, we also provides utility classes, `io.keikai.api.CellOperationUtil` and `io.keikai.api.SheetOperationUtil`, to help you change cell data and styles. You can use them without knowing more details about the underlying implementation, and they will handle those details for you such as synchronization and checking. We will introduce these 2 utility classes more in later sections.
 
-<references/>
+# References
 
 1.  A reference that refers to the same cell or range on multiple sheets
     is called a 3-D reference. A 3-D reference is a useful and
