@@ -2,7 +2,7 @@
 title: 'Reference to another Workbook'
 ---
 
-Available in ZK Spreadsheet EE only
+Available in Keikai Spreadsheet EE only
 
 Spreadsheet supports external reference: a cell in one spreadsheet can
 reference to a cell of another spreadsheet. This feature is useful when
