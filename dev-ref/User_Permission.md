@@ -43,9 +43,9 @@ to control the access for each role. Let's recap them here:
 
 Example:
 
-``` java
+{% highlight java linenos %}
 spreadsheet.setShowToolbar(false);
-```
+{% endhighlight %}
 
 # Disable Functions
 
@@ -53,9 +53,9 @@ spreadsheet.setShowToolbar(false);
 
 Example:
 
-``` java
+{% highlight java linenos %}
 spreadsheet.disableUserAction(AuxAction.COPY_SHEET, true);
-```
+{% endhighlight %}
 
 # Protect a Sheet
 
@@ -63,11 +63,11 @@ spreadsheet.disableUserAction(AuxAction.COPY_SHEET, true);
 
 Example:
 
-``` java
+{% highlight java linenos %}
 Ranges.range(spreadsheet.getSelectedSheet()).protectSheet("password",
                 true, true, false, false, false, false, false,
                 false, false, false, false, false, false, false, false);
-```
+{% endhighlight %}
 
 You can download the example source code to know the complete
 implementation.
