@@ -14,7 +14,7 @@ expressions to the back end Java beans automatically.
 ## How Spreadsheet resolve a name in a cell
 
 If a variable in cells equals Excel *Defined Name*\[1\] found in Excel
-file, Keikai spreadsheet will treat them as what it defines. If not, ZK
+file, Keikai spreadsheet will treat them as what it defines. If not, Keikai
 Spreadsheet follows ZK's EL expression variable resolving mechanism. It
 first tries to find any matching zscript variables defined in the ZUL
 page. Then check ID of ZK fellow components. Then search in ZK
