@@ -120,8 +120,6 @@ dev-ref:
       url: /dev-ref/Reference_to_Spring_Beans
     - title: Collaboration Edit
       url: /dev-ref/Collaboration_Edit
-    - title: Creating Custom Themes
-      url: /dev-ref/Creating_Custom_Themes
     - title: Custom Context Menu
       url: /dev-ref/Custom_Context_Menu
     - title: Disable Functions
