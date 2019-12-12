@@ -182,7 +182,7 @@ function support these use cases.
 
 '''The function to chain text '''
 
-``` java
+{% highlight java linenos %}
 public class MyCustomFunctions {
 
     /**
@@ -240,7 +240,7 @@ public class MyCustomFunctions {
     }
 
 }
-```
+{% endhighlight %}
 
   - Line 14: You should create a public static method with the same
     signature because Spreadsheet recognizes your function method by the
@@ -276,7 +276,7 @@ for complete explanation of each attribute.
 
 For our custom function, we can write:
 
-``` xml
+{% highlight java linenos %}
 
 <?xel-method prefix="zss" name="EXCHANGE"
     class="io.keikai.essential.advanced.MyCustomFunctions"  
@@ -295,7 +295,7 @@ For our custom function, we can write:
         showContextMenu="true" showSheetbar="true" showToolbar="true" />
     </window>
 </zk>
-```
+{% endhighlight %}
 
   - Line 1: Notice that "prefix" attribute must be set to "zss" for ZK
     Spreadsheet to find custom functions.
@@ -313,7 +313,7 @@ for details. We list our sample configuration here:
 
 **function.tld**
 
-``` xml
+{% highlight java linenos %}
 
 <?xml version="1.0" encoding="UTF-8" ?>
 <taglib>
@@ -340,11 +340,11 @@ for details. We list our sample configuration here:
         </description>
     </function>
 </taglib>
-```
+{% endhighlight %}
 
 Declare it in a ZUL page.
 
-``` xml
+{% highlight java linenos %}
 <?taglib uri="/WEB-INF/tld/function.tld" prefix="zss" ?>    
 <zk>
     <window title="Keikai spreadsheet" border="normal" height="100%">
@@ -353,7 +353,7 @@ Declare it in a ZUL page.
         showContextMenu="true" showSheetbar="true" showToolbar="true" />
     </window>
 </zk>
-```
+{% endhighlight %}
 
   - Line 1: Notice that "prefix" attribute must be set to "zss" for ZK
     Spreadsheet to find custom functions.
@@ -369,7 +369,7 @@ customized function will be invoked instead of built-in one.
 
 **Override LEN()**
 
-``` xml
+{% highlight java linenos %}
 <?xel-method prefix="zss" name="LEN"
     class="io.keikai.essential.advanced.MyCustomFunctions"  
     signature="org.zkoss.poi.ss.formula.eval.ValueEval myLen(org.zkoss.poi.ss.formula.eval.ValueEval[], int, int)"?>
@@ -380,7 +380,7 @@ customized function will be invoked instead of built-in one.
         showContextMenu="true" showSheetbar="true" showToolbar="true" />
     </window>
 </zk>
-```
+{% endhighlight %}
 
   - In above page, if we use `LEN()` in a formula, `myLen()` will be
     invoked.
