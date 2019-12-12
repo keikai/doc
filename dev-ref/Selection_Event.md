@@ -1,49 +1,48 @@
-\_\_TOC\_\_
+---
+title: 'Selection Event'
+---
 
 # Overview
 
-The following events involve changing selected range of cells.
+The following events involve in changing selected cell range.
 
 ## onCellFocus
 
 This event is fired when a cell gets focused by mouse clicking or using
-key. When a corresponding event listener is invoked, a
-<javadoc directory="keikai">io.keikai.ui.event.CellEvent</javadoc>
+key. When a corresponding event listener is invoked, a `io.keikai.ui.event.CellEvent`
 object is passed as an argument.
 
 ## onCellSelection
 
-This event is fired when a user selects a cell by clicking or a group of
-cells by dragging mouse. It is also fired if a user selects a row or a
-column by clicking their headers which means selecting the whole row (or
-column). When a corresponding event listener is invoked, a
-<javadoc directory="keikai">io.keikai.ui.event.CellSelectionEvent</javadoc>
+This event is fired when a user clicks a cell, or drags a group of
+cells. It is also fired if a user selects a row or a
+column by clicking their headers to select the whole row (or
+column). When the corresponding event listener is invoked, a `io.keikai.ui.event.CellSelectionEvent`
 object is passed as an argument.
 
 ## onCellSelectionUpdate
 
 This event is fired when a user drags to move cells or drags the fill
-handle. When a corresponding event listener is invoked, a
-<javadoc directory="keikai">io.keikai.ui.event.CellSelectionUpdateEvent</javadoc>
-object is passed as an argument.
+handle. When the corresponding event listener is invoked, a
+`io.keikai.ui.event.CellSelectionUpdateEvent` object is passed as an argument.
 
-There are two features, "auto fill" and "move cells' content", depend on
-this event. They listen the event and perform their operation like
+There are two features, "auto fill" and "move cell content", depend on
+this event. They listen to the event and perform corresponding actions like
 filling cells. Notice that your event listener might affect these
 features.
 
 # Event Monitor Example
 
-In our Event Monitor application, you can see the mouse pointer becomes
-a 4-direction arrow pointer. That means we move the selection area.
-Thus, you can selection update message on the right hand side panel.
+In our Event Monitor application, you can see that the mouse pointer becomes
+a 4-direction arrow pointer. This means we can move the selection area.
+Thus, you can see the update selection in the right panel.
 
-![ center](/assets/images/dev-ref/zss-essentials-events-selection.png " center")
+![center](/assets/images/dev-ref/Zss-essentials-events-selection.png)
 
-The following codes demonstrate how to listen above events and get
+The following code demonstrates how to listen above events and get
 related data from them.
 
-``` java
+{% highlight java linenos %}
 public class EventsComposer extends SelectorComposer<Component>{
     //omitted codes...
 
@@ -79,17 +78,14 @@ public class EventsComposer extends SelectorComposer<Component>{
 
 
 }
-```
+{% endhighlight %}
 
   - Line 4, 13, 22: Apply `@Listen` to listen an event with the syntax
-    `[EVENT NAME] = [COMPONENT SELECTOR]`. All event name can be found
-    in <javadoc directory="keikai">io.keikai.ui.event.Events</javadoc>.
-    The "\#ss" is the component selector which means the component with
+    `[EVENT NAME] = [COMPONENT SELECTOR]`. All event names can be found
+    in `io.keikai.ui.event.Events`. The "\#ss" is the component selector which refers to the component with
     id `ss` on the ZUL page. (SelectorComposer supports various selector
     syntax that let you select components easily. Please refer to [ZK
-    Developer's Reference/MVC/Controller/Wire
-    Components](ZK_Developer's_Reference/MVC/Controller/Wire_Components "wikilink"))
-    .
+    Developer Reference](https://www.zkoss.org/wiki/ZK_Developer%27s_Reference/MVC/Controller/Wire_Components)).
   - Line 8: You can get focused cell's row and column index (0-based).
   - Line 17: You can get selection area by `event.getArea()`.
   - Line 26: You can get the selection area before and after it changes.
@@ -98,13 +94,13 @@ public class EventsComposer extends SelectorComposer<Component>{
 
 A pratical use case of `onCellSelection` event is to build a range
 selection dialog, e.g. let users select a cell range for futher
-processing without entering it by a keyboard. An example is showed by
+processing without entering it using the keyboard. An example is shown by
 the screenshot below:
 
-![ center](/assets/images/dev-ref/zss-essentials-rangeSelectionDialog.png " center")
+![center](/assets/images/dev-ref/zss-essentials-rangeSelectionDialog.png)
 
-When opening the dialog to select a range, we can hide edit UI and
-cancel `onStartEditing` event to forbid users editing.
+When opening the dialog to select a range, we can hide editting features and
+cancel `onStartEditing` event to prevent users from editing.
 
 In the code below, we put cell address string converted from
 `CellSelectionEvent` in the Textbox of the dialog.
