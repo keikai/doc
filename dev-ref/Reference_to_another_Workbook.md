@@ -34,7 +34,7 @@ Therefore, we can make cells of "resume.xlsx" reference to
 
 The following codes demonstrate how to achieve the resume:
 
-``` java
+{% highlight java linenos %}
 public class BookSeriesComposer extends SelectorComposer<Component> {
     
     @Wire
@@ -58,7 +58,7 @@ public class BookSeriesComposer extends SelectorComposer<Component> {
         return new File(WebApps.getCurrent().getRealPath(path));
     }
 }
-```
+{% endhighlight %}
 
   - Line 11\~12: Get all related books.
   - Line 17: Use `BookSeriesBuilder` to build a book series with
