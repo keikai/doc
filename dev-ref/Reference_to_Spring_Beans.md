@@ -31,7 +31,7 @@ can see from the formula bar, the content of B3 is an EL expression,
 To use Spring bean resolver, there must be some Spring bean defined in
 your application. In our example, it's `AssetsBean`:
 
-``` java
+{% highlight java linenos %}
 @Component
 @Scope(value="session", proxyMode=ScopedProxyMode.TARGET_CLASS)
 public class AssetsBean {
@@ -42,7 +42,7 @@ public class AssetsBean {
     private double otherAssets;
 ...
 }
-```
+{% endhighlight %}
 
 Declare ZK's `org.zkoss.zkplus.spring.DelegatingVariableResolver` in a
 ZUL page. (You can refer to [ZK Developer%27s
@@ -50,7 +50,7 @@ Reference/Integration/Middleware Layer/Spring\#Access a Spring Bean in a
 ZUL](ZK_Developer%27s_Reference/Integration/Middleware_Layer/Spring#Access_a_Spring_Bean_in_a_ZUL "wikilink")
 for detail.)
 
-``` xml
+{% highlight java linenos %}
 <?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
 <zk>
     <window hflex="1" vflex="1" 
@@ -66,7 +66,7 @@ for detail.)
         </hlayout>
     </window>
 </zk>
-```
+{% endhighlight %}
 
 # Example
 
@@ -81,7 +81,7 @@ can see from the formula bar, the content of B3 is an EL expression,
 To use Spring bean resolver, there must be some Spring bean defined in
 your application. In our example, it's `AssetsBean`:
 
-``` java
+{% highlight java linenos %}
 @Component
 @Scope(value="session", proxyMode=ScopedProxyMode.TARGET_CLASS)
 public class AssetsBean {
@@ -92,7 +92,7 @@ public class AssetsBean {
     private double otherAssets;
 ...
 }
-```
+{% endhighlight %}
 
 Declare ZK's `org.zkoss.zkplus.spring.DelegatingVariableResolver` in a
 ZUL page. (You can refer to [ZK Developer%27s
@@ -100,7 +100,7 @@ Reference/Integration/Middleware Layer/Spring\#Access a Spring Bean in a
 ZUL](ZK_Developer%27s_Reference/Integration/Middleware_Layer/Spring#Access_a_Spring_Bean_in_a_ZUL "wikilink")
 for detail.)
 
-``` xml
+{% highlight java linenos %}
 <?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
 <zk>
     <window hflex="1" vflex="1" 
@@ -116,7 +116,7 @@ for detail.)
         </hlayout>
     </window>
 </zk>
-```
+{% endhighlight %}
 
 ## When Spring Bean Changes
 
@@ -127,7 +127,7 @@ changed beans, it will collect which cells are affected (i.e. those
 dependent cells with the specified bean names), and update them
 accordingly.
 
-``` java
+{% highlight java linenos %}
 @VariableResolver(org.zkoss.zkplus.spring.DelegatingVariableResolver.class)
 public class RefSpringBeanComposer extends SelectorComposer<Component> {
     
@@ -172,7 +172,7 @@ public class RefSpringBeanComposer extends SelectorComposer<Component> {
         
     }
 }
-```
+{% endhighlight %}
 
   - Line 1: [ Add a variable
     resolver](ZK_Developer%27s_Reference/Integration/Middleware_Layer/Spring#Adding_Variable_Resolver_to_a_Composer_.28or_ViewModel.29 "wikilink")
