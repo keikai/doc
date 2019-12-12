@@ -1,3 +1,7 @@
+---
+title: 'Performance Guide'
+---
+
 We list optimization tips for some scenarios.
 
 # Calling Multiple Range Methods
@@ -19,7 +23,7 @@ update by themselves:
 
 <!-- end list -->
 
-  - initialize a book upon a data source (e.g. a database) before zk
+  - initialize a book upon a data source (e.g. a database) before Keikai
     spreadsheet renders itself.
 
 <!-- end list -->
