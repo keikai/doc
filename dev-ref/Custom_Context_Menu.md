@@ -1,3 +1,7 @@
+---
+title: 'Custom Context Menu'
+---
+
 # Overview
 
 This section describes how to pop up a new customized context menu in a
