@@ -1,4 +1,8 @@
-\_\_TOC\_\_
+---
+title: 'Reference to Java Beans'
+---
+
+Available in Keikai Spreadsheet EE only
 
 # Overview
 
