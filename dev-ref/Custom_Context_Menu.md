@@ -23,7 +23,7 @@ only.
 
 **Extracted from customContext.zul**
 
-``` xml
+{% highlight java linenos %}
     <window apply="io.keikai.essential.advanced.customization.CustomContextMenuComposer"
         width="100%" height="100%">
         <spreadsheet id="ss" width="100%" height="100%" showFormulabar="true"
@@ -31,7 +31,7 @@ only.
             maxVisibleColumns="20" src="/WEB-INF/books/blank.xlsx" />
     <!-- other components -->
     </window>
-```
+{% endhighlight %}
 
   - Line 4: Specify `showContextMenu="false"` to hide built-in context
     menu.
@@ -42,12 +42,12 @@ Menupopup is the most suitable component to build a context menu.
 
 **Extracted from customContext.zul**
 
-``` xml
+{% highlight java linenos %}
             <menupopup id="myContext">
                 <menuitem id="display" label="Display Information" />
                 <menuitem id="open" label="Open Dialog" />
             </menupopup>
-```
+{% endhighlight %}
 
 # Show Custom Context Menu
 
@@ -55,7 +55,7 @@ We can listen
 <javadoc directory="keikai">io.keikai.ui.event.CellMouseEvent</javadoc>
 to open our Menupopup.
 
-``` java
+{% highlight java linenos %}
 package io.keikai.essential.advanced.customization;
 
 import org.zkoss.zk.ui.Component;
@@ -75,7 +75,7 @@ public class CustomContextMenuComposer extends SelectorComposer<Component> {
         myContext.setAttribute("event", event);
     }
 }
-```
+{% endhighlight %}
 
   - Line 17: We could set `CellMouseEvent` as a Menupopup's attribute,
     and it could be used as a context information when implementing
@@ -87,7 +87,7 @@ You can implement the context menu's application logic in a separate
 composer which makes a system in good modularity and clear separation of
 responsibility.
 
-``` xml
+{% highlight java linenos %}
         <div apply="io.keikai.essential.advanced.customization.MyContextMenuComposer">
             <menupopup id="myContext">
                 <menuitem id="display" label="Display Information" />
@@ -99,12 +99,12 @@ responsibility.
                 <label id="content"></label>
             </window>
         </div>
-```
+{% endhighlight %}
 
 The event listener displays the cell address of the cell a user right
 clicks on.
 
-``` java
+{% highlight java linenos %}
 package io.keikai.essential.advanced.customization;
 
 import org.zkoss.zk.ui.Component;
@@ -136,7 +136,7 @@ public class MyContextMenuComposer extends SelectorComposer<Component> {
         String message = "Selection: " + ((Spreadsheet)cellMouseEvent.getTarget()).getSelection().asString();
         Clients.showNotification(message);
     }
-```
+{% endhighlight %}
 
   - Line 28: Get spreadsheet event from a component's attribute
     mentioned in previous section.
@@ -148,7 +148,7 @@ items on it. The example code below demonstrates how to reuse "Clear"
 menu ite by passing an
 <javadoc directory='zss'>io.keikai.ui.event.AuxActionEvent</javadoc>.
 
-``` java
+{% highlight java linenos %}
     @Listen("onClick = #clear")
     public void clear() throws Exception{
         CellMouseEvent cellMouseEvent = (CellMouseEvent)myContext.getAttribute("event");
@@ -157,7 +157,7 @@ menu ite by passing an
                 AuxAction.CLEAR_ALL.toString(), ss.getSelection(), new HashMap());
         ((EventListener)ss.getUserActionManager()).onEvent(event);
     }
-```
+{% endhighlight %}
 
   - Line 5: Each menu item has a corresponding constant in
     <javadoc directory='zss'>io.keikai.ui.AuxAction</javadoc>. Pass
