@@ -48,7 +48,7 @@ Resolver](ZK_Developer%27s_Reference/UI_Composing/ZUML/EL_Expressions#Variable_R
 for complete explanation. Our resolver use `MyBeanService` to get a bean
 which is a singleton and can be accessed in anywhere.
 
-``` java
+{% highlight java linenos %}
 public class MyBeanResolver implements VariableResolver {
 
     @Override
@@ -56,14 +56,14 @@ public class MyBeanResolver implements VariableResolver {
         return MyBeanService.getMyBeanService().get(name);
     }
 }
-```
+{% endhighlight %}
 
 Declare our `MyBeanResolver` in a ZUL page. (or you could make it a [
 system level variable
 resolver](ZK_Developer%27s_Reference/UI_Composing/ZUML/EL_Expressions#System-level_Variable_Resolver "wikilink")
 which can be available in all pages.)
 
-``` xml
+{% highlight java linenos %}
 <?variable-resolver class="io.keikai.essential.advanced.MyBeanResolver"?>
 <zk>
     <window hflex="1" vflex="1" 
@@ -79,7 +79,7 @@ which can be available in all pages.)
         </hlayout>
     </window>
 </zk>
-```
+{% endhighlight %}
 
 ## When JavaBean Changes
 
@@ -90,7 +90,7 @@ changed beans, it will collect which cells are affected (i.e. those
 dependent cells with the specified bean names), and update them
 accordingly.
 
-``` java
+{% highlight java linenos %}
 public class RefBeanComposer extends SelectorComposer<Component> {
     
     @Wire
@@ -128,7 +128,7 @@ public class RefBeanComposer extends SelectorComposer<Component> {
         
     }   
 }
-```
+{% endhighlight %}
 
   - Line 22: Notify whole book of one or more beans' change, all cells
     of whole book associated with changed bean will be updated.
