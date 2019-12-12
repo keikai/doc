@@ -11,7 +11,7 @@ color). ![ center](/assets/images/dev-ref/zss-essentials-disableFunctions.png " 
 To achieve this, simply call
 <javadoc directory='zss' method="disableUserAction(io.keikai.ui.AuxAction, boolean)">io.keikai.ui.Spreadsheet</javadoc>
 
-``` java
+{% highlight java linenos %}
 package io.keikai.essential.advanced.customization;
 
 import org.zkoss.zk.ui.Component;
@@ -37,7 +37,7 @@ public class DisableFunctionsComposer extends SelectorComposer<Component> {
     }
 ...
 }
-```
+{% endhighlight %}
 
 Except sheet operations, you can also disable functions on the toolbar
 and the context menu. Take a look at
