@@ -34,7 +34,7 @@ his spreadsheet. ![ center | 900px](/assets/images/dev-ref/essentials-feature-co
 
 The controller's code of above example:
 
-``` java
+{% highlight java linenos %}
 public class CoeditComposer extends SelectorComposer<Component> {
 
     private static final long serialVersionUID = 1L;
@@ -90,7 +90,7 @@ public class CoeditComposer extends SelectorComposer<Component> {
         }
     }
 }
-```
+{% endhighlight %}
 
   - Line 10: For simplicity, we use a static map to simulate a shared
     book model repository.
