@@ -1,4 +1,6 @@
-\_\_TOC\_\_
+---
+title: 'Header Event'
+---
 
 # Overview
 
@@ -6,46 +8,37 @@ There are 4 events related to a header:
 
 ## onHeaderClick
 
-This event is fired when a user left clicks on Spreadsheet's header.
-When a corresponding event listener is invoked, a
-<javadoc directory="keikai">io.keikai.ui.event.HeaderMouseEvent</javadoc>
-object is passed as an argument.
+This event is fired when a user left-clicks on Spreadsheet's header.
+When a corresponding event listener is invoked, a `io.keikai.ui.event.HeaderMouseEvent` object is passed as an argument.
 
 ## onHeaderDoubleClick
 
-This event is fired when a user double clicks on Spreadsheet header.
-When a corresponding event listener is invoked, a
-<javadoc directory="keikai">io.keikai.ui.event.HeaderMouseEvent</javadoc>
-object is passed as an argument.
+This event is fired when a user double-clicks on Spreadsheet header.
+When a corresponding event listener is invoked, a `io.keikai.ui.event.HeaderMouseEvent` object is passed as an argument.
 
 ## onHeaderRightClick
 
-This event is fired when a user right clicks on Spreadsheet header. When
-a corresponding event listener is invoked, a
-<javadoc directory="keikai">io.keikai.ui.event.HeaderMouseEvent</javadoc>
-object is passed as an argument.
+This event is fired when a user right-clicks on Spreadsheet header. When
+a corresponding event listener is invoked, a `io.keikai.ui.event.HeaderMouseEvent` object is passed as an argument.
 
 ## onHeaderUpdate
 
-This event is fired when a user resize a row (or column) header. When a
-corresponding event listener is invoked, a
-<javadoc directory="keikai">io.keikai.ui.event.HeaderUpdateEvent</javadoc>
-object is passed as an argument.
+This event is fired when a user resizes a row (or column) header. When a
+corresponding event listener is invoked, a `io.keikai.ui.event.HeaderUpdateEvent` object is passed as an argument.
 
 # Popup Menu Example
 
 Look at the screenshots below, we can show different custom popup menus
 when a users click a column or row header.
 
-![ center](/assets/images/dev-ref/zss-essentials-events-columnMenu.png " center")
+![ center](/assets/images/dev-ref/Zss-essentials-events-columnMenu.png)
 
-![ center](/assets/images/dev-ref/zss-essentials-events-rowMenu.png " center")
+![ center](/assets/images/dev-ref/Zss-essentials-events-rowMenu.png)
 
-To popup our custom menu, we should disable built-in context menu
-(`showContextMenu="false"` or un-specified) first and listen
+To popup our custom menu, we should disable built-in context menu (by `showContextMenu="false"` or un-specified) first and listen to
 onHeaderRightClick event.
 
-``` xml
+{% highlight java linenos %}
     <window title="Keikai Mouse Events" border="normal" width="100%"
         height="100%" apply="io.keikai.essential.events.MouseEventsComposer">
         <spreadsheet width="600px" height="300px" 
@@ -64,16 +57,15 @@ onHeaderRightClick event.
             <menuitem id="deleteRowMenu" label="Delete" />
         </menupopup>
     </window>
-```
+{% endhighlight %}
 
   - Line 3, 4: Do not specify `showContextMenu` to disable built-in
     context menu.
   - Line 8, 13: Create custom popup menus.
 
-<!-- end list -->
 
-``` java
 
+{% highlight java linenos %}
 public class MouseEventsComposer extends SelectorComposer<Component> {
 
     @Wire
@@ -94,11 +86,8 @@ public class MouseEventsComposer extends SelectorComposer<Component> {
         }
     }
 }
-```
+{% endhighlight %}
 
   - Line 8: Annotate event listener to list onHeaderRightClick event.
-  - Line 11: The `getType()` returns an enumeration
-    <javadoc>io.keikai.ui.event.HeaderType</javadoc> that can tell
-    you which header is clicked.
-  - Line 13, 16: Show up custom menus at the position where a user right
-    clicks.
+  - Line 11: The `getType()` returns an enumeration `io.keikai.ui.event.HeaderType` that can tell you which header is clicked.
+  - Line 13, 16: Show up custom menus at the position where a user right-clicks.
