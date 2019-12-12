@@ -1,3 +1,7 @@
+---
+title: 'Disable Functions'
+---
+
 Spreadsheet provides API to disable its functions. The API can be very
 useful when you implement your user permission features. In the example
 application below, since we disable all sheet related functions except
