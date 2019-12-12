@@ -26,7 +26,7 @@ you should modify cell data (or rows and columns)via the
 then Spreadsheet will handle subsequent synchronization stuff for you,
 e.g. notify other referenced cells. A `Range` may represent a cell, a
 row, a column, or a selection of cells containing one or more contiguous
-blocks of cells, or a 3-D reference( Read more about 3-D reference in the [Reference Section](Reference)).  Because the underlying
+blocks of cells, or a 3-D reference( Read more about 3-D reference in the [Reference Section](Spreadsheet_Data_Model#references)).  Because the underlying
 implementation is complicated, you only can obtain a `Range` object
 through a facade class named `io.keikai.api.Ranges`.
 
