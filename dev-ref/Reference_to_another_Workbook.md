@@ -2,6 +2,8 @@
 title: 'Reference to another Workbook'
 ---
 
+Available in ZK Spreadsheet EE only
+
 Spreadsheet supports external reference: a cell in one spreadsheet can
 reference to a cell of another spreadsheet. This feature is useful when
 you want to apply a different view for data but don't want to change
