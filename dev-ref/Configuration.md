@@ -1,3 +1,7 @@
+---
+title: 'Configuration'
+---
+
 # Overview
 
 Here we list all available [ library
@@ -15,12 +19,12 @@ configuration, it affects to all charts of the whole application.
 
 **Example configuration in zk.xml**
 
-``` xml
+{% highlight java linenos %}
 <library-property>
     <name>io.keikai.chart.title.font</name>
     <value>sansserif, italic, 30</value>
 </library-property>
-```
+{% endhighlight %}
 
   - The above configuration sets title font to italic SansSerif with
     size 30.
@@ -58,9 +62,9 @@ Available property names:
 
 Value's format:
 
-``` text
+{% highlight java linenos %}
 [NAME], [STYLE], [SIZE]
-```
+{% endhighlight %}
 
   - \[NAME\] : Those font names your system supports.
   - \[STYLE\] : **plain**, **bold**, **italic**
@@ -81,28 +85,26 @@ ColorPicker of OSE (fewer color choices):<br/> ![center](/assets/images/dev-ref/
 
 **Example in zk.xml**
 
-``` xml
+{% highlight java linenos %}
 <library-property>
     <name>io.keikai.colorPickerExUsed</name>
     <value>false</value>
 </library-property>
-```
+{% endhighlight %}
 
   - The configuration above will make Spreadsheet use Color Picker of
     CE.
 
 **Example in zk.xml**
 
-``` xml
+{% highlight java linenos %}
 <library-property>
     <name>io.keikai.theme.preferred</name>
     <value>classic</value>
 </library-property>
-```
+{% endhighlight %}
 
 ## Importing Formula Cache
-
-` since 3.7`
 
 Default value: **false**
 
@@ -110,12 +112,12 @@ Set the property to `true` and Keikai will import formula cache of an Excel
 file and it can reduce the file loading time because Keikai doesn't need to
 re-evaluate formulas at loading.
 
-``` xml
+{% highlight java linenos %}
 <library-property>
     <name>io.keikai.import.cache</name>
     <value>true</value> <!-- turn the import cache on; default is false if not specified -->
 </library-property>
-```
+{% endhighlight %}
 
 Few points need to be noticed:
 
@@ -140,9 +142,9 @@ component (e.g. a dialog window). We have set the default value of
 would like Keikai to behave as before, you can set this
 property to `false`.
 
-``` xml
+{% highlight java linenos %}
 <library-property>
     <name>io.keikai.ui.keepCellSelection</name>
     <value>false</value> <!-- turn the keep-cell-selection off; default is true if not specified -->
 </library-property>
-```
+{% endhighlight %}
