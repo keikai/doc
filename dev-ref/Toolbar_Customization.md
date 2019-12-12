@@ -47,7 +47,7 @@ action handlers and register them in Spreadsheet.
 create `NewBookHandler` to implement this function, the source code are
 as follows:
 
-``` java
+{% highlight java linenos %}
 public class NewBookHandler implements UserActionHandler {
 
     @Override
@@ -69,7 +69,7 @@ public class NewBookHandler implements UserActionHandler {
         return true;
     }
 }
-```
+{% endhighlight %}
 
   - Line 1: A custom handler should implement `UserActionHandler`
     interface.
@@ -93,7 +93,7 @@ public class NewBookHandler implements UserActionHandler {
 "Save Book" button will save a book model as an Excel file with its book
 name as the file name.
 
-``` java
+{% highlight java linenos %}
 public class SaveBookHandler implements UserActionHandler {
     
     @Override
@@ -115,7 +115,7 @@ public class SaveBookHandler implements UserActionHandler {
     }
     //omitted code for brevity...
 }
-```
+{% endhighlight %}
 
   - Line 5: Only when Spreadsheet has loaded a book, this handler is
     enabled.
@@ -143,7 +143,7 @@ handler in a controller:
 
 **Controller of customHandler.zul**
 
-``` java
+{% highlight java linenos %}
 public class CustomHandlerComposer extends SelectorComposer<Component> {
     
     @Wire
@@ -164,7 +164,7 @@ public class CustomHandlerComposer extends SelectorComposer<Component> {
                 AuxAction.SAVE_BOOK.getAction(), new SaveBookHandler());
     }
 }
-```
+{% endhighlight %}
 
   - Line 12: Get `UserActionManager` via Spreadsheet.
   - Line 13: Use `UserActionManager` to register our user action
@@ -201,9 +201,8 @@ There are 2 ways to hook up your user action handlers:
 
 # Hide Toolbar Button
 
-You can hide some toolbar buttons by JavaScript like:
+To hide some toolbar buttons by JavaScript, please reference `customToolbar.zul` Keikai Essentials:
 
-<https://github.com/zkoss/keikaiessentials/blob/master/src/main/webapp/advanced/customToolbar.zul>
 
 ``` xml
     <script defer="true"><![CDATA[
