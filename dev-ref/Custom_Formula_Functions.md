@@ -297,7 +297,7 @@ For our custom function, we can write:
 </zk>
 {% endhighlight %}
 
-  - Line 1: Notice that "prefix" attribute must be set to "keikai" for ZK
+  - Line 1: Notice that "prefix" attribute must be set to "keikai" for Keikai
     Spreadsheet to find custom functions.
 
 After declaring them, you can use them in a cell like
@@ -355,7 +355,7 @@ Declare it in a ZUL page.
 </zk>
 {% endhighlight %}
 
-  - Line 1: Notice that "prefix" attribute must be set to "keikai" for ZK
+  - Line 1: Notice that "prefix" attribute must be set to "keikai" for Keikai
     Spreadsheet to find custom functions.
 
 After completing above steps, you can use this custom function in
