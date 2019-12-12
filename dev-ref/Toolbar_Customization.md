@@ -204,7 +204,7 @@ There are 2 ways to hook up your user action handlers:
 To hide some toolbar buttons by JavaScript, please reference `customToolbar.zul` Keikai Essentials:
 
 
-``` xml
+{% highlight java linenos %}
     <script defer="true"><![CDATA[
 var hiddenButtons = ['.zstbtn-newBook', '.zstbtn-saveBook', '.zstbtn-exportPDF', '.zstbtn-sortAndFilter'
     , '.zschktbtn-protectSheet', '.zstbtn-insertPicture', '.zstbtn-insertChart'];
@@ -213,4 +213,4 @@ jq.each(hiddenButtons, function(index, selector){
     jq(selector).hide();
 });
     ]]></script>
-```
+{% endhighlight %}
