@@ -1,3 +1,9 @@
+---
+title: 'Collaboration Edit'
+---
+
+Available in Keikai Spreadsheet EE only
+
 # Overview
 
 Spreadsheet can support *Collaboration Edit* automatically as long as
