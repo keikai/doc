@@ -1,3 +1,7 @@
+---
+title: 'Toolbar Customization'
+---
+
 # Overview
 
 Three toolbar buttons in out-of-box Spreadsheet are disabled by default:
@@ -199,7 +203,7 @@ There are 2 ways to hook up your user action handlers:
 
 You can hide some toolbar buttons by JavaScript like:
 
-<https://github.com/zkoss/zssessentials/blob/master/src/main/webapp/advanced/customToolbar.zul>
+<https://github.com/zkoss/keikaiessentials/blob/master/src/main/webapp/advanced/customToolbar.zul>
 
 ``` xml
     <script defer="true"><![CDATA[
