@@ -16,7 +16,7 @@ mechanism:
   - sheet protection
 
 We will demonstrate the usage of API with
-<https://github.com/zkoss/zssessentials/blob/master/src/main/webapp/advanced/permission/login.zul>.
+<https://github.com/zkoss/keikaiessentials/blob/master/src/main/webapp/advanced/permission/login.zul>.
 In this application, you can log in with 3 different roles: OWNER,
 EDITOR, VIEWER. Their permissions are described in the image below:
 
@@ -39,7 +39,7 @@ to control the access for each role. Let's recap them here:
 
 # Hide User Interface
 
-<http://books.zkoss.org/wiki/ZK%20Spreadsheet%20Essentials/Working%20with%20Spreadsheet/Control%20Components>
+<http://books.zkoss.org/wiki/Keikai%20Spreadsheet%20Essentials/Working%20with%20Spreadsheet/Control%20Components>
 
 Example:
 
@@ -49,7 +49,7 @@ spreadsheet.setShowToolbar(false);
 
 # Disable Functions
 
-<http://books.zkoss.org/wiki/ZK%20Spreadsheet%20Essentials/Working%20with%20Spreadsheet/Advanced/Disable%20Functions>
+<http://books.zkoss.org/wiki/Keikai%20Spreadsheet%20Essentials/Working%20with%20Spreadsheet/Advanced/Disable%20Functions>
 
 Example:
 
@@ -59,7 +59,7 @@ spreadsheet.disableUserAction(AuxAction.COPY_SHEET, true);
 
 # Protect a Sheet
 
-<http://books.zkoss.org/wiki/ZK_Spreadsheet_Essentials/Working_with_Spreadsheet/Handling_Data_Model/Protection>
+<http://books.zkoss.org/wiki/Keikai_Spreadsheet_Essentials/Working_with_Spreadsheet/Handling_Data_Model/Protection>
 
 Example:
 
