@@ -107,7 +107,7 @@ dev-ref:
     url: /dev-ref/Advanced
     children:
     - title: I18n
-      url: /dev-ref/I18n
+      url: /dev-ref/i18n
     - title: Custom Formula Functions
       url: /dev-ref/Custom_Formula_Functions
     - title: Toolbar Customization
@@ -136,4 +136,4 @@ dev-ref:
   - title: License
     url: /dev-ref/License_Install
   - title: FAQ
-    url: /dev-ref/FAQ
+    url: /dev-ref/faq
