@@ -97,7 +97,7 @@ selection dialog, e.g. let users select a cell range for futher
 processing without entering it using the keyboard. An example is shown by
 the screenshot below:
 
-![center](/assets/images/dev-ref/zss-essentials-rangeSelectionDialog.png)
+![center](/assets/images/dev-ref/Zss-essentials-rangeSelectionDialog.png)
 
 When opening the dialog to select a range, we can hide editting features and
 cancel `onStartEditing` event to prevent users from editing.
