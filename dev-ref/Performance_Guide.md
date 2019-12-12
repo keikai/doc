@@ -41,7 +41,7 @@ In order to manually control UI update, we have to:
 
 <!-- end list -->
 
-``` java
+{% highlight java linenos %}
     private void loadData() {
         Sheet sheet = ss.getSelectedSheet();
         for (int column  = 0 ; column < COLUMN_SIZE ; column++){
@@ -56,7 +56,7 @@ In order to manually control UI update, we have to:
         Ranges.range(ss.getSelectedSheet(), 0, 0, ROW_SIZE, COLUMN_SIZE).notifyChange();
                 ...
     }
-```
+{% endhighlight %}
 
   - line 6: disable the auto-refresh before changing cells (calling
     setter)
@@ -95,24 +95,22 @@ If the affected cells are too distributed, you can consider notifying
 the whole sheet. But this might make a sheet blank for a moment because
 it will re-render the whole sheet.
 
-``` java
+{% highlight java linenos %}
 Ranges.range(ss.getSelectedSheet()).notifyChange();
-```
+{% endhighlight %}
 
 ### Notify the cached area
 
 If rendering a whole sheet is too slow, you can also consider to notify
 the currently cached area.
 
-``` java
+{% highlight java linenos %}
 Spreadsheet ss;
 // change cells
 ss.notifyLoadedAreaChange();
-```
+{% endhighlight %}
 
 # No Auto-Adjusting Row Height
-
-`since 3.8.3`
 
 If your application doesn't allow users to do any operation that needs a
 row height calculation e.g. enable / disable wrap text, change a font
@@ -120,16 +118,14 @@ size, then you can set the attribute `ignoreAutoHeight` to `true`. This
 will improve client-side rendering speed much because it avoids
 time-consuming cell's height calculating for each row.
 
-``` xml
+{% highlight java linenos %}
 <!-- default is false -->
 <spreadsheet  ignoreAutoHeight="true"/>
-```
+{% endhighlight %}
 
 # Initialize with Large Data
 
 ## Implement PostImport
-
-`since 3.9.1`
 
 A typical use case is loading a template file and inserting application
 data from a database at the beginning. Normally, this will generate lots
@@ -142,7 +138,7 @@ your initialization logic in `process()`. Then Keikai will invoke
 unnecessary update triggered by `Range` API. Therefore, it can speed up
 the data/formula inserting.
 
-``` java
+{% highlight java linenos %}
 public class PostImportComposer extends SelectorComposer<Component> implements PostImport{
 
     @Wire
@@ -204,7 +200,7 @@ public class PostImportComposer extends SelectorComposer<Component> implements P
     }
 ...
 }
-```
+{% endhighlight %}
 
 ## Initialize Asynchronously
 
