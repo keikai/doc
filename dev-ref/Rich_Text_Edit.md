@@ -1,4 +1,7 @@
-`since 3.5.1`
+---
+title: 'Rich Text Edit'
+---
+
 
 Spreadsheet allow users to edit cell text with rich text format, it
 provides a built-in WYSIWYG (“what you see is what you get”) editor to
@@ -22,15 +25,15 @@ The result:
 
 ## Set Rich Text via API
 
-<javadoc directory="keikai">io.keikaige</javadoc> API allows
+`io.keikai.Range` API allows
 you to get or set rich text in HTML format of a cell:
 
-``` java
+{% highlight java linenos %}
 
 public void setCellRichText(String html);
 
 public String getCellRichText();
-```
+{% endhighlight %}
 
 For example, the screenshot below is an application which can display a
 focused cell's data and the editor on the right bottom corner allows you
@@ -43,8 +46,7 @@ change the text and see the update.
 
 **Example application's ZUL page**
 
-``` xml
-
+{% highlight java linenos %}
     <window hflex="1" vflex="1"
         apply="io.keikaial.RichTextEditComposer">
         <hlayout hflex="1" vflex="1">
@@ -76,11 +78,11 @@ change the text and see the update.
             </vlayout>
         </hlayout>
     </window>
-```
+{% endhighlight %}
 
 **Controller**
 
-``` java
+{% highlight java linenos %}
 
 public class RichTextEditComposer extends SelectorComposer<Component> {
     @Wire
@@ -120,7 +122,7 @@ public class RichTextEditComposer extends SelectorComposer<Component> {
         range.setCellRichText(cellEditTextBox.getValue());
     }
 }
-```
+{% endhighlight %}
 
   - Line 20, 22, 26: These code uses API described previously to get the
     focused cell's rich text or edit text.
@@ -149,12 +151,12 @@ below is the list of the usage:
 
 It can also be combined like the following:
 
-``` java
+{% highlight java linenos %}
 range.setCellRichText("This is a <span style=\"color: #0070c0;\">rich <b>text</b></span>");
 
 range.setCellRichText("<span style=\"color:#0070c0;font-family:Verdana;\">This is <br/>" +
     "<span style=\"font-size:14pt;\"><b>nested</b></span> style text</span>");
-```
+{% endhighlight %}
 
 **Note**: you need to use \<br/\> tag to create a line break.
 
