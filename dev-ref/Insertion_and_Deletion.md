@@ -35,7 +35,7 @@ cells shift after deletion with 2nd argument (`DEFAULT, LEFT, UP`):
 range.delete(DeleteShift.LEFT);
 {% endhighlight %}
 
-<javadoc directory="keikai">io.keikai.api.CellOperationUtil</javadoc>
+`io.keikai.api.CellOperationUtil`
 also can help us to insert (or delete) cells, rows, and columns. To
 insert cells:
 
