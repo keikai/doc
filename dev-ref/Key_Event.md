@@ -1,3 +1,6 @@
+---
+title: 'Key Event'
+---
 # Overview
 
 There is one key event that Keikai spreadsheet supports:
@@ -11,14 +14,12 @@ without specifying `ctrlKeys` on <spreadsheet>.
 
 # Event Monitor Example
 
-![ center](/assets/images/dev-ref/zss-essentials-events-key.png " center")
+![center](/assets/images/dev-ref/Zss-essentials-events-key.png)
 
-In [Event
-Monitor](Working_with_Spreadsheet/Handling_Events/Editing_Event#Event_Monitor_Example "wikilink")
-example, the messages show that ctrl+c is pressed first then ctrl+v.
-Let's see how to make it:
+In [Event Monitor](Editing_Event#event-monitor-example) example, the messages show that ctrl+c is pressed before ctrl+v.
+Let's see how it was done:
 
-``` java
+{% highlight java linenos %}
 public class EventsComposer extends SelectorComposer<Component>{
     //omitted codes...
 
@@ -34,47 +35,34 @@ public class EventsComposer extends SelectorComposer<Component>{
         //display info...
     }
 }
-```
+{% endhighlight %}
 
-  - Line 4: Apply `@Listen` to listen an event with the syntax `[EVENT
-    NAME] = [COMPONENT SELECTOR]`. All event name can be found in
-    <javadoc directory="keikai">io.keikai.ui.event.Events</javadoc>.
-    The "\#ss" is the component selector which means the component with
+  - Line 4: Apply `@Listen` to listen to an event with the syntax `[EVENT NAME] = [COMPONENT SELECTOR]`. All event name can be found in `io.keikai.ui.event.Events`.
+    The "\#ss" is the component selector which refers to the component with
     id "ss" on the ZUL page. (SelectorComposer supports various selector
     syntax that let you select components easily. Please refer to [ZK
-    Developer's Reference/MVC/Controller/Wire
-    Components](ZK_Developer's_Reference/MVC/Controller/Wire_Components "wikilink"))
-    .
+    Developer Reference](https://www.zkoss.org/wiki/ZK_Developer%27s_Reference/MVC/Controller/Wire_Components)).
   - Line 8\~12: Except knowing which key is pressed, we can also know
-    that control, alt, or shift key are pressed or not via `KeyEvent`.
+    that control, alt, or shift keys are pressed or not via `KeyEvent`.
 
 # Add More Shortcut Keys
 
-If you want to add more shortcut keys to a Keikai component, remember to
+If you wish to add more shortcut keys to a Keikai component, remember to
 append the default shortcut keys:
 
   -   
     `^Z^Y^X^C^V^B^I^U#del`.
 
 For example, if you want to add a shortcut key like **ctrl+a,** you
-should set `ctrlKeys` to **`^A`**`^Z^Y^X^C^V^B^I^U#del`. Thus, you can
-still benefit from built-in key handling function. For syntax used at
-the property `ctrlKeys`, please refer to [ZK Developer%27s Reference/UI
-Patterns/Keystroke
-Handling](ZK_Developer%27s_Reference/UI_Patterns/Keystroke_Handling "wikilink").
-When the corresponding event listener is invoked, a
-<javadoc directory="keikai">io.keikai.ui.event.KeyEvent</javadoc>
-object is passed as an argument.
+should set `ctrlKeys` to **`^A`**`^Z^Y^X^C^V^B^I^U#del`. By doing this, you can
+still benefit from built-in key handling functions. For syntax used with
+the property `ctrlKeys`, please refer to [ZK Developer Reference](https://www.zkoss.org/ZK_Developer%27s_Reference/UI_Patterns/Keystroke_Handling).
+When the corresponding event listener is invoked, a `io.keikai.ui.event.KeyEvent` object is passed as an argument.
 
 # Overrideing Existing Shortcut Keys
 
-Every shortcut key has a corresponding
-<javadoc directory='zss'>io.keikai.ui.UserActionHandler</javadoc> to
-perform its function like <javadoc directory='zss'>
-io.keikai.ui.impl.ua.CopyHandler</javadoc>. Implementing your key
-event listener cannot override existing shortcut keys' function because
-the listener is executed after UserActionHandler. Therefore, to override
-it you need to hook up your own UserActionHandler like:
+Every shortcut key has a corresponding `io.keikai.ui.UserActionHandler` to perform its function like `io.keikai.ui.impl.ua.CopyHandler`. When implementing your key event listener, you cannot do it by overriding existing shortcut keys' function because
+the listener is executed after UserActionHandler. To override it you need to hook up your own UserActionHandler like:
 
 ``` java
 Spreadsheet ss;
@@ -83,7 +71,7 @@ UserActionManager manager = ss.getUserActionManager();
 manager.registerHandler(Category.KEYSTROKE.getName(), "^V", new MyCustomPasteHandler());
 ```
 
-Another way is:
+Or, alternatively:
 
 ``` java
 Spreadsheet ss;
@@ -93,22 +81,6 @@ actionManager.setHandler(Category.KEYSTROKE.getName(), "^V", new MyCustomPasteHa
 ```
 
 Please refer to [
-Toolbar\_Customization](ZK_Spreadsheet_Essentials/Working_with_Spreadsheet/Advanced/Toolbar_Customization "wikilink")
-for how to implement a UserActionHandler and the difference between
+Toolbar\_Customization](Toolbar_Customization) for how you can implement a UserActionHandler and to find out the difference between
 `registerHandler()` and `setHandler()`
 
-# Known issue
-
-There is a known issue <http://tracker.zkoss.org/browse/Keikai-920>, when
-you add spreadsheet as the child of root, you may trigger onCtrlEvent to
-server once you press delete key on BODY. To solve this issue, you can
-enclose spreadsheet tag by any other tags like DIV:
-
-``` xml
-<zk>
-    <div>
-        <spreadsheet src="/issue3/book/blank.xlsx" height="300px" width="300px" 
-            showSheetbar="true" showContextMenu="true" showFormulabar="true"/>
-    </div>
-</zk>
-```
