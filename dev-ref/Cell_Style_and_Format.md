@@ -72,7 +72,7 @@ String colorCode = style.getBackgroundColor().getHtmlColor();
 # Font
 
 Those information about font can be retrieve via
-<javadoc directory="keikai">org.zkoss.api.model.Font</javadoc>, and we can
+`io.keikai.api.model.Font`, and we can
 get this object by `CellStyle`'s `getFont()`. Here are some examples:
 
 {% highlight java linenos %}
