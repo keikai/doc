@@ -1,14 +1,15 @@
-\_\_TOC\_\_
+---
+title: 'Export to PDF'
+---
 
 # PDF Exporter
 
 In addition to the Excel format, you can also export a book model as a
-PDF file with
-<javadoc directory="keikai">io.keikai.api.Exporter</javadoc>
+PDF file with `io.keikai.api.Exporter`
 
 **Example to export as a PDF**
 
-``` java
+{% highlight java linenos %}
 package io.keikai.essential;
 
 import java.io.*;
@@ -51,7 +52,7 @@ public class ExportPdfComposer extends SelectorComposer<Component> {
 
     //omit some code for brevity
 }
-```
+{% endhighlight %}
 
 Line 21: Get an Exporter instance for PDF format.
 
@@ -86,33 +87,35 @@ headless Webkit browser.
 This is the location to export server. When it doesn't find this
 definition, JFreechart will be used to generate chart graphs. (Required)
 
-``` xml
+{% highlight java linenos %}
+
 <library-property>
     <name>io.keikai.chart.render.server.url</name>
     <value>http://127.0.0.1:3003</value> http://127.0.0.1:3003</value>
 </library-property>
-```
+{% endhighlight %}
 
 Scale is a zoom factor that affects pixel density relative to the
 original, for example, 2 means double the resolution of the original.
 (Optional)
 
-``` xml
+{% highlight java linenos %}
+
 <library-property>
     <name>io.keikai.chart.render.server.scale</name>
     <value>1</value>
 </library-property>
-```
+{% endhighlight %}
 
 Default timeout is 10000 milliseconds (10 seconds) for waiting response
 from export server. (Optional)
 
-``` xml
+{% highlight java linenos %}
 <library-property>
     <name>io.keikai.chart.render.server.timeout</name>
     <value>10000</value>
 </library-property>
-```
+{% endhighlight %}
 
 After restarting server, ZK Charts will be shown when exporting PDF.
 
@@ -123,14 +126,14 @@ After restarting server, ZK Charts will be shown when exporting PDF.
 Spreadsheet exports its book model to a PDF file according to the page
 print setup you specify in Excel.
 
-![ center](/assets/images/dev-ref/ExcelPageSetup.png " center")
+![center](/assets/images/dev-ref/ExcelPageSetup.png)
 
 For example, you can add a header and footer, and it would look like:
 
-![ center](/assets/images/dev-ref/pdfExporting-HeaderFooter.png " center")
+![center](/assets/images/dev-ref/pdfExporting-HeaderFooter.png)
 
 You can also scale a sheet to fit into one page with row and column
-heading: ![ center](/assets/images/dev-ref/_pdfExporting-FitOnePage.png " center")
+heading: ![center](/assets/images/dev-ref/_pdfExporting-FitOnePage.png)
 
 # Supported Page Setup
 
