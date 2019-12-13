@@ -245,4 +245,4 @@ public class CellStyleComposer extends SelectorComposer<Component> {
 {% endhighlight %}
 
   - Line 38\~43: Get various style information from `CellStyle`
-  - Line 53,61: Apply alignment with `CellOperationUtil`
+  - Line 53, 61: Apply alignment with `CellOperationUtil`
