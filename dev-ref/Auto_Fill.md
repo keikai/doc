@@ -86,7 +86,7 @@ public class AutoFillComposer extends SelectorComposer<Component> {
 }
 {% endhighlight %}
 
-  - Line 26,27: The scope of Range for destination must include the one
+  - Line 26, 27: The scope of Range for destination must include the one
     for source.
   - Line 33\~36: Currently, only DEFAULT, COPY, FORMATS, VALUE are
     supported.
