@@ -15,8 +15,8 @@ is as below:
 
 ![center](/assets/images/dev-ref/Zss-essentials-filter-example.png)
 
-In this application, through those buttons on the right hand side we can
-toggle, clear, and reapply filters and filter data by "Type" column.
+In this application, we can toggle, clear, and reapply filters and filter data 
+by "Type" column through those buttons on the right hand side.
 
 Here is the source code to implement it:
 
@@ -83,7 +83,7 @@ public class AutoFilterComposer extends SelectorComposer<Component> {
   - Line 26, 28: The method `resetAutoFilter()` clears applied criteria
     and all data will be shown and
     `SheetOperationUtil.resetAutoFilter()` has the same function.
-  - Line 34,36: The method `applyAutoFilter()` will re-apply current
+  - Line 34, 36: The method `applyAutoFilter()` will re-apply current
     criteria to modified or newly added data.
   - Line 43: The argument for criteria is a String array, and you can
     have multiple values in it, e.g. `{"Beverages", "Meat", "Tools"}`
