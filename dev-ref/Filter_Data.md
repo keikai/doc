@@ -1,23 +1,26 @@
+---
+title: 'Filter Data'
+---
+
 Filter is a useful feature especially when you want to focus on a subset
 of data. It can filter out of those data you don't want displaying
 without removing them. Spreadsheet allows you to enable/disable filter
 and apply/reset criteria via API. You can use both
-<javadoc directory="keikai">io.keikai.api.Range</javadoc> or
-<javadoc directory="keikai">io.keikai.api.SheetOperationUtil</javadoc>
+`io.keikai.api.Range` or `io.keikai.api.SheetOperationUtil`
 to achieve these functions, but `SheetOperationUtil` checks sheet
 protection for you.
 
 We'll use a simple application to demonstrate filter API. Its screenshot
 is as below:
 
-![ center](/assets/images/dev-ref/zss-essentials-filter-example.png " center")
+![center](/assets/images/dev-ref/Zss-essentials-filter-example.png)
 
 In this application, through those buttons on the right hand side we can
 toggle, clear, and reapply filters and filter data by "Type" column.
 
 Here is the source code to implement it:
 
-``` java
+{% highlight java linenos %}
 public class AutoFilterComposer extends SelectorComposer<Component> {
 
     @Wire
@@ -66,7 +69,7 @@ public class AutoFilterComposer extends SelectorComposer<Component> {
         }
     }
 }
-```
+{% endhighlight %}
 
   - Line 12: The method `findAutoFilterRange()` will return a non-blank
     area based on your selection if Spreadsheet can find it. We should
