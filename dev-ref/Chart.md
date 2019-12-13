@@ -1,31 +1,32 @@
+---
+title: 'Chart'
+---
+
 # Overview
 
-<javadoc directory="keikai"ai">io.keikai.api.model.Range</javadoc> API can
+`io.keikai.api.model.Range` API can
 allow you to add, move, and delete a charts of a Spreadsheet:
 
-``` java
+{% highlight java linenos %}
 
 public Chart addChart(SheetAnchor anchor, Type type, Grouping grouping, LegendPosition pos);
 
 public void deleteChart(Chart chart);
 
 public void moveChart(SheetAnchor anchor,Chart chart);
-```
+{% endhighlight %}
 
 A chart
-(<javadoc directory='zss'>io.keikai.api.model.Chart</javadoc>) is a
+`io.keikai.api.model.Chart` is a
 simple object that you can only get its ID and position. All chart types
-constant are listed in <javadoc directory="keikai"ai">
-io.keikai.api.model.Chart.Type</javadoc>. Most chart types are
+constant are listed in `io.keikai.api.model.Chart.Type`. Most chart types are
 supported except `OF_PIE, RADAR, STOCK, SURFACE_3D`, and `SURFACE`.
-Supported grouping(<javadoc directory="keikai"ai">
-io.keikai.api.model.Chart.Grouping</javadoc>) are `STANDARD,
+Supported grouping(`io.keikai.api.model.Chart.Grouping`) are `STANDARD,
 STACKED, PERCENT_STACKED` and, `CLUSTERED`. Supported legend
-positions(<javadoc directory="keikai"ai">
-io.keikai.api.model.Chart.LegendPosition</javadoc>) are `BOTTOM,
+positions(`io.keikai.api.model.Chart.LegendPosition`) are `BOTTOM,
 LEFT, RIGHT, TOP`, and `TOP_RIGHT`. \[1\]
 
-The <javadoc directory="keikai"ai">io.keikai.api.SheetAnchor</javadoc>
+The `io.keikai.api.SheetAnchor`
 represents a chart's position on a sheet. When adding or moving a chart,
 you must provide one `SheetAnchor` to assign a chart's position. You can
 create a `SheetAnchor` by passing 4 index numbers, left-top corner's and
@@ -35,9 +36,9 @@ better store it somewhere you can retrieve it back later if you plan to
 delete or move it. Otherwise, you can only get them from a `Sheet`
 method:
 
-``` java
+{% highlight java linenos %}
     public List<Chart> getCharts();
-```
+{% endhighlight %}
 
 Then, use its ID or position to identify a chart.
 
@@ -55,7 +56,7 @@ to
 The screenshot below is a application that can add, move and delete a
 chart. For simplicity, this application only adds pie charts.
 
-![ center | 900px](/assets/images/dev-ref/zss-essentials-chart.png " center | 900px")
+![center](/assets/images/dev-ref/Zss-essentials-chart.png)
 
 When we click "Add", it will add a pie chart with the data from A1:B6
 and add a items in the Listbox on the top right corner. Select a chart
@@ -80,7 +81,7 @@ provides methods to simplify this.
 
 Let's see this application's controller codes:
 
-``` java
+{% highlight java linenos %}
 public class ChartComposer extends SelectorComposer<Component> {
 
     @Wire
@@ -126,7 +127,7 @@ public class ChartComposer extends SelectorComposer<Component> {
         chartListbox.setModel(chartList);
     }
 }
-```
+{% endhighlight %}
 
   - Line 16: `SheetOperationUtil.addChart()` converts a range of cells
     automatically to chart data based on a predefined assumption. For
