@@ -1,3 +1,8 @@
+---
+title: 'Hode Rows and Columns'
+---
+
+
 Hiding rows or columns may come in handy when we don't need some cells
 temporarily. Before hiding (or unhiding) rows or columns by API, you
 should make your selection become row selection or column selections by
@@ -5,7 +10,7 @@ should make your selection become row selection or column selections by
 
 **Hide and unhide selected row**
 
-``` java
+{% highlight java linenos %}
         //convert to column range or row range before hiding or unhiding.
         Range rowRange = Ranges.range(ss.getSelectedSheet(), ss.getSelection());
         rowRange = rowRange.toRowRange();
@@ -14,14 +19,14 @@ should make your selection become row selection or column selections by
         //CellOperationUtil checks sheet protection before hiding a range
         CellOperationUtil.hide(rowRange);
         CellOperationUtil.unhide(rowRange);
-```
+{% endhighlight %}
 
 **Hide a column**
 
-``` java
+{% highlight java linenos %}
 Range columnRange = Ranges.range(ss.getSelectedSheet(), ss.getSelection());
 columnRange = columnRange.toColumnRange();
 columnRange.setHidden(true);
-```
+{% endhighlight %}
 
 If you don't convert it before calling API, it won't take effect.
