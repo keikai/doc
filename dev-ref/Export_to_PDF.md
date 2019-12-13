@@ -58,10 +58,8 @@ Line 21: Get an Exporter instance for PDF format.
 
 # Export Server Setup
 
-`Since 3.7.0`
-
-Since 3.7.0, the default chart engine has become ZK Charts. With this
-engine, exporting spreadsheets that include charts to PDF needs extra
+The default chart engine is ZK Charts. With this engine, 
+exporting spreadsheets that include charts to PDF needs extra
 export server chart data rendering at the server side. The easiest way
 is to adopt Highcharts official solution which is based on PhantomJS, a
 headless Webkit browser.
@@ -121,7 +119,6 @@ After restarting server, ZK Charts will be shown when exporting PDF.
 
 # Load Excel Printing Setup
 
-`Since 3.6.0`
 
 Spreadsheet exports its book model to a PDF file according to the page
 print setup you specify in Excel.
@@ -170,8 +167,6 @@ are listed below:
   - Custom Footer...
   - Different odd and even pages
   - Different first page
-
-`Custom header and footer is supported since 3.8.1`
 
 **Sheet**
 
