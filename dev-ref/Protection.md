@@ -119,11 +119,9 @@ public class ProtectionComposer extends SelectorComposer<Component>{
 {% endhighlight %}
 
   - Line 6: Switch cells' lock status.
-  - Line 9,11: A cell's lock status is of style information. So, to
+  - Line 9, 11: A cell's lock status is of style information. So, to
     change a cell style is not as simple as calling a setter, please
-    refer to [ Cell Style and
-    Format](Cell_Style_and_Format)
-    for more details.
+    refer to [ Cell Style and Format] (Cell_Style_and_Format) for more details.
   - Line 10: Use `setLocked()` to lock or unlock a cell.
   - Line 12: Calling `isLocked()` to get lock status.
   - Line 16: Update cell's lock status text in the panel when selecting
