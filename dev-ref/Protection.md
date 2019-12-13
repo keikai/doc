@@ -154,8 +154,7 @@ When a sheet is **protected**:
 <!-- end list -->
 
 1.  For example, you can click
-    ![zss-essentials-protection-excel-icon.png](/assets/images/dev-ref/zss-essentials-protection-excel-icon.png
-    "zss-essentials-protection-excel-icon.png") of menu "Review" in
+    ![zss-essentials-protection-excel-icon.png](/assets/images/dev-ref/Zss-essentials-protection-excel-icon.png) of menu "Review" in
     Excel 2007 to protect a sheet.
 2.  Steps to unlock cells in Excel 2007: select one or more cells first,
     right click on selected cells, select "Format Cells...", select
