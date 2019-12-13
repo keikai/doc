@@ -149,7 +149,7 @@ public class CellDataComposer extends SelectorComposer {
 }
 {% endhighlight %}
 
-  - Line 34,35,36,38,40: These codes use API described in previous
+  - Line 34, 35, 36, 38, 40: These codes use API described in previous
     section to display the focused cell's data in a Groupbox.
   - Line 52: Set edit box's value back to the focused cell's data when
     we change the editor box's text.
