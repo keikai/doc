@@ -1,4 +1,6 @@
-\_\_TOC\_\_
+---
+title: 'Cell Style and Format'
+---
 
 # Overview
 
@@ -16,9 +18,8 @@ capability.
 | Border Style  | Because of browser limitation, only **solid**/**dashed**/ **dotted** border style are supported now. |
 
 To get "style" information stored in
-<javadoc directory="keikai">io.keikai.api.model.CellStyle</javadoc>
-object, you must get
-<javadoc directory="keikai">io.keikai.api.Range</javadoc> object first.
+`io.keikai.api.model.CellStyle` object, you must get
+`io.keikai.api.Range` object first.
 Then, we can get a cell's alignment, border setting, and cell color via
 `CellStyle`. Every getter method of `CellStyle` has a clear name to
 indicate what information it returns. Please refer its javadoc for
@@ -26,7 +27,7 @@ complete list. We just introduce some of them for explanation.
 
 # Alignment
 
-``` java
+{% highlight java linenos %}
 // get Range object for a cell 
 Range range = Ranges.range(spreadsheet.getSelectedSheet(), rowIndex, columnIndex);
 // get CellStyle
@@ -36,11 +37,11 @@ CellStyle style = range.getCellStyle();
 Alignment alignment = style.getAlignment();
 //vertical alignment
 VerticalAlignment verticalAlignment = style.getVerticalAlignment();
-```
+{% endhighlight %}
 
 # Border
 
-``` java
+{% highlight java linenos %}
 // get Range object for a cell 
 Range range = Ranges.range(spreadsheet.getSelectedSheet(), rowIndex, columnIndex);
 // get CellStyle
@@ -51,21 +52,22 @@ BorderType borderType = style.getBorderTop();
 
 //color
 Color color = style.getBorderTopColor();
-```
+{% endhighlight %}
+
 
 There is one corresponding method to get its border and border color
 respectively for each side (top, bottom, left, and right) of a cell.
 
 # Cell Background Color
 
-``` java
+{% highlight java linenos %}
 // get Range object for a cell 
 Range range = Ranges.range(spreadsheet.getSelectedSheet(), rowIndex, columnIndex);
 // get CellStyle
 CellStyle style = range.getCellStyle();
 
 String colorCode = style.getBackgroundColor().getHtmlColor();
-```
+{% endhighlight %}
 
 # Font
 
@@ -73,7 +75,7 @@ Those information about font can be retrieve via
 <javadoc directory="keikai">org.zkoss.api.model.Font</javadoc>, and we can
 get this object by `CellStyle`'s `getFont()`. Here are some examples:
 
-``` java
+{% highlight java linenos %}
 // get Range object for a cell 
 Range range = Ranges.range(spreadsheet.getSelectedSheet(), rowIndex, columnIndex);
 // get CellStyle
@@ -95,24 +97,24 @@ font.isStrikeout();
 
 //return Font.Underline
 font.getUnderline();
-```
+{% endhighlight %}
 
 # Change Style
 
 In order to save you from complicated underlying implementation, we
 provide a utility class
-<javadoc directory="keikai">io.keikai.api.CellOperationUtil</javadoc>
-to change a cell range's style and it supports almost all cell related
-operations you want. We recommend you to use this utility class because
-the utility class will look for existing `CellStyle` object which equal
-to the new style to reuse first. If no existing style matches, it just
-create new one. It will also skip those cells that have equal style as
+`io.keikai.api.CellOperationUtil` to change a cell range's style and it 
+supports almost all cell related operations you want. We recommend you 
+to use this utility class because the utility class will look for 
+existing `CellStyle` object which equal to the new style to reuse first. 
+If no existing style matches, it just create new one. 
+It will also skip those cells that have equal style as
 new style. So you don't have to check by yourself. This can avoid
 creating redundant `CellStyle`.
 
 **Change style example**
 
-``` java
+{% highlight java linenos %}
 Range selection = Ranges.range(spreadsheet.getSelectedSheet(), spreadsheet.getSelection());
 
 //change horizontal alignment
@@ -123,7 +125,7 @@ CellOperationUtil.applyVerticalAlignment(selection, VerticalAlignment.TOP);
 //change border
 CellOperationUtil.applyBorder(selection, ApplyBorderType.EDGE_TOP
                                 , BorderType.THIN, "#FF00FF");
-```
+{% endhighlight %}
 
 All methods of `CellOperationUtil` require a Range object. You can use
 Ranges to select one or more cells. In this example, we get the current
@@ -134,8 +136,8 @@ horizontal alignment.
 ## Using `Range` API
 
 Althought the utility class
-(<javadoc directory="keikai">io.keikai.api.CellOperationUtil</javadoc>)
-provides convenience, but it doesn't provide complete API to change all
+(`io.keikai.api.CellOperationUtil`)provides convenience, 
+but it doesn't provide complete API to change all
 properties for a style. Sometimes you still need to use `Range` API.
 
 Steps to change the style of a range:
@@ -146,7 +148,7 @@ Steps to change the style of a range:
 
 The following codes demonstrate how to change alignment:
 
-``` java
+{% highlight java linenos %}
     public void applyAlignment() {
         Range selection = Ranges.range(ss.getSelectedSheet(), ss.getSelection());
         CellStyle oldStyle = selection.getCellStyle();
@@ -154,15 +156,15 @@ The following codes demonstrate how to change alignment:
         newStyle.setAlignment( (Alignment)hAlignBox.getSelectedItem().getValue());
         selection.setCellStyle(newStyle);
     }
-```
+{% endhighlight %}
 
   - Line 4:
-    <javadoc directory="keikai">io.keikai.api.Range.CellStyleHelper</javadoc>
+    `io.keikai.api.Range.CellStyleHelper`
     is a utility class that can you clone style related object and
     returns an editable version such as
-    <javadoc  directory="keikai">io.keikai.api.model.EditableCellStyle</javadoc>
+    `io.keikai.api.model.EditableCellStyle`
     or
-    <javadoc directory="keikai">io.keikai.api.model.EditableFont</javadoc>.
+    `io.keikai.api.model.EditableFont`.
   - Line 5: Change the style on newly-created cell style object.
   - Line 6: Set newly-created cell style object back to range to apply
     change.
@@ -173,7 +175,7 @@ The example application can display a cell's alignment and border status
 and let you change the alignment of one or multiple cells. ![
 center](/assets/images/dev-ref/zss-essentials-cellStyle-alignment.png " center")
 
-``` java
+{% highlight java linenos %}
 public class CellStyleComposer extends SelectorComposer<Component> {
 
     @Wire
@@ -240,7 +242,7 @@ public class CellStyleComposer extends SelectorComposer<Component> {
 
     //omitted codes...
 }
-```
+{% endhighlight %}
 
   - Line 38\~43: Get various style information from `CellStyle`
   - Line 53,61: Apply alignment with `CellOperationUtil`
