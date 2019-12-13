@@ -1,53 +1,56 @@
+---
+title: 'Picture'
+---
+
+
 # Overview
 
 We can add, move, and delete a picture of a Spreadsheet with
-<javadoc directory="keikai">io.keikai.Range</javadoc> API:
+`io.keikai.Range`API:
 
-``` java
+{% highlight java linenos %}
 public Picture addPicture(SheetAnchor anchor,byte[] image,Format format);
 
 public void movePicture(SheetAnchor anchor,Picture picture);
 
 public void deletePicture(Picture picture);
-```
+{% endhighlight %}
 
 A picture is a simple object that you can only get its ID and position.
 Current supported picture formats are listed in
-<javadoc directory="keikai">io.keikai.model.Picture.Format</javadoc>
+`io.keikai.model.Picture.Format`
 which include `EMF, WMF, PICT, JPEG, PNG`, and `DIB`.
 
-The <javadoc directory="keikai">SheetAnchor</javadoc> represents a
-picture's position on a sheet. When adding or moving a picture, you must
-provide one `SheetAnchor` to assign a picture's position. You can create
-a `SheetAnchor` by passing 4 index numbers, left top corner's and right
-bottom's row and column of an image. After you add a picture, you will
-get the newly-created
-<javadoc directory="keikai">io.keikai.model.Picture</javadoc>
-object. You had better store it somewhere you can retrieve it back later
+The `SheetAnchor` represents a picture's position on a sheet. 
+When adding or moving a picture, you must provide one `SheetAnchor` to assign 
+a picture's position. You can create a `SheetAnchor` by passing 4 index numbers, 
+left top corner's and right bottom's row and column of an image. 
+After you add a picture, you will get the newly-created `io.keikai.model.Picture` object. 
+You had better store it somewhere you can retrieve it back later
 if you plan to delete or move it. Otherwise, you can only get them from
 a `Sheet` method:
 
-``` java
+{% highlight java linenos %}
     public List<Picture> getPictures();
-```
+{% endhighlight %}
 
 Then, use its ID or position to identify a picture.
 
 If you think passing byte array of an image is troublesome for you, you
-can use <javadoc>org.zkoss.image.AImage</javadoc>. It has several
+can use `io.keikai.image.AImage`. It has several
 convenient constructors to create a object for an image like:
 
-``` java
+{% highlight java linenos %}
 AImage image = new AImage(WebApps.getCurrent().getResource("/zklogo.png"));
-```
+{% endhighlight %}
 
 Then, you can pass `AImage` to
-<javadoc directory="keikai">io.keikai.SheetOperationUtil</javadoc>
+`io.keikai.SheetOperationUtil`
 to add a picture:
 
-``` java
+{% highlight java linenos %}
     public static void addPicture(Range range, AImage image);
-```
+{% endhighlight %}
 
 This method will create a `SheetAnchor` internally based on the image's
 size. .
@@ -55,8 +58,7 @@ size. .
 # Example
 
 The screenshot below is a application that can add, move and delete a
-picture. ![ center | 900px](/assets/images/dev-ref/zss-essentials-picture.png
-" center | 900px")
+picture. ![center](/assets/images/dev-ref/Zss-essentials-picture.png)
 
 If we click "Add", it will add a ZK logo picture and update picture
 items in the Listbox on the top right corner. Select a picture item in
@@ -80,8 +82,7 @@ simplify this.
 
 Let's see this application's controller codes:
 
-``` java
-
+{% highlight java linenos %}
 public class PictureComposer extends SelectorComposer<Component> {
 
     @Wire
@@ -132,4 +133,4 @@ public class PictureComposer extends SelectorComposer<Component> {
         pictureListbox.setModel(pictureList);
     }
 }
-```
+{% endhighlight %}
