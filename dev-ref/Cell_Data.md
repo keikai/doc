@@ -1,13 +1,15 @@
+---
+title: 'Cell Data'
+---
+
 # Access Cell Data
 
 There are 2 parts of information stored in cells, one is "data" and
 another is "style" which will be described in next section. In this
 section, we are going to introduce the "data" part. It stores the text
 you actually enter in a cell and the value being evaluated. To get
-"data" information, you must get
-<javadoc directory="keikai">io.keikai.api.Range</javadoc> first. Then,
-get <javadoc directory="keikai">io.keikai.api.model.CellData</javadoc>
-to obtain various data of a cell including its text, type, and value.
+"data" information, you must get`io.keikai.api.Range` first. Then,
+get `io.keikai.api.model.CellData` to obtain various data of a cell including its text, type, and value.
 
 {% highlight java linenos %}
 Range range = Ranges.range(spreadsheet.getSelectedSheet(),row,col);
@@ -42,9 +44,8 @@ String stringValue = cellData.getStringValue();
 {% endhighlight %}
 
   - Line 6: You may catch
-    <javadoc directory="keikai">io.keikai.api.IllegalFormulaException</javadoc>
-    (unchecked exception) to handle the case that users enter a formula
-    with illegal format.
+    `io.keikai.api.IllegalFormulaException` (unchecked exception) to handle 
+    the case that users enter a formula with illegal format.
 
 ## Example
 
