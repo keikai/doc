@@ -173,7 +173,7 @@ The following codes demonstrate how to change alignment:
 
 The example application can display a cell's alignment and border status
 and let you change the alignment of one or multiple cells. ![
-center](/assets/images/dev-ref/zss-essentials-cellStyle-alignment.png " center")
+center](/assets/images/dev-ref/Zss-essentials-cellStyle-alignment.png )
 
 {% highlight java linenos %}
 public class CellStyleComposer extends SelectorComposer<Component> {
