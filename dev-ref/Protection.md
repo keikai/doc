@@ -11,12 +11,13 @@ Spreadsheet's API also allows you to enable / disable protection and get
 protection status of a sheet. Let's use a simple example to demonstrate
 this usage:
 
-![center](/assets/images/dev-ref/Zss-essentials-protection.png) The screenshot above
-is a simple application. There is a label on the right showing current
-sheet's protection status. The "true" means the sheet is under
-protection and cannot be edited. The "Toggle Protection" button can
-toggle protection status of current selected sheet. We will explain the
-"Current Cell Locked Status" and "Toggle Lock" button in next section.
+![center](/assets/images/dev-ref/Zss-essentials-protection.png) 
+
+The screenshot above is a simple application. 
+There is a label on the right showing currentsheet's protection status. 
+The "true" means the sheet is under protection and cannot be edited. 
+The "Toggle Protection" button can toggle protection status of current selected sheet. 
+We will explain the "Current Cell Locked Status" and "Toggle Lock" button in next section.
 
 The controller's source code of the application above:
 
