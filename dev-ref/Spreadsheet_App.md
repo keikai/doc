@@ -17,14 +17,11 @@ Please follow these steps to run this application:
         For Tomcat just put the war file in `[CATALINA_HOME]\webapps`.
 3.  Start your application server and connect it with your browser.
       -   
-        For Tomcat, just visit <http://localhost:8080/keikaiapp>
-        <http://localhost:8080/keikaiapp> then you can start to experience
-        the power of Spreadsheet App.
+        For Tomcat, just visit <http://localhost:8080/keikai-app> then you can start to experience the power of Spreadsheet App.
 
 After you visit Spreadsheet App, you should see its user interface like
 the screenshot below: 
 ![center](/assets/images/dev-ref/Zss-essentials-zssapp.png) 
-<!--need to replace image when ready-->
 
 You might notice that we added a menu on top of the Spreadsheet component and enabled the 3 leftmost buttons ("New Book", "Save Book", and "Export to PDF") on the toolbar. These are application specific and we have implemented them in this Demo App. You can reference this application to implement your own.
 
@@ -63,7 +60,7 @@ Each menu item and its function description are:
 <td></td>
 </tr>
 <tr class="even">
-<td><p>Open or Manage Books</p></td>
+<td><p>Open</p></td>
 <td><p>open a book list dialog that allows you to open, delete, and upload a file.</p></td>
 <td></td>
 </tr>
