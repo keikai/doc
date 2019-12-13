@@ -1,4 +1,7 @@
-\_\_TOC\_\_
+---
+title: 'Protection'
+---
+
 
 # Protect a Sheet
 
@@ -8,7 +11,7 @@ Spreadsheet's API also allows you to enable / disable protection and get
 protection status of a sheet. Let's use a simple example to demonstrate
 this usage:
 
-![ center](/assets/images/dev-ref/zss-essentials-protection.png " center") The screenshot above
+![center](/assets/images/dev-ref/Zss-essentials-protection.png) The screenshot above
 is a simple application. There is a label on the right showing current
 sheet's protection status. The "true" means the sheet is under
 protection and cannot be edited. The "Toggle Protection" button can
@@ -17,7 +20,7 @@ toggle protection status of current selected sheet. We will explain the
 
 The controller's source code of the application above:
 
-``` java
+{% highlight java linenos %}
 public class ProtectionComposer extends SelectorComposer<Component>{
     
     @Wire
@@ -54,14 +57,13 @@ public class ProtectionComposer extends SelectorComposer<Component>{
         status.setValue(Boolean.toString(sheet.isProtected()));
     }
 }
-```
+{% endhighlight %}
 
   - Line 16: Toggle protection status of a sheet when clicking "Toggle
     Protection" button.
   - Line 18: Get protection status of the selected sheet.
   - Line 19: Disable protection of the selected sheet.
-  - Line 21-23: Enable protection of the selected sheet, refer to
-    <javadoc directory="keikai" class="true"  method="protectSheet(java.lang.String, boolean,boolean,boolean,boolean,boolean,boolean,boolean,boolean,boolean,boolean,boolean,boolean,boolean,boolean,boolean)">io.keikai.Range</javadoc>.
+  - Line 21-23: Enable protection of the selected sheet, refer to `io.keikai.Range`.
   - Line 30: Update protection status text in the panel when selecting a
     sheet.
 
@@ -78,7 +80,7 @@ The screenshot below is a protected sheet with B2 unlocked. You can see
 the sheet protection status is "true, but cell lock status is "false" on
 the right panel when selecting B2 which means B2 can be edited.
 
-![ center](/assets/images/dev-ref/zss-essentials-protection-unlock.png " center")
+![center](/assets/images/dev-ref/Zss-essentials-protection-unlock.png)
 
 Besides, Spreadsheet also allows you to lock / unlock cells and retrieve
 locked status with API. In our example application, when you select
@@ -87,7 +89,7 @@ cells, the panel on the right will display its lock status. Clicking the
 
 Now, let's see the source code to understand how this can be achieved:
 
-``` java
+{% highlight java linenos %}
 public class ProtectionComposer extends SelectorComposer<Component>{
 
     //omit codes for brevity
@@ -112,13 +114,13 @@ public class ProtectionComposer extends SelectorComposer<Component>{
         lockStatus.setValue(status.toString());
     }
 }
-```
+{% endhighlight %}
 
   - Line 6: Switch cells' lock status.
   - Line 9,11: A cell's lock status is of style information. So, to
     change a cell style is not as simple as calling a setter, please
     refer to [ Cell Style and
-    Format](ZK_Spreadsheet_Essentials/Working_with_Spreadsheet/Handling_Data_Model/Cell_Style_and_Format "wikilink")
+    Format](Cell_Style_and_Format)
     for more details.
   - Line 10: Use `setLocked()` to lock or unlock a cell.
   - Line 12: Calling `isLocked()` to get lock status.
