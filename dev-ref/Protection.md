@@ -5,7 +5,7 @@ title: 'Protection'
 
 # Protect a Sheet
 
-If you enable "Protect Sheet" for a sheet in Excel \[1\] , Spreadsheet
+If you enable "Protect Sheet" for a sheet in Excel, Spreadsheet
 can read the setting and prevent you from editing the protected sheet.
 Spreadsheet's API also allows you to enable / disable protection and get
 protection status of a sheet. Let's use a simple example to demonstrate
@@ -68,12 +68,13 @@ public class ProtectionComposer extends SelectorComposer<Component>{
   - Line 30: Update protection status text in the panel when selecting a
     sheet.
 
+
 # Unlock Specific Area of a Protected Sheet
 
 When you protect a sheet in Excel, all cells are locked and cannot be
 edited by default. To enable some cells to be edited while leaving other
-cells locked, you can unlock the cells before you protect the worksheet.
-\[2\] Spreadsheet can also read unlocked cells of a protected sheet
+cells locked, you can unlock the cells before you protect the worksheet. 
+Spreadsheet can also read unlocked cells of a protected sheet
 configured in Excel. You can still edit the unlocked cells when loading
 it in Spreadsheet.
 
@@ -131,8 +132,6 @@ public class ProtectionComposer extends SelectorComposer<Component>{
 <references/>
 
 # Limited Edit under Sheet Protection
-
-`since 3.9.2`
 
 When a sheet is **protected**:
 
