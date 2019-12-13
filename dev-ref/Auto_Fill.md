@@ -1,3 +1,7 @@
+---
+title: 'Auto Fill'
+---
+
 # Overview
 
 The "auto fill" is a handy feature that helps you quickly insert some
@@ -8,9 +12,9 @@ their regular order.
 Using API to perform "auto fill" is quite easy. Just select a range and
 call `autoFill()` with destination range and file type:
 
-``` java
+{% highlight java linenos %}
 srcRange.autoFill(destinationRange, AutoFillType.DEFAULT);
-```
+{% endhighlight %}
 
 Currently, there are only 4 auto fill types supported which are
 `DEFAULT, COPY, FORMATS, VALUE`. The `DEFAULT` type will fill content of
@@ -25,18 +29,16 @@ type will fill cells with style only. The `VALUE` type will fill cells
 with data only (no style).
 
 The utility class
-<javadoc directory="keikai">io.keikai.api.CellOperationUtil</javadoc>
-also allows you to perform "auto fill" programmatically. You should
-prepare 2 Range objects, one is for source, and another is for
-destination. Then the method can fill cells from source to destination
+`io.keikai.api.CellOperationUtil` also allows you to perform "auto fill" 
+programmatically. You should prepare 2 Range objects, one is for source, 
+and another is for destination. Then the method can fill cells from source to destination
 according to specified auto fill type.
 
 # Example
 
 The screenshot below demonstrates filling 6 cells from our selection to
 the right automatically in `DEFAULT` auto fill type. You can see that
-first cell's style of each row is copied to the rest cells. ![ center |
-800px](/assets/images/dev-ref/zss-essentials-autoFill.png " center | 800px")
+first cell's style of each row is copied to the rest cells. ![center](/assets/images/dev-ref/Zss-essentials-autoFill.png)
 
 The following codes demonstrate how to achieve this function:
 
