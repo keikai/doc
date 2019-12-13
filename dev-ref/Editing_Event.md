@@ -1,54 +1,47 @@
+---
+title: 'Editing Event'
+---
 # Editing Cell Events
 
 There are three editing events that Keikai spreadsheet supports:
 
 ## onStartEditing
 
-This event is fired only once at the moment when a user presses the
+This event is fired only once at the time when a user presses the
 first key to start editing. When the corresponding event listener is
-invoked, a
-<javadoc directory="keikai">io.keikai.ui.event.StartEditingEvent</javadoc>
-object is passed as an argument. This event allows you to cancel the
+invoked, a `io.keikai.ui.event.StartEditingEvent` object is passed as an argument. This event allows you to cancel the
 edit action or change edit value.
 
 ## onEditboxEditing
 
 This event is fired when a user is editing a cell and it is similar to
-Textbox component's onChanging event. When the corresponding event
-listener is invoked, a
-<javadoc directory="keikai">io.keikai.ui.event.EditboxEditingEvent</javadoc>
-object is passed as an argument.
+ZK Textbox component's onChanging event. When the corresponding event
+listener is invoked, a `io.keikai.ui.event.EditboxEditingEvent` object is passed as an argument.
 
 ## onStopEditing
 
 This event is fired when a user has finished editing a cell. It is
 identified by the user hitting the enter key or clicking outside of the
-editing cell. When the corresponding event listener is invoked, a
-<javadoc directory="keikai">io.keikai.ui.event.StopEditingEvent</javadoc>
-object is passed as an argument. This event allows you to cancel the
-edit action or change edit value.
+editing cell. When the corresponding event listener is invoked, a `io.keikai.ui.event.StopEditingEvent` object is passed as an argument. This event allows you to cancel the edit action or change edit value.
 
 Pressing "delete" key can also change the cell content, but you have to
-listen [ Key
-Event](ZK_Spreadsheet_Essentials/Working_with_Spreadsheet/Handling_Events/Key_Event "wikilink")
-for that action.
+listen to [KeyEvent](Key_Event) for that action.
 
 # Event Monitor Example
 
-We still use previous "Event Monitor" application demonstrate event
+We still use the previous "Event Monitor" application to demonstrate event
 listening.
 
-![ center](/assets/images/dev-ref/zss-essentials-events-filter.png " center")
+![center](/assets/images/dev-ref/Zss-essentials-events-filter.png)
 
-When we type the word "test" in A1 cell, the informations of
-corresponding events sent to the server are displayed in the panel:
+When we type the word "test" in A1 cell, the information of corresponding events sent to the server are displayed in the panel:
 
 1.  Start editing A1...
       -   
         When we press "t", the onStartEditing event is sent. However,
         the typing value is still not saved in Spreadsheet's data model,
         so the editing value is empty. The client value is "t" which is
-        the same as what we just type.
+        the same as what we just typed.
 2.  Editing A1...
       -   
         There are 4 lines started with "Editing A1". Each time we press
@@ -57,12 +50,12 @@ corresponding events sent to the server are displayed in the panel:
 3.  Stop editing A1...
       -   
         The onStopEditing event is sent when we press the enter key, and
-        you can see editing value now is the same as A1's text.
+        you can see editing value is now the same as A1's text.
 
-Next, we present you how to listen these events and print messages with
+Next, we show you how to listen to these events and print out messages with
 related data in a controller.
 
-``` java
+{% highlight java linenos %}
 public class EventsComposer extends SelectorComposer<Component>{
     //omitted codes...
 
@@ -96,30 +89,24 @@ public class EventsComposer extends SelectorComposer<Component>{
         
         //...
     }
-```
+{% endhighlight %}
 
   - Line 4,15,25: Apply `@Listen` to listen an event with the syntax
-    `[EVENT NAME] = [COMPONENT SELECTOR]`. All event name can be found
-    in <javadoc directory="keikai">io.keikai.ui.event.Events</javadoc>.
-    The "\#ss" is the component selector which means the component with
+    `[EVENT NAME] = [COMPONENT SELECTOR]`. All event names can be found
+    in `io.keikai.ui.event.Events`. The "\#ss" is the component selector which means the component with
     id "ss" on the ZUL page. (SelectorComposer supports various selector
     syntax that let you select components easily. Please refer to [ZK
-    Developer's Reference/MVC/Controller/Wire
-    Components](ZK_Developer's_Reference/MVC/Controller/Wire_Components "wikilink"))
-    .
+    Developer Reference](https://www.zkoss.org/wiki/ZK_Developer%27s_Reference/MVC/Controller/Wire_Components)).
 
-<!-- end list -->
 
   - Line 7: The `getRow()` returns 0-based row index of the cell which
-    is in editing and `getColumn()` returns column index. The cell A1's
+    is under editing and `getColumn()` returns its column index. The cell A1's
     row and column index are both 0. We have not introduced
-    <javadoc directory="keikai">io.keikai.api.Ranges</javadoc> formally
-    yet, but you just treat it as a utility class that can help you
+    `io.keikai.api.Ranges` formally yet, but you can just treat it as a utility class that helps you to
     convert row and column index into a cell reference, e.g. A1.
-  - Line 9: The `getEditingValue()` returns the value stored in
-    server-side's data model.
-  - Line 10: The `getClientValue()` returns the value we type in the
-    browser which might be different from editing value.
+  - Line 9: The `getEditingValue()` returns the value stored in the server-side's data model.
+  - Line 10: The `getClientValue()` returns the value we typed in the
+    browser which might be different from the editing value.
 
 ## Override Editing Value
 
