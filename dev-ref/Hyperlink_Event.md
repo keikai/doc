@@ -1,24 +1,24 @@
+---
+title: 'Hyperlink Event'
+---
 # Overview
 
-There is only one hyperlink event that Keikai spreadsheet supports.
+Keikai spreadsheet supports one hyperlink event.
 
 ## onCellHyperlink
 
-This event is fired when a user clicks a hyperlink in a cell. A browser
+This event is fired when a user clicks a hyperlink in a cell. The browser
 will open the specified hyperlink and send the event to a server. When a
-corresponding event listener is invoked, a
-<javadoc directory="keikai">io.keikai.ui.event.CellHyperlinkEvent</javadoc>
+corresponding event listener is invoked, a `io.keikai.ui.event.CellHyperlinkEvent`
 object is passed as an argument.
 
 # Event Monitor Example
 
-The [ Event
-Monitor](Working_with_Spreadsheet/Handling_Events/Cell_Clicking_Event#Event_Monitor_Example "wikilink")
-application's screenshot when we click the link <http://www.zkoss.org>
-<http://www.zkoss.org> in A7. ![
-center](/assets/images/dev-ref/zss-essentials-events-hyperlink.png " center")
+Here's the screenshot of the [Event Monitor](Cell_Clicking_Event#event-monitor-example) application when we click the link <http://www.zkoss.org> in A7. 
 
-``` java
+![center](/assets/images/dev-ref/Zss-essentials-events-hyperlink.png)
+
+{% highlight java linenos %}
 public class EventsComposer extends SelectorComposer<Component>{
     //omitted codes...
 
@@ -35,6 +35,6 @@ public class EventsComposer extends SelectorComposer<Component>{
     }       
 
 }
-```
+{% endhighlight %}
 
   - Line 11: We can get the clicked hyperlink address.
