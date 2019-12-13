@@ -161,13 +161,12 @@ of cells are changed but it won't tell you whether it was the value or the style
 ## Event Monitor Example
 
 Let's get back to our event monitor example to see when the onAfterCellChange is sent. 
+
 ![center](/assets/images/dev-ref/Zss-essentials-events-cellChange.png)
 
-According to the screenshot above, when we enter "abc" in A11 or change
-background color in A12:C13, cell changes event are sent. Let us see
-source code about listening this event:
+According to the screenshot above, when we enter "abc" in A11 or change the background color in A12:C13, cell changes event are sent. Let us see the source code about listening this event:
 
-``` java
+{% highlight java linenos %}
 public class EventsComposer extends SelectorComposer<Component>{
     //omitted codes...
  
@@ -182,14 +181,11 @@ public class EventsComposer extends SelectorComposer<Component>{
         
         //...
     }
-```
+{% endhighlight %}
 
   - Line 4, 5: Specify onAfterCellChange in `@Listen` and apply it to a
-    method. A
-    <javadoc directory="keikai">io.keikai.ui.event.CellAreaEvent</javadoc>
-    object is passed in when the method is invoked.
-  - Line 9: `getArea()` return an
-    <javadoc directory='zss'>io.keikai.ui.Rect</javadoc> object to
-    indicate the area where the change event happens, but we need to
-    convert the object to readable area reference like B2:B2 with a
+    method. A `io.keikai.ui.event.CellAreaEvent` object is passed in when the method is invoked.
+  - Line 9: `getArea()` returns a `io.keikai.ui.Rect` object to
+    indicate the area where the change event happens. We need to
+    convert the object to a readable area reference like B2:B2 with a
     utility method of Ranges.
