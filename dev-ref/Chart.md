@@ -17,24 +17,21 @@ public void moveChart(SheetAnchor anchor,Chart chart);
 {% endhighlight %}
 
 A chart
-`io.keikai.api.model.Chart` is a
-simple object that you can only get its ID and position. All chart types
-constant are listed in `io.keikai.api.model.Chart.Type`. Most chart types are
-supported except `OF_PIE, RADAR, STOCK, SURFACE_3D`, and `SURFACE`.
-Supported grouping(`io.keikai.api.model.Chart.Grouping`) are `STANDARD,
+`io.keikai.api.model.Chart` is a simple object that you can only 
+get its ID and position. All chart types constant are listed in `io.keikai.api.model.Chart.Type`. 
+Most chart types are supported except `OF_PIE, RADAR, STOCK, SURFACE_3D`, and `SURFACE`.
+Supported grouping (`io.keikai.api.model.Chart.Grouping`) are `STANDARD,
 STACKED, PERCENT_STACKED` and, `CLUSTERED`. Supported legend
-positions(`io.keikai.api.model.Chart.LegendPosition`) are `BOTTOM,
+positions (`io.keikai.api.model.Chart.LegendPosition`) are `BOTTOM,
 LEFT, RIGHT, TOP`, and `TOP_RIGHT`. \[1\]
 
-The `io.keikai.api.SheetAnchor`
-represents a chart's position on a sheet. When adding or moving a chart,
-you must provide one `SheetAnchor` to assign a chart's position. You can
-create a `SheetAnchor` by passing 4 index numbers, left-top corner's and
-right-bottom's row and column of a chart. When invoking `addChart()`,
+The `io.keikai.api.SheetAnchor` represents a chart's position on a sheet. 
+When adding or moving a chart, you must provide one `SheetAnchor` to assign 
+a chart's position. You can create a `SheetAnchor` by passing 4 index numbers, 
+left-top corner's and right-bottom's row and column of a chart. When invoking `addChart()`,
 you will get the newly-created chart object in returned value. You had
 better store it somewhere you can retrieve it back later if you plan to
-delete or move it. Otherwise, you can only get them from a `Sheet`
-method:
+delete or move it. Otherwise, you can only get them from a `Sheet` method:
 
 {% highlight java linenos %}
     public List<Chart> getCharts();
@@ -44,12 +41,9 @@ Then, use its ID or position to identify a chart.
 
 # ZK Charts engine
 
-`Since 3.6.1`
-
-Since 3.6.1, ZK Charts is the default chart engine. We don't need any
+We use ZK Charts as the default chart engine. We don't need any
 changes in our code except export server for exporting PDF. Please refer
-to
-[ZK\_Spreadsheet\_Essentials/Working\_with\_Spreadsheet/Handling\_Data\_Model/Export\_to\_PDF](ZK_Spreadsheet_Essentials/Working_with_Spreadsheet/Handling_Data_Model/Export_to_PDF "wikilink")
+to [Export to PDF](Export_to_PDF)
 
 # Example
 
