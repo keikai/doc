@@ -111,17 +111,17 @@ public class EventsComposer extends SelectorComposer<Component>{
 ## Override Editing Value
 
 In addition to displaying editing value, we can even override it. The
-screenshot below demonstrate this case. There are several special cells
+screenshot below demonstrates this case. In this case we set several special cells
 that contain "Edit Me". After we enter a word "test" in D3, it turns to
 be "test-Woo". You can see the value changed from the right hand side
 panel.
 
-![ center ](/assets/images/dev-ref/zss-essentials-events-override-value.png " center ")
+![center](/assets/images/dev-ref/Zss-essentials-events-override-value.png)
 
-How do we make it? Just listen onStopEditing event and change the
+How was this done? Just listen to onStopEditing event and change the
 editing value.
 
-``` java
+{% highlight java linenos %}
 
     @Listen("onStopEditing = #ss")
     public void onStopEditing(StopEditingEvent event){
@@ -143,29 +143,25 @@ editing value.
             addInfo("Editing E3 is canceled");
         }
     }
-```
+{% endhighlight %}
 
-  - Line 13: Override editing value with new value.
+  - Line 13: Override editing value with a new value.
   - Line 17: The `cancel()` can cancel this editing, and nothing will be
     saved to the cell.
 
 # onAfterCellChange
 
-This event is fired when you change the contents or styles of one or
+This event is fired when you change the content or styles of one or
 more cells directly or indirectly. Therefore, it is triggered by user
 editing or calling `Range` API. If you edit a cell, this event is fired
 after `onStopEditing` event. When the corresponding event listener is
-invoked, a
-<javadoc directory="keikai">io.keikai.ui.event.CellAreaEvent</javadoc>
-object is passed as an argument. This event only tells you which range
-of cells change but doesn't tell you which part (value or style) the
-cells change.
+invoked, a `io.keikai.ui.event.CellAreaEvent` object is passed as an argument. This event only tells you which range
+of cells are changed but it won't tell you whether it was the value or the style that has been changed.
 
 ## Event Monitor Example
 
-Let's get back to our event monitor example to see when
-onAfterCellChange is sent. ![
-center](/assets/images/dev-ref/zss-essentials-events-cellChange.png " center")
+Let's get back to our event monitor example to see when the onAfterCellChange is sent. 
+![center](/assets/images/dev-ref/Zss-essentials-events-cellChange.png)
 
 According to the screenshot above, when we enter "abc" in A11 or change
 background color in A12:C13, cell changes event are sent. Let us see
