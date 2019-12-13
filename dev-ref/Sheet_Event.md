@@ -1,3 +1,6 @@
+---
+title: 'Sheet Event'
+---
 # Overview
 
 These events are related to sheet operation such as creating, selecting,
@@ -5,50 +8,37 @@ deleting, and renaming a sheet.
 
 ## onSheetSelect
 
-This event is fired when a user clicks on sheet bar to select a sheet.
-When a corresponding event listener is invoked, a
-<javadoc directory="keikai">io.keikai.ui.event.SheetSelectEvent</javadoc>
-object is passed as an argument.
+This event is fired when a user clicks on the sheet bar to select a sheet.
+When a corresponding event listener is invoked, a `io.keikai.ui.event.SheetSelectEvent` object is passed as an argument.
 
 ## onAfterSheetCreate
 
 This event is fired after a user creates a new sheet. When a
-corresponding event listener is invoked, a
-<javadoc directory="keikai">io.keikai.ui.event.SheetEvent</javadoc>
-object is passed as an argument.
+corresponding event listener is invoked, a `io.keikai.ui.event.SheetEvent` object is passed as an argument.
 
 ## onAfterSheetNameChange
 
 This event is fired after a user has renamed a sheet. When a
-corresponding event listener is invoked, a
-<javadoc directory="keikai">io.keikai.ui.event.SheetEvent</javadoc>
-object is passed as an argument.
+corresponding event listener is invoked, a `io.keikai.ui.event.SheetEvent` object is passed as an argument.
 
 ## onAfterSheetOrderChange
 
 This event is fired after a user changes the order of a sheet. When a
-corresponding event listener is invoked, a
-<javadoc directory="keikai">io.keikai.ui.event.SheetEvent</javadoc>
-object is passed as an argument.
+corresponding event listener is invoked, a `io.keikai.ui.event.SheetEvent` object is passed as an argument.
 
 ## onAfterSheetDelete
 
 This event is fired after a user deletes a sheet. When a corresponding
-event listener is invoked, a
-<javadoc directory="keikai">io.keikai.ui.event.SheetDeleteEvent</javadoc>
-object is passed as an argument.
+event listener is invoked, a `io.keikai.ui.event.SheetDeleteEvent` object is passed as an argument.
 
 # Event Monitor Example
 
-Below is a [ Event
-Monitor](Working_with_Spreadsheet/Handling_Events/Cell_Clicking_Event#Event_Monitor_Example "wikilink")
-application's screenshot about sheet operations. You can see from the
-right hand side panel that we create a "sheet3", select it, move it,
-rename it to "essentials", and delete it finally.
+Below is the screenshot of [Event Monitor](Cell_Clicking_Event#event-monitor-example) for about sheet operations. You can see from the
+right hand side panel that we created a "sheet3", selected it, moved it, and renamed it to "essentials", and eventually deleted it.
 
-![ center](/assets/images/dev-ref/zss-essentials-events-sheet.png " center")
+![center](/assets/images/dev-ref/Zss-essentials-events-sheet.png)
 
-``` java
+{% highlight java linenos %}
 public class EventsComposer extends SelectorComposer<Component>{
     //omitted codes...
     
@@ -98,15 +88,12 @@ public class EventsComposer extends SelectorComposer<Component>{
     }
     
 }
-```
+{% endhighlight %}
 
-  - Line 4, 12, 20, 29, 41: Apply `@Listen` to listen an event with the
-    syntax `[EVENT NAME] = [COMPONENT SELECTOR]`. All event name can be
-    found in
-    <javadoc directory="keikai">io.keikai.ui.event.Events</javadoc>.
-    The "\#ss" is the component selector which means the component with
+  - Line 4, 12, 20, 29, 41: Apply `@Listen` to listen to an event with the
+    syntax `[EVENT NAME] = [COMPONENT SELECTOR]`. All event names can be
+    found in `io.keikai.ui.event.Events`.
+    The "\#ss" is the component selector which refers to the component with
     id "ss" on the ZUL page. (SelectorComposer supports various selector
     syntax that let you select components easily. Please refer to [ZK
-    Developer's Reference/MVC/Controller/Wire
-    Components](ZK_Developer's_Reference/MVC/Controller/Wire_Components "wikilink"))
-    .
+    Developer Reference](https://www.zkoss.org/wiki/ZK_Developer%27s_Reference/MVC/Controller/Wire_Components)).
