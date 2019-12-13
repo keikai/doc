@@ -1,7 +1,12 @@
+---
+title: 'Merge and Unmerge Cells'
+---
+
+
 We can use `Range` API to merge (or unmerge) a range of cells and detect
 merged cells existed in a given range:
 
-``` java
+{% highlight java linenos %}
 //true for merging horizontally, false is to merge all together
 range.merge(false);
 
@@ -13,20 +18,19 @@ boolean hasMergedCell = range.hasMergedCell();
 boolean isMergedCell = range.isMergedCell();
 
 CellRegion region = range.getMergedRegion();
-```
+{% endhighlight %}
 
 We still can use
-<javadoc directory="keikai">io.keikai.api.CellOperationUtil</javadoc>
+`io.keikai.api.CellOperationUtil`
 to achieve this and it provides 3 APIs for 4 actions corresponding to
 merge function of Spreadsheet's toolbar including "Merge & Center",
 "Merge Across", "Merge Cells", and "Unmerge". Each method requires a
-<javadoc directory="keikai">io.keikai.api.Range</javadoc> to represent
-the target cells you are going to merge. The usages are showed as
-follows:
+`io.keikai.api.Range` to represent the target cells you are going to merge. 
+The usages are showed as follows:
 
 **API usage about merging**
 
-``` java
+{% highlight java linenos %}
 
 public class MergeComposer extends SelectorComposer<Component> {
 
@@ -59,4 +63,4 @@ public class MergeComposer extends SelectorComposer<Component> {
 
     //omitted codes...
 }
-```
+{% endhighlight %}
