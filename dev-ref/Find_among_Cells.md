@@ -8,9 +8,8 @@ API.
 
 ![ center](/assets/images/dev-ref/Zss-essentials-find-dialog.png " center")
 
-We list the key method here. For complete code, please refer to the [
-example code
-project](ZK_Spreadsheet_Essentials/Download_Example_Source_Code "wikilink").
+We list the key method here. For complete code, please refer to the [example code
+project](Download_Example_Source_Code).
 This method starts finding from the next cell by rows of the current
 selection. If nothing found, return the current selection. When reaching
 the end of a sheet, it does not find from the beginning.
