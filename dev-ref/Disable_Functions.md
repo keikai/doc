@@ -6,10 +6,11 @@ Spreadsheet provides API to disable its functions. The API can be very
 useful when you implement your user permission features. In the example
 application below, since we disable all sheet related functions except
 one, you can see the corresponding menu items are disabled (in grey
-color). ![ center](/assets/images/dev-ref/zss-essentials-disableFunctions.png " center")
+color). 
 
-To achieve this, simply call
-<javadoc directory='zss' method="disableUserAction(io.keikai.ui.AuxAction, boolean)">io.keikai.ui.Spreadsheet</javadoc>
+![center](/assets/images/dev-ref/Zss-essentials-disableFunctions.png)
+
+To achieve this, simply call `io.keikai.ui.Spreadsheet`
 
 {% highlight java linenos %}
 package io.keikai.essential.advanced.customization;
@@ -41,5 +42,4 @@ public class DisableFunctionsComposer extends SelectorComposer<Component> {
 
 Except sheet operations, you can also disable functions on the toolbar
 and the context menu. Take a look at
-<javadoc directory='zss'>io.keikai.ui.AuxAction</javadoc> for a
-complete list of functions you can disable.
+`io.keikai.ui.AuxAction` for a complete list of functions you can disable.
