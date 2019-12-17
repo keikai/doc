@@ -183,9 +183,7 @@ In the following sections we will introduce the usages of some noticeable featur
   - If you copy a whole column/row, Keikai also copies its width and height. But if you are only
     copying one or multiple cells, Keikai won't copy the width and height.
   - If you wish to copy a whole sheet to another Keikai component,
-    please call
-    <https://www.zkoss.org/javadoc/latest/zss/org/zkoss/zss/api/Range.html#cloneSheetFrom-java.lang.String-io.keikai.model.Sheet->.
-    It can clone a sheet from another `Book` object and is more performant.
+    please call `cloneSheetFrom`. It can clone a sheet from another `Book` object and is more performant.
 
 ### Copy/Paste Between Keikai and Other Applications like Excel
 
