@@ -127,7 +127,6 @@ public class ProtectionComposer extends SelectorComposer<Component>{
   - Line 16: Update cell's lock status text in the panel when selecting
     cells.
 
-<references/>
 
 # Limited Edit under Sheet Protection
 
@@ -149,7 +148,7 @@ When a sheet is **protected**:
 6.  "Clear Formats" resets locked status to true. After this operation,
     an unlocked cell becomes locked.
 
-<!-- end list -->
+# Reference
 
 1.  For example, you can click
     ![zss-essentials-protection-excel-icon.png](/assets/images/dev-ref/Zss-essentials-protection-excel-icon.png) of menu "Review" in
