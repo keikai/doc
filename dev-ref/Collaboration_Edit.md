@@ -2,8 +2,6 @@
 title: 'Collaboration Edit'
 ---
 
-Available in Keikai Spreadsheet EE only
-
 # Overview
 
 Spreadsheet can support *Collaboration Edit* automatically as long as
@@ -25,12 +23,14 @@ both actually editing on the same book model instance. One user's edit
 will immediately reflect on another user's Spreadsheet.
 
 The screenshot below is what the user, Paul, sees and he can also see
-another user's (John) current selection (purple box). ![ center |
-900px](/assets/images/dev-ref/essentials-feature-coedit-user1.png " center | 900px")
+another user's (John) current selection (purple box). 
+
+![center](/assets/images/dev-ref/Essentials-feature-coedit-user1.png)
 
 Another user, John, can also see Paul's current selection (blue box) in
-his spreadsheet. ![ center | 900px](/assets/images/dev-ref/essentials-feature-coedit-user2.png
-" center | 900px")
+his spreadsheet. 
+
+![center](/assets/images/dev-ref/Essentials-feature-coedit-user2.png)
 
 The controller's code of above example:
 
