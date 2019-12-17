@@ -2,8 +2,6 @@
 title: 'Reference to Java Beans'
 ---
 
-Available in Keikai Spreadsheet EE only
-
 # Overview
 
 When showing data in Spreadsheet from backend, use `Range` API to set
@@ -13,7 +11,7 @@ expressions to the back end Java beans automatically.
 
 ## How Spreadsheet resolve a name in a cell
 
-If a variable in cells equals Excel *Defined Name*\[1\] found in Excel
+If a variable in cells equals Excel *Defined Name* found in Excel
 file, Keikai spreadsheet will treat them as what it defines. If not, Keikai
 Spreadsheet follows ZK's EL expression variable resolving mechanism. It
 first tries to find any matching zscript variables defined in the ZUL
@@ -38,13 +36,16 @@ Then you can access JavaBeans like a formula, e.g. enter
 
 Assume the application below has a sheet in protection, a user cannot
 modify any cells directly in the sheet. They can only update value via
-panel on the right side. ![ center](/assets/images/dev-ref/essentials-bean.png " center") You
-can see from the formula bar, the content of B3 is an EL expresstion,
+panel on the right side. 
+
+![center](/assets/images/dev-ref/Essentials-bean.png) 
+
+You can see from the formula bar, the content of B3 is an EL expresstion,
 `=assetsBean.liquidAssets`.
 
 First, we implement a variable resolver class. You can refer to [ZK
 Developer%27s Reference/UI Composing/ZUML/EL Expressions\#Variable
-Resolver](ZK_Developer%27s_Reference/UI_Composing/ZUML/EL_Expressions#Variable_Resolver "wikilink")
+Resolver](https://www.zkoss.org/wiki/ZK_Developer%27s_Reference/UI_Composing/ZUML/EL_Expressions#Variable_Resolver)
 for complete explanation. Our resolver use `MyBeanService` to get a bean
 which is a singleton and can be accessed in anywhere.
 
@@ -60,7 +61,7 @@ public class MyBeanResolver implements VariableResolver {
 
 Declare our `MyBeanResolver` in a ZUL page. (or you could make it a [
 system level variable
-resolver](ZK_Developer%27s_Reference/UI_Composing/ZUML/EL_Expressions#System-level_Variable_Resolver "wikilink")
+resolver](https://www.zkoss.org/wiki/ZK_Developer%27s_Reference/UI_Composing/ZUML/EL_Expressions#System-level_Variable_Resolver)
 which can be available in all pages.)
 
 {% highlight java linenos %}
@@ -135,7 +136,7 @@ public class RefBeanComposer extends SelectorComposer<Component> {
   - Line 29: Get the bean via `MyBeanService` as we do in
     `MyBeanResolver`.
 
-<references/>
+#references
 
 1.  *Defined Names* is a name that represents a cell, range of cells,
     formula, or constant value.
