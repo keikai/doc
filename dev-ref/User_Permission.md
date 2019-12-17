@@ -15,31 +15,30 @@ mechanism:
   - enable/disable functions
   - sheet protection
 
-We will demonstrate the usage of API with
-<https://github.com/zkoss/keikaiessentials/blob/master/src/main/webapp/advanced/permission/login.zul>.
+We will demonstrate the usage of API with the Keikai Essentials project.
 In this application, you can log in with 3 different roles: OWNER,
 EDITOR, VIEWER. Their permissions are described in the image below:
 
-![ center](/assets/images/dev-ref/zss-essentials-login.png " center")
+![center](/assets/images/dev-ref/Zss-essentials-login.png)
 
 If you log in as an owner, you will have full control of the file. But
 if you log in as an editor, you will find all sheet related operations
 are disabled.
 
-![ center](/assets/images/dev-ref/zss-essentials-editor.png " center")
+![center](/assets/images/dev-ref/Zss-essentials-editor.png)
 
 When you log in as a viewer, the only thing you can do is viewing.
 Because there is no UI for edit, and all sheets are protected from
 editing.
 
-![ center](/assets/images/dev-ref/zss-essentials-viewer.png " center")
+![center](/assets/images/dev-ref/Zss-essentials-viewer.png)
 
 This application relies on those API we mentioned in previous chapters
 to control the access for each role. Let's recap them here:
 
 # Hide User Interface
 
-<http://books.zkoss.org/wiki/Keikai%20Spreadsheet%20Essentials/Working%20with%20Spreadsheet/Control%20Components>
+See [Control Component](Control_Component).
 
 Example:
 
@@ -49,7 +48,7 @@ spreadsheet.setShowToolbar(false);
 
 # Disable Functions
 
-<http://books.zkoss.org/wiki/Keikai%20Spreadsheet%20Essentials/Working%20with%20Spreadsheet/Advanced/Disable%20Functions>
+See [Disable Functions](Disable_Functions).
 
 Example:
 
@@ -59,7 +58,7 @@ spreadsheet.disableUserAction(AuxAction.COPY_SHEET, true);
 
 # Protect a Sheet
 
-<http://books.zkoss.org/wiki/Keikai_Spreadsheet_Essentials/Working_with_Spreadsheet/Handling_Data_Model/Protection>
+See [Protection](Protection).
 
 Example:
 
