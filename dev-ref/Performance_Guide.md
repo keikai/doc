@@ -62,9 +62,7 @@ In order to manually control UI update, we have to:
     setter)
   - line 12: notify the changed range of cells or just the whole sheet
 
-You can run
-<http://books.zkoss.org/wiki/ZK_Spreadsheet_Essentials/Download_Example_Source_Code>
-to know the speed difference between 2 cases.
+You can run [Example Source](Download_Example_Source_Code) to know the speed difference between 2 cases.
 
 ## Notify Affected Range
 
@@ -208,6 +206,5 @@ If the data to insert is too large, so that it still consumes a long
 time you can't accept. Then you can insert the data in 2 phases. First,
 just insert a small part of data (e.g. 500 rows) since Keikai doesn't
 render all rows to a browser and a user's screen size is also limited. A
-user can't see all rows at once in the beginning. Then send an
-<https://www.zkoss.org/wiki/ZK_Developer%27s_Reference/UI_Patterns/Long_Operations/Use_Echo_Events>
+user can't see all rows at once in the beginning. Then send an [Echo Event](https://www.zkoss.org/wiki/ZK_Developer%27s_Reference/UI_Patterns/Long_Operations/Use_Echo_Events)
 to insert the rest of the data.
