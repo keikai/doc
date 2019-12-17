@@ -5,7 +5,7 @@ title: 'Configuration'
 # Overview
 
 Here we list all available [ library
-properties](ZK_Configuration_Reference/zk.xml/The_library-property_Element "wikilink")
+properties](https://www.zkoss.org/wiki/ZK_Configuration_Reference/zk.xml/The_library-property_Element)
 of Spreadsheet.
 
 ## Chart's Font
