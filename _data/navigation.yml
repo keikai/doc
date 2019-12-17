@@ -133,7 +133,7 @@ dev-ref:
     children:
     - title: User Permission
       url: /dev-ref/User_Permission
-  - title: License
+  - title: Applying License Key
     url: /dev-ref/License_Install
   - title: FAQ
     url: /dev-ref/faq
