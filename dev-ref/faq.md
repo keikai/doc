@@ -9,41 +9,33 @@
     implement your user permission features with Keikai. Please refer to
     the following sections:
       - Hide the toolbar and the context menu to prevent editing. Please
-        refer to [Keikai spreadsheet Essentials/Working with
-        Spreadsheet/Control
-        Components](ZK_Spreadsheet_Essentials/Working_with_Spreadsheet/Control_Components "wikilink").
+        refer to [Control Component](Control_Components).
       - Disable available functions for different users. Please refer to
-        [Keikai spreadsheet Essentials/Working with
-        Spreadsheet/Advanced/Disable
-        Functions](ZK_Spreadsheet_Essentials/Working_with_Spreadsheet/Advanced/Disable_Functions "wikilink").
-      - Protect sheets and set available actions. Refer to
-        <javadoc directory='zss' method='protectSheet(java.lang.String , boolean , boolean , boolean , boolean , boolean , boolean , boolean , boolean , boolean , boolean , boolean allowSorting, boolean , boolean , boolean , boolean )'>io.keikai.api.Range</javadoc>
+        [Disable Functions](Disable_Functions).
+      - Protect sheets and set available actions. Refer to `io.keikai.api.Range`.
 
-You can see an example at
-<http://books.zkoss.org/wiki/ZK_Spreadsheet_Essentials/Working_with_Spreadsheet/Use_Case/User_Permission>.
+You can see an example at [Use_Case/User_Permission](User_Permission).
 
 # How do I save the content of Keikai or even save it to a database?
 
-To save the content of Keikai, we recommend to export it as an Excel file
-instead of saving it rows by rows. It is also the way we implement the
+To save the content of Keikai, you can export it as an Excel file. It is also the way we implement the
 "Save" function in zssapp. After exporting, you can save the file into a
 BLOB type column of a database.
 
-:\* How to export: [ Export to
-Excel](ZK_Spreadsheet_Essentials/Working_with_Spreadsheet/Handling_Data_Model/Export_to_Excel "wikilink")
+* How to export: [Export to Excel](Export_to_Excel)
 
-:\* Integrate custom saving process to Keikai toolbar's Save button: [
-Toolbar
-Customization](ZK_Spreadsheet_Essentials/Working_with_Spreadsheet/Advanced/Toolbar_Customization#Save_Book "wikilink")
+* Integrate custom saving process to Keikai toolbar's Save button: [Toolbar Customization](Toolbar_Customization)
+
+Alternatively you can save data to the database referencing the [Tutorial](https://doc.keikai.io/tutorial/database).
 
 # After exporting to a PDF file, the PDF shows unexpected fonts or has missing characters
 
-There are many reasons, but we list the most possible ones:
+There are many reasons, but we list the most common ones:
 
-:\* You choose a wrong encoding for some characters.
+* You chose the wrong encoding for some characters.
 
   -   
-    For example, you apply "Calibri" on a Chinese character. You can
+    For example, you applied "Calibri" to a Chinese character. You can
     resolve it by applying the correct font.
       - The computer of your PDF viewer software doesn't install
         corresponding fonts.
@@ -53,9 +45,10 @@ There are many reasons, but we list the most possible ones:
     computer or different OS. Please check installed fonts on your
     computer. Installing missing fonts can solve this problem.
 
-The Keikai bundled iText will find fonts from the following paths. Please
-check the fonts you apply are available in these paths: **Won't scan its
-subdirectories**
+* iText bundled in Keikai will find fonts from the following paths. Please
+check the fonts you apply are available in these paths: 
+
+**It won't scan its subdirectories**
 
 `   c:/windows/fonts`  
 `   c:/winnt/fonts`  
@@ -64,7 +57,7 @@ subdirectories**
 `   /Library/Fonts`  
 `   /System/Library/Fonts`
 
-**Will scan its subdirectories**
+**It will scan its subdirectories**
 
 `   /usr/share/X11/fonts`  
 `   /usr/X/lib/X11/fonts`  
@@ -74,7 +67,7 @@ subdirectories**
 
 Extracted from FontFactoryImp com.lowagie.text.FontFactoryImp.
 
-:\* The server to export a PDF doesn't install corresponding fonts.
+* The corresponding font is not installed the server that exports PDF files.
 
   -   
     It might happen when you export a PDF on a Linux server without
@@ -87,36 +80,29 @@ Extracted from FontFactoryImp com.lowagie.text.FontFactoryImp.
 # How do I know my file can be loaded correctly by Keikai?
 
 In general, those functions we implement with the toolbar are supported.
-However, the best way is to upload your files to the
-<http://www.zkoss.org/download/zkspreadsheet>. It's a ready-to-use web
+However, the best way is to download Keikai Demo App and try it yourself. It's a ready-to-use web
 application based on Keikai component. You just run the war with a Java
 application server, then you can upload files via the menu, File / Open
 / Upload.
 
 # Does Keikai support VB macro?
 
-No. Even
-<https://www.microsoft.com/en-us/microsoft-365/blog/2014/04/14/weve-updated-excel-online-whats-new-in-april-2014/>
-(or
-<https://social.technet.microsoft.com/Forums/office/en-US/7c46823c-2581-47a6-baac-66fb99ac3ea8>).
-The macro in a file will be lost after being imported since Keikai doesn't
-keep the macro information.
+No. Even [Microsoft]
+(https://www.microsoft.com/en-us/microsoft-365/blog/2014/04/14/weve-updated-excel-online-whats-new-in-april-2014/)
+and [Office Online](https://social.technet.microsoft.com/Forums/office/en-US/7c46823c-2581-47a6-baac-66fb99ac3ea8) don't support VB Macro in the Web.
 
-If you need something similar, you can port your macro to Java within a
-controller to achieve the same function.
+If you need a similar function, you can port your macro to Java in your controller to achieve the same.
 
 # How to validate an XLSX format Excel file
 
-Validate it with
-<https://www.microsoft.com/en-us/download/details.aspx?id=30425>.
+Validate it with [this tool](https://www.microsoft.com/en-us/download/details.aspx?id=30425).
 
 # Run out of heap when exporting / importing a large file
 
-You might encounter an error like `java.lang.OutOfMemoryError: Java heap
-space` when exporting / importing a large file, since it consumes more
-memory at that process. Please increase your JVM heap size. (You can
-refer to
-<https://docs.oracle.com/cd/E15523_01/web.1111/e13814/jvm_tuning.htm#PERFM164>)
+It is possible to encounter an error like `java.lang.OutOfMemoryError: Java heap
+space` when exporting / importing a large file, since large file consumes more
+memory during importing and exporting process. Please increase your JVM heap size. (You can
+refer to [this document](https://docs.oracle.com/cd/E15523_01/web.1111/e13814/jvm_tuning.htm#PERFM164))
 
 # What is the maximal rows and columns Keikai supports?
 
@@ -135,48 +121,46 @@ seconds. As the cell number grows, the time could be too long to be
 acceptable by users. You can measure the loading time on your machine
 first.
 
-# Does Keikai support form control like the menu in Excel, **Developer \> Form Controls**?
+# Does Keikai support Excel form control (Developer > Form Controls)?
 
 No. But there are several alternatives:
 
   - Use ZK menu.
 
-Please refer to the menu on top of Keikai at
-<http://zssdemo.zkoss.org/zssdemo/excel_like>
+Please refer to the menu in Keikai Demo: Excel-like.
 
   - Create a custom context menu.
 
-Please refer to
-<https://www.zkoss.org/wiki/ZK_Spreadsheet_Essentials/Working_with_Spreadsheet/Advanced/Custom_Context_Menu>
+Please refer to [this document](Custom_Context_Menu).
 
   - Insert special symbols in cells to simulate a checkbox, button.
 
-You can insert icon-like symbols in a cell, so users think that cell is
-a button like below: ![ center](/assets/images/dev-ref/Zss-essentials-symbol.png " center")
-Then you can determine these cells in an event listener and perform your
+You can insert icon-like symbols in a cell to serve as a button.
+
+![ center](/assets/images/dev-ref/Zss-essentials-symbol.png " center")
+
+Then you can determine the functions of these cells in an event listener and perform your
 business logic.
 
   - Data validation can produce a dropdown list
 
-Please refer to
-<https://www.zkoss.org/wiki/ZK_Spreadsheet_Essentials/Features_and_Usages#Data_Validation>
+Please refer to [Data Validation](Features_and_Usages#data-validation).
 
   - Show a component on a cell with a popup.
 
-![ center](/assets/images/dev-ref/Zss-essentials-popup.png " center")
+![center](/assets/images/dev-ref/Zss-essentials-popup.png " center")
 
 # Unable to get property 'appendCell' of undefined or null reference in IE
 
-If you visit with IE11 and see such error message in developer tool's
-console. This is mostly caused by compatibility mode. Please turn it off
-and reload the page again since ZK/Keikai don't support such mode.
+If you visit Keikai with IE11 and see such error message in developer tool's
+console, it is most likely caused by using Compatibility View. Please turn it off
+and reload the page again since ZK/Keikai don't support such legacy mode.
 
-# See Errors When Copying Massive Cells
+# Errors When Copying Massive Cells
 
 ## Request Parameter Over a Server's Limit
 
-You might see similar errors at your server console when copying massive
-cells, for example, in Tomcat:
+You might see similar errors in your server console when copying a large amount of cells. For example, in Tomcat the error message looks like:
 
 `25-Jun-2018 12:14:26.420 INFO [http-nio-8080-exec-8]
 org.apache.tomcat.util.http.Parameters.processParameters More than the
@@ -186,5 +170,4 @@ been ignored. To change this limit, set the maxParameterCount attribute
 on the Connector.` `Note: further occurrences of this error will be
 logged at DEBUG level.`
 
-You need to increase the limit of `maxParameterCount` of
-<https://tomcat.apache.org/tomcat-7.0-doc/config/http.html>.
+You need to increase the limit of `maxParameterCount` of your web container. [Read more](https://tomcat.apache.org/tomcat-7.0-doc/config/http.html).
