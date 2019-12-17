@@ -2,8 +2,6 @@
 title: 'Reference to Spring Beans'
 ---
 
-Available in Keikai Spreadsheet EE only
-
 # Overview
 
 Similar to reference to Java Bean, Spreadsheet also allows you to use EL
@@ -20,12 +18,15 @@ Bean, e.g. enter `=myBean.myProperty`.
 
 # Example
 
-We continue to use the same example in [ Reference to Java
-Beans](Working_with_Spreadsheet/Advanced/Reference_to_Java_Beans#Example "wikilink").
+We continue to use the same example in [Reference to Java
+Beans](https://www.zkoss.org/wiki/Working_with_Spreadsheet/Advanced/Reference_to_Java_Beans#Example).
 Assume the application below has a sheet in protection, a user cannot
 modify any cells directly in the sheet. They can only update value via
-panel on the right side. ![center](/assets/images/dev-ref/essentials-bean.png) You
-can see from the formula bar, the content of B3 is an EL expression,
+panel on the right side. 
+
+![center](/assets/images/dev-ref/Essentials-bean.png) 
+
+You can see from the formula bar, the content of B3 is an EL expression,
 `=assetsBean.liquidAssets`.
 
 To use Spring bean resolver, there must be some Spring bean defined in
@@ -45,10 +46,7 @@ public class AssetsBean {
 {% endhighlight %}
 
 Declare ZK's `org.zkoss.zkplus.spring.DelegatingVariableResolver` in a
-ZUL page. (You can refer to [ZK Developer%27s
-Reference/Integration/Middleware Layer/Spring\#Access a Spring Bean in a
-ZUL](ZK_Developer%27s_Reference/Integration/Middleware_Layer/Spring#Access_a_Spring_Bean_in_a_ZUL "wikilink")
-for detail.)
+ZUL page. (You can refer to [ZK Developer Reference](https://www.zkoss.org/wiki/ZK_Developer%27s_Reference/Integration/Middleware_Layer/Spring#Access_a_Spring_Bean_in_a_ZUL
 
 {% highlight java linenos %}
 <?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
@@ -70,12 +68,15 @@ for detail.)
 
 # Example
 
-We continue to use the same example in [ Reference to Java
-Beans](Working_with_Spreadsheet/Advanced/Reference_to_Java_Beans#Example "wikilink").
+We continue to use the same example in [Reference to Java
+Beans](Reference_to_Java_Beans).
 Assume the application below has a sheet in protection, a user cannot
 modify any cells directly in the sheet. They can only update value via
-panel on the right side. ![ center](/assets/images/dev-ref/essentials-bean.png " center") You
-can see from the formula bar, the content of B3 is an EL expression,
+panel on the right side. 
+
+![center](/assets/images/dev-ref/Essentials-bean.png) 
+
+You can see from the formula bar, the content of B3 is an EL expression,
 `=assetsBean.liquidAssets`.
 
 To use Spring bean resolver, there must be some Spring bean defined in
@@ -95,9 +96,7 @@ public class AssetsBean {
 {% endhighlight %}
 
 Declare ZK's `org.zkoss.zkplus.spring.DelegatingVariableResolver` in a
-ZUL page. (You can refer to [ZK Developer%27s
-Reference/Integration/Middleware Layer/Spring\#Access a Spring Bean in a
-ZUL](ZK_Developer%27s_Reference/Integration/Middleware_Layer/Spring#Access_a_Spring_Bean_in_a_ZUL "wikilink")
+ZUL page. (You can refer to [ZK Developer Reference](https://www.zkoss.org/wiki/ZK_Developer%27s_Reference/Integration/Middleware_Layer/Spring#Access_a_Spring_Bean_in_a_ZUL)
 for detail.)
 
 {% highlight java linenos %}
@@ -174,15 +173,11 @@ public class RefSpringBeanComposer extends SelectorComposer<Component> {
 }
 {% endhighlight %}
 
-  - Line 1: [ Add a variable
-    resolver](ZK_Developer%27s_Reference/Integration/Middleware_Layer/Spring#Adding_Variable_Resolver_to_a_Composer_.28or_ViewModel.29 "wikilink")
+  - Line 1: [Add a variable resolver](https://www.zkoss.org/wiki/ZK_Developer%27s_Reference/Integration/Middleware_Layer/Spring#Adding_Variable_Resolver_to_a_Composer_.28or_ViewModel.29)
     let us get Spring beans with `@WireVariable`.
   - LIne 17: We can easily get a reference to a Spring with
-    `@WireVariable`. Please refer to [ZK Developer%27s
-    Reference/Integration/Middleware Layer/Spring\#Wire a Spring
-    Bean](ZK_Developer%27s_Reference/Integration/Middleware_Layer/Spring#Wire_a_Spring_Bean "wikilink")
+    `@WireVariable`. Please refer to [ZK Developer Reference](https://www.zkoss.org/wiki/ZK_Developer%27s_Reference/Integration/Middleware_Layer/Spring#Wire_a_Spring_Bean)
     for detail.
   - Line 30: Notify whole book of one or more beans' change, all cells
     of whole book associated with changed bean will be updated.
 
-<references/>
