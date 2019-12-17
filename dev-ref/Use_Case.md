@@ -1,5 +1,4 @@
 ---
 title: 'Use Case'
 ---
-The following sections, we will introduce some practical customizations
-and applications based on Keikai.
+In the following sections, we will introduce practical use cases on how you can customize and build an app based on Keikai.
