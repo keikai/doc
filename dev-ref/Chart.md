@@ -128,6 +128,6 @@ public class ChartComposer extends SelectorComposer<Component> {
     example, it will assume that the first column contains category
     labels.
 
-<references/>
+# Reference 
 
-1.  Spreadsheet cannot read legend position from XLS file currently.
+1.  Currently Spreadsheet cannot read legend position from an XLS file.
