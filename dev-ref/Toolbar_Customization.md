@@ -76,15 +76,15 @@ public class NewBookHandler implements UserActionHandler {
   - Line 4: Return enabled state of this handlers.
   - Line 13: Import a blank Excel file with importer, please refer to [
     Load A Book
-    Model](ZK_Spreadsheet_Essentials/Working_with_Spreadsheet/Spreadsheet_Data_Model#Load_A_Book_Model "wikilink").
+    Model](https://www.zkoss.org/wiki/ZK_Spreadsheet_Essentials/Working_with_Spreadsheet/Spreadsheet_Data_Model#Load_A_Book_Model).
   - Line 15: Change Spreadsheet's book model with newly-loaded book. We
     can get
-    <javadoc directory="keikai">io.keikai.ui.Spreadsheet</javadoc>,
-    <javadoc directory="keikai">io.keikai.api.model.Book</javadoc>,
-    <javadoc >org.zkoss.zk.ui.event.Event</javadoc>, selection
-    (<javadoc directory="keikai">io.keikai.api.AreaRef</javadoc>), and
+    `io.keikai.ui.Spreadsheet`,
+    `io.keikai.api.model.Book`,
+    `org.zkoss.zk.ui.event.Event`, selection
+    (`io.keikai.api.AreaRef`), and
     action from
-    <javadoc directory="keikai">io.keikai.ui.UserActionContext</javadoc>.
+    `io.keikai.ui.UserActionContext`.
   - Line 19: In most cases, you should return `true` if you have handled
     the action.
 
@@ -120,16 +120,16 @@ public class SaveBookHandler implements UserActionHandler {
   - Line 5: Only when Spreadsheet has loaded a book, this handler is
     enabled.
   - Line 11: We can get
-    <javadoc directory="keikai">io.keikai.ui.Spreadsheet</javadoc>,
-    <javadoc directory="keikai">io.keikai.api.model.Book</javadoc>,
-    <javadoc >org.zkoss.zk.ui.event.Event</javadoc>, selection
-    (<javadoc directory="keikai">io.keikai.api.AreaRef</javadoc>), and
+    `io.keikai.ui.Spreadsheet`,
+   `io.keikai.api.model.Book`,
+    `org.zkoss.zk.ui.event.Event`, selection
+    (`io.keikai.api.AreaRef`), and
     action from
-    <javadoc directory="keikai">io.keikai.ui.UserActionContext</javadoc>.
+    `io.keikai.ui.UserActionContext`.
   - Line 12: We just save back to original Excel file in our example for
     simplicity. Regarding how to implement the saving, you can refer to
-    [ Export to
-    Excel](ZK_Spreadsheet_Essentials/Working_with_Spreadsheet/Handling_Data_Model/Export_to_Excel "wikilink").
+    [Export to
+    Excel](https://www.zkoss.org/wiki/ZK_Spreadsheet_Essentials/Working_with_Spreadsheet/Handling_Data_Model/Export_to_Excel).
 
 # Register User Action Handlers
 
@@ -179,7 +179,7 @@ public class CustomHandlerComposer extends SelectorComposer<Component> {
 After completing above step, run `customHandler.zul` and you can see
 those buttons we registered handlers for are now enabled.
 
-![ center](/assets/images/dev-ref/zss-essentials-customHandler.png " center")
+![center](/assets/images/dev-ref/Zss-essentials-customHandler.png)
 
 # Append or Override with Your Handler
 
