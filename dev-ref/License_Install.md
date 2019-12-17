@@ -1,11 +1,12 @@
 ---
-title: 'License'
+title: 'Applying License Key'
 ---
 
-Only Keikai EE requires a license file. You can choose one of the following
-ways to put a license file:
+If you are a paying Keikai EE customer, you will obtain a license key after completing the purchase. Follow this section to apply the given license key to activate your Keikai EE component. There are 3 ways to apply a license key: Use Default License Loading Path; Specify an Absolute Path with a Library Property; and Specify the Path in a System Property. 
 
-# Default License Loading Path
+The first approach below **Use Default License Loading Path** is the easiest approach. However if your setup does not allow the first approach, use the 2nd or 3rd approach.
+
+# Use Default License Loading Path
 
 Keikai loads a license file from the default path:
 
@@ -35,7 +36,7 @@ license file.
 # Specify the Path in a System Property
 
 Because
-[`Library.getProperty()`](https://www.zkoss.org/javadoc/latest/zk/org/zkoss/lang/Library.html#getProperty(java.lang.String) will look for a system property if no
+`Library.getProperty()` will look for a system property if no
 corresponding property defined in `zk.xml`, you can also pass the
 license file path to Keikai via a system property.
 
@@ -55,7 +56,7 @@ Windows.
 
 # License Information
 
-If the license is loaded successfully, you should see a license
+If the license key is loaded successfully, you should see the license
 information like below printed in your application server's console when
 the server starts like:
 
