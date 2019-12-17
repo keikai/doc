@@ -7,7 +7,7 @@ title: 'Custom Context Menu'
 This section describes how to pop up a new customized context menu in a
 Spreadsheet like the image below:
 
-![ center](/assets/images/dev-ref/zss-essentials-customContextMenu.png " center")
+![center](/assets/images/dev-ref/Zss-essentials-customContextMenu.png)
 
 The steps are simple:
 
@@ -52,8 +52,7 @@ Menupopup is the most suitable component to build a context menu.
 # Show Custom Context Menu
 
 We can listen
-<javadoc directory="keikai">io.keikai.ui.event.CellMouseEvent</javadoc>
-to open our Menupopup.
+`io.keikai.ui.event.CellMouseEvent` to open our Menupopup.
 
 {% highlight java linenos %}
 package io.keikai.essential.advanced.customization;
@@ -145,8 +144,7 @@ public class MyContextMenuComposer extends SelectorComposer<Component> {
 
 Although we hide the built-in context menu, you might want to reuse some
 items on it. The example code below demonstrates how to reuse "Clear"
-menu ite by passing an
-<javadoc directory='zss'>io.keikai.ui.event.AuxActionEvent</javadoc>.
+menu ite by passing an `io.keikai.ui.event.AuxActionEvent`.
 
 {% highlight java linenos %}
     @Listen("onClick = #clear")
