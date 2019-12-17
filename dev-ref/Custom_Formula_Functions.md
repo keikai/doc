@@ -1,7 +1,6 @@
 ---
 title: 'Custom Formula Functions'
 ---
-Available in Keikai Spreadsheet EE only
 
 # Overview
 
@@ -47,8 +46,9 @@ to implement your custom function.
 
 Assume that we are going to create a money exchange function,
 `EXCHANGE()`, that accepts 2 double arguments and return exchange
-result. The first one is money, and the second one is exchange rate. ![
-center](/assets/images/dev-ref/zss-essentials-customFormula-exchange.png " center")
+result. The first one is money, and the second one is exchange rate.
+
+![center](/assets/images/dev-ref/Zss-essentials-customFormula-exchange.png)
 
 The custom function can be implemented like:
 
@@ -129,8 +129,7 @@ public class MySubtotal extends MultiOperandNumericFunction{
     arguments to a double array and pass it to your overridden method,
     `evaluate(double[])`. It can save your effort to deal with each
     argument. If you encounter a situation that you don't expect, please
-    throw
-    <javadoc directory="keikai">org.zkoss.poi.ss.formula.eval.EvaluationException</javadoc>.
+    throw `org.zkoss.poi.ss.formula.eval.EvaluationException`.
     Because Spreadsheet can handle the exception gracefully.
 
 Then, create a static method with previously-mentioned signature and
@@ -172,7 +171,9 @@ function's requirement.
 
 Here, we demonstrate this approach with a function, `CHAIN()`, that
 chains multiple text cells into one text. Below screenshot shows its use
-cases: ![ center](/assets/images/dev-ref/zss-essentials-customFormula-chain.png " center")
+cases: 
+
+![ center](/assets/images/dev-ref/Zss-essentials-customFormula-chain.png)
 
 You can see that this function can accept various arguments including
 string, a range of cells, and multiple cell references. Different kind
@@ -271,7 +272,7 @@ following ways to bring it in a ZUL page before using it in Spreadsheet.
 
 Use xel-method directive is quite straight out. Just write it on the ZUL
 page with prefix **keikai** and that is done. Please refer to
-[ZUML\_Reference/ZUML/Processing\_Instructions/xel-method](ZUML_Reference/ZUML/Processing_Instructions/xel-method "wikilink")
+[ZUML\_Reference/ZUML/Processing\_Instructions/xel-method](https://www.zkoss.org/wiki/ZUML_Reference/ZUML/Processing_Instructions/xel-method)
 for complete explanation of each attribute.
 
 For our custom function, we can write:
@@ -308,8 +309,7 @@ After declaring them, you can use them in a cell like
 To use taglib directive, we should create a taglib file and specify its
 file path in `uri` attribute of taglib directive and set "prefix" to
 **keikai**. Please refer to
-[ZUML\_Reference/ZUML/Processing\_Instructions/taglib/Custom\_Taglib](ZUML_Reference/ZUML/Processing_Instructions/taglib/Custom_Taglib "wikilink")
-for details. We list our sample configuration here:
+[ZUML\_Reference/ZUML/Processing\_Instructions/taglib/Custom\_Taglib](https://www.zkoss.org/wiki/ZUML_Reference/ZUML/Processing_Instructions/taglib/Custom_Taglib) for details. We list our sample configuration here:
 
 **function.tld**
 
