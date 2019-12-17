@@ -2,8 +2,6 @@
 title: 'Reference to another Workbook'
 ---
 
-Available in Keikai Spreadsheet EE only
-
 Spreadsheet supports external reference: a cell in one spreadsheet can
 reference to a cell of another spreadsheet. This feature is useful when
 you want to apply a different view for data but don't want to change
@@ -11,7 +9,7 @@ original book. It also can be used when you want to merge data from
 multiple books.
 
 Before using this feature, you should build a book series by
-<javadoc  directory="keikai">io.keikai.api.BookSeriesBuilder</javadoc>
+`io.keikai.api.BookSeriesBuilder`
 for all book models including source book and target one. Then, use the
 syntax below to reference cells inside book series:
 
@@ -24,13 +22,13 @@ For example:
 Assume that we have a book with personal profile named "profile.xlsx" as
 follows.
 
-![ center](/assets/images/dev-ref/essentials-reference-profile.png " center")
+![center](/assets/images/dev-ref/Essentials-reference-profile.png)
 
 Now we want to create a resume for it without modifying "profile.xlsx".
 Therefore, we can make cells of "resume.xlsx" reference to
 "profile.xlsx". The screenshot is below:
 
-![ center](/assets/images/dev-ref/essentials-reference-resume.png " center")
+![center](/assets/images/dev-ref/Essentials-reference-resume.png)
 
 The following codes demonstrate how to achieve the resume:
 
