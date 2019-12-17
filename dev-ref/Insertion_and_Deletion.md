@@ -3,13 +3,13 @@ title: 'Insertion and Deletion'
 ---
 
 
-The `Range` API to insert cells.
+Use the `Range` API to insert cells.
 
 {% highlight java linenos %}
 range.insert(InsertShift.RIGHT, InsertCopyOrigin.FORMAT_LEFT_ABOVE);
 {% endhighlight %}
 
-In this usage, the `Range` object not only represents the position to
+Here, the `Range` object not only represents the position to
 insert cells but also how many cells to insert. For example, if you pass
 a Range that represents B1:C2, then `insert()` will insert 4 cells. The
 2nd argument
