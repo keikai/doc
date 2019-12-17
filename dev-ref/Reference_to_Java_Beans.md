@@ -136,7 +136,7 @@ public class RefBeanComposer extends SelectorComposer<Component> {
   - Line 29: Get the bean via `MyBeanService` as we do in
     `MyBeanResolver`.
 
-#references
+# References
 
 1.  *Defined Names* is a name that represents a cell, range of cells,
     formula, or constant value.
