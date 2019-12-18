@@ -38,7 +38,7 @@ to control the access for each role. Let's recap them here:
 
 # Hide User Interface
 
-See [Control Component](Control_Component).
+See [Control Component](Control_Components).
 
 Example:
 
