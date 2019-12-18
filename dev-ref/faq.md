@@ -87,9 +87,7 @@ application server, then you can upload files via the menu, File / Open
 
 # Does Keikai support VB macro?
 
-No. Even [Microsoft]
-(https://www.microsoft.com/en-us/microsoft-365/blog/2014/04/14/weve-updated-excel-online-whats-new-in-april-2014/)
-and [Office Online](https://social.technet.microsoft.com/Forums/office/en-US/7c46823c-2581-47a6-baac-66fb99ac3ea8) don't support VB Macro in the Web.
+No. Even [MS Office 365](https://social.technet.microsoft.com/Forums/office/en-US/7c46823c-2581-47a6-baac-66fb99ac3ea8) doesn't support VB Macro in the Web.
 
 If you need a similar function, you can port your macro to Java in your controller to achieve the same.
 
