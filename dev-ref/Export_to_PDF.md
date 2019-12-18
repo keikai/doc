@@ -64,11 +64,9 @@ export server chart data rendering at the server side. The easiest way
 is to adopt Highcharts official solution which is based on PhantomJS, a
 headless Webkit browser.
 
-1.  download and install PhantomJS at
-    <http://phantomjs.org/download.html>.
-    <http://phantomjs.org/download.html>.
-2.  download Highcharts project at <http://www.highcharts.com/download>.
-    <http://www.highcharts.com/download>.
+1.  download and install PhantomJS [here](http://phantomjs.org/download.html).
+    
+2.  download Highcharts project [here](http://www.highcharts.com/download)
     1.  in this project, go to exporting-server -\> phantomjs
 3.  start export server by commanding "phantomjs highcharts-convert.js
     -host 127.0.0.1 -port 3003"
@@ -89,7 +87,7 @@ definition, JFreechart will be used to generate chart graphs. (Required)
 
 <library-property>
     <name>io.keikai.chart.render.server.url</name>
-    <value>http://127.0.0.1:3003</value> http://127.0.0.1:3003</value>
+    <value>http://127.0.0.1:3003</value>
 </library-property>
 {% endhighlight %}
 
