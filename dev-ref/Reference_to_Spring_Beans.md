@@ -46,7 +46,7 @@ public class AssetsBean {
 {% endhighlight %}
 
 Declare ZK's `org.zkoss.zkplus.spring.DelegatingVariableResolver` in a
-ZUL page. (You can refer to [ZK Developer Reference](https://www.zkoss.org/wiki/ZK_Developer%27s_Reference/Integration/Middleware_Layer/Spring#Access_a_Spring_Bean_in_a_ZUL
+ZUL page. (You can refer to [ZK Developer Reference](https://www.zkoss.org/wiki/ZK_Developer%27s_Reference/Integration/Middleware_Layer/Spring#Access_a_Spring_Bean_in_a_ZUL)
 
 {% highlight java linenos %}
 <?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
