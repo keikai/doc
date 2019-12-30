@@ -135,5 +135,7 @@ dev-ref:
       url: /dev-ref/User_Permission
   - title: Applying License Key
     url: /dev-ref/License_Install
+  - title: Migrate from ZSS
+    url: /dev-ref/Migrate_from_ZSS    
   - title: FAQ
     url: /dev-ref/faq
