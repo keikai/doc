@@ -203,7 +203,7 @@ Cloud Drive is the folder where your files are uploaded to. Keikai Demo App will
 You can specify the path/folder via system property.
 
 ``` xml
-zssapp.repository.root
+kkapp.repository.root
 ```
 
 For example, in a Tomcat server, we can assign the following value into
@@ -211,7 +211,7 @@ TOMCAT\_HOME/conf/catalina.properties. In this case, Cloud Drive folder
 will be changed to C:\\zssapp\\books.
 
 ``` xml
-zssapp.repository.root=C:\\zssapp\\books
+kkapp.repository.root=C:\\zssapp\\books
 ```
 
 ## Auto Save
@@ -230,7 +230,7 @@ change the frequency via configuration. The following example demonstrates how y
 
 ``` xml
 <library-property>
-    <name>zssapp.save.period.second</name>
+    <name>kkapp.save.period.second</name>
     <value>300</value>
 </library-property>
 ```
