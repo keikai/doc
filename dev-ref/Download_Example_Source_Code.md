@@ -2,4 +2,5 @@
 title: 'Download Source'
 toc: false
 ---
-The example source code used in this book will be available soon.
+You can [download](https://github.com/keikai/dev-ref/archive/master.zip) or [view the example source code](https://github.com/keikai/dev-ref) of this book and use Maven "package" command to create a WAR file for deployment.
+
