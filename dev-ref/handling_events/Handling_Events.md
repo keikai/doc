@@ -45,3 +45,13 @@ public class EventsComposer extends SelectorComposer<Component>{
     for further processing.
 
 All Keikai events you can listen to are listed in `io.keikai.ui.event.Events`
+
+# Event Monitor Example
+In this section, we introduce an "Event Monitor" example to show how to listen to an event and find out what data you can get from an event. The image below is a screenshot of “Event Monitor” application, when we interact with spreadsheet on the left-hand side, the panel on the right-hand side will shows messages about related events:
+
+![center](/assets/images/dev-ref/Zss-essentials-events-cellClicking.png)
+
+As you can see in the right panel, it shows messages when I click a
+cell. We can achieve this in a controller very easily with `@Listen`. Here we
+omit lots of similar code and only focus on the code that are worth for your
+reference.

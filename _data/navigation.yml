@@ -48,22 +48,22 @@ dev-ref:
   - title: Spreadsheet Data Model
     url: /dev-ref/Spreadsheet_Data_Model
   - title: Handling Events
-    url: /dev-ref/Handling_Events
+    url: /dev-ref/handling_events/Handling_Events
     children:
     - title: Cell Clicking Event
-      url: /dev-ref/Cell_Clicking_Event
+      url: /dev-ref/handling_events/Cell_Clicking_Event
     - title: Header Event
-      url: /dev-ref/Header_Event
+      url: /dev-ref/handling_events/Header_Event
     - title: Selection Event
-      url: /dev-ref/Selection_Event
+      url: /dev-ref/handling_events/Selection_Event
     - title: Editing Event
-      url: /dev-ref/Editing_Event
+      url: /dev-ref/handling_events/Editing_Event
     - title: Key Event
-      url: /dev-ref/Key_Event
+      url: /dev-ref/handling_events/Key_Event
     - title: Sheet Event
-      url: /dev-ref/Sheet_Event
+      url: /dev-ref/handling_events/Sheet_Event
     - title: Hyperlink Event
-      url: /dev-ref/Hyperlink_Event
+      url: /dev-ref/handling_events/Hyperlink_Event
   - title: Handling Data Model
     url: /dev-ref/Handling_Data_Model
     children:

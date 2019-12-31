@@ -2,7 +2,7 @@
 title: 'Control Component'
 ---
 
-# Spreadsheet Properties
+# Spreadsheet ZUL Attributes
 
 Each component is represented by a unique tag name, e.g. Keikai Spreadsheet is a
 `<spreadsheet>` in a ZUL page. The easiest way to control a component is
@@ -17,13 +17,10 @@ Spreadsheet's `src` attribute to the file path which is a relative URI
 with respect to the web context root.
 
 ``` xml
-<spreadsheet src="/TestFile2007.xlsx" .../>
+<spreadsheet src="/myfile.xlsx" .../>
 ```
 
-  - In this case, TestFile2007.xlsx is under the web context root folder.
-
-In addition to the file path, some UI parts are configurable like toolbar, formula bar,
-sheet bar, and context menu.
+  - In this case, `myfile.xlsx` is under the web context root folder.
 
 ## Toolbar
 
@@ -68,7 +65,7 @@ Default: `false`
     <spreadsheet showSheetbar="true"/>
 ```
 
-# Sheet Tab Context Menu
+## Sheet Tab Context Menu
 When a user right click on a sheet tab, keikai pops up a context menu that shows sheet operations e.g. hide or move.
 The `showSheetTabContextMenu` attribute controls the context menu's visibility, and it only accepts boolean literal.
 
@@ -192,7 +189,7 @@ Each **setter** means a corresponding **attribute**, for example:
 
 # MVC in Brief
 
-Keikai is based on ZK Framework that supports the MVC design pattern to develop a webapplication. This pattern separates an application into 3 parts:
+Keikai is based on ZK Framework that supports the MVC design pattern to develop a web application. This pattern divides an application into 3 parts:
 **Model**, **View**, and **Controller**. The Model is the data that an
 application handles. The View is the UI which indicates a ZUL page in a
 ZK-based application. The Controller handles events from the UI, controls
@@ -203,10 +200,9 @@ to [ZK Developer's Reference/MVC](https://www.zkoss.org/wiki/ZK_Developer%27s_Re
 # Controller
 
 After we create a ZUL page, we can apply a Controller to handle events
-and control components of the page. In ZK, the simplest way to create a
+and control components of the page. The simplest way to create a
 Controller is to create a class that extends `org.zkoss.zk.ui.select.SelectorComposer`. For
-details, please refer to [ZK Developer%27s
-Reference/MVC/Controller](https://www.zkoss.org/wiki/ZK_Developer%27s_Reference/MVC/Controller).
+details, please refer to [ZK Developer's Reference/MVC/Controller](https://www.zkoss.org/wiki/ZK_Developer%27s_Reference/MVC/Controller).
 
 **Controller example**
 

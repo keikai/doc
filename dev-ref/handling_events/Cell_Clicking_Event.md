@@ -23,19 +23,6 @@ corresponding event listener is invoked, a `io.keikai.ui.event.CellMouseEvent` o
 
 # Event Monitor Example
 
-In [Handling Events](Handling_Events) section, we will use a "Event Monitor" application as an example to
-show how to listen to an event, and find out what data you can get from an event.
-The image Below is a screenshot of "Event Monitor" application, when we
-interact with the Spreadsheet on the left hand side, the panel on the
-right hand side will shows messages about related events.
-
-![center](/assets/images/dev-ref/Zss-essentials-events-cellClicking.png)
-
-As you can see in the right panel, it shows messages when I click a
-cell. We can achieve this in a controller very easily with `@Listen`. Here we
-omit lots of similar code and only focus on the code that are worth for your
-reference.
-
 {% highlight java linenos %}
 public class EventsComposer extends SelectorComposer<Component>{
     //omitted codes...
