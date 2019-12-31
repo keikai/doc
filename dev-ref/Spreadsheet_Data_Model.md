@@ -1,11 +1,11 @@
 ---
-title: 'Spreadsheet Data Model'
+title: 'Spreadsheet Book Model'
 ---
 # Book Model Overview
 
 When Spreadsheet loads an Excel file, the file is converted to
-Spreadsheet's data model (*book model*) stored in memory. The root of
-the data model is a book
+Spreadsheet's **book model** stored in memory. The root of
+the book model is a book
 (`io.keikai.api.model.Book`) and a
 book contains one or more sheets
 (`io.keikai.api.model.Sheet`) which
@@ -46,7 +46,7 @@ construct a Book object by your own and provide it to one or more
 Spreadsheet components by `setBook()`. After Spreadsheet loads a book
 model, we can get it by `Spreadsheet.getBook()`.
 
-## By Spreadsheet src Attribute
+## By `src` Attribute
 
 The `io.keikai.ui.Spreadsheet`'s `setSrc(java.lang.String)` can be called to display an Excel file
 programmatically. Similar to `src` attribute, this method accepts
