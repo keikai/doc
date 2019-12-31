@@ -104,30 +104,30 @@ dev-ref:
   - title: Configuration
     url: /dev-ref/Configuration
   - title: Advanced
-    url: /dev-ref/Advanced
+    url: /dev-ref/adv/Advanced
     children:
     - title: I18n
-      url: /dev-ref/i18n
+      url: /dev-ref/adv/i18n
     - title: Custom Formula Functions
-      url: /dev-ref/Custom_Formula_Functions
+      url: /dev-ref/adv/Custom_Formula_Functions
     - title: Toolbar Customization
-      url: /dev-ref/Toolbar_Customization
+      url: /dev-ref/adv/Toolbar_Customization
     - title: Reference to another Workbook
-      url: /dev-ref/Reference_to_another_Workbook
+      url: /dev-ref/adv/Reference_to_another_Workbook
     - title: Reference to Java Beans
-      url: /dev-ref/Reference_to_Java_Beans
+      url: /dev-ref/adv/Reference_to_Java_Beans
     - title: Reference to Spring Beans
-      url: /dev-ref/Reference_to_Spring_Beans
+      url: /dev-ref/adv/Reference_to_Spring_Beans
     - title: Collaboration Edit
-      url: /dev-ref/Collaboration_Edit
+      url: /dev-ref/adv/Collaboration_Edit
     - title: Custom Context Menu
-      url: /dev-ref/Custom_Context_Menu
+      url: /dev-ref/adv/Custom_Context_Menu
     - title: Disable Functions
-      url: /dev-ref/Disable_Functions
+      url: /dev-ref/adv/Disable_Functions
     - title: Find among Cells
-      url: /dev-ref/Find_among_Cells
+      url: /dev-ref/adv/Find_among_Cells
     - title: Performance Guide
-      url: /dev-ref/Performance_Guide
+      url: /dev-ref/adv/Performance_Guide
   - title: Use Case
     url: /dev-ref/Use_Case
     children:
