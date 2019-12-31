@@ -208,10 +208,10 @@ kkapp.repository.root
 
 For example, in a Tomcat server, we can assign the following value into
 TOMCAT\_HOME/conf/catalina.properties. In this case, Cloud Drive folder
-will be changed to C:\\zssapp\\books.
+will be changed to c:\kkapp\\books.
 
 ``` xml
-kkapp.repository.root=C:\\zssapp\\books
+kkapp.repository.root=c:\kkapp\\books
 ```
 
 ## Auto Save
