@@ -1,12 +1,28 @@
 ---
 title: 'Applying License Key'
 ---
+# Evaluation
+If you are running an evaluation release of keikai, you will see the warning message below in a log or console when a server starts up:
 
+```
+SEVERE: This is an evaluation copy of Keikai Spreadsheet EE and will terminate after maximum 12 hours UPTIME or sixty days from the first date of installation. Should you require a commercial license for Keikai Spreadsheet EE please contact us at info@keikai.io for more information. Alternatively you can download Keikai Spreadsheet(OSE) which is licensed under the GPL.
+Dec 31, 2019 10:16:11 AM org.zkoss.zkex.init.WebAppInit init
+SEVERE: This is an evaluation copy of ZK PE and will terminate after sixty days from the first date of installation. Should you require an open source license or commercial license for ZK PE please contact us at info@zkoss.org for more information. Alternatively you can download ZK CE which is licensed under the LGPL.
+Dec 31, 2019 10:16:11 AM org.zkoss.chart.init.WebAppInit init
+SEVERE: This is an evaluation copy of ZK Charts and will terminate after maximum 12 hours UPTIME or sixty days from the first date of installation. Should you require a commercial license for ZK Charts, please contact us at info@zkoss.org for more information.
+```
+
+When keikai application runs over the time limit, a browser will show a warning dialog when you visit a page with keikai.
+
+## Extend Evaluation Period
+If you have special need to extend the evaluation time, please contact us via info@keikai.io.
+
+# Applying License Key
 If you are a paying Keikai EE customer, you will obtain a license key after completing the purchase. Follow this section to apply the given license key to activate your Keikai EE component. There are 3 ways to apply a license key: Use Default License Loading Path; Specify an Absolute Path with a Library Property; and Specify the Path in a System Property. 
 
 The first approach below **Use Default License Loading Path** is the easiest approach. However if your setup does not allow the first approach, use the 2nd or 3rd approach.
 
-# Use Default License Loading Path
+## Use Default License Loading Path
 
 Keikai loads a license file from the default path:
 
@@ -16,7 +32,7 @@ Create the path above if it does not exist, and put the license key into
 the path. This is the simplest way if you just have one keikai-based web
 application.
 
-# Specify an Absolute Path with a Library Property
+## Specify an Absolute Path with a Library Property
 
 Some application servers like Weblogic could fail to locate the license
 file in the default path. Then you can specify the absolute path of the
@@ -32,7 +48,7 @@ Keikai license file there.
 
 It's also a way that multiple Keikai-based applications can load the same license file.
 
-# Specify the Path in a System Property
+## Specify the Path in a System Property
 
 Because `Library.getProperty()` will look for a system property if no
 corresponding property defined in `zk.xml`, you can also pass the
@@ -41,7 +57,7 @@ license file path to Keikai via a system property.
 For example in a Tomcat, you can add a `setenv.sh` (or `setenv.bat`) that contains
 
 ```
-export CATALINA_OPTS="$CATALINA_OPTS -Dio.keikait.Runtime.directory=/absolutePathToYourLicenseFilePath/"
+export CATALINA_OPTS="$CATALINA_OPTS -Dio.keikai.Runtime.directory=/absolutePathToYourLicenseFilePath/"
 ```
 
 Tomcat `catalina.sh` will invoke this script if exists.
@@ -58,12 +74,15 @@ information like below printed in your application server's console when
 the server starts like:
 
 ```
+INFO: 
 *** Potix Corporation License Information ***
 
-     Licensed Company: my company
-     Certificate Number: 123456       
-     Licensed Product: Keikai spreadsheet EE
-     ...
+     Licensed Company: test1
+     Certificate Number: KKEE12345       
+     Licensed Product: Keikai Spreadsheet EE
+     Maximum Licensed Number: 1 Developer
+     Expiry Date: January 02, 2020
+
 
      To renew, obtain more licenses, or if you require help, please contact info@keikai.io.
 ```
