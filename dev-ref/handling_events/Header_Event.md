@@ -31,9 +31,9 @@ corresponding event listener is invoked, a `io.keikai.ui.event.HeaderUpdateEvent
 Look at the screenshots below, we can show different custom popup menus
 when a users click a column or row header.
 
-![ center](/assets/images/dev-ref/Zss-essentials-events-columnMenu.png)
+![](/assets/images/dev-ref/events-columnMenu.png)
 
-![ center](/assets/images/dev-ref/Zss-essentials-events-rowMenu.png)
+![](/assets/images/dev-ref/events-rowMenu.png)
 
 To popup our custom menu, we should disable built-in context menu (by `showContextMenu="false"` or un-specified) first and listen to
 onHeaderRightClick event.

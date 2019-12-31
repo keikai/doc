@@ -37,7 +37,7 @@ In our Event Monitor application, you can see that the mouse pointer becomes
 a 4-direction arrow pointer. This means we can move the selection area.
 Thus, you can see the update selection in the right panel.
 
-![center](/assets/images/dev-ref/Zss-essentials-events-selection.png)
+![center](/assets/images/dev-ref/events-selection.png)
 
 The following code demonstrates how to listen above events and get
 related data from them.
