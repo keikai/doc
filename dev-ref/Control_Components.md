@@ -1,16 +1,6 @@
 ---
 title: 'Control Component'
 ---
-# MVC in Brief
-
-Keikai is based on ZK Framework and ZK Framework supports the MVC design pattern to develop a web
-application. This pattern separates an application into 3 parts:
-*Model*, *View*, and *Controller*. The Model is the data that an
-application handles. The View is the UI which indicates a ZUL page in a
-ZK-based application. The Controller handles events from the UI, controls
-the UI, and accesses the Model. For complete explanation, please refer
-to [ZK Developer's
-Reference/MVC](https://www.zkoss.org/wiki/ZK_Developer%27s_Reference/MVC).
 
 # Spreadsheet Properties
 
@@ -22,16 +12,15 @@ attribute.
 
 ## Excel File Path
 
-The simplest way to load and display an Excel book file is setting
+The simplest way to load and display an Excel file is setting
 Spreadsheet's `src` attribute to the file path which is a relative URI
-with respect to the web application root.
+with respect to the web context root.
 
 ``` xml
 <spreadsheet src="/TestFile2007.xlsx" .../>
 ```
 
-  - In this case, TestFile2007.xlsx is under the web application's root
-    folder.
+  - In this case, TestFile2007.xlsx is under the web context root folder.
 
 In addition to the file path, some UI parts are configurable like toolbar, formula bar,
 sheet bar, and context menu.
@@ -57,8 +46,18 @@ Default: `false`
 ``` xml
     <spreadsheet showFormulabar="true"/>
 ```
+## Context Menu
+When a user right click on a cell, keikai pops up a context menu.
+The `showContextMenu` attribute controls context menu's visibility, and it only accepts boolean literal.
 
-## Sheet Bar
+Default: `false`
+
+``` xml
+    <spreadsheet showContextMenu="true"/>
+```
+
+
+## Sheet Tab
 
 The `showSheetbar` attribute controls sheet bar's visibility, and it
 only accepts boolean literal.
@@ -69,16 +68,16 @@ Default: `false`
     <spreadsheet showSheetbar="true"/>
 ```
 
-## Context Menu
-
-The `showContextMenu` attribute controls context menu's visibility, and it
-only accepts boolean literal.
+# Sheet Tab Context Menu
+When a user right click on a sheet tab, keikai pops up a context menu that shows sheet operations e.g. hide or move.
+The `showSheetTabContextMenu` attribute controls the context menu's visibility, and it only accepts boolean literal.
 
 Default: `false`
 
 ``` xml
-    <spreadsheet showContextMenu="true"/>
+    <spreadsheet showSheetTabContextMenu="true"/>
 ```
+
 
 ## Selection Visiblility
 
@@ -190,6 +189,16 @@ Each **setter** means a corresponding **attribute**, for example:
 ``` xml
 <spreadsheet height="100%">
 ```
+
+# MVC in Brief
+
+Keikai is based on ZK Framework that supports the MVC design pattern to develop a webapplication. This pattern separates an application into 3 parts:
+**Model**, **View**, and **Controller**. The Model is the data that an
+application handles. The View is the UI which indicates a ZUL page in a
+ZK-based application. The Controller handles events from the UI, controls
+the UI, and accesses the Model. For complete explanation, please refer
+to [ZK Developer's Reference/MVC](https://www.zkoss.org/wiki/ZK_Developer%27s_Reference/MVC).
+
 
 # Controller
 
