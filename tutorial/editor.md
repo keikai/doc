@@ -20,6 +20,6 @@ That's it! Your first Keikai spreadsheet is now ready!
 Now you can visit the page URL (http://localhost:8080/tutorial/editor.zul) with your browser. Referring to the image below, you will see the specified xlsx file(3) loaded with toolbar(1), formula bar(2), sheet bar(5) and context menu(4).
 
 
-![](/assets/images/tutorial/keikaiUi.png)
+![](/assets/images/dev-ref/essentials-feature-ui.png)
 
 Keikai has a familiar spreadsheet UI interface, end users can view and edit the spreadsheet in the way they already know, such as changing cell content, font, color, format, formulas, copy/paste, and more.

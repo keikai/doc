@@ -54,7 +54,7 @@ public class EventsComposer extends SelectorComposer<Component>{
     The "\#ss" is the component selector which refers to the component with
     id `ss` on the ZUL page. (SelectorComposer supports various selector
     syntax that let you select components easily. Please refer to [ZK
-    Developer Reference](https://www.zkoss.org/wiki/ZK_Developer%27s_Reference/MVC/Controller/Wire_Components)).
+    Developer's Reference](https://www.zkoss.org/wiki/ZK_Developer%27s_Reference/MVC/Controller/Wire_Components)).
   - Line 8: The `getRow()` returns 0-based row index of the cell which
     is under editing and `getColumn()` returns its column index. The cell A1's
     row and column index are both 0. `Ranges.getCellRefString()` is a
