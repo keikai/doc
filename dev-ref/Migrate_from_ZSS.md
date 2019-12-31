@@ -7,7 +7,7 @@ This section is designed for users coming from ZK Spreadsheet (ZSS).
 This approach can quicky turn your existing ZSS application to Keikai applicaiton without modifying your source. Note that this is for evaluating purpose only as it does not cover all Keikai features. To officially migrate your existing ZSS application to Keikai, please read the next section: How to migrate from ZSS.
 
 The steps for quick try are:
-1. download [keikai-zss-legacy-all-VERSION.zip]() to a folder
+1. download [keikai-zss-legacy-all-[VERSION].zip]() to a folder 
 2. extract the zip.
 It produces 2 sub folders: `bin` and `lib`
 3. put your zss application war to the same root folder

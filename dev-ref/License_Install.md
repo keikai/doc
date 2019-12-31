@@ -25,23 +25,20 @@ Keikai license file there.
 
 {% highlight java linenos %}
 <library-property>
-    <name>io.keikait.Runtime.directory</name>
+    <name>io.keikai.Runtime.directory</name>
     <value>c:/systemAbsolutePath/my-licenses/</value>
 </library-property>
 {% endhighlight %}
 
-It's also a way that multiple Keikai-bases applications can load the same
-license file.
+It's also a way that multiple Keikai-based applications can load the same license file.
 
 # Specify the Path in a System Property
 
-Because
-`Library.getProperty()` will look for a system property if no
+Because `Library.getProperty()` will look for a system property if no
 corresponding property defined in `zk.xml`, you can also pass the
 license file path to Keikai via a system property.
 
-For example in a Tomcat, you can add a `setenv.sh` (or `setenv.bat`)
-that contains
+For example in a Tomcat, you can add a `setenv.sh` (or `setenv.bat`) that contains
 
 ```
 export CATALINA_OPTS="$CATALINA_OPTS -Dio.keikait.Runtime.directory=/absolutePathToYourLicenseFilePath/"
@@ -60,7 +57,7 @@ If the license key is loaded successfully, you should see the license
 information like below printed in your application server's console when
 the server starts like:
 
-{% highlight java linenos %}
+```
 *** Potix Corporation License Information ***
 
      Licensed Company: my company
@@ -68,5 +65,5 @@ the server starts like:
      Licensed Product: Keikai spreadsheet EE
      ...
 
-     To renew, obtain more licenses, or if you require help, please contact info@zkoss.org.
-{% endhighlight %}
+     To renew, obtain more licenses, or if you require help, please contact info@keikai.io.
+```
