@@ -9,8 +9,8 @@ them and call `paste(Range)` with another `Range` object for destination
 like:
 
 {% highlight java linenos %}
-        Range src = Ranges.range(ss.getSelectedSheet(), ss.getSelection());
-        Range destination = Ranges.range(getDestinationSheet(), ss.getSelection());
+Range src = Ranges.range(ss.getSelectedSheet(), ss.getSelection());
+Range destination = Ranges.range(getDestinationSheet(), ss.getSelection());
 {% endhighlight %}
 
 Similarly, the steps to cut a range is to copy them first, after pasting
@@ -19,9 +19,9 @@ to destination, just clear the source range's content.
 Cutting a range of cells is similar to copy:
 
 {% highlight java linenos %}
-        Range src = Ranges.range(ss.getSelectedSheet(), ss.getSelection());
-        Range destination = Ranges.range(getDestinationSheet(), ss.getSelection());
-        src.paste(destination, true);
+Range src = Ranges.range(ss.getSelectedSheet(), ss.getSelection());
+Range destination = Ranges.range(getDestinationSheet(), ss.getSelection());
+src.paste(destination, true);
 {% endhighlight %}
 
 There is also a `pasteSpecial()` to do special pasting like pasting
