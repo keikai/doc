@@ -25,48 +25,17 @@ If you log in as an owner, you will have full control of the file. But
 if you log in as an editor, you will find all sheet related operations
 are disabled.
 
-![center](/assets/images/dev-ref/Zss-essentials-editor.png)
+![](/assets/images/dev-ref/Zss-essentials-editor.png)
 
 When you log in as a viewer, the only thing you can do is viewing.
 Because there is no UI for edit, and all sheets are protected from
 editing.
 
-![center](/assets/images/dev-ref/Zss-essentials-viewer.png)
+![](/assets/images/dev-ref/Zss-essentials-viewer.png)
 
 This application relies on those API we mentioned in previous chapters
 to control the access for each role. Let's recap them here:
 
-# Hide User Interface
-
-See [Control Component](Control_Components).
-
-Example:
-
-{% highlight java linenos %}
-spreadsheet.setShowToolbar(false);
-{% endhighlight %}
-
-# Disable Functions
-
-See [Disable Functions](Disable_Functions).
-
-Example:
-
-{% highlight java linenos %}
-spreadsheet.disableUserAction(AuxAction.COPY_SHEET, true);
-{% endhighlight %}
-
-# Protect a Sheet
-
-See [Protection](Protection).
-
-Example:
-
-{% highlight java linenos %}
-Ranges.range(spreadsheet.getSelectedSheet()).protectSheet("password",
-                true, true, false, false, false, false, false,
-                false, false, false, false, false, false, false, false);
-{% endhighlight %}
-
-You can download the example source code to know the complete
-implementation.
+## [Hide User Interface](Control_Components)
+## [Disable Functions](Disable_Functions)
+## [Protect a Sheet](Protection)
