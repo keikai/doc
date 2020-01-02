@@ -1,5 +1,6 @@
 ---
 title: 'Disable Functions'
+toc: false
 ---
 
 Spreadsheet provides API to disable its functions. The API can be very

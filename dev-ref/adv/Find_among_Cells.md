@@ -1,5 +1,6 @@
 ---
 title: 'Find among Cells'
+toc: false
 ---
 
 Find a text among cells is a common function. Keikai spreadsheet doesn't

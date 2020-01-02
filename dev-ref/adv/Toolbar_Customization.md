@@ -199,6 +199,7 @@ There are 2 ways to hook up your user action handlers:
         handler is left and invoked. It can be used to override existing
         toolbar button's function.
 
+<!-- 
 # Hide Toolbar Button
 
 To hide some toolbar buttons by JavaScript, please reference `customToolbar.zul` Keikai Essentials:
@@ -214,3 +215,5 @@ jq.each(hiddenButtons, function(index, selector){
 });
     ]]></script>
 {% endhighlight %}
+
+-->

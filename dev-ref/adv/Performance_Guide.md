@@ -2,7 +2,7 @@
 title: 'Performance Guide'
 ---
 
-We list optimization tips for some scenarios.
+Here we introduce some performance optimization tips for several scenarios.
 
 # Calling Multiple Range Methods
 

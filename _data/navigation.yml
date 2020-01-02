@@ -106,7 +106,7 @@ dev-ref:
   - title: Advanced
     url: /dev-ref/adv/Advanced
     children:
-    - title: I18n
+    - title: Internationalization (i18n)
       url: /dev-ref/adv/i18n
     - title: Custom Formula Functions
       url: /dev-ref/adv/Custom_Formula_Functions

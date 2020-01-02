@@ -1,5 +1,6 @@
 ---
 title: 'Reference to another Workbook'
+toc: false
 ---
 
 Spreadsheet supports external reference: a cell in one spreadsheet can
