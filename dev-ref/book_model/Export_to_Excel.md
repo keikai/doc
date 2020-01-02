@@ -1,5 +1,6 @@
 ---
 title: 'Export to Excel'
+toc: false
 ---
 
 One of Spreadsheet's powerful feature is to export its book model as an

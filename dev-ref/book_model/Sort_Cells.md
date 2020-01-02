@@ -1,5 +1,6 @@
 ---
 title: 'Sort Cells'
+toc: false
 ---
 
 
@@ -19,8 +20,8 @@ will be arranged before text.
 
 A range of cells before sorting:
 
-![center](/assets/images/dev-ref/Zss-essentials-sortBefore.png)
+![](/assets/images/dev-ref/Zss-essentials-sortBefore.png)
 
 A range of cells after sorting in ascending order:
 
-![center](/assets/images/dev-ref/Zss-essentials-sortAfter.png)
+![](/assets/images/dev-ref/Zss-essentials-sortAfter.png)

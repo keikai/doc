@@ -8,7 +8,7 @@ provides a built-in WYSIWYG (“what you see is what you get”) editor to
 help users enter and format text. Users can also set rich text via
 Spreadsheet's API as well.
 
-## Edit Rich Text within WYSIWYG Editor
+# Edit Rich Text within WYSIWYG Editor
 
 Using WYSIWYG editor is easy, simply right click on the cell to open
 context menu and click "Rich Text Edit".
@@ -23,7 +23,7 @@ The result:
 
 ![RichText.png](/assets/images/dev-ref/RichText.png "RichText.png")
 
-## Set Rich Text via API
+# Set Rich Text via API
 
 `io.keikai.Range` API allows
 you to get or set rich text in HTML format of a cell:
@@ -129,7 +129,7 @@ public class RichTextEditComposer extends SelectorComposer<Component> {
   - Line 36: Set edit box's value back to the focused cell's rich text
     when we change the editor box's text.
 
-### Rich Text in HTML Format
+# Rich Text in HTML Format
 
 Basically, you can use the tag or specify the style to render the text,
 below is the list of the usage:

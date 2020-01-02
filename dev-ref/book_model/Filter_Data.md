@@ -1,5 +1,6 @@
 ---
 title: 'Filter Data'
+toc: false
 ---
 
 Filter is a useful feature especially when you want to focus on a subset
@@ -13,7 +14,7 @@ protection for you.
 We'll use a simple application to demonstrate filter API. Its screenshot
 is as below:
 
-![center](/assets/images/dev-ref/Zss-essentials-filter-example.png)
+![](/assets/images/dev-ref/Zss-essentials-filter-example.png)
 
 In this application, we can toggle, clear, and reapply filters and filter data 
 by "Type" column through those buttons on the right hand side.

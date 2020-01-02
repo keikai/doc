@@ -1,5 +1,6 @@
 ---
 title: 'Freeze Rows and Columns'
+toc: false
 ---
 
 Freeze rows or columns is useful when displaying lots of data. `Range`
