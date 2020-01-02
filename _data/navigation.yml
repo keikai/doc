@@ -65,7 +65,7 @@ dev-ref:
     - title: Hyperlink Event
       url: /dev-ref/handling_events/Hyperlink_Event
   - title: Manipulating Book Model
-    url: /dev-ref/book_model/Handling_Data_Model
+    url: /dev-ref/book_model/Manipulating_Book_Model
     children:
     - title: Cell Data
       url: /dev-ref/book_model/Cell_Data
