@@ -1,6 +1,5 @@
 ---
 title: 'Protection'
-toc: false
 ---
 
 
@@ -29,7 +28,8 @@ public class ProtectionComposer extends SelectorComposer<Component>{
     private Spreadsheet ss;
     @Wire
     private Label status;
-
+    private static final String PASSWORD = "mypass";
+    static private SheetProtection PROTECTION_WITH_SELECTION = SheetProtection.Builder.create().withPassword(PASSWORD).withSelectLockedCellsAllowed(true).withSelectUnlockedCellsAllowed(true).build();
     
     @Override
     public void doAfterCompose(Component comp) throws Exception {
@@ -41,11 +41,9 @@ public class ProtectionComposer extends SelectorComposer<Component>{
     public void toggleProtection(){
         Sheet selectedSheet = ss.getSelectedSheet();
         if (selectedSheet.isProtected()) {
-            Ranges.range(selectedSheet).unprotectSheet("password");
+            Ranges.range(selectedSheet).unprotectSheet(PASSWORD);
         } else {
-            Ranges.range(selectedSheet).protectSheet("password",
-                true, true, false, false, false, false, false,
-                false, false, false, false, false, false, false, false);
+            Ranges.range(selectedSheet).protectSheet(PROTECTION_WITH_SELECTION);
         }
         updateSheetProtectionStatus(selectedSheet);
     }
@@ -61,12 +59,12 @@ public class ProtectionComposer extends SelectorComposer<Component>{
 }
 {% endhighlight %}
 
-  - Line 16: Toggle protection status of a sheet when clicking "Toggle
+  - Line 17: Toggle protection status of a sheet when clicking "Toggle
     Protection" button.
-  - Line 18: Get protection status of the selected sheet.
-  - Line 19: Disable protection of the selected sheet.
-  - Line 21-23: Enable protection of the selected sheet, refer to `io.keikai.Range`.
-  - Line 30: Update protection status text in the panel when selecting a
+  - Line 19: Get protection status of the selected sheet.
+  - Line 20: Disable protection of the selected sheet.
+  - Line 22: Enable protection of the selected sheet, refer to `io.keikai.Range`.
+  - Line 29: Update protection status text in the panel when selecting a
     sheet.
 
 
