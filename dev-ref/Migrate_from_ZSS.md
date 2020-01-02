@@ -35,8 +35,6 @@ Keikai adds a new attribute `showSheetTabContextMenu`. If you want to show the c
 <spreadsheet showSheetbar="true" showSheetTabContextMenu="true"/>
 ```
 
-## JSP Tag URI Change
-Please refer to [Get Spreadsheet Running Quickly in JSP](Get_Spreadsheet_Running_Quickly_in_JSP).
 
 ## Custom Function Prefix Change
 The prefix now should be `keikai` like:
@@ -49,3 +47,8 @@ The prefix now should be `keikai` like:
 ## Custom CSS and JavaScript
 If you have previously applied any custom CSS or JavaScript to your existing ZSS application, it is possible that it will no longer work in Keikai since we have optimized Keikai's UI and client widgets for better performance and usability. You may need to redo the corresponding customization on Keikai.
 
+# Backward Compatibility
+The following configurations also change in Keikai, but you can keep your original one since Keikai still reads the old configuration.
+
+* [JSP Tag URI](Get_Spreadsheet_Running_Quickly_in_JSP)
+* [Library Property Name](Configuration)
