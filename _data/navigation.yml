@@ -65,42 +65,42 @@ dev-ref:
     - title: Hyperlink Event
       url: /dev-ref/handling_events/Hyperlink_Event
   - title: Manipulating Book Model
-    url: /dev-ref/Handling_Data_Model
+    url: /dev-ref/book_model/Handling_Data_Model
     children:
     - title: Cell Data
-      url: /dev-ref/Cell_Data
+      url: /dev-ref/book_model/Cell_Data
     - title: Cell Style and Format
-      url: /dev-ref/Cell_Style_and_Format
+      url: /dev-ref/book_model/Cell_Style_and_Format
     - title: Rich Text Edit
-      url: /dev-ref/Rich_Text_Edit
+      url: /dev-ref/book_model/Rich_Text_Edit
     - title: Cut, Copy, Paste
-      url: /dev-ref/Cut,_Copy,_Paste
+      url: /dev-ref/book_model/Cut,_Copy,_Paste
     - title: Auto Fill
-      url: /dev-ref/Auto_Fill
+      url: /dev-ref/book_model/Auto_Fill
     - title: Shift Cells
-      url: /dev-ref/Shift_Cells
+      url: /dev-ref/book_model/Shift_Cells
     - title: Sort Cells
-      url: /dev-ref/Sort_Cells
+      url: /dev-ref/book_model/Sort_Cells
     - title: Merge and Unmerge Cells
-      url: /dev-ref/Merge_and_Unmerge_Cells
+      url: /dev-ref/book_model/Merge_and_Unmerge_Cells
     - title: Insertion and Deletion
-      url: /dev-ref/Insertion_and_Deletion
+      url: /dev-ref/book_model/Insertion_and_Deletion
     - title: Freeze Rows and Columns
-      url: /dev-ref/Freeze_Rows_and_Columns
+      url: /dev-ref/book_model/Freeze_Rows_and_Columns
     - title: Hide Rows and Columns
-      url: /dev-ref/Hide_Rows_and_Columns
+      url: /dev-ref/book_model/Hide_Rows_and_Columns
     - title: Picture
-      url: /dev-ref/Picture
+      url: /dev-ref/book_model/Picture
     - title: Chart
-      url: /dev-ref/Chart
+      url: /dev-ref/book_model/Chart
     - title: Protection
-      url: /dev-ref/Protection
+      url: /dev-ref/book_model/Protection
     - title: Filter Data
-      url: /dev-ref/Filter_Data
+      url: /dev-ref/book_model/Filter_Data
     - title: Export to Excel
-      url: /dev-ref/Export_to_Excel
+      url: /dev-ref/book_model/Export_to_Excel
     - title: Export to PDF
-      url: /dev-ref/Export_to_PDF
+      url: /dev-ref/book_model/Export_to_PDF
   - title: Configuration
     url: /dev-ref/Configuration
   - title: Advanced
