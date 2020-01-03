@@ -9,7 +9,7 @@ application below, since we disable all sheet related functions except
 one, you can see the corresponding menu items are disabled (in grey
 color). 
 
-![center](/assets/images/dev-ref/Zss-essentials-disableFunctions.png)
+![center]({{site.devref_image_folder}}/Zss-essentials-disableFunctions.png)
 
 To achieve this, simply call `io.keikai.ui.Spreadsheet`
 

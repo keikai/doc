@@ -135,7 +135,7 @@ Please refer to [this document](Custom_Context_Menu).
 
 You can insert icon-like symbols in a cell to serve as a button.
 
-![ center](/assets/images/dev-ref/Zss-essentials-symbol.png " center")
+![ center]({{site.devref_image_folder}}/Zss-essentials-symbol.png " center")
 
 Then you can determine the functions of these cells in an event listener and perform your
 business logic.
@@ -146,7 +146,7 @@ Please refer to [Data Validation](Features_and_Usages#data-validation).
 
   - Show a component on a cell with a popup.
 
-![center](/assets/images/dev-ref/Zss-essentials-popup.png " center")
+![center]({{site.devref_image_folder}}/Zss-essentials-popup.png " center")
 
 # Unable to get property 'appendCell' of undefined or null reference in IE
 

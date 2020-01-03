@@ -135,7 +135,7 @@ from the cached range. So the rendered range becomes larger. If the cache does
 not cover the whole visible range, Keikai will send AU request
 (`onZssFetchActiveRange`) to get the data back to the cache.
 
-![center](/assets/images/dev-ref/3Ranges.png)
+![center]({{site.devref_image_folder}}/3Ranges.png)
 
 ## MaxRenderedCellSize
 
@@ -186,6 +186,24 @@ Each **setter** means a corresponding **attribute**, for example:
 ``` xml
 <spreadsheet height="100%">
 ```
+
+# IDE Code Completion / Content Assist
+You can enable code completion of your IDE and put the schema declaration below to help you write spreadsheet attributes in a zul.
+```xml
+<zk xmlns="http://www.zkoss.org/2005/zul"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.zkoss.org/2005/zul http://keikai.io/2019/zul/zul.xsd">
+</zk>
+```
+## IntelliJ IDEA
+After apply the schema, click the line of `schemaLocation`. IntelliJ IDEA will show a yellow bulb and you can click it to [fetch external resource](https://www.jetbrains.com/help/idea/referencing-xml-schemas-and-dtds.html). 
+
+![]({{site.devref_image_folder}}/fetch-resource.png)
+
+Then IntelliJ will download the XSD file and assist you to complete a word when you type an attribute.
+
+![]({{site.devref_image_folder}}/code-completion.png)
+
 
 # MVC in Brief
 

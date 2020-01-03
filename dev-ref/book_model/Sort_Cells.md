@@ -20,8 +20,8 @@ will be arranged before text.
 
 A range of cells before sorting:
 
-![](/assets/images/dev-ref/Zss-essentials-sortBefore.png)
+![]({{site.devref_image_folder}}/Zss-essentials-sortBefore.png)
 
 A range of cells after sorting in ascending order:
 
-![](/assets/images/dev-ref/Zss-essentials-sortAfter.png)
+![]({{site.devref_image_folder}}/Zss-essentials-sortAfter.png)

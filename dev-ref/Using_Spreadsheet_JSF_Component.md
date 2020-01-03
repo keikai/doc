@@ -15,7 +15,7 @@ request for leave. Or he can clicks "Reset" button to reset what he
 inputs to default value. The screenshot below shows a request of a user
 "John":
 
-![ center](/assets/images/dev-ref/essentials-jsp-app.png " center")
+![ center]({{site.devref_image_folder}}/essentials-jsp-app.png " center")
 
 # Create a JSF Page
 

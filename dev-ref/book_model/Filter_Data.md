@@ -14,7 +14,7 @@ protection for you.
 We'll use a simple application to demonstrate filter API. Its screenshot
 is as below:
 
-![](/assets/images/dev-ref/Zss-essentials-filter-example.png)
+![]({{site.devref_image_folder}}/Zss-essentials-filter-example.png)
 
 In this application, we can toggle, clear, and reapply filters and filter data 
 by "Type" column through those buttons on the right hand side.

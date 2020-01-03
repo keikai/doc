@@ -7,7 +7,7 @@ Find a text among cells is a common function. Keikai spreadsheet doesn't
 have this built-in function, but we can easily build our own with Keikai
 API.
 
-![ center](/assets/images/dev-ref/Zss-essentials-find-dialog.png " center")
+![ center]({{site.devref_image_folder}}/Zss-essentials-find-dialog.png " center")
 
 We list the key method here. For complete code, please refer to the [example code
 project](Download_Example_Source_Code).

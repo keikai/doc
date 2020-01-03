@@ -37,7 +37,7 @@ In our Event Monitor application, you can see that the mouse pointer becomes
 a 4-direction arrow pointer. This means we can move the selection area.
 Thus, you can see the update selection in the right panel.
 
-![center](/assets/images/dev-ref/events-selection.png)
+![center]({{site.devref_image_folder}}/events-selection.png)
 
 The following code demonstrates how to listen above events and get
 related data from them.
@@ -97,7 +97,7 @@ selection dialog, e.g. let users select a cell range for futher
 processing without entering it using the keyboard. An example is shown by
 the screenshot below:
 
-![center](/assets/images/dev-ref/Zss-essentials-rangeSelectionDialog.png)
+![center]({{site.devref_image_folder}}/Zss-essentials-rangeSelectionDialog.png)
 
 When opening the dialog to select a range, we can hide editting features and
 cancel `onStartEditing` event to prevent users from editing.

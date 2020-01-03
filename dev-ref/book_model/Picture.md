@@ -59,7 +59,7 @@ size. .
 # Example
 
 The screenshot below is a application that can add, move and delete a
-picture. ![center](/assets/images/dev-ref/Zss-essentials-picture.png)
+picture. ![center]({{site.devref_image_folder}}/Zss-essentials-picture.png)
 
 If we click "Add", it will add a ZK logo picture and update picture
 items in the Listbox on the top right corner. Select a picture item in

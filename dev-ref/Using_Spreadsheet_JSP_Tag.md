@@ -15,7 +15,7 @@ request for leave. Or he can clicks "Reset" button to reset what he
 inputs to default value. The screenshot below shows a request of a user
 "John":
 
-![center](/assets/images/dev-ref/Essentials-jsp-app.png)
+![center]({{site.devref_image_folder}}/Essentials-jsp-app.png)
 
 The application form is created using Keikai Spreadsheet and the two buttons Reset and OK are
 just ordinary HTML buttons in a JSP page.
@@ -25,7 +25,7 @@ just ordinary HTML buttons in a JSP page.
 The sequence diagram displays the overall handling process of an AJAX
 request when a user clicks a button in app4l.jsp.
 
-![center](/assets/images/dev-ref/Essentials-jsp-interaction.png)
+![center]({{site.devref_image_folder}}/Essentials-jsp-interaction.png)
 
 The `app4l.jsp` is the main page with the form for leave. The
 `ForLeaveServlet` is a servlet we implement for the example to handle

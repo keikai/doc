@@ -143,7 +143,7 @@ clone a sheet from another book by `cloneSheetFrom()`. Please refer to copySheet
 
 Here we demonstate a basic usage: allowing users to use a listbox outside of the spreadsheet to select and switch to the selected sheet.
 
-![center](/assets/images/dev-ref/Zss-essentials-book-sheet.png)
+![center]({{site.devref_image_folder}}/Zss-essentials-book-sheet.png)
 
 **setSheet.zul**
 

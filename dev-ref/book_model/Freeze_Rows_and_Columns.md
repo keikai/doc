@@ -20,7 +20,7 @@ parameter. Calling these methods will take effect on the sheet that
 
 The screenshot below is the example application to demonstrate the API
 usage. If we click "Freeze" button, it will freeze row and column
-according to current selection. ![center](/assets/images/dev-ref/Zss-essentials-freeze.png)
+according to current selection. ![center]({{site.devref_image_folder}}/Zss-essentials-freeze.png)
 
 The code is like:
 

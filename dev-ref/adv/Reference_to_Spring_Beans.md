@@ -24,7 +24,7 @@ Assume the application below has a sheet in protection, a user cannot
 modify any cells directly in the sheet. They can only update value via
 panel on the right side. 
 
-![center](/assets/images/dev-ref/Essentials-bean.png) 
+![center]({{site.devref_image_folder}}/Essentials-bean.png) 
 
 You can see from the formula bar, the content of B3 is an EL expression,
 `=assetsBean.liquidAssets`.
@@ -74,7 +74,7 @@ Assume the application below has a sheet in protection, a user cannot
 modify any cells directly in the sheet. They can only update value via
 panel on the right side. 
 
-![center](/assets/images/dev-ref/Essentials-bean.png) 
+![center]({{site.devref_image_folder}}/Essentials-bean.png) 
 
 You can see from the formula bar, the content of B3 is an EL expression,
 `=assetsBean.liquidAssets`.

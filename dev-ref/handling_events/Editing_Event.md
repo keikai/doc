@@ -32,7 +32,7 @@ listen to [KeyEvent](Key_Event) for that action.
 We still use the previous "Event Monitor" application to demonstrate event
 listening.
 
-![center](/assets/images/dev-ref/Zss-essentials-events-filter.png)
+![center]({{site.devref_image_folder}}/Zss-essentials-events-filter.png)
 
 When we type the word "test" in A1 cell, the information of corresponding events sent to the server are displayed in the panel:
 
@@ -116,7 +116,7 @@ that contain "Edit Me". After we enter a word "test" in D3, it turns to
 be "test-Woo". You can see the value changed from the right hand side
 panel.
 
-![center](/assets/images/dev-ref/Zss-essentials-events-override-value.png)
+![center]({{site.devref_image_folder}}/Zss-essentials-events-override-value.png)
 
 How was this done? Just listen to onStopEditing event and change the
 editing value.
@@ -162,7 +162,7 @@ of cells are changed but it won't tell you whether it was the value or the style
 
 Let's get back to our event monitor example to see when the onAfterCellChange is sent. 
 
-![center](/assets/images/dev-ref/Zss-essentials-events-cellChange.png)
+![center]({{site.devref_image_folder}}/Zss-essentials-events-cellChange.png)
 
 According to the screenshot above, when we enter "abc" in A11 or change the background color in A12:C13, cell changes event are sent. Let us see the source code about listening this event:
 

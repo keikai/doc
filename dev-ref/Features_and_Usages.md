@@ -3,7 +3,7 @@ title: 'Features and Usages'
 ---
 # Spreadsheet User Interface Overview
 
-![center](/assets/images/dev-ref/essentials-feature-ui.png)
+![center]({{site.devref_image_folder}}/essentials-feature-ui.png)
 
 This is the screenshot of Keikai spreadsheet's user interface, each section
 is introduced as follows:
@@ -32,7 +32,7 @@ is introduced as follows:
         by clicking on it. You can add a sheet by clicking the + button on the left. If you right
         click on the sheet bar it pops up a context menu, and allows you to perform sheet operations.
         
-        ![ center](/assets/images/dev-ref/essentials-feature-sheet-contextmenu.png)
+        ![ center]({{site.devref_image_folder}}/essentials-feature-sheet-contextmenu.png)
         
         The hamburger menu next to the + icon is the sheet navigation button. It allows users to switch sheets conveniently.
 
@@ -43,7 +43,7 @@ is introduced as follows:
 The charts in Keikai sheet is rendered by another ZK product called ZK Charts. When you hover your mouse
 pointer over the charts, it will show related info in a tooltip. 
 
-![center](/assets/images/dev-ref/Zss-essential-zkchart.png)
+![center]({{site.devref_image_folder}}/Zss-essential-zkchart.png)
 
 ## Rich Text Editing
 
@@ -51,18 +51,18 @@ You can apply multiple styles to a same cell by using the rich text editor. To o
 a rich-text editor, right click a cell and select "Right Text Edit" in
 the context menu.
 
-![ center](/assets/images/dev-ref/essential-richtexteditor.png)
+![ center]({{site.devref_image_folder}}/essential-richtexteditor.png)
 
 ## Comment
 
 To insert/edit/delete a comment, right click a cell and select
 corresponding item in the context menu.
 
-![center](/assets/images/dev-ref/essential-edit-comment.png)
+![center]({{site.devref_image_folder}}/essential-edit-comment.png)
 
 Show comment
 
-![center](/assets/images/dev-ref/essential-display-comment.png)
+![center]({{site.devref_image_folder}}/essential-display-comment.png)
 
 ## Support Different Zoom Levels
 
@@ -89,7 +89,7 @@ convert the numbers into corresponding number format for you, for example 1,234,
 Some date formats in Keikai are regional (starting with an **asterisk,
 \***, same as Excel ) and some are international. 
 
-![center](/assets/images/dev-ref/zss-essentials-dateFormat.png) 
+![center]({{site.devref_image_folder}}/zss-essentials-dateFormat.png) 
 
 Regional ones will change its displaying format according to the system locale, but
 international ones won't change. \[1\]
@@ -101,7 +101,7 @@ international ones won't change. \[1\]
 Keikai can display conditional formatting set in an Excel file. This feature
 allows you to highlight cells with the given conditions. In the case below, the values in the "Income" column has conditional formatting enabled: 
 
-![center](/assets/images/dev-ref/zss-essentials-conditionalFormatting.png)
+![center]({{site.devref_image_folder}}/zss-essentials-conditionalFormatting.png)
 
   - Modify conditional formatting in Keikai UI is not supported at the moment.
 
@@ -210,24 +210,24 @@ If you copy multiline text (multiple lines with line breaks in between) from an 
 
 In addition to standard pasting, Spreadsheet also provides custom pasting options in the toolbar. 
 
-![ center](/assets/images/dev-ref/essentials-feature-paste.png)
+![ center]({{site.devref_image_folder}}/essentials-feature-paste.png)
 
 You can select "Paste Special" to access all available pasting options in the dialog. 
 
-![ center](/assets/images/dev-ref/essentials-feature-pasteSpecial.png)
+![ center]({{site.devref_image_folder}}/essentials-feature-pasteSpecial.png)
 
 ## Custom Sort
 
 With the "Ascending" and "Descending" function you can sort data by only one
 column, with "Custom sort" you can sort data by multiple columns. 
 
-![center](/assets/images/dev-ref/essentials-feature-customSort.png)
+![center]({{site.devref_image_folder}}/essentials-feature-customSort.png)
 
 After selecting "Custom sort" on the toolbar, a dialog appears. You can
 add sorting criteria up to 3 columns. If your data includes
 column header, make sure the "My data has headers" option is checked.
 
-![ center](/assets/images/dev-ref/essentials-feature-customSortDialog.png)
+![ center]({{site.devref_image_folder}}/essentials-feature-customSortDialog.png)
 
 ## Auto Fill
 
@@ -238,11 +238,11 @@ dates will be increased (or decreased) as you drag through.
 To use this, select one or more cells and drag the fill
 handle across or down the cells that you want to fill.
 
-![ center](/assets/images/dev-ref/Essentials-feature-autoFill-select.png)
+![ center]({{site.devref_image_folder}}/Essentials-feature-autoFill-select.png)
 
 Fill cells by dragging right, left, up, or down. 
 
-![center](/assets/images/dev-ref/Essentials-feature-autoFill.png)
+![center]({{site.devref_image_folder}}/Essentials-feature-autoFill.png)
 
 The supported cell content are number, weekday (full/short), month
 (full/short), and timestamp.
@@ -251,7 +251,7 @@ The supported cell content are number, weekday (full/short), month
 
 The Format Cell optin is in the context menu. It provides 10 different categories with a total of 47 formats to apply to the cells. 
 
-![ center](/assets/images/dev-ref/essentials-feature-formatCell.png)
+![ center]({{site.devref_image_folder}}/essentials-feature-formatCell.png)
 
 ## Sheet Protection
 
@@ -262,7 +262,7 @@ protected sheet, you will see an alert message telling you that the sheet is bei
 When a sheet is under protection, users can only edit unlocked
 cells. You can specify which actions are allowed for unlocked cells.
 
-![ center](/assets/images/dev-ref/zss-essentials-feature-protection.png)
+![ center]({{site.devref_image_folder}}/zss-essentials-feature-protection.png)
 
 ## Filters
 
@@ -272,13 +272,13 @@ in a range of cells without moving or deleting them.
 When you click on the filter icon, there are 3 menu items: **Filter**,
 **Clear**, and **Reapply** relating to the filter. 
 
-![center](/assets/images/dev-ref/zss-essentials-filter-menu.png)
+![center]({{site.devref_image_folder}}/zss-essentials-filter-menu.png)
 
 Click the funnel-like "Filter" icon to enable/disable filters.
 When filters are enabled, a drop-down icon will show up in the first row of each column. If you click the drop-down
 icon, a list of values will appear and you can select from the list as the filtering criteria to apply to your data.
 
-![ center](/assets/images/dev-ref/zss-essentials-filter-enable.png)
+![ center]({{site.devref_image_folder}}/zss-essentials-filter-enable.png)
 
 After you select some values, click OK and Spreadsheet will filter those data with selected values. Only the rows
 with matching criteria will be displayed while others will be hidden.
@@ -296,33 +296,33 @@ update its values to take into account the newly added data.
 instantly list and select all matched values. Press "Enter" and Keikai will
 filter your data with those matched values. 
 
-![center](/assets/images/dev-ref/zss-essentials-filterBySearching.png)
+![center]({{site.devref_image_folder}}/zss-essentials-filterBySearching.png)
 
 Keikai supports **number filter**, **color filter**, **date filter**, and
 **text filter**. 
 
-![center](/assets/images/dev-ref/zss-essentials-colorFilter.png)
+![center]({{site.devref_image_folder}}/zss-essentials-colorFilter.png)
 
-![center](/assets/images/dev-ref/zss-essentials-dateFilter.png)
+![center]({{site.devref_image_folder}}/zss-essentials-dateFilter.png)
 
 ## Data Validation
 
 Spreadsheet can read Excel data validation settings including
 validation criteria of lists, numbers, decimals, dates, or time.
 
-![ center](/assets/images/dev-ref/zss-essentials-validation-dialog.png)
+![ center]({{site.devref_image_folder}}/zss-essentials-validation-dialog.png)
 
 If the validation criteria is a list, the cell will display a drop-down
 arrow. You can click the icon to select available values. 
 
-![center](/assets/images/dev-ref/zss-essentials-validation-list.png)
+![center]({{site.devref_image_folder}}/zss-essentials-validation-list.png)
 
 When you click on the cell with validation, the input message you set
 will be displayed automatically. 
 
 If your input violates validation criteria, an error alert will pop up.
 
-![ center](/assets/images/dev-ref/zss-essentials-validation-alert.png)
+![ center]({{site.devref_image_folder}}/zss-essentials-validation-alert.png)
 
 There are 3 types of alerts and each of them has a different icon in the
 dialog. For an error alert (red icon), you can retry and enter

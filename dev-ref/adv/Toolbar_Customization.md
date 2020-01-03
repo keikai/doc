@@ -179,7 +179,7 @@ public class CustomHandlerComposer extends SelectorComposer<Component> {
 After completing above step, run `customHandler.zul` and you can see
 those buttons we registered handlers for are now enabled.
 
-![center](/assets/images/dev-ref/Zss-essentials-customHandler.png)
+![center]({{site.devref_image_folder}}/Zss-essentials-customHandler.png)
 
 # Append or Override with Your Handler
 

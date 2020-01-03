@@ -121,14 +121,14 @@ After restarting server, ZK Charts will be shown when exporting PDF.
 Spreadsheet exports its book model to a PDF file according to the page
 print setup you specify in Excel.
 
-![center](/assets/images/dev-ref/ExcelPageSetup.png)
+![center]({{site.devref_image_folder}}/ExcelPageSetup.png)
 
 For example, you can add a header and footer, and it would look like:
 
-![center](/assets/images/dev-ref/PdfExporting-HeaderFooter.png)
+![center]({{site.devref_image_folder}}/PdfExporting-HeaderFooter.png)
 
 You can also scale a sheet to fit into one page with row and column
-heading: ![center](/assets/images/dev-ref/PdfExporting-FitOnePage.png)
+heading: ![center]({{site.devref_image_folder}}/PdfExporting-FitOnePage.png)
 
 # Supported Page Setup
 

@@ -7,7 +7,7 @@ title: 'Custom Context Menu'
 This section describes how to pop up a new customized context menu in a
 Spreadsheet like the image below:
 
-![center](/assets/images/dev-ref/Zss-essentials-customContextMenu.png)
+![center]({{site.devref_image_folder}}/Zss-essentials-customContextMenu.png)
 
 The steps are simple:
 

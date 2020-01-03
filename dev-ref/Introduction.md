@@ -29,10 +29,10 @@ plug-ins are required.
 
 **Overview** 
 
-![](/assets/images/dev-ref/Essentials-app-architecture.png)
+![]({{site.devref_image_folder}}/Essentials-app-architecture.png)
 
 **More Details** 
-![](/assets/images/dev-ref/Essentials-architecture.png)
+![]({{site.devref_image_folder}}/Essentials-architecture.png)
 
 Keikai spreadsheet component consists of three major parts -- the
 client-side UI , the server-side component, and the book data model with

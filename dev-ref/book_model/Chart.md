@@ -50,7 +50,7 @@ to [Export to PDF](Export_to_PDF)
 The screenshot below is a application that can add, move and delete a
 chart. For simplicity, this application only adds pie charts.
 
-![center](/assets/images/dev-ref/Zss-essentials-chart.png)
+![center]({{site.devref_image_folder}}/Zss-essentials-chart.png)
 
 When we click "Add", it will add a pie chart with the data from A1:B6
 and add a items in the Listbox on the top right corner. Select a chart
