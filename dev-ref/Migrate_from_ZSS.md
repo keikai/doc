@@ -22,7 +22,7 @@ It is very easy to migrate your existing ZSS project to Keikai, just need to han
 ## JAR Change
 replace all ZSS related JAR with Keikai related JAR.
 
-## API Pakcage Change
+## API Package Change
 Only the package names are changed, all method names are backward compatible. You just need to **replace the old import statements** with new ones. It's better to use your IDE keyboard shortcut to quickly replace import statments.
 
 ## License Path Change

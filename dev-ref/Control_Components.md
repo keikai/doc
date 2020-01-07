@@ -4,16 +4,14 @@ title: 'Control Component'
 
 # Spreadsheet ZUL Attributes
 
-Each component is represented by a unique tag name, e.g. Keikai Spreadsheet is a
+Each ZK component is represented by a unique tag name, e.g. Keikai Spreadsheet is a
 `<spreadsheet>` in a ZUL page. The easiest way to control a component is
-to set a component's properties via a tag's attribute. Each property has
-its own purpose, and you can change it by specifying values in a tag's
-attribute.
+to set a tag's attribute in a zul. Each property has its own purpose, and you can change it by specifying values in a tag's attribute.
 
 ## Excel File Path
 
 The simplest way to load and display an Excel file is setting
-Spreadsheet's `src` attribute to the file path which is a relative URI
+Spreadsheet's `src` attribute with the file path which is a relative URI
 with respect to the web context root.
 
 ``` xml
@@ -87,7 +85,7 @@ dialog like "Format Cell". Specify `false` to turn off this behavior.
 <spreadsheet keepCellSelection="false"  .../>
 ```
 
-If you wish to change the default value to `false`; you can do that by
+If you want to change the default value to `false` globally; you can do that by
 setting the library property *io.keikai.ui.keepCellSelection* to
 `false`. [Read more here](http://books.zkoss.org/wiki/ZK_Spreadsheet_Essentials/Working_with_Spreadsheet/Configuration#Keep_Cell_Selection)
 
@@ -238,10 +236,7 @@ Then we can apply this controller to a root component of a ZUL page.
     <window title="My First Keikai spreadsheet Application" 
     apply="io.keikai.essential.MyComposer"
         border="normal" height="100%" width="100%">
-        <spreadsheet id="ss"src="/WEB-INF/books/startzss.xlsx"
-                height="100%"width="100%"
-        maxVisibleRows="150" maxVisibleColumns="40"
-         showToolbar="true" showSheetbar="true" showFormulabar="true"/>
+        <spreadsheet id="ss"src="/WEB-INF/books/startzss.xlsx" .../>
     </window>
 {% endhighlight %}
 
