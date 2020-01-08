@@ -4,13 +4,12 @@ title: 'Cell Style and Format'
 
 # Overview
 
-There are 2 parts of information stored in cells, one is "data" and
-another is '"style"'. In this section, we are going to introduce the
+There are 2 parts of information stored in cells, one is **"data"** and
+another is **"style"**. In this section, we are going to introduce the
 "style" part which includes alignment, border, border color, font
 family, font size, and font style.
 
-Spreadsheet supported border style and font depend upon a browser's
-capability.
+Spreadsheet supported border style and font depending upon a browser's capability.
 
 | Style Feature | Limitation                                                                                           |
 | ------------- | ---------------------------------------------------------------------------------------------------- |
@@ -18,8 +17,8 @@ capability.
 | Border Style  | Because of browser limitation, only **solid**/**dashed**/ **dotted** border style are supported now. |
 
 To get "style" information stored in
-`io.keikai.api.model.CellStyle` object, you must get
-`io.keikai.api.Range` object first.
+[`io.keikai.api.model.CellStyle`](https://keikai.io/javadoc/latest/io/keikai/api/model/CellStyle.html) object, you must get
+[`io.keikai.api.Range`](https://keikai.io/javadoc/latest/io/keikai/api/Range.html) object first.
 Then, we can get a cell's alignment, border setting, and cell color via
 `CellStyle`. Every getter method of `CellStyle` has a clear name to
 indicate what information it returns. Please refer its javadoc for
@@ -72,7 +71,7 @@ String colorCode = style.getBackgroundColor().getHtmlColor();
 # Font
 
 Those information about font can be retrieve via
-`io.keikai.api.model.Font`, and we can
+[`io.keikai.api.model.Font`](https://keikai.io/javadoc/latest/io/keikai/api/model/Font.html), and we can
 get this object by `CellStyle`'s `getFont()`. Here are some examples:
 
 {% highlight java linenos %}
@@ -159,12 +158,12 @@ The following codes demonstrate how to change alignment:
 {% endhighlight %}
 
   - Line 4:
-    `io.keikai.api.Range.CellStyleHelper`
+    [`io.keikai.api.Range.CellStyleHelper`](https://keikai.io/javadoc/latest/io/keikai/api/Range.CellStyleHelper.html)
     is a utility class that can you clone style related object and
     returns an editable version such as
-    `io.keikai.api.model.EditableCellStyle`
+    [`io.keikai.api.model.EditableCellStyle`](https://keikai.io/javadoc/latest/io/keikai/api/model/EditableCellStyle.html)
     or
-    `io.keikai.api.model.EditableFont`.
+    [`io.keikai.api.model.EditableFont`](https://keikai.io/javadoc/latest/io/keikai/api/model/EditableFont.html).
   - Line 5: Change the style on newly-created cell style object.
   - Line 6: Set newly-created cell style object back to range to apply
     change.
