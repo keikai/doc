@@ -63,7 +63,7 @@ public class ProtectionComposer extends SelectorComposer<Component>{
     Protection" button.
   - Line 19: Get protection status of the selected sheet.
   - Line 20: Disable protection of the selected sheet.
-  - Line 22: Enable protection of the selected sheet, refer to `io.keikai.Range`.
+  - Line 22: Enable protection of the selected sheet, refer to [`io.keikai.Range`](https://keikai.io/javadoc/latest/io/keikai/api/Range.html#protectSheet-io.keikai.api.SheetProtection-).
   - Line 29: Update protection status text in the panel when selecting a
     sheet.
 
@@ -120,9 +120,9 @@ public class ProtectionComposer extends SelectorComposer<Component>{
   - Line 6: Switch cells' lock status.
   - Line 9, 11: A cell's lock status is of style information. So, to
     change a cell style is not as simple as calling a setter, please
-    refer to [ Cell Style and Format] (Cell_Style_and_Format) for more details.
-  - Line 10: Use `setLocked()` to lock or unlock a cell.
-  - Line 12: Calling `isLocked()` to get lock status.
+    refer to [ Cell Style and Format](Cell_Style_and_Format) for more details.
+  - Line 10: Use [`setLocked()`](https://keikai.io/javadoc/latest/io/keikai/api/model/impl/EditableCellStyleImpl.html#setLocked-boolean-) to lock or unlock a cell.
+  - Line 12: Calling [`isLocked()`](https://keikai.io/javadoc/latest/io/keikai/api/model/CellStyle.html#isLocked--) to get lock status.
   - Line 16: Update cell's lock status text in the panel when selecting
     cells.
 
