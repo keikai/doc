@@ -1,8 +1,8 @@
 main:
   - title: "Tutorial"
     url: /tutorial
-  # - title: "Developer Reference"
-  #   url: /dev-ref
+  - title: "Developer Reference"
+    url: /dev-ref
 
 tutorial:
   - title: "Tutorial"
