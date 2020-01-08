@@ -1,24 +1,24 @@
 ---
-title: 'Spreadsheet Book Model'
+title: 'Book Model'
 ---
 # Book Model Overview
 
 When Spreadsheet loads an Excel file, the file is converted to
 Spreadsheet's **book model** stored in memory. The root of
 the book model is a book
-(`io.keikai.api.model.Book`) and a
+([`io.keikai.api.model.Book`](https://keikai.io/javadoc/latest/io/keikai/api/model/Book.html)) and a
 book contains one or more sheets
-(`io.keikai.api.model.Sheet`) which
+([`io.keikai.api.model.Sheet`](https://keikai.io/javadoc/latest/io/keikai/api/model/Sheet.html)) which
 may contain many cells
-(`io.keikai.api.model.CellData`),
+([`io.keikai.api.model.CellData`](https://keikai.io/javadoc/latest/io/keikai/api/model/CellData.html)),
 styles
-(`io.keikai.api.model.CellStyle`,
-`io.keikai.api.model.Color`), fonts
-(`io.keikai.api.model.Font`),
+([`io.keikai.api.model.CellStyle`](https://keikai.io/javadoc/latest/io/keikai/api/model/CellStyle.html),
+[`io.keikai.api.model.Color`](https://keikai.io/javadoc/latest/io/keikai/api/model/Color.html)), fonts
+([`io.keikai.api.model.Font`](https://keikai.io/javadoc/latest/io/keikai/api/model/Font.html)),
 charts
-(`io.keikai.api.model.Chart`), and
+([`io.keikai.api.model.Chart`](https://keikai.io/javadoc/latest/io/keikai/api/model/Chart.html)), and
 pictures
-(`io.keikai.api.model.Picture`).
+([`io.keikai.api.model.Picture`](https://keikai.io/javadoc/latest/io/keikai/api/model/Picture.html)).
 
 You can directly access model objects like `Book` or `Sheet`. However,
 you should modify cell data (or rows and columns)via the
@@ -28,7 +28,7 @@ e.g. notify other referenced cells. A `Range` may represent a cell, a
 row, a column, or a selection of cells containing one or more contiguous
 blocks of cells, or a 3-D reference( Read more about 3-D reference in the [Reference Section](Spreadsheet_Data_Model#references)).  Because the underlying
 implementation is complicated, you only can obtain a `Range` object
-through a facade class named `io.keikai.api.Ranges`.
+through a facade class named [`io.keikai.api.Ranges`](https://keikai.io/javadoc/latest/io/keikai/api/Ranges.html).
 
 In this section, we will introduce some commonly-used API with examples.
 For complete information, you can browse Javadoc under
@@ -41,7 +41,7 @@ In most cases, we create a book model by loading an Excel file instead
 of creating it directly. Specifying an Excel file's path in Spreadsheet
 component's attribute is the simplest way, and Spreadsheet will import
 the file and construct a book model object. You can also use
-`io.keikai.api.Importer` to
+[`io.keikai.api.Importer`](https://keikai.io/javadoc/latest/io/keikai/api/Importer.html) to
 construct a Book object by your own and provide it to one or more
 Spreadsheet components by `setBook()`. After Spreadsheet loads a book
 model, we can get it by `Spreadsheet.getBook()`.
@@ -143,7 +143,7 @@ clone a sheet from another book by `cloneSheetFrom()`. Please refer to copySheet
 
 Here we demonstate a basic usage: allowing users to use a listbox outside of the spreadsheet to select and switch to the selected sheet.
 
-![center]({{site.devref_image_folder}}/Zss-essentials-book-sheet.png)
+![]({{site.devref_image_folder}}/Zss-essentials-book-sheet.png)
 
 **setSheet.zul**
 
@@ -197,7 +197,7 @@ public class BookSheetComposer extends SelectorComposer<Component>{
     onSelect event of the Listbox whose id is `sheetBox`. That means
     when a user selects a sheet in the Listbox, the method
     `selectSheet()` will be invoked.(For complete syntax, please refer
-    to [ZK Developer Reference](http://www.zkoss.org/wiki/ZK_Developer%27s_Reference/MVC/Controller/Wire_Event_Listeners)
+    to [ZK Developer's Reference](http://www.zkoss.org/wiki/ZK_Developer%27s_Reference/MVC/Controller/Wire_Event_Listeners)
   - Line 23,24: Change Spreadsheet's selected sheet when users select a
     sheet.
 
@@ -280,7 +280,7 @@ More methods will be introduced in later sections.
 
 ## Utility Class
 
-`Ranges` and `Range` provide major APIs to access cells. In order to deal with the referencing relationships among cells, we also provides utility classes, `io.keikai.api.CellOperationUtil` and `io.keikai.api.SheetOperationUtil`, to help you change cell data and styles. You can use them without knowing more details about the underlying implementation, and they will handle those details for you such as synchronization and checking. We will introduce these 2 utility classes more in later sections.
+`Ranges` and `Range` provide major APIs to access cells. In order to deal with the referencing relationships among cells, we also provides utility classes, [`io.keikai.api.CellOperationUtil`](https://keikai.io/javadoc/latest/io/keikai/api/CellOperationUtil.html) and [`io.keikai.api.SheetOperationUtil`](https://keikai.io/javadoc/latest/io/keikai/api/SheetOperationUtil.html), to help you change cell data and styles. You can use them without knowing more details about the underlying implementation, and they will handle those details for you such as synchronization and checking. We will introduce these 2 utility classes more in later sections.
 
 # References
 

@@ -217,7 +217,7 @@ to [ZK Developer's Reference/MVC](https://www.zkoss.org/wiki/ZK_Developer%27s_Re
 
 After we create a ZUL page, we can apply a Controller to handle events
 and control components of the page. The simplest way to create a
-Controller is to create a class that extends `org.zkoss.zk.ui.select.SelectorComposer`. For
+Controller is to create a class that extends [`org.zkoss.zk.ui.select.SelectorComposer`](https://www.zkoss.org/javadoc/latest/zk/org/zkoss/zk/ui/select/SelectorComposer.html). For
 details, please refer to [ZK Developer's Reference/MVC/Controller](https://www.zkoss.org/wiki/ZK_Developer%27s_Reference/MVC/Controller).
 
 **Controller example**

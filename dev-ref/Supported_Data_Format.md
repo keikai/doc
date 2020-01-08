@@ -1,5 +1,5 @@
 ---
-title: 'Supported Date Format'
+title: 'Supported Data Format'
 ---
 # Built-in Format
 
