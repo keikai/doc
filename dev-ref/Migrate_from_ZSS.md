@@ -24,6 +24,9 @@ replace all ZSS related JAR with Keikai related JAR. Reference [POM](https://git
 
 ## API Package Change
 Only the package names are changed, all method names are backward compatible. You just need to **replace the old import statements** with new ones. It's better to use your IDE keyboard shortcut to quickly replace import statments.
+- Old package name (`org.zkoss.zss.*`) 
+- New package name (`io.keikai.*`)
+- Method names are unchanged.
 
 ## License Path Change
 This is for paying customer only. Please refer to [Applying License Key](License_Install).
