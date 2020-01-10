@@ -20,13 +20,13 @@ If it succeeds, the repacked WAR with the same name will be put under the folder
 It is very easy to migrate your existing ZSS project to Keikai, just need to handle the following changes:
 
 ## JAR Change
-replace all ZSS related JAR with Keikai related JAR.
+replace all ZSS related JAR with Keikai related JAR. Reference [POM](https://github.com/keikai/dev-ref/blob/master/pom.xml)
 
 ## API Package Change
 Only the package names are changed, all method names are backward compatible. You just need to **replace the old import statements** with new ones. It's better to use your IDE keyboard shortcut to quickly replace import statments.
 
 ## License Path Change
-Please refer to [Applying License Key](License_Install).
+This is for paying customer only. Please refer to [Applying License Key](License_Install).
 
 ## Sheet Tab Context Menu is Hidden by Default
 Keikai adds a new attribute `showSheetTabContextMenu`. If you want to show the context menu on a sheet tab you need to specify as follows:
