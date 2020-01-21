@@ -4,89 +4,39 @@ title: 'Toolbar Customization'
 
 # Overview
 
-Three toolbar buttons in out-of-box Spreadsheet are disabled by default:
-"New Book", "Save Book", and "Export to PDF" for they are not
-implemented yet. That's because the implementation of these functions
+There are 2 toolbar buttons in out-of-box Spreadsheet are disabled by default for they are not
+implemented yet:
+* "Save Book"
+* "Export to PDF"
+
+That's because the implementation of these functions
 quite depends on your requirement so we leave them unimplemented. Here
 we will tell you how to hook your own logic for these buttons.
 
-Before implementing them, we should get the ideas behind toolbar
-buttons. When you click a toolbar button, Spreadsheet will invoke its
-corresponding "action handler" one by one (might be one or more) to
-perform the task. Hence, what you have to do is to write your custom
-action handlers and register them in Spreadsheet.
+Before implementing them, you should know the ideas behind toolbar buttons. When you click a toolbar button, Spreadsheet will invoke its corresponding "action handler" one by one (might be one or more) to
+perform the task. Hence, what you have to do is to write your custom **action handler** and register it.
 
-**Steps to implement logic for a toolbar button**
+## Steps to implement a Handler
 
-1.  Create a class to implement
-    <javadoc directory="keikai">io.keikai.ui.UserActionHandler</javadoc>.
-      -   
-        There are some methods you have to implement - `isEnabled()` and
-        `process()`. The `isEnabled()` which returns the enabled state
-        of the handler is invoked by `UserActionManager` when
-        Spreadsheet needs to refresh toolbar button's enabled state
-        (e.g. selecting a sheet). When users click a toolbar button,
-        only those enabled handler will be invoked. If one toolbar
-        button's all handlers are disabled, the toolbar button becomes
-        disabled. The `process()` is the method you should write your
-        own logic to handle the user action.
-2.  Register our custom handlers via
-    <javadoc directory="keikai">io.keikai.ui.UserActionManager</javadoc>.
-      -   
-        After creating a `UserActionHandler`, you must hook it before it
-        can be executed. We provide 2 ways to register a handler.
-        `UserActionManager.registerHandler()` will append the passed
-        handler while `UserActionManager.setHandler()` will remove other
-        existing handlers and add the passed one.
+### 1. Create a handler class to implement `io.keikai.ui.UserActionHandle`
+There are some methods you have to implement - `isEnabled()` and `process()`. 
+
+The `isEnabled()` which returns the enabled state of the handler is invoked by `UserActionManager` when
+Spreadsheet needs to refresh toolbar button's enabled state
+(e.g. selecting a sheet). When users click a toolbar button,
+only those enabled handler will be invoked. If one toolbar
+button's all handlers are disabled, the toolbar button becomes
+disabled. 
+        
+The `process()` is the method you should write your own logic to handle the user action.
+
+### 2.  Register our custom handlers via `io.keikai.ui.UserActionManager`
+After creating a `UserActionHandler`, you must hook it before it can be executed. We provide 2 ways to register a handler.
+
+* `UserActionManager.registerHandler()` will append the passed handler
+* `UserActionManager.setHandler()` will remove other existing handlers and add the passed one.
 
 # Create User Action Handlers
-
-## New Book
-
-"New Book" button will make Spreadsheet load a blank Excel file. We
-create `NewBookHandler` to implement this function, the source code are
-as follows:
-
-{% highlight java linenos %}
-public class NewBookHandler implements UserActionHandler {
-
-    @Override
-    public boolean isEnabled(Book book, Sheet sheet) {
-        return true;
-    }
-
-    @Override
-    public boolean process(UserActionContext context) {
-        Importer importer = Importers.getImporter();
-        
-        try {
-            Book loadedBook = importer.imports(new File(WebApps.getCurrent()
-                            .getRealPath("/WEB-INF/books/blank.xlsx")), "blank.xlsx");
-            context.getSpreadsheet().setBook(loadedBook);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return true;
-    }
-}
-{% endhighlight %}
-
-  - Line 1: A custom handler should implement `UserActionHandler`
-    interface.
-  - Line 4: Return enabled state of this handlers.
-  - Line 13: Import a blank Excel file with importer, please refer to [
-    Load A Book
-    Model](https://www.zkoss.org/wiki/ZK_Spreadsheet_Essentials/Working_with_Spreadsheet/Spreadsheet_Data_Model#Load_A_Book_Model).
-  - Line 15: Change Spreadsheet's book model with newly-loaded book. We
-    can get
-    `io.keikai.ui.Spreadsheet`,
-    `io.keikai.api.model.Book`,
-    `org.zkoss.zk.ui.event.Event`, selection
-    (`io.keikai.api.AreaRef`), and
-    action from
-    `io.keikai.ui.UserActionContext`.
-  - Line 19: In most cases, you should return `true` if you have handled
-    the action.
 
 ## Save Book
 
@@ -141,7 +91,7 @@ registration.
 The source code below demonstrates how to register custom user action
 handler in a controller:
 
-**Controller of customHandler.zul**
+**[Controller of customHandler.zul](https://github.com/keikai/dev-ref/blob/master/src/main/java/io/keikai/devref/advanced/customization/CustomHandlerComposer.java)**
 
 {% highlight java linenos %}
 public class CustomHandlerComposer extends SelectorComposer<Component> {
@@ -199,21 +149,18 @@ There are 2 ways to hook up your user action handlers:
         handler is left and invoked. It can be used to override existing
         toolbar button's function.
 
-<!-- 
-# Hide Toolbar Button
 
-To hide some toolbar buttons by JavaScript, please reference `customToolbar.zul` Keikai Essentials:
+# Remove a Toolbar Button
+
+To Remove a toolbar button, just call the API:
 
 
-{% highlight java linenos %}
-    <script defer="true"><![CDATA[
-var hiddenButtons = ['.zstbtn-newBook', '.zstbtn-saveBook', '.zstbtn-exportPDF', '.zstbtn-sortAndFilter'
-    , '.zschktbtn-protectSheet', '.zstbtn-insertPicture', '.zstbtn-insertChart'];
+```java
+spreadsheet.removeToolbarButton(AuxAction.EXPORT_PDF.getAction());
+```
 
-jq.each(hiddenButtons, function(index, selector){
-    jq(selector).hide();
-});
-    ]]></script>
-{% endhighlight %}
+# Add a Toolbar Button
+To add a toolbarbutton, you need to add a button via API and register the corresponding handler described in [Create User Action Handlers](#create-user-action-handlers). 
 
--->
+Check [the example](https://github.com/keikai/dev-ref/blob/master/src/main/java/io/keikai/devref/advanced/customization/CustomToolbarComposer.java).
+
