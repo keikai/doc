@@ -112,9 +112,9 @@ public class CustomHandlerComposer extends SelectorComposer<Component> {
         actionManager.registerHandler(
                 DefaultUserActionManagerCtrl.Category.AUXACTION.getName(),
                 AuxAction.NEW_BOOK.getAction(), new NewBookHandler());
-        actionManager.registerHandler(
-                DefaultUserActionManagerCtrl.Category.AUXACTION.getName(),
-                AuxAction.SAVE_BOOK.getAction(), new SaveBookHandler());
+        actionManager.setHandler(
+            DefaultUserActionManagerCtrl.Category.AUXACTION.getName(),
+            AuxAction.DATA_VALIDATION.getAction(), new MyValidationHandler());
     }
 }
 {% endhighlight %}
@@ -123,11 +123,10 @@ public class CustomHandlerComposer extends SelectorComposer<Component> {
   - Line 13: Use `UserActionManager` to register our user action
     handlers.
   - Line 14: The first parameter is **category name**. Toolbar button
-    belongs to <javadoc directory="keikai" method="AUXACTION" >
-    io.keikai.ui.impl.DefaultUserActionManagerCtrl.Category</javadoc>.
+    belongs to [DefaultUserActionManagerCtrl.Category.AUXACTION](https://keikai.io/javadoc/latest/io/keikai/ui/impl/DefaultUserActionManagerCtrl.Category.html#AUXACTION)
   - Line 15: The second parameter is **action name**. Each toolbar
     button corresponds to one action which is defined in
-    <javadoc directory="keikai">io.keikai.ui.AuxAction</javadoc>.
+    [AuxAction](https://keikai.io/javadoc/latest/io/keikai/ui/AuxAction.html).
 
 After completing above step, run `customHandler.zul` and you can see
 those buttons we registered handlers for are now enabled.
