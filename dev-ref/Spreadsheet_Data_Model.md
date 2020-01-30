@@ -35,7 +35,7 @@ For complete information, you can browse Javadoc under
 `io.keikai.api.*` and `io.keikai.api.model.*`. To understand
 example codes, we assume you already know what a composer is and how it works with components. If you are new to composer, please read [ZK Developer Reference](https://www.zkoss.org/wiki/ZK_Developer%27s_Reference/MVC/Controller/Composer)first.
 
-# Load A Book Model
+# Load a Book Model
 
 In most cases, we create a book model by loading an Excel file instead
 of creating it directly. Specifying an Excel file's path in Spreadsheet
@@ -114,9 +114,18 @@ public class ImporterComposer extends SelectorComposer<Component> {
 ```
 
 # Create a New Book
+There are 2 ways to create a new book:
+1. `Books.createBook()`
+2. load a blank file
 
-You need to load a blank book file to create a new book instead of
-instantiating a Book object. Please refer to BookUtil.java in Keikai Essentials.
+```java
+static public Book newBook(){
+    Book book = Books.createBook("blank.xlsx");
+    Ranges.range(book).createSheet("Sheet1");
+    return book;
+}
+```
+Please check [BookUtil](https://github.com/keikai/dev-ref/blob/master/src/main/java/io/keikai/devref/util/BookUtil.java) for more details.
 
 # Access Sheets
 
@@ -191,15 +200,15 @@ public class BookSheetComposer extends SelectorComposer<Component>{
 }
 {% endhighlight %}
 
-  - Line 14,15: Get each sheet's name from Spreadsheet's book model.
-  - Line 18: Set name list to the Listbox.
-  - Line 21: The annotation `@Listen` makes `selectSheet()` listen
-    onSelect event of the Listbox whose id is `sheetBox`. That means
-    when a user selects a sheet in the Listbox, the method
-    `selectSheet()` will be invoked.(For complete syntax, please refer
-    to [ZK Developer's Reference](http://www.zkoss.org/wiki/ZK_Developer%27s_Reference/MVC/Controller/Wire_Event_Listeners)
-  - Line 23,24: Change Spreadsheet's selected sheet when users select a
-    sheet.
+- Line 14,15: Get each sheet's name from Spreadsheet's book model.
+- Line 18: Set name list to the Listbox.
+- Line 21: The annotation `@Listen` makes `selectSheet()` listen
+onSelect event of the Listbox whose id is `sheetBox`. That means
+when a user selects a sheet in the Listbox, the method
+`selectSheet()` will be invoked.(For complete syntax, please refer
+to [ZK Developer's Reference](http://www.zkoss.org/wiki/ZK_Developer%27s_Reference/MVC/Controller/Wire_Event_Listeners)
+- Line 23,24: Change Spreadsheet's selected sheet when users select a
+sheet.
 
 # Access Cells
 
@@ -280,7 +289,16 @@ More methods will be introduced in later sections.
 
 ## Utility Class
 
-`Ranges` and `Range` provide major APIs to access cells. In order to deal with the referencing relationships among cells, we also provides utility classes, [`io.keikai.api.CellOperationUtil`](https://keikai.io/javadoc/latest/io/keikai/api/CellOperationUtil.html) and [`io.keikai.api.SheetOperationUtil`](https://keikai.io/javadoc/latest/io/keikai/api/SheetOperationUtil.html), to help you change cell data and styles. You can use them without knowing more details about the underlying implementation, and they will handle those details for you such as synchronization and checking. We will introduce these 2 utility classes more in later sections.
+In addition to `Range`, we also provides utility classes below to help you change cell data and styles:
+
+* [`io.keikai.api.CellOperationUtil`](https://keikai.io/javadoc/latest/io/keikai/api/CellOperationUtil.html) 
+* [`io.keikai.api.SheetOperationUtil`](https://keikai.io/javadoc/latest/io/keikai/api/SheetOperationUtil.html)
+
+You can use them without knowing more details about the underlying implementation, and they will handle those details for you such as synchronization and checking. We will introduce these 2 utility classes more in later sections.
+
+# Access a Book without Spreadsheet
+The `Book` object plays as a data model for `Spreadsheet`. It's independent to `Spreadsheet` which means you can manipulate it without assigning it to `Spreadsheet`. Therefore, you can import a file, access it via `Range` API. This usage is very suitable for a data processing scenario. Check the [`ImportServlet`](https://github.com/keikai/dev-ref/blob/master/src/main/java/io/keikai/devref/ImportServlet.java) in the example project.
+
 
 # References
 
