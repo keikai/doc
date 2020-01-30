@@ -16,9 +16,12 @@ we will tell you how to hook your own logic for these buttons.
 Before implementing them, you should know the ideas behind toolbar buttons. When you click a toolbar button, Spreadsheet will invoke its corresponding "action handler" one by one (might be one or more) to
 perform the task. Hence, what you have to do is to write your custom **action handler** and register it.
 
+toolbar button ![]({{site.devref_image_folder}}/toolbarbutton.png) --------- invoke ---------> `UserActionHandler`
+
+
 ## Steps to implement a Handler
 
-### 1. Create a handler class to implement `io.keikai.ui.UserActionHandle`
+### 1. Create a handler class to implement [`io.keikai.ui.UserActionHandler`](https://keikai.io/javadoc/latest/io/keikai/ui/UserActionHandler.html)
 There are some methods you have to implement - `isEnabled()` and `process()`. 
 
 The `isEnabled()` which returns the enabled state of the handler is invoked by `UserActionManager` when
@@ -129,7 +132,6 @@ public class CustomHandlerComposer extends SelectorComposer<Component> {
 After completing above step, run `customHandler.zul` and you can see
 those buttons we registered handlers for are now enabled.
 
-![center]({{site.devref_image_folder}}/Zss-essentials-customHandler.png)
 
 # Append or Override with Your Handler
 
