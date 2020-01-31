@@ -132,49 +132,50 @@ heading: ![center]({{site.devref_image_folder}}/PdfExporting-FitOnePage.png)
 
 # Supported Page Setup
 
-The page setup properties of Excel which are supported by Spreadsheet
-are listed below:
+The page setup properties of Excel which are supported by Spreadsheet are listed below:
 
-**Page**
+## Page
 
-  - Orientation
-      - Portrait, Landscape
-  - Scaling
-      - Adjust to % normal size
-      - Fit to pages wide by tall
-  - Page size
-  - First page number
+- Orientation
+    - Portrait, Landscape
+- Scaling
+    - Adjust to % normal size
+    - Fit to pages wide by tall
+- Page size
+- First page number
 
-**Margins**
+## Margins
 
-  - Top
-  - Header
-  - Right
-  - Footer
-  - Bottom
-  - Left
+- Top
+- Header
+- Right
+- Footer
+- Bottom
+- Left
 
-*' Center on Page*'
+## Center on Page
 
-  - Horizontally
-  - Vertically
+- Horizontally
+- Vertically
 
-**Header/Footer**
+## Breaks
 
-  - Custom Header...
-  - Custom Footer...
-  - Different odd and even pages
-  - Different first page
+## Header/Footer
 
-**Sheet**
+- Custom Header...
+- Custom Footer...
+- Different odd and even pages
+- Different first page
 
-  - Print area
-  - Print titles
-      - Rows to repeat at top
-      - Columns to repeat at left
-  - Print
-      - Gridlines
-      - Row and column headings
-  - Page order
-      - Down, then over
-      - Over, then down
+## Sheet
+
+- Print area
+- Print titles
+    - Rows to repeat at top
+    - Columns to repeat at left
+- Print
+    - Gridlines
+    - Row and column headings
+- Page order
+    - Down, then over
+    - Over, then down
