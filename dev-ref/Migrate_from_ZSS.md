@@ -7,12 +7,15 @@ This section is designed for users coming from ZK Spreadsheet (ZSS).
 This approach can quicky turn your existing ZSS application to Keikai applicaiton without modifying your source. Note that this is for evaluating purpose only as it does not cover all Keikai features. To officially migrate your existing ZSS application to Keikai, please read the next section: How to migrate from ZSS.
 
 The steps for quick try are:
-1. download [keikai-zss-legacy-all-[VERSION].zip]() to a folder 
+1. download [keikai-zss-legacy-all-[VERSION].zip](https://mavensync.zkoss.org/eval/io/keikai/binary/5.0.0/keikai-zss-legacy-all-5.0.0.zip) 
 2. extract the zip.
 It produces 2 sub folders: `bin` and `lib`
-3. put your zss application war to the same root folder
-4. go to the folder and run `/bin/repack.sh WAR_FILE_NAME`
-If it succeeds, the repacked WAR with the same name will be put under the folder. Your original WAR will be renamed to `WAR_FILE_NAME.backup`. Just run the repacked WAR file -- it is a Keikai App already!
+3. put your zss application war under the same folder a
+4. go to the folder and run 
+
+`/bin/repack.sh WAR_FILE_NAME.war`
+
+If it succeeds, the repacked, new WAR with the same name will be put under the same folder. Your original WAR will be renamed to `WAR_FILE_NAME.backup`. Just run the repacked WAR file -- it is a Keikai App already!
 
 (**Note**: This approach renames Keikai jar file in bytecode level at run-time by [jarjar](https://github.com/pantsbuild/jarjar) which is not recommended in the production environment.)
 
