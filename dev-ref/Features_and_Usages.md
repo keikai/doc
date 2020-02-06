@@ -175,32 +175,36 @@ Keikai can read a named range from an xlsx file, so you can specify a named rang
 In the following sections we will introduce the usages of some noticeable features.
 
 ## Copy & Paste
+We recommend you to copy and paste with **Ctrl+c and Ctrl+v** which works in all cases rather than clicking "paste" button on the toolbar and "paste" item on the context menu.
 
-  - If you copy and paste within a Keikai component, it has full
-    information at both server and client side, so such copy-paste can
-    retain all cell information including styles, formula, format, and
-    data validation.
-  - If you copy a whole column/row, Keikai also copies its width and height. But if you are only
-    copying one or multiple cells, Keikai won't copy the width and height.
-  - If you wish to copy a whole sheet to another Keikai component,
-    please call `cloneSheetFrom`. It can clone a sheet from another `Book` object and is more performant.
-
-### Copy/Paste Between Keikai and Other Applications like Excel
-
-  - Such copy-paste will only work with **Ctrl+C** and **Ctrl+V**. The toolbar or context menu "Paste" button only works for copying cells within the same Keikai component and will not work across different applications.
-  - Such copy-paste is an action between 2 applications (Excel and
-    browser) through a system clipboard. Currently, Keikai only extract
-    text content from a system clipboard, so this copy-paste only pastes
-    "pure text" without any styles.
-  - For example, a cell in Excel has a formula `=sum(1,2)` which is `3`. If you copy
-    this cell and paste it into Keikai, the cell in Keikai gets the calculated `3` as its value.
-    Just like you type `3` in a Keikai cell.
-  - If you enter edit mode in Excel and select the text `=sum(1,2)` and copy it, and then paste it to a cell in Keikai, Keikai will get the formula, just like you typed a formula into the Keikai cell.
+###  Inside One Spreadsheet
+- Such copy-paste works with **Ctrl+c and Ctrl+v**, **the toolbar**, and **context menu**.
+- Keikai has full information at both server and client side, so such copy-paste can
+  retain all cell information including styles, formula, format, and
+  data validation.
+- If you copy a whole column/row, Keikai also copies its width and height. But if you are only
+  copying one or multiple cells, Keikai won't copy the width and height.
+- When copy highlight is still active, it copies the highlighted cells, not from the system clipboard. You need to cancel the copy highlight first, then you can paste from a system clipboard.
 
 ### Between 2 Keikai components
 
-Copy-paste cell data between 2 Keikai components also rely on the system
+* Copy-paste cell data between 2 Keikai components also rely on the system
 clipboard, so it's similar to copy/paste between Keikai and Excel -- only pure text is copied.
+* If you want to copy a whole sheet to another Keikai component,
+    please call `Range.cloneSheetFrom`. It can clone a sheet from another `Book` object and is more performant.
+
+### Between Keikai and Other Applications like Excel
+
+- Such copy-paste will only work with **Ctrl+C** and **Ctrl+V**. The toolbar or context menu "Paste" button only works for copying cells within the same Keikai component and will not work across different applications.
+- Such copy-paste is an action between 2 applications (Excel and
+  browser) through a system clipboard. Currently, Keikai only extract
+  text content from a system clipboard, so this copy-paste only pastes
+  "pure text" without any styles.
+- For example, a cell in Excel has a formula `=sum(1,2)` which is `3`. If you copy
+  this cell and paste it into Keikai, the cell in Keikai gets the calculated `3` as its value.
+  Just like you type `3` in a Keikai cell.
+- If you enter edit mode in Excel and select the text `=sum(1,2)` and copy it, and then paste it to a cell in Keikai, Keikai will get the formula, just like you typed a formula into the Keikai cell.
+
 
 ### limitation
 
@@ -215,6 +219,7 @@ In addition to standard pasting, Spreadsheet also provides custom pasting option
 You can select "Paste Special" to access all available pasting options in the dialog. 
 
 ![ center]({{site.devref_image_folder}}/essentials-feature-pasteSpecial.png)
+
 
 ## Custom Sort
 
