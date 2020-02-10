@@ -236,10 +236,10 @@ public class ForLeaveServlet extends HttpServlet{
   - Line 45: Invoke `JsonUpdateBridge` to handle AJAX request
   - Line 48: Convert result to JSON string and response to client.
 
-## Handling Spreadsheet Data Model
+## Manipulate Book Model
 
 Inside `JsonUpdateBridge.process()`, you can use those APIs we mentioned
-in [Handling Data Model](Handling_Data_Model)
+in [Manipulating Book Model](book_model/Manipulating_Book_Model)
 to implement your business logic. In our example, we use `io.keikai.api.Range` to set cell
 edit text and get a value from the cells.
 
