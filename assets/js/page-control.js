@@ -1,8 +1,11 @@
 var isSidebarReady = function () {
 	if (document.body && document.querySelector('.sidebar')) {
-        //scroll side bar to the current visited page
-        var currentPageOffsetTop = document.querySelector("a[href=\"" + window.location.pathname + "\"]").offsetTop;
-        document.querySelector('.sidebar').scrollTop = currentPageOffsetTop;
+		//scroll side bar to the current visited page
+		var elCurrentAnchor = document.querySelector("a[href=\"" + window.location.pathname + "\"]");
+        var currentPageOffsetTop = elCurrentAnchor.offsetTop;
+		document.querySelector('.sidebar').scrollTop = currentPageOffsetTop;
+		//mark the current page CSS class
+		elCurrentAnchor.classList.add('current');
 		return;
 	}
 
