@@ -45,8 +45,8 @@ dev-ref:
       url: /dev-ref/Spreadsheet_App
   - title: Control Component
     url: /dev-ref/Control_Components
-  - title: Book Model
-    url: /dev-ref/Spreadsheet_Data_Model
+  - title: Import an Excel File
+    url: /dev-ref/Import
   - title: Handling Events
     url: /dev-ref/handling_events/Handling_Events
     children:

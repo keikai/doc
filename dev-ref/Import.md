@@ -1,41 +1,7 @@
 ---
-title: 'Book Model'
+title: ''
 ---
-# Book Model Overview
-
-When Spreadsheet loads an Excel file, the file is converted to
-Spreadsheet's **book model** stored in memory. The root of
-the book model is a book
-([`io.keikai.api.model.Book`](https://keikai.io/javadoc/latest/io/keikai/api/model/Book.html)) and a
-book contains one or more sheets
-([`io.keikai.api.model.Sheet`](https://keikai.io/javadoc/latest/io/keikai/api/model/Sheet.html)) which
-may contain many cells
-([`io.keikai.api.model.CellData`](https://keikai.io/javadoc/latest/io/keikai/api/model/CellData.html)),
-styles
-([`io.keikai.api.model.CellStyle`](https://keikai.io/javadoc/latest/io/keikai/api/model/CellStyle.html),
-[`io.keikai.api.model.Color`](https://keikai.io/javadoc/latest/io/keikai/api/model/Color.html)), fonts
-([`io.keikai.api.model.Font`](https://keikai.io/javadoc/latest/io/keikai/api/model/Font.html)),
-charts
-([`io.keikai.api.model.Chart`](https://keikai.io/javadoc/latest/io/keikai/api/model/Chart.html)), and
-pictures
-([`io.keikai.api.model.Picture`](https://keikai.io/javadoc/latest/io/keikai/api/model/Picture.html)).
-
-You can directly access model objects like `Book` or `Sheet`. However,
-you should modify cell data (or rows and columns)via the
-`io.keikai.api.Range` interface,
-then Spreadsheet will handle subsequent synchronization stuff for you,
-e.g. notify other referenced cells. A `Range` may represent a cell, a
-row, a column, or a selection of cells containing one or more contiguous
-blocks of cells, or a 3-D reference( Read more about 3-D reference in the [Reference Section](Spreadsheet_Data_Model#references)).  Because the underlying
-implementation is complicated, you only can obtain a `Range` object
-through a facade class named [`io.keikai.api.Ranges`](https://keikai.io/javadoc/latest/io/keikai/api/Ranges.html).
-
-In this section, we will introduce some commonly-used API with examples.
-For complete information, you can browse Javadoc under
-`io.keikai.api.*` and `io.keikai.api.model.*`. To understand
-example codes, we assume you already know what a composer is and how it works with components. If you are new to composer, please read [ZK Developer Reference](https://www.zkoss.org/wiki/ZK_Developer%27s_Reference/MVC/Controller/Composer)first.
-
-# Load a Book Model
+# Import an Excel File
 
 In most cases, we create a book model by loading an Excel file instead
 of creating it directly. Specifying an Excel file's path in Spreadsheet
@@ -112,6 +78,41 @@ public class ImporterComposer extends SelectorComposer<Component> {
     }
 }
 ```
+
+# Book Model Overview
+
+When Spreadsheet imports an Excel file, the file is converted to
+Spreadsheet's **book model** stored in a server's memory. The root of
+the book model is a book
+([`io.keikai.api.model.Book`](https://keikai.io/javadoc/latest/io/keikai/api/model/Book.html)) and a
+book contains one or more sheets
+([`io.keikai.api.model.Sheet`](https://keikai.io/javadoc/latest/io/keikai/api/model/Sheet.html)) which
+may contain many cells
+([`io.keikai.api.model.CellData`](https://keikai.io/javadoc/latest/io/keikai/api/model/CellData.html)),
+styles
+([`io.keikai.api.model.CellStyle`](https://keikai.io/javadoc/latest/io/keikai/api/model/CellStyle.html),
+[`io.keikai.api.model.Color`](https://keikai.io/javadoc/latest/io/keikai/api/model/Color.html)), fonts
+([`io.keikai.api.model.Font`](https://keikai.io/javadoc/latest/io/keikai/api/model/Font.html)),
+charts
+([`io.keikai.api.model.Chart`](https://keikai.io/javadoc/latest/io/keikai/api/model/Chart.html)), and
+pictures
+([`io.keikai.api.model.Picture`](https://keikai.io/javadoc/latest/io/keikai/api/model/Picture.html)).
+
+You can directly access model objects like `Book` or `Sheet`. However,
+you should modify cell data (or rows and columns)via the
+`io.keikai.api.Range` interface,
+then Spreadsheet will handle subsequent synchronization stuff for you,
+e.g. notify other referenced cells. A `Range` may represent a cell, a
+row, a column, or a selection of cells containing one or more contiguous
+blocks of cells, or a 3-D reference( Read more about 3-D reference in the [Reference Section](#references)).  Because the underlying
+implementation is complicated, you only can obtain a `Range` object
+through a facade class named [`io.keikai.api.Ranges`](https://keikai.io/javadoc/latest/io/keikai/api/Ranges.html).
+
+In this section, we will introduce some commonly-used API with examples.
+For complete information, you can browse Javadoc under
+`io.keikai.api.*` and `io.keikai.api.model.*`. To understand
+example codes, we assume you already know what a composer is and how it works with components. If you are new to composer, please read [ZK Developer Reference](https://www.zkoss.org/wiki/ZK_Developer%27s_Reference/MVC/Controller/Composer)first.
+
 
 # Create a New Book
 There are 2 ways to create a new book:
