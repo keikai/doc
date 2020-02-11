@@ -41,7 +41,7 @@ dev-ref:
     children:
     - title: Quick Start in ZK
       url: /dev-ref/Get_Spreadsheet_Up_and_Running_Quickly
-    - title: Spreadsheet App
+    - title: Keikai Demo App
       url: /dev-ref/Spreadsheet_App
   - title: Control Component
     url: /dev-ref/Control_Components
