@@ -1,5 +1,5 @@
 ---
-title: 'Get Spreadsheet Up and Running in JSP'
+title: 'Quick Start in JSP'
 ---
 
 # Quick Start - Keikai JSP Demo Project
