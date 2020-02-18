@@ -11,7 +11,7 @@ The steps for quick try are:
 1. download [keikai-zss-legacy-all-[VERSION].zip](https://mavensync.zkoss.org/eval/io/keikai/binary/5.0.0/keikai-zss-legacy-all-5.0.0.zip) 
 2. extract the zip.
 It produces 2 sub folders: `bin` and `lib`
-3. put your zss application war under the same folder a
+3. put your zss application war under the same folder
 4. go to the folder and run 
 
 `/bin/repack.sh WAR_FILE_NAME.war`
