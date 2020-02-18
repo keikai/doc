@@ -2,6 +2,7 @@
 title: Migrate from ZK Spreadsheet
 ---
 This section is designed for users coming from ZK Spreadsheet (ZSS).
+**Please make sure to back-up your current project before upgrading.**
 
 # Quick Try (Evaluation Only)
 This approach can quicky turn your existing ZSS application to Keikai applicaiton without modifying your source. Note that this is for evaluating purpose only as it does not cover all Keikai features. To officially migrate your existing ZSS application to Keikai, please read the next section: How to migrate from ZSS.
