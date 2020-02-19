@@ -9,10 +9,11 @@ Keikai is based on [ZK UI framework](http://www.zkoss.org), and it provides [a p
 
 **editor.zul**
 ```xml
+//load demo_sample.xlsx into Keikai
 <spreadsheet width="100%" height="100%"
             showToolbar="true" showFormulabar="true" 
             showSheetbar="true" showContextMenu="true"
-            src="/WEB-INF/books/demo_sample.xlsx"/>      //load demo_sample.xlsx into Keikai
+            src="/WEB-INF/books/demo_sample.xlsx"/>
 ```
 
 That's it! Your first Keikai spreadsheet is now ready!
