@@ -1,4 +1,4 @@
-remote_theme: "keikai/minimal-mistakes@dev"
+remote_theme: "keikai/minimal-mistakes@keikai"
 plugins:
   - jekyll-remote-theme
   - jekyll-include-cache  #required by minimal-mistakes
