@@ -57,7 +57,7 @@ license file path to Keikai via a system property.
 For example in a Tomcat, you can add a `setenv.sh` (or `setenv.bat`) that contains
 
 ```
-export CATALINA_OPTS="$CATALINA_OPTS -Dio.keikai.Runtime.directory=/absolutePathToYourLicenseFilePath/"
+export CATALINA_OPTS="$CATALINA_OPTS -Dio.keikaiex.rt.Runtime.directory=/absolutePathToYourLicenseFilePath/"
 ```
 
 Tomcat `catalina.sh` will invoke this script if exists.
