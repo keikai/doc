@@ -1,23 +1,20 @@
 ---
-title: 'Keikai Demo App'
+title: 'Keikai App'
 ---
 
 # Overview
 
-Keikai Spreadsheet Demo App is a web-based Excel like application based on the Keikai component. We created it to demonstrate Spreadsheet's
-numerous powerful features. You can also use this application as a basis
-of your application and add more functions like authentication on top of it.
+Keikai App is a web-based Excel like application based on the Keikai component. We created it to demonstrate Keikai's numerous powerful features. You can also use this application as a basis
+of your application and add more functions like authentication.
 
 Please follow these steps to run this application:
 
 1.  Download Keikai spreadsheet Demo App from [Keikai Download Page](https://keikai.io/download). Depending on the features you require, choose OSE or EE evaluation version accordingly.
 2.  Unzip the zip file and deploy the Spreadsheet App's WAR file to your
     application server according to its instruction.
-      -   
-        For Tomcat just put the war file in `[CATALINA_HOME]\webapps`.
+      - For Tomcat just put the war file in `[CATALINA_HOME]\webapps`.
 3.  Start your application server and connect it with your browser.
-      -   
-        For Tomcat, just visit <http://localhost:8080/keikai-app> then you can start to experience the power of Spreadsheet App.
+      - For Tomcat, just visit http://localhost:8080/keikai-app then you can start to experience the power of Spreadsheet App.
 
 After you visit Spreadsheet App, you should see its user interface like
 the screenshot below: 
