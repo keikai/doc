@@ -1,5 +1,6 @@
 ---
-title: 'Use Spreadsheet in JSP'
+title: 'Keikai in JSP'
+toc: false
 ---
 Keikai spreadsheet can also be embedded into a JSP page by a custom tag
 to empower JSP with AJAX. Spreadsheet JSP tag works pretty much the same way as
