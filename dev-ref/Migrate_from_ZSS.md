@@ -5,10 +5,10 @@ This section is designed for users coming from ZK Spreadsheet (ZSS).
 **Please make sure to back-up your current project before upgrading.**
 
 # Drop-in Upgrade (Evaluation Only)
-This approach can quicky turn your existing ZSS application to Keikai applicaiton without modifying your source. Note that this is for evaluating purpose only as it does not cover all Keikai features. To officially migrate your existing ZSS application to Keikai, please read the next section: How to migrate from ZSS.
+This approach can quicky turn your existing ZSS application to Keikai (EE) applicaiton without modifying your source. Note that this is for evaluating purpose only as it does not cover all Keikai features. To officially migrate your existing ZSS application to Keikai, please read the next section: How to migrate from ZSS.
 
 The steps for quick try are:
-1. download [keikai-zss-legacy-all-[VERSION].zip](https://mavensync.zkoss.org/eval/io/keikai/binary/5.0.0/keikai-zss-legacy-all-5.0.0.zip) 
+1. download the lastest [keikai-zss-legacy-all-[VERSION].zip](https://mavensync.zkoss.org/eval/io/keikai/binary/) 
 2. extract the zip.
 It produces 2 sub folders: `bin` and `lib`
 3. put your zss application war under the same folder
@@ -23,14 +23,19 @@ If it succeeds, the repacked, new WAR with the same name will be put under the s
 # How to Migrate from ZSS 
 It is very easy to migrate your existing ZSS project to Keikai, just need to handle the following changes:
 
-## JAR Change
-replace all ZSS related JAR with Keikai related JAR. Reference [POM](https://github.com/keikai/dev-ref/blob/master/pom.xml)
+## JAR Change (zss\*.jar --> keikai\*.jar)
+Replace all ZSS related JAR (OSE or EE) with Keikai related JAR (OSE or EE). 
 
-## API Package Change
-Only the package names are changed, all method names are backward compatible. You just need to **replace the old import statements** with new ones. It's better to use your IDE keyboard shortcut to quickly replace import statments.
-- Old package name (`org.zkoss.zss.*`) 
-- New package name (`io.keikai.*`)
-- Method names are unchanged.
+### For Maven Users
+Please reference the [pom.xml](https://github.com/keikai/dev-ref/blob/master/pom.xml).
+
+### The Users Who Download the jar zip
+Remove all zss\*.jar and copy `keikai-bin-[VERSION].zip/dist/*.jar` into your Keikai project. Please notice that don't mix different versions of a jar (e.g. `zk-8.0.2.jar` and `zk-9.0.0.jar`), or it might cause errors.
+
+
+## API Packages Change (`org.zkoss.zss` --> `io.keikai`)
+Only the package names are changed, and all method names are unchanged (backward compatible). For example, `org.zkoss.zss.api.Range.setValue()` turns to be `io.keikai.api.Range.setValue()`. You just need to **replace the old import package name (`org.zkoss.zss`)** with new ones (`io.keikai`). It's better to use your IDE keyboard shortcut to quickly replace import statments.
+
 
 ## License Path Change
 This is for paying customer only. Please refer to [Applying License Key](License_Install).
@@ -53,6 +58,7 @@ The prefix now should be `keikai` like:
 
 ## Custom CSS and JavaScript
 If you have previously applied any custom CSS or JavaScript to your existing ZSS application, it is possible that it will no longer work in Keikai since we have optimized Keikai's UI and client widgets for better performance and usability. You may need to redo the corresponding customization on Keikai.
+
 
 # Backward Compatibility
 The following configurations also change in Keikai, but you can keep your original one since Keikai still reads the old configuration.
