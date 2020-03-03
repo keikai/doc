@@ -27,10 +27,14 @@ It is very easy to migrate your existing ZSS project to Keikai, just need to han
 Replace all ZSS related JAR (OSE or EE) with Keikai related JAR (OSE or EE). 
 
 ### For Maven Users
-Please reference the [pom.xml](https://github.com/keikai/dev-ref/blob/master/pom.xml).
+Please reference [OSE pom.xml](https://github.com/keikai/keikai-tutorial/blob/master/pom.xml) or [EE pom.xml](https://github.com/keikai/dev-ref/blob/master/pom.xml).
 
 ### The Users Who Download the jar zip
-Remove all zss\*.jar and copy `keikai-bin-[VERSION].zip/dist/*.jar` into your Keikai project. Please notice that don't mix different versions of a jar (e.g. `zk-8.0.2.jar` and `zk-9.0.0.jar`), or it might cause errors.
+1. Download Keikai OSE (`keikai-bin-[VERSION].zip`) or EE (`keikaiee-bin-[VERSION].zip`) binary zip. 
+2. Remove all zss\*.jar
+3. copy `/dist/*.jar` in the zip into your Keikai project
+
+Please notice that don't mix different versions of a jar (e.g. `zk-8.0.2.jar` and `zk-9.0.0.jar`), or it might cause errors.
 
 
 ## API Packages Change (`org.zkoss.zss` --> `io.keikai`)
