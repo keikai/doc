@@ -26,15 +26,15 @@ It is very easy to migrate your existing ZSS project to Keikai, just need to han
 ## JAR Change (zss\*.jar --> keikai\*.jar)
 Replace all ZSS related JAR (OSE or EE) with Keikai related JAR (OSE or EE). 
 
-### For Maven Users
-Please reference [OSE pom.xml](https://github.com/keikai/keikai-tutorial/blob/master/pom.xml) or [EE pom.xml](https://github.com/keikai/dev-ref/blob/master/pom.xml).
+### Maven Users
+Please reference Keikai [OSE pom.xml](https://github.com/keikai/keikai-tutorial/blob/master/pom.xml) or [EE pom.xml](https://github.com/keikai/dev-ref/blob/master/pom.xml).
 
-### The Users Who Download the jar zip
-1. [Download](https://keikai.io/download) Keikai OSE (`keikai-bin-[VERSION].zip`) or EE (`keikaiee-bin-[VERSION].zip`) binary zip. 
+### Non-Maven Users (manually include Jar)
+1. [Download](https://keikai.io/download) Keikai OSE (`keikai-bin-[VERSION].zip`) or Keikai EE (`keikaiee-bin-[VERSION].zip`) binary zip. 
 2. Remove all zss\*.jar
 3. copy `/dist/*.jar` in the zip into your Keikai project
 
-Please notice that don't mix different versions of a jar in the same war (e.g. `zk-8.0.2.jar` and `zk-9.0.0.jar`), or it might cause errors.
+Please don't mix different versions of jar in the same war (e.g. you should not have both `zk-8.0.2.jar` and `zk-9.0.0.jar`), this will cause errors.
 
 
 ## API Packages Change (`org.zkoss.zss` --> `io.keikai`)
@@ -42,7 +42,7 @@ Only the package names are changed, and all method names are unchanged. For exam
 
 
 ## License Path Change
-This is for paying customer only (OSE doesn't require a license). Please refer to [Applying License Key](License_Install).
+This is for paying customers only. Please refer to [Applying License Key](License_Install).
 
 ## Sheet Tab Context Menu is Hidden by Default
 Keikai adds a new attribute `showSheetTabContextMenu`. If you want to show the context menu on a sheet tab you need to specify as follows:
