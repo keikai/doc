@@ -30,19 +30,19 @@ Replace all ZSS related JAR (OSE or EE) with Keikai related JAR (OSE or EE).
 Please reference [OSE pom.xml](https://github.com/keikai/keikai-tutorial/blob/master/pom.xml) or [EE pom.xml](https://github.com/keikai/dev-ref/blob/master/pom.xml).
 
 ### The Users Who Download the jar zip
-1. Download Keikai OSE (`keikai-bin-[VERSION].zip`) or EE (`keikaiee-bin-[VERSION].zip`) binary zip. 
+1. [Download](https://keikai.io/download) Keikai OSE (`keikai-bin-[VERSION].zip`) or EE (`keikaiee-bin-[VERSION].zip`) binary zip. 
 2. Remove all zss\*.jar
 3. copy `/dist/*.jar` in the zip into your Keikai project
 
-Please notice that don't mix different versions of a jar (e.g. `zk-8.0.2.jar` and `zk-9.0.0.jar`), or it might cause errors.
+Please notice that don't mix different versions of a jar in the same war (e.g. `zk-8.0.2.jar` and `zk-9.0.0.jar`), or it might cause errors.
 
 
 ## API Packages Change (`org.zkoss.zss` --> `io.keikai`)
-Only the package names are changed, and all method names are unchanged (backward compatible). For example, `org.zkoss.zss.api.Range.setValue()` turns to be `io.keikai.api.Range.setValue()`. You just need to **replace the old import package name (`org.zkoss.zss`)** with new ones (`io.keikai`). It's better to use your IDE keyboard shortcut to quickly replace import statments.
+Only the package names are changed, and all method names are unchanged. For example, `org.zkoss.zss.api.Range.setValue()` turns to be `io.keikai.api.Range.setValue()`. You just need to **replace the old import package name (`org.zkoss.zss`)** with new ones (`io.keikai`). It's better to use your IDE keyboard shortcut to quickly replace import statments.
 
 
 ## License Path Change
-This is for paying customer only. Please refer to [Applying License Key](License_Install).
+This is for paying customer only (OSE doesn't require a license). Please refer to [Applying License Key](License_Install).
 
 ## Sheet Tab Context Menu is Hidden by Default
 Keikai adds a new attribute `showSheetTabContextMenu`. If you want to show the context menu on a sheet tab you need to specify as follows:
