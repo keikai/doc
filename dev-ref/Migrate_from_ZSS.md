@@ -71,12 +71,12 @@ The following configurations also change in Keikai, but you can keep your origin
 * [Library Property Name](Configuration)
 
 
-# Migrate from ZssApp
-If you are using [ZssApp](https://www.zkoss.org/wiki/ZK_Spreadsheet_Essentials/Using_Spreadsheet_in_ZK/Spreadsheet_App), and you want to migrate it to KeikaiApp. Here are the steps:
+# Migrate ZSS App to Keikai App
+If you have been using [ZSS App](https://www.zkoss.org/wiki/ZK_Spreadsheet_Essentials/Using_Spreadsheet_in_ZK/Spreadsheet_App), and you wish to migrate it to Keikai App, here are the steps:
 
 1. [Download keikai-app](https://keikai.io/download) <br/>
-Since the API package names change, you can't run the original ZssApp war by just replace JARs.
+Since the API package names are changed, you can't just run the original ZSS App war with Keikai JARs. You will have to download Keikai App war file instead. Choose either the OSE edition or the EE edition based on the edition you are currently with.
 2. Move Excel files from zssapp to keikai-app <br/>
-The default place to store Excel files is at `/WEB-INF/books/`. Or you might specify another path in `zk.xml` with the property `zssapp.repository.root`.
+The default folder to store Excel files is `/WEB-INF/books/`. If you have previously specified another path in `zk.xml` with the property `zssapp.repository.root`, then the files will be in the folder you specified. Copy these files from the folder to the corresponding folder in Keikai app.
 3. Migrate `zk.xml` from zssapp to keikai-app <br/>
-Copy `/WEB-INF/zk.xml` from the previous zssapp to keikai-app's `/WEB-INF/zk.xml` because Keikai app still reads old property keys for backward compatibility.
+Copy `/WEB-INF/zk.xml` from the previous zssapp and overwrite keikai-app's `/WEB-INF/zk.xml`. No additional change is required because Keikai app is made ready for backward compatibile and can read old(ZSS) property keys in zk.xml.
