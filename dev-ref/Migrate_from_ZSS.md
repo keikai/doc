@@ -64,6 +64,10 @@ The prefix now should be `keikai` like:
 If you have previously applied any custom CSS or JavaScript to your existing ZSS application, it is possible that it will no longer work in Keikai since we have optimized Keikai's UI and client widgets for better performance and usability. You may need to redo the corresponding customization on Keikai.
 
 
+# Deprecated Methods are Removed
+Those methods marked as deprecated in ZSS 3.9 are removed in Keikai. Usually, you will find an alternative method in the same class or you can check [ZSS Javadoc](https://www.zkoss.org/javadoc/latest/zss/org/zkoss/zss/ui/Spreadsheet.html). For example, use `setMaxVisibleRows()` instead of `setMaxrows()`.
+
+
 # Backward Compatibility
 The following configurations also change in Keikai, but you can keep your original one since Keikai still reads the old configuration.
 
