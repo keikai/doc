@@ -236,7 +236,7 @@ Then we can apply this controller to a root component of a ZUL page.
     <window title="My First Keikai spreadsheet Application" 
     apply="io.keikai.essential.MyComposer"
         border="normal" height="100%" width="100%">
-        <spreadsheet id="ss"src="/WEB-INF/books/startzss.xlsx" .../>
+        <spreadsheet id="ss" src="/WEB-INF/books/startzss.xlsx" .../>
     </window>
 {% endhighlight %}
 
@@ -317,7 +317,7 @@ public class MyComposer extends SelectorComposer<Component> {
     
     @Override
     public void doAfterCompose(Component comp) throws Exception {
-        super.doAfterCompose(comp);  //wire variables and event listeners
+        super.doAfterCompose(comp);  //wire components and event listeners
         //access components after calling super.doAfterCompose()
         if (isConditionOne()){
             ss.setShowToolbar(true);
@@ -339,4 +339,4 @@ to the events. When a user interacts with a Spreadsheet, it will send
 various events according to his actions. Please refer to [Handling
 Events](Handling_Events) on how you can listen events in a controller. To implement business logic,
 you definitely will need to access Spreadsheet data model. Refer to
-sections under [Handling Data Model](Handling_Data_Model) to know how to use it.
+sections under [Manipulating Book Model](Manipulating_Book_Model) to know how to use it.
