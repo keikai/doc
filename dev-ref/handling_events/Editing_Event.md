@@ -9,7 +9,7 @@ There are three editing events that Keikai spreadsheet supports:
 
 This event is fired only once at the time when a user presses the
 first key to start editing. When the corresponding event listener is
-invoked, a `io.keikai.ui.event.StartEditingEvent` object is passed as an argument. This event allows you to cancel the
+invoked, a [`io.keikai.ui.event.StartEditingEvent`](https://keikai.io/javadoc/latest/io/keikai/ui/event/StartEditingEvent.html) object is passed as an argument. This event allows you to cancel the
 edit action or change edit value.
 
 ## onEditboxEditing
@@ -22,10 +22,26 @@ listener is invoked, a `io.keikai.ui.event.EditboxEditingEvent` object is passed
 
 This event is fired when a user has finished editing a cell. It is
 identified by the user hitting the enter key or clicking outside of the
-editing cell. When the corresponding event listener is invoked, a `io.keikai.ui.event.StopEditingEvent` object is passed as an argument. This event allows you to cancel the edit action or change edit value.
+editing cell. When the corresponding event listener is invoked, a [`io.keikai.ui.event.StopEditingEvent`](https://keikai.io/javadoc/latest/io/keikai/ui/event/StopEditingEvent.html) object is passed as an argument. This event allows you to cancel the edit action or change edit value.
 
 Pressing "delete" key can also change the cell content, but you have to
 listen to [KeyEvent](Key_Event) for that action.
+
+
+## onClipboardPaste
+This event is fired when a user paste cells by pressing `ctrl+v` or paste toolbar button. Keikai will invoke the event listener with [`io.keikai.ui.event.ClipboardPasteEvent`](https://keikai.io/javadoc/latest/io/keikai/ui/event/ClipboardPasteEvent.html) as an argument.
+
+```java
+	@Listen(Events.ON_CLIPBOARD_PASTE + " = #ss")
+	public void onClipboardPaste(ClipboardPasteEvent event) {
+		if(isShowEventInfo(event.getName())){
+			StringBuilder info = new StringBuilder();
+			info.append("pasted from " + ss.getHighlight());
+			info.append(" to " + event.getArea());
+			addInfo(info.toString());
+		}
+	}
+```
 
 # Event Monitor Example
 
