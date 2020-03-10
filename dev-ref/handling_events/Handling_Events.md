@@ -16,6 +16,7 @@ transformation once the editing is done. Similarly, you can also
 listen to mouse events such as onCellClick or onCellRightClick to
 update other ZK components or popup a menu.
 
+# Listen to Events
 In the following sections, we will demonstrate examples of listening events. These examples use `org.zkoss.zk.ui.select.SelectorComposer` which provides a quite simple way to listen to a event: just apply
 `@Listen` on a method and specify the event names and target
 components. (For complete explanation, please refer to [ZK Developer Reference](https://www.zkoss.org/wiki/ZK_Developer%27s_Reference/MVC/Controller/Wire_Event_Listeners)).
@@ -44,7 +45,8 @@ public class EventsComposer extends SelectorComposer<Component>{
     event it listens to. You can get event-related data like row or column
     for further processing.
 
-All Keikai events you can listen to are listed in `io.keikai.ui.event.Events`
+## Event List
+All Keikai events you can listen to are listed in [`io.keikai.ui.event.Events`](https://keikai.io/javadoc/latest/io/keikai/ui/event/Events.html).
 
 # Event Monitor Example
 In this section, we introduce an "Event Monitor" example to show how to listen to an event and find out what data you can get from an event. The image below is a screenshot of “Event Monitor” application, when we interact with spreadsheet on the left-hand side, the panel on the right-hand side will shows messages about related events:
