@@ -126,6 +126,8 @@ dev-ref:
       url: /dev-ref/adv/Disable_Functions
     - title: Find among Cells
       url: /dev-ref/adv/Find_among_Cells
+    - title: Customize Dialogs
+      url: /dev-ref/adv/Customize_Dialogs
     - title: Performance Guide
       url: /dev-ref/adv/Performance_Guide
   - title: Use Case
