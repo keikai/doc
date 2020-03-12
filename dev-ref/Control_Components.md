@@ -10,7 +10,7 @@ It's writtern in an XML-format file, so you can't change it at the run-time.
 2. calling API in a Controller - dynamic<br/>
 You can write a Java controller to call keikai API, so you can change keikai in a browser at the run-time.
 
-# Spreadsheet ZUL Attributes
+# ZUL Attributes
 
 Each ZK component is represented by a unique tag name, e.g. Keikai Spreadsheet is a
 `<spreadsheet>` in a ZUL page. The easiest way to control a component is
