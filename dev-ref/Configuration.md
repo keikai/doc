@@ -2,9 +2,10 @@
 title: 'Configuration'
 ---
 
-# Overview
 The library properties below allow you to configure spreadsheet's behaviors. There are other properties for underlying ZK framework, please refer to [ZK Configuration Reference](https://www.zkoss.org/wiki/ZK%20Configuration%20Reference/zk.xml/The%20Library%20Properties).
 
+<!--
+deprecated for using highchart instead of jasper report
 ## Chart's Font
 
 For default font might not display your language properly, Spreadsheet
@@ -67,8 +68,8 @@ Value's format:
   - \[STYLE\] : **plain**, **bold**, **italic**
   - If you specify a incorrect format in the property value, the
     property will be ignored.
-
-## Color Picker
+-->
+# Color Picker
 
 Users can set a library property, `io.keikai.useColorPickerEx`, in
 `zk.xml` to specify which color picker used in the whole application.
@@ -92,29 +93,22 @@ ColorPicker of OSE (fewer color choices):<br/> ![center]({{site.devref_image_fol
   - The configuration above will make Spreadsheet use Color Picker of
     CE.
 
-**Example in zk.xml**
 
-{% highlight java linenos %}
-<library-property>
-    <name>io.keikai.theme.preferred</name>
-    <value>classic</value>
-</library-property>
-{% endhighlight %}
+# Formula Cache
 
-## Importing Formula Cache
-
+## Importing
 Default value: **false**
 
 Set the property to `true` and Keikai will import formula cache of an Excel
 file and it can reduce the file loading time because Keikai doesn't need to
 re-evaluate formulas at loading.
 
-{% highlight java linenos %}
+```xml
 <library-property>
     <name>io.keikai.import.cache</name>
-    <value>true</value> <!-- turn the import cache on; default is false if not specified -->
+    <value>true</value>
 </library-property>
-{% endhighlight %}
+```
 
 Few points need to be noticed:
 
@@ -125,23 +119,28 @@ Few points need to be noticed:
     used in a formula, a cache is always `#NAME!` error. Users must
     enforce re-evaluation by calling `Range.refresh(true, true, true)`.
 
-## Keep Cell Selection
+## Exporting
+Default value: **false**
+
+Set the property to `true` and Keikai will export the formula cache into an Excel file.
+```xml
+<library-property>
+    <name>io.keikai.export.cache</name>
+    <value>true</value> 
+</library-property>
+```
+
+# Keep Cell Selection
 
 Default value: **true**
 
-Set the property to `false` and Keikai will set default value of
-*keepCellSelection* attribute to false. In older versions, when Keikai
-Spreadsheet component loses its focus, it will hide the cell selection
-mark automatically. However, sometimes an end user would need to know
-which range is selected when he/she is operating on another control
-component (e.g. a dialog window). We have set the default value of
-`keepCellSelection` to true to avoid the confusion. However, if you
-would like Keikai to behave as before, you can set this
-property to `false`.
+If it's `true`, when a dialog pops popup (Keikai loses its focus), Keikai still display cell selection box. Because sometimes an end user would like to know which range is selected when he/she is operating on a popup dialog.
 
-{% highlight java linenos %}
+If it's `false`, then Keikai will hide cell selection.
+
+```xml
 <library-property>
     <name>io.keikai.ui.keepCellSelection</name>
-    <value>false</value> <!-- turn the keep-cell-selection off; default is true if not specified -->
+    <value>false</value>
 </library-property>
-{% endhighlight %}
+```
