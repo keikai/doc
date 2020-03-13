@@ -1,4 +1,3 @@
-\_\_TOC\_\_
 
 # Overview
 
