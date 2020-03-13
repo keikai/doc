@@ -32,6 +32,7 @@ plug-ins are required.
 ![]({{site.devref_image_folder}}/Essentials-app-architecture.png)
 
 **More Details** 
+
 ![]({{site.devref_image_folder}}/Essentials-architecture.png)
 
 Keikai spreadsheet component consists of three major parts -- the
@@ -44,14 +45,19 @@ responsible for formula parsing and calculations.
 
 # Use in JSP
 
-If you have an existing JSP project that you wish to include spreadsheet features, you can use Keikai in JSP with custom tag library and interact with it by writing Javascript. Please refer to [ Using Spreadsheet in JSP](Using_Spreadsheet_in_JSP "wikilink")
+If you have an existing JSP project that you wish to include spreadsheet features, you can use Keikai in JSP with custom tag library and interact with it by writing Javascript. Please refer to [ Using Spreadsheet in JSP]({{devref}}/Keikai_in_JSP "wikilink")
 for details. 
 
 
 # Supported Browsers
 
 For best user experience, we recommend using one of the following
-browsers: the latest version of Chrome, FF, Safari, or IE11 and higher versions.
+browsers: 
+* Chrome
+* Firefox
+* Safari
+* Edge
+* IE11 and higher
 
 # Next Step
 
