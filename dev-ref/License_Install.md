@@ -39,9 +39,9 @@ file in the default path. Then you can specify the absolute path of the
 license with the following library property in `zk.xml` and copy your
 Keikai license file there.
 
-{% highlight java linenos %}
+{% highlight xml linenos %}
 <library-property>
-    <name>io.keikai.Runtime.directory</name>
+    <name>io.keikaiex.rt.Runtime.directory</name>
     <value>c:/systemAbsolutePath/my-licenses/</value>
 </library-property>
 {% endhighlight %}
