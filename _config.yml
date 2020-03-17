@@ -50,5 +50,6 @@ comments:
 #repository: "username/repo-name"
 #logo: "/assets/images/88x88.png"
 # predefined properties
+# base path of developer reference
 devref: "/dev-ref"
 devref_image_folder: "/assets/images/dev-ref"
