@@ -19,10 +19,10 @@ We take the tutorial project to introduce 2 most common use cases:
 * [Work with Database](https://doc.keikai.io/tutorial/database).
 
 # Setup for Maven
-If you wish to create your own Maven project instead of using the tutorial project. Depending on the Keikai edition (EE or OSE) you want to run, there are 2 different settings:
+If you wish to create your own Maven project instead of using the tutorial project, follow this section. Depending on the Keikai edition (EE or OSE) you wish to run, there are 2 different settings:
 
 
-## Enterprise Edition
+## Enterprise Edition (EE-Eval and EE)
 Add the repositories below:
 ```xml
 <repository>
@@ -33,7 +33,7 @@ Add the repositories below:
 <repository>
     <id>Keikai EE</id>
     <name>Keikai EE Repository</name>
-    <url>https://maven.zkoss.org/repo/keikai/ee/</url>
+    <url>https://maven.zkoss.org/repo/keikai/ee/</url> // paid customers only, credentials required
 </repository>
 ```
 
@@ -45,14 +45,14 @@ Include the artifact below:
     <version>${keikai.version}</version>
 </dependency>
 ```
-Please browse the repository to see the latest available verion. 
+Please browse the repository to see the latest available version and specify it. 
 
-For evaluation version, the version string appends with `-Eval` e.g. `5.1.1-Eval`.
+For evaluation version, the version string is appended with `-Eval` e.g. `5.1.1-Eval`.
 
-For official version, the version string contains version number only e.g. `5.1.1`.
+For official (paid) EE version, the version string contains version number only e.g. `5.1.1`.
 
 
-## Open Source Edition (ose)
+## Open Source Edition (OSE)
 Add the repository below:
 ```xml
 <repository>
