@@ -30,12 +30,12 @@ dev-ref:
     - title: "Supported Data Format"
       url: /dev-ref/Supported_Data_Format 
   - title: Keikai in JSP
-    url: /dev-ref/Keikai_in_JSP
+    url: /dev-ref/jsp/Keikai_in_JSP
     children:
     - title: Quick Start in JSP
-      url: /dev-ref/Get_Spreadsheet_Running_Quickly_in_JSP
+      url: /dev-ref/jsp/Get_Spreadsheet_Running_Quickly_in_JSP
     - title: Using Spreadsheet JSP Tag
-      url: /dev-ref/Using_Spreadsheet_JSP_Tag
+      url: /dev-ref/jsp/Using_Spreadsheet_JSP_Tag
   - title: Using Spreadsheet in ZK
     url: /dev-ref/Using_Spreadsheet_in_ZK
     children:
