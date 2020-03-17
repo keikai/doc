@@ -1,13 +1,10 @@
-\_\_TOC\_\_
+
 
 Just like other ZK components, you can control Spreadsheet via its APIs
 programmatically and register event listeners to act on specific events
 in order to perform customized business logic. Besides that, its model
-classes (<javadoc directory="keikai">io.keikai.api.model.Book</javadoc>
-and <javadoc directory="keikai">io.keikai.api.model.Sheet</javadoc>)
-and utility classes
-(<javadoc directory="keikai">io.keikai.api.Ranges</javadoc> and
-<javadoc directory="keikai">io.keikai.api.Range</javadoc>) can be used
+classes (`io.keikai.api.model.Book` and `io.keikai.api.model.Sheet`)
+and utility classes (`io.keikai.api.Ranges` and `io.keikai.api.Range`) can be used
 to change Spreadsheet's book model and the UI will be updated
 automatically. With above API, you can customize Spreadsheet furthermore
 upon your requirement. Besides, you can create your own customized
