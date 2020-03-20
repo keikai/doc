@@ -2,28 +2,21 @@
 # Overview
 
 In this section, we will demonstrate how to make other JSF components
-interact with Spreadsheet in a JSF page using the AJAX tag. We assume
-that you know some basics about
-<http://www.oracle.com/technetwork/java/javaee/documentation/index-137726.html>
-including life cycle, tag usage, event handling, AJAX tag, and managed
+interact with Keikai in a JSF page using the AJAX tag. We assume
+that you know some basics about [JSF](http://www.oracle.com/technetwork/java/javaee/documentation/index-137726.html) including life cycle, tag usage, event handling, AJAX tag, and managed
 bean.
 
-The example application is a simple page to request for leave. A user
-fills the required field in cells and click "OK" button to submit his
-request for leave. Or he can clicks "Reset" button to reset what he
-inputs to default value. The screenshot below shows a request of a user
-"John":
+The example application is a simple page to request for leave. A user fills the required field in cells and click "OK" button to submit his request for leave. Or he can clicks "Reset" button to reset what he
+inputs to default value. The screenshot below shows a request of a user "John":
 
-![ center]({{site.devref_image_folder}}/essentials-jsp-app.png " center")
+![ center]({{site.devref_image_folder}}/essentials-jsp-app.png)
 
 # Create a JSF Page
 
 Spreadsheet can be embedded in a JSF page in the same way as JSF
 standard components. First specify Keikai spreadsheet component namespace
-URI <http://www.zkoss.org/jsf/zss> <http://www.zkoss.org/jsf/zss></tt>
-declaration along with other JSF namespace declarations and you can use
-the tag like <zssjsf:spreadsheet/>. If we want to interact with
-Spreadsheet in JSF AJAX tag, we should also put a <zssjsf:update/>
+URI `http://www.zkoss.org/jsf/zss` declaration along with other JSF namespace declarations and you can use the tag like `<zssjsf:spreadsheet/>`. If we want to interact with
+Spreadsheet in JSF AJAX tag, we should also put a `<zssjsf:update/>`
 component which is invisible in the browser in on the same page to
 process ZK AU response. Let's see the JSF page of our example
 application.
@@ -333,5 +326,4 @@ public class ApplicationForLeave {
 
 # Source Code of Example
 
-Source code of above example application can be accessed in
-<https://github.com/zkoss/zssjsfdemo>.
+Source code of above example application can be accessed in [the example project](https://github.com/keikai/dev-ref/tree/master/src/main/webapp/jsf)
