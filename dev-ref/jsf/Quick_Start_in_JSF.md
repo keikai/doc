@@ -1,5 +1,5 @@
 If you want to run Keikai spreadsheet JSF demo in your local site, just
-[check out the example project]({{site.devref}}/Download_Example_Source_Code) and follow its readme to run it in your environment.
+[check out the example project]({{site.devref}}/Download_Example_Source_Code) and follow its readme to run it in your environment. Then check those pages under http://localhost:8080/dev-ref/jsf
 
 
 # Prerequisites
@@ -20,11 +20,12 @@ Notice that the dependency below is required:
     <version>${keikai.version}</version>
 </dependency> 
 ```
-* You can visit Maven repository with a browser to know available Keikai version.
+* You can visit Keikai Maven repository with a browser to know available Keikai version.
 * You might also need to add JSF related dependencies according to your application server.
 
 ##  Setup web.xml (optional)
-1. Please refer to [Sample of web.xml](ZK_Installation_Guide/ZK_Background/Sample_of_web.xml).
+1. Please refer to [Sample of web.xml](ZK_Installation_Guide/ZK_Background/Sample_of_web.xml).<br/>
+If your application use servlet 3.0, then you can skip this step.
 2. Add servlet mapping for JSF:
 
 According to [javadoc](https://docs.oracle.com/javaee/7/api/javax/faces/webapp/FacesServlet.html):

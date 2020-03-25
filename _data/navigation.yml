@@ -43,6 +43,13 @@ dev-ref:
       url: /dev-ref/Get_Spreadsheet_Up_and_Running_Quickly
     - title: Keikai App
       url: /dev-ref/Spreadsheet_App
+  - title: Keikai in JSF
+    url: /dev-ref/jsf/Keikai_in_JSF
+    children:
+    - title: Quick Start in JSF
+      url: /dev-ref/jsf/Quick_Start_in_JSF
+    - title: Use Keikai JSF Tag
+      url: /dev-ref/jsf/Using_Spreadsheet_JSF_Component
   - title: Control Component
     url: /dev-ref/Control_Components
   - title: Import an Excel File

@@ -1,5 +1,5 @@
 ---
-title: 'Use Spreadsheet JSP Tag'
+title: 'Use Keikai JSP Tag'
 ---
 
 # Overview
@@ -26,7 +26,7 @@ library. You have to declare a tag library with `<%@taglib %>` first and
 write Spreadsheet JSP tag with a specified prefix.
 
 **[app4l.jsp](https://github.com/keikai/dev-ref/blob/master/src/main/webapp/jsp/app4l.jsp)**
-{% highlight java linenos %}
+{% highlight html linenos %}
 <%@page language="java" contentType="text/html; charset=UTF-8" 
     pageEncoding="UTF-8"%>
 <%@taglib prefix="zssjsp" uri="http://www.zkoss.org/jsp/zss"%> http://www.zkoss.org/jsp/zss"%>
