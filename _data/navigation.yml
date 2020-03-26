@@ -40,7 +40,7 @@ dev-ref:
     url: /dev-ref/Using_Spreadsheet_in_ZK
     children:
     - title: Quick Start in ZK
-      url: /dev-ref/Get_Spreadsheet_Up_and_Running_Quickly
+      url: /dev-ref/quick_start_in_zk
     - title: Keikai App
       url: /dev-ref/Spreadsheet_App
   - title: Keikai in JSF
