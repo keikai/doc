@@ -23,17 +23,30 @@ If you wish to create your own Maven project instead of using the tutorial proje
 
 
 ## Enterprise Edition (EE-Eval and EE)
+Evaluation release has the same feature as enterprise edition, but it has a start-up time limit.
 Add the repositories below:
+
+### Evaluation
 ```xml
 <repository>
     <id>Keikai EVAL</id>
     <name>Keikai Evaluation Repository</name>
     <url>https://mavensync.zkoss.org/eval</url>
 </repository>
+```
+
+### Official
+```xml
 <repository>
+    <!-- paid customers only, credentials required -->
     <id>Keikai EE</id>
     <name>Keikai EE Repository</name>
-    <url>https://maven.zkoss.org/repo/keikai/ee/</url> // paid customers only, credentials required
+    <url>https://maven.zkoss.org/repo/keikai/ee/</url>
+</repository>
+<repository>
+    <!-- paid customers only, credentials required -->
+    <id>ZK EE</id>
+    <url>https://maven.zkoss.org/repo/zk/ee</url>
 </repository>
 ```
 
@@ -53,6 +66,8 @@ For official (paid) EE version, the version string contains version number only 
 
 
 ## Open Source Edition (OSE)
+This edition provides fewer features than enterprise edition.
+
 Add the repository below:
 ```xml
 <repository>
