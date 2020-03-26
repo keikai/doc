@@ -345,6 +345,6 @@ In most scenarios, the controller is usually used to listen to
 interested events of Spreadsheet and implement business logic to react
 to the events. When a user interacts with a Spreadsheet, it will send
 various events according to his actions. Please refer to [Handling
-Events](Handling_Events) on how you can listen events in a controller. To implement business logic,
+Events]({{site.devref}}/handling_events/Handling_Events) on how you can listen events in a controller. To implement business logic,
 you definitely will need to access Spreadsheet data model. Refer to
-sections under [Manipulating Book Model](Manipulating_Book_Model) to know how to use it.
+sections under [Manipulating Book Model]({{site.devref}}/book_model/Manipulating_Book_Model) to know how to use it.
