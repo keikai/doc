@@ -37,5 +37,5 @@ This application relies on those API we mentioned in previous chapters
 to control the access for each role. Let's recap them here:
 
 ## [Hide User Interface](Control_Components)
-## [Disable Functions](Disable_Functions)
-## [Protect a Sheet](Protection)
+## [Disable Functions](/dev-ref/adv/Disable_Functions)
+## [Protect a Sheet](/dev-ref/book_model/Protection)
