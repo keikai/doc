@@ -25,7 +25,7 @@ You might notice that we added a menu on top of the Spreadsheet component and en
 # Features
 
 Here we focus on features we created specially for the Spreadsheet Demo App. For component's features, please refer
-to [Features and Usage](Features_and_Usage).
+to [Features and Usage](Features_and_Usages).
 
 ## File Menu
 
