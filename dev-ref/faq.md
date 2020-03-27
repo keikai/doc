@@ -11,7 +11,7 @@
       - Hide the toolbar and the context menu to prevent editing. Please
         refer to [Control Component](Control_Components).
       - Disable available functions for different users. Please refer to
-        [Disable Functions](Disable_Functions).
+        [Disable Functions](/adv/Disable_Functions).
       - Protect sheets and set available actions. Refer to `io.keikai.api.Range`.
 
 You can see an example at [Use_Case/User_Permission](User_Permission).
@@ -22,9 +22,9 @@ To save the content of Keikai, you can export it as an Excel file. It is also th
 "Save" function in zssapp. After exporting, you can save the file into a
 BLOB type column of a database.
 
-* How to export: [Export to Excel](Export_to_Excel)
+* How to export: [Export to Excel](/book_model/Export_to_Excel)
 
-* Integrate custom saving process to Keikai toolbar's Save button: [Toolbar Customization](Toolbar_Customization)
+* Integrate custom saving process to Keikai toolbar's Save button: [Toolbar Customization](/adv/Toolbar_Customization)
 
 Alternatively you can save data to the database referencing the [Tutorial](https://doc.keikai.io/tutorial/database).
 
@@ -129,7 +129,7 @@ Please refer to the menu in Keikai Demo: Excel-like.
 
   - Create a custom context menu.
 
-Please refer to [this document](Custom_Context_Menu).
+Please refer to [this document](/adv/Custom_Context_Menu).
 
   - Insert special symbols in cells to simulate a checkbox, button.
 
