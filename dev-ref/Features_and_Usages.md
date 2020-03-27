@@ -106,7 +106,7 @@ allows you to highlight cells with the given conditions. In the case below, the 
   - Modify conditional formatting in Keikai UI is not supported at the moment.
 
 ## Named Range
-Keikai can read a named range from an xlsx file, so you can specify a named range in a formula like `=SUM(source)`. To create a named range, please reference javadoc [Range::createName](https://keikai.io/javadoc/).
+Keikai can read a named range from an xlsx file, so you can specify a named range in a formula like `=SUM(source)`. To create a named range, please reference javadoc [Range::createName](https://keikai.io/javadoc/latest/).
 
 
 # Supported Hotkeys
