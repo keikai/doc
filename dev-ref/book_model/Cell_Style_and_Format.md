@@ -135,9 +135,11 @@ horizontal alignment.
 ## Using `Range` API
 
 Althought the utility class
-(`io.keikai.api.CellOperationUtil`)provides convenience, 
+(`io.keikai.api.CellOperationUtil`) provides convenience, 
 but it doesn't provide complete API to change all
 properties for a style. Sometimes you still need to use `Range` API.
+
+Because one `CellStyle` might associate with multiple cells, you can't directly change a value of a `CellStyle`. You need to clone the current `CellStyle` and change the values in newly-cloned `CellStyle` object.
 
 Steps to change the style of a range:
 
@@ -171,8 +173,9 @@ The following codes demonstrate how to change alignment:
 # Example
 
 The example application can display a cell's alignment and border status
-and let you change the alignment of one or multiple cells. ![
-center]({{site.devref_image_folder}}/Zss-essentials-cellStyle-alignment.png )
+and let you change the alignment of one or multiple cells. 
+
+![]({{site.devref_image_folder}}/Zss-essentials-cellStyle-alignment.png )
 
 {% highlight java linenos %}
 public class CellStyleComposer extends SelectorComposer<Component> {
