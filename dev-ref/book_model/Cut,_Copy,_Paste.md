@@ -9,25 +9,14 @@ them and call `paste(Range)` with another `Range` object for destination
 like:
 
 {% highlight java linenos %}
+//src and desitination belong to different sheets
 Range src = Ranges.range(ss.getSelectedSheet(), ss.getSelection());
 Range destination = Ranges.range(getDestinationSheet(), ss.getSelection());
 {% endhighlight %}
 
-Similarly, the steps to cut a range is to copy them first, after pasting
-to destination, just clear the source range's content.
+# CellOperationUtil
 
-Cutting a range of cells is similar to copy:
-
-{% highlight java linenos %}
-Range src = Ranges.range(ss.getSelectedSheet(), ss.getSelection());
-Range destination = Ranges.range(getDestinationSheet(), ss.getSelection());
-src.paste(destination, true);
-{% endhighlight %}
-
-There is also a `pasteSpecial()` to do special pasting like pasting
-value only or pasting formula only.
-
-With the help of `io.keikai.api.CellOperationUtil`,
+With the help of [`io.keikai.api.CellOperationUtil`](https://keikai.io/javadoc/latest/io/keikai/api/CellOperationUtil.html),
 we can easily perform copying and cutting, and it also provides methods
 for "paste special" such as `pasteValue()`, or `pasteFormula()`. These
 methods all require 2 `Range` objects as arguments. One is source and
@@ -35,18 +24,32 @@ another is destination.
 
 To **cut** a range of cells, you should use
 
-{% highlight java linenos %}
+```java
 CellOperationUtil.cut(srcRange, destRange);
-{% endhighlight %}
+```
 
 To **copy** a range of cells, you should use
 
-{% highlight java linenos %}
+```java
 CellOperationUtil.paste(srcRange, destRange);
-{% endhighlight %}
+```
 
 The usages for `pasteFormula()`, `pasteValue()`, `pasteTranspose()`, and
 `pasteAllExceptBorder()` are all the same.
+
+# Range
+
+Copy cells with Range API is also simple:
+
+{% highlight java linenos %}
+Range src = Ranges.range(ss.getSelectedSheet(), ss.getSelection());
+Range destination = Ranges.range(getDestinationSheet(), "A1");
+src.paste(destination, true);
+{% endhighlight %}
+
+There is also a [`pasteSpecial()`](https://keikai.io/javadoc/latest/io/keikai/api/Range.html#pasteSpecial-io.keikai.api.Range-io.keikai.api.Range.PasteType-io.keikai.api.Range.PasteOperation-boolean-boolean-) to do special pasting like pasting value only or pasting formula only.
+
+
 
 # Example
 
