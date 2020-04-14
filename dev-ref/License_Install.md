@@ -1,7 +1,7 @@
 ---
 title: 'Using Official Version'
 ---
-To use official version, you need to
+This section is for customers who purchased Keikai EE. To use the official version (licensed Keikai EE), you need to
 1. Download JARs from the premium repository
 2. Apply a license key
 
