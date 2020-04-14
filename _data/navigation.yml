@@ -146,7 +146,7 @@ dev-ref:
     url: /dev-ref/faq
   - title: Appendix
     children:
-    - title: Applying License Key
+    - title: Using Official Version
       url: /dev-ref/License_Install
     - title: Migrate from ZSS
       url: /dev-ref/Migrate_from_ZSS    

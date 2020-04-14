@@ -1,23 +1,36 @@
 ---
-title: 'Applying License Key'
+title: 'Using Official Version'
 ---
-# Evaluation
-If you are running an evaluation release of keikai, you will see the warning message below in a log or console when a server starts up:
+To use official version, you need to
+1. Download JARs from the premium repository
+2. Apply a license key
 
+# Configure and Download from The Premium Repository
+Specify the repositories for *Keikai EE* and *ZK EE* like this [pom.xml](https://github.com/keikai/dev-ref/blob/master/pom.xml)
+
+## Login authentication
+The premium repository requires authentication. Licensed customers will be given a set of user name and password upon your request. According to [the official Maven doc](https://maven.apache.org/settings.html), you can specify login information in one of the following locations: (if not existed, you can create it manually)
+* The Maven install: `$M2_HOME/conf/settings.xml`
+* A user's install: `${user.home}/.m2/settings.xml`
+
+For example:
+```xml
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0
+        http://maven.apache.org/xsd/settings-1.0.0.xsd">
+    <servers>
+        <server>
+            <id>ZK EE</id><!-- Same as your repository ID -->
+            <username>your-username</username> 
+            <password>your-password</password> 
+        </server>
+    </servers>
+</settings>
 ```
-SEVERE: This is an evaluation copy of Keikai Spreadsheet EE and will terminate after maximum 12 hours UPTIME or sixty days from the first date of installation. Should you require a commercial license for Keikai Spreadsheet EE please contact us at info@keikai.io for more information. Alternatively you can download Keikai Spreadsheet(OSE) which is licensed under the GPL.
-Dec 31, 2019 10:16:11 AM org.zkoss.zkex.init.WebAppInit init
-SEVERE: This is an evaluation copy of ZK PE and will terminate after sixty days from the first date of installation. Should you require an open source license or commercial license for ZK PE please contact us at info@zkoss.org for more information. Alternatively you can download ZK CE which is licensed under the LGPL.
-Dec 31, 2019 10:16:11 AM org.zkoss.chart.init.WebAppInit init
-SEVERE: This is an evaluation copy of ZK Charts and will terminate after maximum 12 hours UPTIME or sixty days from the first date of installation. Should you require a commercial license for ZK Charts, please contact us at info@zkoss.org for more information.
-```
 
-When keikai application runs over the time limit, a browser will show a warning dialog when you visit a page with keikai.
 
-## Extend Evaluation Period
-If you have special need to extend the evaluation time, please contact us via info@keikai.io.
-
-# Applying License Key
+# Applying a License Key
 If you are a paying Keikai EE customer, you will obtain a license key after completing the purchase. Follow this section to apply the given license key to activate your Keikai EE component. There are 3 ways to apply a license key: Use Default License Loading Path; Specify an Absolute Path with a Library Property; and Specify the Path in a System Property. 
 
 The first approach below **Use Default License Loading Path** is the easiest approach. However if your setup does not allow the first approach, use the 2nd or 3rd approach.
@@ -86,3 +99,20 @@ INFO:
 
      To renew, obtain more licenses, or if you require help, please contact info@keikai.io.
 ```
+
+
+# Evaluation
+If you are running an evaluation release of keikai, you will see the warning message below in a log or console when a server starts up:
+
+```
+SEVERE: This is an evaluation copy of Keikai Spreadsheet EE and will terminate after maximum 12 hours UPTIME or sixty days from the first date of installation. Should you require a commercial license for Keikai Spreadsheet EE please contact us at info@keikai.io for more information. Alternatively you can download Keikai Spreadsheet(OSE) which is licensed under the GPL.
+Dec 31, 2019 10:16:11 AM org.zkoss.zkex.init.WebAppInit init
+SEVERE: This is an evaluation copy of ZK PE and will terminate after sixty days from the first date of installation. Should you require an open source license or commercial license for ZK PE please contact us at info@zkoss.org for more information. Alternatively you can download ZK CE which is licensed under the LGPL.
+Dec 31, 2019 10:16:11 AM org.zkoss.chart.init.WebAppInit init
+SEVERE: This is an evaluation copy of ZK Charts and will terminate after maximum 12 hours UPTIME or sixty days from the first date of installation. Should you require a commercial license for ZK Charts, please contact us at info@zkoss.org for more information.
+```
+
+When keikai application runs over the time limit, a browser will show a warning dialog when you visit a page with keikai.
+
+## Extend Evaluation Period
+If you have special need to extend the evaluation time, please contact us via info@keikai.io.
