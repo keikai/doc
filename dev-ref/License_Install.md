@@ -8,7 +8,7 @@ To use official version, you need to
 # Configure and Download from The Premium Repository
 Specify the repositories for *Keikai EE* and *ZK EE* like this [pom.xml](https://github.com/keikai/dev-ref/blob/master/pom.xml)
 
-## Login authentication
+## Login Information
 The premium repository requires authentication. Licensed customers will be given a set of user name and password upon your request. According to [the official Maven doc](https://maven.apache.org/settings.html), you can specify login information in one of the following locations: (if not existed, you can create it manually)
 * The Maven install: `$M2_HOME/conf/settings.xml`
 * A user's install: `${user.home}/.m2/settings.xml`
@@ -21,7 +21,12 @@ For example:
         http://maven.apache.org/xsd/settings-1.0.0.xsd">
     <servers>
         <server>
-            <id>ZK EE</id><!-- Same as your repository ID -->
+            <id>Keikai EE</id><!-- Same as your repository ID -->
+            <username>your-username</username> 
+            <password>your-password</password> 
+        </server>    
+        <server>
+            <id>ZK EE</id>
             <username>your-username</username> 
             <password>your-password</password> 
         </server>
