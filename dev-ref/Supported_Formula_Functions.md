@@ -1728,6 +1728,15 @@ or simpler
 
 `=SUMPRODUCT((F12:F21=1)*(G12:G21="Z")*H12:H21)`
 
+## SUBTOTAL
+Keikai follows [Microsoft SUBTOTAL function](https://support.office.com/en-us/article/subtotal-function-7b027003-f060-4ade-9040-e478765b9939?redirectSourcePath=%252fen-US%252farticle%252fSUBTOTAL-function-e27c301c-be9a-458b-9d12-b9a2ce3c62af&ui=en-US&rs=en-US&ad=US).
+
+Regarding the 1st argument, *"1-11 includes manually-hidden rows, while 101-111 excludes them; filtered-out cells are always excluded"*. 
+* If you **enable** the auto filter in a sheet, Keikai treats all hidden rows as **filtered-out cells**. 
+* If you **don't enable the auto filter**, Keikai treats all hidden rows as **manually-hidden rows**. 
+
+
+
 # Statistical
 
 <table>
