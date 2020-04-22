@@ -29,6 +29,8 @@ dev-ref:
       url: /dev-ref/Supported_Formula_Functions
     - title: "Supported Data Format"
       url: /dev-ref/Supported_Data_Format 
+    - title: "Work with the Mobile Devices"
+      url: /dev-ref/Mobile_Devices
   - title: Keikai in JSP
     url: /dev-ref/jsp/Keikai_in_JSP
     children:
