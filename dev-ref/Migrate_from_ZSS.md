@@ -84,3 +84,13 @@ Since the API package names are changed, you can't just run the original ZSS App
 The default folder to store Excel files is `/WEB-INF/books/`. If you have previously specified another path in `zk.xml` with the property `zssapp.repository.root`, then the files will be in the folder you specified. Copy these files from the folder to the corresponding folder in Keikai app.
 3. Migrate `zk.xml` from zssapp to keikai-app <br/>
 Copy `/WEB-INF/zk.xml` from the previous zssapp and overwrite keikai-app's `/WEB-INF/zk.xml`. No additional change is required because Keikai app is made ready for backward compatibile and can read old(ZSS) property keys in zk.xml.
+
+
+
+# Client-side Major change between ZSS and Keikai
+`since 5.2.0`
+* Toolbar DOM structure and its CSS class names (starting with k-toolbar) change
+* Scrollbar is simulated by HTML elements (ZSS uses browser native scrollbar)
+* Generate most CSS rules at client-side instead of server-side
+* Upgrade Highcharts to 7.2.1
+* Minor change in auto filter popup style
