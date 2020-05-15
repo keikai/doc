@@ -3,6 +3,8 @@ main:
     url: /tutorial
   - title: "Developer Reference"
     url: /dev-ref
+  - title: "JavaDoc"
+    url: //keikai.io/javadoc/latest/    
 
 tutorial:
   - title: "Tutorial"
