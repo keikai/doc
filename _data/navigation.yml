@@ -54,6 +54,8 @@ dev-ref:
       url: /dev-ref/jsf/Quick_Start_in_JSF
     - title: Use Keikai JSF Tag
       url: /dev-ref/jsf/Using_Spreadsheet_JSF_Component
+  - title: Modules
+    url: /dev-ref/Modules
   - title: Control Component
     url: /dev-ref/Control_Components
   - title: Import an Excel File
