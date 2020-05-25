@@ -39,8 +39,8 @@ Keikai spreadsheet component consists of three major parts -- the
 client-side UI , the server-side component, and the book data model with
 the formula evaluation engine. The UI is a grid like widget that you can
 in-place edit the content of each cell. The component is a server-side
-instance which your controller usually works with. The data model stores
-the actual Spreadsheet data. The formula evaluation engine is
+Java object which your controller usually works with. The book data model stores
+the whole Spreadsheet's data. The formula evaluation engine is
 responsible for formula parsing and calculations.
 
 # Use in JSP

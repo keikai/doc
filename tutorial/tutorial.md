@@ -10,13 +10,33 @@ You can import your xlsx file into Keikai and edit the file within your browser.
 
 Keikai is the easiest way to bring in spreadsheet power to your Web applications!
 
+# Architecture
+
+**Overview** 
+
+![]({{site.devref_image_folder}}/Essentials-app-architecture.png)
+
+**More Details** 
+
+![]({{site.devref_image_folder}}/Essentials-architecture.png)
+
+Keikai spreadsheet component consists of three major parts -- the
+client-side UI , the server-side component, and the book data model with
+the formula evaluation engine. The UI is a grid like widget that you can
+in-place edit the content of each cell. The component is a server-side
+Java object which your controller usually works with. The book data model stores
+the whole Spreadsheet's data. The formula evaluation engine is
+responsible for formula parsing and calculations.
+
+
 # Quick Start
 If you are new to Keikai, follow this section to get started. 
 
 Just clone the [tutorial project](https://github.com/keikai/keikai-tutorial) and follow the instructions in readme.md to start up the project with Jetty. Depending on your OS and whether you have Maven installed or not, the command varies. After it is successfully started, you can start to experience Keikai in your browser.
 We take the tutorial project to introduce 2 most common use cases: 
 * [Online Editor](https://doc.keikai.io/tutorial/editor)
-* [Work with Database](https://doc.keikai.io/tutorial/database).
+* [Work with Database](https://doc.keikai.io/tutorial/database)
+
 
 # Setup for Maven
 If you wish to create your own Maven project instead of using the tutorial project, follow this section. Depending on the Keikai edition (EE or OSE) you wish to run, there are 2 different settings:
@@ -58,7 +78,7 @@ Include the artifact below:
     <version>${keikai.version}</version>
 </dependency>
 ```
-Please browse the repository to see the latest available version and specify it. 
+Please browse the repository ([Eval](https://mavensync.zkoss.org/eval) or [EE](https://maven.zkoss.org/repo/keikai/ee/)) to see the latest available version and specify it. 
 
 For evaluation version, the version string is appended with `-Eval` e.g. `5.1.1-Eval`.
 
