@@ -158,6 +158,10 @@ Put the `<custom-attribute>` in a zul.
 
 Please read [ZK Configuration Reference](https://www.zkoss.org/wiki/ZK_Configuration_Reference/zk.xml/The_Library_Properties) for details.
 
+## Limitation
+Combo charts don't support this.
+
+
 # Reference 
 
 1.  Currently Spreadsheet cannot read legend position from an XLS file.
