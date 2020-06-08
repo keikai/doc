@@ -128,6 +128,36 @@ public class ChartComposer extends SelectorComposer<Component> {
     example, it will assume that the first column contains category
     labels.
 
+
+# Display Empty Values as Gap or Zero
+{% include version-badge.html version="5.3.0" %}
+
+Default: **false**
+
+When a chart's data source contains a blank cell (empty value), Keikai displays it as 0. You can choose to display it as a **gap** like:
+
+![]({{site.devref_image_folder}}/empty-cell-as-gap.png)
+
+
+There are several ways to configure depending on how big scope you want to apply:
+## Page Scope
+Put the `<custom-attribute>` in a zul.
+```xml
+<custom-attributes io.keikai.chart.emptyAsGaps="true"/>
+```
+
+## Application Scope
+
+**zk.xml**
+```xml
+    <library-property>
+        <name>io.keikai.chart.emptyAsGaps</name>
+        <value>true</value>
+    </library-property>
+```
+
+Please read [ZK Configuration Reference](https://www.zkoss.org/wiki/ZK_Configuration_Reference/zk.xml/The_Library_Properties) for details.
+
 # Reference 
 
 1.  Currently Spreadsheet cannot read legend position from an XLS file.
