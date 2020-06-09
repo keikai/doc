@@ -2,9 +2,10 @@
 title: 'Work with Mobile Devices'
 ---
 
+{% include version-badge.html version=5.2.0 %}
+
 Keikai supports [both modern desktop and mobile browsers]({{site.devref}}/Introduction#supported-browsers), you can easily access a Keikai UI from your iOS or Android tablet. 
 
-**since 5.2.0**
 
 # Design Tips
 Note that due to the nature of the spreadsheet, when designing the view for mobile users, you should consider to display a suitable (smaller) range that is easier for the users to navigate and use.
