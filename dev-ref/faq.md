@@ -1,3 +1,6 @@
+---
+title: 'FAQ'
+---
 # Does Keikai support user permission control?
 
   -   
