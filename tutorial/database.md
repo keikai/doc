@@ -56,7 +56,7 @@ In your real application, you can implement your own persistence layer classes a
 
 
 # Build the UI
-We build the page above in ([database.zul](https://github.com/keikai/keikai-tutorial/blob/master/src/main/webapp/database.zul)) with various ZK components, please refer to [ZK Component Refrence](http://books.zkoss.org/wiki/ZK_Component_Reference) to know its details.
+We build the page above in ([database.zul](https://github.com/keikai/keikai-tutorial/blob/master/src/main/webapp/database.zul)) with various ZK components, please refer to [ZK Component Refrence](https://books.zkoss.org/wiki/ZK_Component_Reference) to know its details.
 
 
 # Controller
@@ -95,7 +95,7 @@ There are 2 buttons on the page that we need to listen to their click event and 
 <button id="load" label="Load from Database" disabled="true"/>
 ```
 
-Put [@Listen](https://www.zkoss.org/wiki/ZK_Developer%27s_Reference/Event_Handling/Event_Listening#Composer_and_Event_Listener_Autowiring) on your event listener method with CSS selector-like syntax below. That means you want to listen `onClick` event on `#load` which represents a component whose ID is `load`. For more syntax, please refer to [`SelectorComposer` javadoc](http://www.zkoss.org/javadoc/latest/zk/org/zkoss/zk/ui/select/SelectorComposer.html). Therefore, when a user clicks "Load from Database" button, `DatabaseComposer::load()` will be invoked.
+Put [@Listen](https://www.zkoss.org/wiki/ZK_Developer%27s_Reference/Event_Handling/Event_Listening#Composer_and_Event_Listener_Autowiring) on your event listener method with CSS selector-like syntax below. That means you want to listen `onClick` event on `#load` which represents a component whose ID is `load`. For more syntax, please refer to [`SelectorComposer` javadoc](https://www.zkoss.org/javadoc/latest/zk/org/zkoss/zk/ui/select/SelectorComposer.html). Therefore, when a user clicks "Load from Database" button, `DatabaseComposer::load()` will be invoked.
 
 
 ```java

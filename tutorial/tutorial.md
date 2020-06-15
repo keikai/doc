@@ -93,7 +93,7 @@ Add the repository below:
 <repository>
     <id>OSE</id>
     <name>Keikai OSE</name>
-    <url>http://mavensync.zkoss.org/maven2</url>
+    <url>https://mavensync.zkoss.org/maven2</url>
 </repository>
 ```
 
