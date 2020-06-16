@@ -10,8 +10,18 @@ insertion or deletion) involves a change to its book model. The
 following sections introduce those APIs to handle a spreadsheet book
 model by corresponding user action.
 
-For each cell/row/column operation, you need to get a Range object. The
-helper class `Ranges` supports various methods to create a Range object
+# Commonly-used API
+
+You can do most operations with the following classes:
+
+* [CellOperationUtil](https://keikai.io/javadoc/latest/io/keikai/api/CellOperationUtil.html)
+* [SheetOperationUtil](https://keikai.io/javadoc/latest/io/keikai/api/SheetOperationUtil.html)
+* [Range](https://keikai.io/javadoc/latest/io/keikai/api/Range.html)
+
+# Create a `Range` by `Ranges`
+
+For each cell/row/column operation, you need to get a `Range` object. The
+helper class [`Ranges`](https://keikai.io/javadoc/latest/io/keikai/api/Ranges.html) supports various methods to create a Range object
 like:
 
 {% highlight java linenos %}

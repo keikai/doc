@@ -16,13 +16,21 @@ Spreadsheet supported border style and font depending upon a browser's capabilit
 | Font Family   | Because of browser limitation, available fonts depend on installed fonts on client side              |
 | Border Style  | Because of browser limitation, only **solid**/**dashed**/ **dotted** border style are supported now. |
 
+# Get Style
 To get "style" information stored in
 [`io.keikai.api.model.CellStyle`](https://keikai.io/javadoc/latest/io/keikai/api/model/CellStyle.html) object, you must get
 [`io.keikai.api.Range`](https://keikai.io/javadoc/latest/io/keikai/api/Range.html) object first.
+
+```java
+CellStyle style = range.getCellStyle();
+```
+
 Then, we can get a cell's alignment, border setting, and cell color via
 `CellStyle`. Every getter method of `CellStyle` has a clear name to
 indicate what information it returns. Please refer its javadoc for
-complete list. We just introduce some of them for explanation.
+complete list.
+
+
 
 # Alignment
 
@@ -100,10 +108,13 @@ font.getUnderline();
 
 # Change Style
 
-In order to save you from complicated underlying implementation, we
-provide a utility class
-`io.keikai.api.CellOperationUtil` to change a cell range's style and it 
-supports almost all cell related operations you want. We recommend you 
+## `CellOperationUtil`
+The easiest way is to call `applyYYY()` methods on the helper class:
+
+[`io.keikai.api.CellOperationUtil`](https://keikai.io/javadoc/latest/io/keikai/api/CellOperationUtil.html) 
+
+
+It supports almost all cell related operations you want. We recommend you 
 to use this utility class because the utility class will look for 
 existing `CellStyle` object which equal to the new style to reuse first. 
 If no existing style matches, it just create new one. 
