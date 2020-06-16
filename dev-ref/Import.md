@@ -207,7 +207,7 @@ public class BookSheetComposer extends SelectorComposer<Component>{
 onSelect event of the Listbox whose id is `sheetBox`. That means
 when a user selects a sheet in the Listbox, the method
 `selectSheet()` will be invoked.(For complete syntax, please refer
-to [ZK Developer's Reference](http://www.zkoss.org/wiki/ZK_Developer%27s_Reference/MVC/Controller/Wire_Event_Listeners)
+to [ZK Developer's Reference](https://www.zkoss.org/wiki/ZK_Developer%27s_Reference/MVC/Controller/Wire_Event_Listeners)
 - Line 23,24: Change Spreadsheet's selected sheet when users select a
 sheet.
 

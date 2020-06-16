@@ -5,7 +5,7 @@ toc: false
 
 First we talk about displaying a Keikai spreadsheet in your browser for viewing and editing.
 
-Keikai is based on [ZK UI framework](http://www.zkoss.org), and it provides [a powerful, XML format UI language](https://www.zkoss.org/wiki/ZK_Developer%27s_Reference/UI_Composing/ZUML). You can easily create a Keikai spreadsheet by the `spreadsheet` XML tag. This can be done by specifying:
+Keikai is based on [ZK UI framework](https://www.zkoss.org), and it provides [a powerful, XML format UI language](https://www.zkoss.org/wiki/ZK_Developer%27s_Reference/UI_Composing/ZUML). You can easily create a Keikai spreadsheet by the `spreadsheet` XML tag. This can be done by specifying:
 
 **editor.zul**
 ```xml

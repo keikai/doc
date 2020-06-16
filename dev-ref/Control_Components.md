@@ -95,7 +95,7 @@ dialog like "Format Cell". Specify `false` to turn off this behavior.
 
 If you want to change the default value to `false` globally; you can do that by
 setting the library property *io.keikai.ui.keepCellSelection* to
-`false`. [Read more here](http://books.zkoss.org/wiki/ZK_Spreadsheet_Essentials/Working_with_Spreadsheet/Configuration#Keep_Cell_Selection)
+`false`. [Read more here]({{site.devref}}/Configuration#keep-cell-selection)
 
 ## Preloaded Column / Row Size
 
