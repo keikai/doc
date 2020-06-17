@@ -132,13 +132,13 @@ Please refer to the menu in Keikai Demo: Excel-like.
 
   - Create a custom context menu.
 
-Please refer to [this document](/dev-ref/adv/Custom_Context_Menu).
+Please refer to [Custom Context Menu](/dev-ref/adv/Custom_Context_Menu).
 
   - Insert special symbols in cells to simulate a checkbox, button.
 
 You can insert icon-like symbols in a cell to serve as a button.
 
-![ center]({{site.devref_image_folder}}/Zss-essentials-symbol.png " center")
+![]({{site.devref_image_folder}}/Zss-essentials-symbol.png )
 
 Then you can determine the functions of these cells in an event listener and perform your
 business logic.
@@ -149,7 +149,12 @@ Please refer to [Data Validation](Features_and_Usages#data-validation).
 
   - Show a component on a cell with a popup.
 
-![center]({{site.devref_image_folder}}/Zss-essentials-popup.png " center")
+![]({{site.devref_image_folder}}/Zss-essentials-popup.png )
+
+* Turn a cell as a button
+
+Apply a border and background to make a cell look like a button.
+![]({{site.devref_image_folder}}/cell-as-button.png )
 
 # Unable to get property 'appendCell' of undefined or null reference in IE
 
