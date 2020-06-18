@@ -6,10 +6,21 @@ title: 'Protection'
 # Protect a Sheet
 
 If you enable "Protect Sheet" for a sheet in Excel, Spreadsheet
-can read the setting and prevent you from editing the protected sheet.
+can read the setting and prevent users from editing the protected sheet.
+
+
+## Builder API
 Spreadsheet's API also allows you to enable / disable protection and get
-protection status of a sheet. Let's use a simple example to demonstrate
-this usage:
+protection status of a sheet. We suggest you using [`SheetProtection.Builder`](https://keikai.io/javadoc/latest/io/keikai/api/SheetProtection.Builder.html). With its fluent API, you can enable those permissions you care, and all other permission you don't set are disabled by default:
+
+```java
+static private SheetProtection PROTECTION_WITH_SELECTION = SheetProtection.Builder.create().withPassword("password").withSelectLockedCellsAllowed(true).withSelectUnlockedCellsAllowed(true).build();
+range.protectSheet(PROTECTION_WITH_SELECTION);
+...
+range.unprotectSheet("password");
+```
+
+Let's use a simple example to demonstratethis usage:
 
 ![center]({{site.devref_image_folder}}/Zss-essentials-protection.png) 
 
@@ -68,13 +79,13 @@ public class ProtectionComposer extends SelectorComposer<Component>{
     sheet.
 
 
-# Unlock Specific Area of a Protected Sheet
+# Unlock Cells of a Protected Sheet
 
 When you protect a sheet in Excel, all cells are locked and cannot be
 edited by default. To enable some cells to be edited while leaving other
 cells locked, you can unlock the cells before you protect the worksheet. 
 Spreadsheet can also read unlocked cells of a protected sheet
-configured in Excel. You can still edit the unlocked cells when loading
+configured in xlsx file. You can still edit the unlocked cells when loading
 it in Spreadsheet.
 
 The screenshot below is a protected sheet with B2 unlocked. You can see
