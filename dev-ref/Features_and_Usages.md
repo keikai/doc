@@ -44,7 +44,7 @@ bold, italic, underline, strikeout, color, background color, vertical/horizontal
 
 doulbe underline
 
-* Not supported for IE 11 or below
+* Not supported for **IE 11** or below
 
 ## Integrated with ZK Charts
 
@@ -115,6 +115,37 @@ allows you to highlight cells with the given conditions. In the case below, the 
 
 ## Named Range
 Keikai can read a named range from an xlsx file, so you can specify a named range in a formula like `=SUM(source)`. To create a named range, please reference javadoc [Range::createName](https://keikai.io/javadoc/latest/).
+
+
+## Charts
+### Sparklines
+{% include version-badge.html version='5.3.0' %}
+
+Sparklines is a chart that fits in one cell.
+There 3 types of sparklines::
+
+#### Line
+
+![]({{site.devref_image_folder}}/sparklines-line.jpg)
+ 
+#### Column
+
+![]({{site.devref_image_folder}}/sparklines-column.jpg)
+
+#### Win-Loss
+
+![]({{site.devref_image_folder}}/sparklines-winloss.jpg)
+
+
+* Limitation: it doesn't resize itself when you resize the cell.
+
+### Combo Chart
+{% include version-badge.html version='5.3.0' %}
+
+A combination chart is a chart that displays 2 types of chart in a single chart.
+
+![]({{site.devref_image_folder}}/combo-chart.jpg)
+
 
 
 # Supported Hotkeys
@@ -344,35 +375,3 @@ alert (yellow icon), you can click "Yes" to accept the invalid input, or, "No" t
 remove the invalid input. For an information alert (blue icon), you can click "OK" to accept the invalid value or "Cancel" to reject it.
 
   - custom validation is not supported yet.
-
-# Charts
-
-
-
-## Sparklines
-{% include version-badge.html version='5.3.0' %}
-
-Sparklines is a chart that fits in one cell.
-There 3 types of sparklines::
-
-### Line
-
-![]({{site.devref_image_folder}}/sparklines-line.jpg)
- 
-### Column
-
-![]({{site.devref_image_folder}}/sparklines-column.jpg)
-
-### Win-Loss
-
-![]({{site.devref_image_folder}}/sparklines-winloss.jpg)
-
-
-* Limitation: it doesn't resize itself when you resize the cell.
-
-## Combo Chart
-{% include version-badge.html version='5.3.0' %}
-
-A combination chart is a chart that displays 2 types of chart in a single chart.
-
-![]({{site.devref_image_folder}}/combo-chart.jpg)
