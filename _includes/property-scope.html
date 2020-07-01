@@ -1,0 +1,15 @@
+{% assign global='fa-check-circle'%}
+{% if include.global == false%}
+{% assign global='fa-times-circle'%}
+{% endif %}
+
+{% assign page='fa-check-circle'%}
+{% if include.page == false%}
+{% assign page='fa-times-circle'%}
+{% endif %}
+
+<div class="notice--info">
+    <strong>Applicable Scope:</strong>
+    <div><i class="far {{global}}"></i> globally in zk.xml via &lt;library-property&gt;</div>
+    <div><i class="far {{page}}"></i> nested in a zul file via &lt;custom-attributes&gt;</div>
+</div>
