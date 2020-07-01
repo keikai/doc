@@ -2,7 +2,7 @@
 title: 'Work with Mobile Devices'
 ---
 
-{% include version-badge.html version=5.2.0 %}
+{% include version-badge.html version='5.2.0' %}
 
 Keikai supports [both modern desktop and mobile browsers]({{site.devref}}/Introduction#supported-browsers), you can easily access a Keikai UI from your iOS or Android tablet. 
 

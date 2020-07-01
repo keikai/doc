@@ -40,7 +40,7 @@ The hamburger menu next to the + icon is the sheet navigation button. It allows 
 ## Text Style
 bold, italic, underline, strikeout, color, background color, vertical/horizontal alignment, indent, wrap 
 
-{% include version-badge.html version=5.3.0 %}
+{% include version-badge.html version='5.3.0' %}
 
 doulbe underline
 
@@ -345,4 +345,34 @@ remove the invalid input. For an information alert (blue icon), you can click "O
 
   - custom validation is not supported yet.
 
-<!-- end list -->
+# Charts
+
+
+
+## Sparklines
+{% include version-badge.html version='5.3.0' %}
+
+Sparklines is a chart that fits in one cell.
+There 3 types of sparklines::
+
+### Line
+
+![]({{site.devref_image_folder}}/sparklines-line.jpg)
+ 
+### Column
+
+![]({{site.devref_image_folder}}/sparklines-column.jpg)
+
+### Win-Loss
+
+![]({{site.devref_image_folder}}/sparklines-winloss.jpg)
+
+
+* Limitation: it doesn't resize itself when you resize the cell.
+
+## Combo Chart
+{% include version-badge.html version='5.3.0' %}
+
+A combination chart is a chart that displays 2 types of chart in a single chart.
+
+![]({{site.devref_image_folder}}/combo-chart.jpg)
