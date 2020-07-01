@@ -3,21 +3,17 @@ title: 'Features and Usages'
 ---
 # Spreadsheet User Interface Overview
 
-![center]({{site.devref_image_folder}}/essentials-feature-ui.png)
+![]({{site.devref_image_folder}}/essentials-feature-ui.png)
 
-This is the screenshot of Keikai spreadsheet's user interface, each section
-is introduced as follows:
+Above is Keikai spreadsheet's user interface, each section is introduced as follows:
 
 ## 1.Toolbar
-The toolbar contains all commonly-used features including controls to
-set cell's style, alignment, border, background color, font,
-font color, merging (and unmerging), sorting, auto
-filter, protection, grid line visibility and to insert charts, images, and hyperlinks.
-The 3 leftmost buttons, "New Book", "Save Book", and "Export to
-PDF" are not built-in features as they highly depend on your application settings. You will have to implement the logic by yourself and associate them with the buttons.
+The toolbar contains the commonly-used features including font size, family, alignment, border, background color, font color, merge (and unmerge), sorting, auto filter, protection, grid line visibility and to insert charts, images, and hyperlinks.
+
+The 2 buttons: **Save Book**, and **Export to PDF** are disabled by default because they highly depend on your requirements. You have to implement the logic by yourself, please read [Toolbar Customization](/dev-ref/adv/Toolbar_Customization).
 
 ## 2. Formula bar
-It displays text or formula of the current selected cell. It can also be used for entering or editing a formula or data.
+It displays cell value or formula of the current selected cell. It can also be used for entering or editing a formula or cell value.
 
 ## 3. Sheet Area
 It displays the content of current selected sheet, this is also the area where users normally work with.
@@ -32,7 +28,7 @@ click on the sheet bar it pops up a context menu, and allows you to perform shee
         
 ![ center]({{site.devref_image_folder}}/essentials-feature-sheet-contextmenu.png)
         
-The hamburger menu next to the + icon is the sheet navigation button. It allows users to switch sheets conveniently.
+The hamburger menu next to the + icon is the sheet navigation button. It allows users to switch a sheet via a sheet name list.
 
 
 # Features
