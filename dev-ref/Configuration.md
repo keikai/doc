@@ -2,10 +2,10 @@
 title: 'Configuration'
 ---
 
-The library properties below allow you to configure spreadsheet's behaviors. There are other properties for underlying ZK framework, please refer to [ZK Configuration Reference](https://www.zkoss.org/wiki/ZK%20Configuration%20Reference/zk.xml/The%20Library%20Properties).
+The library properties below allow you to configure spreadsheet's behaviors. There are other properties for underlying ZK framework, please refer to [ZK Configuration Reference](https://www.zkoss.org/wiki/ZK%20Configuration%20Reference/zk.xml).
 
 # Scope
-
+You can configure a property to apply at various scopes, please read [ZK Configuration Reference](https://www.zkoss.org/wiki/ZK%20Configuration%20Reference/zk.xml/The%20Library%20Properties).
 
 
 # Formula Cache
