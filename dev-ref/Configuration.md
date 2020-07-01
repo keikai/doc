@@ -4,6 +4,96 @@ title: 'Configuration'
 
 The library properties below allow you to configure spreadsheet's behaviors. There are other properties for underlying ZK framework, please refer to [ZK Configuration Reference](https://www.zkoss.org/wiki/ZK%20Configuration%20Reference/zk.xml/The%20Library%20Properties).
 
+# Scope
+
+
+
+# Formula Cache
+
+## Importing
+Default: **false**
+{% include property-scope.html page=false%}
+
+Set the property to `true` and Keikai will import formula cache of an Excel
+file and it can reduce the file loading time because Keikai doesn't need to
+re-evaluate formulas at loading.
+
+```xml
+<library-property>
+    <name>io.keikai.import.cache</name>
+    <value>true</value>
+</library-property>
+```
+
+Few points need to be noticed:
+
+1.  If some functions not yet supported by Keikai spreadsheet are used in a
+    formula, re-evaluation breaks the cached value even if precedent
+    cells do not change.
+2.  If some customized function **only** supported in Keikai spreadsheet are
+    used in a formula, a cache is always `#NAME!` error. Users must
+    enforce re-evaluation by calling `Range.refresh(true, true, true)`.
+
+## Exporting
+Default value: **false**
+{% include property-scope.html page=false%}
+
+Set the property to `true` and Keikai will export the formula cache into an Excel file.
+```xml
+<library-property>
+    <name>io.keikai.export.cache</name>
+    <value>true</value> 
+</library-property>
+```
+
+# Keep Cell Selection
+
+Default value: **true**
+{% include property-scope.html page=false%}
+
+If it's `true`, when a dialog pops popup (Keikai loses its focus), Keikai still display cell selection box. Because sometimes an end user would like to know which range is selected when he/she is operating on a popup dialog.
+
+If it's `false`, then Keikai will hide cell selection.
+
+```xml
+<library-property>
+    <name>io.keikai.ui.keepCellSelection</name>
+    <value>false</value>
+</library-property>
+```
+
+# Add Extra Font Family 
+{% include version-badge.html version='5.3.0' %}
+
+Default: **none**
+{% include property-scope.html page=false%}
+
+You can add more fonts in font family drop-down of the toolbar by the property:
+```xml
+<library-property>
+    <name>io.keikai.ui.Spreadsheet.customFontFamily</name>
+    <value>Roboto, Helvetica Neue</value>
+</library-property>
+```
+
+Keikai will appends the specified fonts in the drop-down list.
+
+
+# Show a Blank Cell as a Gap or Zero
+{% include version-badge.html version='5.3.0' %}
+
+Default: **false**
+{% include property-scope.html %}
+When a chart's data source contains a blank cell, you can configure it to display it as a gap or zero.
+
+```xml
+<library-property>
+    <name>io.keikai.chart.emptyAsGaps</name>
+    <value>true</value>
+</library-property>
+```
+
+
 <!--
 deprecated for using highchart instead of jasper report
 ## Chart's Font
@@ -68,7 +158,7 @@ Value's format:
   - \[STYLE\] : **plain**, **bold**, **italic**
   - If you specify a incorrect format in the property value, the
     property will be ignored.
--->
+
 # Color Picker
 
 Users can set a library property, `io.keikai.useColorPickerEx`, in
@@ -92,68 +182,4 @@ ColorPicker of OSE (fewer color choices):<br/> ![center]({{site.devref_image_fol
 
   - The configuration above will make Spreadsheet use Color Picker of
     CE.
-
-
-# Formula Cache
-
-## Importing
-Default value: **false**
-
-Set the property to `true` and Keikai will import formula cache of an Excel
-file and it can reduce the file loading time because Keikai doesn't need to
-re-evaluate formulas at loading.
-
-```xml
-<library-property>
-    <name>io.keikai.import.cache</name>
-    <value>true</value>
-</library-property>
-```
-
-Few points need to be noticed:
-
-1.  If some functions not yet supported by Keikai spreadsheet are used in a
-    formula, re-evaluation breaks the cached value even if precedent
-    cells do not change.
-2.  If some customized function **only** supported in Keikai spreadsheet are
-    used in a formula, a cache is always `#NAME!` error. Users must
-    enforce re-evaluation by calling `Range.refresh(true, true, true)`.
-
-## Exporting
-Default value: **false**
-
-Set the property to `true` and Keikai will export the formula cache into an Excel file.
-```xml
-<library-property>
-    <name>io.keikai.export.cache</name>
-    <value>true</value> 
-</library-property>
-```
-
-# Keep Cell Selection
-
-Default value: **true**
-
-If it's `true`, when a dialog pops popup (Keikai loses its focus), Keikai still display cell selection box. Because sometimes an end user would like to know which range is selected when he/she is operating on a popup dialog.
-
-If it's `false`, then Keikai will hide cell selection.
-
-```xml
-<library-property>
-    <name>io.keikai.ui.keepCellSelection</name>
-    <value>false</value>
-</library-property>
-```
-
-# Add Extra Font Family 
-{% include version-badge.html version='5.3.0' %}
-
-You can add more fonts in font family drop-down of the toolbar by the property:
-```xml
-<library-property>
-    <name>io.keikai.ui.Spreadsheet.customFontFamily</name>
-    <value>Roboto, Helvetica Neue</value>
-</library-property>
-```
-
-Keikai will appends the specified fonts in the drop-down list.
+-->
