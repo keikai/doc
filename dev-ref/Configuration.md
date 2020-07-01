@@ -144,3 +144,16 @@ If it's `false`, then Keikai will hide cell selection.
     <value>false</value>
 </library-property>
 ```
+
+# Add Extra Font Family 
+{% include version-badge.html version='5.3.0' %}
+
+You can add more fonts in font family drop-down of the toolbar by the property:
+```xml
+<library-property>
+    <name>io.keikai.ui.Spreadsheet.customFontFamily</name>
+    <value>Roboto, Helvetica Neue</value>
+</library-property>
+```
+
+Keikai will appends the specified fonts in the drop-down list.
