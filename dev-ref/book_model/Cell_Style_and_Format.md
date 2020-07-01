@@ -32,9 +32,9 @@ complete list.
 
 
 
-# Alignment
+## Alignment
 
-{% highlight java linenos %}
+```java
 // get Range object for a cell 
 Range range = Ranges.range(spreadsheet.getSelectedSheet(), rowIndex, columnIndex);
 // get CellStyle
@@ -44,13 +44,11 @@ CellStyle style = range.getCellStyle();
 Alignment alignment = style.getAlignment();
 //vertical alignment
 VerticalAlignment verticalAlignment = style.getVerticalAlignment();
-{% endhighlight %}
+```
 
-# Border
+## Border
 
-{% highlight java linenos %}
-// get Range object for a cell 
-Range range = Ranges.range(spreadsheet.getSelectedSheet(), rowIndex, columnIndex);
+```java
 // get CellStyle
 CellStyle style = range.getCellStyle();
 
@@ -59,13 +57,13 @@ BorderType borderType = style.getBorderTop();
 
 //color
 Color color = style.getBorderTopColor();
-{% endhighlight %}
+```
 
 
 There is one corresponding method to get its border and border color
 respectively for each side (top, bottom, left, and right) of a cell.
 
-# Cell Background Color
+## Cell Background Color
 
 {% highlight java linenos %}
 // get Range object for a cell 
@@ -76,7 +74,7 @@ CellStyle style = range.getCellStyle();
 String colorCode = style.getBackgroundColor().getHtmlColor();
 {% endhighlight %}
 
-# Font
+## Font
 
 Those information about font can be retrieve via
 [`io.keikai.api.model.Font`](https://keikai.io/javadoc/latest/io/keikai/api/model/Font.html), and we can
@@ -125,7 +123,8 @@ creating redundant `CellStyle`.
 **Change style example**
 
 {% highlight java linenos %}
-Range selection = Ranges.range(spreadsheet.getSelectedSheet(), spreadsheet.getSelection());
+Range selection = Ranges.range(spreadsheet.getSelectedSheet()
+    , spreadsheet.getSelection());
 
 //change horizontal alignment
 CellOperationUtil.applyAlignment(selection, Alignment.CENTER);
@@ -161,101 +160,23 @@ Steps to change the style of a range:
 The following codes demonstrate how to change alignment:
 
 {% highlight java linenos %}
-    public void applyAlignment() {
-        Range selection = Ranges.range(ss.getSelectedSheet(), ss.getSelection());
-        CellStyle oldStyle = selection.getCellStyle();
-        EditableCellStyle newStyle = selection.getCellStyleHelper().createCellStyle(oldStyle);
-        newStyle.setAlignment( (Alignment)hAlignBox.getSelectedItem().getValue());
-        selection.setCellStyle(newStyle);
-    }
-{% endhighlight %}
-
-  - Line 4:
-    [`io.keikai.api.Range.CellStyleHelper`](https://keikai.io/javadoc/latest/io/keikai/api/Range.CellStyleHelper.html)
-    is a utility class that can you clone style related object and
-    returns an editable version such as
-    [`io.keikai.api.model.EditableCellStyle`](https://keikai.io/javadoc/latest/io/keikai/api/model/EditableCellStyle.html)
-    or
-    [`io.keikai.api.model.EditableFont`](https://keikai.io/javadoc/latest/io/keikai/api/model/EditableFont.html).
-  - Line 5: Change the style on newly-created cell style object.
-  - Line 6: Set newly-created cell style object back to range to apply
-    change.
-
-# Example
-
-The example application can display a cell's alignment and border status
-and let you change the alignment of one or multiple cells. 
-
-![]({{site.devref_image_folder}}/Zss-essentials-cellStyle-alignment.png )
-
-{% highlight java linenos %}
-public class CellStyleComposer extends SelectorComposer<Component> {
-
-    @Wire
-    private Label cellRef;
-    @Wire
-    private Label hAlign;
-    @Wire
-    private Label vAlign;
-    @Wire
-    private Label tBorder;
-    @Wire
-    private Label bBorder;
-    @Wire
-    private Label lBorder;
-    @Wire
-    private Label rBorder;
-    @Wire
-    private Listbox hAlignBox;
-    @Wire
-    private Listbox vAlignBox;
-    @Wire
-    private Spreadsheet ss;
-
-    @Listen("onCellFocus = #ss")
-    public void onCellFocus() {
-        CellRef pos = ss.getCellFocus();
-        refreshCellStyle(pos.getRow(), pos.getColumn());
-    }
-
-    private void refreshCellStyle(int row, int col) {
-        Range range = Ranges.range(ss.getSelectedSheet(), row, col);
-
-        cellRef.setValue(Ranges.getCellRefString(row, col));
-
-        CellStyle style = range.getCellStyle();
-
-        // display cell style
-        hAlign.setValue(style.getAlignment().name());
-        vAlign.setValue(style.getVerticalAlignment().name());
-        tBorder.setValue(style.getBorderTop().name());
-        bBorder.setValue(style.getBorderBottom().name());
-        lBorder.setValue(style.getBorderLeft().name());
-        rBorder.setValue(style.getBorderRight().name());
-
-        // update to editor...
-
-    }
-
-    @Listen("onSelect = #hAlignBox")
-    public void applyAlignmentByUtil() {
-
-        Range selection = Ranges.range(ss.getSelectedSheet(), ss.getSelection());
-        CellOperationUtil.applyAlignment(selection
-                , (Alignment)hAlignBox.getSelectedItem().getValue());
-    }
-
-    @Listen("onSelect = #vAlignBox")
-    public void applyVerticalAlignmentByUtil() {
-
-        Range selection = Ranges.range(ss.getSelectedSheet(), ss.getSelection());
-        CellOperationUtil.applyVerticalAlignment(selection
-                , (VerticalAlignment)vAlignBox.getSelectedItem().getValue());
-    }
-
-    //omitted codes...
+public void applyAlignment() {
+    Range selection = Ranges.range(ss.getSelectedSheet(), ss.getSelection());
+    CellStyle oldStyle = selection.getCellStyle();
+    CellStyle newStyle = selection.getCellStyleHelper().builder(oldStyle)
+            .alignment((Alignment)hAlignBox.getSelectedItem().getValue()).build();
+    selection.setCellStyle(newStyle);
 }
 {% endhighlight %}
 
-  - Line 38\~43: Get various style information from `CellStyle`
-  - Line 53, 61: Apply alignment with `CellOperationUtil`
+  - Line 4: Get a [`CellStyle.Builder`](https://keikai.io/javadoc/latest/io/keikai/api/model/CellStyle.Builder.html) with an existing style. It will clone the existing style.
+  - Line 5: Change the style with methods and call `build()` to get newly-created [`CellStyle`](https://keikai.io/javadoc/latest/io/keikai/api/model/CellStyle.html).
+  - Line 6: Set newly-created cell style object back to the range to apply the change.
+
+# Example
+
+The example below can display a cell's alignment and border status and change the alignment of cells:
+
+![]({{site.devref_image_folder}}/Zss-essentials-cellStyle-alignment.png )
+
+Check the complete the example at [cellStyle.zul](https://github.com/keikai/dev-ref/blob/master/src/main/webapp/cellStyle.zul) and [CellStyleComposer.java](https://github.com/keikai/dev-ref/blob/master/src/main/java/io/keikai/devref/CellStyleComposer.java)
