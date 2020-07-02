@@ -114,6 +114,18 @@ Keikai can read a named range from an xlsx file, so you can specify a named rang
 
 
 ## Charts
+The supported elements and options for a chart in a xlsx file are listed as follows:
+
+1. Chart Title
+2. Primary/Secondary Axes
+3. Primary Major Horizontal/Vertical Gridlines
+4. Legend
+(position)
+5. Data Series Color
+
+* Keikai will ignore unsupported elements and options during importing and render a chart with built-in setting.
+* Keikai will convert a theme color to a fixed color code and export it as the fixed color.
+
 ### Sparklines
 {% include version-badge.html version='5.3.0' %}
 
@@ -133,7 +145,10 @@ There 3 types of sparklines::
 ![]({{site.devref_image_folder}}/sparklines-winloss.jpg)
 
 
-* Limitation: it doesn't resize itself when you resize the cell.
+#### Limitation
+1. It doesn't resize itself when you resize the cell.
+2. Render with built-in color (ignore color when importing).
+3. Export it with built-in color.
 
 ### Combo Chart
 {% include version-badge.html version='5.3.0' %}
