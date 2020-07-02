@@ -26,9 +26,16 @@ Sheet bar displays a list of all sheets in this book. You can navigate to any sh
 by clicking on it. You can add a sheet by clicking the + button on the left. If you right
 click on the sheet bar it pops up a context menu, and allows you to perform sheet operations.
         
-![ center]({{site.devref_image_folder}}/essentials-feature-sheet-contextmenu.png)
+![]({{site.devref_image_folder}}/essentials-feature-sheet-contextmenu.png)
         
 The hamburger menu next to the + icon is the sheet navigation button. It allows users to switch a sheet via a sheet name list.
+
+### Tab Color
+{% include version-badge.html version='5.2.0' %}
+
+Tab color is imported and rendered.
+
+![]({{site.devref_image_folder}}/tabColor.jpg)
 
 
 # Features
@@ -42,12 +49,57 @@ doulbe underline
 
 * Not supported for **IE 11** or below
 
-## Integrated with ZK Charts
+## Charts
 
 The charts in Keikai sheet is rendered by another ZK product called ZK Charts. When you hover your mouse
 pointer over the charts, it will show related info in a tooltip. 
 
 ![center]({{site.devref_image_folder}}/Zss-essential-zkchart.png)
+
+The supported elements and options for a chart in a xlsx file are listed as follows:
+
+1. Chart Title
+2. Primary/Secondary Axes
+3. Primary Major Horizontal/Vertical Gridlines
+4. Legend
+(position)
+5. Data Series Color
+
+### Limitations:
+1. Ignore unsupported elements and options during importing and render a chart with built-in setting.
+2. Convert a theme color of a data series to a fixed color code and export it as the fixed color.
+
+### Sparklines
+{% include version-badge.html version='5.3.0' %}
+
+Sparklines is a chart that fits in one cell.
+There 3 types of sparklines supported:
+
+#### Line
+
+![]({{site.devref_image_folder}}/sparklines-line.jpg)
+ 
+#### Column
+
+![]({{site.devref_image_folder}}/sparklines-column.jpg)
+
+#### Win-Loss
+
+![]({{site.devref_image_folder}}/sparklines-winloss.jpg)
+
+
+#### Limitation
+1. It doesn't resize itself when you resize the cell.
+2. Render with built-in color (ignore color when importing).
+3. Export it with built-in color.
+
+### Combo Chart
+{% include version-badge.html version='5.3.0' %}
+
+A combination chart is a chart that displays 2 types of chart in a single chart.
+
+![]({{site.devref_image_folder}}/combo-chart.jpg)
+
 
 ## Rich Text Editing
 
@@ -113,50 +165,6 @@ allows you to highlight cells with the given conditions. In the case below, the 
 Keikai can read a named range from an xlsx file, so you can specify a named range in a formula like `=SUM(source)`. To create a named range, please reference javadoc [Range::createName](https://keikai.io/javadoc/latest/).
 
 
-## Charts
-The supported elements and options for a chart in a xlsx file are listed as follows:
-
-1. Chart Title
-2. Primary/Secondary Axes
-3. Primary Major Horizontal/Vertical Gridlines
-4. Legend
-(position)
-5. Data Series Color
-
-### Limitations:
-1. Ignore unsupported elements and options during importing and render a chart with built-in setting.
-2. Convert a theme color of a data series to a fixed color code and export it as the fixed color.
-
-### Sparklines
-{% include version-badge.html version='5.3.0' %}
-
-Sparklines is a chart that fits in one cell.
-There 3 types of sparklines supported:
-
-#### Line
-
-![]({{site.devref_image_folder}}/sparklines-line.jpg)
- 
-#### Column
-
-![]({{site.devref_image_folder}}/sparklines-column.jpg)
-
-#### Win-Loss
-
-![]({{site.devref_image_folder}}/sparklines-winloss.jpg)
-
-
-#### Limitation
-1. It doesn't resize itself when you resize the cell.
-2. Render with built-in color (ignore color when importing).
-3. Export it with built-in color.
-
-### Combo Chart
-{% include version-badge.html version='5.3.0' %}
-
-A combination chart is a chart that displays 2 types of chart in a single chart.
-
-![]({{site.devref_image_folder}}/combo-chart.jpg)
 
 
 
