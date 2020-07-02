@@ -123,14 +123,15 @@ The supported elements and options for a chart in a xlsx file are listed as foll
 (position)
 5. Data Series Color
 
-* Keikai will ignore unsupported elements and options during importing and render a chart with built-in setting.
-* Keikai will convert a theme color to a fixed color code and export it as the fixed color.
+### Limitations:
+1. Ignore unsupported elements and options during importing and render a chart with built-in setting.
+2. Convert a theme color of a data series to a fixed color code and export it as the fixed color.
 
 ### Sparklines
 {% include version-badge.html version='5.3.0' %}
 
 Sparklines is a chart that fits in one cell.
-There 3 types of sparklines::
+There 3 types of sparklines supported:
 
 #### Line
 
