@@ -86,7 +86,6 @@ The default folder to store Excel files is `/WEB-INF/books/`. If you have previo
 Copy `/WEB-INF/zk.xml` from the previous zssapp and overwrite keikai-app's `/WEB-INF/zk.xml`. No additional change is required because Keikai app is made ready for backward compatibile and can read old(ZSS) property keys in zk.xml.
 
 
-
 # Client-side Major change between ZSS and Keikai
 `since 5.2.0`
 * Toolbar DOM structure and its CSS class names (starting with k-toolbar) change
@@ -94,3 +93,13 @@ Copy `/WEB-INF/zk.xml` from the previous zssapp and overwrite keikai-app's `/WEB
 * Generate most CSS rules at client-side instead of server-side
 * Upgrade Highcharts to 7.2.1
 * Minor change in auto filter popup style
+
+# Upgrading ZK
+If you were with "ZK Spreadsheet + ZK 8.0", we recommend you to upgrade to "Keikai + ZK 9.x" or "Keikai + ZK 8.6.x". Here are some tips for ZK upgrade.
+## Default theme changed since ZK 8.5
+Since ZK 8.5 the default theme is chnaged to Iceblue which has a modern design and bigger padding and margin. If you are not ready for the new theme, you can [fall back to previous breeze/silvertail/sapphire themes](https://www.zkoss.org/wiki/Small_Talks/2017/October/New_Features_of_ZK_8.5.0#Keep_Using_The_Previous_Default_Theme_-_Breeze). Alternatively for ZK 8.6+ you can use [iceblue compact theme](https://www.zkoss.org/wiki/Small_Talks/2018/November/New_Features_of_ZK_8.6.0#Refresh_Theme_without_Code_Change_-_Compact_Theme) which has a modern design but also a compatible padding and margin with breeze.
+## Requires JDK 8+ since ZK 9.0
+ZK 9 works with Java 8 and later versions. ZK 8.6 and older versions work with Java 6+.
+## jQuery version upgraded to 3.5.1 since ZK 9.1
+jQuery is upgraded from 1.x to 3.x since ZK 9.1. If you have patches or custom client-side code you may need to check accordingly.
+
