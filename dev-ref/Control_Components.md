@@ -143,29 +143,31 @@ It's a threshold to remove cached cell data when scrolling. When you
 scroll toward one direction, Spreadsheet will remove cached cell data in
 reversed direction. For example, if you scroll toward right (east), it
 will remove those cached cells data of the left (west) which are over
-the `MaxRenderedCellSize` inside the "cached range" but outside of the
+the `maxRenderedCellSize` inside the "cached range" but outside of the
 "visible range".
 
-## Max Visible Rows and Columns
+## maxVisibleColumns
+
+Default: **>=40**
+
+By default Keikai will detect the sheet content and show as more columns as needed. However, it will show at least 40 columns if you have a smaller sheet.
+
 
 The attribute `maxVisibleColumns` controls the maximum visible number of
-columns in the Spreadsheet, it must be larger than 0. For example, if you set it to 40, it will display 40 columns: column `A` to column `AN`.
+columns in a Spreadsheet, it must be larger than 0. For example, if you set it to 40, it will display 40 columns: column `A` to column `AN`.
 
-If you set this attribute to 0 or didn't set it, spreadsheet will detect the sheet content and show as more columns as
-needed. However, it will show at least 40 columns if you have a smaller sheet.
 
-Similarly, the attribute `maxVisibleRows` controls the maximum visible
+## maxVisibleRows
+
+Default: **>=200**
+
+By default Keikai will detect the sheet content and show as more rows as needed. However, it will show at least 200 rows if you have a smaller sheet.
+
+This attribute controls the maximum visible
 number of rows in Spreadsheet. You can use these 2 attributes above to set up
 the visible area according to your requirement.
 
-If you set this attribute to 0 or didn't set it, spreadsheet will detect the sheet content and show as more rows as
-needed. However, it will show at least 200 rows if you have a smaller sheet.
 
-**Usage:**
-
-``` xml
-    <spreadsheet maxVisibleRows="200" maxVisibleColumns="40"/>
-```
 ## columntitles, rowtitles
 Allow you to set custom column/row heading instead of showing A,B,C or 1,2,3.
 
