@@ -235,7 +235,8 @@ Keikai can read a named range from an xlsx file, so you can specify a named rang
 In the following sections we will introduce the usages of some noticeable features.
 
 ## Copy & Paste
-We recommend you to copy and paste with **Ctrl+c and Ctrl+v** which works in all cases rather than clicking "paste" button on the toolbar and "paste" item on the context menu.
+We recommend you to copy and paste with **Ctrl+c and Ctrl+v** which works in all cases rather than clicking "paste" button on the toolbar and "paste" item on the context menu. Copy a cell with a multi-line text and paste to Keikai cell is supported.
+<!-- KEIKAI-38 -->
 
 ###  Inside One Spreadsheet
 - Such copy-paste works with **Ctrl+c and Ctrl+v**, **the toolbar**, and **context menu**.
@@ -266,9 +267,6 @@ clipboard, so it's similar to copy/paste between Keikai and Excel -- only pure t
 - If you enter edit mode in Excel and select the text `=sum(1,2)` and copy it, and then paste it to a cell in Keikai, Keikai will get the formula, just like you typed a formula into the Keikai cell.
 
 
-### limitation
-
-If you copy multiline text (multiple lines with line breaks in between) from an Excel cell and paste it into Keikai, the multiline text will be displayed in multiple cells. For example if the data in an Excel cell contains 3 rows, ROW1, ROW2 and ROW3; after pasting to Keikai A1 cell, the data will be displayed in 3 consecutive cells: A1 (containing ROW1), A2 (containing ROW2), and A3 (containing ROW3). 
 
 ### Paste Special
 
@@ -357,18 +355,27 @@ Click "Clear" removes all applied criteria and displays all data available.
 If you added a new data row, you should click "Reapply". The drop-down list will then
 update its values to take into account the newly added data.
 
-**Filter by search.** When you enter text in the search box, it will
+### Filter by search
+When you enter text in the search box, it will
 instantly list and select all matched values. Press "Enter" and Keikai will
 filter your data with those matched values. 
 
-![center]({{site.devref_image_folder}}/zss-essentials-filterBySearching.png)
+![]({{site.devref_image_folder}}/zss-essentials-filterBySearching.png)
 
 Keikai supports **number filter**, **color filter**, **date filter**, and
 **text filter**. 
 
-![center]({{site.devref_image_folder}}/zss-essentials-colorFilter.png)
+![]({{site.devref_image_folder}}/zss-essentials-colorFilter.png)
 
-![center]({{site.devref_image_folder}}/zss-essentials-dateFilter.png)
+![]({{site.devref_image_folder}}/zss-essentials-dateFilter.png)
+
+### Auto-detect Fitering Range
+* When users select just 1 cell, find the largest range surrounded by blank cells
+* When users select an area (multiple cells)
+  * If the non-blank cell range is smaller than the area, shrink to the non-blank cell range
+  * If the non-blank cell range is larger than the area, only extends its bottom boundary, keep the left, top and right boundary as the same as the selection
+* When users select the whole rows such as `5:10`, find the continuous non-blank cell range between row 5 and 10
+* When users apply a filter, keikai will detect non-blank cells again to change the filtering range. 
 
 ## Data Validation
 
