@@ -60,7 +60,8 @@ browsers:
 * IE11 and higher
 
 ## Mobile Browsers
-**since 5.2.0**
+{% include version-badge.html version='5.2.0' %}
+
 * iOS Chrome (iOS13+)*
 * iOS Safari (iOS13+)*
 * Android Chrome (latest android)*

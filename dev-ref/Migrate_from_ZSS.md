@@ -87,7 +87,8 @@ Copy `/WEB-INF/zk.xml` from the previous zssapp and overwrite keikai-app's `/WEB
 
 
 # Client-side Major change between ZSS and Keikai
-`since 5.2.0`
+{% include version-badge.html version='5.2.0' %}
+
 * Toolbar DOM structure and its CSS class names (starting with k-toolbar) change
 * Scrollbar is simulated by HTML elements (ZSS uses browser native scrollbar)
 * Generate most CSS rules at client-side instead of server-side
