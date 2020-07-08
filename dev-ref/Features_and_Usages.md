@@ -68,6 +68,7 @@ The supported elements and options for a chart in a xlsx file are listed as foll
 ### Limitations:
 1. Ignore unsupported elements and options during importing and render a chart with built-in setting.
 2. Convert a theme color of a data series to a fixed color code and export it as the fixed color.
+3. When exporting to a PDF file, combination chart and sparklines are not supported, the color will not be consistent with the color you see in a browser. (Because keikai exports charts to PDF with jFreeChart.)
 
 ### Sparklines
 {% include version-badge.html version='5.3.0' %}
