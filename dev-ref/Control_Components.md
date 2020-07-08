@@ -5,33 +5,30 @@ title: 'Control Component'
 There are 2 ways to control a Keikai spreadsheet component:
 
 1. zul attributes - static <br/>
-It's writtern in an XML-format file, so you can't change it at the run-time.
+It's writtern in an XML-format file.
 
 2. calling API in a Controller - dynamic<br/>
-You can write a Java controller to call keikai API, so you can change keikai in a browser at the run-time.
+You can create a Java controller to control Keikai dynamically by its API at the run-time.
 
 # ZUL Attributes
 
-Each ZK component is represented by a unique tag name, e.g. Keikai Spreadsheet is a
-`<spreadsheet>` in a ZUL page. The easiest way to control a component is
-to set a tag's attribute in a zul. Each property has its own purpose, and you can change it by specifying values in a tag's attribute.
+Each ZK component is represented by a unique tag name, e.g. `<spreadsheet>` stands for Keikai Spreadsheet in a ZUL page. The easiest way to control a component is to specify a value at the tag's attribute in a zul. 
 
 ## Excel File Path
 
-The simplest way to load and display an Excel file is setting
-Spreadsheet's `src` attribute with the file path which is a relative URI
-with respect to the web context root.
+The simplest way to load and display an Excel file is setting `src` attribute with the file path which is a relative URI with respect to the web context root.
 
 ``` xml
 <spreadsheet src="/myfile.xlsx" .../>
+<spreadsheet src="/WEB-INF/myfile2.xlsx" .../>
 ```
 
-  - In this case, `myfile.xlsx` is under the web context root folder.
+- In this case, `myfile.xlsx` is under the web context root folder.
+- Since keikai runs at server-side, it can access `/WEB-INF`.
 
 ## Toolbar
 
-The `showToolbar` attribute controls toolbar's visibility, and it only
-accepts boolean literal.
+The `showToolbar` attribute controls toolbar's visibility, and it only accepts boolean string.
 
 Default: `false`
 
@@ -41,8 +38,7 @@ Default: `false`
 
 ## Formula Bar
 
-The `showToolbar` attribute controls formula bar's visibility, and it
-only accepts boolean literal.
+The `showToolbar` attribute controls formula bar's visibility, and it only accepts boolean values.
 
 Default: `false`
 
@@ -50,8 +46,7 @@ Default: `false`
     <spreadsheet showFormulabar="true"/>
 ```
 ## Context Menu
-When a user right click on a cell, keikai pops up a context menu.
-The `showContextMenu` attribute controls context menu's visibility, and it only accepts boolean literal.
+When a user right click on a cell, keikai pops up a context menu. The `showContextMenu` attribute controls context menu's visibility, and it only accepts boolean values.
 
 Default: `false`
 
@@ -62,8 +57,7 @@ Default: `false`
 
 ## Sheet Tab
 
-The `showSheetbar` attribute controls sheet bar's visibility, and it
-only accepts boolean literal.
+The `showSheetbar` attribute controls sheet bar's visibility, and it only accepts boolean values.
 
 Default: `false`
 
@@ -73,7 +67,7 @@ Default: `false`
 
 ## Sheet Tab Context Menu
 When a user right click on a sheet tab, keikai pops up a context menu that shows sheet operations e.g. hide or move.
-The `showSheetTabContextMenu` attribute controls the context menu's visibility, and it only accepts boolean literal.
+The `showSheetTabContextMenu` attribute controls the context menu's visibility, and it only accepts boolean values.
 
 Default: `false`
 
@@ -171,6 +165,12 @@ needed. However, it will show at least 200 rows if you have a smaller sheet.
 
 ``` xml
     <spreadsheet maxVisibleRows="200" maxVisibleColumns="40"/>
+```
+## columntitles, rowtitles
+Allow you to set custom column/row heading instead of showing A,B,C or 1,2,3.
+
+```xml
+<spreadsheet columntitles="Name, Age, Address" rowtitles="1st, 2nd, 3rd"/>
 ```
 
 ## Other Inherited Properties
