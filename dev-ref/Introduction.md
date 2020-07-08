@@ -1,7 +1,6 @@
 ---
 title: 'Introduction'
 ---
-# Background
 
 Keikai spreadsheet is an AJAX component that delivers Excel-like experience
 to your Java web application. It has a grid-like user interface with

@@ -74,9 +74,6 @@ manager.registerHandler(Category.KEYSTROKE.getName(), "^V", new MyCustomPasteHan
 Or, alternatively:
 
 ``` java
-Spreadsheet ss;
-//...
-UserActionManager actionManager = ss.getUserActionManager();
 actionManager.setHandler(Category.KEYSTROKE.getName(), "^V", new MyCustomPasteHandler());
 ```
 
