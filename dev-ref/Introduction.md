@@ -61,14 +61,17 @@ browsers:
 ## Mobile Browsers
 {% include version-badge.html version='5.2.0' %}
 
-* iOS Chrome (iOS13+)*
-* iOS Safari (iOS13+)*
-* Android Chrome (latest android)*
+* iOS Chrome (iOS13+)
+* iOS Safari (iOS13+)
+* Android Chrome (latest android)
 
-**Note that some features are not supported on mobile devices.** For details please refer to [Work with the Mobile Devices]({{site.devref}}/Mobile_Devices).
+**Notice that some features are not supported on mobile devices.** For details please refer to [Work with the Mobile Devices]({{site.devref}}/Mobile_Devices).
 
 
 
-# Next Step
+# More Resources
 
-You can visit [Keikai Demo](https://keikai.io/demo/) or [Run it up locally](https://doc.keikai.io/tutorial).
+## [Keikai Demo](https://keikai.io/demo/)
+Try keikai online without installation.
+## [Blog](https://keikai.io/blog)
+Use case articles.
