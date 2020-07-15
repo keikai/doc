@@ -78,7 +78,7 @@ Include the artifact below:
     <version>${keikai.version}</version>
 </dependency>
 ```
-Please browse the repository ([Eval](https://mavensync.zkoss.org/eval) or [EE](https://maven.zkoss.org/repo/keikai/ee/)) to see the latest available version and specify it. 
+Please browse the repository ([Eval](https://mavensync.zkoss.org/eval/io/keikai/keikai-ex/) or [EE](https://maven.zkoss.org/repo/keikai/ee/io/keikai/keikai-ex/)) to see the latest available version and specify it. 
 
 For evaluation version, the version string is appended with `-Eval` e.g. `5.1.1-Eval`.
 
@@ -97,7 +97,7 @@ Add the repository below:
 </repository>
 ```
 
-Include the artifact below:
+Include the artifact below with [the available versions in the repo](https://mavensync.zkoss.org/maven2/io/keikai/keikai-oss/):
 
 ```xml
 <dependency>
@@ -105,4 +105,28 @@ Include the artifact below:
     <artifactId>keikai-oss</artifactId>
     <version>5.0.0</version>
 </dependency>
+```
+
+### Work with ZK 8.5 or Later
+Since ZK 8.5.0, the default theme is **iceblue** which is not supported by Keikai OSE. You have to manually switch to one of the classic themes (**breeze, sapphire, silvertail**) with the following steps:
+
+1.Add a classic theme jar <br/>
+In `pom.xml`:
+
+```xml
+<dependency>
+    <groupId>org.zkoss.theme</groupId>
+    <artifactId>breeze</artifactId>
+    <version>${zk.version}</version>
+</dependency>
+```
+
+2.Specify preferred theme<br/>
+In `zk.xml`
+
+```xml
+<library-property>
+    <name>org.zkoss.theme.preferred</name>
+    <value>breeze</value>
+</library-property>
 ```
