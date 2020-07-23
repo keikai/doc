@@ -31,7 +31,7 @@ responsible for formula parsing and calculations.
 
 # Quick Start
 
-## Clone/Run [Tutorial project](https://github.com/keikai/keikai-tutorial){: .btn .btn--info}
+Clone/Run [Tutorial project](https://github.com/keikai/keikai-tutorial){: .btn .btn--info .btn--large}
 
 Follow the instructions in readme.md to start up the project with Jetty. Depending on your OS and whether you have Maven installed or not, the command varies. After it is successfully started, you can start to experience Keikai in your browser.
 We take the tutorial project to introduce 2 most common use cases: 
