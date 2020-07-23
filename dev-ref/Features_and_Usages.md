@@ -380,7 +380,7 @@ Keikai supports **number filter**, **color filter**, **date filter**, and
 ## Data Validation
 
 Spreadsheet can read Excel data validation settings including
-validation criteria of lists, numbers, decimals, dates, or time.
+validation criteria of **lists, numbers, decimals, dates, or time**.
 
 ![ center]({{site.devref_image_folder}}/zss-essentials-validation-dialog.png)
 
@@ -396,10 +396,23 @@ If your input violates validation criteria, an error alert will pop up.
 
 ![ center]({{site.devref_image_folder}}/zss-essentials-validation-alert.png)
 
-There are 3 types of alerts and each of them has a different icon in the
-dialog. For an error alert (red icon), you can retry and enter
-again or cancel to revert back to the original value. For a warning
-alert (yellow icon), you can click "Yes" to accept the invalid input, or, "No" to edit the invalid input, or "Cancel" to
-remove the invalid input. For an information alert (blue icon), you can click "OK" to accept the invalid value or "Cancel" to reject it.
+### List
+There are 2 ways to specify a list criteria:
+#### List of values
+Specify the source field with comma-sperate values: `30 days,60 days`
 
-  - custom validation is not supported yet.
+#### Named Range
+Specify a named range that contains a list of items: `=PRODUCT_LIST`
+
+### Alert
+
+There are 3 types of alerts and each of them has a different icon in the
+dialog:
+
+* For an error alert (red icon), you can retry and enter again or cancel to revert back to the original value. 
+* For a warning alert (yellow icon), you can click "Yes" to accept the invalid input, or, "No" to edit the invalid input, or "Cancel" to remove the invalid input.
+* For an information alert (blue icon), you can click "OK" to accept the invalid value or "Cancel" to reject it.
+
+
+### Limitation:
+- custom validation is not supported yet.
