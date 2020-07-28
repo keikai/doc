@@ -50,13 +50,7 @@ back to the original file.
 
 ## By Importer
 
-In the case where your Excel file is not from a static file path, the importer
-interface along with `Spreadsheet.setBook()`can be used. Normally one
-would obtain Book instance by importing an Excel book file. Use
-`imports()` of
-`io.keikai.api.Importer` to import
-an Excel file. It returns `Book` instance which can be passed to
-`setBook(Book)` to display the imported Excel file.
+In the case where your Excel file is not from a static file path. Call [`io.keikai.api.Importer.imports()`](https://keikai.io/javadoc/latest/io/keikai/api/Importer.html) to import an Excel file. It returns `Book` instance which can be passed to `Spreadsheet.setBook(Book)` to display the imported Excel file.
 
 ``` java
 public class ImporterComposer extends SelectorComposer<Component> {
