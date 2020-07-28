@@ -4,14 +4,11 @@ title: 'Toolbar Customization'
 
 # Overview
 
-There are 2 toolbar buttons in out-of-box Spreadsheet are disabled by default for they are not
-implemented yet:
+There are 2 toolbar buttons in out-of-box Spreadsheet are disabled by default for there is no default handler for them:
 * "Save Book"
 * "Export to PDF"
 
-That's because the implementation of these functions
-quite depends on your requirement so we leave them unimplemented. Here
-we will tell you how to hook your own logic for these buttons.
+That's because the implementation of these functions quite depends on your requirement, so we don't set a handler for them. Here we will tell you how to hook your own logic for these buttons.
 
 Before implementing them, you should know the ideas behind toolbar buttons. When you click a toolbar button, Spreadsheet will invoke its corresponding "action handler" one by one (might be one or more) to
 perform the task. Hence, what you have to do is to write your custom **action handler** and register it.
@@ -19,7 +16,7 @@ perform the task. Hence, what you have to do is to write your custom **action ha
 toolbar button ![]({{site.devref_image_folder}}/toolbarbutton.png) --------- invoke ---------> `UserActionHandler`
 
 
-## Steps to implement a Handler
+## Steps to implement a Toolbarbutton Handler
 
 ### 1. Create a handler class to implement [`io.keikai.ui.UserActionHandler`](https://keikai.io/javadoc/latest/io/keikai/ui/UserActionHandler.html)
 There are some methods you have to implement - `isEnabled()` and `process()`. 
@@ -34,10 +31,7 @@ disabled.
 The `process()` is the method you should write your own logic to handle the user action.
 
 ### 2.  Register our custom handlers via `io.keikai.ui.UserActionManager`
-After creating a `UserActionHandler`, you must hook it before it can be executed. We provide 2 ways to register a handler.
-
-* `UserActionManager.registerHandler()` will append the passed handler
-* `UserActionManager.setHandler()` will remove other existing handlers and add the passed one.
+After creating a `UserActionHandler`, you must hook it before it can be executed. Please read [Append or Override with Your Handler](#append-or-override-with-your-handler).
 
 # Create User Action Handlers
 
@@ -128,25 +122,20 @@ public class CustomHandlerComposer extends SelectorComposer<Component> {
     button corresponds to one action which is defined in
     [AuxAction](https://keikai.io/javadoc/latest/io/keikai/ui/AuxAction.html).
 
-After completing above step, run `customHandler.zul` and you can see
-those buttons we registered handlers for are now enabled.
+After completing above steps, run `customHandler.zul` and you can see those buttons we registered handlers for are now enabled.
 
 
 # Append or Override with Your Handler
 
 There are 2 ways to hook up your user action handlers:
 
-  - <javadoc directory="keikai" method="registerHandler(java.lang.String, java.lang.String, io.keikai.ui.UserActionHandler)">io.keikai.ui.impl.DefaultUserActionManagerCtrl</javadoc>
-      -   
-        This method appends your handler after existing handlers, and
+- `io.keikai.ui.impl.DefaultUserActionManagerCtrl.registerHandler()`
+  - This method **appends** your handler after existing handlers, and
         those handlers are invoked in order. It's used to add customized
         post-processing for a toolbar button.
 
-<!-- end list -->
-
-  - <javadoc  directory="keikai" method="setHandler(java.lang.String, java.lang.String, io.keikai.ui.UserActionHandler)">io.keikai.ui.impl.DefaultUserActionManagerCtrl</javadoc>
-      -   
-        This method replaces existing handlers with yours, and only your
+- `io.keikai.ui.impl.DefaultUserActionManagerCtrl.setHandler()`
+  - This method **replaces** existing handlers with yours, and only your
         handler is left and invoked. It can be used to override existing
         toolbar button's function.
 
@@ -157,11 +146,11 @@ To Remove a toolbar button, just call the API:
 
 
 ```java
-spreadsheet.removeToolbarButton(AuxAction.EXPORT_PDF.getAction());
+spreadsheet.removeToolbarButton(AuxAction.EXPORT_PDF);
 ```
 
 # Add a Toolbar Button
-To add a toolbarbutton, you need to add a button via API and register the corresponding handler described in [Create User Action Handlers](#create-user-action-handlers). 
+To add a toolbarbutton, you need to add a button via `spreadsheet.addToolbarButton()` and register the corresponding handler described in [Create User Action Handlers](#create-user-action-handlers). 
 
 Check [the example](https://github.com/keikai/dev-ref/blob/master/src/main/java/io/keikai/devref/advanced/customization/CustomToolbarComposer.java).
 
