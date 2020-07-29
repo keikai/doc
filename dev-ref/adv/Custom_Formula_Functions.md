@@ -15,12 +15,10 @@ Steps to add a custom function:
 
 1.  Implement a custom function with a public static method.
 2.  Declare a custom function in a ZUL page.
-      -   
-        You could declare it with xel-method or custom tag library. Of
+      - You could declare it with xel-method or custom tag library. Of
         course, the ZUL page should contain a Spreadsheet component.
 
-After completing above steps, you can use the custom function in
-Spreadsheet.
+After completing above steps, you can write the custom function in a formula.
 
 # Only Work in Keikai spreadsheet
 
@@ -73,25 +71,24 @@ If your function needs to accept a range of cells with numeric value or
 variable number of numeric arguments, you should follow the steps below:
 
 1.  Create a class `MyNumericFunction` inherited from
-    <javadoc directory="keikai">org.zkoss.poi.ss.formula.functions.MultiOperandNumericFunction</javadoc>
+    [`org.zkoss.poi.ss.formula.functions.MultiOperandNumericFunction`](https://keikai.io/javadoc/latest/org/zkoss/poi/ss/formula/functions/MultiOperandNumericFunction.html)
     and override its `evaluate(double[])`.
-      -   
-        `MultiOperandNumericFunction` can evaluate various arguments to
+      <br/><br/>
+    `MultiOperandNumericFunction` can evaluate various arguments to
         double including a range of cells, string, and boolean etc. You
         can benefit from this behavior instead of handling various
-        <javadoc directory="keikai">org.zkoss.poi.ss.formula.eval.ValueEval</javadoc>
-        by yourself.
-2.  Create a public static method with specific signature:
-      - `public static ValueEval yourFunctionName(ValueEval[] , int ,
-        int )`  
+        `org.zkoss.poi.ss.formula.eval.ValueEval` by yourself.
+2.  Create a public static method with specific signature:<br/><br/>
+    `public static ValueEval yourFunctionName(ValueEval[] , int , int )`  
         You should not change this signature because Spreadsheet
         recognize your method by the signature.
 3.  In your static method (`yourFunctionName()`), invoke
     `MyNumericFunction.evaluate(ValueEval[] , int , int)` to calculate.
 
-Assume that we are going to create a custom function, MYSUBTOTAL(), that
-accepts variable number of numeric arguments and sums them all. ![
-center]({{site.devref_image_folder}}/zss-essentials-customFormula-mysubtotal.png " center")
+Assume that we are going to create a custom function, `MYSUBTOTAL()`, that
+accepts variable number of numeric arguments and sums them all. 
+
+![]({{site.devref_image_folder}}/custom-formula-mysubtotal.png)
 
 First, we create a class to implement my subtotal function:
 
@@ -124,13 +121,13 @@ public class MySubtotal extends MultiOperandNumericFunction{
 }
 {% endhighlight %}
 
-  - Line 19: The overloading `evaluate(ValueEval[], int, int)` it
-    inherits from `MultiOperandNumericFunction` will process all
-    arguments to a double array and pass it to your overridden method,
-    `evaluate(double[])`. It can save your effort to deal with each
-    argument. If you encounter a situation that you don't expect, please
-    throw `org.zkoss.poi.ss.formula.eval.EvaluationException`.
-    Because Spreadsheet can handle the exception gracefully.
+- Line 19: The overloading `evaluate(ValueEval[], int, int)` it
+inherits from `MultiOperandNumericFunction` will process all
+arguments to a double array and pass it to your overridden method,
+`evaluate(double[])`. It can save your effort to deal with each
+argument. If you encounter a situation that you don't expect, please
+throw `org.zkoss.poi.ss.formula.eval.EvaluationException`.
+Because Spreadsheet can handle the exception gracefully.
 
 Then, create a static method with previously-mentioned signature and
 delegate method calling to `MySubtotal`.
@@ -153,8 +150,8 @@ public class MyCustomFunctions {
 }
 {% endhighlight %}
 
-  - Line 13: Delegate method calling to to `MySubtotal` which implements
-    the function actually.
+- Line 13: Delegate method calling to to `MySubtotal` which implements
+the function actually.
 
 ## Advanced - Manually-Handled Arguments Function
 
@@ -181,7 +178,7 @@ of arguments will be evaluated to different subclass of `ValueEval`, and
 you should handle them in your function method to make your custom
 function support these use cases.
 
-'''The function to chain text '''
+**The function to chain text**
 
 {% highlight java linenos %}
 public class MyCustomFunctions {
@@ -243,25 +240,25 @@ public class MyCustomFunctions {
 }
 {% endhighlight %}
 
-  - Line 14: You should create a public static method with the same
-    signature because Spreadsheet recognizes your function method by the
-    signature.
-  - Line 19:
-    <javadoc directory="keikai">org.zkoss.poi.ss.formula.TwoDEval</javadoc>
-    is a common interface that represents a range of cells. Process it
-    to make your function accepts an argument like A1:B2. In our
-    example, we just get each text cell of it and ignore others.
-  - Line 34:
-    <javadoc directory="keikai">org.zkoss.poi.ss.formula.eval.RefEval</javadoc>
-    represents an evaluation of a cell reference like "C18".
-  - Line 41:
-    <javadoc directory="keikai">org.zkoss.poi.ss.formula.eval.StringEval</javadoc>
-    is the evaluation result of a string like "abc".
-  - Line 53: We recommend you to throw an `EvaluationException` when you
-    encounter an error condition. Because Spreadsheet will catch and
-    handle it gracefully for you.
-  - Line 54: Return an object of `ValueEval`'s subtype according to your
-    result.
+- Line 14: You should create a public static method with the same
+signature because Spreadsheet recognizes your function method by the
+signature.
+- Line 19:
+<javadoc directory="keikai">org.zkoss.poi.ss.formula.TwoDEval</javadoc>
+is a common interface that represents a range of cells. Process it
+to make your function accepts an argument like A1:B2. In our
+example, we just get each text cell of it and ignore others.
+- Line 34:
+<javadoc directory="keikai">org.zkoss.poi.ss.formula.eval.RefEval</javadoc>
+represents an evaluation of a cell reference like "C18".
+- Line 41:
+<javadoc directory="keikai">org.zkoss.poi.ss.formula.eval.StringEval</javadoc>
+is the evaluation result of a string like "abc".
+- Line 53: We recommend you to throw an `EvaluationException` when you
+encounter an error condition. Because Spreadsheet will catch and
+handle it gracefully for you.
+- Line 54: Return an object of `ValueEval`'s subtype according to your
+result.
 
 # Declare a Custom Function in a ZUL Page
 

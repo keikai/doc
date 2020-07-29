@@ -2,20 +2,18 @@
 title: 'FAQ'
 ---
 # Does Keikai support user permission control?
-
-  -   
-    We provide API for you to build your owned permission control. User
+We provide API for you to build your owned permission control. User
     permission feature involves authentication and authorization which
     is out of Keikai function's scope. Since Keikai cannot identify a user, it
     cannot assign a user with corresponding permissions. But you can
     easily integrate existing framework like Spring Security and
     implement your user permission features with Keikai. Please refer to
     the following sections:
-      - Hide the toolbar and the context menu to prevent editing. Please
-        refer to [Control Component](Control_Components).
-      - Disable available functions for different users. Please refer to
-        [Disable Functions](/dev-ref/adv/Disable_Functions).
-      - Protect sheets and set available actions. Refer to `io.keikai.api.Range`.
+- Hide the toolbar and the context menu to prevent editing. Please
+  refer to [Control Component](Control_Components).
+- Disable available functions for different users. Please refer to
+  [Disable Functions](/dev-ref/adv/Disable_Functions).
+- Protect sheets and set available actions. Refer to `io.keikai.api.Range`.
 
 You can see an example at [Use_Case/User_Permission](User_Permission).
 
@@ -35,16 +33,14 @@ Alternatively you can save data to the database referencing the [Tutorial](https
 
 There are many reasons, but we list the most common ones:
 
-* You chose the wrong encoding for some characters.
+* You choose the wrong encoding for some characters.
 
-  -   
-    For example, you applied "Calibri" to a Chinese character. You can
-    resolve it by applying the correct font.
-      - The computer of your PDF viewer software doesn't install
-        corresponding fonts.
-    For Keikai doesn't embed fonts into a exported PDF file, your computer
-    should install the corresponding fonts to display the file
-    correctly. You can test it by opening the PDF file in another
+- For example, you applied "Calibri" to a Chinese character. You can
+  resolve it by applying the correct font.
+    - The computer of your PDF viewer software doesn't install
+      corresponding fonts.
+  For Keikai doesn't embed fonts into a exported PDF file, your computer
+  should install the corresponding fonts to display the file correctly. You can test it by opening the PDF file in another
     computer or different OS. Please check installed fonts on your
     computer. Installing missing fonts can solve this problem.
 
@@ -70,10 +66,8 @@ check the fonts you apply are available in these paths:
 
 Extracted from FontFactoryImp com.lowagie.text.FontFactoryImp.
 
-* The corresponding font is not installed the server that exports PDF files.
-
-  -   
-    It might happen when you export a PDF on a Linux server without
+* The corresponding font is not installed the server that exports PDF files. <br/>
+It might happen when you export a PDF on a Linux server without
     Microsoft fonts installed. (Unbuntu should install the package
     `ttf-mscorefonts-installer`, "installer for Microsoft TrueType core
     fonts"). You will find the exported PDF's size is smaller than the
@@ -83,7 +77,7 @@ Extracted from FontFactoryImp com.lowagie.text.FontFactoryImp.
 # How do I know my file can be loaded correctly by Keikai?
 
 In general, those functions we implement with the toolbar are supported.
-However, the best way is to download Keikai Demo App and try it yourself. It's a ready-to-use web
+However, the best way is to [download Keikai Demo App](https://keikai.io/download) and try it yourself. It's a ready-to-use web
 application based on Keikai component. You just run the war with a Java
 application server, then you can upload files via the menu, File / Open
 / Upload.
