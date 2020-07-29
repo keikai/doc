@@ -4,11 +4,24 @@ toc: false
 ---
 
 One of Spreadsheet's powerful feature is to export its book model as an
-Excel file then we can open the file with Microsoft Excel. Besides,
+Excel file, then we can open the file with Microsoft Excel. Besides,
 exporting to a file is also the only way to persist a book model
-completely and then import it in the future. The following codes
-demonstrate how to export a book model to a temporary file with
-`io.keikai.api.Exporter` and make users download it in a browser:
+completely and import it back in the future. 
+
+
+# Exporter
+
+To export, you need to get an Exporter first. You can get different [`io.keikai.api.Exporter`](https://keikai.io/javadoc/latest/io/keikai/api/Exporter.html) by its type:
+
+```java
+Exporters.getExporter();       //get default exporter, xlsx
+Exporters.getExporter("xlsx"); //get xlsx exporter
+Exporters.getExporter("xls");  //get xls exporter
+```
+
+
+# Usage Example
+The following codes demonstrate how to export a book model to a temporary file with and make users download it in a browser:
 
 {% highlight java linenos %}
 public class ExportComposer extends SelectorComposer<Component> {
@@ -40,10 +53,4 @@ public class ExportComposer extends SelectorComposer<Component> {
   - Line 8: Get a default `Exporter` which exports as xlsx format.
   - Line 14: Currently, we only support exporting whole book.
 
-You can get different Exporter by its type:
 
-{% highlight java linenos %}
-Exporters.getExporter();       //get default exporter, xlsx
-Exporters.getExporter("xlsx"); //get xlsx exporter
-Exporters.getExporter("xls");  //get xls exporter
-{% endhighlight %}
