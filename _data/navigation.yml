@@ -110,6 +110,8 @@ dev-ref:
       url: /dev-ref/book_model/Protection
     - title: Filter Data
       url: /dev-ref/book_model/Filter_Data
+    - title: Sheet
+      url: /dev-ref/book_model/Sheet
     - title: Export to Excel
       url: /dev-ref/book_model/Export_to_Excel
     - title: Export to PDF
