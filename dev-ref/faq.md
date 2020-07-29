@@ -125,16 +125,20 @@ Please refer to the menu in [Keikai Demo: Excel-like](https://keikai.io/demo/exc
 
 - Turn a cell as a button<br/>
 Apply a border and background to make a cell look like a button.<br/>
-![]({{site.devref_image_folder}}/cell-as-button.jpg )
+![]({{site.devref_image_folder}}/cell-as-button.jpg)
+
+Check `ui-controls.xlsx` in the example project.
 
 
 - Insert special symbols in cells to simulate a checkbox, or a radio.<br/>
 You can insert icon-like symbols in a cell to serve as a button.<br/>
 ![]({{site.devref_image_folder}}/checkmark-radio.jpg)
 
+Check `ui-controls.xlsx` in the example project.
+
 - Create a custom context menu.<br/>
 Please refer to [Custom Context Menu](/dev-ref/adv/Custom_Context_Menu).
-Then you can implement the application logic in an onCellClick event listener. Check `ui-controls.xlsx` in the example project.
+Then you can implement the application logic in an onCellClick event listener. 
 
 - Data validation can produce a dropdown list<br/>
 Please refer to [Data Validation](Features_and_Usages#data-validation).
