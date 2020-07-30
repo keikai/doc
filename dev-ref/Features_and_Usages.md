@@ -45,7 +45,7 @@ bold, italic, underline, strikeout, color, background color, vertical/horizontal
 
 {% include version-badge.html version='5.3.0' %}
 
-doulbe underline
+double underline
 
 * Not supported for **IE 11** or below
 
@@ -68,7 +68,7 @@ The supported elements and options for a chart in a xlsx file are listed as foll
 ### Limitations:
 1. Ignore unsupported elements and options during importing and render a chart with built-in setting.
 2. Convert a theme color of a data series to a fixed color code and export it as the fixed color.
-3. When exporting to a PDF file, combination chart and sparklines are not supported, the color will not be consistent with the color you see in a browser. (Because keikai exports charts to PDF with jFreeChart.)
+3. When exporting to a PDF file, combination chart and sparklines are not supported, the color will not be consistent with the color you see in a browser. (Because Keikai exports charts to PDF with jFreeChart.)
 
 ### Sparklines
 {% include version-badge.html version='5.3.0' %}
@@ -369,13 +369,13 @@ Keikai supports **number filter**, **color filter**, **date filter**, and
 
 ![]({{site.devref_image_folder}}/zss-essentials-dateFilter.png)
 
-### Auto-detect Fitering Range
+### Auto-detect Filtering Range
 * When users select just 1 cell, find the largest range surrounded by blank cells
 * When users select an area (multiple cells)
   * If the non-blank cell range is smaller than the area, shrink to the non-blank cell range
   * If the non-blank cell range is larger than the area, only extends its bottom boundary, keep the left, top and right boundary as the same as the selection
 * When users select the whole rows such as `5:10`, find the continuous non-blank cell range between row 5 and 10
-* When users apply a filter, keikai will detect non-blank cells again to change the filtering range. 
+* When users apply a filter, Keikai will detect non-blank cells again to change the filtering range. 
 
 ## Data Validation
 
