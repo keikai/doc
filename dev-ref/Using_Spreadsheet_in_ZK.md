@@ -10,5 +10,5 @@ Of course it requires you to [know some basics about
 ZK](https://www.zkoss.org/wiki/ZK_Getting_Started/Get_ZK_Up_and_Running_with_MVC). 
 
 If you already have a different setup and won't be able to use ZK, Spreadsheet can also be
-used in JSP or being embeded into an external application. Please read [Using Spreadsheet in
+used in JSP or being embedded into an external application. Please read [Using Spreadsheet in
 JSP](/dev-ref/jsp/Keikai_in_JSP).
