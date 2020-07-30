@@ -72,6 +72,6 @@ browsers:
 # More Resources
 
 ## [Keikai Demo](https://keikai.io/demo/)
-Try keikai online without installation.
+Try Keikai online without installation.
 ## [Blog](https://keikai.io/blog)
 Use case articles.
