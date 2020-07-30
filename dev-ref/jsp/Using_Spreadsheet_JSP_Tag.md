@@ -91,7 +91,7 @@ We rely on 2 helper objects to communicate between a browser and a server:
 
 `kkjsp` (browser)  <---> `SmartUpdateBridge` (server)
 
-* `kkjsp` is a JavaScript object defined by keikai widget. You don't need to declare to use it. It provides client-side context information for `SmartUpdateBridge` to process a request correctly.
+* `kkjsp` is a JavaScript object defined by Keikai widget. You don't need to declare to use it. It provides client-side context information for `SmartUpdateBridge` to process a request correctly.
 * `SmartUpdateBridge` is a Java object provided Keikai. You need to use it to generate a Keikai response that contains updates for a `Book` model. The `kkjsp` will read the response and render the change in your browser.
 
 The sequence diagram displays the overall handling process of an AJAX
@@ -103,10 +103,10 @@ request when a user clicks a button in `app4l.jsp`.
 * The `ApplicationForLeaveServlet` is a servlet we implement to handle
 AJAX requests from `app4l.jsp`. 
 
-1. When clicking a button, a browser sends an AJAX request with keikai widget information and application related data to `ApplicationForLeaveServlet`. 
+1. When clicking a button, a browser sends an AJAX request with Keikai widget information and application related data to `ApplicationForLeaveServlet`. 
 2. The servlet extracts necessary parameters to create
 `SmartUpdateBridge`. 
-3. `SmartUpdateBridge` calls a Consumer function that we implement to do the business logic e.g. reset fields. Then it generates keikai response in a `Map`.
+3. `SmartUpdateBridge` calls a Consumer function that we implement to do the business logic e.g. reset fields. Then it generates Keikai response in a `Map`.
 4. Convert the response Map to `JSONObject`.
 5. `kkjsp` processes the keikai response and render the server-side change in a browser. 
 
