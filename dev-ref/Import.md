@@ -145,7 +145,7 @@ clone a sheet from another book by `cloneSheetFrom()`. Please refer to copySheet
 
 ## Switch Sheets Example
 
-Here we demonstate a basic usage: allowing users to use a listbox outside of the spreadsheet to select and switch to the selected sheet.
+Here we demonstrate a basic usage: allowing users to use a listbox outside of the spreadsheet to select and switch to the selected sheet.
 
 ![]({{site.devref_image_folder}}/Zss-essentials-book-sheet.png)
 
