@@ -1,5 +1,5 @@
 ---
-title: 'Hode Rows and Columns'
+title: 'Hide Rows and Columns'
 toc: false
 ---
 
