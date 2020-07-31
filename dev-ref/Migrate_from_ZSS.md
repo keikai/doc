@@ -5,13 +5,13 @@ This section is designed for users coming from ZK Spreadsheet (ZSS).
 **Please make sure to back-up your current project before upgrading.**
 
 # Drop-in Upgrade (Evaluation Only)
-This approach can quicky turn your existing ZSS application to Keikai (EE) applicaiton without modifying your source. Note that this is for evaluating purpose only as it does not cover all Keikai features. To officially migrate your existing ZSS application to Keikai, please read the next section: How to migrate from ZSS.
+This approach can quickly turn your existing ZSS application to Keikai (EE) application without modifying your source. Note that this is for evaluating purpose only as it does not cover all Keikai features. To officially migrate your existing ZSS application to Keikai, please read the next section: How to migrate from ZSS.
 
 The steps for quick try are:
-1. download the lastest [keikai-zss-legacy-all-[VERSION].zip](https://mavensync.zkoss.org/eval/io/keikai/binary/) 
+1. download the latest [keikai-zss-legacy-all-[VERSION].zip](https://mavensync.zkoss.org/eval/io/keikai/binary/) 
 2. extract the zip.
 It produces 2 sub folders: `bin` and `lib`
-3. put your zss application war under the same folder
+3. put your ZSS application war under the same folder
 4. go to the folder and run 
 
 `/bin/repack.sh WAR_FILE_NAME.war`
@@ -38,7 +38,7 @@ Please don't mix different versions of jar in the same war (e.g. you should not 
 
 
 ## API Packages Change (`org.zkoss.zss` --> `io.keikai`)
-Only the package names are changed, and all method names are unchanged. For example, `org.zkoss.zss.api.Range.setValue()` turns to be `io.keikai.api.Range.setValue()`. You just need to **replace the old import package name (`org.zkoss.zss`)** with new ones (`io.keikai`). It's better to use your IDE keyboard shortcut to quickly replace import statments.
+Only the package names are changed, and all method names are unchanged. For example, `org.zkoss.zss.api.Range.setValue()` turns to be `io.keikai.api.Range.setValue()`. You just need to **replace the old import package name (`org.zkoss.zss`)** with new ones (`io.keikai`). It's better to use your IDE keyboard shortcut to quickly replace import statements.
 
 
 ## License Path Change
