@@ -47,7 +47,7 @@ Keikai loads a license file from the default path:
 **`WEB-INF/classes/metainfo/keikai/license/`**
 
 Create the path above if it does not exist, and put the license key into
-the path. This is the simplest way if you just have one keikai-based web
+the path. This is the simplest way if you just have one Keikai-based web
 application.
 
 ## Specify an Absolute Path with a Library Property
@@ -107,7 +107,7 @@ INFO:
 
 
 # Evaluation
-If you are running an evaluation release of keikai, you will see the warning message below in a log or console when a server starts up:
+If you are running an evaluation release of Keikai, you will see the warning message below in a log or console when a server starts up:
 
 ```
 SEVERE: This is an evaluation copy of Keikai Spreadsheet EE and will terminate after maximum 12 hours UPTIME or sixty days from the first date of installation. Should you require a commercial license for Keikai Spreadsheet EE please contact us at info@keikai.io for more information. Alternatively you can download Keikai Spreadsheet(OSE) which is licensed under the GPL.
@@ -117,7 +117,7 @@ Dec 31, 2019 10:16:11 AM org.zkoss.chart.init.WebAppInit init
 SEVERE: This is an evaluation copy of ZK Charts and will terminate after maximum 12 hours UPTIME or sixty days from the first date of installation. Should you require a commercial license for ZK Charts, please contact us at info@zkoss.org for more information.
 ```
 
-When keikai application runs over the time limit, a browser will show a warning dialog when you visit a page with keikai.
+When Keikai application runs over the time limit, a browser will show a warning dialog when you visit a page with Keikai.
 
 ## Extend Evaluation Period
 If you have special need to extend the evaluation time, please contact us via info@keikai.io.
