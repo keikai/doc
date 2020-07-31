@@ -211,14 +211,14 @@ to insert the rest of the data.
 
 
 # Import a Large File
-The major factor that determines the importing time is **the number of cell** instead of **the number of sheet**. Importing One file haveing 1 sheet, 10 thounsands cells takes longer time than another file having 20 sheets with 1 thousand cells in total.
+The major factor that determines the importing time is **the number of cell** instead of **the number of sheet**. Importing One file having 1 sheet, 10 thousands cells takes longer time than another file having 20 sheets with 1 thousand cells in total.
 
 ## Clear unnecessary cells
-If one sheet actually contains 100 rows of data. But you apply cell background color to 5000 rows, then keikai still needs to process those (unneecessary) 4900 rows which is a waste of time. Hence, you can reduce the importing time by: 
+If one sheet actually contains 100 rows of data. But you apply cell background color to 5000 rows, then Keikai still needs to process those (unnecessary) 4900 rows which is a waste of time. Hence, you can reduce the importing time by: 
 * **clear/delete those unnecessary cells**
 * **move those cells with data into a new sheet**
 
 
 ## Split the File
-If you have a big file with multiple sheets and massive cells, and it takes a long time to import.You can split the file into multiple smaller files and import them separately. For example, you split a big file into `a-1.xlsx` and `a-2.xlsx`. Then, import the 1st file first, after keikai shows the first file, starts to import the 2nd file. Keep the reference of the 2 `Book`. Allow users to switch among 2 books by calling [`Spreadsheet::setBook()`](https://keikai.io/javadoc/latest/io/keikai/ui/Spreadsheet.html#setBook-io.keikai.api.model.Book-).
+If you have a big file with multiple sheets and massive cells, and it takes a long time to import.You can split the file into multiple smaller files and import them separately. For example, you split a big file into `a-1.xlsx` and `a-2.xlsx`. Then, import the 1st file first, after Keikai shows the first file, starts to import the 2nd file. Keep the reference of the 2 `Book`. Allow users to switch among 2 books by calling [`Spreadsheet::setBook()`](https://keikai.io/javadoc/latest/io/keikai/ui/Spreadsheet.html#setBook-io.keikai.api.model.Book-).
 
