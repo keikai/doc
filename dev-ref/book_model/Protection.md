@@ -20,12 +20,12 @@ range.protectSheet(PROTECTION_WITH_SELECTION);
 range.unprotectSheet("password");
 ```
 
-Let's use a simple example to demonstratethis usage:
+Let's use a simple example to demonstrate this usage:
 
 ![center]({{site.devref_image_folder}}/Zss-essentials-protection.png) 
 
 The screenshot above is a simple application. 
-There is a label on the right showing currentsheet's protection status. 
+There is a label on the right showing current sheet's protection status. 
 The "true" means the sheet is under protection and cannot be edited. 
 The "Toggle Protection" button can toggle protection status of current selected sheet. 
 We will explain the "Current Cell Locked Status" and "Toggle Lock" button in next section.
