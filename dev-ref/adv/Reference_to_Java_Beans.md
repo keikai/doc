@@ -40,7 +40,7 @@ panel on the right side.
 
 ![center]({{site.devref_image_folder}}/Essentials-bean.png) 
 
-You can see from the formula bar, the content of B3 is an EL expresstion,
+You can see from the formula bar, the content of B3 is an EL expression,
 `=assetsBean.liquidAssets`.
 
 First, we implement a variable resolver class. You can refer to [ZK
