@@ -144,7 +144,7 @@ horizontal alignment.
 
 ## Using `Range` API
 
-Althought the utility class
+Although the utility class
 (`io.keikai.api.CellOperationUtil`) provides convenience, 
 but it doesn't provide complete API to change all
 properties for a style. Sometimes you still need to use `Range` API.
