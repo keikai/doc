@@ -5,7 +5,7 @@ title: Modules
 Keikai are separated into several modules, and each modules is packaged into one jar.
 
 # keikai-ex.jar (required)
-If you use Maven, adding this dependency will automatically includes the following keikai dependancies:
+If you use Maven, adding this dependency will automatically includes the following Keikai dependencies:
 
 * keikai.jar
 * keikai-model.jar
