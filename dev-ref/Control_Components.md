@@ -5,7 +5,7 @@ title: 'Control Component'
 There are 2 ways to control a Keikai spreadsheet component:
 
 1. zul attributes - static <br/>
-It's writtern in an XML-format file.
+It's written in an XML-format file.
 
 2. calling API in a Controller - dynamic<br/>
 You can create a Java controller to control Keikai dynamically by its API at the run-time.
@@ -24,7 +24,7 @@ The simplest way to load and display an Excel file is setting `src` attribute wi
 ```
 
 - In this case, `myfile.xlsx` is under the web context root folder.
-- Since keikai runs at server-side, it can access `/WEB-INF`.
+- Since Keikai runs at server-side, it can access `/WEB-INF`.
 
 ## Toolbar
 
@@ -46,7 +46,7 @@ Default: `false`
     <spreadsheet showFormulabar="true"/>
 ```
 ## Context Menu
-When a user right click on a cell, keikai pops up a context menu. The `showContextMenu` attribute controls context menu's visibility, and it only accepts boolean values.
+When a user right click on a cell, Keikai pops up a context menu. The `showContextMenu` attribute controls context menu's visibility, and it only accepts boolean values.
 
 Default: `false`
 
@@ -66,7 +66,7 @@ Default: `false`
 ```
 
 ## Sheet Tab Context Menu
-When a user right click on a sheet tab, keikai pops up a context menu that shows sheet operations e.g. hide or move.
+When a user right click on a sheet tab, Keikai pops up a context menu that shows sheet operations e.g. hide or move.
 The `showSheetTabContextMenu` attribute controls the context menu's visibility, and it only accepts boolean values.
 
 Default: `false`
@@ -76,7 +76,7 @@ Default: `false`
 ```
 
 
-## Selection Visiblility
+## Selection Visibility
 
 Default: `true`
 
@@ -125,7 +125,7 @@ There are 3 ranges behind the scene:
 
 2.  **rendered range**: the range with rendered DOM of cells.
     Spreadsheet could also render hidden rows if the next visible row is
-    within the range, e.g. if row 25th\~30th are hidden, but row 31th is
+    within the range, e.g. if row 25th\~30th are hidden, but row 31st is
     in the range, then Spreadsheet still renders row 25th\~30th but hides them.
     
 3.  **cached range**: the browser cached cell data.
