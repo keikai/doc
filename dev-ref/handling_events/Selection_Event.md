@@ -92,14 +92,14 @@ public class EventsComposer extends SelectorComposer<Component>{
 
 # Range Selection Example
 
-A pratical use case of `onCellSelection` event is to build a range
-selection dialog, e.g. let users select a cell range for futher
+A practical use case of `onCellSelection` event is to build a range
+selection dialog, e.g. let users select a cell range for further
 processing without entering it using the keyboard. An example is shown by
 the screenshot below:
 
 ![center]({{site.devref_image_folder}}/Zss-essentials-rangeSelectionDialog.png)
 
-When opening the dialog to select a range, we can hide editting features and
+When opening the dialog to select a range, we can hide editing features and
 cancel `onStartEditing` event to prevent users from editing.
 
 In the code below, we put cell address string converted from
