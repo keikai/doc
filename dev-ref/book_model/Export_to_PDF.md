@@ -128,7 +128,9 @@ For example, you can add a header and footer, and it would look like:
 ![center]({{site.devref_image_folder}}/PdfExporting-HeaderFooter.png)
 
 You can also scale a sheet to fit into one page with row and column
-heading: ![center]({{site.devref_image_folder}}/PdfExporting-FitOnePage.png)
+heading: 
+
+![center]({{site.devref_image_folder}}/PdfExporting-FitOnePage.png)
 
 # Supported Page Setup
 
