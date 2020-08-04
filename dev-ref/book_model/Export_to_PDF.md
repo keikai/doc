@@ -56,6 +56,8 @@ public class ExportPdfComposer extends SelectorComposer<Component> {
 
 Line 21: Get an Exporter instance for PDF format.
 
+<!-- 
+
 # Export Server Setup
 
 The default chart engine is ZK Charts. With this engine, 
@@ -114,7 +116,8 @@ from export server. (Optional)
 {% endhighlight %}
 
 After restarting server, ZK Charts will be shown when exporting PDF.
-
+ -->
+ 
 # Load Excel Printing Setup
 
 
