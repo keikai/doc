@@ -40,7 +40,7 @@ dev-ref:
       url: /dev-ref/jsp/Get_Spreadsheet_Running_Quickly_in_JSP
     - title: Using Spreadsheet JSP Tag
       url: /dev-ref/jsp/Using_Spreadsheet_JSP_Tag
-  - title: Using Spreadsheet in ZK
+  - title: Keikai in ZK
     url: /dev-ref/Using_Spreadsheet_in_ZK
     children:
     - title: Quick Start in ZK
