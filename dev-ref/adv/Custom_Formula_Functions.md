@@ -243,22 +243,13 @@ public class MyCustomFunctions {
 - Line 14: You should create a public static method with the same
 signature because Spreadsheet recognizes your function method by the
 signature.
-- Line 19:
-<javadoc directory="keikai">org.zkoss.poi.ss.formula.TwoDEval</javadoc>
-is a common interface that represents a range of cells. Process it
-to make your function accepts an argument like A1:B2. In our
-example, we just get each text cell of it and ignore others.
-- Line 34:
-<javadoc directory="keikai">org.zkoss.poi.ss.formula.eval.RefEval</javadoc>
-represents an evaluation of a cell reference like "C18".
-- Line 41:
-<javadoc directory="keikai">org.zkoss.poi.ss.formula.eval.StringEval</javadoc>
-is the evaluation result of a string like "abc".
-- Line 53: We recommend you to throw an `EvaluationException` when you
-encounter an error condition. Because Spreadsheet will catch and
-handle it gracefully for you.
-- Line 54: Return an object of `ValueEval`'s subtype according to your
-result.
+- Line 19: `org.zkoss.poi.ss.formula.TwoDEval` is a common interface that represents a range of cells. Process it to make your function accepts an argument like A1:B2. In our example, we just get each text cell of it and ignore others.
+- Line 34: `org.zkoss.poi.ss.formula.eval.RefEval` represents an evaluation of a cell reference like "C18".
+- Line 41: `org.zkoss.poi.ss.formula.eval.StringEval` is the evaluation result of a string like "abc".
+- Line 53: We recommend you to throw an `EvaluationException` when you encounter an error condition. Because Spreadsheet will catch and handle it gracefully for you.
+- Line 54: Return an object of `ValueEval`'s subtype according to your result.
+
+
 
 # Declare a Custom Function in a ZUL Page
 
@@ -274,28 +265,20 @@ for complete explanation of each attribute.
 
 For our custom function, we can write:
 
-{% highlight java linenos %}
+{% highlight xml linenos %}
 
 <?xel-method prefix="keikai" name="EXCHANGE"
     class="io.keikai.essential.advanced.MyCustomFunctions"  
     signature="double exchange(double,double)"?>
-<?xel-method prefix="keikai" name="MYSUBTOTAL"
-    class="io.keikai.essential.advanced.MyCustomFunctions"  
-    signature="org.zkoss.poi.ss.formula.eval.ValueEval mySubtotal(org.zkoss.poi.ss.formula.eval.ValueEval[], int, int)"?>
-<?xel-method prefix="keikai" name="CHAIN"
-    class="io.keikai.essential.advanced.MyCustomFunctions"  
-    signature="org.zkoss.poi.ss.formula.eval.ValueEval chain(org.zkoss.poi.ss.formula.eval.ValueEval[], int, int)"?>
-<?taglib uri="/WEB-INF/tld/function.tld" prefix="keikai" ?>    
+...  
 <zk>
-    <window title="Keikai spreadsheet" border="normal" height="100%">
-        <spreadsheet src="/WEB-INF/books/customFunction.xlsx" 
-        maxVisibleRows="250" maxVisibleColumns="40" width="100%" height="100%" 
-        showContextMenu="true" showSheetbar="true" showToolbar="true" />
-    </window>
+    <spreadsheet src="/WEB-INF/books/customFunction.xlsx" 
+    maxVisibleRows="250" maxVisibleColumns="40" width="100%" height="100%" 
+    showContextMenu="true" showSheetbar="true" showToolbar="true" />
 </zk>
 {% endhighlight %}
 
-  - Line 1: Notice that "prefix" attribute must be set to "keikai" for Keikai
+- Line 1: Notice that "prefix" attribute must be set to "keikai" for Keikai
     Spreadsheet to find custom functions.
 
 After declaring them, you can use them in a cell like
@@ -310,11 +293,11 @@ file path in `uri` attribute of taglib directive and set "prefix" to
 
 **function.tld**
 
-{% highlight java linenos %}
+{% highlight xml linenos %}
 
 <?xml version="1.0" encoding="UTF-8" ?>
 <taglib>
-    <uri>http://www.zkoss.org/keikai/essentials/custom</uri> http://www.zkoss.org/keikai/essentials/custom</uri>
+    <uri>http://www.zkoss.org/keikai/custom</uri>
     <description>
         User defined functions.
     </description>
@@ -341,32 +324,32 @@ file path in `uri` attribute of taglib directive and set "prefix" to
 
 Declare it in a ZUL page.
 
-{% highlight java linenos %}
+{% highlight xml linenos %}
 <?taglib uri="/WEB-INF/tld/function.tld" prefix="keikai" ?>    
 <zk>
-    <window title="Keikai spreadsheet" border="normal" height="100%">
-        <spreadsheet src="/WEB-INF/books/customFunction.xlsx" 
-        maxVisibleRows="250" maxVisibleColumns="40" width="100%" height="100%" 
-        showContextMenu="true" showSheetbar="true" showToolbar="true" />
-    </window>
+    <spreadsheet src="/WEB-INF/books/customFunction.xlsx" 
+    maxVisibleRows="250" maxVisibleColumns="40" width="100%" height="100%" 
+    showContextMenu="true" showSheetbar="true" showToolbar="true" />
 </zk>
 {% endhighlight %}
 
-  - Line 1: Notice that "prefix" attribute must be set to "keikai" for Keikai
+- Line 1: Notice that "prefix" attribute must be set to "keikai" for Keikai
     Spreadsheet to find custom functions.
 
 After completing above steps, you can use this custom function in
 Spreadsheet like `=MYEXCHANGE(5, 31.1)`.
 
-# Override Built-in Function
+
+
+# Override Built-in Functions
 
 If you give your customized function the same name as built-in
 function's, it will override Spreadsheet built-in functions. Your
-customized function will be invoked instead of built-in one.
+customized function will be invoked instead of the built-in one.
 
 **Override LEN()**
 
-{% highlight java linenos %}
+{% highlight xml linenos %}
 <?xel-method prefix="keikai" name="LEN"
     class="io.keikai.essential.advanced.MyCustomFunctions"  
     signature="org.zkoss.poi.ss.formula.eval.ValueEval myLen(org.zkoss.poi.ss.formula.eval.ValueEval[], int, int)"?>
@@ -379,5 +362,4 @@ customized function will be invoked instead of built-in one.
 </zk>
 {% endhighlight %}
 
-  - In above page, if we use `LEN()` in a formula, `myLen()` will be
-    invoked.
+- In above code snippet, if we use `LEN()` in a formula, `myLen()` will be invoked.
