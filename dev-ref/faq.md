@@ -120,33 +120,34 @@ first.
 
 No. But there are several alternatives:
 
-- Use ZK Components.<br/>
+## Use ZK Components
 Please refer to the menu in [Keikai Demo: Excel-like](https://keikai.io/demo/excel_like).
 
-- Turn a cell as a button<br/>
+## Turn a cell as a button
 Apply a border and background to make a cell look like a button.<br/>
 ![]({{site.devref_image_folder}}/cell-as-button.jpg)
 
 Check `ui-controls.xlsx` in the example project.
 
+To listen to the button clicking, please see [Cell Clicking Event](/dev-ref/handling_events/Cell_Clicking_Event).
 
-- Insert special symbols in cells to simulate a checkbox, or a radio.<br/>
-You can insert icon-like symbols in a cell to serve as a button.<br/>
+## Insert a checkbox or a radio symbol in cells<br/>
+
 ![]({{site.devref_image_folder}}/checkmark-radio.jpg)
 
-Check `ui-controls.xlsx` in the example project.
+To switch checkmarks and radios, you can implement [Cell Clicking Event](/dev-ref/handling_events/Cell_Clicking_Event) listener and switch symbols. Please see [InvoiceBuilderController](https://github.com/keikai/dev-ref/tree/master/src/main/java/io/keikai/devref/usecase).
 
-- Create a custom context menu.<br/>
+## Create a custom context menu
 Please refer to [Custom Context Menu](/dev-ref/adv/Custom_Context_Menu).
 Then you can implement the application logic in an onCellClick event listener. 
 
-- Data validation can produce a dropdown list<br/>
+## Data validation can produce a dropdown list
 Please refer to [Data Validation](Features_and_Usages#data-validation).
 
-- Show a component on a cell with a popup.<br/>
-![]({{site.devref_image_folder}}/Zss-essentials-popup.png )
+## Show an input component in a popup
+![]({{site.devref_image_folder}}/cell-popup.jpg)
 
-
+Please see [formControl.zul](https://github.com/keikai/dev-ref/blob/master/src/main/webapp/advanced/)
 
 # Unable to get property 'appendCell' of undefined or null reference in IE
 
