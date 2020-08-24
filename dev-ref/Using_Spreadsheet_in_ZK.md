@@ -1,5 +1,6 @@
 ---
-title: 'Use Keikai in ZK'
+title: Keikai in ZK
+toc: false
 ---
 ZK is a Java Web Framework created by our mother company Potix. It comes with 200+ Web components and features and helps developers to build Web Applications efficiently.
 
