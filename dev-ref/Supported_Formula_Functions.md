@@ -3,6 +3,8 @@ title: 'Supported Formula Functions'
 ---
 Here we list all built-in functions in Keikai OSE and EE:
 
+Check [Microsoft Excel function list](https://support.microsoft.com/en-us/office/excel-functions-alphabetical-b3944572-255d-4efb-bb96-c6d90033e188) for details.
+
 # Date & Time
 
 <table>

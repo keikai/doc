@@ -143,15 +143,16 @@ convert the numbers into corresponding number format for you, for example 1,234,
 
 ## Date Format
 
-Some date formats in Keikai are regional (starting with an **asterisk,
-\***, same as Excel ) and some are international. 
+Some date formats in Keikai are **regional** (starting with an **asterisk,
+\***, same as Excel ) and some are **international** ((without an **asterisk,
+\***). 
 
-![center]({{site.devref_image_folder}}/zss-essentials-dateFormat.png) 
+![]({{site.devref_image_folder}}/zss-essentials-dateFormat.png) 
 
 Regional ones will change its displaying format according to the system locale, but
-international ones won't change. \[1\]
+international ones won't change. Please refer to [Microsoft Office Support - Format a date the way you want
+](https://support.office.com/en-us/article/Format-a-date-the-way-you-want-8e10019e-d5d8-47a1-ba95-db95123d273e?ui=en-US&rs=en-US&ad=US&fromAR=1).
 
-<references/>
 
 ## Conditional Formatting
 
