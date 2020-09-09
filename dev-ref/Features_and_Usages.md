@@ -125,10 +125,11 @@ Show comment
 
 You can view Keikai in different browser zoom levels. 
 
-## Support Various Currencies
+## Support Locale Currencies
 
-Keikai can display different currency symbols such as $, ¥, ₩,
-€, and HKD in a cell in the currency format.
+Keikai can display different currency symbols for different local such as $, ¥, ₩, €, and HKD in a cell in the currency format.
+
+> `[$-409]0.00`: 409 is a locale ID in hexadecimal, please see [Windows Locale Codes](https://www.science.co.il/language/Locale-codes.php)
 
 ## Localize A Number/Formula Input
 
@@ -144,7 +145,7 @@ convert the numbers into corresponding number format for you, for example 1,234,
 ## Date Format
 
 Some date formats in Keikai are **regional** (starting with an **asterisk,
-\***, same as Excel ) and some are **international** ((without an **asterisk,
+\***, same as Excel ) and some are **international** (without an **asterisk
 \***). 
 
 ![]({{site.devref_image_folder}}/zss-essentials-dateFormat.png) 
