@@ -151,11 +151,11 @@ properties for a style. Sometimes you still need to use `Range` API.
 
 Because one `CellStyle` might associate with multiple cells, you can't directly change a value of a `CellStyle`. You need to clone the current `CellStyle` and change the values in newly-cloned `CellStyle` object.
 
-Steps to change the style of a range:
 
-1.  Clone its `CellStyle` object
-2.  Set new value on the cloned `CellStyle`
-3.  Set it back to the original `Range` object.
+Steps to change the style of a cell:
+
+1. {% include version-badge.html version='5.3.0' %} Change styles with Builder pattern API.<br/> It will clone the specified `CellStyle` and change styles on the cloned object.
+2. Set it back to the original `Range` object.
 
 The following codes demonstrate how to change alignment:
 
