@@ -157,12 +157,12 @@ international ones won't change. Please refer to [Microsoft Office Support - For
 
 ## Conditional Formatting
 
-Keikai can display conditional formatting set in an Excel file. This feature
+Keikai can display conditional formatting you specify in an Excel file. This feature
 allows you to highlight cells with the given conditions. In the case below, the values in the "Income" column has conditional formatting enabled: 
 
 ![center]({{site.devref_image_folder}}/zss-essentials-conditionalFormatting.png)
 
-  - Modify conditional formatting in Keikai UI is not supported at the moment.
+  - Modifying conditional formatting in Keikai UI or API is not supported yet.
 
 ## Named Range
 Keikai can read a named range from an xlsx file, so you can specify a named range in a formula like `=SUM(source)`. To create a named range, please reference javadoc [Range::createName](https://keikai.io/javadoc/latest/).

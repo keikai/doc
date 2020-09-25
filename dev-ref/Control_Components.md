@@ -179,7 +179,7 @@ Allow you to set custom column/row heading instead of showing A,B,C or 1,2,3.
 
 There are other properties inherited from parent component you can set,
 such as `width`, or `height`. For the complete list, please look for
-those inherited setter methods in the javadoc `io.keikai.ui.Spreadsheet`.
+those inherited setter methods in the javadoc [`io.keikai.ui.Spreadsheet`](https://keikai.io/javadoc/latest/io/keikai/ui/Spreadsheet.html).
 
 Each **setter** means a corresponding **attribute**, for example:
 

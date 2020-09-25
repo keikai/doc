@@ -4,31 +4,16 @@ title: 'Export to PDF'
 
 # PDF Exporter
 
-In addition to the Excel format, you can also export a book model as a
-PDF file with `io.keikai.api.Exporter`
+In addition to the Excel format, you can also export a book model into a
+PDF file with [`io.keikai.api.Exporter`](https://keikai.io/javadoc/latest/io/keikai/api/Exporter.html).
 
 **Example to export as a PDF**
 
 {% highlight java linenos %}
-package io.keikai.essential;
-
-import java.io.*;
-
-import org.zkoss.util.media.AMedia;
-import org.zkoss.zk.ui.Component;
-import org.zkoss.zk.ui.select.SelectorComposer;
-import org.zkoss.zk.ui.select.annotation.*;
-import io.keikai.api.*;
-import io.keikai.api.model.Book;
-import io.keikai.ui.Spreadsheet;
-import org.zkoss.zul.*;
-
 public class ExportPdfComposer extends SelectorComposer<Component> {
 
     @Wire
     private Spreadsheet ss;
-    @Wire("combobox")
-    private Combobox combobox;
 
     Exporter exporter = Exporters.getExporter("pdf");
     
@@ -50,11 +35,11 @@ public class ExportPdfComposer extends SelectorComposer<Component> {
         Filedownload.save(new AMedia(book.getBookName()+".pdf", "pdf", "application/pdf", file, true));
     }
 
-    //omit some code for brevity
+    ...
 }
 {% endhighlight %}
 
-Line 21: Get an Exporter instance for PDF format.
+Line 6: Get an Exporter instance for PDF format first.
 
 <!-- 
 
@@ -118,7 +103,7 @@ from export server. (Optional)
 After restarting server, ZK Charts will be shown when exporting PDF.
  -->
  
-# Load Excel Printing Setup
+# Supported Excel Printing Setup
 
 
 Spreadsheet exports its book model to a PDF file according to the page
