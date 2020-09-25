@@ -74,6 +74,9 @@ application.
     ID.
   - Line 16: The `update` is another JSF component provided by Keikai which is responsible for processing ZK AJAX response.
 
+### Tag attributes
+JSF tag supports the same attributes as zul tag, please see [Control Components]({{site.devref}}/Control_Components#zul-attributes).
+
 
 # Managed Bean
 

@@ -56,6 +56,10 @@ write Spreadsheet JSP tag with a specified prefix.
 - Line 16~18: For component attributes, refer to [Control Components](Control_Components).
 
 
+## Tag attributes
+JSP tag supports the same attributes as zul tag, please see [Control Components]({{site.devref}}/Control_Components#zul-attributes).
+
+
 ## Book Provider
 
 The `bookProvider` attribute in `app4l.jsp` contains a book provider class named
