@@ -171,6 +171,8 @@ the visible area according to your requirement.
 ## columntitles, rowtitles
 Allow you to set custom column/row heading instead of showing A,B,C or 1,2,3.
 
+![]({{site.devref_image_folder}}/custom-heading.jpg)
+
 ```xml
 <spreadsheet columntitles="Name, Age, Address" rowtitles="1st, 2nd, 3rd"/>
 ```
