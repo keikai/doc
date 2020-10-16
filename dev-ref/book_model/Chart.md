@@ -4,28 +4,42 @@ title: 'Chart'
 
 # Overview
 
-`io.keikai.api.model.Range` API can
-allow you to add, move, and delete a charts of a Spreadsheet:
+The follwing `io.keikai.api.model.Range` methods allow you to add, move, and delete a chart:
 
-{% highlight java linenos %}
+```java
 
-public Chart addChart(SheetAnchor anchor, Type type, Grouping grouping, LegendPosition pos);
+public Chart addChart(SheetAnchor anchor, Type type, Grouping grouping, 
+                        LegendPosition pos);
 
 public void deleteChart(Chart chart);
 
 public void moveChart(SheetAnchor anchor,Chart chart);
-{% endhighlight %}
+```
 
-A chart
-`io.keikai.api.model.Chart` is a simple object that you can only 
-get its ID and position. All chart types constant are listed in `io.keikai.api.model.Chart.Type`. 
-Most chart types are supported except `OF_PIE, RADAR, STOCK, SURFACE_3D`, and `SURFACE`.
-Supported grouping (`io.keikai.api.model.Chart.Grouping`) are `STANDARD,
-STACKED, PERCENT_STACKED` and, `CLUSTERED`. Supported legend
-positions (`io.keikai.api.model.Chart.LegendPosition`) are `BOTTOM,
-LEFT, RIGHT, TOP`, and `TOP_RIGHT`. \[1\]
 
-The `io.keikai.api.SheetAnchor` represents a chart's position on a sheet. 
+# Supported Chart Types
+* AREA
+* BAR
+* BUBBLE
+* COLUMN
+* DOUGHNUT
+* LINE
+* PIE
+* SCATTER
+
+All type constants are listed in [`io.keikai.api.model.Chart.Type`](https://keikai.io/javadoc/latest/io/keikai/api/model/Chart.Type.html). 
+
+
+# Supported grouping 
+`STANDARD, STACKED, PERCENT_STACKED` and, `CLUSTERED`. (See [`io.keikai.api.model.Chart.Grouping`](https://keikai.io/javadoc/latest/io/keikai/api/model/Chart.Grouping.html)) 
+
+# Supported legend positions 
+`BOTTOM, LEFT, RIGHT, TOP`, and `TOP_RIGHT` （See [`io.keikai.api.model.Chart.LegendPosition`](https://keikai.io/javadoc/latest/io/keikai/api/model/Chart.LegendPosition.html)).
+
+
+# Positions
+A chart `io.keikai.api.model.Chart` is a simple object that you can only 
+get its ID and position. The `io.keikai.api.SheetAnchor` represents a chart's position on a sheet. 
 When adding or moving a chart, you must provide one `SheetAnchor` to assign 
 a chart's position. You can create a `SheetAnchor` by passing 4 index numbers, 
 left-top corner's and right-bottom's row and column of a chart. When invoking `addChart()`,
@@ -33,17 +47,15 @@ you will get the newly-created chart object in returned value. You had
 better store it somewhere you can retrieve it back later if you plan to
 delete or move it. Otherwise, you can only get them from a `Sheet` method:
 
-{% highlight java linenos %}
+```java
     public List<Chart> getCharts();
-{% endhighlight %}
+```
 
 Then, use its ID or position to identify a chart.
 
 # ZK Charts engine
 
-We use ZK Charts as the default chart engine. We don't need any
-changes in our code except export server for exporting PDF. Please refer
-to [Export to PDF](Export_to_PDF)
+Keikai uses [ZK Charts](https://www.zkoss.org/product/zkcharts) as the default chart engine.
 
 # Example
 
@@ -62,8 +74,8 @@ Notice that there are 5 columns in the Listbox on the top right corner
 which display information about charts we add. The ID is a chart's ID
 generated automatically by Spreadsheet. The row and column represents a
 chart's position of the left top corner in 0-based index and the last
-row and last column represents symmetric position of a chart (right
-bottom corner). For example, in the screenshot, the topmost chart whose
+row and last column represents right bottom corner. 
+For example, in the screenshot, the topmost chart whose
 ID is "rid1", its left top corner is at "F1" represented in column index
 "5" and row index "0". Its right bottom corner is at "K9" represented in
 column index "10" and row index "8". in column index "1" and row index
@@ -91,7 +103,8 @@ public class ChartComposer extends SelectorComposer<Component> {
 
     @Listen("onClick = #addButton")
     public void addByUtil(){
-        SheetOperationUtil.addChart(Ranges.range(ss.getSelectedSheet(),new AreaRef("A1:B6")),
+        SheetOperationUtil.addChart(Ranges.range(ss.getSelectedSheet(),
+                                    new AreaRef("A1:B6")),
         Type.PIE, Grouping.STANDARD, LegendPosition.RIGHT);
         refreshChartList();
     }
@@ -123,10 +136,10 @@ public class ChartComposer extends SelectorComposer<Component> {
 }
 {% endhighlight %}
 
-  - Line 16: `SheetOperationUtil.addChart()` converts a range of cells
-    automatically to chart data based on a predefined assumption. For
-    example, it will assume that the first column contains category
-    labels.
+- Line 16: `SheetOperationUtil.addChart()` converts a range of cells
+automatically to chart data based on a predefined assumption. For
+example, it will assume that the first column contains category
+labels.
 
 
 # Display Empty Values as Gap or Zero
@@ -162,6 +175,6 @@ Please read [ZK Configuration Reference](https://www.zkoss.org/wiki/ZK_Configura
 Combo charts don't support this.
 
 
-# Reference 
+# Limitation 
 
 1.  Currently Spreadsheet cannot read legend position from an XLS file.
