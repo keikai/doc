@@ -295,6 +295,20 @@ You can use them without knowing more details about the underlying implementatio
 The `Book` object plays as a data model for `Spreadsheet`. It's independent to `Spreadsheet` which means you can manipulate it without assigning it to `Spreadsheet`. Therefore, you can import a file, access it via `Range` API. This usage is very suitable for a data processing scenario. Check the [`ImportServlet`](https://github.com/keikai/dev-ref/blob/master/src/main/java/io/keikai/devref/ImportServlet.java) in the example project.
 
 
+# Large File Issue 
+
+## Increase JVM heap max size
+If most of your file sizes are large, increase JVM heap size can allow you to import a larger file.
+
+
+## Split a file
+If a file is really big, you can split it into several smaller files, and each file contains partial sheets that reference to each other. Then provide a list of files, so that users can select other files to import.
+
+<!-- 
+## Create a custom importer
+You can extend the built-in io.keikai.range.impl.imexp.ExcelXlsxImporter to implement your custom importing behavior. But notice that if you import partial sheets, then a formula that references to non-imported sheet doesn't work as expected. -->
+
+
 # References
 
 1.  A reference that refers to the same cell or range on multiple sheets
