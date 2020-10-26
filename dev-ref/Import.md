@@ -312,7 +312,7 @@ You can extend the built-in io.keikai.range.impl.imexp.ExcelXlsxImporter to impl
 # References
 
 1.  A reference that refers to the same cell or range on multiple sheets
-    is called a 3-D reference. A 3-D reference is a useful and
+    is called a 3D reference. A 3D reference is a useful and
     convenient way to reference several worksheets that follow the same
     pattern and cells on each worksheet contain the same type of data,
     such as when you consolidate budget data from different departments

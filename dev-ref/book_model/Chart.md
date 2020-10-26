@@ -178,3 +178,6 @@ Combo charts don't support this.
 # Limitation 
 
 1.  Currently Spreadsheet cannot read legend position from an XLS file.
+
+# Sparklines
+Please see [Features_and_Usages#sparklines](/dev-ref/Features_and_Usages#sparklines)
