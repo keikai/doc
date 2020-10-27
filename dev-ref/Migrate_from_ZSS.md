@@ -65,7 +65,7 @@ If you have previously applied any custom CSS or JavaScript to your existing ZSS
 
 
 # Deprecated Methods are Removed
-Those classes and methods marked as deprecated in ZSS 3.9 are removed in Keikai. Usually, you will find an alternative method in the same class or you can check [ZSS Javadoc](https://www.zkoss.org/javadoc/latest/zss/org/zkoss/zss/ui/Spreadsheet.html). 
+Those classes and methods marked as deprecated in ZSS 3.9 are removed in Keikai. Usually, you will find an alternative method in the same class or you can check [ZSS Javadoc](https://www.zkoss.org/javadoc/latest/zss/deprecated-list.html#method). 
 
 
 # Removed Component Attributes
