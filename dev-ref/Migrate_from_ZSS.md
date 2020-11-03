@@ -79,6 +79,8 @@ The following configurations also change in Keikai, but you can keep your origin
 * [JSP Tag URI](Get_Spreadsheet_Running_Quickly_in_JSP)
 * [Library Property Name](Configuration)
 
+# Supported Excel format
+While you can import xlsx (Excel 2007+) files and some of the xls (Excel 2003) files into ZSS, Keikai works best with the Open XML xlsx (Excel 2007+) format. The legacy xls format is not supported in Keikai.  
 
 # Migrate ZSS App to Keikai App
 If you have been using [ZSS App](https://www.zkoss.org/wiki/ZK_Spreadsheet_Essentials/Using_Spreadsheet_in_ZK/Spreadsheet_App), and you wish to migrate it to Keikai App, here are the steps:
