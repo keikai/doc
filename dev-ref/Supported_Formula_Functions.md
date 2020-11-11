@@ -1781,6 +1781,15 @@ Regarding the 1st argument, *"1-11 includes manually-hidden rows, while 101-111 
 </center></td>
 </tr>
 <tr class="even">
+<td><p>AVERAGEIF</p></td>
+<td><p>-</p></td>
+<td><center>
+</center></td>
+<td><center>
+<p>Y</p>
+</center></td>
+</tr>
+<tr class="odd">
 <td><p>BETADIST</p></td>
 <td><p>BETA.DIST</p></td>
 <td><center>
@@ -1789,7 +1798,7 @@ Regarding the 1st argument, *"1-11 includes manually-hidden rows, while 101-111 
 <p>Y</p>
 </center></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><p>BETAINV</p></td>
 <td><p>BETA.INV</p></td>
 <td><center>
@@ -1798,7 +1807,7 @@ Regarding the 1st argument, *"1-11 includes manually-hidden rows, while 101-111 
 <p>Y</p>
 </center></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><p>BINOMDIST</p></td>
 <td><p>BINOM.DIST</p></td>
 <td><center>
@@ -1807,7 +1816,7 @@ Regarding the 1st argument, *"1-11 includes manually-hidden rows, while 101-111 
 <p>Y</p>
 </center></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><p>CORREL</p></td>
 <td></td>
 <td><center>
@@ -1816,7 +1825,7 @@ Regarding the 1st argument, *"1-11 includes manually-hidden rows, while 101-111 
 <p>Y</p>
 </center></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><p>CRITBINOM</p></td>
 <td><p>BINOM.INV</p></td>
 <td><center>
@@ -1825,7 +1834,7 @@ Regarding the 1st argument, *"1-11 includes manually-hidden rows, while 101-111 
 <p>Y</p>
 </center></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><p>CHIDIST</p></td>
 <td><p>CHISQ.DIST.RT</p></td>
 <td><center>
@@ -1834,7 +1843,7 @@ Regarding the 1st argument, *"1-11 includes manually-hidden rows, while 101-111 
 <p>Y</p>
 </center></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><p>CHIINV</p></td>
 <td><p>CHISQ.INV.RT</p></td>
 <td><center>
@@ -1843,7 +1852,7 @@ Regarding the 1st argument, *"1-11 includes manually-hidden rows, while 101-111 
 <p>Y</p>
 </center></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><p>-</p></td>
 <td><p>CHISQ.DIST</p></td>
 <td><center>
@@ -1852,7 +1861,7 @@ Regarding the 1st argument, *"1-11 includes manually-hidden rows, while 101-111 
 <p>Y</p>
 </center></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><p>-</p></td>
 <td><p>CHISQ.INV</p></td>
 <td><center>
@@ -1861,7 +1870,7 @@ Regarding the 1st argument, *"1-11 includes manually-hidden rows, while 101-111 
 <p>Y</p>
 </center></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><p>COUNT</p></td>
 <td><p>-</p></td>
 <td><center>
@@ -1871,7 +1880,7 @@ Regarding the 1st argument, *"1-11 includes manually-hidden rows, while 101-111 
 <p>Y</p>
 </center></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><p>COUNTA</p></td>
 <td><p>-</p></td>
 <td><center>
@@ -1881,7 +1890,7 @@ Regarding the 1st argument, *"1-11 includes manually-hidden rows, while 101-111 
 <p>Y</p>
 </center></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><p>COUNTBLANK</p></td>
 <td><p>-</p></td>
 <td><center>
@@ -1891,7 +1900,7 @@ Regarding the 1st argument, *"1-11 includes manually-hidden rows, while 101-111 
 <p>Y</p>
 </center></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><p>COUNTIF</p></td>
 <td><p>-</p></td>
 <td><center>
@@ -1901,7 +1910,7 @@ Regarding the 1st argument, *"1-11 includes manually-hidden rows, while 101-111 
 <p>Y</p>
 </center></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><p>DEVSQ</p></td>
 <td><p>-</p></td>
 <td><center>
@@ -1911,7 +1920,7 @@ Regarding the 1st argument, *"1-11 includes manually-hidden rows, while 101-111 
 <p>Y</p>
 </center></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><p>EXPONDIST</p></td>
 <td><p>EXPON.DIST</p></td>
 <td><center>
@@ -1920,7 +1929,7 @@ Regarding the 1st argument, *"1-11 includes manually-hidden rows, while 101-111 
 <p>Y</p>
 </center></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><p>FDIST</p></td>
 <td><p>F.DIST.RT</p></td>
 <td><center>
@@ -1929,7 +1938,7 @@ Regarding the 1st argument, *"1-11 includes manually-hidden rows, while 101-111 
 <p>Y</p>
 </center></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><p>FINV</p></td>
 <td><p>F.INV.RT</p></td>
 <td><center>
@@ -1938,7 +1947,7 @@ Regarding the 1st argument, *"1-11 includes manually-hidden rows, while 101-111 
 <p>Y</p>
 </center></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><p>GAMMADIST</p></td>
 <td><p>GAMMA.DIST</p></td>
 <td><center>
@@ -1947,7 +1956,7 @@ Regarding the 1st argument, *"1-11 includes manually-hidden rows, while 101-111 
 <p>Y</p>
 </center></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><p>GAMMAINV</p></td>
 <td><p>GAMMA.INV</p></td>
 <td><center>
@@ -1956,7 +1965,7 @@ Regarding the 1st argument, *"1-11 includes manually-hidden rows, while 101-111 
 <p>Y</p>
 </center></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><p>GAMMALN</p></td>
 <td><p>-</p></td>
 <td><center>
@@ -1965,7 +1974,7 @@ Regarding the 1st argument, *"1-11 includes manually-hidden rows, while 101-111 
 <p>Y</p>
 </center></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><p>GEOMEAN</p></td>
 <td><p>-</p></td>
 <td><center>
@@ -1974,7 +1983,7 @@ Regarding the 1st argument, *"1-11 includes manually-hidden rows, while 101-111 
 <p>Y</p>
 </center></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><p>HARMEAN</p></td>
 <td><p>-</p></td>
 <td><center>
@@ -1983,7 +1992,7 @@ Regarding the 1st argument, *"1-11 includes manually-hidden rows, while 101-111 
 <p>Y</p>
 </center></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><p>HYPGEOMDIST</p></td>
 <td><p>HYPGEOM.DIST</p></td>
 <td><center>
@@ -1992,7 +2001,7 @@ Regarding the 1st argument, *"1-11 includes manually-hidden rows, while 101-111 
 <p>Y</p>
 </center></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><p>KURT</p></td>
 <td><p>-</p></td>
 <td><center>
@@ -2001,7 +2010,7 @@ Regarding the 1st argument, *"1-11 includes manually-hidden rows, while 101-111 
 <p>Y</p>
 </center></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><p>LARGE</p></td>
 <td><p>-</p></td>
 <td><center>
@@ -2011,7 +2020,7 @@ Regarding the 1st argument, *"1-11 includes manually-hidden rows, while 101-111 
 <p>Y</p>
 </center></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><p>MAX</p></td>
 <td><p>-</p></td>
 <td><center>
@@ -2021,7 +2030,7 @@ Regarding the 1st argument, *"1-11 includes manually-hidden rows, while 101-111 
 <p>Y</p>
 </center></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><p>MAXA</p></td>
 <td><p>-</p></td>
 <td><center>
@@ -2031,7 +2040,7 @@ Regarding the 1st argument, *"1-11 includes manually-hidden rows, while 101-111 
 <p>Y</p>
 </center></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><p>MEDIAN</p></td>
 <td><p>-</p></td>
 <td><center>
@@ -2041,7 +2050,7 @@ Regarding the 1st argument, *"1-11 includes manually-hidden rows, while 101-111 
 <p>Y</p>
 </center></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><p>MIN</p></td>
 <td><p>-</p></td>
 <td><center>
@@ -2051,7 +2060,7 @@ Regarding the 1st argument, *"1-11 includes manually-hidden rows, while 101-111 
 <p>Y</p>
 </center></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><p>MINA</p></td>
 <td><p>-</p></td>
 <td><center>
@@ -2061,7 +2070,7 @@ Regarding the 1st argument, *"1-11 includes manually-hidden rows, while 101-111 
 <p>Y</p>
 </center></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><p>MODE</p></td>
 <td><p>MODE.SNGL</p></td>
 <td><center>
@@ -2071,7 +2080,7 @@ Regarding the 1st argument, *"1-11 includes manually-hidden rows, while 101-111 
 <p>Y</p>
 </center></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><p>NEGBINOMDIST</p></td>
 <td><p>NEGBINOM.DIST</p></td>
 <td><center>
@@ -2080,7 +2089,7 @@ Regarding the 1st argument, *"1-11 includes manually-hidden rows, while 101-111 
 <p>Y</p>
 </center></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><p>NORMDIST</p></td>
 <td><p>NORM.DIST</p></td>
 <td><center>
@@ -2089,7 +2098,7 @@ Regarding the 1st argument, *"1-11 includes manually-hidden rows, while 101-111 
 <p>Y</p>
 </center></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><p>NORMINV</p></td>
 <td><p>NORM.INV</p></td>
 <td><center>
@@ -2098,7 +2107,7 @@ Regarding the 1st argument, *"1-11 includes manually-hidden rows, while 101-111 
 <p>Y</p>
 </center></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><p>NORMSDIST</p></td>
 <td><p>NORM.S.DIST</p></td>
 <td><center>
@@ -2107,7 +2116,7 @@ Regarding the 1st argument, *"1-11 includes manually-hidden rows, while 101-111 
 <p>Y</p>
 </center></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><p>NORMSINV</p></td>
 <td><p>NORM.S.INV</p></td>
 <td><center>
@@ -2116,7 +2125,7 @@ Regarding the 1st argument, *"1-11 includes manually-hidden rows, while 101-111 
 <p>Y</p>
 </center></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><p>LOGNORMDIST</p></td>
 <td><p>LOGNORM.DIST</p></td>
 <td><center>
@@ -2125,7 +2134,7 @@ Regarding the 1st argument, *"1-11 includes manually-hidden rows, while 101-111 
 <p>Y</p>
 </center></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><p>LOGINV</p></td>
 <td><p>LOGNORM.INV</p></td>
 <td><center>
@@ -2135,7 +2144,7 @@ Regarding the 1st argument, *"1-11 includes manually-hidden rows, while 101-111 
 <p>Y</p>
 </center></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><p>POISSON</p></td>
 <td><p>POISSON.DIST</p></td>
 <td><center>
@@ -2145,7 +2154,7 @@ Regarding the 1st argument, *"1-11 includes manually-hidden rows, while 101-111 
 <p>Y</p>
 </center></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><p>RANK</p></td>
 <td><p>RANK.EQ</p></td>
 <td><center>
@@ -2155,7 +2164,7 @@ Regarding the 1st argument, *"1-11 includes manually-hidden rows, while 101-111 
 <p>Y</p>
 </center></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><p>SKEW</p></td>
 <td><p>-</p></td>
 <td><center>
@@ -2164,7 +2173,7 @@ Regarding the 1st argument, *"1-11 includes manually-hidden rows, while 101-111 
 <p>Y</p>
 </center></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><p>SLOPE</p></td>
 <td><p>-</p></td>
 <td><center>
@@ -2173,7 +2182,7 @@ Regarding the 1st argument, *"1-11 includes manually-hidden rows, while 101-111 
 <p>Y</p>
 </center></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><p>SMALL</p></td>
 <td><p>-</p></td>
 <td><center>
@@ -2183,7 +2192,7 @@ Regarding the 1st argument, *"1-11 includes manually-hidden rows, while 101-111 
 <p>Y</p>
 </center></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><p>STDEV</p></td>
 <td><p>STDE.V</p></td>
 <td><center>
@@ -2193,7 +2202,7 @@ Regarding the 1st argument, *"1-11 includes manually-hidden rows, while 101-111 
 <p>Y</p>
 </center></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><p>-</p></td>
 <td><p>T.DIST.2T</p></td>
 <td><center>
@@ -2202,7 +2211,7 @@ Regarding the 1st argument, *"1-11 includes manually-hidden rows, while 101-111 
 <p>Y</p>
 </center></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><p>TDIST</p></td>
 <td><p>T.DIST.RT</p></td>
 <td><center>
@@ -2211,7 +2220,7 @@ Regarding the 1st argument, *"1-11 includes manually-hidden rows, while 101-111 
 <p>Y</p>
 </center></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><p>TINV</p></td>
 <td><p>T.INV.2T</p></td>
 <td><center>
@@ -2220,7 +2229,7 @@ Regarding the 1st argument, *"1-11 includes manually-hidden rows, while 101-111 
 <p>Y</p>
 </center></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><p>VAR</p></td>
 <td><p>VAR.S</p></td>
 <td><center>
@@ -2230,7 +2239,7 @@ Regarding the 1st argument, *"1-11 includes manually-hidden rows, while 101-111 
 <p>Y</p>
 </center></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><p>VARP</p></td>
 <td><p>VAR.P</p></td>
 <td><center>
@@ -2240,7 +2249,7 @@ Regarding the 1st argument, *"1-11 includes manually-hidden rows, while 101-111 
 <p>Y</p>
 </center></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><p>WEIBULL</p></td>
 <td><p>WEIBULL.DIST</p></td>
 <td><center>
