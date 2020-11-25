@@ -418,3 +418,15 @@ dialog:
 
 ### Limitation:
 - custom validation is not supported yet.
+
+
+# Table 
+Keikai supports to load an [Excel table](https://support.microsoft.com/en-us/office/overview-of-excel-tables-7ab0bb7d-3a9e-4b56-a3c9-6c94334e492c#:~:text=To%20quickly%20create%20a%20table,row%2C%20and%20then%20click%20OK.). If your add (or remove) rows/columns to a table, keikai will automatically keep the color theme of cells. You don't need to set background and borders by yourselves.
+
+![]({{site.devref_image_folder}}/table.jpg)
+
+
+## Limitation
+* Regarding table colors, keikai only supports **Office2007-2010** color. If you choose an unsupported color in Excel, the color will be turned to the supported color. So the color will look different in Keikai.
+
+<!-- https://tracker.zkoss.org/browse/KEIKAI-320 -->
