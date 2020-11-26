@@ -14,6 +14,11 @@ automatically reflect to other users' Spreadsheet and each user can also
 see others' current selection box which are painted with different
 colors.
 
+
+# Limitation
+This feature requires to share one `Book` object among multiple `Spreadsheet` components, so it doesn't work in a clustering environment (cross among differe Java VM).
+
+
 # Example
 
 Here we demonstrate an example application that loads a book and shares
