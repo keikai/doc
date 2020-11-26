@@ -16,7 +16,7 @@ colors.
 
 
 # Limitation
-This feature requires to share one `Book` object among multiple `Spreadsheet` components, so it doesn't work in a clustering environment (cross among differe Java VM).
+This feature requires to share one `Book` object among multiple `Spreadsheet` components, so it doesn't work in a clustering environment (cross among different Java VM).
 
 
 # Example
