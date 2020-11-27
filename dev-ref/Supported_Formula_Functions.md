@@ -2483,4 +2483,4 @@ Note: Keikai supports both function names [listed here](https://support.office.c
 
 # Unsupported Functions
 
-Keikai doesn't support Cube, Database, and Web functions.
+Keikai doesn't support Cube, Database, Web functions and formulas that generate Arrays of results.
