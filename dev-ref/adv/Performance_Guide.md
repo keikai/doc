@@ -12,27 +12,16 @@ spreadsheet UI of the range. However, in following cases, developers
 might not want such "automation" and like to control the evaluation and
 update by themselves:
 
-  - Change a lot of cells in a batch.
-
-<!-- end list -->
-
-  -   
-    If we don't disable auto refresh in such case, the Keikai spreadsheet
-    will generate a lot of small AU response to a browser which slows
-    down browser rendering speed.
-
-<!-- end list -->
-
-  - initialize a book upon a data source (e.g. a database) before Keikai
-    spreadsheet renders itself.
-
-<!-- end list -->
-
-  -   
-    Sometimes we need to load the data from a database to initialize a
-    sheet before Keikai spreadsheet renders in a browser. Disable the auto
-    refresh can eliminate Spreadsheet's unnecessary internal
-    calculations for rendering.
+- Change a lot of cells in a batch.
+- If we don't disable auto refresh in such case, the Keikai spreadsheet
+  will generate a lot of small AU response to a browser which slows
+  down browser rendering speed.
+- initialize a book upon a data source (e.g. a database) before Keikai
+  spreadsheet renders itself.
+- Sometimes we need to load the data from a database to initialize a
+  sheet before Keikai spreadsheet renders in a browser. Disable the auto
+  refresh can eliminate Spreadsheet's unnecessary internal
+  calculations for rendering.
 
 In order to manually control UI update, we have to:
 
@@ -222,3 +211,11 @@ If one sheet actually contains 100 rows of data. But you apply cell background c
 ## Split the File
 If you have a big file with multiple sheets and massive cells, and it takes a long time to import.You can split the file into multiple smaller files and import them separately. For example, you split a big file into `a-1.xlsx` and `a-2.xlsx`. Then, import the 1st file first, after Keikai shows the first file, starts to import the 2nd file. Keep the reference of the 2 `Book`. Allow users to switch among 2 books by calling [`Spreadsheet::setBook()`](https://keikai.io/javadoc/latest/io/keikai/ui/Spreadsheet.html#setBook-io.keikai.api.model.Book-).
 
+
+# Import formula cache
+An Excel file contains formula calculated result as a cache, import and show the cached value can save the time of re-evaluate formulas after importing. Please see [Configuration#importing](/dev-ref/Configuration#importing).
+
+
+# Trouble Shooting
+If none of above techniques can improve your performance problem, you need to analyze your page according to
+[Step by Step Trouble Shooting](https://www.zkoss.org/wiki/ZK%20Developer's%20Reference/Performance%20Monitoring/Step%20by%20Step%20Trouble%20Shooting) to find a performance bottleneck. Then start to deal with the bottleneck or share the data with us. 
