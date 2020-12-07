@@ -214,5 +214,5 @@ An Excel file contains formula calculated result as a cache, you can configure t
 
 
 # Trouble Shooting
-If you have tried the relevant techniques above or if you are not sure why your project is slow, we recommend you to analyze your page according to
+If you have tried the relevant techniques above but the performance is still unsatisfying, or, if you are not sure why your project is slow, we recommend you to analyze your page according to
 [Step by Step Trouble Shooting](https://www.zkoss.org/wiki/ZK%20Developer's%20Reference/Performance%20Monitoring/Step%20by%20Step%20Trouble%20Shooting) to find the performance bottleneck. Then, deal with the bottleneck or consult with us. 
