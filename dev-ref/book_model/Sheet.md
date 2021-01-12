@@ -15,3 +15,11 @@ Keikai provides [`Range`](https://keikai.io/javadoc/latest/io/keikai/api/Range.h
 Clone the current sheet by [`cloneSheet(String name)`](https://keikai.io/javadoc/latest/io/keikai/api/Range.html#cloneSheet-java.lang.String-)
 
 Clone a sheet from another Book e.g. a Book as a template by [`cloneSheetFrom(String name, Sheet sheet)`](https://keikai.io/javadoc/latest/io/keikai/api/Range.html#cloneSheetFrom-java.lang.String-io.keikai.api.model.Sheet-)
+
+
+# Hide/Unhide
+
+```java
+Ranges.range(srcSpreadsheet.getSelectedSheet()).setSheetVisible(Range.SheetVisible.HIDDEN);
+Ranges.range(srcSpreadsheet.getSelectedSheet()).setSheetVisible(Range.SheetVisible.VISIBLE);
+```
