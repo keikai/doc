@@ -6,7 +6,8 @@ This section is for customers who purchased Keikai EE. To use the official versi
 2. Apply a license key
 
 # Configure and Download from The Premium Repository
-Specify the repositories for **Keikai EE** and **ZK EE** like this [pom.xml](https://github.com/keikai/dev-ref/blob/master/pom.xml)
+Maven is recommended. Specify the maven repositories for **Keikai EE** and **ZK EE** like this [pom.xml](https://github.com/keikai/dev-ref/blob/master/pom.xml). If you do not use maven, we will provide you with additional information on how you can download the binary file manually.
+
 
 ## Login Information
 The premium repository requires authentication. Licensed customers will be given a set of user name and password upon your request. According to [the official Maven doc](https://maven.apache.org/settings.html), you can specify login information in one of the following locations: (if not existed, you can create it manually)
