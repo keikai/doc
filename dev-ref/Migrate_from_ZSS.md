@@ -103,7 +103,7 @@ Copy `/WEB-INF/zk.xml` from the previous zssapp and overwrite keikai-app's `/WEB
 * Minor change in auto filter popup style
 
 # Upgrading ZK
-If you were with "ZK Spreadsheet + ZK 8.0", we recommend you to upgrade to "Keikai + ZK 9.x" or "Keikai + ZK 8.6.x". Here are some tips for ZK upgrade.
+If you were with "ZK Spreadsheet + ZK 8.0", we recommend you to upgrade to "Keikai + ZK 9.x" or "Keikai + ZK 8.6.x". Here are some tips for ZK upgrade. For a more complete ZK upgrade guide visit [here](https://www.zkoss.org/wiki/ZK%20Developer's%20Reference/Upgrade%20Tips/Version%20Upgrade)
 
 ## Default theme changed since ZK 8.5
 Since ZK 8.5 the default theme has been changed to **Iceblue** which has a modern design and bigger padding and margin. This means you will need to adjust your application layout to fit the new default theme. If you are not ready for the new theme, you can [fall back to the previous breeze/silvertail/sapphire themes](https://www.zkoss.org/wiki/Small_Talks/2017/October/New_Features_of_ZK_8.5.0#Keep_Using_The_Previous_Default_Theme_-_Breeze). Alternatively for ZK 8.6+ you can use the [iceblue compact theme](https://www.zkoss.org/wiki/Small_Talks/2018/November/New_Features_of_ZK_8.6.0#Refresh_Theme_without_Code_Change_-_Compact_Theme) which has a modern design but also a compatible padding and margin with breeze, so you can keep your existing layout.
