@@ -96,9 +96,11 @@ Copy `/WEB-INF/zk.xml` from the previous zssapp and overwrite keikai-app's `/WEB
 # Client-side Major change between ZSS and Keikai
 {% include version-badge.html version='5.2.0' %}
 
-* Toolbar DOM structure and its CSS class names changed, starting with k-toolbar
+* Toolbar widget and its DOM structure, CSS class names changed, starting with `k-toolbar`.
+(If you need to customize toolbar, please refer to [Toolbar Customization](/dev-ref/adv/Toolbar_Customization).)
 * Scrollbar is simulated by HTML elements (ZSS uses browser native scrollbar)
 * Generate most CSS rules at client-side instead of server-side
+* Hidden rows now don't have the DOM elements (save memory)
 * Upgrade Highcharts to 7.2.1.1
 * Minor change in auto filter popup style
 
