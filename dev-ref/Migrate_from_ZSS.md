@@ -20,7 +20,7 @@ If it succeeds, the repacked, new WAR with the same name will be put under the s
 
 (**Note**: This approach renames Keikai jar file in bytecode level at run-time by [jarjar](https://github.com/pantsbuild/jarjar) which is not recommended in the production environment.)
 
-# How to Migrate from ZSS 
+# How to Migrate (Server-side)
 It is very easy to migrate your existing ZSS project to Keikai, just need to handle the following changes:
 
 ## JAR Change (zss\*.jar --> keikai\*.jar)
@@ -60,17 +60,29 @@ The prefix now should be `keikai` like:
 <?taglib uri="/WEB-INF/tld/function.tld" prefix="keikai" ?>
 ```
 
-## Custom CSS and JavaScript
-If you have previously applied any custom CSS or JavaScript to your existing ZSS application, it is possible that it will no longer work in Keikai since we have optimized Keikai's UI and client widgets for better performance and usability. You may need to redo the corresponding customization on Keikai.
 
-
-# Deprecated Methods are Removed
+## Deprecated Methods are Removed
 Those classes and methods marked as deprecated in ZSS 3.9 are removed in Keikai. Usually, you will find an alternative method in the same class or you can check [ZSS Javadoc](https://www.zkoss.org/javadoc/latest/zss/deprecated-list.html#method). 
 
 
-# Removed Component Attributes
+## Removed Component Attributes
 Some deprecated setter method of Spreadsheet are removed which means the corresponding attributes are no long supported, either, e.g. `maxrows`. Please check **Deprecated Methods** at [ZSS Javadoc](https://www.zkoss.org/javadoc/latest/zss/org/zkoss/zss/ui/Spreadsheet.html).
 
+
+# How to Migrate (Client-side) 
+If you have previously applied any custom CSS or JavaScript to your existing ZSS application, it is very likely that it no longer works in Keikai since we have optimized Keikai's UI and client widgets for better performance and usability. You may need to redo the corresponding customization on Keikai, or maybe there is a server-side approach in Keikai. We need to check this case by case. Please contact with us.
+
+## Client-side Major change between ZSS and Keikai
+
+* Scrollbar is simulated by HTML elements (ZSS uses browser native scrollbar)
+* Generate most CSS rules at client-side instead of server-side
+* Hidden rows now don't render their DOM elements (save memory)
+<!-- KEIKAI-62 -->
+* Upgrade Highcharts to 7.2.1.1
+* Minor change in auto filter popup style
+* Toolbar widget and its DOM structure, CSS class names changed, starting with `k-toolbar`.
+(If you need to customize toolbar, please refer to [Toolbar Customization](/dev-ref/adv/Toolbar_Customization).) {% include version-badge.html version='5.2.0' %}
+<!-- KEIKAI-151 -->
 
 
 # Backward Compatibility
@@ -92,17 +104,6 @@ The default folder to store Excel files is `/WEB-INF/books/`. If you have previo
 3. Migrate `zk.xml` from zssapp to keikai-app <br/>
 Copy `/WEB-INF/zk.xml` from the previous zssapp and overwrite keikai-app's `/WEB-INF/zk.xml`. No additional change is required because Keikai app is made ready for backward compatibile and can read old(ZSS) property keys in zk.xml.
 
-
-# Client-side Major change between ZSS and Keikai
-{% include version-badge.html version='5.2.0' %}
-
-* Toolbar widget and its DOM structure, CSS class names changed, starting with `k-toolbar`.
-(If you need to customize toolbar, please refer to [Toolbar Customization](/dev-ref/adv/Toolbar_Customization).)
-* Scrollbar is simulated by HTML elements (ZSS uses browser native scrollbar)
-* Generate most CSS rules at client-side instead of server-side
-* Hidden rows now don't have the DOM elements (save memory)
-* Upgrade Highcharts to 7.2.1.1
-* Minor change in auto filter popup style
 
 # Upgrading ZK
 If you were with "ZK Spreadsheet + ZK 8.0", we recommend you to upgrade to "Keikai + ZK 9.x" or "Keikai + ZK 8.6.x". Here are some tips for ZK upgrade. For a more complete ZK upgrade guide visit [here](https://www.zkoss.org/wiki/ZK%20Developer's%20Reference/Upgrade%20Tips/Version%20Upgrade)
