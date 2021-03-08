@@ -22,8 +22,7 @@ After completing above steps, you can write the custom function in a formula.
 
 # Only Work in Keikai spreadsheet
 
-Notice that a custom function is implemented with Java in your project.
-So the custom function will not be saved into an XLSX file. That means a
+Notice that a custom function is implemented with Java in your project. That means a
 custom function is only evaluated and recognized when you load a file
 into Keikai spreadsheet. If you open the exported file with a custom
 function by MS Excel (or other compatible editors), Excel cannot
@@ -363,3 +362,13 @@ customized function will be invoked instead of the built-in one.
 {% endhighlight %}
 
 - In above code snippet, if we use `LEN()` in a formula, `myLen()` will be invoked.
+
+
+# Naming
+If you want to declare a function name that contains a dot (`.`) e.g. `T.EXCHANGE`, you should replace the dot with dollar sign (`$`) like:
+
+```xml
+<?xel-method prefix="keikai" name="T$EXCHANGE" ...?>
+```
+
+<!-- io.keikaiex.formula.ELEvalFunction -->

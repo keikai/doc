@@ -30,9 +30,7 @@ Few points need to be noticed:
 1.  If some functions not yet supported by Keikai spreadsheet are used in a
     formula, re-evaluation breaks the cached value even if precedent
     cells do not change.
-2.  If some customized function **only** supported in Keikai spreadsheet are
-    used in a formula, a cache is always `#NAME!` error. Users must
-    enforce re-evaluation by calling `Range.refresh(true, true, true)`.
+2.  If you use a customized function **only** supported in Keikai spreadsheet in a formula, the cached result is always `#NAME!` error. Application developers must enforce re-evaluation by `Range.refresh(true, true, true)`.
 
 ## Exporting
 Default value: **false**
