@@ -22,18 +22,18 @@ Current supported picture formats are listed in
 `io.keikai.model.Picture.Format`
 which include `EMF, WMF, PICT, JPEG, PNG`, and `DIB`.
 
-The `SheetAnchor` represents a picture's position on a sheet. 
+The [`SheetAnchor`](https://keikai.io/javadoc/latest/io/keikai/api/SheetAnchor.html) represents a picture's position on a sheet. 
 When adding or moving a picture, you must provide one `SheetAnchor` to assign 
 a picture's position. You can create a `SheetAnchor` by passing 4 index numbers, 
 left top corner's and right bottom's row and column of an image. 
-After you add a picture, you will get the newly-created `io.keikai.model.Picture` object. 
+After you add a picture, you will get the newly-created [`io.keikai.model.Picture`](https://keikai.io/javadoc/latest/io/keikai/api/model/Picture.html) object. 
 You had better store it somewhere you can retrieve it back later
 if you plan to delete or move it. Otherwise, you can only get them from
 a `Sheet` method:
 
-{% highlight java linenos %}
+```java
     public List<Picture> getPictures();
-{% endhighlight %}
+```
 
 Then, use its ID or position to identify a picture.
 
@@ -41,17 +41,17 @@ If you think passing byte array of an image is troublesome for you, you
 can use `io.keikai.image.AImage`. It has several
 convenient constructors to create a object for an image like:
 
-{% highlight java linenos %}
+```java
 AImage image = new AImage(WebApps.getCurrent().getResource("/zklogo.png"));
-{% endhighlight %}
+```
 
 Then, you can pass `AImage` to
 `io.keikai.SheetOperationUtil`
 to add a picture:
 
-{% highlight java linenos %}
+```java
     public static void addPicture(Range range, AImage image);
-{% endhighlight %}
+```
 
 This method will create a `SheetAnchor` internally based on the image's
 size. .
