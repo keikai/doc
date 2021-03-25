@@ -143,6 +143,8 @@ dev-ref:
       url: /dev-ref/adv/Find_among_Cells
     - title: Customize Dialogs
       url: /dev-ref/adv/Customize_Dialogs
+    - title: Trace Formulas
+      url: /dev-ref/adv/Trace_Formulas
     - title: Performance Guide
       url: /dev-ref/adv/Performance_Guide
     - title: Embed Keikai
