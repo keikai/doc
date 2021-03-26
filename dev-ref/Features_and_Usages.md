@@ -38,6 +38,69 @@ Tab color is imported and rendered.
 ![]({{site.devref_image_folder}}/tabColor.jpg)
 
 
+
+# Supported Hotkeys
+
+<table>
+<thead>
+<tr class="header">
+<th><center>
+<p>Hotkey</p>
+</center></th>
+<th><center>
+<p>Action</p>
+</center></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><p>CTRL+B</p></td>
+<td><p>bold</p></td>
+</tr>
+<tr class="even">
+<td><p>CTRL+C</p></td>
+<td><p>copy</p></td>
+</tr>
+<tr class="odd">
+<td><p>CTRL+I</p></td>
+<td><p>italic</p></td>
+</tr>
+<tr class="even">
+<td><p>CTRL+U</p></td>
+<td><p>underline</p></td>
+</tr>
+<tr class="odd">
+<td><p>CTRL+V</p></td>
+<td><p>paste</p></td>
+</tr>
+<tr class="even">
+<td><p>CTRL+X</p></td>
+<td><p>cut</p></td>
+</tr>
+<tr class="odd">
+<td><p>CTRL+Y (EE only)</p></td>
+<td><p>redo</p></td>
+</tr>
+<tr class="even">
+<td><p>CTRL+Z (EE only)</p></td>
+<td><p>undo</p></td>
+</tr>
+<tr class="odd">
+<td><p>Delete</p></td>
+<td><p>clear content</p></td>
+</tr>
+<tr class="even">
+<td><p>Esc</p></td>
+<td><p>clear copy/cut clipboard</p></td>
+</tr>
+<tr class="odd">
+<td><p>CTRL+ARROW KEY</p></td>
+<td><p>moves the selection box to the edge of the current data region in a sheet.</p></td>
+</tr>
+</tbody>
+</table>
+
+
 # Features
 
 ## Text Style
@@ -170,67 +233,6 @@ Keikai can read a named range from an xlsx file, so you can specify a named rang
 
 
 
-
-# Supported Hotkeys
-
-<table>
-<thead>
-<tr class="header">
-<th><center>
-<p>Hotkey</p>
-</center></th>
-<th><center>
-<p>Action</p>
-</center></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><p>CTRL+B</p></td>
-<td><p>bold</p></td>
-</tr>
-<tr class="even">
-<td><p>CTRL+C</p></td>
-<td><p>copy</p></td>
-</tr>
-<tr class="odd">
-<td><p>CTRL+I</p></td>
-<td><p>italic</p></td>
-</tr>
-<tr class="even">
-<td><p>CTRL+U</p></td>
-<td><p>underline</p></td>
-</tr>
-<tr class="odd">
-<td><p>CTRL+V</p></td>
-<td><p>paste</p></td>
-</tr>
-<tr class="even">
-<td><p>CTRL+X</p></td>
-<td><p>cut</p></td>
-</tr>
-<tr class="odd">
-<td><p>CTRL+Y (EE only)</p></td>
-<td><p>redo</p></td>
-</tr>
-<tr class="even">
-<td><p>CTRL+Z (EE only)</p></td>
-<td><p>undo</p></td>
-</tr>
-<tr class="odd">
-<td><p>Delete</p></td>
-<td><p>clear content</p></td>
-</tr>
-<tr class="even">
-<td><p>Esc</p></td>
-<td><p>clear copy/cut clipboard</p></td>
-</tr>
-<tr class="odd">
-<td><p>CTRL+ARROW KEY</p></td>
-<td><p>moves the selection box to the edge of the current data region in a sheet.</p></td>
-</tr>
-</tbody>
-</table>
 
 # Usage
 
