@@ -29,7 +29,7 @@ Both J13 and F15 (enclosed by red border) reference to F13, so `F13` has 2 **dep
 
 
 # Get a Set of Precedents/Dependents
-You can also get a set of precedents/dependents of a cell to process further with:
+You can also get a set of precedents/dependents of a cell to process further or to display in your own desired format (ex. in a table or a chart):
 
 * [`Range.getDirectPrecedents()`](https://keikai.io/javadoc/latest/io/keikai/api/Range.html#getDirectPrecedents--)
 * [`Range.getDirectDependents()`](https://keikai.io/javadoc/latest/io/keikai/api/Range.html#getDirectDependents--)
