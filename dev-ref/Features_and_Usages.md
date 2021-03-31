@@ -422,13 +422,26 @@ dialog:
 - custom validation is not supported yet.
 
 
-# Table 
+## Table 
 Keikai supports to load an [Excel table](https://support.microsoft.com/en-us/office/overview-of-excel-tables-7ab0bb7d-3a9e-4b56-a3c9-6c94334e492c#:~:text=To%20quickly%20create%20a%20table,row%2C%20and%20then%20click%20OK.). If your add (or remove) rows/columns to a table, keikai will automatically keep the color theme of cells. You don't need to set background and borders by yourselves.
 
 ![]({{site.devref_image_folder}}/table.jpg)
 
 
-## Limitation
+### Limitation
 * Regarding table colors, keikai only supports **Office2007-2010** color. If you choose an unsupported color in Excel, the color will be turned to the supported color. So the color will look different in Keikai.
 
 <!-- https://tracker.zkoss.org/browse/KEIKAI-320 -->
+
+
+## Column Width AutoFit
+{% include version-badge.html version='5.7.0' %}
+
+End users can double-click a column header's border to make its width auto-fit its content. Or you can select multiple columns to auto-fit them at once.
+
+![]({{site.devref_image_folder}}/autofit.gif)
+
+You can also trigger an auto-fit with API:
+
+* [`Spreadsheet.setAutofitColumnWidth(SSheet sheet, int column)`](https://keikai.io/javadoc/latest/io/keikai/ui/Spreadsheet.html#setAutofitColumnWidth-io.keikai.model.SSheet-int-)
+* [`Spreadsheet.setAutofitColumnWidth(SSheet sheet, int fromColumn, int toColumn)`](https://keikai.io/javadoc/latest/io/keikai/ui/Spreadsheet.html#setAutofitColumnWidth-io.keikai.model.SSheet-int-int-)
