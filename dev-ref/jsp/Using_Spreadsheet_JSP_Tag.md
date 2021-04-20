@@ -29,7 +29,7 @@ write Spreadsheet JSP tag with a specified prefix.
 {% highlight html linenos %}
 <%@page language="java" contentType="text/html; charset=UTF-8" 
     pageEncoding="UTF-8"%>
-<%@taglib prefix="zssjsp" uri="http://www.zkoss.org/jsp/zss"%> http://www.zkoss.org/jsp/zss"%>
+<%@taglib prefix="kkjsp" uri="http://www.zkoss.org/jsp/zss"%> http://www.zkoss.org/jsp/zss"%>
 <!DOCTYPE html>
 <html>
     <head>
