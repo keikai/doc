@@ -420,6 +420,7 @@ dialog:
 
 ### Limitation:
 - custom validation is not supported yet.
+- Validation lists using a formula referencing a different sheet are not supported due to Excel data structure. To use data from a different sheet as source for a validation list, you must create a named range containing the data, and use that named range as the validation data source.
 
 
 ## Table 
