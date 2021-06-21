@@ -118,30 +118,30 @@ first.
 
 # Does Keikai support Excel form controls?
 
-No. But there are several alternatives:
+No, you can't import Excel's form controls into Keikai. However there are ways to achieve the same goal:
+
+## Insert a checkbox or a radio symbol in cells and control it<br/>
+
+![]({{site.devref_image_folder}}/checkmark-radio.jpg)
+
+To enable the selection of checkmarks and radios, you can implement [Cell Clicking Event](/dev-ref/handling_events/Cell_Clicking_Event) listener and switch the symbols and perform corresponding selection actions. Please see [InvoiceBuilderController](https://github.com/keikai/dev-ref/tree/master/src/main/java/io/keikai/devref/usecase).
 
 ## Use ZK Components
-Please refer to the menu in [Keikai Demo: Excel-like](https://keikai.io/demo/excel_like).
+Keikai works well with ZK Framework and you can leverage ZK Components in Keikai easily. Please refer to the menu in [Keikai Demo: Excel-like](https://keikai.io/demo/excel_like) and [Bringing intuitive input controls to the web spreadsheet user experience with Java](https://keikai.io/blog/p/insheet-control.html)
 
-## Turn a cell as a button
-Apply a border and background to make a cell look like a button.<br/>
+## Turn a cell into a button
+Apply a border and a background you can easily make a cell look like a button. Then, control the cell in Java so that it works like a button.<br/>
 ![]({{site.devref_image_folder}}/cell-as-button.jpg)
 
 Check `ui-controls.xlsx` in the example project.
 
 To listen to the button clicking, please see [Cell Clicking Event](/dev-ref/handling_events/Cell_Clicking_Event).
 
-## Insert a checkbox or a radio symbol in cells<br/>
-
-![]({{site.devref_image_folder}}/checkmark-radio.jpg)
-
-To switch checkmarks and radios, you can implement [Cell Clicking Event](/dev-ref/handling_events/Cell_Clicking_Event) listener and switch symbols. Please see [InvoiceBuilderController](https://github.com/keikai/dev-ref/tree/master/src/main/java/io/keikai/devref/usecase).
-
 ## Create a custom context menu
 Please refer to [Custom Context Menu](/dev-ref/adv/Custom_Context_Menu).
 Then you can implement the application logic in an onCellClick event listener. 
 
-## Data validation can produce a dropdown list
+## Data validation can display a dropdown list
 Please refer to [Data Validation](Features_and_Usages#data-validation).
 
 ## Show an input component in a popup
