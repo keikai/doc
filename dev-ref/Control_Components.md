@@ -180,7 +180,13 @@ Allow you to set custom column/row heading instead of showing A,B,C or 1,2,3.
 ## `readOnly`
 {% include version-badge.html version='5.6.0' %}
 
+Default: **false**
+
 Set this attribute to `true` to make a spreadsheet component read-only. All UI are disabled including the buttons on the toolbar and the context menu on the sheet tab. Users can't select any cell but view sheet content and switch among sheets.
+
+``` xml
+    <spreadsheet readOnly="true"/>
+```
 
 ### Different Scope from [Protection]({{site.devref}}/book_model/Protection)
 You can also make a sheet read-only by enabling the sheet protection (via UI or API), but it affects the whole book instead of a spreadsheet component. That means you affects every user who is accessing the same `Book` under collaboration mode. Hence, assuming you want some users to edit a book and some just view the content made by others, you should apply `readOnly="true"` on those view-only users.
