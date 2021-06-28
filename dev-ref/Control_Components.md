@@ -137,7 +137,7 @@ not cover the whole visible range, Keikai will send AU request
 
 ![center]({{site.devref_image_folder}}/3Ranges.png)
 
-## MaxRenderedCellSize
+## `maxRenderedCellSize`
 
 It's a threshold to remove cached cell data when scrolling. When you
 scroll toward one direction, Spreadsheet will remove cached cell data in
@@ -157,7 +157,7 @@ The attribute `maxVisibleColumns` controls the maximum visible number of
 columns in a Spreadsheet, it must be larger than 0. For example, if you set it to 40, it will display 40 columns: column `A` to column `AN`.
 
 
-## maxVisibleRows
+## `maxVisibleRows`
 
 Default: **>=200**
 
@@ -168,7 +168,7 @@ number of rows in Spreadsheet. You can use these 2 attributes above to set up
 the visible area according to your requirement.
 
 
-## columntitles, rowtitles
+## `columntitles`, `rowtitles`
 Allow you to set custom column/row heading instead of showing A,B,C or 1,2,3.
 
 ![]({{site.devref_image_folder}}/custom-heading.jpg)
@@ -177,11 +177,20 @@ Allow you to set custom column/row heading instead of showing A,B,C or 1,2,3.
 <spreadsheet columntitles="Name, Age, Address" rowtitles="1st, 2nd, 3rd"/>
 ```
 
+## `readOnly`
+{% include version-badge.html version='5.6.0' %}
+
+Set this attribute to `true` to make a spreadsheet component read-only. All UI are disabled including the buttons on the toolbar and the context menu on the sheet tab. Users can't select any cell but view sheet content and switch among sheets.
+
+### Different Scope from [Protection]({{site.devref}}/book_model/Protection)
+You can also make a sheet read-only by enabling the sheet protection (via UI or API), but it affects the whole book instead of a spreadsheet component. That means you affects every user who is accessing the same `Book` under collaboration mode. Hence, assuming you want some users to edit a book and some just view the content made by others, you should apply `readOnly="true"` on those view-only users.
+
+
 ## Other Inherited Properties
 
 There are other properties inherited from parent component you can set,
 such as `width`, or `height`. For the complete list, please look for
-those inherited setter methods in the javadoc [`io.keikai.ui.Spreadsheet`](https://keikai.io/javadoc/latest/io/keikai/ui/Spreadsheet.html).
+those inherited setter methods in the JavaDoc [`io.keikai.ui.Spreadsheet`](https://keikai.io/javadoc/latest/io/keikai/ui/Spreadsheet.html).
 
 Each **setter** means a corresponding **attribute**, for example:
 
