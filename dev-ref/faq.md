@@ -90,7 +90,7 @@ If you need a similar function, you can port your macro to Java in your controll
 
 # How to validate an XLSX format Excel file
 
-Validate it with [Open XML SDK 2.5 for Microsoft Office](https://www.microsoft.com/en-us/download/details.aspx?id=30425).
+Validate it with [Open XML SDK 2.5 Productivity Tool for Microsoft Office](https://web.archive.org/web/20190116000204/https://www.microsoft.com/en-us/download/details.aspx?id=30425).
 
 # Run out of heap when exporting / importing a large file
 
