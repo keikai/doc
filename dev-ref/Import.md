@@ -4,7 +4,9 @@ title: ''
 # Import an Excel File
 
 In most cases, we create a book model by loading an Excel file instead
-of creating it directly. Specifying an Excel file's path in Spreadsheet
+of creating it directly. You can import an Excel file (xlsx format) into Keikai. (Note: if you wish to import an xls file into Keikai, one useful tip is to covert it to xlsx by saving it as a xlsx file in Excel). 
+
+Specifying an Excel file's path in Spreadsheet
 component's attribute is the simplest way, and Spreadsheet will import
 the file and construct a book model object. You can also use
 [`io.keikai.api.Importer`](https://keikai.io/javadoc/latest/io/keikai/api/Importer.html) to
