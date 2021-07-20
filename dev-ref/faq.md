@@ -82,6 +82,15 @@ application based on Keikai component. You just run the war with a Java
 application server, then you can upload files via the menu, File / Open
 / Upload.
 
+# Is Keikai 100% compatible with Excel?
+
+Keikai's core value is to bring spreadsheets online and be able to control them fully in Java. Regarding Excel compatibility, while we support the most commonly used Excel features, that doesn't mean all features and all Excel versions are supported. Our documentation contains a list of supported features, for example:
+- Supported [Formulas](/dev-ref/Supported_Formula_Functions)
+- Supported [Chart types](/dev-ref/book_model/Chart)
+- Supported format: [xlsx](/dev-ref/Import)
+
+Please check our documentaiton for supported features, or consult with us if you have any doubts.
+
 # Does Keikai support VB macro?
 
 No. Even [MS Office 365](https://social.technet.microsoft.com/Forums/office/en-US/7c46823c-2581-47a6-baac-66fb99ac3ea8) doesn't support VB Macro in the Web.
