@@ -65,3 +65,13 @@ public class BookSeriesComposer extends SelectorComposer<Component> {
 
 After completing above steps, you can use external cell reference in a
 book to reference another one.
+
+
+# Import/Export
+Assuming the original cell address in Excel is:
+`='/myAbsolutePath/[source.xlsx]Input'!A4`
+
+When importing it into keikai, keikai will remove its file path:
+`=[source.xlsx]Input!A4`
+
+If you export it, Keikai won't restore the file path.
