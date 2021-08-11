@@ -164,6 +164,12 @@ A combination chart is a chart that displays 2 types of chart in a single chart.
 
 ![]({{site.devref_image_folder}}/combo-chart.jpg)
 
+### Empty Cell
+{% include version-badge.html version='5.8.0' %}
+Keikai can show an empty cell as **zero** or **gap** depending on how you configure each chart in Excel.
+
+![]({{site.devref_image_folder}}/chartEmptyCell.jpg)
+
 
 ## Rich Text Editing
 

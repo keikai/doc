@@ -2,7 +2,7 @@
 title: 'Configuration'
 ---
 
-The library properties below allow you to configure spreadsheet's behaviors. There are other properties for underlying ZK framework, please refer to [ZK Configuration Reference](https://www.zkoss.org/wiki/ZK%20Configuration%20Reference/zk.xml).
+Specifying the library properties below in `zk.xml` to configure spreadsheet's behaviors. There are other properties supported by underlying ZK framework, please refer to [ZK Configuration Reference](https://www.zkoss.org/wiki/ZK%20Configuration%20Reference/zk.xml).
 
 # Scope
 You can configure a property to apply at various scopes, please read [ZK Configuration Reference](https://www.zkoss.org/wiki/ZK%20Configuration%20Reference/zk.xml/The%20Library%20Properties).
@@ -91,6 +91,23 @@ When a chart's data source contains a blank cell, you can configure it to displa
 </library-property>
 ```
 
+
+# Focus Cell Position
+{% include version-badge.html version='5.8.0' %}
+
+Default: **bottom**
+{% include property-scope.html page=false%}
+
+Acceptable values: `bottom`, `top`
+
+The position that keikai shows the focused cell when you call [`Spreadsheet.focusTo(int row, int column)`](https://keikai.io/javadoc/latest/io/keikai/ui/Spreadsheet.html#focusTo-int-int-).
+
+```xml
+<library-property>
+    <name>io.keikai.focus.cell.position</name>
+    <value>top</value>
+</library-property>
+```
 
 <!--
 deprecated for using highchart instead of jasper report
