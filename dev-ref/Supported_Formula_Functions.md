@@ -5,6 +5,7 @@ Here we list all built-in functions in Keikai OSE and EE:
 
 Check [Microsoft Excel function list](https://support.microsoft.com/en-us/office/excel-functions-alphabetical-b3944572-255d-4efb-bb96-c6d90033e188) for details.
 
+
 # Date & Time
 
 <table>
@@ -2484,3 +2485,37 @@ Note: Keikai supports both function names [listed here](https://support.office.c
 # Unsupported Functions
 
 Keikai doesn't support Cube, Database, Web functions and formulas that generate Arrays of results.
+
+# Locale Support
+* Keikai supports 2 separator: comma `,` and semi-color `;` depeneding on the locale.
+* You can only use a function in English.
+
+
+# Relative Position Evaluation
+
+When evaluating a row area (e.g. `A1:B1`) or column area (e.g. `A1:A2`), keikai will select a single cell from an area depending on the coordinates of the calling cell.  Here is an example demonstrating both selection from a single row area and a single column area in the same formula.
+
+<table border="1" cellpadding="1" cellspacing="1" >
+    <tr><th>&nbsp;</th><th>&nbsp;A&nbsp;</th><th>&nbsp;B&nbsp;</th><th>&nbsp;C&nbsp;</th><th>&nbsp;D&nbsp;</th></tr>
+    <tr><th>1</th><td>15</td><td>20</td><td>25</td><td>&nbsp;</td></tr>
+    <tr><th>2</th><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>200</td></tr>
+    <tr><th>3</th><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>300</td></tr>
+    <tr><th>4</th><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>400</td></tr>
+</table>
+
+If the formula `=1000+A1:B1+D2:D3` is put into the 9 cells from A2 to C4, the spreadsheet
+will look like this:
+
+<table border="1" cellpadding="1" cellspacing="1" >
+    <tr><th>&nbsp;</th><th>&nbsp;A&nbsp;</th><th>&nbsp;B&nbsp;</th><th>&nbsp;C&nbsp;</th><th>&nbsp;D&nbsp;</th></tr>
+    <tr><th>1</th><td>15</td><td>20</td><td>25</td><td>&nbsp;</td></tr>
+    <tr><th>2</th><td>1215</td><td>1220</td><td>#VALUE!</td><td>200</td></tr>
+    <tr><th>3</th><td>1315</td><td>1320</td><td>#VALUE!</td><td>300</td></tr>
+    <tr><th>4</th><td>#VALUE!</td><td>#VALUE!</td><td>#VALUE!</td><td>400</td></tr>
+</table>
+
+Note that the row area (A1:B1) does not include column C and the column area (D2:D3) does
+not include row 4, so the values in C1(=25) and D4(=400) are not accessible to the formula
+as written, but in the 4 cells A2:B3, the row and column selection works ok.
+
+The same concept is extended to references across sheets, such that even multi-row, multi-column areas can be useful.
