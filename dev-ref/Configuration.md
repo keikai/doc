@@ -109,6 +109,42 @@ The position that keikai shows the focused cell when you call [`Spreadsheet.focu
 </library-property>
 ```
 
+
+# Iterative Calculation
+<!-- https://tracker.zkoss.org/browse/KEIKAI-453 -->
+{% include version-badge.html version='5.8.0' %}
+
+## Max Iteration
+Set the maximum number times Keikai will recalculate.
+
+Default: **0**
+
+No iteration calculation. keikai will show `#N/A` when there is a circular reference.
+
+{% include property-scope.html page=false%}
+
+
+```xml
+<library-property>
+  <name>io.keikai.formula.maxIterations</name>
+  <value>100</value>
+</library-property>
+```
+
+## Max Change
+Set the maximum amount of change between recalculation results
+
+Default: **0.001**
+
+{% include property-scope.html page=false%}
+
+```xml
+<library-property>
+  <name>io.keikai.formula.maxChange</name>
+  <value>0.5</value>
+</library-property>
+```
+
 <!--
 deprecated for using highchart instead of jasper report
 ## Chart's Font
