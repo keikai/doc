@@ -1731,8 +1731,7 @@ Check [Microsoft Excel function list](https://support.microsoft.com/en-us/office
 
 ## SUMPRODUCT
 
-You can specify a condition for an array formula to just calculate
-partial cells in a given range. For example,
+You can specify a condition to just calculate partial cells in a given range. For example,
 
 `=SUMPRODUCT(--(A1:A3="John"),(B1:B3),(C1:C3))`
 
