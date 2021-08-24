@@ -27,7 +27,7 @@ Check [Microsoft Excel function list](https://support.microsoft.com/en-us/office
 </center></td>
 </tr>
 <tr class="odd">
-<td><p>DATEIF{% include version-badge.html version='5.8.0' %}</p></td>
+<td><p>DATEDIF{% include version-badge.html version='5.8.0' %}</p></td>
 <td><center>
 <p></p>
 </center></td>
