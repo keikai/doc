@@ -11,7 +11,7 @@ functions. To implement such a custom method is easy: just create a
 static method and declare it in a ZUL page with EL method or tag
 library.
 
-Steps to add a custom function:
+## Steps to add a custom function:
 
 1.  Implement a custom function with a public static method.
 2.  Declare a custom function in a ZUL page.
@@ -20,7 +20,7 @@ Steps to add a custom function:
 
 After completing above steps, you can write the custom function in a formula.
 
-# Only Work in Keikai spreadsheet
+## Only Work in Keikai spreadsheet
 
 Notice that a custom function is implemented with Java in your project. That means a
 custom function is only evaluated and recognized when you load a file
@@ -372,3 +372,27 @@ If you want to declare a function name that contains a dot (`.`) e.g. `T.EXCHANG
 ```
 
 <!-- io.keikaiex.formula.ELEvalFunction -->
+
+
+# A Function That Can Access Cells
+Those EL functions mentioned at the sections above can't access arbitrary cells because Keikai just passes resolved values into a function. If your custom function needs to access any cell depending on an argument like [CELL("type", B1)](https://support.microsoft.com/en-us/office/cell-function-51bd39a5-f338-4dbe-a33f-955d67c2b2cf), you need to implement [FreeRefFunction](https://keikai.io/javadoc/latest/org/zkoss/poi/ss/formula/functions/FreeRefFunction.html).
+
+```java
+public class MyCell implements FreeRefFunction {
+    @Override
+    public ValueEval evaluate(ValueEval[] valueEvals, OperationEvaluationContext context) {
+        ...
+    }
+```
+
+## Register a FreeRefFunction
+After implementing your custom function, to make keikai find your function, you also need to register it by [`ZKUDFFinder.putFunction()`](https://keikai.io/javadoc/latest/io/keikaiex/formula/ZKUDFFinder.html#putFunction-java.lang.String-org.zkoss.poi.ss.formula.functions.FreeRefFunction-).
+
+```java
+public class FunctionRegistration implements WebAppInit {
+    @Override
+    public void init(WebApp wapp) throws Exception {
+        ZKUDFFinder.putFunction("mycell", new MyCell());
+    }
+}
+```
