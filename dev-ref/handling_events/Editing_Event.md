@@ -43,14 +43,14 @@ public void onClipboardPaste(ClipboardPasteEvent event) {
 ```
 
 
-# [ON_AFTER_CELL_CHANGE](https://keikai.io/javadoc/latest/io/keikai/ui/event/Events.html#ON_AFTER_CELL_CHANGE)
+# onAfterCellChange [(Events.ON_AFTER_CELL_CHANGE)](https://keikai.io/javadoc/latest/io/keikai/ui/event/Events.html#ON_AFTER_CELL_CHANGE)
 
 This event is fired when you change the content or styles of one or more cells directly or indirectly. Therefore, it is triggered by user editing or calling `Range` API. If you edit a cell, this event is fired after `onStopEditing` event. When the corresponding event listener is invoked, a `io.keikai.ui.event.CellAreaEvent` object is passed as an argument. This event only tells you which range of cells are changed but it won't tell you whether it was the value or the style that has been changed.
 
 Since calling `Range` API will fire this event, so don't call `Range` setter API in this event listener. Or it will produce a never-ending event handling loop.
 
 
-# [ON_AFTER_UNDOABLE_MANAGER_ACTION](https://keikai.io/javadoc/latest/io/keikai/ui/event/Events.html#ON_AFTER_UNDOABLE_MANAGER_ACTION)
+# onAfterUndoableManagerAction [(Events.ON_AFTER_UNDOABLE_MANAGER_ACTION)](https://keikai.io/javadoc/latest/io/keikai/ui/event/Events.html#ON_AFTER_UNDOABLE_MANAGER_ACTION)
 It's fired when a user does an action that can be undone including all editing action like editing a cell, or inserting a row. Keikai will pass a[UndoableActionManagerEvent](https://keikai.io/javadoc/latest/io/keikai/ui/event/UndoableActionManagerEvent.html) to an event listener. Please see the subclasses of [AbstractUndoableAction](https://keikai.io/javadoc/latest/io/keikai/ui/impl/undo/AbstractUndoableAction.html) for the complete list.
 
 You can listen to this event to produce audit trail.
