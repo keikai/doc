@@ -374,7 +374,9 @@ If you want to declare a function name that contains a dot (`.`) e.g. `T.EXCHANG
 <!-- io.keikaiex.formula.ELEvalFunction -->
 
 
-# A Function That Can Access Cells
+# A Function That Can Access Cells 
+{% include version-badge.html version='5.8.0' %}
+
 Those EL functions mentioned at the sections above can't access arbitrary cells because Keikai just passes resolved values into a function. If your custom function needs to access any cell depending on an argument like [CELL("type", B1)](https://support.microsoft.com/en-us/office/cell-function-51bd39a5-f338-4dbe-a33f-955d67c2b2cf), you need to implement [FreeRefFunction](https://keikai.io/javadoc/latest/org/zkoss/poi/ss/formula/functions/FreeRefFunction.html).
 
 ```java
