@@ -5,7 +5,7 @@ title: 'Configuration'
 Specifying the library properties below in `zk.xml` to configure spreadsheet's behaviors. There are other properties supported by underlying ZK framework, please refer to [ZK Configuration Reference](https://www.zkoss.org/wiki/ZK%20Configuration%20Reference/zk.xml).
 
 # Scope
-You can configure a property to apply at various scopes, please read [ZK Configuration Reference](https://www.zkoss.org/wiki/ZK%20Configuration%20Reference/zk.xml/The%20Library%20Properties).
+You can configure a property to apply at various scopes, please read [The Library Properties](https://www.zkoss.org/wiki/ZK%20Configuration%20Reference/zk.xml/The%20Library%20Properties).
 
 
 # Formula Cache
@@ -114,6 +114,7 @@ The position that keikai shows the focused cell when you call [`Spreadsheet.focu
 <!-- https://tracker.zkoss.org/browse/KEIKAI-453 -->
 {% include version-badge.html version='5.8.0' %}
 
+
 ## Max Iteration
 Set the maximum number times Keikai will recalculate.
 
@@ -121,7 +122,7 @@ Default: **0**
 
 No iteration calculation. keikai will show `#N/A` when there is a circular reference.
 
-{% include property-scope.html page=false%}
+{% include property-scope.html %}
 
 
 ```xml
@@ -136,7 +137,7 @@ Set the maximum amount of change between recalculation results
 
 Default: **0.001**
 
-{% include property-scope.html page=false%}
+{% include property-scope.html %}
 
 ```xml
 <library-property>
@@ -144,6 +145,13 @@ Default: **0.001**
   <value>0.5</value>
 </library-property>
 ```
+
+
+## Consistent Value under Collaboration Edit
+{% include version-badge.html version='5.9.0' %}
+
+It's better to set the same value for all components in the collaboration edit mode when editing the same Book. If multiple keikai components have different max iteration values specified, the later-created keikai will override the previous one. Then each time a user joins to edit a book collaboratively, it overrides the max iteration. Then that value override will make circular references produce different results for each time.
+
 
 <!--
 deprecated for using highchart instead of jasper report
