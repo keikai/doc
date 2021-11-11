@@ -206,10 +206,23 @@ Keikai also accepts ','(comma) or '.'(dot) as the decimal point for decimal
 numbers.
 
 ## Smart Input
+When you enter a text in a cell with the default format (**General**), keikai will try to identify the input text as a number or a date value with the supported patterns below. If keikai can't identify the input text as a number/date, then it just keep input as it is.
 
-When you enter numbers in a cell with the default format (General), Keikai will
-convert the numbers into corresponding number format for you, for example 1,234,567, $123456,
-($123456), ($1,234,567), 1.2% or 123456E10.
+These supported pattern is independent of a cell's number format.
+
+<!-- implemented by io.keikai.model.impl.sys.DateInputMask -->
+
+### Supported Number Pattern
+`1,234,567`, `$123456`, `($123456)`, `($1,234,567)`, `1.2%` or `123456E10`.
+
+### Supported Date Pattern
+
+* `d-mmm-yy` 
+* `d-mmm` 
+* `mmm-yy` 
+* `m/d/yyyy` 
+* `m/d/yyyy h:mm` 
+
 
 ## Date Format
 
