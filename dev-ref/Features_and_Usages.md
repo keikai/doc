@@ -288,7 +288,7 @@ clipboard, so it's similar to copy/paste between Keikai and Excel -- only pure t
   this cell and paste it into Keikai, the cell in Keikai gets the calculated `3` as its value.
   Just like you type `3` in a Keikai cell.
 - If you enter edit mode in Excel and select the text `=sum(1,2)` and copy it, and then paste it to a cell in Keikai, Keikai will get the formula, just like you typed a formula into the Keikai cell.
-
+- If you copy cells in Keikai, then copy cells in Excel, when you paste cells (`ctrl+v`), Keikai will paste cells in Keikai first since Keikai is still in its copy mode. You need to exit the copy mode (by pressing `Esc` key or editing any cell), then you can paste the cells from Excel. 
 
 
 ### Paste Special
