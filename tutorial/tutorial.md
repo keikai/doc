@@ -131,3 +131,10 @@ In `zk.xml`
     <value>breeze</value>
 </library-property>
 ```
+
+# JDK Option
+JDK 8 uses `JRE` as the default locale provider, whereas in JDK 9 onwards `CLDR` is the default locale provider. (see [JEP 252: Use CLDR Locale Data by Default](http://openjdk.java.net/jeps/252)) Because of the change of the default locale provider, the built-in date formats (e.g. `DateFormat.LONG`) stand for different formats after JDK 9. Since some keikai features (e.g. smart input, number format) rely on Java built-in date formats, this change will make those features work incorrectly. (known issues: [KEIKAI-379](https://tracker.zkoss.org/browse/KEIKAI-379), [KEIKAI-540](https://tracker.zkoss.org/browse/KEIKAI-540))
+
+Hence, if you run keikai with **JDK 9 or above** and please add the following JVM options:
+
+`-Djava.locale.providers=JRE,CLDR`
