@@ -210,7 +210,7 @@ When you enter a text in a cell with the default format (**General**), keikai wi
 
 These supported pattern is independent of a cell's number format.
 
-* If you run JDK 9 or above, this feature needs a corresponding [JVM option](/tutorial/#jdk-option) to work.
+* If you run JDK 9 or above, this feature needs a corresponding [JVM option](/tutorial#jdk-option) to work.
 <!-- implemented by io.keikai.model.impl.sys.DateInputMask -->
 
 ### Supported Number Pattern
