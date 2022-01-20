@@ -101,9 +101,8 @@ Tab color is imported and rendered.
 </table>
 
 
-# Features
 
-## Text Style
+# Text Style
 bold, italic, underline, strikeout, color, background color, vertical/horizontal alignment, indent, wrap 
 
 {% include version-badge.html version='5.3.0' %}
@@ -112,7 +111,7 @@ double underline
 
 * Not supported for **IE 11** or below
 
-## Charts
+# Charts
 
 The charts in Keikai sheet is rendered by another ZK product called ZK Charts. When you hover your mouse
 pointer over the charts, it will show related info in a tooltip. 
@@ -128,50 +127,50 @@ The supported elements and options for a chart in a xlsx file are listed as foll
 (position)
 5. Data Series Color
 
-### Limitations:
+## Limitations:
 1. Ignore unsupported elements and options during importing and render a chart with built-in setting.
 2. Convert a theme color of a data series to a fixed color code and export it as the fixed color.
 3. When exporting to a PDF file, combination chart and sparklines are not supported, the color will not be consistent with the color you see in a browser. (Because Keikai exports charts to PDF with jFreeChart.)
 
-### Sparklines
+## Sparklines
 {% include version-badge.html version='5.3.0' %}
 
 Sparklines is a chart that fits in one cell.
 There 3 types of sparklines supported:
 
-#### Line
+### Line
 
 ![]({{site.devref_image_folder}}/sparklines-line.jpg)
  
-#### Column
+### Column
 
 ![]({{site.devref_image_folder}}/sparklines-column.jpg)
 
-#### Win-Loss
+### Win-Loss
 
 ![]({{site.devref_image_folder}}/sparklines-winloss.jpg)
 
 
-#### Limitation
+### Limitation
 1. It doesn't resize itself when you resize the cell.
 2. Render with built-in color (ignore color when importing).
 3. Export it with built-in color.
 
-### Combo Chart
+## Combo Chart
 {% include version-badge.html version='5.3.0' %}
 
 A combination chart is a chart that displays 2 types of chart in a single chart.
 
 ![]({{site.devref_image_folder}}/combo-chart.jpg)
 
-### Empty Cell
+## Empty Cell
 {% include version-badge.html version='5.8.0' %}
 Keikai can show an empty cell as **zero** or **gap** depending on how you configure each chart in Excel.
 
 ![]({{site.devref_image_folder}}/chartEmptyCell.jpg)
 
 
-## Rich Text Editing
+# Rich Text Editing
 
 You can apply multiple styles to a same cell by using the rich text editor. To open
 a rich-text editor, right click a cell and select "Right Text Edit" in
@@ -179,7 +178,7 @@ the context menu.
 
 ![ center]({{site.devref_image_folder}}/essential-richtexteditor.png)
 
-## Comment
+# Comment
 
 To insert/edit/delete a comment, right click a cell and select
 corresponding item in the context menu.
@@ -190,22 +189,22 @@ Show comment
 
 ![center]({{site.devref_image_folder}}/essential-display-comment.png)
 
-## Support Different Zoom Levels
+# Support Different Zoom Levels
 
 You can view Keikai in different browser zoom levels. 
 
-## Support Locale Currencies
+# Support Locale Currencies
 
 Keikai can display different currency symbols for different local such as $, ¥, ₩, €, and HKD in a cell in the currency format.
 
 > `[$-409]0.00`: 409 is a locale ID in hexadecimal, please see [Windows Locale Codes](https://www.science.co.il/language/Locale-codes.php)
 
-## Localize A Number/Formula Input
+# Localize A Number/Formula Input
 
 Keikai also accepts ','(comma) or '.'(dot) as the decimal point for decimal
 numbers.
 
-## Smart Input
+# Smart Input
 When you enter a text in a cell with the default format (**General**), keikai will try to identify the input text as a number or a date value with the supported patterns below. If keikai can't identify the input text as a number/date, then it just keep input as it is.
 
 These supported pattern is independent of a cell's number format.
@@ -213,10 +212,10 @@ These supported pattern is independent of a cell's number format.
 * If you run JDK 9 or above, this feature needs a corresponding [JVM option](/tutorial#jdk-option) to work.
 <!-- implemented by io.keikai.model.impl.sys.DateInputMask -->
 
-### Supported Number Pattern
+## Supported Number Pattern
 `1,234,567`, `$123456`, `($123456)`, `($1,234,567)`, `1.2%` or `123456E10`.
 
-### Supported Date Pattern
+## Supported Date Pattern
 
 * `d-mmm-yy` 
 * `d-mmm` 
@@ -225,7 +224,7 @@ These supported pattern is independent of a cell's number format.
 * `m/d/yyyy h:mm` 
 
 
-## Date Format
+# Date Format
 
 Some date formats in Keikai are **regional** (starting with an **asterisk,
 \***, same as Excel ) and some are **international** (without an **asterisk
@@ -237,8 +236,9 @@ Regional ones will change its displaying format according to the system locale, 
 international ones won't change. Please refer to [Microsoft Office Support - Format a date the way you want
 ](https://support.office.com/en-us/article/Format-a-date-the-way-you-want-8e10019e-d5d8-47a1-ba95-db95123d273e?ui=en-US&rs=en-US&ad=US&fromAR=1).
 
+* If you run JDK 9 or above, this feature needs a corresponding [JVM option](/tutorial#jdk-option) to work.
 
-## Conditional Formatting
+# Conditional Formatting
 
 Keikai can display conditional formatting you specify in an Excel file. This feature
 allows you to highlight cells with the given conditions. In the case below, the values in the "Income" column has conditional formatting enabled: 
@@ -247,22 +247,20 @@ allows you to highlight cells with the given conditions. In the case below, the 
 
   - Modifying conditional formatting in Keikai UI or API is not supported yet.
 
-## Named Range
+# Named Range
 Keikai can read a named range from an xlsx file, so you can specify a named range in a formula like `=SUM(source)`. To create a named range, please reference javadoc [Range::createName](https://keikai.io/javadoc/latest/).
 
 
 
 
 
-# Usage
-
 In the following sections we will introduce the usages of some noticeable features.
 
-## Copy & Paste
+# Copy & Paste
 We recommend you to copy and paste with **Ctrl+c and Ctrl+v** which works in all cases rather than clicking "paste" button on the toolbar and "paste" item on the context menu. Copy a cell with a multi-line text and paste to Keikai cell is supported.
 <!-- KEIKAI-38 -->
 
-###  Inside One Spreadsheet
+## Inside One Spreadsheet
 - Such copy-paste works with **Ctrl+c and Ctrl+v**, **the toolbar**, and **context menu**.
 - Keikai has full information at both server and client side, so such copy-paste can
   retain all cell information including styles, formula, format, and
@@ -271,14 +269,14 @@ We recommend you to copy and paste with **Ctrl+c and Ctrl+v** which works in all
   copying one or multiple cells, Keikai won't copy the width and height.
 - When copy highlight is still active, it copies the highlighted cells, not from the system clipboard. You need to cancel the copy highlight first, then you can paste from a system clipboard.
 
-### Between 2 Keikai components
+## Between 2 Keikai components
 
 * Copy-paste cell data between 2 Keikai components also rely on the system
 clipboard, so it's similar to copy/paste between Keikai and Excel -- only pure text is copied.
 * If you want to copy a whole sheet to another Keikai component,
     please call `Range.cloneSheetFrom`. It can clone a sheet from another `Book` object and is more performant.
 
-### Between Keikai and Other Applications like Excel
+## Between Keikai and Other Applications like Excel
 
 - Such copy-paste will only work with **Ctrl+C** and **Ctrl+V**. The toolbar or context menu "Paste" button only works for copying cells within the same Keikai component and will not work across different applications.
 - Such copy-paste is an action between 2 applications (Excel and
@@ -292,7 +290,7 @@ clipboard, so it's similar to copy/paste between Keikai and Excel -- only pure t
 - If you copy cells in Keikai, then copy cells in Excel, when you paste cells (`ctrl+v`), Keikai will paste cells in Keikai first since Keikai is still in its copy mode. You need to exit the copy mode (by pressing `Esc` key or editing any cell), then you can paste the cells from Excel. 
 
 
-### Paste Special
+## Paste Special
 
 In addition to standard pasting, Spreadsheet also provides custom pasting options in the toolbar. 
 
@@ -303,7 +301,7 @@ You can select "Paste Special" to access all available pasting options in the di
 ![ center]({{site.devref_image_folder}}/essentials-feature-pasteSpecial.png)
 
 
-## Custom Sort
+# Custom Sort
 
 With the "Ascending" and "Descending" function you can sort data by only one
 column, with "Custom sort" you can sort data by multiple columns. 
@@ -316,7 +314,7 @@ column header, make sure the "My data has headers" option is checked.
 
 ![ center]({{site.devref_image_folder}}/essentials-feature-customSortDialog.png)
 
-## Auto Fill
+# Auto Fill
 
 Auto fill is a handy feature to fill cells with data in a particular
 pattern based on selected cells. Text will be copied and numbers and
@@ -334,13 +332,13 @@ Fill cells by dragging right, left, up, or down.
 The supported cell content are number, weekday (full/short), month
 (full/short), and timestamp.
 
-## Format Cell
+# Format Cell
 
 The Format Cell optin is in the context menu. It provides 10 different categories with a total of 47 formats to apply to the cells. 
 
 ![ center]({{site.devref_image_folder}}/essentials-feature-formatCell.png)
 
-## Sheet Protection
+# Sheet Protection
 
 If you enable "Protect Sheet" against a sheet in Excel, Keikai will
 keep this setting when reading the Excel file, hence, when you edit a
@@ -351,7 +349,7 @@ cells. You can specify which actions are allowed for unlocked cells.
 
 ![ center]({{site.devref_image_folder}}/zss-essentials-feature-protection.png)
 
-## Filters
+# Filters
 
 A filter can help you screen out data and work with a subset of data
 in a range of cells without moving or deleting them.
@@ -379,7 +377,7 @@ Click "Clear" removes all applied criteria and displays all data available.
 If you added a new data row, you should click "Reapply". The drop-down list will then
 update its values to take into account the newly added data.
 
-### Filter by search
+## Filter by search
 When you enter text in the search box, it will
 instantly list and select all matched values. Press "Enter" and Keikai will
 filter your data with those matched values. 
@@ -393,7 +391,7 @@ Keikai supports **number filter**, **color filter**, **date filter**, and
 
 ![]({{site.devref_image_folder}}/zss-essentials-dateFilter.png)
 
-### Auto-detect Filtering Range
+## Auto-detect Filtering Range
 * When users select just 1 cell, find the largest range surrounded by blank cells
 * When users select an area (multiple cells)
   * If the non-blank cell range is smaller than the area, shrink to the non-blank cell range
@@ -401,7 +399,7 @@ Keikai supports **number filter**, **color filter**, **date filter**, and
 * When users select the whole rows such as `5:10`, find the continuous non-blank cell range between row 5 and 10
 * When users apply a filter, Keikai will detect non-blank cells again to change the filtering range. 
 
-## Data Validation
+# Data Validation
 
 Spreadsheet can read Excel data validation settings including
 validation criteria of **lists, numbers, decimals, dates, or time**.
@@ -420,15 +418,15 @@ If your input violates validation criteria, an error alert will pop up.
 
 ![ center]({{site.devref_image_folder}}/zss-essentials-validation-alert.png)
 
-### List
+## List
 There are 2 ways to specify a list criteria:
-#### List of values
+### List of values
 Specify the source field with comma-sperate values: `30 days,60 days`
 
-#### Named Range
+### Named Range
 Specify a named range that contains a list of items: `=PRODUCT_LIST`
 
-### Alert
+## Alert
 
 There are 3 types of alerts and each of them has a different icon in the
 dialog:
@@ -438,24 +436,24 @@ dialog:
 * For an information alert (blue icon), you can click "OK" to accept the invalid value or "Cancel" to reject it.
 
 
-### Limitation:
+## Limitation:
 - custom validation is not supported yet.
 - Validation lists using a formula referencing a different sheet are not supported due to Excel data structure. To use data from a different sheet as source for a validation list, you must create a named range containing the data, and use that named range as the validation data source.
 
 
-## Table 
+# Table 
 Keikai supports to load an [Excel table](https://support.microsoft.com/en-us/office/overview-of-excel-tables-7ab0bb7d-3a9e-4b56-a3c9-6c94334e492c#:~:text=To%20quickly%20create%20a%20table,row%2C%20and%20then%20click%20OK.). If your add (or remove) rows/columns to a table, keikai will automatically keep the color theme of cells. You don't need to set background and borders by yourselves.
 
 ![]({{site.devref_image_folder}}/table.jpg)
 
 
-### Limitation
+## Limitation
 * Regarding table colors, keikai only supports **Office2007-2010** color. If you choose an unsupported color in Excel, the color will be turned to the supported color. So the color will look different in Keikai.
 
 <!-- https://tracker.zkoss.org/browse/KEIKAI-320 -->
 
 
-## Column Width AutoFit
+# Column Width AutoFit
 {% include version-badge.html version='5.7.0' %}
 
 End users can double-click a column header's border to make its width auto-fit its content. Or you can select multiple columns to auto-fit them at once.
