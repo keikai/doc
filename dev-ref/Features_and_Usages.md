@@ -201,8 +201,7 @@ Keikai can display different currency symbols for different local such as $, ¥,
 
 # Localize A Number/Formula Input
 
-Keikai also accepts ','(comma) or '.'(dot) as the decimal point for decimal
-numbers.
+Keikai also accepts `,`(comma) or `.`(dot) as the decimal point for decimal numbers.
 
 # Smart Input
 When you enter a text in a cell with the default format (**General**), keikai will try to identify the input text as a number or a date value with the supported patterns below. If keikai can't identify the input text as a number/date, then it just keep input as it is.
@@ -233,8 +232,7 @@ Some date formats in Keikai are **regional** (starting with an **asterisk,
 ![]({{site.devref_image_folder}}/zss-essentials-dateFormat.png) 
 
 Regional ones will change its displaying format according to the system locale, but
-international ones won't change. Please refer to [Microsoft Office Support - Format a date the way you want
-](https://support.office.com/en-us/article/Format-a-date-the-way-you-want-8e10019e-d5d8-47a1-ba95-db95123d273e?ui=en-US&rs=en-US&ad=US&fromAR=1).
+international ones won't change. Please refer to [Microsoft Office Support - Format a date the way you want](https://support.office.com/en-us/article/Format-a-date-the-way-you-want-8e10019e-d5d8-47a1-ba95-db95123d273e?ui=en-US&rs=en-US&ad=US&fromAR=1).
 
 * If you run JDK 9 or above, this feature needs a corresponding [JVM option](/tutorial#jdk-option) to work.
 
@@ -248,13 +246,9 @@ allows you to highlight cells with the given conditions. In the case below, the 
   - Modifying conditional formatting in Keikai UI or API is not supported yet.
 
 # Named Range
-Keikai can read a named range from an xlsx file, so you can specify a named range in a formula like `=SUM(source)`. To create a named range, please reference javadoc [Range::createName](https://keikai.io/javadoc/latest/).
+Keikai can read a named range from an xlsx file, so you can specify a named range in a formula like `=SUM(source)`. To create a named range, please reference [Range::createName](https://keikai.io/javadoc/latest/).
 
 
-
-
-
-In the following sections we will introduce the usages of some noticeable features.
 
 # Copy & Paste
 We recommend you to copy and paste with **Ctrl+c and Ctrl+v** which works in all cases rather than clicking "paste" button on the toolbar and "paste" item on the context menu. Copy a cell with a multi-line text and paste to Keikai cell is supported.
@@ -334,7 +328,7 @@ The supported cell content are number, weekday (full/short), month
 
 # Format Cell
 
-The Format Cell optin is in the context menu. It provides 10 different categories with a total of 47 formats to apply to the cells. 
+The Format Cell option is in the context menu. It provides 10 different categories with a total of 47 formats to apply to the cells. 
 
 ![ center]({{site.devref_image_folder}}/essentials-feature-formatCell.png)
 
@@ -351,8 +345,7 @@ cells. You can specify which actions are allowed for unlocked cells.
 
 # Filters
 
-A filter can help you screen out data and work with a subset of data
-in a range of cells without moving or deleting them.
+A filter can help you screen out data and work with a subset of data in a range of cells without moving or deleting them.
 
 When you click on the filter icon, there are 3 menu items: **Filter**,
 **Clear**, and **Reapply** relating to the filter. 
