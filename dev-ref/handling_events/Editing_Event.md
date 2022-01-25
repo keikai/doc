@@ -23,9 +23,6 @@ This event is fired when a user has finished editing a cell. It is
 identified by the user hitting the enter key or clicking outside of the
 editing cell. When the corresponding event listener is invoked, a [`io.keikai.ui.event.StopEditingEvent`](https://keikai.io/javadoc/latest/io/keikai/ui/event/StopEditingEvent.html) object is passed as an argument. This event allows you to cancel the edit action or change edit value.
 
-Pressing "delete" key can also change the cell content, but you have to
-listen to [KeyEvent](Key_Event) for that action.
-
 
 # onClipboardPaste
 This event is fired when a user paste cells by pressing `ctrl+v` or paste toolbar button. Keikai will invoke the event listener with [`io.keikai.ui.event.ClipboardPasteEvent`](https://keikai.io/javadoc/latest/io/keikai/ui/event/ClipboardPasteEvent.html) as an argument.
@@ -47,7 +44,12 @@ public void onClipboardPaste(ClipboardPasteEvent event) {
 
 This event is fired when you change the content or styles of one or more cells directly or indirectly. Therefore, it is triggered by user editing or calling `Range` API. If you edit a cell, this event is fired after `onStopEditing` event. When the corresponding event listener is invoked, a `io.keikai.ui.event.CellAreaEvent` object is passed as an argument. This event only tells you which range of cells are changed but it won't tell you whether it was the value or the style that has been changed.
 
-Since calling `Range` API will fire this event, so don't call `Range` setter API in this event listener. Or it will produce a never-ending event handling loop.
+## Never-ending pitfall
+Since calling `Range` API will fire this event so don't call `Range` setter API in this event listener. Or it will produce a never-ending event handling loop.
+
+## Delete key
+Pressing "delete" key only fires [KeyEvent](Key_Event) and [onAfterCellChange](#onaftercellchange-eventson_after_cell_change).
+
 
 
 # onAfterUndoableManagerAction [(Events.ON_AFTER_UNDOABLE_MANAGER_ACTION)](https://keikai.io/javadoc/latest/io/keikai/ui/event/Events.html#ON_AFTER_UNDOABLE_MANAGER_ACTION)
@@ -55,12 +57,13 @@ It's fired when a user does an action that can be undone including all editing a
 
 You can listen to this event to produce audit trail.
 
+
 # Event Monitor Example
 
 We still use the previous "Event Monitor" application to demonstrate event
 listening.
 
-![center]({{site.devref_image_folder}}/Zss-essentials-events-filter.png)
+![]({{site.devref_image_folder}}/Zss-essentials-events-filter.png)
 
 When we type the word "test" in A1 cell, the information of corresponding events sent to the server are displayed in the panel:
 
@@ -73,11 +76,11 @@ When we type the word "test" in A1 cell, the information of corresponding events
 2.  Editing A1...
       -   
         There are 4 lines started with "Editing A1". Each time we press
-        a key to edit, onEditboxEditing event is sent and the first
-        onEditboxEditing is sent just right after onStartEditing.
+        a key to edit, `onEditboxEditing` event is sent and the first
+        `onEditboxEditing` is sent just right after onStartEditing.
 3.  Stop editing A1...
       -   
-        The onStopEditing event is sent when we press the enter key, and
+        The `onStopEditing` event is sent when we press the enter key, and
         you can see editing value is now the same as A1's text.
 
 Next, we show you how to listen to these events and print out messages with
