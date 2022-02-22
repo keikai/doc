@@ -3,20 +3,20 @@ title: 'Export to Excel'
 toc: false
 ---
 
-One of Spreadsheet's powerful feature is to export its book model as an
-Excel file, then we can open the file with Microsoft Excel. Besides,
-exporting to a file is also the only way to persist a book model
-completely and import it back in the future. 
+One of Keikai's powerful feature is to export its book model as an
+Excel file, then you can continue to work with the exported file with Microsoft Excel. Besides,
+exporting to a file is also the only way to persist a book model completely and import it back in the future.
 
+Keikai only exports those styles and features it supports. (please see [Features and Usages](/dev-ref/Features_and_Usages)) But it still exports unsupported functions in a formula.
 
 # Exporter
 
-To export, you need to get an Exporter first. You can get different [`io.keikai.api.Exporter`](https://keikai.io/javadoc/latest/io/keikai/api/Exporter.html) by its type:
+To export, you need to get an [`io.keikai.api.Exporter`](https://keikai.io/javadoc/latest/io/keikai/api/Exporter.html) first. You can get different [`io.keikai.api.Exporter`](https://keikai.io/javadoc/latest/io/keikai/api/Exporter.html) by its type:
 
 ```java
 Exporters.getExporter();       //get default exporter, xlsx
 Exporters.getExporter("xlsx"); //get xlsx exporter
-Exporters.getExporter("xls");  //get xls exporter
+Exporters.getExporter("xls");  //get xls exporter, deprecated
 ```
 
 
@@ -50,7 +50,7 @@ public class ExportComposer extends SelectorComposer<Component> {
 }
 {% endhighlight %}
 
-  - Line 8: Get a default `Exporter` which exports as xlsx format.
-  - Line 14: Currently, we only support exporting whole book.
+- Line 8: Get a default `Exporter` which exports as xlsx format.
+- Line 14: Currently, we only support exporting whole book.
 
 
