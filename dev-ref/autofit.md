@@ -11,8 +11,8 @@ End users can autofit one column width by double-clicking a column header's bord
 ![]({{site.devref_image_folder}}/autofit.gif)
 
 ## By API
-* [`Spreadsheet.setAutofitColumnWidth(SSheet sheet, int column)`](https://keikai.io/javadoc/latest/io/keikai/ui/Spreadsheet.html#setAutofitColumnWidth-io.keikai.model.SSheet-int-)
-* [`Spreadsheet.setAutofitColumnWidth(SSheet sheet, int fromColumn, int toColumn)`](https://keikai.io/javadoc/latest/io/keikai/ui/Spreadsheet.html#setAutofitColumnWidth-io.keikai.model.SSheet-int-int-)
+* AutoFit 1 column: [`Spreadsheet.setAutofitColumnWidth(SSheet sheet, int column)`](https://keikai.io/javadoc/latest/io/keikai/ui/Spreadsheet.html#setAutofitColumnWidth-io.keikai.model.SSheet-int-)
+* AutoFit multiple columns: [`Spreadsheet.setAutofitColumnWidth(SSheet sheet, int fromColumn, int toColumn)`](https://keikai.io/javadoc/latest/io/keikai/ui/Spreadsheet.html#setAutofitColumnWidth-io.keikai.model.SSheet-int-int-)
 
 
 
@@ -22,7 +22,7 @@ To let keikai automatically resize a row height, please enable ["wrap text"](/de
 
 ## By API
 {% include version-badge.html version='5.9.0' %}
-For those cases that wrap text can't resize the height, call [CellOperationUtil.getAutoFitHeight()](https://keikai.io/javadoc/latest/io/keikai/api/CellOperationUtil.html#getAutoFitHeight-io.keikai.api.model.Sheet-int-int-).
+For those cases that [wrap text can't resize the height]((/dev-ref/Features_and_Usages#wrap-text)) e.g. a merged cell, call [CellOperationUtil.getAutoFitHeight()](https://keikai.io/javadoc/latest/io/keikai/api/CellOperationUtil.html#getAutoFitHeight-io.keikai.api.model.Sheet-int-int-) and apply the height to one or multiple cells.
 
 
 ```java
