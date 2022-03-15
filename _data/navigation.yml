@@ -154,6 +154,8 @@ dev-ref:
     children:
     - title: User Permission
       url: /dev-ref/User_Permission
+    - title: More Use Cases
+      url: https://keikai.io/blog/category/usecase/      
   - title: FAQ
     url: /dev-ref/faq
   - title: Appendix
