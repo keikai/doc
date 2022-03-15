@@ -111,6 +111,14 @@ double underline
 
 * Not supported for **IE 11** or below
 
+## Wrap Text
+When wrap text is enabled, keikai wraps a cell's text into multiple lines according to the column width.
+
+Besides, keikai will automatically resize a row height to completely display the wrapped text. So keikai will increase the height when there are more texts and reduce the height when removing the text. But this feature doesn't work on the following case:
+* a row with custom height
+* a merged cell
+
+
 # Charts
 
 The charts in Keikai sheet is rendered by another ZK product called ZK Charts. When you hover your mouse
@@ -446,14 +454,5 @@ Keikai supports to load an [Excel table](https://support.microsoft.com/en-us/off
 <!-- https://tracker.zkoss.org/browse/KEIKAI-320 -->
 
 
-# Column Width AutoFit
-{% include version-badge.html version='5.7.0' %}
-
-End users can double-click a column header's border to make its width auto-fit its content. Or you can select multiple columns to auto-fit them at once.
-
-![]({{site.devref_image_folder}}/autofit.gif)
-
-You can also trigger an auto-fit with API:
-
-* [`Spreadsheet.setAutofitColumnWidth(SSheet sheet, int column)`](https://keikai.io/javadoc/latest/io/keikai/ui/Spreadsheet.html#setAutofitColumnWidth-io.keikai.model.SSheet-int-)
-* [`Spreadsheet.setAutofitColumnWidth(SSheet sheet, int fromColumn, int toColumn)`](https://keikai.io/javadoc/latest/io/keikai/ui/Spreadsheet.html#setAutofitColumnWidth-io.keikai.model.SSheet-int-int-)
+# AutoFit
+Please see [AutoFit](/dev-ref/autofit).

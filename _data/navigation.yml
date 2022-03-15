@@ -116,6 +116,8 @@ dev-ref:
       url: /dev-ref/book_model/Export_to_Excel
     - title: Export to PDF
       url: /dev-ref/book_model/Export_to_PDF
+  - title: AutoFit
+    url: /dev-ref/autofit
   - title: Configuration
     url: /dev-ref/Configuration
   - title: Advanced
