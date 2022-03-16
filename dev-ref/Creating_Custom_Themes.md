@@ -1,3 +1,5 @@
+**deprecated since keikai 1.0**
+
 `since 3.5.0`
 
 Keikai spreadsheet is an embeddable component that allow web developers to
@@ -134,8 +136,6 @@ Executions.sendRedirect(null);
 
 # References
 
-<references/>
 
 1.  Classic Theme[1](https://github.com/zkoss/zssthemes/releases)
-2.  
-3.
+
