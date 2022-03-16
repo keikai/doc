@@ -19,7 +19,7 @@ We will demonstrate the usage of API with the Keikai Essentials project.
 In this application, you can log in with 3 different roles: OWNER,
 EDITOR, VIEWER. Their permissions are described in the image below:
 
-![center]({{site.devref_image_folder}}/Zss-essentials-login.png)
+![]({{site.devref_image_folder}}/Zss-essentials-login.png)
 
 If you log in as an owner, you will have full control of the file. But
 if you log in as an editor, you will find all sheet related operations

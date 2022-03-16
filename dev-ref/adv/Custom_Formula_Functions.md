@@ -45,7 +45,7 @@ Assume that we are going to create a money exchange function,
 `EXCHANGE()`, that accepts 2 double arguments and return exchange
 result. The first one is money, and the second one is exchange rate.
 
-![center]({{site.devref_image_folder}}/Zss-essentials-customFormula-exchange.png)
+![]({{site.devref_image_folder}}/Zss-essentials-customFormula-exchange.png)
 
 The custom function can be implemented like:
 

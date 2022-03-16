@@ -22,7 +22,7 @@ range.unprotectSheet("password");
 
 Let's use a simple example to demonstrate this usage:
 
-![center]({{site.devref_image_folder}}/Zss-essentials-protection.png) 
+![]({{site.devref_image_folder}}/Zss-essentials-protection.png) 
 
 The screenshot above is a simple application. 
 There is a label on the right showing current sheet's protection status. 
@@ -92,7 +92,7 @@ The screenshot below is a protected sheet with B2 unlocked. You can see
 the sheet protection status is "true, but cell lock status is "false" on
 the right panel when selecting B2 which means B2 can be edited.
 
-![center]({{site.devref_image_folder}}/Zss-essentials-protection-unlock.png)
+![]({{site.devref_image_folder}}/Zss-essentials-protection-unlock.png)
 
 Besides, Spreadsheet also allows you to lock / unlock cells and retrieve
 locked status with API. In our example application, when you select

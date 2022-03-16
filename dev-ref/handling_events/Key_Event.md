@@ -14,7 +14,7 @@ without specifying `ctrlKeys` on <spreadsheet>.
 
 # Event Monitor Example
 
-![center]({{site.devref_image_folder}}/Zss-essentials-events-key.png)
+![]({{site.devref_image_folder}}/Zss-essentials-events-key.png)
 
 In [Event Monitor](Editing_Event#event-monitor-example) example, the messages show that ctrl+c is pressed before ctrl+v.
 Let's see how it was done:

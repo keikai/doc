@@ -18,7 +18,7 @@ Please follow these steps to run this application:
 
 After you visit Spreadsheet App, you should see its user interface like
 the screenshot below: 
-![center]({{site.devref_image_folder}}/Zss-essentials-zssapp.png) 
+![]({{site.devref_image_folder}}/Zss-essentials-zssapp.png) 
 
 You might notice that we added a menu on top of the Spreadsheet component and enabled the 3 leftmost buttons ("New Book", "Save Book", and "Export to PDF") on the toolbar. These are application specific and we have implemented them in this Demo App. You can reference this application to implement your own.
 
@@ -32,7 +32,7 @@ to [Features and Usage](Features_and_Usages).
 The "File" menu contains many file operations such as load, save, and
 export.
 
-![center]({{site.devref_image_folder}}/Zss-essentials-zssapp-file.png)
+![]({{site.devref_image_folder}}/Zss-essentials-zssapp-file.png)
 
 Each menu item and its function description are:
 
@@ -97,13 +97,13 @@ Each menu item and its function description are:
 When you select "Open or Manage Books", the dialog below appears and you
 can open, delete, or upload a book. 
 
-![center]({{site.devref_image_folder}}/Zss-essentials-zssapp-file-booklist.png)
+![]({{site.devref_image_folder}}/Zss-essentials-zssapp-file-booklist.png)
 
 ## Edit Menu
 
 The "Edit" menu has "Undo" and "Redo". Undo and Redo will be performed when you click on them. 
 
-![center]({{site.devref_image_folder}}/Zss-essentials-zssapp-edit.png)
+![]({{site.devref_image_folder}}/Zss-essentials-zssapp-edit.png)
 
 Each menu item and its function description are:
 
@@ -139,7 +139,7 @@ Each menu item and its function description are:
 
 The "View" menu can control different view options.
 
-![center]({{site.devref_image_folder}}/Zss-essentials-zssapp-view.png)
+![]({{site.devref_image_folder}}/Zss-essentials-zssapp-view.png)
 
 Each menu item and its function description are:
 
@@ -190,7 +190,7 @@ The screenshot below shows a result after selecting "Freeze Rows &
 Columns" when selection box stays in B2. It freezes the row above and
 the column left to current selection:
 
-![center]({{site.devref_image_folder}}/Zss-essentials-zssapp-freeze.png)
+![]({{site.devref_image_folder}}/Zss-essentials-zssapp-freeze.png)
 
 # Configuration
 

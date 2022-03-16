@@ -23,13 +23,13 @@ For example:
 Assume that we have a book with personal profile named "profile.xlsx" as
 follows.
 
-![center]({{site.devref_image_folder}}/Essentials-reference-profile.png)
+![]({{site.devref_image_folder}}/Essentials-reference-profile.png)
 
 Now we want to create a resume for it without modifying "profile.xlsx".
 Therefore, we can make cells of "resume.xlsx" reference to
 "profile.xlsx". The screenshot is below:
 
-![center]({{site.devref_image_folder}}/Essentials-reference-resume.png)
+![]({{site.devref_image_folder}}/Essentials-reference-resume.png)
 
 The following codes demonstrate how to achieve the resume:
 

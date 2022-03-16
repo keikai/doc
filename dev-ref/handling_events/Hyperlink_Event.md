@@ -16,7 +16,7 @@ object is passed as an argument.
 
 Here's the screenshot of the [Event Monitor](Cell_Clicking_Event#event-monitor-example) application when we click the link <http://www.zkoss.org> in A7. 
 
-![center]({{site.devref_image_folder}}/Zss-essentials-events-hyperlink.png)
+![]({{site.devref_image_folder}}/Zss-essentials-events-hyperlink.png)
 
 {% highlight java linenos %}
 public class EventsComposer extends SelectorComposer<Component>{

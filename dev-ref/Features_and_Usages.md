@@ -124,7 +124,7 @@ Besides, keikai will automatically resize a row height to completely display the
 The charts in Keikai sheet is rendered by another ZK product called ZK Charts. When you hover your mouse
 pointer over the charts, it will show related info in a tooltip. 
 
-![center]({{site.devref_image_folder}}/Zss-essential-zkchart.png)
+![]({{site.devref_image_folder}}/Zss-essential-zkchart.png)
 
 The supported elements and options for a chart in a xlsx file are listed as follows:
 
@@ -191,11 +191,11 @@ the context menu.
 To insert/edit/delete a comment, right click a cell and select
 corresponding item in the context menu.
 
-![center]({{site.devref_image_folder}}/essential-edit-comment.png)
+![]({{site.devref_image_folder}}/essential-edit-comment.png)
 
 Show comment
 
-![center]({{site.devref_image_folder}}/essential-display-comment.png)
+![]({{site.devref_image_folder}}/essential-display-comment.png)
 
 # Support Different Zoom Levels
 
@@ -249,7 +249,7 @@ international ones won't change. Please refer to [Microsoft Office Support - For
 Keikai can display conditional formatting you specify in an Excel file. This feature
 allows you to highlight cells with the given conditions. In the case below, the values in the "Income" column has conditional formatting enabled: 
 
-![center]({{site.devref_image_folder}}/zss-essentials-conditionalFormatting.png)
+![]({{site.devref_image_folder}}/zss-essentials-conditionalFormatting.png)
 
   - Modifying conditional formatting in Keikai UI or API is not supported yet.
 
@@ -308,7 +308,7 @@ You can select "Paste Special" to access all available pasting options in the di
 With the "Ascending" and "Descending" function you can sort data by only one
 column, with "Custom sort" you can sort data by multiple columns. 
 
-![center]({{site.devref_image_folder}}/essentials-feature-customSort.png)
+![]({{site.devref_image_folder}}/essentials-feature-customSort.png)
 
 After selecting "Custom sort" on the toolbar, a dialog appears. You can
 add sorting criteria up to 3 columns. If your data includes
@@ -329,7 +329,7 @@ handle across or down the cells that you want to fill.
 
 Fill cells by dragging right, left, up, or down. 
 
-![center]({{site.devref_image_folder}}/Essentials-feature-autoFill.png)
+![]({{site.devref_image_folder}}/Essentials-feature-autoFill.png)
 
 The supported cell content are number, weekday (full/short), month
 (full/short), and timestamp.
@@ -358,7 +358,7 @@ A filter can help you screen out data and work with a subset of data in a range 
 When you click on the filter icon, there are 3 menu items: **Filter**,
 **Clear**, and **Reapply** relating to the filter. 
 
-![center]({{site.devref_image_folder}}/zss-essentials-filter-menu.png)
+![]({{site.devref_image_folder}}/zss-essentials-filter-menu.png)
 
 Click the funnel-like "Filter" icon to enable/disable filters.
 When filters are enabled, a drop-down icon will show up in the first row of each column. If you click the drop-down
@@ -410,7 +410,7 @@ validation criteria of **lists, numbers, decimals, dates, or time**.
 If the validation criteria is a list, the cell will display a drop-down
 arrow. You can click the icon to select available values. 
 
-![center]({{site.devref_image_folder}}/zss-essentials-validation-list.png)
+![]({{site.devref_image_folder}}/zss-essentials-validation-list.png)
 
 When you click on the cell with validation, the input message you set
 will be displayed automatically. 

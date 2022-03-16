@@ -30,12 +30,12 @@ will immediately reflect on another user's Spreadsheet.
 The screenshot below is what the user, Paul, sees and he can also see
 another user's (John) current selection (purple box). 
 
-![center]({{site.devref_image_folder}}/Essentials-feature-coedit-user1.png)
+![]({{site.devref_image_folder}}/Essentials-feature-coedit-user1.png)
 
 Another user, John, can also see Paul's current selection (blue box) in
 his spreadsheet. 
 
-![center]({{site.devref_image_folder}}/Essentials-feature-coedit-user2.png)
+![]({{site.devref_image_folder}}/Essentials-feature-coedit-user2.png)
 
 The controller's code of above example:
 

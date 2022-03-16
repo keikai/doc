@@ -13,7 +13,7 @@ fills in the required fields of a "Request For Leave" form and click "Submit" bu
 request. Or he can clicks "Reset" button to reset what he
 inputs to empty. The screenshot below shows a request of a user "John":
 
-![center]({{site.devref_image_folder}}/jsp-app.png)
+![]({{site.devref_image_folder}}/jsp-app.png)
 
 The application form is created using Keikai Spreadsheet and the two buttons (Reset and Submit) are
 just ordinary HTML buttons in a JSP page.
@@ -101,7 +101,7 @@ We rely on 2 helper objects to communicate between a browser and a server:
 The sequence diagram displays the overall handling process of an AJAX
 request when a user clicks a button in `app4l.jsp`.
 
-![center]({{site.devref_image_folder}}/jsp-interaction.png)
+![]({{site.devref_image_folder}}/jsp-interaction.png)
 
 * The `app4l.jsp` is the main page with the form for leave. 
 * The `ApplicationForLeaveServlet` is a servlet we implement to handle

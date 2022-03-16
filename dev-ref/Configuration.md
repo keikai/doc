@@ -226,9 +226,9 @@ This property only works under Spreadsheet EE. The default value is
 **`true`**, and Spreadsheet uses ColorPicker of EE. If it's `false`,
 Spreadsheet uses OSE's ColorPicker.
 
-ColorPicker of EE:<br/> ![center]({{site.devref_image_folder}}/Keikai-essentials-configuration-colorPickerEE.JPG)
+ColorPicker of EE:<br/> ![]({{site.devref_image_folder}}/Keikai-essentials-configuration-colorPickerEE.JPG)
 
-ColorPicker of OSE (fewer color choices):<br/> ![center]({{site.devref_image_folder}}/Keikai-essentials-configuration-colorPickerCE.JPG)
+ColorPicker of OSE (fewer color choices):<br/> ![]({{site.devref_image_folder}}/Keikai-essentials-configuration-colorPickerCE.JPG)
 
 **Example in zk.xml**
 

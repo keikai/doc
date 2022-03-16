@@ -36,7 +36,7 @@ event listener is invoked, a `io.keikai.ui.event.SheetDeleteEvent` object is pas
 Below is the screenshot of [Event Monitor](Cell_Clicking_Event#event-monitor-example) for about sheet operations. You can see from the
 right hand side panel that we created a "sheet3", selected it, moved it, and renamed it to "essentials", and eventually deleted it.
 
-![center]({{site.devref_image_folder}}/Zss-essentials-events-sheet.png)
+![]({{site.devref_image_folder}}/Zss-essentials-events-sheet.png)
 
 {% highlight java linenos %}
 public class EventsComposer extends SelectorComposer<Component>{

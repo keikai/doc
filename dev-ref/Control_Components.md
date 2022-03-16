@@ -135,7 +135,7 @@ from the cached range. So the rendered range becomes larger. If the cache does
 not cover the whole visible range, Keikai will send AU request
 (`onZssFetchActiveRange`) to get the data back to the cache.
 
-![center]({{site.devref_image_folder}}/3Ranges.png)
+![]({{site.devref_image_folder}}/3Ranges.png)
 
 ## `maxRenderedCellSize`
 

@@ -62,7 +62,7 @@ Keikai uses [ZK Charts](https://www.zkoss.org/product/zkcharts) as the default c
 The screenshot below is a application that can add, move and delete a
 chart. For simplicity, this application only adds pie charts.
 
-![center]({{site.devref_image_folder}}/Zss-essentials-chart.png)
+![]({{site.devref_image_folder}}/Zss-essentials-chart.png)
 
 When we click "Add", it will add a pie chart with the data from A1:B6
 and add a items in the Listbox on the top right corner. Select a chart

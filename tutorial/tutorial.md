@@ -44,7 +44,7 @@ If you wish to create your own Maven project instead of using the tutorial proje
 
 
 ## Enterprise Edition (EE-Eval and EE)
-Evaluation release has the same feature as enterprise edition, but it has a start-up time limit.
+Evaluation release has the same features as enterprise edition (EE), but it has a start-up time limit.
 Add the repositories below:
 
 ### Evaluation
