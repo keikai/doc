@@ -182,9 +182,9 @@ Keikai can show an empty cell as **zero** or **gap** depending on how you config
 
 You can apply multiple styles to a same cell by using the rich text editor. To open
 a rich-text editor, right click a cell and select "Right Text Edit" in
-the context menu.
+the context menu. See [more details](book_model/Rich_Text_Edit).
 
-![ center]({{site.devref_image_folder}}/essential-richtexteditor.png)
+![]({{site.devref_image_folder}}/essential-richtexteditor.png)
 
 # Comment
 
@@ -212,12 +212,22 @@ Keikai can display different currency symbols for different local such as $, ¥,
 Keikai also accepts `,`(comma) or `.`(dot) as the decimal point for decimal numbers.
 
 # Smart Input
-When you enter a text in a cell with the default format (**General**), keikai will try to identify the input text as a number or a date value with the supported patterns below. If keikai can't identify the input text as a number/date, then it just keep input as it is.
+When you enter a text in a cell with the default format (**General**), keikai will try to identify the input text as a number or a date value with the supported patterns below. If keikai can't identify the input text as a number/date, then it just keep the input as it is.
 
-These supported pattern is independent of a cell's number format.
+For example, if you enter `$123` in a cell, keikai converts it as a number cell and apply a currency format on it instead of keeping it as a text `$123`. You can do math operation with a number but not with a text.
 
-* If you run JDK 9 or above, this feature needs a corresponding [JVM option](/tutorial#jdk-option) to work.
+## Independent of Number Format
+The smart input pattern determines how you enter a date value. That is independent of a cell's number format that determines how to display a date value. When entering the edit mode (pressing F2 or double clicking a cell), keikai switches to one of the supported input patterns instead of the number format.
+
+![]({{site.devref_image_folder}}/editMode.gif)
+
+
+## JVM Option
+If you run JDK 9 or above, this feature needs a corresponding [JVM option](/tutorial#jdk-option) to work properly.
 <!-- implemented by io.keikai.model.impl.sys.DateInputMask -->
+
+## Locale Dependent
+Under different locale, keikai supports different input patter, see [how Keikai/ZK determines the current locale](https://www.zkoss.org/wiki/ZK%20Developer's%20Reference/Internationalization/Locale).
 
 ## Supported Number Pattern
 `1,234,567`, `$123456`, `($123456)`, `($1,234,567)`, `1.2%` or `123456E10`.
