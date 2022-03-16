@@ -22,6 +22,7 @@ To let keikai automatically resize a row height, please enable ["wrap text"](/de
 
 ## By API
 {% include version-badge.html version='5.9.0' %}
+
 For those cases that [wrap text can't resize the height]((/dev-ref/Features_and_Usages#wrap-text)) e.g. a merged cell, call [CellOperationUtil.getAutoFitHeight()](https://keikai.io/javadoc/latest/io/keikai/api/CellOperationUtil.html#getAutoFitHeight-io.keikai.api.model.Sheet-int-int-) and apply the height to one or multiple cells.
 
 
