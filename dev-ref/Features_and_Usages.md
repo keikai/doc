@@ -114,7 +114,7 @@ double underline
 ## Wrap Text
 When wrap text is enabled, keikai wraps a cell's text into multiple lines according to the column width.
 
-Besides, keikai will automatically resize a row height to completely display the wrapped text. So keikai will increase the height when there are more texts and reduce the height when removing the text. But this feature doesn't work on the following case:
+Besides, keikai will automatically resize a row height to completely display the wrapped text. So keikai will increase the height when there are more texts and reduce the height when removing the text. Note that wrap text, same as Excel's wrap text, doesn't apply to the following cases:
 * a row with custom height
 * a merged cell
 
