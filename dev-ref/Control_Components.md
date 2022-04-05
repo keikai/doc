@@ -239,11 +239,27 @@ ZK-based application. The Controller handles events from the UI, controls
 the UI, and accesses the Model. For complete explanation, please refer
 to [ZK Developer's Reference/MVC](https://www.zkoss.org/wiki/ZK_Developer%27s_Reference/MVC).
 
+# View
+You can write a zul to build UI first like:
+
+```xml
+<zk xmlns="http://www.zkoss.org/2005/zul"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.zkoss.org/2005/zul http://keikai.io/2019/zul/zul.xsd">
+    <spreadsheet id="ss" height="100%" width="100%" src="/WEB-INF/books/demo_sample.xlsx"
+                 showContextMenu="true" showToolbar="true" showSheetbar="true" showSheetTabContextMenu="true" showFormulabar="true"/>
+</zk>
+```
+* Line 1: declare the schema can give you content assist when writing spreadsheet xml in an IDE like IntelliJ IDEA.
+* One tag represents one component, and you can configure its features and behavior with tag attributes.
+
+Then visit the zul with your browser.
+
 
 # Controller
 
-After we create a ZUL page, we can apply a Controller to handle events
-and control components of the page. The simplest way to create a
+After you create a ZUL page, you can apply a Controller to handle events
+and control a spreadsheet. The simplest way to create a
 Controller is to create a class that extends [`org.zkoss.zk.ui.select.SelectorComposer`](https://www.zkoss.org/javadoc/latest/zk/org/zkoss/zk/ui/select/SelectorComposer.html). For
 details, please refer to [ZK Developer's Reference/MVC/Controller](https://www.zkoss.org/wiki/ZK_Developer%27s_Reference/MVC/Controller).
 
@@ -255,30 +271,28 @@ public class MyComposer extends SelectorComposer<Component> {
 }
 ```
 
-Then we can apply this controller to a root component of a ZUL page.
+Then you can apply this controller to a root component of a ZUL page.
 
 **index.zul**
 
 {% highlight java linenos %}
     <window title="My First Keikai spreadsheet Application" 
-    apply="io.keikai.essential.MyComposer"
-        border="normal" height="100%" width="100%">
-        <spreadsheet id="ss" src="/WEB-INF/books/startzss.xlsx" .../>
+    apply="io.keikai.essential.MyComposer">
+        <spreadsheet id="ss" src="/WEB-INF/books/demo_sample.xlsx" .../>
     </window>
 {% endhighlight %}
 
   - Line 2: We usually apply a controller on the root component (the
-    outermost component) of a ZUL page so that we can gain control of
-    all components in a page.
+    outermost component) of a ZUL page, so that we can control of all components under the root.
   - Line 4: The component's id, `ss`, can be used as a criteria in
-    component selector to get Spreadsheet object in a controller and we
+    component selector to get Spreadsheet object in a controller, and we
     will describe it in next section.
 
 ## Access Components in a ZUL Page
 
-After applying the controller, we can easily get a component object in the
-zul with the help of SelectorComposer and manipulate the component to
-fulfill our business requirements.
+After applying the controller, you can easily get a component object in the
+zul with the help of [SelectorComposer](https://www.zkoss.org/javadoc/latest/zk/org/zkoss/zk/ui/select/SelectorComposer.html) and manipulate the component to
+fulfill our business requirements. Don't call new statement to get a component object since ZK manages the life cycle of components of a zul.
 
 Steps to get a component:
 
@@ -319,7 +333,7 @@ public class MyComposer extends SelectorComposer<Component> {
   - Line 3,4: If you specify nothing in `@Wire`, ZK will use the
     variable name as a component's id to look for matching component in
     the ZUL page. In this case, ZK will try to find a Spreadsheet
-    component whose id is `ss` in index.zul.
+    component whose id is `ss`.
   - Line 7: Override this method to write initializing code in it.
   - Line 8: Remember to call `super.doAfterCompose()` before you
     access components because parent class wires the components for you.
@@ -327,12 +341,10 @@ public class MyComposer extends SelectorComposer<Component> {
 
 ## Set Spreadsheet Properties by API
 
-After we retrieve a reference to a component, we can use its API to
-manipulate a component. The basic usage is to set (or get) a component's
+After you retrieve a reference to a component, you can use its API to manipulate a component. The basic usage is to set (or get) a component's
 properties. Each Spreadsheet's property listed in previous section has a
 corresponding getter and setter. For example,`setShowToolbar()` and `isShowToolbar()` corresponds to the attribute
-`showToolbar`. You can read Javadoc for the complete list of getter and
-setter.
+`showToolbar`. You can read Javadoc for the complete list of getter and setter.
 
 **Setter usage**
 

@@ -36,4 +36,10 @@ Ranges.range(spreadsheet.getSelectedSheet(), "A1:B4");
 Ranges.range(spreadsheet.getSelectedSheet(), 0, 0, 3, 1);
 // a cell
 Ranges.range(spreadsheet.getSelectedSheet(),  3, 3);
+
+//user selection
+Ranges.range(spreadsheet.getSelectedSheet(), spreadsheet.getSelection())
+
+//named range
+Ranges.rangeByName(spreadsheet.getSelectedSheet(), "From")
 {% endhighlight %}
