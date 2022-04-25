@@ -236,8 +236,7 @@ Keikai is based on ZK Framework that supports the MVC design pattern to develop 
 **Model**, **View**, and **Controller**. The Model is the data that an
 application handles. The View is the UI which indicates a ZUL page in a
 ZK-based application. The Controller handles events from the UI, controls
-the UI, and accesses the Model. For complete explanation, please refer
-to [ZK Developer's Reference/MVC](https://www.zkoss.org/wiki/ZK_Developer%27s_Reference/MVC).
+the UI, and accesses the Model. You need to know the basic of MVC pattern to control a spreadsheet, please read [Get ZK Up and Running with MVC](http://books.zkoss.org/wiki/ZK_Getting_Started/Get_ZK_Up_and_Running_with_MVC).
 
 # View
 You can write a zul to build UI first like:

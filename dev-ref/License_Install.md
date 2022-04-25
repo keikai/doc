@@ -47,13 +47,11 @@ Keikai loads a license file from the default path:
 
 **`WEB-INF/classes/metainfo/keikai/license/`**
 
-Create the path above if it does not exist, and put the license key into
-the path. This is the simplest way if you just have one Keikai-based web
-application.
+Create the path above if it does not exist, and put the license key into the path. This is the simplest way if you just have one Keikai-based web application.
 
 ## Specify an Absolute Path with a Library Property
 
-Some application servers like Weblogic could fail to locate the license
+Some application servers like WebLogic, Wildfly could fail to locate the license
 file in the default path. Then you can specify the absolute path of the
 license with the following library property in `zk.xml` and copy your
 Keikai license file there.
