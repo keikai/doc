@@ -42,3 +42,6 @@ The following features are not supported on mobile devices:
 - insert a hyperlink
 - open a context menu on a cell or sheet tab
 - view a comment
+
+## External Keyboard is not Supported
+Currently, only touch screen is supported.
