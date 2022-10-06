@@ -4,10 +4,13 @@ title: 'Export to PDF'
 
 # PDF Exporter
 
-In addition to the Excel format, you can also export a book model into a
+In addition to the xlsx format, you can also export a book model into a
 PDF file with [`io.keikai.api.Exporter`](https://keikai.io/javadoc/latest/io/keikai/api/Exporter.html).
 
-**Example to export as a PDF**
+# Required Module
+Before exporting, you need to include `keikai-pdf` module to make [PdfExporter](https://keikai.io/javadoc/latest/index.html?io/keikai/model/impl/pdf/PdfExporter.html) available for your application. (See [Modules](/dev-ref/Modules))
+
+# Usage
 
 {% highlight java linenos %}
 public class ExportPdfComposer extends SelectorComposer<Component> {
