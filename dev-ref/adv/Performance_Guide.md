@@ -212,7 +212,7 @@ An Excel file contains formula calculated result as a cache, you can configure t
 
 
 # Avoid Unnecessary Dependents Evaluation
-If you change a target cell that has lots of dependents, it usually takes long time to evaluate all dependents. Hence, it's better to compare the user input and the target cell's before setting the value to the cell. If 2 texts are the same, just don't set the cell's value with the same value. This will save the time to evaluate the target cell's dependents.
+If you change a target cell that has lots of dependents by `Range` setter, it usually takes long time to evaluate all dependents. Hence, it's better to compare the user input and the target cell's before setting the value to the cell. If 2 texts are the same, just don't set the cell's value with the same value. This will save the time to evaluate the target cell's dependents.
 
 ```java
 String userInputText;
@@ -222,6 +222,13 @@ if (!userInputText.equals(cell.getCellEditText())){
     cell.setCellEditText(userInputText);  
 }
 ```
+
+When editing a cell in a browser, it will not fire an event to a server if the input text doesn't change in cell. This already avoids unnecessary dependents evaluation. 
+
+
+# Avoid Unnecessary Tracing Dependents
+By default, when changing a cell's value of a Book, Keikai will trace the cell's dependents to notify the Spreadsheet associated with the Book. Assuming you just manipulate Book object without assigning it to a Spreadsheet. You can call `Range.setAutoRefresh(false)` to avoid Spreadsheet from tracing dependents especially when there are lots of dependents.
+<!-- io.keikai.range.impl.RangeImpl.notifyChangeInLock() -->
 
 # Trouble Shooting
 If you have tried the relevant techniques above but the performance is still unsatisfying, or, if you are not sure why your project is slow, we recommend you to analyze your page according to
