@@ -117,9 +117,7 @@ the row height which is time-consuming.
 One typical use case in Keikai is loading a template file and inserting application
 data from a database in the beginning. Normally, this will generate lots
 of internal events and trigger formula dependency recalculation which is
-unnecessary before showing Keikai spreadsheet to a browser. If you have lots of data, you can implement
-<javadoc directory="keikai">io.keikai.api.PostImport</javadoc> and put
-your initialization logic in `process()`. Then Keikai will invoke
+unnecessary before showing Keikai spreadsheet to a browser. If you have lots of data, you can implement [io.keikai.api.PostImport](https://keikai.io/javadoc/latest/io/keikai/api/PostImport.html) and put your initialization logic in `process()`. Then Keikai will invoke
 `process()` right after the file is imported and turn off those
 unnecessary update triggered by `Range` API. This can speed up
 the data/formula inserting.
@@ -212,6 +210,18 @@ If you have a big file with multiple sheets and massive cells, and it takes a lo
 # Import formula cache
 An Excel file contains formula calculated result as a cache, you can configure to show the cached value instead of having Keikai to re-evaluate formulas at importing. Please see [Configuration#importing](/dev-ref/Configuration#importing).
 
+
+# Avoid Unnecessary Dependents Evaluation
+If you change a target cell that has lots of dependents, it usually takes long time to evaluate all dependents. Hence, it's better to compare the user input and the target cell's before setting the value to the cell. If 2 texts are the same, just don't set the cell's value with the same value. This will save the time to evaluate the target cell's dependents.
+
+```java
+String userInputText;
+Range cell; //target cell that is referenced by many cells
+
+if (!userInputText.equals(cell.getCellEditText())){
+    cell.setCellEditText(userInputText);  
+}
+```
 
 # Trouble Shooting
 If you have tried the relevant techniques above but the performance is still unsatisfying, or, if you are not sure why your project is slow, we recommend you to analyze your page according to
