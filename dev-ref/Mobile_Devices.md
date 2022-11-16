@@ -32,11 +32,13 @@ The following features are supported on mobile devices.
 
 
 # Limitations
-The following features are not supported on mobile devices:
+Those features that are not listed in the previous section are not supported including but not limited to:
+
 - multi-cell selection
 - merge cells
 - enable/disable the filter
 - change sheet protection
+- freeze row/column
 - insert an image
 - insert a chart
 - insert a hyperlink
