@@ -179,3 +179,7 @@ on the Connector.` `Note: further occurrences of this error will be
 logged at DEBUG level.`
 
 You need to increase the limit of `maxParameterCount` of your web container. [Read more](https://tomcat.apache.org/tomcat-7.0-doc/config/http.html).
+
+
+# How do I understand xlsx file format?
+Please read [Working with SpreadsheetML documents](https://learn.microsoft.com/en-us/office/open-xml/working-with-spreadsheetml-documents). You can also download [ECMA-376 Office Open XML file formats](https://www.ecma-international.org/publications-and-standards/standards/ecma-376/).
