@@ -6,7 +6,9 @@ title: 'Protection'
 # Protect a Sheet
 
 If you enable "Protect Sheet" for a sheet in Excel, Spreadsheet
-can read the setting and prevent users from editing the protected sheet.
+can read the setting and prevent users from editing the protected sheet. For example, you can click
+    ![zss-essentials-protection-excel-icon.png]({{site.devref_image_folder}}/Zss-essentials-protection-excel-icon.png) of menu "Review" in
+    Excel 2007 to protect a sheet.
 
 
 ## Builder API
@@ -102,12 +104,14 @@ the right panel when selecting B2 which means B2 can be edited.
 
 
 ## Unlock Cells in Excel
+Select one or more cells first, right click on selected cells, select "Format Cells...". 
 In "Format Cell" dialog, you can uncheck a cell's locked status:
 
 ![]({{site.devref_image_folder}}/unlockCell.png)
 
+After this, the cell is still editable when its sheet is protection enabled.
 
-## Get Locked Status
+## Get/Set Locked Status in Java
 Besides, Spreadsheet also allows you to lock / unlock cells and retrieve
 locked status with API. In our example application, when you select
 cells, the panel on the right will display its lock status. Clicking the
@@ -158,26 +162,14 @@ When a sheet is **protected**:
 
 1.  Users can copy among unlocked cells
 2.  Users can copy a locked cell and paste it an unlocked one.
-      -   
-        This action doesn't copy the "locked" status. The unlocked cell
+      - This action doesn't copy the "locked" status. The unlocked cell
         keeps unlocked.
 3.  If there is a locked cell in the affected target range while
     pasting, Keikai doesn't paste cells
 4.  Cut an unlocked cell, the cell still keep unlocked
-      -   
-        Without sheet protection, cut an unlocked cell, the cell
+      - Without sheet protection, cut an unlocked cell, the cell
         restores to the default value (locked is true).
 5.  Users can do "Clear Format", "Clear All", or "Clear Contents" on an
     unlocked cell.
 6.  "Clear Formats" resets locked status to true. After this operation,
     an unlocked cell becomes locked.
-
-# Reference
-
-1.  For example, you can click
-    ![zss-essentials-protection-excel-icon.png]({{site.devref_image_folder}}/Zss-essentials-protection-excel-icon.png) of menu "Review" in
-    Excel 2007 to protect a sheet.
-2.  Steps to unlock cells in Excel 2007: select one or more cells first,
-    right click on selected cells, select "Format Cells...", select
-    "Protection" tab, uncheck "Locked" item. After this, the cell is
-    still editable when its sheet is protection enabled.
