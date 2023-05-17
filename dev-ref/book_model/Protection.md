@@ -14,7 +14,11 @@ Spreadsheet's API also allows you to enable / disable protection and get
 protection status of a sheet. We suggest you using [`SheetProtection.Builder`](https://keikai.io/javadoc/latest/io/keikai/api/SheetProtection.Builder.html). With its fluent API, you can enable those permissions you care, and all other permission you don't set are disabled by default:
 
 ```java
-static private SheetProtection PROTECTION_WITH_SELECTION = SheetProtection.Builder.create().withPassword("password").withSelectLockedCellsAllowed(true).withSelectUnlockedCellsAllowed(true).build();
+static private SheetProtection PROTECTION_WITH_SELECTION = SheetProtection.Builder.create()
+    .withPassword("password")
+    .withSelectLockedCellsAllowed(true)
+    .withSelectUnlockedCellsAllowed(true)
+    .build();
 range.protectSheet(PROTECTION_WITH_SELECTION);
 ...
 range.unprotectSheet("password");
@@ -79,11 +83,13 @@ public class ProtectionComposer extends SelectorComposer<Component>{
     sheet.
 
 
-# Unlock Cells of a Protected Sheet
+# Allow Editing in a Protected Sheet
 
-When you protect a sheet in Excel, all cells are locked and cannot be
-edited by default. To enable some cells to be edited while leaving other
-cells locked, you can unlock the cells before you protect the worksheet. 
+When you protect a sheet in Excel, all cells are read-only and cannot be edited by default. 
+To enable some cells to be edited while leaving other cells read-only, you need to unlock the cells before you protect the worksheet. 
+
+
+## Keikai Reads Cell Locked Status
 Spreadsheet can also read unlocked cells of a protected sheet
 configured in xlsx file. You can still edit the unlocked cells when loading
 it in Spreadsheet.
@@ -94,6 +100,14 @@ the right panel when selecting B2 which means B2 can be edited.
 
 ![]({{site.devref_image_folder}}/Zss-essentials-protection-unlock.png)
 
+
+## Unlock Cells in Excel
+In "Format Cell" dialog, you can uncheck a cell's locked status:
+
+![]({{site.devref_image_folder}}/unlockCell.png)
+
+
+## Get Locked Status
 Besides, Spreadsheet also allows you to lock / unlock cells and retrieve
 locked status with API. In our example application, when you select
 cells, the panel on the right will display its lock status. Clicking the
