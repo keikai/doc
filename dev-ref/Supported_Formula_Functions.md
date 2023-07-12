@@ -1750,528 +1750,67 @@ Regarding the 1st argument, *"1-11 includes manually-hidden rows, while 101-111 
 
 # Statistical
 
-<table>
-<thead>
-<tr class="header">
-<th><p><strong>Function</strong></p></th>
-<th><p><strong>New Name since Excel 2010</strong></p></th>
-<th><p><strong>OSE</strong></p></th>
-<th><p><strong>EE</strong></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><p>AVEDEV</p></td>
-<td><p>-</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>AVERAGE</p></td>
-<td><p>-</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>AVERAGEA</p></td>
-<td><p>-</p></td>
-<td><center>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>AVERAGEIF</p></td>
-<td><p>-</p></td>
-<td><center>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>BETADIST</p></td>
-<td><p>BETA.DIST</p></td>
-<td><center>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>BETAINV</p></td>
-<td><p>BETA.INV</p></td>
-<td><center>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>BINOMDIST</p></td>
-<td><p>BINOM.DIST</p></td>
-<td><center>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>CORREL</p></td>
-<td></td>
-<td><center>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>CRITBINOM</p></td>
-<td><p>BINOM.INV</p></td>
-<td><center>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>CHIDIST</p></td>
-<td><p>CHISQ.DIST.RT</p></td>
-<td><center>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>CHIINV</p></td>
-<td><p>CHISQ.INV.RT</p></td>
-<td><center>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>-</p></td>
-<td><p>CHISQ.DIST</p></td>
-<td><center>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>-</p></td>
-<td><p>CHISQ.INV</p></td>
-<td><center>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>COUNT</p></td>
-<td><p>-</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>COUNTA</p></td>
-<td><p>-</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>COUNTBLANK</p></td>
-<td><p>-</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>COUNTIF</p></td>
-<td><p>-</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>DEVSQ</p></td>
-<td><p>-</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>EXPONDIST</p></td>
-<td><p>EXPON.DIST</p></td>
-<td><center>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>FDIST</p></td>
-<td><p>F.DIST.RT</p></td>
-<td><center>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>FINV</p></td>
-<td><p>F.INV.RT</p></td>
-<td><center>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>GAMMADIST</p></td>
-<td><p>GAMMA.DIST</p></td>
-<td><center>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>GAMMAINV</p></td>
-<td><p>GAMMA.INV</p></td>
-<td><center>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>GAMMALN</p></td>
-<td><p>-</p></td>
-<td><center>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>GEOMEAN</p></td>
-<td><p>-</p></td>
-<td><center>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>HARMEAN</p></td>
-<td><p>-</p></td>
-<td><center>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>HYPGEOMDIST</p></td>
-<td><p>HYPGEOM.DIST</p></td>
-<td><center>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>KURT</p></td>
-<td><p>-</p></td>
-<td><center>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>LARGE</p></td>
-<td><p>-</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>MAX</p></td>
-<td><p>-</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>MAXA</p></td>
-<td><p>-</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>MEDIAN</p></td>
-<td><p>-</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>MIN</p></td>
-<td><p>-</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>MINA</p></td>
-<td><p>-</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>MODE</p></td>
-<td><p>MODE.SNGL</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>NEGBINOMDIST</p></td>
-<td><p>NEGBINOM.DIST</p></td>
-<td><center>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>NORMDIST</p></td>
-<td><p>NORM.DIST</p></td>
-<td><center>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>NORMINV</p></td>
-<td><p>NORM.INV</p></td>
-<td><center>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>NORMSDIST</p></td>
-<td><p>NORM.S.DIST</p></td>
-<td><center>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>NORMSINV</p></td>
-<td><p>NORM.S.INV</p></td>
-<td><center>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>LOGNORMDIST</p></td>
-<td><p>LOGNORM.DIST</p></td>
-<td><center>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>LOGINV</p></td>
-<td><p>LOGNORM.INV</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>POISSON</p></td>
-<td><p>POISSON.DIST</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>RANK</p></td>
-<td><p>RANK.EQ</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>SKEW</p></td>
-<td><p>-</p></td>
-<td><center>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>SLOPE</p></td>
-<td><p>-</p></td>
-<td><center>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>SMALL</p></td>
-<td><p>-</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>STDEV</p></td>
-<td><p>STDE.V</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>-</p></td>
-<td><p>T.DIST.2T</p></td>
-<td><center>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>TDIST</p></td>
-<td><p>T.DIST.RT</p></td>
-<td><center>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>TINV</p></td>
-<td><p>T.INV.2T</p></td>
-<td><center>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>VAR</p></td>
-<td><p>VAR.S</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>VARP</p></td>
-<td><p>VAR.P</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>WEIBULL</p></td>
-<td><p>WEIBULL.DIST</p></td>
-<td><center>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-</tbody>
-</table>
+| Function    | New Name since Excel 2010 | OSE | EE |
+|-------------|--------------------------|-----|----|
+| AVEDEV      | -                        | Y   | Y  |
+| AVERAGE     | -                        | Y   | Y  |
+| AVERAGEA    | -                        | Y   | -  |
+| AVERAGEIF   | -                        | Y   | -  |
+| BETADIST    | BETA.DIST                | Y   | -  |
+| BETAINV     | BETA.INV                 | Y   | -  |
+| BINOMDIST   | BINOM.DIST               | Y   | -  |
+| CORREL      | -                        | Y   | -  |
+| CRITBINOM   | BINOM.INV                | Y   | -  |
+| CHIDIST     | CHISQ.DIST.RT            | Y   | -  |
+| CHIINV      | CHISQ.INV.RT             | Y   | -  |
+| -           | CHISQ.DIST               | Y   | -  |
+| -           | CHISQ.INV                | Y   | -  |
+| COUNT       | -                        | Y   | Y  |
+| COUNTA      | -                        | Y   | Y  |
+| COUNTBLANK  | -                        | Y   | Y  |
+| COUNTIF     | -                        | Y   | Y  |
+| COUNTIFS    | -                        | -   | Y  |
+| DEVSQ       | -                        | Y   | Y  |
+| EXPONDIST   | EXPON.DIST               | Y   | -  |
+| FDIST       | F.DIST.RT                | Y   | -  |
+| FINV        | F.INV.RT                 | Y   | -  |
+| GAMMADIST   | GAMMA.DIST               | Y   | -  |
+| GAMMAINV    | GAMMA.INV                | Y   | -  |
+| GAMMALN     | -                        | Y   | -  |
+| GEOMEAN     | -                        | Y   | -  |
+| HARMEAN     | -                        | Y   | -  |
+| HYPGEOMDIST | HYPGEOM.DIST             | Y   | -  |
+| KURT        | -                        | Y   | -  |
+| LARGE       | -                        | Y   | Y  |
+| MAX         | -                        | Y   | Y  |
+| MAXA        | -                        | Y   | Y  |
+| MEDIAN      | -                        | Y   | Y  |
+| MIN         | -                        | Y   | Y  |
+| MINA        | -                        | Y   | Y  |
+| MODE        | MODE.SNGL                | Y   | Y  |
+| NEGBINOMDIST | NEGBINOM.DIST           | Y   | -  |
+| NORMDIST    | NORM.DIST                | Y   | -  |
+| NORMINV     | NORM.INV                 | Y   | -  |
+| NORMSDIST   | NORM.S.DIST              | Y   | -  |
+| NORMSINV    | NORM.S.INV               | Y   | -  |
+| LOGNORMDIST | LOGNORM.DIST             | Y   | -  |
+| LOGINV      | LOGNORM.INV              | Y   | Y  |
+| POISSON     | POISSON.DIST             | Y   | Y  |
+| RANK        | RANK.EQ                  | Y   | Y  |
+| SKEW        | -                        | Y   | -  |
+| SLOPE       | -                        | Y   | -  |
+| SMALL       | -                        | Y   | Y  |
+| STDEV       | STDE.V                   | Y   | Y  |
+| -           | T.DIST.2T                | Y   | -  |
+| TDIST       | T.DIST.RT                | Y   | -  |
+| TINV        | T.INV.2T                 | Y   | -  |
+| VAR         | VAR.S                    | Y   | Y  |
+| VARP        | VAR.P                    | Y   | Y  |
+| WEIBULL     | WEIBULL.DIST             | Y   | -  |
 
-Note: Keikai supports both function names [listed here](https://support.office.com/en-us/article/What-s-New-Changes-made-to-Excel-functions-355d08c8-8358-4ecb-b6eb-e2e443e98aac?ui=en-US&rs=en-US&ad=US&fromAR=1#bm2).
-    .
+
+* Note: Keikai supports both function names [listed here](https://support.office.com/en-us/article/What-s-New-Changes-made-to-Excel-functions-355d08c8-8358-4ecb-b6eb-e2e443e98aac?ui=en-US&rs=en-US&ad=US&fromAR=1#bm2).
+* `COUNTIFS` is available {% include version-badge.html version='5.12.0' %}
 
 # Text
 
