@@ -4,31 +4,21 @@ title: 'Performance Guide'
 
 Here we introduce some performance optimization tips for different scenarios.
 
-# Calling Multiple Range Methods
+# Those Cases Can Be Improved
 
-When calling the `Range` setter method, Keikai spreadsheet will automatically
-check cell dependencies, update the dependent cells and refresh the
-spreadsheet UI of the range. However, in following cases, developers
-might not want such "automation" and would rather control the evaluation and
-update by themselves:
+When calling a `Range` setter method, Keikai spreadsheet will automatically
+check cell dependencies, notify the dependent cells to update their content or style.
+ However, in following cases, it's better to notify the cell change at once in the end of an operations manually:
 
 - Change a lot of cells in a batch.
-- If we don't disable auto refresh in such case, Keikai spreadsheet
-  will generate a lot of small AU responses to the browser which slow
-  down browser rendering speed.
-- Initialize a book upon a data source (e.g. a database) before Keikai
-  spreadsheet renders itself.
-- Sometimes we need to load the data from a database to initialize a
-  sheet before Keikai spreadsheet renders in a browser. Disable the auto
-  refresh can eliminate Spreadsheet's unnecessary internal
-  calculations for rendering.
+- To load the data from a database to fill cells. 
 
-In order to manually control UI update, we have to:
+In order to manually notify the cell change, we have to:
 
 1.  disable auto-refresh with `setAutoRefresh(false)`
-2.  notify changed area with `notifyChange()`
+2.  notify the changed area with `notifyChange()`
 
-<!-- end list -->
+Disable the auto refresh can stop Spreadsheet's internal calculations for rendering. If we don't disable auto refresh in such case, Keikai spreadsheet will generate a lot of small update to the browser which will slow down browser rendering speed. Instead, after we call all `Range` setter methods, we notify the change at once. Keikai can generate one update for the whole range which is more efficiently.
 
 {% highlight java linenos %}
     private void loadData() {
