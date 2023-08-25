@@ -30,3 +30,19 @@ Recommend to use named range instead of cell address for readability and stabili
 
 
 By eliminating UI concerns, Keikai can serve as a powerful calculation engine for server-side automation processes. The XLSX format provides a portable way to apply spreadsheet logic across many use cases.
+
+
+# A Servlet Example
+Check [ApiServlet](https://github.com/keikai/dev-ref/blob/master/src/main/java/io/keikai/devref/external/ApiServlet.java).
+
+You can visit http://localhost:8080/dev-ref/api?r=0&c=1
+
+The parameters:
+* `r`: row index, 0-based.
+* `c`: column index, 0-based.
+
+Then it will show you the cell value of **A2**.
+
+The `ApiServlet` imports an xlsx file and return a cell value with `Range` API. It doesn't render any spreadsheet on a web page.
+
+![]({{site.devref_image_folder}}/ApiServletArchitecture.png)
