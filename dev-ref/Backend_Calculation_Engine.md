@@ -5,7 +5,7 @@ title: 'Backend Calculation Engine'
 # Overview
 Keikai provides the capability to use spreadsheets in a non-UI, headless fashion, like an automated backend calculation engine.
 
-The key component is the [Book Model](/dev-ref/book_model/Manipulating_Book_Model), which stores all cell data and formulas. You can directly access and manipulate this model programmatically, without needing to render a visual spreadsheet in a browser.
+The key is the [Book Model](/dev-ref/book_model/Manipulating_Book_Model), which stores all cell data and formulas. You can directly access and manipulate this model programmatically, without needing to render a visual spreadsheet in a browser.
 
 This enables loading data into a Book Model from any source (e.g. databases), executing calculations with formulas, and reading back results, all without any UI.
 
