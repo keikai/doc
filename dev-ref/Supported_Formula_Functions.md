@@ -8,27 +8,28 @@ Check [Microsoft Excel function list](https://support.microsoft.com/en-us/office
 
 # Date & Time (18)
 
-| Function                                 | OSE | EE |
-|------------------------------------------|-----|----|
-| DATE                                     |  Y  |  Y |
-| DATEDIF{% include version-badge.html version='5.8.0' %} |     |  Y |
-| DATEVALUE                                |     |  Y |
-| DAY                                      |  Y  |  Y |
-| DAYS360                                  |  Y  |  Y |
-| EOMONTH                                  |     |  Y |
-| HOUR                                     |  Y  |  Y |
-| MINUTE                                   |  Y  |  Y |
-| MONTH                                    |  Y  |  Y |
-| NETWORKDAYS                              |  Y  |  Y |
-| NOW                                      |  Y  |  Y |
-| SECOND                                   |  Y  |  Y |
-| TIME                                     |  Y  |  Y |
-| TODAY                                    |  Y  |  Y |
-| WEEKDAY                                  |  Y  |  Y |
-| WORKDAY                                  |  Y  |  Y |
-| YEAR                                     |  Y  |  Y |
-| YEARFRAC                                 |  Y  |  Y |
+| Function    | OSE | EE |
+|-------------|-----|----|
+| DATE        |  Y  |  Y |
+| DATEDIF*    |     |  Y |
+| DATEVALUE   |     |  Y |
+| DAY         |  Y  |  Y |
+| DAYS360     |  Y  |  Y |
+| EOMONTH     |     |  Y |
+| HOUR        |  Y  |  Y |
+| MINUTE      |  Y  |  Y |
+| MONTH       |  Y  |  Y |
+| NETWORKDAYS |  Y  |  Y |
+| NOW         |  Y  |  Y |
+| SECOND      |  Y  |  Y |
+| TIME        |  Y  |  Y |
+| TODAY       |  Y  |  Y |
+| WEEKDAY     |  Y  |  Y |
+| WORKDAY     |  Y  |  Y |
+| YEAR        |  Y  |  Y |
+| YEARFRAC    |  Y  |  Y |
 
+* `DATEDIF`: supported {% include version-badge.html version='5.8.0' %}
 
 # Engineering (38)
 
