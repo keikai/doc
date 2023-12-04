@@ -6,1728 +6,242 @@ Here we list all built-in functions in Keikai OSE and EE:
 Check [Microsoft Excel function list](https://support.microsoft.com/en-us/office/excel-functions-alphabetical-b3944572-255d-4efb-bb96-c6d90033e188) for details.
 
 
-# Date & Time
+# Date & Time (18)
 
-<table>
-<thead>
-<tr class="header">
-<th><p><strong>Function</strong></p></th>
-<th><p><strong>OSE</strong></p></th>
-<th><p><strong>EE</strong></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><p>DATE</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>DATEDIF{% include version-badge.html version='5.8.0' %}</p></td>
-<td><center>
-<p></p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>DATEVALUE</p></td>
-<td><center>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>DAY</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>DAYS360</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>EOMONTH</p></td>
-<td><center>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>HOUR</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>MINUTE</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>MONTH</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>NETWORKDAYS</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>NOW</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>SECOND</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>TIME</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>TODAY</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>WEEKDAY</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>WORKDAY</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>YEAR</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>YEARFRAC</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-</tbody>
-</table>
+| Function                                 | OSE | EE |
+|------------------------------------------|-----|----|
+| DATE                                     |  Y  |  Y |
+| DATEDIF{% include version-badge.html version='5.8.0' %} |     |  Y |
+| DATEVALUE                                |     |  Y |
+| DAY                                      |  Y  |  Y |
+| DAYS360                                  |  Y  |  Y |
+| EOMONTH                                  |     |  Y |
+| HOUR                                     |  Y  |  Y |
+| MINUTE                                   |  Y  |  Y |
+| MONTH                                    |  Y  |  Y |
+| NETWORKDAYS                              |  Y  |  Y |
+| NOW                                      |  Y  |  Y |
+| SECOND                                   |  Y  |  Y |
+| TIME                                     |  Y  |  Y |
+| TODAY                                    |  Y  |  Y |
+| WEEKDAY                                  |  Y  |  Y |
+| WORKDAY                                  |  Y  |  Y |
+| YEAR                                     |  Y  |  Y |
+| YEARFRAC                                 |  Y  |  Y |
 
-# Engineering
 
-<table>
-<thead>
-<tr class="header">
-<th><p><strong>Function</strong></p></th>
-<th><p><strong>OSE</strong></p></th>
-<th><p><strong>EE</strong></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><p>BESSELI</p></td>
-<td><p> </p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>BESSELJ</p></td>
-<td><p> </p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>BESSELK</p></td>
-<td><p> </p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>BESSELY</p></td>
-<td><p> </p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>BIN2DEC</p></td>
-<td><p> </p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>BIN2HEX</p></td>
-<td><p> </p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>BIN2OCT</p></td>
-<td><p> </p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>COMPLEX</p></td>
-<td><p> </p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>DEC2BIN</p></td>
-<td><p> </p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>DEC2HEX</p></td>
-<td><p> </p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>DEC2OCT</p></td>
-<td><p> </p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>DELTA</p></td>
-<td><p> </p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>ERF</p></td>
-<td><p> </p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>ERFC</p></td>
-<td><p> </p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>GESTEP</p></td>
-<td><p> </p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>HEX2BIN</p></td>
-<td><p> </p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>HEX2DEC</p></td>
-<td><p> </p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>HEX2OCT</p></td>
-<td><p> </p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>IMABS</p></td>
-<td><p> </p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>IMAGINARY</p></td>
-<td><p> </p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>IMARGUMENT</p></td>
-<td><p> </p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>IMCONJUGATE</p></td>
-<td><p> </p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>IMCOS</p></td>
-<td><p> </p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>IMDIV</p></td>
-<td><p> </p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>IMEXP</p></td>
-<td><p> </p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>IMLN</p></td>
-<td><p> </p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>IMLOG10</p></td>
-<td><p> </p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>IMLOG2</p></td>
-<td><p> </p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>IMPOWER</p></td>
-<td><p> </p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>IMPRODUCT</p></td>
-<td><p> </p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>IMREAL</p></td>
-<td><p> </p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>IMSIN</p></td>
-<td><p> </p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>IMSQRT</p></td>
-<td><p> </p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>IMSUB</p></td>
-<td><p> </p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>IMSUM</p></td>
-<td><p> </p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>OCT2BIN</p></td>
-<td><p> </p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>OCT2DEC</p></td>
-<td><p> </p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>OCT2HEX</p></td>
-<td><p> </p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-</tbody>
-</table>
+# Engineering (38)
 
-# Financial
+| Function  | OSE | EE |
+|-----------|-----|----|
+| BESSELI   |     |  Y |
+| BESSELJ   |     |  Y |
+| BESSELK   |     |  Y |
+| BESSELY   |     |  Y |
+| BIN2DEC   |     |  Y |
+| BIN2HEX   |     |  Y |
+| BIN2OCT   |     |  Y |
+| COMPLEX   |     |  Y |
+| DEC2BIN   |     |  Y |
+| DEC2HEX   |     |  Y |
+| DEC2OCT   |     |  Y |
+| DELTA     |     |  Y |
+| ERF       |     |  Y |
+| ERFC      |     |  Y |
+| GESTEP    |     |  Y |
+| HEX2BIN   |     |  Y |
+| HEX2DEC   |     |  Y |
+| HEX2OCT   |     |  Y |
+| IMABS     |     |  Y |
+| IMAGINARY |     |  Y |
+| IMARGUMENT|     |  Y |
+| IMCONJUGATE|    |  Y |
+| IMCOS     |     |  Y |
+| IMDIV     |     |  Y |
+| IMEXP     |     |  Y |
+| IMLN      |     |  Y |
+| IMLOG10   |     |  Y |
+| IMLOG2    |     |  Y |
+| IMPOWER   |     |  Y |
+| IMPRODUCT |     |  Y |
+| IMREAL    |     |  Y |
+| IMSIN     |     |  Y |
+| IMSQRT    |     |  Y |
+| IMSUB     |     |  Y |
+| IMSUM     |     |  Y |
+| OCT2BIN   |     |  Y |
+| OCT2DEC   |     |  Y |
+| OCT2HEX   |     |  Y |
 
-<table>
-<thead>
-<tr class="header">
-<th><p><strong>Function</strong></p></th>
-<th><p><strong>OSE</strong></p></th>
-<th><p><strong>EE</strong></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><p>ACCRINT</p></td>
-<td><center>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>ACCRINTM</p></td>
-<td><center>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>AMORDEGRC</p></td>
-<td><center>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>AMORLINC</p></td>
-<td><center>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>COUPDAYBS</p></td>
-<td><center>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>COUPDAYS</p></td>
-<td><center>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>COUPDAYSNC</p></td>
-<td><center>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>COUPNCD</p></td>
-<td><center>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>COUPNUM</p></td>
-<td><center>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>COUPPCD</p></td>
-<td><center>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>CUMIPMT</p></td>
-<td><center>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>CUMPRINC</p></td>
-<td><center>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>DB</p></td>
-<td><center>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>DDB</p></td>
-<td><center>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>DISC</p></td>
-<td><center>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>DOLLARDE</p></td>
-<td><center>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>DOLLARFR</p></td>
-<td><center>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>DURATION</p></td>
-<td><center>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>EFFECT</p></td>
-<td><center>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>FV</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>FVSCHEDULE</p></td>
-<td><center>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>INTRATE</p></td>
-<td><center>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>IPMT</p></td>
-<td><center>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>IRR</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>NOMINAL</p></td>
-<td><center>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>NPER</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>NPV</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>PMT</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>PPMT</p></td>
-<td><center>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>PRICE</p></td>
-<td><center>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>PRICEDISC</p></td>
-<td><center>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>PRICEMAT</p></td>
-<td><center>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>PV</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>RATE</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>RECEIVED</p></td>
-<td><center>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>SLN</p></td>
-<td><center>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>SYD</p></td>
-<td><center>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>TBILLEQ</p></td>
-<td><center>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>TBILLPRICE</p></td>
-<td><center>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>TBILLYIELD</p></td>
-<td><center>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>XNPV</p></td>
-<td><center>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>YIELD</p></td>
-<td><center>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>YIELDDISC</p></td>
-<td><center>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>YIELDMAT</p></td>
-<td><center>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-</tbody>
-</table>
 
-# Info
+# Financial (44)
 
-<table>
-<thead>
-<tr class="header">
-<th><p><strong>Function</strong></p></th>
-<th><p><strong>OSE</strong></p></th>
-<th><p><strong>EE</strong></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><p>ERROR.TYPE</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>ISBLANK</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>ISERR</p></td>
-<td><center>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>ISERROR</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>ISEVEN</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>ISLOGICAL</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>ISNA</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>ISNONTEXT</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>ISNUMBER</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>ISODD</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>ISREF</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>ISTEXT</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>N</p></td>
-<td><center>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>NA</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>TYPE</p></td>
-<td><center>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-</tbody>
-</table>
+| Function    | OSE | EE |
+|-------------|-----|----|
+| ACCRINT     |     |  Y |
+| ACCRINTM    |     |  Y |
+| AMORDEGRC   |     |  Y |
+| AMORLINC    |     |  Y |
+| COUPDAYBS   |     |  Y |
+| COUPDAYS    |     |  Y |
+| COUPDAYSNC  |     |  Y |
+| COUPNCD     |     |  Y |
+| COUPNUM     |     |  Y |
+| COUPPCD     |     |  Y |
+| CUMIPMT     |     |  Y |
+| CUMPRINC    |     |  Y |
+| DB          |     |  Y |
+| DDB         |     |  Y |
+| DISC        |     |  Y |
+| DOLLARDE    |     |  Y |
+| DOLLARFR    |     |  Y |
+| DURATION    |     |  Y |
+| EFFECT      |     |  Y |
+| FV          |  Y  |  Y |
+| FVSCHEDULE  |     |  Y |
+| INTRATE     |     |  Y |
+| IPMT        |     |  Y |
+| IRR         |  Y  |  Y |
+| NOMINAL     |     |  Y |
+| NPER        |  Y  |  Y |
+| NPV         |  Y  |  Y |
+| PMT         |  Y  |  Y |
+| PPMT        |     |  Y |
+| PRICE       |     |  Y |
+| PRICEDISC   |     |  Y |
+| PRICEMAT    |     |  Y |
+| PV          |  Y  |  Y |
+| RATE        |  Y  |  Y |
+| RECEIVED    |     |  Y |
+| SLN         |     |  Y |
+| SYD         |     |  Y |
+| TBILLEQ     |     |  Y |
+| TBILLPRICE  |     |  Y |
+| TBILLYIELD  |     |  Y |
+| XNPV        |     |  Y |
+| YIELD       |     |  Y |
+| YIELDDISC   |     |  Y |
+| YIELDMAT    |     |  Y |
 
-# Logical
 
-<table>
-<thead>
-<tr class="header">
-<th><p><strong>Function</strong></p></th>
-<th><p><strong>OSE</strong></p></th>
-<th><p><strong>EE</strong></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><p>AND</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>FALSE</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>IF</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>IFERROR</p></td>
-<td><center>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>NOT</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>OR</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>TRUE</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-</tbody>
-</table>
+# Info (15)
 
-# Lookup & Reference
+| Function    | OSE | EE |
+|-------------|-----|----|
+| ERROR.TYPE  |  Y  |  Y |
+| ISBLANK     |  Y  |  Y |
+| ISERR       |     |  Y |
+| ISERROR     |  Y  |  Y |
+| ISEVEN      |  Y  |  Y |
+| ISLOGICAL   |  Y  |  Y |
+| ISNA        |  Y  |  Y |
+| ISNONTEXT   |  Y  |  Y |
+| ISNUMBER    |  Y  |  Y |
+| ISODD       |  Y  |  Y |
+| ISREF       |  Y  |  Y |
+| ISTEXT      |  Y  |  Y |
+| N           |     |  Y |
+| NA          |  Y  |  Y |
+| TYPE        |     |  Y |
 
-<table>
-<thead>
-<tr class="header">
-<th><p><strong>Function</strong></p></th>
-<th><p><strong>OSE</strong></p></th>
-<th><p><strong>EE</strong></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><p>ADDRESS</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>CHOOSE</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>COLUMN</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>COLUMNS</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>HLOOKUP</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>HYPERLINK</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>INDEX</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>INDIRECT</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>LOOKUP</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>MATCH</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>OFFSET</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>ROW</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>ROWS</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>VLOOKUP</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-</tbody>
-</table>
 
-# Mathematical
+# Logical (7)
 
-<table>
-<thead>
-<tr class="header">
-<th><p><strong>Function</strong></p></th>
-<th><p><strong>OSE</strong></p></th>
-<th><p><strong>EE</strong></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><p>ABS</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>ACOS</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>ACOSH</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>ASIN</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>ASINH</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>ATAN</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>ATAN2</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>ATANH</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>CEILING</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>COMBIN</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>COS</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>COSH</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>DEGREES</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>EVEN</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>EXP</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>FACT</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>FACTDOUBLE</p></td>
-<td><center>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>FLOOR</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>GCD</p></td>
-<td><center>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>INT</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>LCM</p></td>
-<td><center>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>LN</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>LOG</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>LOG10</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>MDETERM</p></td>
-<td><center>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>MINVERSE</p></td>
-<td><center>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>MMULT</p></td>
-<td><center>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>MOD</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>MROUND</p></td>
-<td><center>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>MULTINOMIAL</p></td>
-<td><center>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>ODD</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>PI</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>POWER</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>PRODUCT</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>QUOTIENT</p></td>
-<td><center>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>RADIANS</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>RAND</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>RANDBETWEEN</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>ROMAN</p></td>
-<td><center>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>ROUND</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>ROUNDDOWN</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>ROUNDUP</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>SIGN</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>SIN</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>SINH</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>SQRT</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>SQRTPI</p></td>
-<td><center>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>SUBTOTAL</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>SUM</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>SUMIF</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>SUMIFS</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>SUMPRODUCT</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>SUMSQ</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>SUMX2MY2</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>SUMX2PY2</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>SUMXMY2</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>TAN</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>TANH</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>TRUNC</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-</tbody>
-</table>
+| Function | OSE | EE |
+|----------|-----|----|
+| AND      |  Y  |  Y |
+| FALSE    |  Y  |  Y |
+| IF       |  Y  |  Y |
+| IFERROR  |     |  Y |
+| NOT      |  Y  |  Y |
+| OR       |  Y  |  Y |
+| TRUE     |  Y  |  Y |
+
+
+# Lookup & Reference (14)
+
+| Function   | OSE | EE |
+|------------|-----|----|
+| ADDRESS    |  Y  |  Y |
+| CHOOSE     |  Y  |  Y |
+| COLUMN     |  Y  |  Y |
+| COLUMNS    |  Y  |  Y |
+| HLOOKUP    |  Y  |  Y |
+| HYPERLINK  |  Y  |  Y |
+| INDEX      |  Y  |  Y |
+| INDIRECT   |  Y  |  Y |
+| LOOKUP     |  Y  |  Y |
+| MATCH      |  Y  |  Y |
+| OFFSET     |  Y  |  Y |
+| ROW        |  Y  |  Y |
+| ROWS       |  Y  |  Y |
+| VLOOKUP    |  Y  |  Y |
+
+
+# Mathematical (59)
+
+| Function    | OSE | EE |
+|-------------|-----|----|
+| ABS         |  Y  |  Y |
+| ACOS        |  Y  |  Y |
+| ACOSH       |  Y  |  Y |
+| ASIN        |  Y  |  Y |
+| ASINH       |  Y  |  Y |
+| ATAN        |  Y  |  Y |
+| ATAN2       |  Y  |  Y |
+| ATANH       |  Y  |  Y |
+| CEILING     |  Y  |  Y |
+| COMBIN      |  Y  |  Y |
+| COS         |  Y  |  Y |
+| COSH        |  Y  |  Y |
+| DEGREES     |  Y  |  Y |
+| EVEN        |  Y  |  Y |
+| EXP         |  Y  |  Y |
+| FACT        |  Y  |  Y |
+| FACTDOUBLE  |     |  Y |
+| FLOOR       |  Y  |  Y |
+| GCD         |     |  Y |
+| INT         |  Y  |  Y |
+| LCM         |     |  Y |
+| LN          |  Y  |  Y |
+| LOG         |  Y  |  Y |
+| LOG10       |  Y  |  Y |
+| MDETERM     |     |  Y |
+| MINVERSE    |     |  Y |
+| MMULT       |     |  Y |
+| MOD         |  Y  |  Y |
+| MROUND      |     |  Y |
+| MULTINOMIAL |     |  Y |
+| ODD         |  Y  |  Y |
+| PI          |  Y  |  Y |
+| POWER       |  Y  |  Y |
+| PRODUCT     |  Y  |  Y |
+| QUOTIENT    |     |  Y |
+| RADIANS     |  Y  |  Y |
+| RAND        |  Y  |  Y |
+| RANDBETWEEN |  Y  |  Y |
+| ROMAN       |     |  Y |
+| ROUND       |  Y  |  Y |
+| ROUNDDOWN   |  Y  |  Y |
+| ROUNDUP     |  Y  |  Y |
+| SIGN        |  Y  |  Y |
+| SIN         |  Y  |  Y |
+| SINH        |  Y  |  Y |
+| SQRT        |  Y  |  Y |
+| SQRTPI      |     |  Y |
+| SUBTOTAL    |  Y  |  Y |
+| SUM         |  Y  |  Y |
+| SUMIF       |  Y  |  Y |
+| SUMIFS      |  Y  |  Y |
+| SUMPRODUCT  |  Y  |  Y |
+| SUMSQ       |  Y  |  Y |
+| SUMX2MY2    |  Y  |  Y |
+| SUMX2PY2    |  Y  |  Y |
+| SUMXMY2     |  Y  |  Y |
+| TAN         |  Y  |  Y |
+| TANH        |  Y  |  Y |
+| TRUNC       |  Y  |  Y |
+
 
 ## SUMPRODUCT
 
@@ -1748,7 +262,7 @@ Regarding the 1st argument, *"1-11 includes manually-hidden rows, while 101-111 
 
 
 
-# Statistical
+# Statistical (62)
 
 | Function    | New Name since Excel 2010 | OSE | EE |
 |-------------|--------------------------|-----|----|
@@ -1808,226 +322,37 @@ Regarding the 1st argument, *"1-11 includes manually-hidden rows, while 101-111 
 | VARP        | VAR.P                    | Y   | Y  |
 | WEIBULL     | WEIBULL.DIST             | Y   | -  |
 
-
 * Note: Keikai supports both function names [listed here](https://support.office.com/en-us/article/What-s-New-Changes-made-to-Excel-functions-355d08c8-8358-4ecb-b6eb-e2e443e98aac?ui=en-US&rs=en-US&ad=US&fromAR=1#bm2).
 * `COUNTIFS` is available {% include version-badge.html version='5.12.0' %}
 
-# Text
+# Text (23)
 
-<table>
-<thead>
-<tr class="header">
-<th><p><strong>Function</strong></p></th>
-<th><p><strong>OSE</strong></p></th>
-<th><p><strong>EE</strong></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><p>CHAR</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>CLEAN</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>CODE</p></td>
-<td><center>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>CONCATENATE</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>DOLLAR</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>EXACT</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>FIND</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>FIXED</p></td>
-<td><center>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>LEFT</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>LEN</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>LOWER</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>MID</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>PROPER</p></td>
-<td><center>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>REPLACE</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>REPT</p></td>
-<td><center>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>RIGHT</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>SEARCH</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>SUBSTITUTE</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>T</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>TEXT</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>TRIM</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="even">
-<td><p>UPPER</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-<tr class="odd">
-<td><p>VALUE</p></td>
-<td><center>
-<p>Y</p>
-</center></td>
-<td><center>
-<p>Y</p>
-</center></td>
-</tr>
-</tbody>
-</table>
+| Function     | OSE | EE |
+|--------------|-----|----|
+| CHAR         |  Y  |  Y |
+| CLEAN        |  Y  |  Y |
+| CODE         |     |  Y |
+| CONCATENATE  |  Y  |  Y |
+| DOLLAR       |  Y  |  Y |
+| EXACT        |  Y  |  Y |
+| FIND         |  Y  |  Y |
+| FIXED        |     |  Y |
+| LEFT         |  Y  |  Y |
+| LEN          |  Y  |  Y |
+| LOWER        |  Y  |  Y |
+| MID          |  Y  |  Y |
+| PROPER       |     |  Y |
+| REPLACE      |  Y  |  Y |
+| REPT         |     |  Y |
+| RIGHT        |  Y  |  Y |
+| SEARCH       |  Y  |  Y |
+| SUBSTITUTE   |  Y  |  Y |
+| T            |  Y  |  Y |
+| TEXT         |  Y  |  Y |
+| TRIM         |  Y  |  Y |
+| UPPER        |  Y  |  Y |
+| VALUE        |  Y  |  Y |
+
 
 # Unsupported Functions
 
