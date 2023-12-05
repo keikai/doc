@@ -3,8 +3,7 @@ title: ''
 ---
 # Import an Excel File
 
-In most cases, we create a book model by loading an Excel file instead
-of creating it directly. You can import an Excel file (xlsx format) into Keikai. Note that Excel xls files use an older and proprietary format and are not supported by Keikai. If you wish to import an xls file into Keikai, one useful tip is to covert it to xlsx by saving it as a xlsx file in Excel. 
+You can import an Excel **xlsx** file into Keikai. Note that Excel xls files use an older and proprietary format and are not supported by Keikai. If you wish to import an xls file into Keikai, one useful tip is to covert it to xlsx by saving it as a xlsx file in Excel. 
 
 Specifying an Excel file's path in Spreadsheet
 component's attribute is the simplest way, and Spreadsheet will import
@@ -13,6 +12,8 @@ the file and construct a book model object. You can also use
 construct a Book object by your own and provide it to one or more
 Spreadsheet components by `setBook()`. After Spreadsheet loads a book
 model, we can get it by `Spreadsheet.getBook()`.
+
+After keikai imports a xlsx file, it converts the file into a [Book](https://keikai.io/javadoc/latest/io/keikai/api/model/Book.html) object. Hence, a end-user's edit changes the `Book` object instead of the file itself. To save the user changed `Book` object into a file, please check [Export to xlsx](/dev-ref/book_model/Export_to_Excel).
 
 ## By `src` Attribute
 
@@ -24,7 +25,7 @@ relative file path.
 <spreadsheet id="ss" height="100%" width="100%" src="/WEB_INF/books/blank.xlsx" />
 ```
 
-Load by API
+## By setSrc()
 
 {% highlight java linenos %}
 public class MyComposer extends SelectorComposer<Component> {
@@ -297,25 +298,22 @@ You can use them without knowing more details about the underlying implementatio
 The `Book` object plays as a data model for `Spreadsheet`. It's independent to `Spreadsheet` which means you can manipulate it without assigning it to `Spreadsheet`. Therefore, you can import a file, access it via `Range` API. This usage is very suitable for a data processing scenario. Check the [`ImportServlet`](https://github.com/keikai/dev-ref/blob/master/src/main/java/io/keikai/devref/ImportServlet.java) in the example project.
 
 
-# Large File Issue 
+# Large File Importing Issue 
 
 ## Increase JVM heap max size
 If most of your file sizes are large, increase JVM heap size can allow you to import a larger file.
 
 
 ## Split a file
-If a file is really big, you can split it into several smaller files, and each file contains partial sheets that reference to each other. Then provide a list of files, so that users can select other files to import.
+If a file is really big and even increasing JVM heap size cannot solve it, you can split it into several smaller files, and each file contains partial sheets that reference to each other. Then provide a list of files, so that users can select other files to import.
 
 <!-- 
 ## Create a custom importer
 You can extend the built-in io.keikai.range.impl.imexp.ExcelXlsxImporter to implement your custom importing behavior. But notice that if you import partial sheets, then a formula that references to non-imported sheet doesn't work as expected. -->
 
 
+
+
 # References
 
-1.  A reference that refers to the same cell or range on multiple sheets
-    is called a 3D reference. A 3D reference is a useful and
-    convenient way to reference several worksheets that follow the same
-    pattern and cells on each worksheet contain the same type of data,
-    such as when you consolidate budget data from different departments
-    in your organization.
+* A reference that refers to the same cell or range on multiple sheets is called a **3D reference**. A 3D reference is a useful and convenient way to reference several worksheets that follow the same pattern and cells on each worksheet contain the same type of data, such as when you consolidate budget data from different departments in your organization.
