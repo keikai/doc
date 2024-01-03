@@ -389,12 +389,13 @@ If you added a new data row, you should click "Reapply". The drop-down list will
 update its values to take into account the newly added data.
 
 ## Filter by search
-When you enter text in the search box, it will
-instantly list and select all matched values. Press "Enter" and Keikai will
-filter your data with those matched values. 
+When you enter text in the search box of the filter, it will
+instantly list and select all matched cell values. Press "Enter". Then, Keikai will
+filter the rows with those matched values, no matter you select those values or not. 
 
 ![]({{site.devref_image_folder}}/zss-essentials-filterBySearching.png)
 
+## Filter Types
 Keikai supports **number filter**, **color filter**, **date filter**, and
 **text filter**. 
 
