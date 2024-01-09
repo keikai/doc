@@ -182,4 +182,4 @@ You need to increase the limit of `maxParameterCount` of your web container. [Re
 
 
 # How do I understand xlsx file format?
-Please read [Working with SpreadsheetML documents](https://learn.microsoft.com/en-us/office/open-xml/working-with-spreadsheetml-documents). You can also download [ECMA-376 Office Open XML file formats](https://www.ecma-international.org/publications-and-standards/standards/ecma-376/).
+Please read [Structure of a SpreadsheetML document](https://learn.microsoft.com/en-us/office/open-xml/spreadsheet/structure-of-a-spreadsheetml-document?tabs=cs). You can also download [ECMA-376 Office Open XML file formats](https://www.ecma-international.org/publications-and-standards/standards/ecma-376/).
