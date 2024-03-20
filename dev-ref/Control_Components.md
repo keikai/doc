@@ -150,23 +150,28 @@ the `maxRenderedCellSize` inside the "cached range" but outside of the
 
 Default: **>=40**
 
-By default Keikai will detect the sheet content and show as more columns as needed. However, it will show at least 40 columns if you have a smaller sheet.
+By default, if you don't specify a value for this attribute, Keikai will detect the sheet content and show as more columns as needed. However, it will show at least 40 columns if you have a smaller sheet.
 
-
-The attribute `maxVisibleColumns` controls the maximum visible number of
-columns in a Spreadsheet, it must be larger than 0. For example, if you set it to 40, it will display 40 columns: column `A` to column `AN`.
+The attribute `maxVisibleColumns` controls the maximum visible number of columns in a Spreadsheet, it must be larger than 0. For example, if you set it to 40, it will display 40 columns: column `A` to column `AN`.
 
 
 ## `maxVisibleRows`
 
 Default: **>=200**
 
-By default Keikai will detect the sheet content and show as more rows as needed. However, it will show at least 200 rows if you have a smaller sheet.
+By default, if you don't specify a value for this attribute, Keikai will detect the sheet content and show as more rows as needed. However, it will show at least 200 rows if you have a smaller sheet.
 
-This attribute controls the maximum visible
-number of rows in Spreadsheet. You can use these 2 attributes above to set up
-the visible area according to your requirement.
+This attribute controls the maximum visible number of rows in Spreadsheet. You can use these 2 attributes above to set up the visible area, and it takes effect on all sheets.
 
+
+## Max Visible Rows/Columns Per Sheet
+If you want to set max visible rows/columns different for each sheet, you cannot specify `maxVisibleRows` and `maxVisibleColumns`. 
+Then you need to set max visible rows/columns for each sheet with the methods below:
+
+```java
+    spreadsheet.setSheetMaxVisibleColumns(spreadsheet.getSelectedSSheet(), 10);
+    spreadsheet.setSheetMaxVisibleRows(spreadsheet.getSelectedSSheet(), 100);
+```
 
 ## `columntitles`, `rowtitles`
 Allow you to set custom column/row heading instead of showing A,B,C or 1,2,3.
