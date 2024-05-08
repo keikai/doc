@@ -4,6 +4,9 @@ title: 'Embed Keikai'
 
 If you have a non-Java EE web application (e.g. a Node.js application) and intend to include Keikai into your application, there are 2 ways:
 
+# Prerequisite : a keikai application
+Because keikai can only run in a Java EE environment, you need to have a keikai application running in a Java EE server first. Then you can embed it into your non-Java EE web application.
+
 # Using iframe
 Just point to a zul with keikai in an HTML like:
 
