@@ -1,35 +1,41 @@
 ---
 title: 'Supported Formula Functions'
 ---
-Here we list all built-in functions in Keikai OSE and EE:
+Here we list all supported and built-in functions in Keikai OSE and EE. All functions listed here are available in Keikai EE. But only some of them are available in Keikai OSE.
 
 Check [Microsoft Excel function list](https://support.microsoft.com/en-us/office/excel-functions-alphabetical-b3944572-255d-4efb-bb96-c6d90033e188) for details.
 
 
-# Date & Time (18)
+# Date & Time (23)
 
-| Function    | OSE | EE |
-|-------------|-----|----|
-| DATE        |  Y  |  Y |
-| DATEDIF*    |     |  Y |
-| DATEVALUE   |     |  Y |
-| DAY         |  Y  |  Y |
-| DAYS360     |  Y  |  Y |
-| EOMONTH     |     |  Y |
-| HOUR        |  Y  |  Y |
-| MINUTE      |  Y  |  Y |
-| MONTH       |  Y  |  Y |
-| NETWORKDAYS |  Y  |  Y |
-| NOW         |  Y  |  Y |
-| SECOND      |  Y  |  Y |
-| TIME        |  Y  |  Y |
-| TODAY       |  Y  |  Y |
-| WEEKDAY     |  Y  |  Y |
-| WORKDAY     |  Y  |  Y |
-| YEAR        |  Y  |  Y |
-| YEARFRAC    |  Y  |  Y |
+| Function      | OSE | EE |
+|---------------|-----|----|
+| DATE          | Y   |  Y |
+| DATEDIF*      |     |  Y |
+| DATEVALUE     |     |  Y |
+| DAY           | Y   |  Y |
+| DAYS*         |     |  Y |
+| DAYS360       | Y   |  Y |
+| EDATE*        |     |  Y |
+| EOMONTH       |     |  Y |
+| HOUR          | Y   |  Y |
+| MINUTE        | Y   |  Y |
+| MONTH         | Y   |  Y |
+| NETWORKDAYS   | Y   |  Y |
+| NOW           | Y   |  Y |
+| SECOND        | Y   |  Y |
+| TIME          | Y   |  Y |
+| TIMEVALUE*    |     |  Y |
+| TODAY         | Y   |  Y |
+| WEEKDAY       | Y   |  Y |
+| WEEKNUM*      |     |  Y |
+| WORKDAY       | Y   |  Y |
+| WORKDAY.INTL* |     |  Y |
+| YEAR          | Y   |  Y |
+| YEARFRAC      | Y   |  Y |
 
 * `DATEDIF`: supported {% include version-badge.html version='5.8.0' %}
+* `DAYS`, `EDATE`, `TIMEVALUE`, `WEEKNUM`, `WORKDAY.INTL`: supported {% include version-badge.html version='6.0.0' %}
 
 # Engineering (38)
 
@@ -75,76 +81,80 @@ Check [Microsoft Excel function list](https://support.microsoft.com/en-us/office
 | OCT2HEX   |     |  Y |
 
 
-# Financial (44)
+# Financial (45)
 
-| Function    | OSE | EE |
-|-------------|-----|----|
-| ACCRINT     |     |  Y |
-| ACCRINTM    |     |  Y |
-| AMORDEGRC   |     |  Y |
-| AMORLINC    |     |  Y |
-| COUPDAYBS   |     |  Y |
-| COUPDAYS    |     |  Y |
-| COUPDAYSNC  |     |  Y |
-| COUPNCD     |     |  Y |
-| COUPNUM     |     |  Y |
-| COUPPCD     |     |  Y |
-| CUMIPMT     |     |  Y |
-| CUMPRINC    |     |  Y |
-| DB          |     |  Y |
-| DDB         |     |  Y |
-| DISC        |     |  Y |
-| DOLLARDE    |     |  Y |
-| DOLLARFR    |     |  Y |
-| DURATION    |     |  Y |
-| EFFECT      |     |  Y |
-| FV          |  Y  |  Y |
-| FVSCHEDULE  |     |  Y |
-| INTRATE     |     |  Y |
-| IPMT        |     |  Y |
-| IRR         |  Y  |  Y |
-| NOMINAL     |     |  Y |
-| NPER        |  Y  |  Y |
-| NPV         |  Y  |  Y |
-| PMT         |  Y  |  Y |
-| PPMT        |     |  Y |
-| PRICE       |     |  Y |
-| PRICEDISC   |     |  Y |
-| PRICEMAT    |     |  Y |
-| PV          |  Y  |  Y |
-| RATE        |  Y  |  Y |
-| RECEIVED    |     |  Y |
-| SLN         |     |  Y |
-| SYD         |     |  Y |
-| TBILLEQ     |     |  Y |
-| TBILLPRICE  |     |  Y |
-| TBILLYIELD  |     |  Y |
-| XNPV        |     |  Y |
-| YIELD       |     |  Y |
-| YIELDDISC   |     |  Y |
-| YIELDMAT    |     |  Y |
+| Function   | OSE | EE |
+|------------|----|----|
+| ACCRINT    |    |  Y |
+| ACCRINTM   |    |  Y |
+| AMORDEGRC  |    |  Y |
+| AMORLINC   |    |  Y |
+| COUPDAYBS  |    |  Y |
+| COUPDAYS   |    |  Y |
+| COUPDAYSNC |    |  Y |
+| COUPNCD    |    |  Y |
+| COUPNUM    |    |  Y |
+| COUPPCD    |    |  Y |
+| CUMIPMT    |    |  Y |
+| CUMPRINC   |    |  Y |
+| DB         |    |  Y |
+| DDB        |    |  Y |
+| DISC       |    |  Y |
+| DOLLARDE   |    |  Y |
+| DOLLARFR   |    |  Y |
+| DURATION   |    |  Y |
+| EFFECT     |    |  Y |
+| FV         |  Y |  Y |
+| FVSCHEDULE |    |  Y |
+| INTRATE    |    |  Y |
+| IPMT       |    |  Y |
+| IRR        |  Y |  Y |
+| MIRR*      |    |  Y |
+| NOMINAL    |    |  Y |
+| NPER       |  Y |  Y |
+| NPV        |  Y |  Y |
+| PMT        |  Y |  Y |
+| PPMT       |    |  Y |
+| PRICE      |    |  Y |
+| PRICEDISC  |    |  Y |
+| PRICEMAT   |    |  Y |
+| PV         |  Y |  Y |
+| RATE       |  Y |  Y |
+| RECEIVED   |    |  Y |
+| SLN        |    |  Y |
+| SYD        |    |  Y |
+| TBILLEQ    |    |  Y |
+| TBILLPRICE |    |  Y |
+| TBILLYIELD |    |  Y |
+| XNPV       |    |  Y |
+| YIELD      |    |  Y |
+| YIELDDISC  |    |  Y |
+| YIELDMAT   |    |  Y |
 
+* `MIRR`: supported {% include version-badge.html version='6.0.0' %}
 
-# Info (15)
+# Information (16)
 
-| Function    | OSE | EE |
-|-------------|-----|----|
-| ERROR.TYPE  |  Y  |  Y |
-| ISBLANK     |  Y  |  Y |
-| ISERR       |     |  Y |
-| ISERROR     |  Y  |  Y |
-| ISEVEN      |  Y  |  Y |
-| ISLOGICAL   |  Y  |  Y |
-| ISNA        |  Y  |  Y |
-| ISNONTEXT   |  Y  |  Y |
-| ISNUMBER    |  Y  |  Y |
-| ISODD       |  Y  |  Y |
-| ISREF       |  Y  |  Y |
-| ISTEXT      |  Y  |  Y |
-| N           |     |  Y |
-| NA          |  Y  |  Y |
-| TYPE        |     |  Y |
+| Function   | OSE | EE |
+|------------|----|----|
+| CELL*      |    |  Y |
+| ERROR.TYPE |  Y |  Y |
+| ISBLANK    |  Y |  Y |
+| ISERR      |    |  Y |
+| ISERROR    |  Y |  Y |
+| ISEVEN     |  Y |  Y |
+| ISLOGICAL  |  Y |  Y |
+| ISNA       |  Y |  Y |
+| ISNONTEXT  |  Y |  Y |
+| ISNUMBER   |  Y |  Y |
+| ISODD      |  Y |  Y |
+| ISREF      |  Y |  Y |
+| ISTEXT     |  Y |  Y |
+| N          |    |  Y |
+| NA         |  Y |  Y |
+| TYPE       |    |  Y |
 
+* `CELL`: supported {% include version-badge.html version='6.0.0' %}
 
 # Logical (7)
 
@@ -159,90 +169,103 @@ Check [Microsoft Excel function list](https://support.microsoft.com/en-us/office
 | TRUE     |  Y  |  Y |
 
 
-# Lookup & Reference (14)
+# Lookup & Reference (20)
 
-| Function   | OSE | EE |
-|------------|-----|----|
-| ADDRESS    |  Y  |  Y |
-| CHOOSE     |  Y  |  Y |
-| COLUMN     |  Y  |  Y |
-| COLUMNS    |  Y  |  Y |
-| HLOOKUP    |  Y  |  Y |
-| HYPERLINK  |  Y  |  Y |
-| INDEX      |  Y  |  Y |
-| INDIRECT   |  Y  |  Y |
-| LOOKUP     |  Y  |  Y |
-| MATCH      |  Y  |  Y |
-| OFFSET     |  Y  |  Y |
-| ROW        |  Y  |  Y |
-| ROWS       |  Y  |  Y |
-| VLOOKUP    |  Y  |  Y |
+| Function  | OSE | EE |
+|-----------|-----|----|
+| AREAS*    |     |  Y |
+| ADDRESS   | Y   |  Y |
+| CHOOSE    | Y   |  Y |
+| COLUMN    | Y   |  Y |
+| COLUMNS   | Y   |  Y |
+| HLOOKUP   | Y   |  Y |
+| HYPERLINK | Y   |  Y |
+| IFNA*     |     |  Y |
+| IFS*      |     |  Y |
+| INDEX     | Y   |  Y |
+| INDIRECT  | Y   |  Y |
+| LOOKUP    | Y   |  Y |
+| MATCH     | Y   |  Y |
+| OFFSET    | Y   |  Y |
+| ROW       | Y   |  Y |
+| ROWS      | Y   |  Y |
+| SWITCH*   |     |  Y |
+| VLOOKUP   | Y   |  Y |
+| XLOOKUP*  |     |  Y |
+| XMATCH*   |     |  Y |
 
+* `AREAS`, `IFNA`, `IFS`, `SWITCH`, `XLOOKUP`, `XMATCH`: supported {% include version-badge.html version='6.0.0' %}
 
-# Mathematical (59)
+# Mathematical (64)
 
-| Function    | OSE | EE |
-|-------------|-----|----|
-| ABS         |  Y  |  Y |
-| ACOS        |  Y  |  Y |
-| ACOSH       |  Y  |  Y |
-| ASIN        |  Y  |  Y |
-| ASINH       |  Y  |  Y |
-| ATAN        |  Y  |  Y |
-| ATAN2       |  Y  |  Y |
-| ATANH       |  Y  |  Y |
-| CEILING     |  Y  |  Y |
-| COMBIN      |  Y  |  Y |
-| COS         |  Y  |  Y |
-| COSH        |  Y  |  Y |
-| DEGREES     |  Y  |  Y |
-| EVEN        |  Y  |  Y |
-| EXP         |  Y  |  Y |
-| FACT        |  Y  |  Y |
-| FACTDOUBLE  |     |  Y |
-| FLOOR       |  Y  |  Y |
-| GCD         |     |  Y |
-| INT         |  Y  |  Y |
-| LCM         |     |  Y |
-| LN          |  Y  |  Y |
-| LOG         |  Y  |  Y |
-| LOG10       |  Y  |  Y |
-| MDETERM     |     |  Y |
-| MINVERSE    |     |  Y |
-| MMULT       |     |  Y |
-| MOD         |  Y  |  Y |
-| MROUND      |     |  Y |
-| MULTINOMIAL |     |  Y |
-| ODD         |  Y  |  Y |
-| PI          |  Y  |  Y |
-| POWER       |  Y  |  Y |
-| PRODUCT     |  Y  |  Y |
-| QUOTIENT    |     |  Y |
-| RADIANS     |  Y  |  Y |
-| RAND        |  Y  |  Y |
-| RANDBETWEEN |  Y  |  Y |
-| ROMAN       |     |  Y |
-| ROUND       |  Y  |  Y |
-| ROUNDDOWN   |  Y  |  Y |
-| ROUNDUP     |  Y  |  Y |
-| SIGN        |  Y  |  Y |
-| SIN         |  Y  |  Y |
-| SINH        |  Y  |  Y |
-| SQRT        |  Y  |  Y |
-| SQRTPI      |     |  Y |
-| SUBTOTAL    |  Y  |  Y |
-| SUM         |  Y  |  Y |
-| SUMIF       |  Y  |  Y |
-| SUMIFS      |  Y  |  Y |
-| SUMPRODUCT  |  Y  |  Y |
-| SUMSQ       |  Y  |  Y |
-| SUMX2MY2    |  Y  |  Y |
-| SUMX2PY2    |  Y  |  Y |
-| SUMXMY2     |  Y  |  Y |
-| TAN         |  Y  |  Y |
-| TANH        |  Y  |  Y |
-| TRUNC       |  Y  |  Y |
+| Function         | OSE | EE |
+|------------------|-----|----|
+| ABS              | Y   |  Y |
+| ACOS             | Y   |  Y |
+| ACOSH            | Y   |  Y |
+| ASIN             | Y   |  Y |
+| ASINH            | Y   |  Y |
+| ATAN             | Y   |  Y |
+| ATAN2            | Y   |  Y |
+| ATANH            | Y   |  Y |
+| CEILING          | Y   |  Y |
+| CEILING.MATH*    |     |  Y |
+| CEILING.PRECISE* |     |  Y |
+| COMBIN           | Y   |  Y |
+| COS              | Y   |  Y |
+| COSH             | Y   |  Y |
+| DEGREES          | Y   |  Y |
+| EVEN             | Y   |  Y |
+| EXP              | Y   |  Y |
+| FACT             | Y   |  Y |
+| FACTDOUBLE       |     |  Y |
+| FLOOR            | Y   |  Y |
+| FLOOR.MATH*      |     |  Y |
+| FLOOR.PRECISE*   |     |  Y |
+| GCD              |     |  Y |
+| INT              | Y   |  Y |
+| LCM              |     |  Y |
+| LN               | Y   |  Y |
+| LOG              | Y   |  Y |
+| LOG10            | Y   |  Y |
+| MDETERM          |     |  Y |
+| MINVERSE         |     |  Y |
+| MMULT            |     |  Y |
+| MOD              | Y   |  Y |
+| MROUND           |     |  Y |
+| MULTINOMIAL      |     |  Y |
+| NUMBERVALUE*     |     |  Y |
+| ODD              | Y   |  Y |
+| PI               | Y   |  Y |
+| POWER            | Y   |  Y |
+| PRODUCT          | Y   |  Y |
+| QUOTIENT         |     |  Y |
+| RADIANS          | Y   |  Y |
+| RAND             | Y   |  Y |
+| RANDBETWEEN      | Y   |  Y |
+| ROMAN            |     |  Y |
+| ROUND            | Y   |  Y |
+| ROUNDDOWN        | Y   |  Y |
+| ROUNDUP          | Y   |  Y |
+| SIGN             | Y   |  Y |
+| SIN              | Y   |  Y |
+| SINH             | Y   |  Y |
+| SQRT             | Y   |  Y |
+| SQRTPI           |     |  Y |
+| SUBTOTAL         | Y   |  Y |
+| SUM              | Y   |  Y |
+| SUMIF            | Y   |  Y |
+| SUMIFS           | Y   |  Y |
+| SUMPRODUCT       | Y   |  Y |
+| SUMSQ            | Y   |  Y |
+| SUMX2MY2         | Y   |  Y |
+| SUMX2PY2         | Y   |  Y |
+| SUMXMY2          | Y   |  Y |
+| TAN              | Y   |  Y |
+| TANH             | Y   |  Y |
+| TRUNC            | Y   |  Y |
 
+* `CEILING.MATH`, `CEILING.PRECISE`, `FLOOR.MATH`, `FLOOR.PRECISE`, `NUMBERVALUE` : supported {% include version-badge.html version='6.0.0' %}
 
 ## SUMPRODUCT
 
@@ -263,101 +286,146 @@ Regarding the 1st argument, *"1-11 includes manually-hidden rows, while 101-111 
 
 
 
-# Statistical (62)
+# Statistical (84)
 
-| Function      | New Name since Excel 2010 | OSE | EE |
-|---------------|---------------------------|-----|----|
-| AVEDEV        | -                         | Y   | Y  |
-| AVERAGE       | -                         | Y   | Y  |
-| AVERAGEA      | -                         | -   | Y  |
-| AVERAGEIF     | -                         | -   | Y  |
-| BETADIST      | BETA.DIST                 | -   | Y  |
-| BETAINV       | BETA.INV                  | -   | Y  |
-| BINOMDIST     | BINOM.DIST                | -   | Y  |
-| CORREL        | -                         | -   | Y  |
-| CRITBINOM     | BINOM.INV                 | -   | Y  |
-| CHIDIST       | CHISQ.DIST.RT             | -   | Y  |
-| CHIINV        | CHISQ.INV.RT              | -   | Y  |
-| -             | CHISQ.DIST                | -   | Y  |
-| -             | CHISQ.INV                 | -   | Y  |
-| COUNT         | -                         | Y   | Y  |
-| COUNTA        | -                         | Y   | Y  |
-| COUNTBLANK    | -                         | Y   | Y  |
-| COUNTIF       | -                         | Y   | Y  |
-| COUNTIFS      | -                         | -   | Y  |
-| DEVSQ         | -                         | Y   | Y  |
-| EXPONDIST     | EXPON.DIST                | -   | Y  |
-| FDIST         | F.DIST.RT                 | -   | Y  |
-| FINV          | F.INV.RT                  | -   | Y  |
-| GAMMADIST     | GAMMA.DIST                | -   | Y  |
-| GAMMAINV      | GAMMA.INV                 | -   | Y  |
-| GAMMALN       | -                         | -   | Y  |
-| GEOMEAN       | -                         | -   | Y  |
-| HARMEAN       | -                         | -   | Y  |
-| HYPGEOMDIST   | HYPGEOM.DIST              | -   | Y  |
-| KURT          | -                         | -   | Y  |
-| LARGE         | -                         | Y   | Y  |
-| MAX           | -                         | Y   | Y  |
-| MAXA          | -                         | Y   | Y  |
-| MEDIAN        | -                         | Y   | Y  |
-| MIN           | -                         | Y   | Y  |
-| MINA          | -                         | Y   | Y  |
-| MODE          | MODE.SNGL                 | Y   | Y  |
-| NEGBINOMDIST  | NEGBINOM.DIST             | -   | Y  |
-| NORMDIST      | NORM.DIST                 | -   | Y  |
-| NORMINV       | NORM.INV                  | -   | Y  |
-| NORMSDIST     | NORM.S.DIST               | -   | Y  |
-| NORMSINV      | NORM.S.INV                | -   | Y  |
-| LOGNORMDIST   | LOGNORM.DIST              | -   | Y  |
-| LOGINV        | LOGNORM.INV               | Y   | Y  |
-| POISSON       | POISSON.DIST              | Y   | Y  |
-| RANK          | RANK.EQ                   | Y   | Y  |
-| SKEW          | -                         | -   | Y  |
-| SLOPE         | -                         | -   | Y  |
-| SMALL         | -                         | Y   | Y  |
-| STDEV         | STDE.V                    | Y   | Y  |
-| -             | T.DIST.2T                 | -   | Y  |
-| TDIST         | T.DIST.RT                 | -   | Y  |
-| TINV          | T.INV.2T                  | -   | Y  |
-| VAR           | VAR.S                     | Y   | Y  |
-| VARP          | VAR.P                     | Y   | Y  |
-| WEIBULL       | WEIBULL.DIST              | -   | Y  |
+| Function         | New Name since Excel 2010 | OSE | EE |
+|------------------|---------------------------|---|----|
+| AVEDEV           |                           | Y | Y  |
+| AVERAGE          |                           | Y | Y  |
+| AVERAGEA         |                           |   | Y  |
+| AVERAGEIF        |                           |   | Y  |
+| BETADIST         | BETA.DIST                 |   | Y  |
+| BETAINV          | BETA.INV                  |   | Y  |
+| BINOMDIST        | BINOM.DIST                |   | Y  |
+| CORREL           |                           |   | Y  |
+| CRITBINOM        | BINOM.INV                 |   | Y  |
+| CHIDIST          | CHISQ.DIST.RT             |   | Y  |
+| CHIINV           | CHISQ.INV.RT              |   | Y  |
+|                  | CHISQ.DIST                |   | Y  |
+|                  | CHISQ.INV                 |   | Y  |
+| COUNT            |                           | Y | Y  |
+| COUNTA           |                           | Y | Y  |
+| COUNTBLANK       |                           | Y | Y  |
+| COUNTIF          |                           | Y | Y  |
+| COUNTIFS         |                           |   | Y  |
+| COVAR*           |                           |   | Y  |
+| DEVSQ            |                           | Y | Y  |
+| EXPONDIST        | EXPON.DIST                |   | Y  |
+| FDIST            | F.DIST.RT                 |   | Y  |
+| FINV             | F.INV.RT                  |   | Y  |
+| FORECAST*        |                           |   | Y  |
+| FREQUENCY*       |                           |   | Y  |
+| GAMMADIST        | GAMMA.DIST                |   | Y  |
+| GAMMAINV         | GAMMA.INV                 |   | Y  |
+| GAMMALN          |                           |   | Y  |
+| GEOMEAN          |                           |   | Y  |
+| HARMEAN          |                           |   | Y  |
+| HYPGEOMDIST      | HYPGEOM.DIST              |   | Y  |
+| INTERCEPT*       |                           |   | Y  |
+| KURT             |                           |   | Y  |
+| LARGE            |                           | Y | Y  |
+| MAX              |                           | Y | Y  |
+| MAXA             |                           | Y | Y  |
+| MEDIAN           |                           | Y | Y  |
+| MIN              |                           | Y | Y  |
+| MINA             |                           | Y | Y  |
+| MODE             | MODE.SNGL                 | Y | Y  |
+| NEGBINOMDIST     | NEGBINOM.DIST             |   | Y  |
+| NORMDIST         | NORM.DIST                 |   | Y  |
+| NORMINV          | NORM.INV                  |   | Y  |
+| NORMSDIST        | NORM.S.DIST               |   | Y  |
+| NORMSINV         | NORM.S.INV                |   | Y  |
+| LINEST*          |                           |   | Y  |
+| LOGNORMDIST      | LOGNORM.DIST              |   | Y  |
+| LOGINV           | LOGNORM.INV               | Y | Y  |
+| MAXIFS*          |                           |   | Y  |
+| MINIFS*          |                           |   | Y  |
+| PEARSON*         |                           |   | Y  |
+| PERCENTILE*      |                           |   | Y  |
+| PERCENTRANK*     |                           |   | Y  |
+| PERCENTRANK.EXC* |                           |   | Y  |
+| PERCENTRANK.INC* |                           |   | Y  |
+| POISSON          | POISSON.DIST              | Y | Y  |
+| RANK             | RANK.EQ                   | Y | Y  |
+| SKEW             |                           |   | Y  |
+| SLOPE            |                           |   | Y  |
+| SMALL            |                           | Y | Y  |
+| STANDARDIZE*     |                           |   | Y  |
+| STDEV            | STDE.V                    | Y | Y  |
+| STDEV.P*         |                           |   | Y  |
+| STDEV.S*         |                           |   | Y  |
+| STDEVA*          |                           |   | Y  |
+| STDEVP*          |                           |   | Y  |
+| STDEVPA*         |                           |   | Y  |
+| T.DIST*          |                           |   | Y  |
+|                  | T.DIST.2T                 |   | Y  |
+| TDIST            | T.DIST.RT                 |   | Y  |
+| TINV             | T.INV.2T                  |   | Y  |
+| TREND*           |                           |   | Y  |
+| VAR              | VAR.S                     | Y | Y  |
+| VARA*            |                           |   | Y  |
+| VARP             | VAR.P                     | Y | Y  |
+| VARPA*           |                           |   | Y  |
+| WEIBULL          | WEIBULL.DIST              |   | Y  |
 
 * Note: Keikai supports both function names [listed here](https://support.office.com/en-us/article/What-s-New-Changes-made-to-Excel-functions-355d08c8-8358-4ecb-b6eb-e2e443e98aac?ui=en-US&rs=en-US&ad=US&fromAR=1#bm2).
 * `COUNTIFS` is available {% include version-badge.html version='5.12.0' %}
+* `COVAR`, `FORECAST`, `FREQUENCY`, `INTERCEPT`, `LINEST`, `MAXIFS`, `MINIFS`, `PEARSON`, `PERCENTILE`, `PERCENTRANK`, `PERCENTRANK.EXC`, `PERCENTRANK.INC`, `STANDARDIZE`, `STDEV.P`, `STDEV.S`, `STDEVA`, `STDEVP`, `STDEVPA`, `T.DIST`, `TREND`, `VARA`, `VARPA`: supported {% include version-badge.html version='6.0.0' %}
 
-# Text (23)
 
-| Function     | OSE | EE |
-|--------------|-----|----|
-| CHAR         |  Y  |  Y |
-| CLEAN        |  Y  |  Y |
-| CODE         |     |  Y |
-| CONCATENATE  |  Y  |  Y |
-| DOLLAR       |  Y  |  Y |
-| EXACT        |  Y  |  Y |
-| FIND         |  Y  |  Y |
-| FIXED        |     |  Y |
-| LEFT         |  Y  |  Y |
-| LEN          |  Y  |  Y |
-| LOWER        |  Y  |  Y |
-| MID          |  Y  |  Y |
-| PROPER       |     |  Y |
-| REPLACE      |  Y  |  Y |
-| REPT         |     |  Y |
-| RIGHT        |  Y  |  Y |
-| SEARCH       |  Y  |  Y |
-| SUBSTITUTE   |  Y  |  Y |
-| T            |  Y  |  Y |
-| TEXT         |  Y  |  Y |
-| TRIM         |  Y  |  Y |
-| UPPER        |  Y  |  Y |
-| VALUE        |  Y  |  Y |
+# Text (25)
 
+| Function    | OSE | EE |
+|-------------|-----|----|
+| CHAR        |  Y  |  Y |
+| CLEAN       |  Y  |  Y |
+| CODE        |     |  Y |
+| CONCAT*     |     |  Y |
+| CONCATENATE |  Y  |  Y |
+| DOLLAR      |  Y  |  Y |
+| EXACT       |  Y  |  Y |
+| FIND        |  Y  |  Y |
+| FIXED       |     |  Y |
+| LEFT        |  Y  |  Y |
+| LEN         |  Y  |  Y |
+| LOWER       |  Y  |  Y |
+| MID         |  Y  |  Y |
+| PROPER      |     |  Y |
+| REPLACE     |  Y  |  Y |
+| REPT        |     |  Y |
+| RIGHT       |  Y  |  Y |
+| SEARCH      |  Y  |  Y |
+| SUBSTITUTE  |  Y  |  Y |
+| T           |  Y  |  Y |
+| TEXT        |  Y  |  Y |
+| TEXTJOIN*   |     |  Y |
+| TRIM        |  Y  |  Y |
+| UPPER       |  Y  |  Y |
+| VALUE       |  Y  |  Y |
+
+* `CONCAT`, `TEXTJOIN`: supported {% include version-badge.html version='6.0.0' %}
+
+
+# Database (11)
+{% include version-badge.html version='6.0.0' %}
+
+| Function |
+|----------|
+| DAVERAGE | 
+| DCOUNT   |
+| DCOUNTA  |
+| DGET     |
+| DMAX     |
+| DMIN     |
+| DPRODUCT |
+| DSTDEV   |
+| DSUM     |
+| DVAR     |
+| DVARP    |
 
 # Unsupported Functions
 
-Keikai doesn't support Cube, Database, Web functions and formulas that generate Arrays of results.
+Keikai doesn't support Cube, Web functions and formulas that generate Arrays of results.
 
 # Locale Support
 * Keikai supports 2 separator: comma `,` and semi-color `;` depeneding on the locale.
