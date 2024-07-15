@@ -64,3 +64,5 @@ For details, see [release note](https://keikai.io/releasenotes).
 # Current Known Issues:
 [See them in our tracker](https://tracker.zkoss.org/issues/?jql=project%20%3D%20KEIKAI%20AND%20issuetype%20%3D%20Bug%20AND%20status%20%3D%20Open%20AND%20affectedVersion%20%3D%206.0.0%20ORDER%20BY%20priority%20DESC%2C%20updated%20DESC)
 
+You can find a workaround (if available) in the attached file of each bug page .
+
