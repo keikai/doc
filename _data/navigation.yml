@@ -159,12 +159,14 @@ dev-ref:
     - title: Backend Calculation Engine
       url: /dev-ref/Backend_Calculation_Engine
     - title: More Use Cases
-      url: https://keikai.io/blog/category/usecase/      
+      url: https://keikai.io/blog/category/usecase/
+  - title: Upgrade Guide
+    children:
+    - title: From 5 to 6
+      url: /dev-ref/From5to6
+    - title: Migrate from ZSS
+      url: /dev-ref/Migrate_from_ZSS
   - title: FAQ
     url: /dev-ref/faq
-  - title: Appendix
-    children:
-    - title: Using Official Version
-      url: /dev-ref/License_Install
-    - title: Migrate from ZSS
-      url: /dev-ref/Migrate_from_ZSS    
+  - title: Using Official Version
+    url: /dev-ref/License_Install
