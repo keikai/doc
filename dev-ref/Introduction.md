@@ -56,7 +56,7 @@ browsers:
 * Firefox
 * Safari
 * Edge
-* IE11 and higher
+* IE11 (Keikai 5.x only)
 
 ## Mobile Browsers
 {% include version-badge.html version='5.2.0' %}
