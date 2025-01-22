@@ -170,3 +170,5 @@ dev-ref:
     url: /dev-ref/faq
   - title: Using Official Version
     url: /dev-ref/License_Install
+  - title: Release Notes
+    url: https://keikai.io/releasenotes
