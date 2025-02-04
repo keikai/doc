@@ -56,14 +56,14 @@ browsers:
 * Firefox
 * Safari
 * Edge
-* IE11 (Keikai 5.x only)
+* IE11 (Keikai 5.12 or older only)
 
 ## Mobile Browsers
 {% include version-badge.html version='5.2.0' %}
 
 * iOS Chrome (iOS13+)
 * iOS Safari (iOS13+)
-* Android Chrome (latest android)
+* Android Chrome (latest Android)
 
 **Notice that some features are not supported on mobile devices.** For details please refer to [Work with the Mobile Devices]({{site.devref}}/Mobile_Devices).
 
