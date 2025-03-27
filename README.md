@@ -9,11 +9,14 @@
 * `dev-ref`: Developer Reference
 
 # Preview at Local
-install necessary gem
+1. install necessary gem:
+
 `bundle install`
 
-start a local web server
-`bundle exec jekyll serve`
+2. start a local web server:
+
+`preview.sh`
+
 
 Ref: [Setting up your GitHub Pages site locally with Jekyll](https://help.github.com/en/articles/setting-up-your-github-pages-site-locally-with-jekyll)
 
