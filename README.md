@@ -5,8 +5,9 @@
 > Blog: https://keikai.io/blog
 
 # Document Folder Structure
-* `tutorial`: tutorial
-* `dev-ref`: Developer Reference
+* `tutorial`: Spreadsheet Tutorial
+* `dev-ref`: Spreadsheet Developer Reference
+* `doc`: Keikai Doc related pages
 
 # Preview at Local
 1. install necessary gem:
