@@ -12,7 +12,7 @@ with comprehensive support for text formatting, tables, lists, and other standar
 # Quick Start
 
 ## Setup for Maven
-To use Keikaidoc PE, add the `keikai-doc-lite` dependency to your `pom.xml` file:
+To begin using Keikaidoc PE in your project, first add the `keikai-doc-lite` dependency to your Maven `pom.xml` file:
 
 ``` xml
 <dependency>
@@ -22,8 +22,8 @@ To use Keikaidoc PE, add the `keikai-doc-lite` dependency to your `pom.xml` file
 </dependency>
 ```
 
-## Create a Keikaidoc PE Page
-Create a new `zul` file in your `webapp` directory with the following content:
+## Create a Basic Editor Page
+To create a simple editor page, add a new `zul` file in your `webapp` directory with the following content:
 
 ``` xml
 <zk>
@@ -33,57 +33,94 @@ Create a new `zul` file in your `webapp` directory with the following content:
 
 Then you'll see an editor displayed on your web page.
 
-## Setting Initial HTML Content
-You can initialize the editor with HTML content by using the following approach:
+## Setting Values
+Keikaidoc PE provides multiple ways to set content in the editor.
+The component supports the `value` attribute,
+which allows you to specify HTML content in several different ways.
+
+### 1. Simple Text via ZUL
+For basic text content, you can set the value directly in the ZUL file:
 
 ``` xml
-<docpadlite>
-    <attribute name="value"><![CDATA[
-        <h2>Meeting Notes: Product Development</h2>
-        <p><b>Date:</b> May 16, 2024</p>
-        <img src="https://www.zkoss.org/resource/img/price/Features.svg"/>
-        <h3>Key Decisions</h3>
-        <p style="text-align:justify">The team has agreed to focus on delivering the core functionality first, with additional features to be developed in future releases. <span style="color:red">Deadline for MVP is September 18th</span>.</p>
-        <blockquote>Note: All teams must submit their resource requirements by next Friday.</blockquote>
-        <h3>Action Items</h3>
-        <table border="1" style="width:100%">
-            <tr>
-                <th>Task</th>
-                <th>Assigned To</th>
-                <th>Due Date</th>
-            </tr>
-            <tr>
-                <td>Finalize UI mockups</td>
-                <td>Design Team</td>
-                <td>June 22</td>
-            </tr>
-            <tr>
-                <td>Complete API documentation</td>
-                <td>Development Team</td>
-                <td><span style="background-color:yellow">July 30</span></td>
-            </tr>
-            <tr>
-                <td>Prepare marketing materials</td>
-                <td>Marketing Team</td>
-                <td>August 15</td>
-            </tr>
-        </table>
-        <h3>Next Steps</h3>
-        <ol>
-            <li>Weekly status updates via email</li>
-            <li>Follow-up meeting scheduled for <u>January 29th</u></li>
-            <li>Share meeting notes with <a href="mailto:stakeholders@example.com">all stakeholders</a></li>
-        </ol>
-    ]]></attribute>
-</docpadlite>
+<zk>
+    <docpadlite value="Hello Keikaidoc" />
+</zk>
 ```
-here's the result
+
+### 2. Programmatic Setting via Java
+For dynamic content or when you need to set values from your controller:
+
+``` java
+public class MyComposer extends SelectorComposer<Component> {
+
+	@Wire("docpadlite")
+	private Docpadlite docpadlite;
+
+	@Override
+	public void doAfterCompose(Component comp) throws Exception {
+		super.doAfterCompose(comp);
+		docpadlite.setValue("Hello Keikaidoc");
+	}
+}
+```
+
+### 3. Complex HTML Content
+For rich content with formatting, tables, and other HTML elements, use the `attribute` tag with a CDATA section:
+
+``` xml
+<zk>
+    <docpadlite>
+        <attribute name="value"><![CDATA[
+            <h2>Meeting Notes: Product Development</h2>
+            <p><b>Date:</b> May 16, 2024</p>
+            <img src="https://www.zkoss.org/resource/img/price/Features.svg"/>
+            <h3>Key Decisions</h3>
+            <p style="text-align:justify">The team has agreed to focus on delivering the core functionality first, with additional features to be developed in future releases. <span style="color:red">Deadline for MVP is September 18th</span>.</p>
+            <blockquote>Note: All teams must submit their resource requirements by next Friday.</blockquote>
+            <h3>Action Items</h3>
+            <table border="1" style="width:100%">
+                <tr>
+                    <th>Task</th>
+                    <th>Assigned To</th>
+                    <th>Due Date</th>
+                </tr>
+                <tr>
+                    <td>Finalize UI mockups</td>
+                    <td>Design Team</td>
+                    <td>June 22</td>
+                </tr>
+                <tr>
+                    <td>Complete API documentation</td>
+                    <td>Development Team</td>
+                    <td><span style="background-color:yellow">July 30</span></td>
+                </tr>
+                <tr>
+                    <td>Prepare marketing materials</td>
+                    <td>Marketing Team</td>
+                    <td>August 15</td>
+                </tr>
+            </table>
+            <h3>Next Steps</h3>
+            <ol>
+                <li>Weekly status updates via email</li>
+                <li>Follow-up meeting scheduled for <u>January 29th</u></li>
+                <li>Share meeting notes with <a href="mailto:stakeholders@example.com">all stakeholders</a></li>
+            </ol>
+        ]]></attribute>
+    </docpadlite>
+</zk>
+```
+The result will look like this, with proper formatting and styling applied:
 
 <img src="assets/images/docpadlite-value.png"/>
 
 ### Supported HTML Tags
 
 The following HTML tags are supported by Keikaidoc PE:
+
+### Supported HTML Tags
+
+Keikaidoc PE supports a comprehensive set of HTML tags for content formatting. The table below outlines all supported tags and their respective functions:
 
 | HTML Tag                               | Description |
 |----------------------------------------|-------------|
@@ -115,10 +152,23 @@ The following HTML tags are supported by Keikaidoc PE:
 
 ## Setting Custom Configurations
 Keikaidoc PE offers extensive configuration options to tailor the editor to your specific requirements. You can customize the component by specifying a JSON configuration file using the `customConfigurationsPath` attribute, this attribute points to a JSON file located at the webapp root where you can define your custom settings.
+
+## Customizing the Editor
+Keikaidoc PE provides flexible configuration options that allow you to tailor the editor's interface and functionality to meet your specific requirements. You can customize the editor by specifying a JSON configuration file using the `customConfigurationsPath` attribute:
+
 ``` xml
 <docpadlite customConfigurationsPath="/config.json"/>
 ```
+
+This attribute references a JSON file located at your webapp root directory where you can define your preferred settings.
+
 Single-Line Toolbar:
+
+### Toolbar Configuration Examples
+
+#### 1. Single-Line Compact Toolbar
+For a minimalist interface with essential editing tools:
+
 ``` json
 {
     "toolbar": [["Undo", "Redo", "-", "Bold", "Italic", "Underline", "Strike", "Subscript", "Superscript"]]
@@ -127,6 +177,10 @@ Single-Line Toolbar:
 <img src="assets/images/toolbar-single-line.png" width="500"/>
 
 Multi-Lines Toolbar:
+
+#### 2. Multi-Line Organized Toolbar
+For a more comprehensive editing experience with tools grouped by function:
+
 ``` json
 {
     "toolbar": [
@@ -143,10 +197,16 @@ Multi-Lines Toolbar:
 
 If you do not specify a custom configuration, the default toolbar will include all available editing tools:
 
+#### Default Configuration
+If you don't specify a custom configuration, the editor will display all available tools in the default layout:
+
 <img src="assets/images/toolbar-default.png"/>
 
 ### Toolbar Functions
 Keikaidoc PE supports the following toolbar functions:
+
+### Available Toolbar Functions
+The following table lists all toolbar functions available for configuration in Keikaidoc PE:
 
 | Toolbar Button Key  | Description                       |
 |---------------------|-----------------------------------|
@@ -179,6 +239,10 @@ Keikaidoc PE supports the following toolbar functions:
 
 Keikaidoc PE emits the following events that you can listen for in your application:
 
+# Event Handling
+
+Keikaidoc PE emits several events that allow your application to respond to user interactions. You can listen for these events to implement custom behaviors or data synchronization:
+
 | Event Name  | Event Type                                                                                                                                                                                                                                                                                                                                                                              |
 |-------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `onChange`  | [InputEvent](http://www.zkoss.org/javadoc/latest/zk/org/zkoss/zk/ui/event/InputEvent.html)<br/>**Description:** Triggered when the editor content has been modified and completed by the user.                                                                                                                                                                                          |
@@ -186,3 +250,6 @@ Keikaidoc PE emits the following events that you can listen for in your applicat
 
 # Supported Children
 Keikaidoc PE does not support child components.
+
+# Component Composition
+Keikaidoc PE is designed as a self-contained editor component and does not support nested child components.
