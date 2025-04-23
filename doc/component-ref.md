@@ -12,12 +12,12 @@ with comprehensive support for text formatting, tables, lists, and other standar
 # Quick Start
 
 ## Setup for Maven
-To begin using Keikai doc PE in your project, first add the `keikai-doc-lite` dependency to your Maven `pom.xml` file:
+To begin using Keikai Doc PE in your project, first add the `keikai-doc` dependency to your Maven `pom.xml` file:
 
 ``` xml
 <dependency>
     <groupId>io.keikai</groupId>
-    <artifactId>keikai-doc-lite</artifactId>
+    <artifactId>keikai-doc</artifactId>
     <version>${keikaidoc.version}</version>
 </dependency>
 ```
@@ -27,14 +27,14 @@ To create a simple editor page, add a new `zul` file in your `webapp` directory 
 
 ``` xml
 <zk>
-    <docpadlite />
+    <document />
 </zk>
 ```
 
 Then you'll see an editor displayed on your web page.
 
 ## Setting Values
-Keikaidoc PE provides multiple ways to set content in the editor.
+Keikai Doc PE provides multiple ways to set content in the editor.
 The component supports the `value` attribute,
 which allows you to specify HTML content in several different ways.
 
@@ -43,7 +43,7 @@ For basic text content, you can set the value directly in the ZUL file:
 
 ``` xml
 <zk>
-    <docpadlite value="Hello Keikaidoc" />
+    <document value="Hello Keikaidoc" />
 </zk>
 ```
 
@@ -53,13 +53,13 @@ For dynamic content or when you need to set values from your controller:
 ``` java
 public class MyComposer extends SelectorComposer<Component> {
 
-	@Wire("docpadlite")
-	private Docpadlite docpadlite;
+	@Wire("document")
+	private Document document;
 
 	@Override
 	public void doAfterCompose(Component comp) throws Exception {
 		super.doAfterCompose(comp);
-		docpadlite.setValue("Hello Keikaidoc");
+		document.setValue("Hello Keikaidoc");
 	}
 }
 ```
@@ -69,7 +69,7 @@ For rich content with formatting, tables, and other HTML elements, use the `attr
 
 ``` xml
 <zk>
-    <docpadlite>
+    <document>
         <attribute name="value"><![CDATA[
             <h2>Meeting Notes: Product Development</h2>
             <p><b>Date:</b> May 16, 2024</p>
@@ -107,20 +107,20 @@ For rich content with formatting, tables, and other HTML elements, use the `attr
                 <li>Share meeting notes with <a href="mailto:stakeholders@example.com">all stakeholders</a></li>
             </ol>
         ]]></attribute>
-    </docpadlite>
+    </document>
 </zk>
 ```
 The result will look like this, with proper formatting and styling applied:
 
-<img src="assets/images/docpadlite-value.png"/>
+<img src="assets/images/keikaidocPE-value.png"/>
 
 ### Supported HTML Tags
 
-The following HTML tags are supported by Keikaidoc PE:
+The following HTML tags are supported by Keikai Doc PE:
 
 ### Supported HTML Tags
 
-Keikaidoc PE supports a comprehensive set of HTML tags for content formatting. The table below outlines all supported tags and their respective functions:
+Keikai Doc PE supports a comprehensive set of HTML tags for content formatting. The table below outlines all supported tags and their respective functions:
 
 | HTML Tag                               | Description |
 |----------------------------------------|-------------|
@@ -151,13 +151,13 @@ Keikaidoc PE supports a comprehensive set of HTML tags for content formatting. T
 | `<img src="...">`                      | Image with specified source URL |
 
 ## Setting Custom Configurations
-Keikaidoc PE offers extensive configuration options to tailor the editor to your specific requirements. You can customize the component by specifying a JSON configuration file using the `customConfigurationsPath` attribute, this attribute points to a JSON file located at the webapp root where you can define your custom settings.
+Keikai Doc PE offers extensive configuration options to tailor the editor to your specific requirements. You can customize the component by specifying a JSON configuration file using the `customConfigurationsPath` attribute, this attribute points to a JSON file located at the webapp root where you can define your custom settings.
 
 ## Customizing the Editor
-Keikaidoc PE provides flexible configuration options that allow you to tailor the editor's interface and functionality to meet your specific requirements. You can customize the editor by specifying a JSON configuration file using the `customConfigurationsPath` attribute:
+Keikai Doc PE provides flexible configuration options that allow you to tailor the editor's interface and functionality to meet your specific requirements. You can customize the editor by specifying a JSON configuration file using the `customConfigurationsPath` attribute:
 
 ``` xml
-<docpadlite customConfigurationsPath="/config.json"/>
+<document customConfigurationsPath="/config.json"/>
 ```
 
 This attribute references a JSON file located at your webapp root directory where you can define your preferred settings.
@@ -197,16 +197,25 @@ For a more comprehensive editing experience with tools grouped by function:
 
 If you do not specify a custom configuration, the default toolbar will include all available editing tools:
 
-#### Default Configuration
+#### 3. Default Configuration
 If you don't specify a custom configuration, the editor will display all available tools in the default layout:
 
 <img src="assets/images/toolbar-default.png"/>
 
+#### 4. Hide Toolbar
+If you don't want to display the toolbar, you can configure it as follows：
+
+``` json
+{
+    "toolbar": []
+}
+```
+
 ### Toolbar Functions
-Keikaidoc PE supports the following toolbar functions:
+Keikai Doc PE supports the following toolbar functions:
 
 ### Available Toolbar Functions
-The following table lists all toolbar functions available for configuration in Keikaidoc PE:
+The following table lists all toolbar functions available for configuration in Keikai Doc PE:
 
 | Toolbar Button Key  | Description                       |
 |---------------------|-----------------------------------|
@@ -237,11 +246,11 @@ The following table lists all toolbar functions available for configuration in K
 
 # Supported Events
 
-Keikaidoc PE emits the following events that you can listen for in your application:
+Keikai Doc PE emits the following events that you can listen for in your application:
 
 # Event Handling
 
-Keikaidoc PE emits several events that allow your application to respond to user interactions. You can listen for these events to implement custom behaviors or data synchronization:
+Keikai Doc PE emits several events that allow your application to respond to user interactions. You can listen for these events to implement custom behaviors or data synchronization:
 
 | Event Name  | Event Type                                                                                                                                                                                                                                                                                                                                                                              |
 |-------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -249,7 +258,7 @@ Keikaidoc PE emits several events that allow your application to respond to user
 | `onChanging` | [InputEvent](http://www.zkoss.org/javadoc/latest/zk/org/zkoss/zk/ui/event/InputEvent.html)<br/>**Description:** Triggered during the process of content modification. Note that the component's server-side content remains unchanged until the `onChange` event occurs. To access the current in-progress value, use the `getValue` method of the `InputEvent` class. |
 
 # Supported Children
-Keikaidoc PE does not support child components.
+Keikai Doc PE does not support child components.
 
 # Component Composition
-Keikaidoc PE is designed as a self-contained editor component and does not support nested child components.
+Keikai Doc PE is designed as a self-contained editor component and does not support nested child components.
