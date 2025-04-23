@@ -1,10 +1,10 @@
 ---
-title: 'Keikaidoc PE Tutorial'
+title: 'Keikai Doc PE Tutorial'
 ---
 
 # Overview
 
-Keikaidoc PE is a lightweight rich text editor component.
+Keikai Doc PE is a lightweight rich text editor component.
 It provides essential text editing capabilities and HTML content manipulation.
 This component enables developers to efficiently implement rich text editing functionality in their web applications,
 with comprehensive support for text formatting, tables, lists, and other standard editing features.
@@ -12,7 +12,7 @@ with comprehensive support for text formatting, tables, lists, and other standar
 # Quick Start
 
 ## Setup for Maven
-To begin using Keikaidoc PE in your project, first add the `keikai-doc-lite` dependency to your Maven `pom.xml` file:
+To begin using Keikai doc PE in your project, first add the `keikai-doc-lite` dependency to your Maven `pom.xml` file:
 
 ``` xml
 <dependency>
