@@ -35,8 +35,8 @@ To begin using Keikai Doc PE in your project, include the `keikai-doc` dependenc
 
 Check [Maven repository](https://mavensync.zkoss.org/eval/io/keikai/keikai-doc/) for the latest version. 
 
-## Create a Basic Editor Page
-To create a simple editor page, add a new `zul` file in your `webapp` directory with the following content:
+## Create Your First Editor
+To create a simple editor page, add a new `zul` file in your web app context root with the following content:
 
 ``` xml
 <zk>
@@ -44,7 +44,7 @@ To create a simple editor page, add a new `zul` file in your `webapp` directory 
 </zk>
 ```
 
-Then you'll see an editor displayed on your web page.
+Then visit you'll see an editor displayed on your web page.
 
 # Setting Values
 Keikai Doc PE provides multiple ways to set content in the editor.
@@ -160,10 +160,25 @@ Keikai Doc PE supports a comprehensive set of HTML tags for content formatting. 
 | `<a href="...">`                       | Hyperlink to specified URL |
 | `<img src="...">`                      | Image with specified source URL |
 
+
+# Getting Values
+
+`getValue()` returns users-entered content in the HTML values. 
+
+```java
+public class MyComposer extends SelectorComposer<Component> {
+
+    @Wire("document")
+    private Document document;
+    ...
+    String htmlContent = document.getValue();
+    ...
+}
+```
+
 # Setting Custom Configurations
 Keikai Doc PE offers extensive configuration options to tailor the editor to your specific requirements. You can customize the component by specifying a JSON configuration file using the `customConfigurationsPath` attribute, this attribute points to a JSON file located at the webapp root where you can define your custom settings.
 
-## Customizing the Editor
 Keikai Doc PE provides flexible configuration options that allow you to tailor the editor's interface and functionality to meet your specific requirements. You can customize the editor by specifying a JSON configuration file using the `customConfigurationsPath` attribute:
 
 ``` xml
@@ -172,11 +187,18 @@ Keikai Doc PE provides flexible configuration options that allow you to tailor t
 
 This attribute references a JSON file located at your webapp root directory where you can define your preferred settings.
 
-Single-Line Toolbar:
 
-### Toolbar Configuration Examples
+## Toolbar Configuration 
+You can configure the toolbar's buttons by specifying button key in a JSON file. See [All Available Toolbar Functions](#all-available-toolbar-functions).
 
-#### 1. Single-Line Compact Toolbar
+Here are some configuration examples:
+
+### 1. Default Configuration
+If you don't specify a custom configuration, the editor will display all available buttons in the default layout:
+
+<img src="assets/images/toolbar-default.png"/>
+
+### 2. Single-Line Compact Toolbar
 For a minimalist interface with essential editing tools:
 
 ``` json
@@ -186,9 +208,8 @@ For a minimalist interface with essential editing tools:
 ```
 <img src="assets/images/toolbar-single-line.png" width="500"/>
 
-Multi-Lines Toolbar:
 
-#### 2. Multi-Line Organized Toolbar
+### 3. Multi-Line Organized Toolbar
 For a more comprehensive editing experience with tools grouped by function:
 
 ``` json
@@ -205,14 +226,8 @@ For a more comprehensive editing experience with tools grouped by function:
 ```
 <img src="assets/images/toolbar-multi-lines.png" width="500"/>
 
-If you do not specify a custom configuration, the default toolbar will include all available editing tools:
 
-#### 3. Default Configuration
-If you don't specify a custom configuration, the editor will display all available tools in the default layout:
-
-<img src="assets/images/toolbar-default.png"/>
-
-#### 4. Hide Toolbar
+### 4. Hide Toolbar
 If you don't want to display the toolbar, you can configure it as follows：
 
 ``` json
@@ -224,7 +239,7 @@ If you don't want to display the toolbar, you can configure it as follows：
 # Toolbar Functions
 Keikai Doc PE supports the following toolbar functions:
 
-## Available Toolbar Functions
+## All Available Toolbar Functions
 The following table lists all toolbar functions available for configuration in Keikai Doc PE:
 
 | Toolbar Button Key  | Description                       |
@@ -255,15 +270,10 @@ The following table lists all toolbar functions available for configuration in K
 | `-`                   | Separator                         |
 
 ## Limitation
-Make sure your Windows uses Segoe UI version 1.32 or above — older versions might not show all emojis properly.
+Make sure your Windows (OS) uses Segoe UI version 1.32 or above — older versions might not show all emojis properly.
 
 # Supported Events
-
-Keikai Doc PE emits the following events that you can listen for in your application:
-
-# Event Handling
-
-Keikai Doc PE emits several events that allow your application to respond to user interactions. You can listen for these events to implement custom behaviors or data synchronization:
+Keikai Doc PE emits the following events that allow your application to respond to user interactions. You can listen to these events to implement custom behaviors or application logic.
 
 | Event Name  | Event Type                                                                                                                                                                                                                                                                                                                                                                              |
 |-------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
