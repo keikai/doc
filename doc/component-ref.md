@@ -12,13 +12,24 @@ with comprehensive support for text formatting, tables, lists, and other standar
 # Quick Start
 
 ## Setup for Maven
-To begin using Keikai Doc PE in your project, first add the `keikai-doc` dependency to your Maven `pom.xml` file:
+
+Add the repository:
+
+```xml
+<repository>
+    <id>Keikai EVAL</id>
+    <name>Keikai Evaluation Repository</name>
+    <url>https://mavensync.zkoss.org/eval</url>
+</repository>
+```
+
+To begin using Keikai Doc PE in your project, include the `keikai-doc` dependency in your `pom.xml` file:
 
 ``` xml
 <dependency>
     <groupId>io.keikai</groupId>
     <artifactId>keikai-doc</artifactId>
-    <version>${keikaidoc.version}</version>
+    <version>1.0.0.FL.202504181625-Eval</version>
 </dependency>
 ```
 
@@ -29,7 +40,7 @@ To create a simple editor page, add a new `zul` file in your `webapp` directory 
 
 ``` xml
 <zk>
-    <document />
+    <document/>
 </zk>
 ```
 
@@ -115,7 +126,7 @@ For rich content with formatting, tables, and other HTML elements, use the `attr
 The result will look like this, with proper formatting and styling applied:
 
 
-![](/doc/asserts/images/keikaidocPE-value.png)
+![](assets/images/keikaidocPE-value.png)
 
 
 ## Supported HTML Tags
