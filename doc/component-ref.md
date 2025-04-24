@@ -22,6 +22,8 @@ To begin using Keikai Doc PE in your project, first add the `keikai-doc` depende
 </dependency>
 ```
 
+Check [Maven repository](https://mavensync.zkoss.org/eval/io/keikai/keikai-doc/) for the latest version. 
+
 ## Create a Basic Editor Page
 To create a simple editor page, add a new `zul` file in your `webapp` directory with the following content:
 
@@ -33,12 +35,12 @@ To create a simple editor page, add a new `zul` file in your `webapp` directory 
 
 Then you'll see an editor displayed on your web page.
 
-## Setting Values
+# Setting Values
 Keikai Doc PE provides multiple ways to set content in the editor.
 The component supports the `value` attribute,
 which allows you to specify HTML content in several different ways.
 
-### 1. Simple Text via ZUL
+## 1. Simple Text via ZUL
 For basic text content, you can set the value directly in the ZUL file:
 
 ``` xml
@@ -47,7 +49,7 @@ For basic text content, you can set the value directly in the ZUL file:
 </zk>
 ```
 
-### 2. Programmatic Setting via Java
+## 2. Programmatic Setting via Java
 For dynamic content or when you need to set values from your controller:
 
 ``` java
@@ -64,7 +66,7 @@ public class MyComposer extends SelectorComposer<Component> {
 }
 ```
 
-### 3. Complex HTML Content
+## 3. Complex HTML Content
 For rich content with formatting, tables, and other HTML elements, use the `attribute` tag with a CDATA section:
 
 ``` xml
@@ -112,14 +114,11 @@ For rich content with formatting, tables, and other HTML elements, use the `attr
 ```
 The result will look like this, with proper formatting and styling applied:
 
-<img src="assets/images/keikaidocPE-value.png"/>
 
-### Supported HTML Tags
+![](/doc/asserts/images/keikaidocPE-value.png)
 
-The following HTML tags are supported by Keikai Doc PE:
 
-### Supported HTML Tags
-
+## Supported HTML Tags
 Keikai Doc PE supports a comprehensive set of HTML tags for content formatting. The table below outlines all supported tags and their respective functions:
 
 | HTML Tag                               | Description |
@@ -150,7 +149,7 @@ Keikai Doc PE supports a comprehensive set of HTML tags for content formatting. 
 | `<a href="...">`                       | Hyperlink to specified URL |
 | `<img src="...">`                      | Image with specified source URL |
 
-## Setting Custom Configurations
+# Setting Custom Configurations
 Keikai Doc PE offers extensive configuration options to tailor the editor to your specific requirements. You can customize the component by specifying a JSON configuration file using the `customConfigurationsPath` attribute, this attribute points to a JSON file located at the webapp root where you can define your custom settings.
 
 ## Customizing the Editor
@@ -211,10 +210,10 @@ If you don't want to display the toolbar, you can configure it as follows：
 }
 ```
 
-### Toolbar Functions
+# Toolbar Functions
 Keikai Doc PE supports the following toolbar functions:
 
-### Available Toolbar Functions
+## Available Toolbar Functions
 The following table lists all toolbar functions available for configuration in Keikai Doc PE:
 
 | Toolbar Button Key  | Description                       |
@@ -243,6 +242,9 @@ The following table lists all toolbar functions available for configuration in K
 | `Outdent`             | Decrease indent                   |
 | `Indent`              | Increase indent                   |
 | `-`                   | Separator                         |
+
+## Limitation
+Make sure your Windows uses Segoe UI version 1.32 or above — older versions might not show all emojis properly.
 
 # Supported Events
 
