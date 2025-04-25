@@ -4,8 +4,7 @@ main:
   - title: "Developer Reference"
     url: /dev-ref
   - title: "JavaDoc"
-    url: //keikai.io/javadoc/latest/    
-
+    url: https://keikai.io/javadoc/spreadsheet/latest/
 tutorial:
   - title: "Tutorial"
     url: /tutorial

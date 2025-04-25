@@ -267,7 +267,7 @@ The following table lists all toolbar functions available for configuration in K
 | `LineHeight`          | Adjust line height                |
 | `Outdent`             | Decrease indent                   |
 | `Indent`              | Increase indent                   |
-| `-`                   | Separator                         |
+| `-`                   | Vertical Separator                |
 
 ## Limitation
 Make sure your Windows (OS) uses Segoe UI version 1.32 or above — older versions might not show all emojis properly.
