@@ -34,7 +34,7 @@ To begin using Keikai Doc PE in your project, include the `keikai-doc` dependenc
 </dependency>
 ```
 
-Check [Maven repository](https://mavensync.zkoss.org/eval/io/keikai/keikai-doc/) for the latest version. 
+<!-- Check [Maven repository](https://mavensync.zkoss.org/eval/io/keikai/keikai-doc/) for the latest version. --> 
 
 ## Create Your First Editor
 To create a simple editor page, add a new `zul` file in your web app context root with the following content:
