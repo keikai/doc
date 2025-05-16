@@ -91,6 +91,20 @@ When a chart's data source contains a blank cell, you can configure it to displa
 </library-property>
 ```
 
+# Zero value
+{% include version-badge.html version='5.4.0' %}
+
+Default: **true**
+{% include property-scope.html page=false%}
+
+Keikai shows the zero value as a number by default. If the property is false, the zero is showed as blank.
+
+```xml
+<library-property>
+    <name>io.keikai.spreadsheet.showZeroValues</name>
+    <value>false</value>
+</library-property>
+```
 
 # Focus Cell Position
 {% include version-badge.html version='5.8.0' %}
