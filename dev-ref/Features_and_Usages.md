@@ -430,6 +430,15 @@ If your input violates validation criteria, an error alert will pop up.
 
 ![ center]({{site.devref_image_folder}}/zss-essentials-validation-alert.png)
 
+## Dropdown
+
+Keikai’s dropdown lets you type to filter options.
+As you type, matching items appear instantly.
+
+Press **Alt + Down** to open the dropdown, then use the arrow keys or mouse to navigate.
+
+![]({{site.devref_image_folder}}/validation-dropdown.png.png)
+
 ## List
 There are 2 ways to specify a list criteria:
 ### List of values
