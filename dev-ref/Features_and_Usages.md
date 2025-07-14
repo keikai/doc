@@ -437,7 +437,7 @@ As you type, matching items appear instantly.
 
 Press **Alt + Down** to open the dropdown, then use the arrow keys or mouse to navigate.
 
-![]({{site.devref_image_folder}}/validation-dropdown.png.png)
+![]({{site.devref_image_folder}}/validation-dropdown.png)
 
 ## List
 There are 2 ways to specify a list criteria:
@@ -476,3 +476,12 @@ Keikai supports to load an [Excel table](https://support.microsoft.com/en-us/off
 
 # AutoFit
 Please see [AutoFit](/dev-ref/autofit).
+
+# Group
+
+Keikai allows users to organize rows or columns into collapsible sections.
+This feature helps you group and collapse related rows or columns,
+making it easier to navigate large datasets like financial reports or task lists.
+With just a few clicks, you can group related rows or columns and easily expand or collapse them to show or hide details.
+
+![]({{site.devref_image_folder}}/group-data-worksheet.png)
