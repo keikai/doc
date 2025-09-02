@@ -91,8 +91,7 @@ Windows.
 # License Information
 
 If the license key is loaded successfully, you should see the license
-information like below printed in your application server's console when
-the server starts like:
+information like below printed in your application server's console when the server starts:
 
 ```
 INFO: 
@@ -107,7 +106,11 @@ INFO:
 
      To renew, obtain more licenses, or if you require help, please contact info@keikai.io.
 ```
+If you have a perpetual license, the Expiry Date will show
 
+```
+     Expiry Date: (Perpetual)
+```
 
 # Evaluation
 If you are running an evaluation release of Keikai, you will see the warning message below in a log or console when a server starts up:
