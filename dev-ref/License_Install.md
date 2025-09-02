@@ -37,10 +37,7 @@ For example:
 Using Maven is recommended. Specify the maven repositories for **Keikai EE** and **ZK EE** like this [pom.xml](https://github.com/keikai/dev-ref/blob/master/pom.xml).
 
 ## Download a binary zip manually
-Visit[the keikai premium repository](https://maven.zkoss.org/repo/keikai/ee/io/keikai/binary/) with your browser , enter username and password. Then get the zip file like keikaiee-bin-[VERSION].zip.
-
-
-
+Visit [the keikai premium repository](https://maven.zkoss.org/repo/keikai/ee/io/keikai/binary/) with your browser , enter username and password. Then get the zip file like keikaiee-bin-[VERSION].zip.
 
 
 # Applying a License Key
