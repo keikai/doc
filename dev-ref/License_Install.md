@@ -2,15 +2,13 @@
 title: 'Using Official Version'
 ---
 This section is for customers who purchased Keikai EE. To use the official version (licensed Keikai EE), you need to
-1. Download JARs from the premium repository
+1. Download official release JARs from [the keikai premium repository](https://maven.zkoss.org/repo/keikai/ee/io/keikai/)
 2. Apply a license key
 
-# Configure and Download from The Premium Repository
-Maven is recommended. Specify the maven repositories for **Keikai EE** and **ZK EE** like this [pom.xml](https://github.com/keikai/dev-ref/blob/master/pom.xml). If you do not use maven, we will provide you with additional information on how you can download the binary file manually.
+# Download official release JARs
 
-
-## Login Information
-The premium repository requires authentication. Licensed customers will be given a set of user name and password upon your request. According to [the official Maven doc](https://maven.apache.org/settings.html), you can specify login information in one of the following locations: (if not existed, you can create it manually)
+## Setup Login Information
+The premium repository requires authentication. Licensed customers will be given a set of username and password upon your request. According to [the official Maven doc](https://maven.apache.org/settings.html), you can specify login information in one of the following locations: (if not existed, you can create it manually)
 * The Maven install: `$M2_HOME/conf/settings.xml`
 * A user's install: `${user.home}/.m2/settings.xml`
 
@@ -35,11 +33,20 @@ For example:
 </settings>
 ```
 
+## Download with Maven
+Using Maven is recommended. Specify the maven repositories for **Keikai EE** and **ZK EE** like this [pom.xml](https://github.com/keikai/dev-ref/blob/master/pom.xml).
+
+## Download a binary zip manually
+Visit[the keikai premium repository](https://maven.zkoss.org/repo/keikai/ee/io/keikai/binary/) with your browser , enter username and password. Then get the zip file like keikaiee-bin-[VERSION].zip.
+
+
+
+
 
 # Applying a License Key
-If you are a paying Keikai EE customer, you will obtain a license key after completing the purchase. Follow this section to apply the given license key to activate your Keikai EE component. There are 3 ways to apply a license key: Use Default License Loading Path; Specify an Absolute Path with a Library Property; and Specify the Path in a System Property. 
+If you are a paying Keikai EE customer, you will obtain a license key after completing the purchase. Follow this section to apply the given license key to activate your Keikai EE component. There are 3 ways to apply a license key below. Choose the one that suits your environment. 
 
-The first approach below **Use Default License Loading Path** is the easiest approach. However if your setup does not allow the first approach, use the 2nd or 3rd approach.
+The first approach below **Use Default License Loading Path** is the easiest approach. However, if your setup does not allow the first approach, use the 2nd or 3rd approach.
 
 ## Use Default License Loading Path
 
@@ -56,12 +63,12 @@ file in the default path. Then you can specify the absolute path of the
 license with the following library property in `zk.xml` and copy your
 Keikai license file there.
 
-{% highlight xml linenos %}
+```xml
 <library-property>
     <name>io.keikaiex.rt.Runtime.directory</name>
     <value>c:/systemAbsolutePath/my-licenses/</value>
 </library-property>
-{% endhighlight %}
+```
 
 It's also a way that multiple Keikai-based applications can load the same license file.
 
@@ -116,7 +123,7 @@ Dec 31, 2019 10:16:11 AM org.zkoss.chart.init.WebAppInit init
 SEVERE: This is an evaluation copy of ZK Charts and will terminate after maximum 12 hours UPTIME or sixty days from the first date of installation. Should you require a commercial license for ZK Charts, please contact us at info@zkoss.org for more information.
 ```
 
-When Keikai application runs over the time limit, a browser will show a warning dialog when you visit a page with Keikai.
+When a Keikai application runs over the time limit, a browser will show a warning dialog when you visit a page with Keikai.
 
 ## Extend Evaluation Period
-If you have special need to extend the evaluation time, please contact us via info@keikai.io.
+If you have special needs to extend the evaluation time, please contact us via info@keikai.io.
