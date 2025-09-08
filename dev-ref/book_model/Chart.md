@@ -4,7 +4,7 @@ title: 'Chart'
 
 # Overview
 
-The follwing `io.keikai.api.model.Range` methods allow you to add, move, and delete a chart:
+The following `io.keikai.api.model.Range` methods allow you to add, move, and delete a chart:
 
 ```java
 
@@ -151,6 +151,7 @@ When a chart's data source contains a blank cell (empty value), Keikai displays 
 
 ![]({{site.devref_image_folder}}/empty-cell-as-gap.png)
 
+* Limitation: Combo charts don't support this property.
 
 There are several ways to configure depending on how big scope you want to apply:
 ## Page Scope
@@ -171,13 +172,98 @@ Put the `<custom-attribute>` in a zul.
 
 Please read [ZK Configuration Reference](https://www.zkoss.org/wiki/ZK_Configuration_Reference/zk.xml/The_Library_Properties) for details.
 
-## Limitation
-Combo charts don't support this.
 
 
-# Limitation 
 
-1.  Currently Spreadsheet cannot read legend position from an XLS file.
+# Limitation
+1.  Currently, Spreadsheet cannot read the legend position from an XLS file.
+
 
 # Sparklines
 Please see [Features_and_Usages#sparklines](/dev-ref/Features_and_Usages#sparklines)
+
+
+# Customization
+{% include version-badge.html version="6.2.0" %}
+
+Keikai provides multiple powerful approaches to customize charts, giving developers fine-grained control over chart rendering and styling.
+
+## Customization Scopes
+
+Keikai supports three primary levels of chart customization:
+
+### 1. Application Scope
+Configure a global chart customizer using a library property in `zk.xml`:
+
+```xml
+<library-property>
+    <name>io.keikai.chart.customizer.class</name>
+    <value>io.keikai.devref.advanced.customization.chart.MyChartCustomizer</value>
+</library-property>
+```
+
+### 2. Component Scope
+Programmatically set a customizer for a specific spreadsheet:
+
+```java
+// Apply a custom chart customizer to a spreadsheet
+ChartsHelper.setCustomizer(spreadsheet, new MyChartCustomizer());
+```
+
+### 3. Specific Chart Customization
+Get a specific chart and modify its properties directly. You can get a chart:
+* By its name: `ChartsHelper.getChartsByName(Spreadsheet spreadsheet, String name)`
+* Iterate all charts: `ChartsHelper.getAllCharts(Spreadsheet spreadsheet)`
+
+```java
+    @Listen("onClick = #customize")
+    public void customizeChart() {
+        ZssCharts areaChart = ChartsHelper.getChartsByName(spreadsheet, "Chart 2");
+        if (areaChart != null) {
+            areaChart.setTitle("Programmatically Customized Chart");
+        }
+    }
+```
+
+## Implementation Example
+
+Here's a complete example demonstrating chart customization:
+
+```java
+public class MyChartCustomizer implements ChartsCustomizer {
+    @Override
+    public void customize(ZssCharts chart, SChart chartInfo) {
+        // Adjust plot options based on the chart type
+        if (chartInfo.getType()== SChart.ChartType.COLUMN) {
+            chart.setTitle("Customized Column Chart");
+            chart.getPlotOptions().getColumn().setStacking("normal");
+            // Customize series colors
+            chart.setColors(Arrays.asList(
+                    new Color("#FFFF00"),  // Yellow
+                    new Color("#FFA500"),  // Orange
+                    new Color("#800080")   // Purple
+            ));
+        }
+    }
+}
+```
+
+## Customization Points
+
+The `customize()` method provides access to two key objects:
+
+1. **`ZssCharts`**: The chart component with rendering properties that can be modified
+2. **`SChart`**: Read-only metadata about the chart's configuration and data source
+
+## Key Customization Features
+`ZssCharts` is a subclass of `ZK Charts` and supports various chart options, see [ZK Charts Essentials](/zk_charts_essentials/working_with_zk_charts)
+
+## Best Practices
+- Keep customization logic lightweight to avoid performance issues
+- Use the `SChart` parameter to make data-driven customization decisions
+
+
+## Limitations
+- The `SChart` object is read-only and cannot be modified
+- Customizations are applied before chart rendering in a browser
+- Complex customizations may impact rendering performance
