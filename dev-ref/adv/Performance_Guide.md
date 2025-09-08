@@ -21,6 +21,8 @@ In order to manually notify the cell change, we have to:
 Disable the auto refresh can stop Spreadsheet's internal calculations for rendering. If we don't disable auto refresh in such case, Keikai spreadsheet will generate a lot of small update to the browser which will slow down browser rendering speed. Instead, after we call all `Range` setter methods, we notify the change at once. Keikai can generate one update for the whole range which is more efficiently.
 
 {% highlight java linenos %}
+public class PerformanceComposer extends SelectorComposer<Component> {
+...
     private void loadData() {
         Sheet sheet = ss.getSelectedSheet();
         for (int column  = 0 ; column < COLUMN_SIZE ; column++){
@@ -37,33 +39,21 @@ Disable the auto refresh can stop Spreadsheet's internal calculations for render
     }
 {% endhighlight %}
 
-  - line 6: disable the auto-refresh before changing cells (calling
-    setter)
-  - line 12: notify the changed range of cells or just the whole sheet
+  - line 8: disable the auto-refresh before changing cells data/style
+  - line 14: notify the changed range of cells or the whole sheet
 
 You can run [Example Source](Download_Example_Source_Code) to see how the performance differs between the 2 cases.
 
 ## Notify Affected Range
 
-When notifying a change, remember to choose all affected range, not just
+When notifying a change, remember to notify all affected ranges, not just
 those cells you modify. The following cases explain the reasons:
 
-  - Change a cell referenced by a formula in another cell.
-
-<!-- end list -->
-
-  -   
-    If you change a cell, all those cells that contain a formula
+- Change a cell referenced by a formula in another cell.
+- If you change a cell, all those cells that contain a formula
     referencing the cell should also require an update.
-
-<!-- end list -->
-
-  - Insertion / deletion of cells / rows / columns.
-
-<!-- end list -->
-
-  -   
-    If you insert a column, all columns after the inserted column also
+- Insertion / deletion of cells / rows / columns.
+- If you insert a column, all columns after the inserted column also
     require an update.
 
 ### Notify the whole sheet
@@ -72,20 +62,20 @@ If the affected cells are too distributed, you can consider notifying
 the whole sheet instead. Note that you may see a flash (blank sheet for a moment) because
 it will re-render the whole sheet.
 
-{% highlight java linenos %}
+```java
 Ranges.range(ss.getSelectedSheet()).notifyChange();
-{% endhighlight %}
+```
 
 ### Notify the cached area
 
 If rendering the whole sheet is too slow in your case, you can also consider to notify
 the currently cached area.
 
-{% highlight java linenos %}
+```java
 Spreadsheet ss;
 // change cells
 ss.notifyLoadedAreaChange();
-{% endhighlight %}
+```
 
 # No Auto-Adjusting Row Height
 
@@ -95,10 +85,10 @@ size, then you can set the attribute `ignoreAutoHeight` to `true`. This
 will improve client-side rendering speed a lot because it will skip calculating 
 the row height which is time-consuming.
 
-{% highlight java linenos %}
+```xml
 <!-- default is false -->
 <spreadsheet  ignoreAutoHeight="true"/>
-{% endhighlight %}
+```
 
 # Initialize with Large Data
 
