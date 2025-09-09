@@ -76,6 +76,8 @@ dev-ref:
       url: /dev-ref/handling_events/Sheet_Event
     - title: Hyperlink Event
       url: /dev-ref/handling_events/Hyperlink_Event
+    - title: Chart Clicking Event
+      url: /dev-ref/handling_events/Chart_Clicking_Event
   - title: Manipulating Book Model
     url: /dev-ref/book_model/Manipulating_Book_Model
     children:
