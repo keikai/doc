@@ -430,12 +430,13 @@ If your input violates validation criteria, an error alert will pop up.
 
 ![ center]({{site.devref_image_folder}}/zss-essentials-validation-alert.png)
 
-## Dropdown
+## Items Filtering (Type to Narrow Items)
+{% include version-badge.html version='6.1.0' %}
+As you type in the dropdown field, the list instantly filters to show only matching items. This makes it easy to quickly find and select the desired value from large lists.
 
-Keikai’s dropdown lets you type to filter options.
-As you type, matching items appear instantly.
-
-Press **Alt + Down** to open the dropdown, then use the arrow keys or mouse to navigate.
+## Keyboard Support
+{% include version-badge.html version='6.1.0' %}
+Press **Alt + Down** to open the dropdown, then use the arrow keys or mouse to navigate items.
 
 ![]({{site.devref_image_folder}}/validation-dropdown.png)
 
