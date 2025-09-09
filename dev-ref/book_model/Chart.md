@@ -173,8 +173,6 @@ Put the `<custom-attribute>` in a zul.
 Please read [ZK Configuration Reference](https://www.zkoss.org/wiki/ZK_Configuration_Reference/zk.xml/The_Library_Properties) for details.
 
 
-
-
 # Limitation
 1.  Currently, Spreadsheet cannot read the legend position from an XLS file.
 
@@ -183,17 +181,18 @@ Please read [ZK Configuration Reference](https://www.zkoss.org/wiki/ZK_Configura
 Please see [Features_and_Usages#sparklines](/dev-ref/Features_and_Usages#sparklines)
 
 
-# Customization
+# Rendering Customization
 {% include version-badge.html version="6.2.0" %}
 
-Keikai provides multiple powerful approaches to customize charts, giving developers fine-grained control over chart rendering and styling.
+Keikai provides multiple powerful approaches to customize charts rendering, giving developers fine-grained control over chart rendering and styling.
 
 ## Customization Scopes
 
-Keikai supports three primary levels of chart customization:
+Keikai supports 3 scopes of chart customization :
 
 ### 1. Application Scope
-Configure a global chart customizer using a library property in `zk.xml`:
+
+Configure a global chart customizer using a library property in `zk.xml`. That means keikai will apply this customizer to all charts in all spreadsheets.
 
 ```xml
 <library-property>
@@ -210,10 +209,14 @@ Programmatically set a customizer for a specific spreadsheet:
 ChartsHelper.setCustomizer(spreadsheet, new MyChartCustomizer());
 ```
 
+Then this customizer will be applied to all charts in this spreadsheet only.
+
 ### 3. Specific Chart Customization
-Get a specific chart and modify its properties directly. You can get a chart:
+Get a specific chart object(`ZssCharts`) and modify its options directly. You can get a chart:
 * By its name: `ChartsHelper.getChartsByName(Spreadsheet spreadsheet, String name)`
 * Iterate all charts: `ChartsHelper.getAllCharts(Spreadsheet spreadsheet)`
+
+`ZssCharts` is a subclass of `ZK Charts` and supports various chart options, see [ZK Charts Essentials](/zk_charts_essentials/working_with_zk_charts) for details.
 
 ```java
     @Listen("onClick = #customize")
@@ -225,7 +228,10 @@ Get a specific chart and modify its properties directly. You can get a chart:
     }
 ```
 
-## Implementation Example
+You can know a chart's name in Excel by selecting the chart and looking at the Name Box in the top-left corner:
+![]({{site.devref_image_folder}}/chart-name-box.png)
+
+## ChartsCustomizer Example
 
 Here's a complete example demonstrating chart customization:
 
@@ -248,15 +254,11 @@ public class MyChartCustomizer implements ChartsCustomizer {
 }
 ```
 
-## Customization Points
-
 The `customize()` method provides access to two key objects:
 
-1. **`ZssCharts`**: The chart component with rendering properties that can be modified
+1. **`ZssCharts`**: The chart component with rendering options that can be modified
 2. **`SChart`**: Read-only metadata about the chart's configuration and data source
 
-## Key Customization Features
-`ZssCharts` is a subclass of `ZK Charts` and supports various chart options, see [ZK Charts Essentials](/zk_charts_essentials/working_with_zk_charts)
 
 ## Best Practices
 - Keep customization logic lightweight to avoid performance issues
@@ -264,6 +266,7 @@ The `customize()` method provides access to two key objects:
 
 
 ## Limitations
+- Notice that all customizations are applied on browser rendering only. It doesn't affect the book model or XLSX exporting.
 - The `SChart` object is read-only and cannot be modified
 - Customizations are applied before chart rendering in a browser
-- Complex customizations may impact rendering performance
+- Heavy-cost customizations may impact rendering performance
