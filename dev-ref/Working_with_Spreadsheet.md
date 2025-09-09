@@ -1,4 +1,6 @@
-
+---
+title: 'Working with Spreadsheet'
+---
 
 Just like other ZK components, you can control Spreadsheet via its APIs
 programmatically and register event listeners to act on specific events

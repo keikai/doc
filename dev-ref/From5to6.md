@@ -1,3 +1,6 @@
+---
+title: 'From 5 to 6'
+---
 
 This document provides information on upgrading from version 5 to version 6.
 

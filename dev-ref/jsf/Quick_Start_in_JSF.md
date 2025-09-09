@@ -1,3 +1,7 @@
+---
+title: 'Quick Start in JSF'
+---
+
 If you want to run Keikai spreadsheet JSF demo in your local site, just
 [check out the example project]({{site.devref}}/Download_Example_Source_Code) and follow its readme to run it in your environment. Then check those pages under http://localhost:8080/dev-ref/jsf
 

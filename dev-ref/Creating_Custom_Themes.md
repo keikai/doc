@@ -1,6 +1,10 @@
+---
+title: 'Creating Custom Themes'
+---
+
 **deprecated since keikai 1.0**
 
-`since 3.5.0`
+`since 3.5.0`
 
 Keikai spreadsheet is an embeddable component that allow web developers to
 use as a building block for easy web page UI construction whilst
@@ -15,9 +19,9 @@ creating custom themes and packaging them inside jar files
 # Create a theme project skeleton
 
 The general idea is described in the introductory paragraph. Since
-classic \[1\] <https://github.com/zkoss/zssthemes/releases>\]</ref> is
+[classic theme](https://github.com/zkoss/zssthemes/releases) is
 the official example theme, web developers could simply clone the
-classic\[2\] project, and use it as a starting point.
+that project, and use it as a starting point.
 
 # Modify the theme resources
 
@@ -29,7 +33,7 @@ one of the existing standard themes as a template.
 
 Setting up the environment:
 
-1.  Clone classic theme \[3\] from github, if haven't done so.
+1.  Clone [classic theme](https://github.com/zkoss/zssthemes/) from github, if haven't done so.
 2.  Import Classic as an Existing Maven Project into Eclipse.
 3.  Rename all the file names and folder names that contains the word
     *classic* to the theme name of your choice
@@ -42,7 +46,7 @@ is done by providing an implementation of the
 <javadoc type="interface">org.zkoss.zk.ui.util.WebAppInit</javadoc>
 interface.
 
-**`Note:`**` the registered name should match the folder name.`
+**`Note:`**` the registered name should match the folder name.`
 
 For example, assume the custom theme is named **darkstar**,
 
@@ -133,9 +137,3 @@ Executions.sendRedirect(null);
     <value>custom</value>
 </library-property>
 ```
-
-# References
-
-
-1.  Classic Theme[1](https://github.com/zkoss/zssthemes/releases)
-
