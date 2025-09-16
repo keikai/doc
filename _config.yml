@@ -19,7 +19,7 @@ google:
 analytics:
   provider: "google-gtag"
   google:
-    tracking_id: "UA-116749276-1"
+    tracking_id: "G-6GR1K96LB8"
     anonymize_ip: true
 
 defaults:
