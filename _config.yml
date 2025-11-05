@@ -21,7 +21,6 @@ analytics:
   google:
     tracking_id: "G-6GR1K96LB8"
     policy_url: "https://keikai.io/privacy"
-    anonymize_ip: true
 
 defaults:
   - scope:
