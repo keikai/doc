@@ -424,19 +424,28 @@ When the browser locale is `zh_TW`, the Short Date entry displays as `*2001/3/14
 To create a custom number format, you can start based on one of the built-in
 number formats and customize on top of it.
 
-A number format can have up to 2 sections, separated by semicolons.
-These symbol sections define the format for positive numbers (including
-zero) and negative numbers respectively.
+A number format can have up to 4 sections, separated by semicolons. These symbol sections define the format for positive numbers, negative numbers, zeros, and text, in that order.
 
-`POSITIVE;NEGATIVE`
+`POSITIVE;NEGATIVE;ZERO;TEXT`
 
 For example, you can create the following custom format:
 
-`[Blue]#,##0.00_);[Red](#,##0.00)`
+`[Blue]#,##0.00_);[Red](#,##0.00);0.00;"sales "@`
 
 You do not have to include all symbol sections in your custom number
 format. If you specify only one code section, it will be applied to all
-numbers.
+numbers. If you specify two sections, the first is used for positive numbers and zeros, and the second for negative numbers.
+
+## Hidden Number Format
+{% include version-badge.html version='6.3.0' %}
+
+To hide all content in a cell (including numbers, dates, and text), use three semicolons (`;;;`) as the custom number format.
+
+*   The cell content will be invisible in the sheet view.
+*   The underlying data remains intact and is still visible in the formula bar or when editing the cell.
+*   The data can still be referenced by formulas.
+
+This is useful for keeping sensitive data or calculation intermediates hidden from the user interface while preserving them for processing.
 
 ## Including Text in custom Number format
 
