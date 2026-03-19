@@ -406,6 +406,19 @@ title: 'Supported Data Format'
 </tbody>
 </table>
 
+## Locale-Aware Date and Time Formats
+{% include version-badge.html version='6.3.0' %}
+
+The items marked with `*` in the **Format Cells** dialog — **Short Date**, **Long Date**, and **Time** — are locale-aware. Their format patterns and preview labels are dynamically determined by the user's browser language settings, consistent with Excel's behavior.
+
+For example, when the browser locale is Japanese, the Date entry displays Japanese regional formats.
+
+![]({{site.devref_image_folder}}/format-dialog-jp.png)
+
+When the browser locale is `zh_TW`, the Short Date entry displays as `*2001/3/14` instead of `*3/14/2001`.
+
+> **Note:** The `*`-marked entries in the table above reflect the **en_US** locale. The actual pattern and preview will vary based on the user's browser locale.
+
 # Syntax for Custom Number Format
 
 To create a custom number format, you can start based on one of the built-in

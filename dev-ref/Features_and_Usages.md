@@ -350,6 +350,11 @@ The Format Cell option is in the context menu. It provides 10 different categori
 
 ![ center]({{site.devref_image_folder}}/essentials-feature-formatCell.png)
 
+## Locale-Aware Date and Time Formats
+{% include version-badge.html version='6.3.0' %}
+The items marked with `*` in the **Format Cells** dialog are locale-aware. Their format patterns and preview labels are dynamically determined by the browser language settings. Please see [Locale-Aware Date and Time Formats](/dev-ref/Supported_Data_Format#locale-aware-date-and-time-formats).
+
+
 # Sheet Protection
 
 If you enable "Protect Sheet" against a sheet in Excel, Keikai will
