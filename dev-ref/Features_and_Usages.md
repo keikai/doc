@@ -241,6 +241,15 @@ Under different locale, keikai supports different input patter, see [how Keikai/
 * `m/d/yyyy h:mm` 
 
 
+## Smart Percentage Scaling
+When a cell is already formatted as **Percentage**, Keikai applies "Smart Percentage Scaling" to numeric inputs to maintain consistency with Excel's behavior. This logic follows a **1.0 Threshold**:
+
+* **Input ≥ 1.0**: The value is treated as the percentage itself. For example, entering `1` results in `1%`.
+* **Input < 1.0**: The value is treated as a decimal fraction and is multiplied by 100. For example, entering `.1` results in `10%`.
+
+This behavior ensures that both fractional and whole-number percentage inputs are handled intuitively. Keikai also supports signed decimal inputs such as `-.15` (which becomes `-15%`) or `.15`.
+
+
 # Date Format
 
 Some date formats in Keikai are **regional** (starting with an **asterisk,
