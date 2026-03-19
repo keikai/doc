@@ -49,3 +49,6 @@ defaults:
 # base path of developer reference
 devref: "/dev-ref"
 devref_image_folder: "/assets/images/dev-ref"
+exclude:
+  - CLAUDE.md
+  - README.md
