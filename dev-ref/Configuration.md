@@ -77,6 +77,22 @@ You can add more fonts in font family drop-down of the toolbar by the property:
 Keikai will appends the specified fonts in the drop-down list.
 
 
+# Close Dropdown List on Scroll
+{% include version-badge.html version='6.3.0' %}
+
+Default: **false**
+{% include property-scope.html page=false%}
+
+Set the property to `true` to close a dropdown list when scrolling.
+
+```xml
+<library-property>
+    <name>io.keikai.ui.Spreadsheet.closeDropdownOnScroll</name>
+    <value>true</value>
+</library-property>
+```
+
+
 # Show a Blank Cell as a Gap or Zero
 {% include version-badge.html version='5.3.0' %}
 
