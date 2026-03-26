@@ -156,7 +156,7 @@ Check [Microsoft Excel function list](https://support.microsoft.com/en-us/office
 
 * `CELL`: supported {% include version-badge.html version='6.0.0' %}
 
-# Logical (7)
+# Logical (8)
 
 | Function | OSE | EE |
 |----------|-----|----|
@@ -164,9 +164,12 @@ Check [Microsoft Excel function list](https://support.microsoft.com/en-us/office
 | FALSE    |  Y  |  Y |
 | IF       |  Y  |  Y |
 | IFERROR  |     |  Y |
+| LET*     |     |  Y |
 | NOT      |  Y  |  Y |
 | OR       |  Y  |  Y |
 | TRUE     |  Y  |  Y |
+
+* `LET`: supported {% include version-badge.html version='6.3.0' %}
 
 
 # Lookup & Reference (20)
