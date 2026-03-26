@@ -102,7 +102,7 @@ Check [Microsoft Excel function list](https://support.microsoft.com/en-us/office
 * `BITAND`, `BITLSHIFT`, `BITOR`, `BITRSHIFT`, `BITXOR`, `CONVERT`, `ERF.PRECISE`, `ERFC.PRECISE`, `IMCOSH`, `IMCOT`, `IMCSC`, `IMCSCH`, `IMSEC`, `IMSECH`, `IMSINH`, `IMTAN`: supported {% include version-badge.html version='6.3.0' %}
 
 
-# Financial (54)
+# Financial (55)
 
 | Function   | OSE | EE |
 |------------|----|----|
@@ -155,6 +155,7 @@ Check [Microsoft Excel function list](https://support.microsoft.com/en-us/office
 | TBILLEQ    |    |  Y |
 | TBILLPRICE |    |  Y |
 | TBILLYIELD |    |  Y |
+| VDB        |    |  Y |
 | XIRR*      |    |  Y |
 | XNPV       |    |  Y |
 | YIELD      |    |  Y |
@@ -164,16 +165,18 @@ Check [Microsoft Excel function list](https://support.microsoft.com/en-us/office
 * `MIRR`: supported {% include version-badge.html version='6.0.0' %}
 * `ISPMT`, `MDURATION`, `ODDFPRICE`, `ODDFYIELD`, `ODDLPRICE`, `ODDLYIELD`, `PDURATION`, `RRI`, `XIRR`: supported {% include version-badge.html version='6.3.0' %}
 
-# Information (17)
+# Information (20)
 
 | Function   | OSE | EE |
 |------------|----|----|
 | CELL*      |    |  Y |
 | ERROR.TYPE |  Y |  Y |
+| FORMULATEXT|    |  Y |
 | ISBLANK    |  Y |  Y |
 | ISERR      |    |  Y |
 | ISERROR    |  Y |  Y |
 | ISEVEN     |  Y |  Y |
+| ISFORMULA  |    |  Y |
 | ISLOGICAL  |  Y |  Y |
 | ISNA       |  Y |  Y |
 | ISNONTEXT  |  Y |  Y |
@@ -181,6 +184,7 @@ Check [Microsoft Excel function list](https://support.microsoft.com/en-us/office
 | ISODD      |  Y |  Y |
 | ISREF      |  Y |  Y |
 | ISTEXT     |  Y |  Y |
+| SHEET      |    |  Y |
 | SHEETS*    |    |  Y |
 | N          |    |  Y |
 | NA         |  Y |  Y |
@@ -189,7 +193,7 @@ Check [Microsoft Excel function list](https://support.microsoft.com/en-us/office
 * `CELL`: supported {% include version-badge.html version='6.0.0' %}
 * `SHEETS`: supported {% include version-badge.html version='6.3.0' %}
 
-# Logical (8)
+# Logical (9)
 
 | Function | OSE | EE |
 |----------|-----|----|
@@ -208,7 +212,7 @@ Check [Microsoft Excel function list](https://support.microsoft.com/en-us/office
 * `LET`: supported {% include version-badge.html version='6.3.0' %}
 
 
-# Lookup & Reference (20)
+# Lookup & Reference (23)
 
 | Function  | OSE | EE |
 |-----------|-----|----|
@@ -228,7 +232,10 @@ Check [Microsoft Excel function list](https://support.microsoft.com/en-us/office
 | OFFSET    | Y   |  Y |
 | ROW       | Y   |  Y |
 | ROWS      | Y   |  Y |
+| SINGLE    |     |  Y |
 | SWITCH*   |     |  Y |
+| TRANSPOSE |     |  Y |
+| UNIQUE    |     |  Y |
 | VLOOKUP   | Y   |  Y |
 | XLOOKUP*  |     |  Y |
 | XMATCH*   |     |  Y |
@@ -341,7 +348,7 @@ Regarding the 1st argument, *"1-11 includes manually-hidden rows, while 101-111 
 
 
 
-# Statistical (113)
+# Statistical (144)
 
 | Function         | New Name since Excel 2010 | OSE | EE |
 |------------------|---------------------------|---|----|
@@ -349,19 +356,20 @@ Regarding the 1st argument, *"1-11 includes manually-hidden rows, while 101-111 
 | AVERAGE          |                           | Y | Y  |
 | AVERAGEA         |                           |   | Y  |
 | AVERAGEIF        |                           |   | Y  |
+| AVERAGEIFS       |                           |   | Y  |
 | BETADIST         | BETA.DIST                 |   | Y  |
 | BETAINV          | BETA.INV                  |   | Y  |
 | BINOMDIST        | BINOM.DIST                |   | Y  |
 | BINOM.DIST.RANGE* |                          |   | Y  |
 | CORREL           |                           |   | Y  |
-| CONFIDENCE.NORM*  |                          |   | Y  |
+| CONFIDENCE       | CONFIDENCE.NORM*          |   | Y  |
 | CONFIDENCE.T*     |                          |   | Y  |
 | CRITBINOM        | BINOM.INV                 |   | Y  |
 | CHIDIST          | CHISQ.DIST.RT             |   | Y  |
 | CHIINV           | CHISQ.INV.RT              |   | Y  |
 |                  | CHISQ.DIST                |   | Y  |
 |                  | CHISQ.INV                 |   | Y  |
-| CHISQ.TEST*       |                          |   | Y  |
+| CHITEST          | CHISQ.TEST*               |   | Y  |
 | COUNT            |                           | Y | Y  |
 | COUNTA           |                           | Y | Y  |
 | COUNTBLANK       |                           | Y | Y  |
@@ -374,7 +382,7 @@ Regarding the 1st argument, *"1-11 includes manually-hidden rows, while 101-111 
 | EXPONDIST        | EXPON.DIST                |   | Y  |
 | F.DIST*           |                          |   | Y  |
 | F.INV*            |                          |   | Y  |
-| F.TEST*           |                          |   | Y  |
+| FTEST            | F.TEST*                   |   | Y  |
 | FISHER*           |                          |   | Y  |
 | FISHERINV*        |                          |   | Y  |
 | FDIST            | F.DIST.RT                 |   | Y  |
@@ -406,6 +414,7 @@ Regarding the 1st argument, *"1-11 includes manually-hidden rows, while 101-111 
 | NORMSDIST        | NORM.S.DIST               |   | Y  |
 | NORMSINV         | NORM.S.INV                |   | Y  |
 | LINEST*          |                           |   | Y  |
+| LOGEST           |                           |   | Y  |
 | LOGNORMDIST      | LOGNORM.DIST              |   | Y  |
 | LOGINV           | LOGNORM.INV               | Y | Y  |
 | MAXIFS*          |                           |   | Y  |
@@ -420,8 +429,11 @@ Regarding the 1st argument, *"1-11 includes manually-hidden rows, while 101-111 
 | PERCENTRANK.EXC* |                           |   | Y  |
 | PERCENTRANK.INC* |                           |   | Y  |
 | POISSON          | POISSON.DIST              | Y | Y  |
+|                  | POISSON.INV               |   | Y  |
+| PERCENTILE.EXC   |                           |   | Y  |
+| PERCENTILE.INC   |                           |   | Y  |
 | QUARTILE.EXC*     |                          |   | Y  |
-| QUARTILE.INC*     |                          |   | Y  |
+| QUARTILE         | QUARTILE.INC*             |   | Y  |
 | RANK             | RANK.EQ                   | Y | Y  |
 | RANK.AVG*         |                          |   | Y  |
 | RSQ*              |                          |   | Y  |
@@ -430,11 +442,9 @@ Regarding the 1st argument, *"1-11 includes manually-hidden rows, while 101-111 
 | SLOPE            |                           |   | Y  |
 | SMALL            |                           | Y | Y  |
 | STANDARDIZE*     |                           |   | Y  |
-| STDEV            | STDE.V                    | Y | Y  |
-| STDEV.P*         |                           |   | Y  |
-| STDEV.S*         |                           |   | Y  |
+| STDEV            | STDEV.S*                  | Y | Y  |
 | STDEVA*          |                           |   | Y  |
-| STDEVP*          |                           |   | Y  |
+| STDEVP           | STDEV.P*                  |   | Y  |
 | STDEVPA*         |                           |   | Y  |
 | STEYX*            |                          |   | Y  |
 | T.DIST*          |                           |   | Y  |
@@ -442,7 +452,7 @@ Regarding the 1st argument, *"1-11 includes manually-hidden rows, while 101-111 
 | T.INV*            |                          |   | Y  |
 | TDIST            | T.DIST.RT                 |   | Y  |
 | TINV             | T.INV.2T                  |   | Y  |
-| T.TEST*           |                          |   | Y  |
+| TTEST            | T.TEST*                   |   | Y  |
 | TREND*           |                           |   | Y  |
 | TRIMMEAN*         |                          |   | Y  |
 | VAR              | VAR.S                     | Y | Y  |
@@ -450,24 +460,27 @@ Regarding the 1st argument, *"1-11 includes manually-hidden rows, while 101-111 
 | VARP             | VAR.P                     | Y | Y  |
 | VARPA*           |                           |   | Y  |
 | WEIBULL          | WEIBULL.DIST              |   | Y  |
-| Z.TEST*           |                          |   | Y  |
+| ZTEST            | Z.TEST*                   |   | Y  |
 
 * Note: Keikai supports both function names [listed here](https://support.office.com/en-us/article/What-s-New-Changes-made-to-Excel-functions-355d08c8-8358-4ecb-b6eb-e2e443e98aac?ui=en-US&rs=en-US&ad=US&fromAR=1#bm2).
 * `COUNTIFS` is available {% include version-badge.html version='5.12.0' %}
 * `COVAR`, `FORECAST`, `FREQUENCY`, `INTERCEPT`, `LINEST`, `MAXIFS`, `MINIFS`, `PEARSON`, `PERCENTILE`, `PERCENTRANK`, `PERCENTRANK.EXC`, `PERCENTRANK.INC`, `STANDARDIZE`, `STDEV.P`, `STDEV.S`, `STDEVA`, `STDEVP`, `STDEVPA`, `T.DIST`, `TREND`, `VARA`, `VARPA`: supported {% include version-badge.html version='6.0.0' %}
 * `BINOM.DIST.RANGE`, `CHISQ.TEST`, `CONFIDENCE.NORM`, `CONFIDENCE.T`, `COVARIANCE.P`, `COVARIANCE.S`, `F.DIST`, `F.INV`, `F.TEST`, `FISHER`, `FISHERINV`, `FORECAST.LINEAR`, `GAMMA`, `GAMMALN.PRECISE`, `GAUSS`, `PERMUT`, `PERMUTATIONA`, `PHI`, `PROB`, `QUARTILE.EXC`, `QUARTILE.INC`, `RANK.AVG`, `RSQ`, `SKEW.P`, `STEYX`, `T.INV`, `T.TEST`, `TRIMMEAN`, `Z.TEST`: supported {% include version-badge.html version='6.3.0' %}
+* Note: The count (144) reflects the total number of unique function names, including both the old and new (since Excel 2010) synonyms listed in the first two columns.
 
-
-# Text (35)
+# Text (38)
 
 | Function    | OSE | EE |
 |-------------|-----|----|
 | ARRAYTOTEXT*|     |  Y |
+| ASC         |     |  Y |
+| BAHTTEXT    |     |  Y |
 | CHAR        |  Y  |  Y |
 | CLEAN       |  Y  |  Y |
 | CODE        |     |  Y |
 | CONCAT*     |     |  Y |
 | CONCATENATE |  Y  |  Y |
+| DBCS        |     |  Y |
 | DOLLAR      |  Y  |  Y |
 | ENCODEURL*  |     |  Y |
 | EXACT       |  Y  |  Y |
@@ -502,7 +515,7 @@ Regarding the 1st argument, *"1-11 includes manually-hidden rows, while 101-111 
 * `ARRAYTOTEXT`, `ENCODEURL`, `REGEXEXTRACT`, `REGEXREPLACE`, `REGEXTEST`, `TEXTAFTER`, `TEXTBEFORE`, `UNICHAR`, `UNICODE`, `VALUETOTEXT`: supported {% include version-badge.html version='6.3.0' %}
 
 
-# Database (11)
+# Database (12)
 {% include version-badge.html version='6.0.0' %}
 
 | Function |
@@ -515,6 +528,7 @@ Regarding the 1st argument, *"1-11 includes manually-hidden rows, while 101-111 
 | DMIN     |
 | DPRODUCT |
 | DSTDEV   |
+| DSTDEVP  |
 | DSUM     |
 | DVAR     |
 | DVARP    |
