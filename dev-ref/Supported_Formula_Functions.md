@@ -8,37 +8,33 @@ Check [Microsoft Excel function list](https://support.microsoft.com/en-us/office
 
 # Date & Time (25)
 
-| Function      | OSE | EE |
-|---------------|-----|----|
-| DATE          | Y   |  Y |
-| DATEDIF*      |     |  Y |
+| Function                                      | OSE | EE |
+|-----------------------------------------------|-----|----|
+| DATE                                          | Y   |  Y |
+| DATEDIF<sup>5.8</sup>      |     |  Y |
 | DATEVALUE     |     |  Y |
 | DAY           | Y   |  Y |
-| DAYS*         |     |  Y |
+| DAYS<sup>6.0</sup>         |     |  Y |
 | DAYS360       | Y   |  Y |
-| EDATE*        |     |  Y |
+| EDATE<sup>6.0</sup>        |     |  Y |
 | EOMONTH       |     |  Y |
 | HOUR          | Y   |  Y |
-| ISOWEEKNUM*   |     |  Y |
+| ISOWEEKNUM<sup>6.3</sup>   |     |  Y |
 | MINUTE        | Y   |  Y |
 | MONTH         | Y   |  Y |
 | NETWORKDAYS   | Y   |  Y |
-| NETWORKDAYS.INTL* | |  Y |
+| NETWORKDAYS.INTL<sup>6.3</sup> | |  Y |
 | NOW           | Y   |  Y |
 | SECOND        | Y   |  Y |
 | TIME          | Y   |  Y |
-| TIMEVALUE*    |     |  Y |
+| TIMEVALUE<sup>6.0</sup>    |     |  Y |
 | TODAY         | Y   |  Y |
 | WEEKDAY       | Y   |  Y |
-| WEEKNUM*      |     |  Y |
+| WEEKNUM<sup>6.0</sup>      |     |  Y |
 | WORKDAY       | Y   |  Y |
-| WORKDAY.INTL* |     |  Y |
+| WORKDAY.INTL<sup>6.0</sup> |     |  Y |
 | YEAR          | Y   |  Y |
 | YEARFRAC      | Y   |  Y |
-
-* `DATEDIF`: supported {% include version-badge.html version='5.8.0' %}
-* `DAYS`, `EDATE`, `TIMEVALUE`, `WEEKNUM`, `WORKDAY.INTL`: supported {% include version-badge.html version='6.0.0' %}
-* `ISOWEEKNUM`, `NETWORKDAYS.INTL`: supported {% include version-badge.html version='6.3.0' %}
 
 # Engineering (54)
 
@@ -48,24 +44,24 @@ Check [Microsoft Excel function list](https://support.microsoft.com/en-us/office
 | BESSELJ   |     |  Y |
 | BESSELK   |     |  Y |
 | BESSELY   |     |  Y |
-| BITAND*    |     |  Y |
-| BITLSHIFT* |     |  Y |
-| BITOR*     |     |  Y |
-| BITRSHIFT* |     |  Y |
-| BITXOR*    |     |  Y |
+| BITAND<sup>6.3</sup>    |     |  Y |
+| BITLSHIFT<sup>6.3</sup> |     |  Y |
+| BITOR<sup>6.3</sup>     |     |  Y |
+| BITRSHIFT<sup>6.3</sup> |     |  Y |
+| BITXOR<sup>6.3</sup>    |     |  Y |
 | BIN2DEC   |     |  Y |
 | BIN2HEX   |     |  Y |
 | BIN2OCT   |     |  Y |
 | COMPLEX   |     |  Y |
-| CONVERT*   |     |  Y |
+| CONVERT<sup>6.3</sup>   |     |  Y |
 | DEC2BIN   |     |  Y |
 | DEC2HEX   |     |  Y |
 | DEC2OCT   |     |  Y |
 | DELTA     |     |  Y |
 | ERF       |     |  Y |
-| ERF.PRECISE* |  |  Y |
+| ERF.PRECISE<sup>6.3</sup> |  |  Y |
 | ERFC      |     |  Y |
-| ERFC.PRECISE* | |  Y |
+| ERFC.PRECISE<sup>6.3</sup> | |  Y |
 | GESTEP    |     |  Y |
 | HEX2BIN   |     |  Y |
 | HEX2DEC   |     |  Y |
@@ -75,10 +71,10 @@ Check [Microsoft Excel function list](https://support.microsoft.com/en-us/office
 | IMARGUMENT|     |  Y |
 | IMCONJUGATE|    |  Y |
 | IMCOS     |     |  Y |
-| IMCOSH*    |     |  Y |
-| IMCOT*     |     |  Y |
-| IMCSC*     |     |  Y |
-| IMCSCH*    |     |  Y |
+| IMCOSH<sup>6.3</sup>    |     |  Y |
+| IMCOT<sup>6.3</sup>     |     |  Y |
+| IMCSC<sup>6.3</sup>     |     |  Y |
+| IMCSCH<sup>6.3</sup>    |     |  Y |
 | IMDIV     |     |  Y |
 | IMEXP     |     |  Y |
 | IMLN      |     |  Y |
@@ -87,20 +83,17 @@ Check [Microsoft Excel function list](https://support.microsoft.com/en-us/office
 | IMPOWER   |     |  Y |
 | IMPRODUCT |     |  Y |
 | IMREAL    |     |  Y |
-| IMSEC*     |     |  Y |
-| IMSECH*    |     |  Y |
+| IMSEC<sup>6.3</sup>     |     |  Y |
+| IMSECH<sup>6.3</sup>    |     |  Y |
 | IMSIN     |     |  Y |
-| IMSINH*    |     |  Y |
+| IMSINH<sup>6.3</sup>    |     |  Y |
 | IMSQRT    |     |  Y |
 | IMSUB     |     |  Y |
-| IMTAN*     |     |  Y |
+| IMTAN<sup>6.3</sup>     |     |  Y |
 | IMSUM     |     |  Y |
 | OCT2BIN   |     |  Y |
 | OCT2DEC   |     |  Y |
 | OCT2HEX   |     |  Y |
-
-* `BITAND`, `BITLSHIFT`, `BITOR`, `BITRSHIFT`, `BITXOR`, `CONVERT`, `ERF.PRECISE`, `ERFC.PRECISE`, `IMCOSH`, `IMCOT`, `IMCSC`, `IMCSCH`, `IMSEC`, `IMSECH`, `IMSINH`, `IMTAN`: supported {% include version-badge.html version='6.3.0' %}
-
 
 # Financial (55)
 
@@ -128,19 +121,19 @@ Check [Microsoft Excel function list](https://support.microsoft.com/en-us/office
 | FV         |  Y |  Y |
 | FVSCHEDULE |    |  Y |
 | INTRATE    |    |  Y |
-| ISPMT*     |    |  Y |
+| ISPMT<sup>6.3</sup>     |    |  Y |
 | IPMT       |    |  Y |
 | IRR        |  Y |  Y |
-| MDURATION* |    |  Y |
-| MIRR*      |    |  Y |
+| MDURATION<sup>6.3</sup> |    |  Y |
+| MIRR<sup>6.0</sup>      |    |  Y |
 | NOMINAL    |    |  Y |
-| ODDFPRICE* |    |  Y |
-| ODDFYIELD* |    |  Y |
-| ODDLPRICE* |    |  Y |
-| ODDLYIELD* |    |  Y |
+| ODDFPRICE<sup>6.3</sup> |    |  Y |
+| ODDFYIELD<sup>6.3</sup> |    |  Y |
+| ODDLPRICE<sup>6.3</sup> |    |  Y |
+| ODDLYIELD<sup>6.3</sup> |    |  Y |
 | NPER       |  Y |  Y |
 | NPV        |  Y |  Y |
-| PDURATION* |    |  Y |
+| PDURATION<sup>6.3</sup> |    |  Y |
 | PMT        |  Y |  Y |
 | PPMT       |    |  Y |
 | PRICE      |    |  Y |
@@ -149,27 +142,24 @@ Check [Microsoft Excel function list](https://support.microsoft.com/en-us/office
 | PV         |  Y |  Y |
 | RATE       |  Y |  Y |
 | RECEIVED   |    |  Y |
-| RRI*       |    |  Y |
+| RRI<sup>6.3</sup>       |    |  Y |
 | SLN        |    |  Y |
 | SYD        |    |  Y |
 | TBILLEQ    |    |  Y |
 | TBILLPRICE |    |  Y |
 | TBILLYIELD |    |  Y |
 | VDB        |    |  Y |
-| XIRR*      |    |  Y |
+| XIRR<sup>6.3</sup>      |    |  Y |
 | XNPV       |    |  Y |
 | YIELD      |    |  Y |
 | YIELDDISC  |    |  Y |
 | YIELDMAT   |    |  Y |
 
-* `MIRR`: supported {% include version-badge.html version='6.0.0' %}
-* `ISPMT`, `MDURATION`, `ODDFPRICE`, `ODDFYIELD`, `ODDLPRICE`, `ODDLYIELD`, `PDURATION`, `RRI`, `XIRR`: supported {% include version-badge.html version='6.3.0' %}
-
 # Information (20)
 
 | Function   | OSE | EE |
 |------------|----|----|
-| CELL*      |    |  Y |
+| CELL<sup>6.0</sup>      |    |  Y |
 | ERROR.TYPE |  Y |  Y |
 | FORMULATEXT|    |  Y |
 | ISBLANK    |  Y |  Y |
@@ -185,13 +175,10 @@ Check [Microsoft Excel function list](https://support.microsoft.com/en-us/office
 | ISREF      |  Y |  Y |
 | ISTEXT     |  Y |  Y |
 | SHEET      |    |  Y |
-| SHEETS*    |    |  Y |
+| SHEETS<sup>6.3</sup>    |    |  Y |
 | N          |    |  Y |
 | NA         |  Y |  Y |
 | TYPE       |    |  Y |
-
-* `CELL`: supported {% include version-badge.html version='6.0.0' %}
-* `SHEETS`: supported {% include version-badge.html version='6.3.0' %}
 
 # Logical (9)
 
@@ -201,30 +188,25 @@ Check [Microsoft Excel function list](https://support.microsoft.com/en-us/office
 | FALSE    |  Y  |  Y |
 | IF       |  Y  |  Y |
 | IFERROR  |     |  Y |
-| LET*     |     |  Y |
+| LET<sup>6.3</sup>      |     |  Y |
 | NOT      |  Y  |  Y |
 | OR       |  Y  |  Y |
 | TRUE     |  Y  |  Y |
-| XOR*     |     |  Y |
-
-* `XOR`: supported {% include version-badge.html version='6.3.0' %}
-
-* `LET`: supported {% include version-badge.html version='6.3.0' %}
-
+| XOR<sup>6.3</sup>      |     |  Y |
 
 # Lookup & Reference (23)
 
 | Function  | OSE | EE |
 |-----------|-----|----|
-| AREAS*    |     |  Y |
+| AREAS<sup>6.0</sup>     |     |  Y |
 | ADDRESS   | Y   |  Y |
 | CHOOSE    | Y   |  Y |
 | COLUMN    | Y   |  Y |
 | COLUMNS   | Y   |  Y |
 | HLOOKUP   | Y   |  Y |
 | HYPERLINK | Y   |  Y |
-| IFNA*     |     |  Y |
-| IFS*      |     |  Y |
+| IFNA<sup>6.0</sup>      |     |  Y |
+| IFS<sup>6.0</sup>       |     |  Y |
 | INDEX     | Y   |  Y |
 | INDIRECT  | Y   |  Y |
 | LOOKUP    | Y   |  Y |
@@ -233,14 +215,12 @@ Check [Microsoft Excel function list](https://support.microsoft.com/en-us/office
 | ROW       | Y   |  Y |
 | ROWS      | Y   |  Y |
 | SINGLE    |     |  Y |
-| SWITCH*   |     |  Y |
+| SWITCH<sup>6.0</sup>    |     |  Y |
 | TRANSPOSE |     |  Y |
 | UNIQUE    |     |  Y |
 | VLOOKUP   | Y   |  Y |
-| XLOOKUP*  |     |  Y |
-| XMATCH*   |     |  Y |
-
-* `AREAS`, `IFNA`, `IFS`, `SWITCH`, `XLOOKUP`, `XMATCH`: supported {% include version-badge.html version='6.0.0' %}
+| XLOOKUP<sup>6.0</sup>   |     |  Y |
+| XMATCH<sup>6.0</sup>    |     |  Y |
 
 # Mathematical (79)
 
@@ -254,34 +234,34 @@ Check [Microsoft Excel function list](https://support.microsoft.com/en-us/office
 | ATAN             | Y   |  Y |
 | ATAN2            | Y   |  Y |
 | ATANH            | Y   |  Y |
-| ACOT*            |     |  Y |
-| ACOTH*           |     |  Y |
-| AGGREGATE*       |     |  Y |
-| ARABIC*          |     |  Y |
-| BASE*            |     |  Y |
+| ACOT<sup>6.3</sup>      |     |  Y |
+| ACOTH<sup>6.3</sup>     |     |  Y |
+| AGGREGATE<sup>6.3</sup> |     |  Y |
+| ARABIC<sup>6.3</sup>    |     |  Y |
+| BASE<sup>6.3</sup>      |     |  Y |
 | CEILING          | Y   |  Y |
-| CEILING.MATH*    |     |  Y |
-| CEILING.PRECISE* |     |  Y |
+| CEILING.MATH<sup>6.0</sup>    |     |  Y |
+| CEILING.PRECISE<sup>6.0</sup> |     |  Y |
 | COMBIN           | Y   |  Y |
-| COMBINA*         |     |  Y |
+| COMBINA<sup>6.3</sup>   |     |  Y |
 | COS              | Y   |  Y |
 | COSH             | Y   |  Y |
-| COT*             |     |  Y |
-| COTH*            |     |  Y |
-| CSC*             |     |  Y |
-| CSCH*            |     |  Y |
+| COT<sup>6.3</sup>       |     |  Y |
+| COTH<sup>6.3</sup>      |     |  Y |
+| CSC<sup>6.3</sup>       |     |  Y |
+| CSCH<sup>6.3</sup>      |     |  Y |
 | DEGREES          | Y   |  Y |
-| DECIMAL*         |     |  Y |
+| DECIMAL<sup>6.3</sup>   |     |  Y |
 | EVEN             | Y   |  Y |
 | EXP              | Y   |  Y |
 | FACT             | Y   |  Y |
 | FACTDOUBLE       |     |  Y |
 | FLOOR            | Y   |  Y |
-| FLOOR.MATH*      |     |  Y |
-| FLOOR.PRECISE*   |     |  Y |
+| FLOOR.MATH<sup>6.0</sup>      |     |  Y |
+| FLOOR.PRECISE<sup>6.0</sup>   |     |  Y |
 | GCD              |     |  Y |
 | INT              | Y   |  Y |
-| ISO.CEILING*     |     |  Y |
+| ISO.CEILING<sup>6.3</sup>     |     |  Y |
 | LCM              |     |  Y |
 | LN               | Y   |  Y |
 | LOG              | Y   |  Y |
@@ -292,7 +272,7 @@ Check [Microsoft Excel function list](https://support.microsoft.com/en-us/office
 | MOD              | Y   |  Y |
 | MROUND           |     |  Y |
 | MULTINOMIAL      |     |  Y |
-| NUMBERVALUE*     |     |  Y |
+| NUMBERVALUE<sup>6.0</sup>     |     |  Y |
 | ODD              | Y   |  Y |
 | PI               | Y   |  Y |
 | POWER            | Y   |  Y |
@@ -305,9 +285,9 @@ Check [Microsoft Excel function list](https://support.microsoft.com/en-us/office
 | ROUND            | Y   |  Y |
 | ROUNDDOWN        | Y   |  Y |
 | ROUNDUP          | Y   |  Y |
-| SEC*             |     |  Y |
-| SECH*            |     |  Y |
-| SERIESSUM*       |     |  Y |
+| SEC<sup>6.3</sup>       |     |  Y |
+| SECH<sup>6.3</sup>      |     |  Y |
+| SERIESSUM<sup>6.3</sup> |     |  Y |
 | SIGN             | Y   |  Y |
 | SIN              | Y   |  Y |
 | SINH             | Y   |  Y |
@@ -326,9 +306,6 @@ Check [Microsoft Excel function list](https://support.microsoft.com/en-us/office
 | TANH             | Y   |  Y |
 | TRUNC            | Y   |  Y |
 
-* `CEILING.MATH`, `CEILING.PRECISE`, `FLOOR.MATH`, `FLOOR.PRECISE`, `NUMBERVALUE` : supported {% include version-badge.html version='6.0.0' %}
-* `ACOT`, `ACOTH`, `AGGREGATE`, `ARABIC`, `BASE`, `COMBINA`, `COT`, `COTH`, `CSC`, `CSCH`, `DECIMAL`, `ISO.CEILING`, `SEC`, `SECH`, `SERIESSUM`: supported {% include version-badge.html version='6.3.0' %}
-
 ## SUMPRODUCT
 
 You can specify a condition to just calculate partial cells in a given range. For example,
@@ -346,8 +323,6 @@ Regarding the 1st argument, *"1-11 includes manually-hidden rows, while 101-111 
 * If you **enable** the auto filter in a sheet, Keikai treats all hidden rows as **filtered-out cells**. 
 * If you **don't enable the auto filter**, Keikai treats all hidden rows as **manually-hidden rows**. 
 
-
-
 # Statistical (144)
 
 | Function         | New Name since Excel 2010 | OSE | EE |
@@ -360,46 +335,46 @@ Regarding the 1st argument, *"1-11 includes manually-hidden rows, while 101-111 
 | BETADIST         | BETA.DIST                 |   | Y  |
 | BETAINV          | BETA.INV                  |   | Y  |
 | BINOMDIST        | BINOM.DIST                |   | Y  |
-| BINOM.DIST.RANGE* |                          |   | Y  |
+| BINOM.DIST.RANGE<sup>6.3</sup> |                          |   | Y  |
 | CORREL           |                           |   | Y  |
-| CONFIDENCE       | CONFIDENCE.NORM*          |   | Y  |
-| CONFIDENCE.T*     |                          |   | Y  |
+| CONFIDENCE       | CONFIDENCE.NORM<sup>6.3</sup>          |   | Y  |
+| CONFIDENCE.T<sup>6.3</sup>     |                          |   | Y  |
 | CRITBINOM        | BINOM.INV                 |   | Y  |
 | CHIDIST          | CHISQ.DIST.RT             |   | Y  |
 | CHIINV           | CHISQ.INV.RT              |   | Y  |
 |                  | CHISQ.DIST                |   | Y  |
 |                  | CHISQ.INV                 |   | Y  |
-| CHITEST          | CHISQ.TEST*               |   | Y  |
+| CHITEST          | CHISQ.TEST<sup>6.3</sup>               |   | Y  |
 | COUNT            |                           | Y | Y  |
 | COUNTA           |                           | Y | Y  |
 | COUNTBLANK       |                           | Y | Y  |
 | COUNTIF          |                           | Y | Y  |
-| COUNTIFS         |                           |   | Y  |
-| COVAR*           |                           |   | Y  |
-| COVARIANCE.P*     |                          |   | Y  |
-| COVARIANCE.S*     |                          |   | Y  |
+| COUNTIFS<sup>5.12</sup>         |                           |   | Y  |
+| COVAR<sup>6.0</sup>           |                           |   | Y  |
+| COVARIANCE.P<sup>6.3</sup>     |                          |   | Y  |
+| COVARIANCE.S<sup>6.3</sup>     |                          |   | Y  |
 | DEVSQ            |                           | Y | Y  |
 | EXPONDIST        | EXPON.DIST                |   | Y  |
-| F.DIST*           |                          |   | Y  |
-| F.INV*            |                          |   | Y  |
-| FTEST            | F.TEST*                   |   | Y  |
-| FISHER*           |                          |   | Y  |
-| FISHERINV*        |                          |   | Y  |
+| F.DIST<sup>6.3</sup>           |                          |   | Y  |
+| F.INV<sup>6.3</sup>            |                          |   | Y  |
+| FTEST            | F.TEST<sup>6.3</sup>                   |   | Y  |
+| FISHER<sup>6.3</sup>           |                          |   | Y  |
+| FISHERINV<sup>6.3</sup>        |                          |   | Y  |
 | FDIST            | F.DIST.RT                 |   | Y  |
 | FINV             | F.INV.RT                  |   | Y  |
-| FORECAST*        |                           |   | Y  |
-| FORECAST.LINEAR*  |                          |   | Y  |
-| FREQUENCY*       |                           |   | Y  |
+| FORECAST<sup>6.0</sup>        |                           |   | Y  |
+| FORECAST.LINEAR<sup>6.3</sup>  |                          |   | Y  |
+| FREQUENCY<sup>6.0</sup>       |                           |   | Y  |
 | GAMMADIST        | GAMMA.DIST                |   | Y  |
 | GAMMAINV         | GAMMA.INV                 |   | Y  |
-| GAMMA*            |                          |   | Y  |
+| GAMMA<sup>6.3</sup>            |                          |   | Y  |
 | GAMMALN          |                           |   | Y  |
-| GAMMALN.PRECISE*  |                          |   | Y  |
-| GAUSS*            |                          |   | Y  |
+| GAMMALN.PRECISE<sup>6.3</sup>  |                          |   | Y  |
+| GAUSS<sup>6.3</sup>            |                          |   | Y  |
 | GEOMEAN          |                           |   | Y  |
 | HARMEAN          |                           |   | Y  |
 | HYPGEOMDIST      | HYPGEOM.DIST              |   | Y  |
-| INTERCEPT*       |                           |   | Y  |
+| INTERCEPT<sup>6.0</sup>       |                           |   | Y  |
 | KURT             |                           |   | Y  |
 | LARGE            |                           | Y | Y  |
 | MAX              |                           | Y | Y  |
@@ -413,76 +388,73 @@ Regarding the 1st argument, *"1-11 includes manually-hidden rows, while 101-111 
 | NORMINV          | NORM.INV                  |   | Y  |
 | NORMSDIST        | NORM.S.DIST               |   | Y  |
 | NORMSINV         | NORM.S.INV                |   | Y  |
-| LINEST*          |                           |   | Y  |
+| LINEST<sup>6.0</sup>          |                           |   | Y  |
 | LOGEST           |                           |   | Y  |
 | LOGNORMDIST      | LOGNORM.DIST              |   | Y  |
 | LOGINV           | LOGNORM.INV               | Y | Y  |
-| MAXIFS*          |                           |   | Y  |
-| MINIFS*          |                           |   | Y  |
-| PEARSON*         |                           |   | Y  |
-| PERMUT*           |                          |   | Y  |
-| PERMUTATIONA*     |                          |   | Y  |
-| PHI*              |                          |   | Y  |
-| PROB*             |                          |   | Y  |
-| PERCENTILE*      |                           |   | Y  |
-| PERCENTRANK*     |                           |   | Y  |
-| PERCENTRANK.EXC* |                           |   | Y  |
-| PERCENTRANK.INC* |                           |   | Y  |
+| MAXIFS<sup>6.0</sup>          |                           |   | Y  |
+| MINIFS<sup>6.0</sup>          |                           |   | Y  |
+| PEARSON<sup>6.0</sup>         |                           |   | Y  |
+| PERMUT<sup>6.3</sup>           |                          |   | Y  |
+| PERMUTATIONA<sup>6.3</sup>     |                          |   | Y  |
+| PHI<sup>6.3</sup>              |                          |   | Y  |
+| PROB<sup>6.3</sup>             |                          |   | Y  |
+| PERCENTILE<sup>6.0</sup>      |                           |   | Y  |
+| PERCENTRANK<sup>6.0</sup>     |                           |   | Y  |
+| PERCENTRANK.EXC<sup>6.0</sup> |                           |   | Y  |
+| PERCENTRANK.INC<sup>6.0</sup> |                           |   | Y  |
 | POISSON          | POISSON.DIST              | Y | Y  |
 |                  | POISSON.INV               |   | Y  |
 | PERCENTILE.EXC   |                           |   | Y  |
 | PERCENTILE.INC   |                           |   | Y  |
-| QUARTILE.EXC*     |                          |   | Y  |
-| QUARTILE         | QUARTILE.INC*             |   | Y  |
+| QUARTILE.EXC<sup>6.3</sup>     |                          |   | Y  |
+| QUARTILE         | QUARTILE.INC<sup>6.3</sup>             |   | Y  |
 | RANK             | RANK.EQ                   | Y | Y  |
-| RANK.AVG*         |                          |   | Y  |
-| RSQ*              |                          |   | Y  |
+| RANK.AVG<sup>6.3</sup>         |                          |   | Y  |
+| RSQ<sup>6.3</sup>              |                          |   | Y  |
 | SKEW             |                           |   | Y  |
-| SKEW.P*           |                          |   | Y  |
+| SKEW.P<sup>6.3</sup>           |                          |   | Y  |
 | SLOPE            |                           |   | Y  |
 | SMALL            |                           | Y | Y  |
-| STANDARDIZE*     |                           |   | Y  |
-| STDEV            | STDEV.S*                  | Y | Y  |
-| STDEVA*          |                           |   | Y  |
-| STDEVP           | STDEV.P*                  |   | Y  |
-| STDEVPA*         |                           |   | Y  |
-| STEYX*            |                          |   | Y  |
-| T.DIST*          |                           |   | Y  |
+| STANDARDIZE<sup>6.0</sup>     |                           |   | Y  |
+| STDEV            | STDEV.S<sup>6.0</sup>                  | Y | Y  |
+| STDEVA<sup>6.0</sup>          |                           |   | Y  |
+| STDEVP           | STDEV.P<sup>6.0</sup>                  |   | Y  |
+| STDEVPA<sup>6.0</sup>         |                           |   | Y  |
+| STEYX<sup>6.3</sup>            |                          |   | Y  |
+| T.DIST<sup>6.0</sup>          |                           |   | Y  |
 |                  | T.DIST.2T                 |   | Y  |
-| T.INV*            |                          |   | Y  |
+| T.INV<sup>6.3</sup>            |                          |   | Y  |
 | TDIST            | T.DIST.RT                 |   | Y  |
 | TINV             | T.INV.2T                  |   | Y  |
-| TTEST            | T.TEST*                   |   | Y  |
-| TREND*           |                           |   | Y  |
-| TRIMMEAN*         |                          |   | Y  |
+| TTEST            | T.TEST<sup>6.3</sup>                   |   | Y  |
+| TREND<sup>6.0</sup>           |                           |   | Y  |
+| TRIMMEAN<sup>6.3</sup>         |                          |   | Y  |
 | VAR              | VAR.S                     | Y | Y  |
-| VARA*            |                           |   | Y  |
+| VARA<sup>6.0</sup>            |                           |   | Y  |
 | VARP             | VAR.P                     | Y | Y  |
-| VARPA*           |                           |   | Y  |
+| VARPA<sup>6.0</sup>           |                           |   | Y  |
 | WEIBULL          | WEIBULL.DIST              |   | Y  |
-| ZTEST            | Z.TEST*                   |   | Y  |
+| ZTEST            | Z.TEST<sup>6.3</sup>                   |   | Y  |
 
 * Note: Keikai supports both function names [listed here](https://support.office.com/en-us/article/What-s-New-Changes-made-to-Excel-functions-355d08c8-8358-4ecb-b6eb-e2e443e98aac?ui=en-US&rs=en-US&ad=US&fromAR=1#bm2).
-* `COUNTIFS` is available {% include version-badge.html version='5.12.0' %}
-* `COVAR`, `FORECAST`, `FREQUENCY`, `INTERCEPT`, `LINEST`, `MAXIFS`, `MINIFS`, `PEARSON`, `PERCENTILE`, `PERCENTRANK`, `PERCENTRANK.EXC`, `PERCENTRANK.INC`, `STANDARDIZE`, `STDEV.P`, `STDEV.S`, `STDEVA`, `STDEVP`, `STDEVPA`, `T.DIST`, `TREND`, `VARA`, `VARPA`: supported {% include version-badge.html version='6.0.0' %}
-* `BINOM.DIST.RANGE`, `CHISQ.TEST`, `CONFIDENCE.NORM`, `CONFIDENCE.T`, `COVARIANCE.P`, `COVARIANCE.S`, `F.DIST`, `F.INV`, `F.TEST`, `FISHER`, `FISHERINV`, `FORECAST.LINEAR`, `GAMMA`, `GAMMALN.PRECISE`, `GAUSS`, `PERMUT`, `PERMUTATIONA`, `PHI`, `PROB`, `QUARTILE.EXC`, `QUARTILE.INC`, `RANK.AVG`, `RSQ`, `SKEW.P`, `STEYX`, `T.INV`, `T.TEST`, `TRIMMEAN`, `Z.TEST`: supported {% include version-badge.html version='6.3.0' %}
 * Note: The count (144) reflects the total number of unique function names, including both the old and new (since Excel 2010) synonyms listed in the first two columns.
 
 # Text (38)
 
 | Function    | OSE | EE |
 |-------------|-----|----|
-| ARRAYTOTEXT*|     |  Y |
+| ARRAYTOTEXT<sup>6.3</sup>|     |  Y |
 | ASC         |     |  Y |
 | BAHTTEXT    |     |  Y |
 | CHAR        |  Y  |  Y |
 | CLEAN       |  Y  |  Y |
 | CODE        |     |  Y |
-| CONCAT*     |     |  Y |
+| CONCAT<sup>6.0</sup>     |     |  Y |
 | CONCATENATE |  Y  |  Y |
 | DBCS        |     |  Y |
 | DOLLAR      |  Y  |  Y |
-| ENCODEURL*  |     |  Y |
+| ENCODEURL<sup>6.3</sup>  |     |  Y |
 | EXACT       |  Y  |  Y |
 | FIND        |  Y  |  Y |
 | FIXED       |     |  Y |
@@ -493,30 +465,27 @@ Regarding the 1st argument, *"1-11 includes manually-hidden rows, while 101-111 
 | PROPER      |     |  Y |
 | REPLACE     |  Y  |  Y |
 | REPT        |     |  Y |
-| REGEXEXTRACT* |   |  Y |
-| REGEXREPLACE* |   |  Y |
-| REGEXTEST*  |     |  Y |
+| REGEXEXTRACT<sup>6.3</sup> |   |  Y |
+| REGEXREPLACE<sup>6.3</sup> |   |  Y |
+| REGEXTEST<sup>6.3</sup>  |     |  Y |
 | RIGHT       |  Y  |  Y |
 | SEARCH      |  Y  |  Y |
 | SUBSTITUTE  |  Y  |  Y |
 | T           |  Y  |  Y |
 | TEXT        |  Y  |  Y |
-| TEXTAFTER*  |     |  Y |
-| TEXTBEFORE* |     |  Y |
-| TEXTJOIN*   |     |  Y |
+| TEXTAFTER<sup>6.3</sup>  |     |  Y |
+| TEXTBEFORE<sup>6.3</sup> |     |  Y |
+| TEXTJOIN<sup>6.0</sup>   |     |  Y |
 | TRIM        |  Y  |  Y |
 | UPPER       |  Y  |  Y |
-| UNICHAR*    |     |  Y |
-| UNICODE*    |     |  Y |
+| UNICHAR<sup>6.3</sup>    |     |  Y |
+| UNICODE<sup>6.3</sup>    |     |  Y |
 | VALUE       |  Y  |  Y |
-| VALUETOTEXT*|     |  Y |
-
-* `CONCAT`, `TEXTJOIN`: supported {% include version-badge.html version='6.0.0' %}
-* `ARRAYTOTEXT`, `ENCODEURL`, `REGEXEXTRACT`, `REGEXREPLACE`, `REGEXTEST`, `TEXTAFTER`, `TEXTBEFORE`, `UNICHAR`, `UNICODE`, `VALUETOTEXT`: supported {% include version-badge.html version='6.3.0' %}
-
+| VALUETOTEXT<sup>6.3</sup>|     |  Y |
 
 # Database (12)
 {% include version-badge.html version='6.0.0' %}
+
 
 | Function |
 |----------|
