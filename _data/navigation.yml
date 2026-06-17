@@ -148,6 +148,8 @@ dev-ref:
       url: /dev-ref/adv/Customize_Dialogs
     - title: Trace Formulas
       url: /dev-ref/adv/Trace_Formulas
+    - title: Fast Typing
+      url: /dev-ref/adv/Fast_Typing
     - title: Performance Guide
       url: /dev-ref/adv/Performance_Guide
     - title: Embed Keikai
