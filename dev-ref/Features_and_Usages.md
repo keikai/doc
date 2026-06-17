@@ -500,3 +500,17 @@ making it easier to navigate large datasets like financial reports or task lists
 With just a few clicks, you can group related rows or columns and easily expand or collapse them to show or hide details.
 
 ![]({{site.devref_image_folder}}/group-data-worksheet.png)
+
+# Macro-Enabled Workbook (VBA)
+{% include version-badge.html version='7.0.0' %}
+
+Keikai can import and export macro-enabled **xlsm** workbooks while preserving their VBA macro project.
+
+* When importing an xlsm file, Keikai keeps the VBA macro project (`xl/vbaProject.bin`) intact byte-for-byte; `Book.getType()` returns `BookType.XLSM` and `Book.getVbaProject()` returns the macro binary.
+* When exporting, the xlsx exporter automatically writes a macro-enabled workbook (with the `application/vnd.ms-excel.sheet.macroEnabled.main+xml` content type) whenever the book carries a VBA project, so the macros survive a round-trip and remain runnable in Excel.
+
+For details and code examples, see [Import a Macro-Enabled Workbook](/dev-ref/Import) and [Export to Excel](/dev-ref/book_model/Export_to_Excel).
+
+## Limitation
+1. Keikai keeps the VBA macro project as-is but does not parse, run, or edit the macro code.
+2. VBA macros are only supported for the xlsx/xlsm format; the deprecated xls (BIFF8) format cannot carry an OOXML VBA part.

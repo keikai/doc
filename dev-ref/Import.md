@@ -15,6 +15,23 @@ model, we can get it by `Spreadsheet.getBook()`.
 
 After keikai imports a xlsx file, it converts the file into a [Book](https://keikai.io/javadoc/latest/io/keikai/api/model/Book.html) object. Hence, a end-user's edit changes the `Book` object instead of the file itself. To save the user changed `Book` object into a file, please check [Export to xlsx](/dev-ref/book_model/Export_to_Excel).
 
+## Import a Macro-Enabled Workbook (xlsm)
+{% include version-badge.html version='7.0.0' %}
+
+Keikai can also import a macro-enabled **xlsm** file. When you import an xlsm file, Keikai preserves its VBA macro project so that the macros survive a later export (see [Export to Excel](/dev-ref/book_model/Export_to_Excel)).
+
+* `Book.getType()` returns `BookType.XLSM` for an imported macro-enabled workbook.
+* `Book.getVbaProject()` returns the raw VBA macro project binary (the `xl/vbaProject.bin` part), or `null` when the workbook carries no macros.
+
+``` java
+Book book = importer.imports(getFile(), "sample.xlsm");
+if (book.getType() == Book.BookType.XLSM) {
+    byte[] vba = book.getVbaProject(); // raw xl/vbaProject.bin bytes
+}
+```
+
+> Keikai keeps the VBA project binary intact byte-for-byte; it does not parse or modify the macro code. The macros are written back as-is on export.
+
 ## By `src` Attribute
 
 The `io.keikai.ui.Spreadsheet`'s `setSrc(java.lang.String)` can be called to display an Excel file
