@@ -140,6 +140,9 @@ The supported elements and options for a chart in a xlsx file are listed as foll
 2. Convert a theme color of a data series to a fixed color code and export it as the fixed color.
 3. When exporting to a PDF file, combination chart and sparklines are not supported, the color will not be consistent with the color you see in a browser. (Because Keikai exports charts to PDF with jFreeChart.)
 
+### Dynamic title from formula
+{% include version-badge.html version='5.8.0' %}
+
 ## Sparklines
 {% include version-badge.html version='5.3.0' %}
 
@@ -165,7 +168,8 @@ There 3 types of sparklines supported:
 3. Export it with built-in color.
 
 ## Combo Chart
-{% include version-badge.html version='5.3.0' %}
+{% include version-badge.html version='7.0.0' %}
+Keikai 7.0.0 supports formula declaration for charts title and legends
 
 A combination chart is a chart that displays 2 types of chart in a single chart.
 
@@ -220,6 +224,7 @@ For example, if you enter `$123` in a cell, keikai converts it as a number cell 
 The smart input pattern determines how you enter a date value. That is independent of a cell's number format that determines how to display a date value. When entering the edit mode (pressing F2 or double clicking a cell), keikai switches to one of the supported input patterns instead of the number format.
 
 ![]({{site.devref_image_folder}}/editMode.gif)
+
 
 
 ## JVM Option
