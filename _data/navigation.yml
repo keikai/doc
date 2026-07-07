@@ -107,6 +107,8 @@ dev-ref:
       url: /dev-ref/book_model/Picture
     - title: Chart
       url: /dev-ref/book_model/Chart
+    - title: Form Controls
+      url: /dev-ref/book_model/Form_Controls
     - title: Protection
       url: /dev-ref/book_model/Protection
     - title: Filter Data
