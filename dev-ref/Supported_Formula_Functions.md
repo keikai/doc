@@ -217,7 +217,7 @@ Check [Microsoft Excel function list](https://support.microsoft.com/en-us/office
 | SINGLE    |     |  Y |
 | SWITCH<sup>6.0</sup>    |     |  Y |
 | TRANSPOSE |     |  Y |
-| UNIQUE    |     |  Y |
+| UNIQUE<sup>7.0</sup>    |     |  Y |
 | VLOOKUP   | Y   |  Y |
 | XLOOKUP<sup>6.0</sup>   |     |  Y |
 | XMATCH<sup>6.0</sup>    |     |  Y |
