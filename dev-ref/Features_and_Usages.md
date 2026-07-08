@@ -519,3 +519,14 @@ For details and code examples, see [Import a Macro-Enabled Workbook](/dev-ref/Im
 ## Limitation
 1. Keikai keeps the VBA macro project as-is but does not parse, run, or edit the macro code.
 2. VBA macros are only supported for the xlsx/xlsm format; the deprecated xls (BIFF8) format cannot carry an OOXML VBA part.
+
+# Excel Export Options
+{% include version-badge.html version='7.0.0' %}
+
+Keikai supports export-time customization for xlsx/xlsm files through `ExportOptions`.
+
+You can choose how formula cells are written to the exported workbook: keep formulas, blank formula cells, or export calculated values only. You can also apply a per-cell rule, for example exporting custom formula functions as values only so Excel does not try to parse formulas it does not support.
+
+`ExportOptions` can also skip comments or hyperlinks in the exported file. These options affect only the exported workbook and do not mutate the source book model.
+
+For details and code examples, see [Export to Excel](/dev-ref/book_model/Export_to_Excel).

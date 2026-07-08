@@ -48,6 +48,74 @@ When you make the exported file downloadable, use the macro-enabled MIME type an
 
 > **Note:** VBA macros are only supported for the xlsx/xlsm format. The deprecated xls (BIFF8) format cannot carry an OOXML VBA part.
 
+# Customize Exported Formulas, Comments, and Hyperlinks
+{% include version-badge.html version='7.0.0' %}
+
+You can customize an xlsx/xlsm export with [`io.keikai.range.ExportOptions`](https://keikai.io/javadoc/latest/io/keikai/range/ExportOptions.html). Export options are useful when the exported file needs to differ from the live book model, for example when your application uses custom formula functions that Excel cannot evaluate.
+
+`ExportOptions` changes only the exported file. It does not modify the source `Book`, so the spreadsheet displayed in the browser keeps its formulas, comments, and hyperlinks.
+
+## Formula Policy
+
+Use `formulaPolicy()` to apply one formula handling rule to all formula cells:
+
+```java
+import io.keikai.range.ExportOptions;
+import io.keikai.range.ExportOptions.FormulaPolicy;
+
+ExportOptions options = new ExportOptions()
+		.formulaPolicy(FormulaPolicy.VALUES_ONLY);
+
+Exporters.getExporter("xlsx").export(book, out, options);
+```
+
+Available formula policies:
+
+* `KEEP`: export formulas normally.
+* `BLANK`: do not export formulas or values; formula cells become blank.
+* `VALUES_ONLY`: do not export formulas, but keep their calculated values.
+
+`VALUES_ONLY` is suitable when a formula is meaningful in Keikai but not valid in Excel. The exported workbook contains the calculated result, and Excel will not try to parse the custom formula.
+
+## Per-Cell Formula Rule
+
+Use `cellTransform()` when only some formula cells need special handling. The callback inspects each cell and returns the formula policy to apply to that cell.
+
+```java
+import io.keikai.model.SCell;
+import io.keikai.range.ExportOptions;
+import io.keikai.range.ExportOptions.FormulaPolicy;
+
+ExportOptions options = new ExportOptions().cellTransform(cell ->
+		cell.getType() == SCell.CellType.FORMULA
+				&& cell.getFormulaValue() != null
+				&& cell.getFormulaValue().contains("CUSTOMFN")
+			? FormulaPolicy.VALUES_ONLY
+			: FormulaPolicy.KEEP);
+
+Exporters.getExporter("xlsx").export(book, out, options);
+```
+
+The callback is declarative: it should inspect the cell and return an action. Do not mutate the source book inside the callback.
+
+## Skip Comments or Hyperlinks
+
+You can also omit comments or hyperlinks from the exported file:
+
+```java
+ExportOptions options = new ExportOptions()
+		.skipComments(true)
+		.skipHyperlinks(true);
+
+Exporters.getExporter("xlsx").export(book, out, options);
+```
+
+These options affect only the exported workbook. The source book remains unchanged.
+
+## Supported Exporters
+
+Non-default `ExportOptions` are supported only by the xlsx/xlsm exporter. Other exporters, such as `xls`, `pdf`, and `html`, reject non-default options with `UnsupportedOperationException` instead of silently ignoring them.
+
 # Usage Example
 The following codes demonstrate how to export a book model to a temporary file with and make users download it in a browser:
 
@@ -80,5 +148,3 @@ public class ExportComposer extends SelectorComposer<Component> {
 
 - Line 8: Get a default `Exporter` which exports as xlsx format.
 - Line 14: Currently, we only support exporting whole book.
-
-
