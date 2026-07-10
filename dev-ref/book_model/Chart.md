@@ -78,7 +78,7 @@ row and last column represents right bottom corner.
 For example, in the screenshot, the topmost chart whose
 ID is "rid1", its left top corner is at "F1" represented in column index
 "5" and row index "0". Its right bottom corner is at "K9" represented in
-column index "10" and row index "8". in column index "1" and row index
+column index "10" and row index "8". Its left-bottom corner is represented in column index "1" and row index
 "6". Its right bottom corner is at "C12" represented in column index
 "11" and row index "2". These position information is stored in
 `SheetAnchor`. When adding or moving a picture, you must provide one
@@ -141,6 +141,104 @@ automatically to chart data based on a predefined assumption. For
 example, it will assume that the first column contains category
 labels.
 
+
+# Formula-Backed Chart and Axis Titles
+{% include version-badge.html version='7.0.0' %}
+
+Control a chart's title and axis titles from a cell evaluation instead
+of a fixed string. You may bind a title to a formula or a cell reference such as
+`Sheet1!$A$1`. The displayed text is defined by the cell's value, so editing
+the cell also updates the chart title automatically. This feature is available for chart titles, category (X) axis titles, and value (Y)
+axis titles.
+
+```
+   Worksheet cell            SChart binding             Rendered chart
++------------------+      +------------------+       +------------------+
+| Sheet1!$A$1      |      | setTitleFormula  |       |   title text =   |
+|   "Q1 Revenue"   | ---> |  ("Sheet1!$A$1") | --->  |   "Q1 Revenue"   |
++------------------+      +------------------+       +------------------+
+```
+
+Once a formula is bound, `getTitle()` returns the **evaluated** cell value
+(the text the chart shows), while `getTitleFormula()` returns the underlying
+formula string. setting the title formula to `null` reverts the chart to literal title again.
+
+## Reaching a chart in the model
+
+Formula-backed titles can be accessed from
+[`io.keikai.model.SChart`](https://keikai.io/javadoc/latest/io/keikai/model/SChart.html),
+which is part of the **model** layer (`io.keikai.model`), not the public
+`io.keikai.api` layer. As a result, this state needs to be accessed through the internal sheet object (SSheet).
+
+{% highlight java linenos %}
+Sheet apiSheet = spreadsheet.getSelectedSheet();   // io.keikai.api.model.Sheet
+SSheet sheet   = apiSheet.getInternalSheet();       // io.keikai.model.SSheet
+
+List<SChart> charts = sheet.getCharts();            // all charts on the sheet
+SChart chart = sheet.getChart(0);                   // by index
+// or: sheet.getChart(chartId)                       // by chart id
+{% endhighlight %}
+
+
+## Binding a title to a formula
+
+Each of the three titles has a literal accessor pair and a formula accessor pair.
+
+Literal accessors:
+{% highlight java linenos %}
+String getTitle();               void setTitle(String title);
+String getXAxisTitle();          void setXAxisTitle(String xAxisTitle);
+String getYAxisTitle();          void setYAxisTitle(String yAxisTitle);
+{% endhighlight %}
+
+
+{% include version-badge.html version='7.0.0' %}
+The formula accessors bind the same three titles to a cell reference:
+
+{% highlight java linenos %}
+String getTitleFormula();        void setTitleFormula(String formula);
+String getXAxisTitleFormula();   void setXAxisTitleFormula(String formula);
+String getYAxisTitleFormula();   void setYAxisTitleFormula(String formula);
+{% endhighlight %}
+
+- The `set*TitleFormula` methods take a formula string, typically a
+  fully-qualified cell reference such as `Sheet1!$A$1`, and bind the title to
+  that cell.
+- Passing `null` clears the binding, so the title falls back to its literal
+  value.
+- The `getTitleFormula, getXAxisTitleFormula, getYAxisTitleFormula` getters return the bound formula string, or `null`
+  when the title is a plain literal (no formula bound).
+
+## Formula title usage example
+
+Bind the chart title and the value (Y) axis title to cells, then read the
+values back:
+
+{% highlight java linenos %}
+Sheet apiSheet = spreadsheet.getSelectedSheet();   // io.keikai.api.model.Sheet
+SSheet sheet   = apiSheet.getInternalSheet();       // io.keikai.model.SSheet
+SChart chart   = sheet.getChart(0);
+
+// Bind the chart title and the Y-axis title to worksheet cells.
+chart.setTitleFormula("Sheet1!$A$1");
+chart.setYAxisTitleFormula("Sheet1!$B$1");
+
+// getTitle() now returns the EVALUATED cell value (the text on the chart).
+String shown = chart.getTitle();               // e.g. "Q1 Revenue" (value of A1)
+
+// getTitleFormula() returns the underlying formula string.
+String formula = chart.getTitleFormula();      // "Sheet1!$A$1"
+
+// Clear the binding to fall back to a literal title.
+chart.setTitleFormula(null);
+String noFormula = chart.getTitleFormula();    // null
+{% endhighlight %}
+
+### Notes
+
+- **`getTitle()` returns the evaluated value, not the formula.** After binding,
+  use `getTitleFormula()` (and the axis equivalents) to retrieve the formula
+  string; `getTitle()` reflects the current cell value.
 
 # Display Empty Values as Gap or Zero
 {% include version-badge.html version="5.3.0" %}

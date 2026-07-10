@@ -83,6 +83,10 @@ dev-ref:
     children:
     - title: Cell Data
       url: /dev-ref/book_model/Cell_Data
+    - title: Dynamic Array Formulas and Spill
+      url: /dev-ref/book_model/Dynamic_Array_Formulas_and_Spill
+    - title: Spill Range Operator (ANCHORARRAY)
+      url: /dev-ref/book_model/Spill_Range_Operator
     - title: Cell Style and Format
       url: /dev-ref/book_model/Cell_Style_and_Format
     - title: Rich Text Edit
