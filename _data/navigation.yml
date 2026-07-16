@@ -171,6 +171,8 @@ dev-ref:
       url: https://keikai.io/blog/category/usecase/
   - title: Upgrade Guide
     children:
+    - title: From 6 to 7
+      url: /dev-ref/From6to7
     - title: From 5 to 6
       url: /dev-ref/From5to6
     - title: Migrate from ZSS
