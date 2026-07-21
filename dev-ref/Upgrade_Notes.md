@@ -2,6 +2,13 @@
 title: Upgrade Notes
 ---
 
+# Upgrade to 7
+Keikai 7.0 replaces the Apache POI-based engine with the native Keikai
+Rust core engine. Most applications need no code changes; the ones that
+do are custom formula functions, direct HTML/PDF exporter usage, and a
+few library properties. See [From 6 to 7](/dev-ref/From6to7) for the
+full upgrade guide.
+
 # Upgrade to 6
 Keikai 6 has several incompatible changes. Here, we list those noticeable changes that you need to do when upgrading from the previous versions:
 

@@ -502,9 +502,55 @@ Regarding the 1st argument, *"1-11 includes manually-hidden rows, while 101-111 
 | DVAR     |
 | DVARP    |
 
+# Dynamic Array & Lambda (24)
+{% include version-badge.html version='7.0.0' %}
+
+Since Keikai 7.0, formulas whose result is a range **spill** into the
+neighbouring cells (Excel-compatible dynamic arrays), and the modern
+function family that produces or consumes arrays is supported. These
+functions are available in Keikai EE.
+
+| Function   | OSE | EE |
+|------------|-----|----|
+| BYCOL      |     |  Y |
+| BYROW      |     |  Y |
+| CHOOSECOLS |     |  Y |
+| CHOOSEROWS |     |  Y |
+| DROP       |     |  Y |
+| EXPAND     |     |  Y |
+| FILTER     |     |  Y |
+| HSTACK     |     |  Y |
+| LAMBDA     |     |  Y |
+| MAKEARRAY  |     |  Y |
+| MAP        |     |  Y |
+| RANDARRAY  |     |  Y |
+| REDUCE     |     |  Y |
+| SCAN       |     |  Y |
+| SEQUENCE   |     |  Y |
+| SORT       |     |  Y |
+| SORTBY     |     |  Y |
+| TAKE       |     |  Y |
+| TEXTSPLIT  |     |  Y |
+| TOCOL      |     |  Y |
+| TOROW      |     |  Y |
+| VSTACK     |     |  Y |
+| WRAPCOLS   |     |  Y |
+| WRAPROWS   |     |  Y |
+
+(`UNIQUE` is another dynamic-array function; it is listed under
+[Lookup & Reference](#lookup--reference-23).)
+
+## Spilled-range reference (`#`)
+
+A cell holding a dynamic-array formula spills its result into the
+neighbouring cells. To reference the whole spilled range from another
+formula, append `#` to the anchor cell — e.g. `=SUM(A1#)` sums every
+cell that the formula in `A1` spilled into. Internally this operator is
+named `ANCHORARRAY`.
+
 # Unsupported Functions
 
-Keikai doesn't support Cube, Web functions and formulas that generate Arrays of results.
+Keikai doesn't support Cube or Web functions.
 
 # Locale Support
 * Keikai supports 2 separator: comma `,` and semi-color `;` depeneding on the locale.

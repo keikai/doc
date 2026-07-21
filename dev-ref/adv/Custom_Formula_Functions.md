@@ -4,6 +4,16 @@ title: 'Custom Formula Functions'
 
 # Overview
 
+> **Since Keikai 7.0**, the custom-function types (`Function`,
+> `MultiOperandNumericFunction`, `FreeRefFunction`, `ValueEval`,
+> `StringEval`, `RefEval`, `TwoDEval`, `EvaluationException`, …) live in
+> the `io.keikai.range.formula.*` package, and the `FreeRefFunction`
+> context argument is `io.keikai.native0.UdfEvaluationContext`. The
+> examples below use the 7.0 packages. If you are upgrading a 6.x
+> project (POI `org.apache.poi.*` / `org.zkoss.poi.*` types), see
+> [From 6 to 7 — Custom formula functions](/dev-ref/From6to7#custom-formula-functions)
+> for the full rename map and the `<?xel-method?>` signature update.
+
 Spreadsheet allows developers to implement their own custom functions
 and use these functions like built-in ones. You can just enter your
 custom function like `=MYFFUNCTION(A1)` and it works like other
@@ -70,13 +80,13 @@ If your function needs to accept a range of cells with numeric value or
 variable number of numeric arguments, you should follow the steps below:
 
 1.  Create a class `MyNumericFunction` inherited from
-    [`org.zkoss.poi.ss.formula.functions.MultiOperandNumericFunction`](https://keikai.io/javadoc/latest/org/zkoss/poi/ss/formula/functions/MultiOperandNumericFunction.html)
+    [`io.keikai.range.formula.MultiOperandNumericFunction`](https://keikai.io/javadoc/latest/io/keikai/range/formula/MultiOperandNumericFunction.html)
     and override its `evaluate(double[])`.
       <br/><br/>
     `MultiOperandNumericFunction` can evaluate various arguments to
         double including a range of cells, string, and boolean etc. You
         can benefit from this behavior instead of handling various
-        `org.zkoss.poi.ss.formula.eval.ValueEval` by yourself.
+        `io.keikai.range.formula.ValueEval` by yourself.
 2.  Create a public static method with specific signature:<br/><br/>
     `public static ValueEval yourFunctionName(ValueEval[] , int , int )`  
         You should not change this signature because Spreadsheet
@@ -95,12 +105,13 @@ First, we create a class to implement my subtotal function:
 public class MySubtotal extends MultiOperandNumericFunction{
 
     protected MySubtotal() {
-        // the first parameter determines whether to evaluate boolean value. If
-        // it's true, evaluator will evaluate boolean value to number. TRUE to 1
-        // and FALSE to 0.
-        // If it's false, boolean value is just ignored.
-        // The second parameter determines whether to evaluate blank value.
-        super(false, false);
+        // countBoolean: whether to evaluate boolean value. If it's true,
+        // evaluator will evaluate boolean value to number. TRUE to 1 and
+        // FALSE to 0. If it's false, boolean value is just ignored.
+        // countBlank: whether to evaluate blank value.
+        // strict: when false (Excel SUM semantics), a text value reached
+        // through a reference is skipped instead of parsed as a number.
+        super(false, false, false);
     }
     
     /**
@@ -125,7 +136,7 @@ inherits from `MultiOperandNumericFunction` will process all
 arguments to a double array and pass it to your overridden method,
 `evaluate(double[])`. It can save your effort to deal with each
 argument. If you encounter a situation that you don't expect, please
-throw `org.zkoss.poi.ss.formula.eval.EvaluationException`.
+throw `io.keikai.range.formula.EvaluationException`.
 Because Spreadsheet can handle the exception gracefully.
 
 Then, create a static method with previously-mentioned signature and
@@ -214,7 +225,8 @@ public class MyCustomFunctions {
             }
             //process an argument like C18
             if (args[i] instanceof RefEval){
-                ValueEval valueEval = ((RefEval)args[i]).getInnerValueEval();
+                RefEval ref = (RefEval)args[i];
+                ValueEval valueEval = ref.getInnerValueEval(ref.getFirstSheetIndex());
                 if (valueEval instanceof StringEval){
                     stringList.add((StringEval)valueEval);
                 }
@@ -242,11 +254,11 @@ public class MyCustomFunctions {
 - Line 14: You should create a public static method with the same
 signature because Spreadsheet recognizes your function method by the
 signature.
-- Line 19: `org.zkoss.poi.ss.formula.TwoDEval` is a common interface that represents a range of cells. Process it to make your function accepts an argument like A1:B2. In our example, we just get each text cell of it and ignore others.
-- Line 34: `org.zkoss.poi.ss.formula.eval.RefEval` represents an evaluation of a cell reference like "C18".
-- Line 41: `org.zkoss.poi.ss.formula.eval.StringEval` is the evaluation result of a string like "abc".
-- Line 53: We recommend you to throw an `EvaluationException` when you encounter an error condition. Because Spreadsheet will catch and handle it gracefully for you.
-- Line 54: Return an object of `ValueEval`'s subtype according to your result.
+- Line 19: `io.keikai.range.formula.TwoDEval` is a common interface that represents a range of cells. Process it to make your function accepts an argument like A1:B2. In our example, we just get each text cell of it and ignore others.
+- Line 34: `io.keikai.range.formula.RefEval` represents an evaluation of a cell reference like "C18". Its `getInnerValueEval(int)` takes a sheet index; pass `getFirstSheetIndex()` for a single-cell reference.
+- Line 42: `io.keikai.range.formula.StringEval` is the evaluation result of a string like "abc".
+- Line 54: We recommend you to throw an `EvaluationException` when you encounter an error condition. Because Spreadsheet will catch and handle it gracefully for you.
+- Line 55: Return an object of `ValueEval`'s subtype according to your result.
 
 
 
@@ -351,7 +363,7 @@ customized function will be invoked instead of the built-in one.
 {% highlight xml linenos %}
 <?xel-method prefix="keikai" name="LEN"
     class="io.keikai.essential.advanced.MyCustomFunctions"  
-    signature="org.zkoss.poi.ss.formula.eval.ValueEval myLen(org.zkoss.poi.ss.formula.eval.ValueEval[], int, int)"?>
+    signature="io.keikai.range.formula.ValueEval myLen(io.keikai.range.formula.ValueEval[], int, int)"?>
 <zk>
     <window title="Keikai spreadsheet" border="normal" height="100%">
         <spreadsheet src="/WEB-INF/books/overrideFunction.xlsx" 
@@ -377,18 +389,28 @@ If you want to declare a function name that contains a dot (`.`) e.g. `T.EXCHANG
 # A Function That Can Access Cells 
 {% include version-badge.html version='5.8.0' %}
 
-Those EL functions mentioned at the sections above can't access arbitrary cells because Keikai just passes resolved values into a function. If your custom function needs to access any cell depending on an argument like [CELL("type", B1)](https://support.microsoft.com/en-us/office/cell-function-51bd39a5-f338-4dbe-a33f-955d67c2b2cf), you need to implement [FreeRefFunction](https://keikai.io/javadoc/latest/org/zkoss/poi/ss/formula/functions/FreeRefFunction.html).
+Those EL functions mentioned at the sections above can't access arbitrary cells because Keikai just passes resolved values into a function. If your custom function needs to access any cell depending on an argument like [CELL("type", B1)](https://support.microsoft.com/en-us/office/cell-function-51bd39a5-f338-4dbe-a33f-955d67c2b2cf), you need to implement [FreeRefFunction](https://keikai.io/javadoc/latest/io/keikai/range/formula/FreeRefFunction.html).
+
+The second `evaluate` argument is `Object ec`. When the function is evaluated as a cell's own formula, it carries an `io.keikai.native0.UdfEvaluationContext` — cast it to read the calling cell's position (`getRowIndex()` / `getColumnIndex()` / `getSheetIndex()`) or to read other cells with dependency tracking (`getCellValue(row, col)` / `getValues(reference)`). Standalone evaluations (conditional formatting, data validation, ad-hoc API calls) pass `null`.
 
 ```java
+import io.keikai.range.formula.FreeRefFunction;
+import io.keikai.range.formula.ValueEval;
+import io.keikai.native0.UdfEvaluationContext;
+
 public class MyCell implements FreeRefFunction {
     @Override
-    public ValueEval evaluate(ValueEval[] valueEvals, OperationEvaluationContext context) {
+    public ValueEval evaluate(ValueEval[] valueEvals, Object ec) {
+        UdfEvaluationContext ctx = (UdfEvaluationContext) ec;
+        // e.g. read the cell to the left of the calling cell:
+        // Object v = ctx.getCellValue(ctx.getRowIndex(), ctx.getColumnIndex() - 1);
         ...
     }
+}
 ```
 
 ## Register a FreeRefFunction
-After implementing your custom function, to make keikai find your function, you also need to register it by [`ZKUDFFinder.putFunction()`](https://keikai.io/javadoc/latest/io/keikaiex/formula/ZKUDFFinder.html#putFunction-java.lang.String-org.zkoss.poi.ss.formula.functions.FreeRefFunction-).
+After implementing your custom function, to make keikai find your function, you also need to register it by [`ZKUDFFinder.putFunction()`](https://keikai.io/javadoc/latest/io/keikaiex/formula/ZKUDFFinder.html#putFunction-java.lang.String-io.keikai.range.formula.FreeRefFunction-).
 
 ```java
 public class FunctionRegistration implements WebAppInit {

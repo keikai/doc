@@ -32,6 +32,12 @@ Few points need to be noticed:
     cells do not change.
 2.  If you use a customized function **only** supported in Keikai spreadsheet in a formula, the cached result is always `#NAME!` error. Application developers must enforce re-evaluation by `Range.refresh(true, true, true)`.
 
+> **Since Keikai 7.0:** this property is no longer needed and is
+> silently ignored — reusing the file's cached formula results on import
+> is now the default. Each cell's cached result is reused; only volatile
+> formulas and cells without a cached value are evaluated at loading.
+> See [From 6 to 7](/dev-ref/From6to7).
+
 ## Exporting
 Default value: **false**
 {% include property-scope.html page=false%}
@@ -43,6 +49,13 @@ Set the property to `true` and Keikai will export the formula cache into an Exce
     <value>true</value> 
 </library-property>
 ```
+
+> **Since Keikai 7.0:** this property is no longer needed and is
+> silently ignored — the default `ExportOptions.FormulaPolicy.KEEP`
+> writes every formula together with its cached result. For finer
+> control (e.g. freezing formulas to values), pass `ExportOptions` with
+> `VALUES_ONLY` / `BLANK` or a per-cell `CellTransform`. See
+> [From 6 to 7](/dev-ref/From6to7).
 
 # Keep Cell Selection
 

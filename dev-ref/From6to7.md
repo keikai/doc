@@ -30,7 +30,7 @@ Most applications need **no code changes**. Work through this list:
    import rename (see [Custom formula functions](#custom-formula-functions)).
 6. If you called the **HTML export classes directly** (`ToHtml`,
    `HtmlExporter`), or **configured `PdfExporter` instances
-   programmatically** (paper size, margins, sheet/region export),
+   programmatically** (paper size, margins, and other print setters),
    switch to the exporter factories and sheet-level print setup (see
    [Removed classes and properties](#removed-classes-and-properties)).
 7. If your workbooks contain **CJK text or use fonts beyond the
@@ -207,9 +207,37 @@ ZKUDFFinder.putFunction("DOUBLE",
 ```
 
 The second parameter changed from POI's `OperationEvaluationContext`
-to `Object`, and it is currently always `null`. A UDF that read the
-calling cell's row/column from the context needs a redesign (e.g. pass
-the position as an explicit argument in the formula).
+to `Object`. It carries an
+`io.keikai.native0.UdfEvaluationContext` when the formula is evaluated
+as a cell's own formula — cast it to read the calling position:
+
+```java
+ZKUDFFinder.putFunction("MYPOS", (ValueEval[] args, Object ec) -> {
+    UdfEvaluationContext ctx = (UdfEvaluationContext) ec;
+    return new NumberEval(ctx.getRowIndex() * 100 + ctx.getColumnIndex());
+});
+```
+
+`UdfEvaluationContext` exposes `getRowIndex()`, `getColumnIndex()`,
+`getSheetIndex()`, `getSheetName()`, `getSheet()`, and `getBook()` — the
+same accessor names 6.3 UDFs used on the POI context, so migrating a
+position-dependent UDF is the cast change only. Standalone evaluations
+(conditional formatting, data validation, ad-hoc API calls) pass
+`null`, as POI did for non-cell contexts. A UDF whose class still
+declares the POI `OperationEvaluationContext` parameter type keeps
+receiving `null` — recompile against the Keikai-7 `(ValueEval[],
+Object)` signature to get the context. (Freshly builds before 2026-07
+passed `null` unconditionally.)
+
+To read other cells during evaluation, use `getCellValue(row, col)` /
+`getCellValue(sheetName, row, col)` and `getValues(referenceOrFormula)`
+— these replace POI's `getWorkbook()`-internals and `getDynamicReference`
+reads, and register the read cells as precedents so the formula
+re-evaluates when they change. Do **not** read cell data via the
+`getSheet()` / `getBook()` model accessors during evaluation — the
+engine holds the workbook exclusively while evaluating, and re-entrant
+native calls return blank; those accessors are for identity and
+metadata only.
 
 ## Semantic changes in the plugin API
 
@@ -263,9 +291,6 @@ directly:
 
 - `new PdfExporter()` + `export(book, out)` still compiles and works
   (the class remains as a deprecated wrapper).
-- The **sheet- and region-level overloads**
-  (`export(SSheet, OutputStream)`, `export(SheetRegion, OutputStream)`)
-  are removed — 7.0 exports whole books.
 - The **per-exporter configuration setters** (`setPaperSize`,
   `setLandscape`, `setScale`, margins, headers/footers,
   `setPrintGridlines`, …) are removed. **Caution:**
@@ -339,8 +364,6 @@ likelihood:
 | Built-in date formats 15/16/17 (`d-mmm-yy`, `d-mmm`, `mmm-yy`) | Pattern replaced wholesale by a locale long-date shape (e.g. `d MMMM y` under nl-NL) | Pattern shape stays `d-mmm-yy` under every locale; only the month/weekday **names** localise. All other locale-aware date handling (e.g. `m/d/yyyy` → `yyyy/m/d` for zh-TW, localised month/weekday names) is unchanged |
 | Cross-book defined names | A formula could reference a defined name declared in another open book | Defined names are book-scoped: referencing another book's name yields `#NAME?`. Cross-book **cell** references (`[Book2]Sheet1!B5`) and their dependency tracking keep working |
 | Chart axis cells containing formulas | Re-evaluated each cell on chart render | Reads each cell's last-computed value (no per-cell re-eval) |
-| Data validation `getNumOfValue1()` | Counted elements of the evaluated result | Counts cells in the source area reference directly; indirect constructs (`=INDIRECT(...)`) report 1 |
-| UDF evaluation context | Real `OperationEvaluationContext` with cell position | `null` (see UDF section above) |
 
 Paper size is unaffected: both 6.3 and 7.0 default to A4 when a sheet
 carries no `<pageSetup>`. To change the default, set the
