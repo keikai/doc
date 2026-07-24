@@ -155,13 +155,14 @@ Check [Microsoft Excel function list](https://support.microsoft.com/en-us/office
 | YIELDDISC  |    |  Y |
 | YIELDMAT   |    |  Y |
 
-# Information (20)
+# Information (21)
 
 | Function   | OSE | EE |
 |------------|----|----|
 | CELL<sup>6.0</sup>      |    |  Y |
 | ERROR.TYPE |  Y |  Y |
 | FORMULATEXT|    |  Y |
+| INFO<sup>7.0</sup>      |    |  Y |
 | ISBLANK    |  Y |  Y |
 | ISERR      |    |  Y |
 | ISERROR    |  Y |  Y |
@@ -194,7 +195,7 @@ Check [Microsoft Excel function list](https://support.microsoft.com/en-us/office
 | TRUE     |  Y  |  Y |
 | XOR<sup>6.3</sup>      |     |  Y |
 
-# Lookup & Reference (23)
+# Lookup & Reference (26)
 
 | Function  | OSE | EE |
 |-----------|-----|----|
@@ -203,6 +204,7 @@ Check [Microsoft Excel function list](https://support.microsoft.com/en-us/office
 | CHOOSE    | Y   |  Y |
 | COLUMN    | Y   |  Y |
 | COLUMNS   | Y   |  Y |
+| GROUPBY<sup>7.0</sup>   |     |  Y |
 | HLOOKUP   | Y   |  Y |
 | HYPERLINK | Y   |  Y |
 | IFNA<sup>6.0</sup>      |     |  Y |
@@ -212,17 +214,19 @@ Check [Microsoft Excel function list](https://support.microsoft.com/en-us/office
 | LOOKUP    | Y   |  Y |
 | MATCH     | Y   |  Y |
 | OFFSET    | Y   |  Y |
+| PIVOTBY<sup>7.0</sup>   |     |  Y |
 | ROW       | Y   |  Y |
 | ROWS      | Y   |  Y |
 | SINGLE    |     |  Y |
 | SWITCH<sup>6.0</sup>    |     |  Y |
 | TRANSPOSE |     |  Y |
+| TRIMRANGE<sup>7.0</sup> |     |  Y |
 | UNIQUE<sup>7.0</sup>    |     |  Y |
 | VLOOKUP   | Y   |  Y |
 | XLOOKUP<sup>6.0</sup>   |     |  Y |
 | XMATCH<sup>6.0</sup>    |     |  Y |
 
-# Mathematical (79)
+# Mathematical (81)
 
 | Function         | OSE | EE |
 |------------------|-----|----|
@@ -272,8 +276,10 @@ Check [Microsoft Excel function list](https://support.microsoft.com/en-us/office
 | MOD              | Y   |  Y |
 | MROUND           |     |  Y |
 | MULTINOMIAL      |     |  Y |
+| MUNIT<sup>7.0</sup>     |     |  Y |
 | NUMBERVALUE<sup>6.0</sup>     |     |  Y |
 | ODD              | Y   |  Y |
+| PERCENTOF<sup>7.0</sup>       |     |  Y |
 | PI               | Y   |  Y |
 | POWER            | Y   |  Y |
 | PRODUCT          | Y   |  Y |
@@ -323,7 +329,7 @@ Regarding the 1st argument, *"1-11 includes manually-hidden rows, while 101-111 
 * If you **enable** the auto filter in a sheet, Keikai treats all hidden rows as **filtered-out cells**. 
 * If you **don't enable the auto filter**, Keikai treats all hidden rows as **manually-hidden rows**. 
 
-# Statistical (144)
+# Statistical (150)
 
 | Function         | New Name since Excel 2010 | OSE | EE |
 |------------------|---------------------------|---|----|
@@ -363,6 +369,10 @@ Regarding the 1st argument, *"1-11 includes manually-hidden rows, while 101-111 
 | FDIST            | F.DIST.RT                 |   | Y  |
 | FINV             | F.INV.RT                  |   | Y  |
 | FORECAST<sup>6.0</sup>        |                           |   | Y  |
+| FORECAST.ETS<sup>7.0</sup>     |                          |   | Y  |
+| FORECAST.ETS.CONFINT<sup>7.0</sup> |                      |   | Y  |
+| FORECAST.ETS.SEASONALITY<sup>7.0</sup> |                  |   | Y  |
+| FORECAST.ETS.STAT<sup>7.0</sup> |                         |   | Y  |
 | FORECAST.LINEAR<sup>6.3</sup>  |                          |   | Y  |
 | FREQUENCY<sup>6.0</sup>       |                           |   | Y  |
 | GAMMADIST        | GAMMA.DIST                |   | Y  |
@@ -372,6 +382,7 @@ Regarding the 1st argument, *"1-11 includes manually-hidden rows, while 101-111 
 | GAMMALN.PRECISE<sup>6.3</sup>  |                          |   | Y  |
 | GAUSS<sup>6.3</sup>            |                          |   | Y  |
 | GEOMEAN          |                           |   | Y  |
+| GROWTH<sup>7.0</sup>           |                          |   | Y  |
 | HARMEAN          |                           |   | Y  |
 | HYPGEOMDIST      | HYPGEOM.DIST              |   | Y  |
 | INTERCEPT<sup>6.0</sup>       |                           |   | Y  |
@@ -383,6 +394,7 @@ Regarding the 1st argument, *"1-11 includes manually-hidden rows, while 101-111 
 | MIN              |                           | Y | Y  |
 | MINA             |                           | Y | Y  |
 | MODE             | MODE.SNGL                 | Y | Y  |
+| MODE.MULT<sup>7.0</sup> |                          |   | Y  |
 | NEGBINOMDIST     | NEGBINOM.DIST             |   | Y  |
 | NORMDIST         | NORM.DIST                 |   | Y  |
 | NORMINV          | NORM.INV                  |   | Y  |
@@ -438,9 +450,9 @@ Regarding the 1st argument, *"1-11 includes manually-hidden rows, while 101-111 
 | ZTEST            | Z.TEST<sup>6.3</sup>                   |   | Y  |
 
 * Note: Keikai supports both function names [listed here](https://support.office.com/en-us/article/What-s-New-Changes-made-to-Excel-functions-355d08c8-8358-4ecb-b6eb-e2e443e98aac?ui=en-US&rs=en-US&ad=US&fromAR=1#bm2).
-* Note: The count (144) reflects the total number of unique function names, including both the old and new (since Excel 2010) synonyms listed in the first two columns.
+* Note: The count (150) reflects the total number of unique function names, including both the old and new (since Excel 2010) synonyms listed in the first two columns.
 
-# Text (38)
+# Text (39)
 
 | Function    | OSE | EE |
 |-------------|-----|----|
@@ -458,6 +470,7 @@ Regarding the 1st argument, *"1-11 includes manually-hidden rows, while 101-111 
 | EXACT       |  Y  |  Y |
 | FIND        |  Y  |  Y |
 | FIXED       |     |  Y |
+| JIS<sup>7.0</sup>        |     |  Y |
 | LEFT        |  Y  |  Y |
 | LEN         |  Y  |  Y |
 | LOWER       |  Y  |  Y |
@@ -502,7 +515,7 @@ Regarding the 1st argument, *"1-11 includes manually-hidden rows, while 101-111 
 | DVAR     |
 | DVARP    |
 
-# Dynamic Array & Lambda (24)
+# Dynamic Array & Lambda (25)
 {% include version-badge.html version='7.0.0' %}
 
 Since Keikai 7.0, formulas whose result is a range **spill** into the
@@ -520,6 +533,7 @@ functions are available in Keikai EE.
 | EXPAND     |     |  Y |
 | FILTER     |     |  Y |
 | HSTACK     |     |  Y |
+| ISOMITTED  |     |  Y |
 | LAMBDA     |     |  Y |
 | MAKEARRAY  |     |  Y |
 | MAP        |     |  Y |
@@ -544,13 +558,34 @@ functions are available in Keikai EE.
 
 A cell holding a dynamic-array formula spills its result into the
 neighbouring cells. To reference the whole spilled range from another
-formula, append `#` to the anchor cell — e.g. `=SUM(A1#)` sums every
+formula, append `#` to the anchor cell - e.g. `=SUM(A1#)` sums every
 cell that the formula in `A1` spilled into. Internally this operator is
 named `ANCHORARRAY`.
 
+# Cube Functions
+
+Keikai recognises the seven Cube functions - `CUBEMEMBER`, `CUBEVALUE`,
+`CUBESET`, `CUBESETCOUNT`, `CUBERANKEDMEMBER`, `CUBEKPIMEMBER`, and
+`CUBEMEMBERPROPERTY` - so that workbooks using them import and round-trip.
+Keikai has no OLAP / data-model connection, so they evaluate to `#N/A`, the
+same result Excel returns without a cube data source.
+
+# Deliberately Excluded Functions
+
+These functions are recognised by the calculation engine (so workbooks using
+them still import and round-trip) but are **not** offered in the
+Insert-Function dialog:
+
+* **Byte-length text variants** - `LEFTB`, `RIGHTB`, `MIDB`, `LENB`, `FINDB`,
+  `SEARCHB`, `REPLACEB`. Microsoft deprecated these once `LEFT` / `RIGHT` /
+  `MID` / `LEN` / `FIND` / `SEARCH` / `REPLACE` became Unicode-aware (surrogate
+  pairs).
+* **`EUROCONVERT`** 
+
 # Unsupported Functions
 
-Keikai doesn't support Cube or Web functions.
+Keikai does not support the Web functions `WEBSERVICE` and `FILTERXML`, which
+require live external HTTP requests.
 
 # Locale Support
 * Keikai supports 2 separator: comma `,` and semi-color `;` depeneding on the locale.
