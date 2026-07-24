@@ -87,6 +87,8 @@ dev-ref:
       url: /dev-ref/book_model/Dynamic_Array_Formulas_and_Spill
     - title: Spill Range Operator
       url: /dev-ref/book_model/Spill_Range_Operator
+    - title: Automatic Array Lifting
+      url: /dev-ref/book_model/Automatic_Array_Lifting
     - title: Cell Style and Format
       url: /dev-ref/book_model/Cell_Style_and_Format
     - title: Rich Text Edit

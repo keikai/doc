@@ -5,12 +5,10 @@ toc: false
 
 {% include version-badge.html version='7.0.0' %}
 
-# Purpose
-
-Support Excel 365 / Excel 2021 **dynamic array formulas**: a single formula
+Support for Excel 365 / Excel 2021 **dynamic array formulas**: a single formula
 that returns more than one value automatically "spills" its result into the
 neighbouring cells, and Keikai lets you enter, evaluate, import/export, and
-inspect these spilled ranges from Java.
+inspect these spilled ranges.
 
 # Overview
 
@@ -50,10 +48,6 @@ Dynamic-array spill is **not** the same thing as a legacy CSE (array) formula
 (the ones entered with Ctrl+Shift+Enter). The distinction matters when you
 query the model, so it has [its own section](#dynamic-array-spill-vs-legacy-cse-arrays)
 below.
-
-Dynamic-array evaluation is provided by the Rust engine (`axyra-sheets`). On a
-non-engine backend the dynamic-array query methods described here return their
-neutral defaults (`false` / `null` / empty list).
 
 # Entering a spill formula
 
@@ -216,13 +210,3 @@ operations:
 - **`#SPILL!`** is raised when the target range is obstructed, including when
   the spill would land inside an Excel Table.
 
-# Current limitations
-
-- **Spill can be blocked.** If the target range is obstructed by a non-empty
-  cell, a merged region, or an Excel Table, the anchor yields `#SPILL!`
-  rather than a result. Clear the obstruction to let the array spill.
-- **`getAllArrayFormulas()` / `getAllCseRegions()` cover legacy CSE only.**
-  They do not report dynamic-array spills, and (per their javadoc) they may
-  also miss XLSX-imported CSE regions that live only in the engine core. For a
-  dynamic-array outline, use `getSpillRangesInViewport(...)`; for a complete
-  CSE outline within a viewport, use `getCseRegionsInViewport(...)`.
