@@ -81,9 +81,9 @@ Include the artifact below:
 ```
 Please browse the repository ([Eval](https://mavensync.zkoss.org/eval/io/keikai/keikai-ex/) or [EE](https://maven.zkoss.org/repo/keikai/ee/io/keikai/keikai-ex/)) to see the latest available version and specify it. 
 
-For evaluation version, the version string is appended with `-Eval` e.g. `5.11.0-Eval`.
+For evaluation version, the version string is appended with `-Eval` e.g. `5.11.0-Eval`, `7.0.0-Beta-Eval` or `7.0.0-Beta-jakarta-Eval`.
 
-For official (paid) EE version, the version string contains version number only e.g. `5.11.0`.
+For official (paid) EE version, the version string contains the version number only e.g. `5.11.0` or `6.3.0-jakarta`.
 
 
 ## Open Source Edition (OSE)
