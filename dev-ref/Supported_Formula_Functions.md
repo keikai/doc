@@ -195,7 +195,7 @@ Check [Microsoft Excel function list](https://support.microsoft.com/en-us/office
 | TRUE     |  Y  |  Y |
 | XOR<sup>6.3</sup>      |     |  Y |
 
-# Lookup & Reference (26)
+# Lookup & Reference (25)
 
 | Function  | OSE | EE |
 |-----------|-----|----|
@@ -217,7 +217,6 @@ Check [Microsoft Excel function list](https://support.microsoft.com/en-us/office
 | PIVOTBY<sup>7.0</sup>   |     |  Y |
 | ROW       | Y   |  Y |
 | ROWS      | Y   |  Y |
-| SINGLE    |     |  Y |
 | SWITCH<sup>6.0</sup>    |     |  Y |
 | TRANSPOSE |     |  Y |
 | TRIMRANGE<sup>7.0</sup> |     |  Y |
