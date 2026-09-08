@@ -5,6 +5,114 @@ main:
     url: /dev-ref
   - title: "JavaDoc"
     url: https://keikai.io/javadoc/spreadsheet/latest/
+  # Axyra Sheets is not released yet, so it is not advertised from the Keikai
+  # masthead. Uncomment at release. The /axyra/ pages stay reachable by URL and
+  # keep their own masthead (axyra_main) in the meantime.
+  # - title: "Axyra Sheets"
+  #   url: /axyra
+
+axyra_main:
+  - title: "Tutorial"
+    url: /axyra/tutorial
+  - title: "Developer Reference"
+    url: /axyra/dev-ref
+  - title: "JavaDoc"
+    url: https://keikai.io/javadoc/axyra/latest/
+  - title: "Keikai Spreadsheet"
+    url: /dev-ref
+
+# ---------------------------------------------------------------------------
+# Axyra Sheets -- a SEPARATE product from Keikai Spreadsheet.
+# These three navs are used only by pages under /axyra/. Never add Keikai
+# Spreadsheet pages here, and never add Axyra pages to `tutorial` or `dev-ref`.
+# ---------------------------------------------------------------------------
+axyra:
+  - title: "Axyra Sheets"
+    url: /axyra
+    children:
+      - title: "Overview"
+        url: /axyra
+      - title: "Tutorial"
+        url: /axyra/tutorial
+      - title: "Developer Reference"
+        url: /axyra/dev-ref
+      - title: "Javadoc"
+        url: https://keikai.io/javadoc/axyra/latest/
+
+axyra-tutorial:
+  - title: "Axyra Sheets Tutorial"
+    url: /axyra/tutorial
+    children:
+      - title: "Overview"
+        url: /axyra/tutorial
+      - title: "Quick Start"
+        url: /axyra/tutorial/quick_start
+      - title: "Read and Write Files"
+        url: /axyra/tutorial/read_write
+      - title: "Render to PDF and Images"
+        url: /axyra/tutorial/render
+  - title: "More"
+    children:
+      - title: "Developer Reference"
+        url: /axyra/dev-ref
+      - title: "Javadoc"
+        url: https://keikai.io/javadoc/axyra/latest/
+
+axyra-dev-ref:
+  - title: Overview
+    url: /axyra/dev-ref
+  - title: Getting Started
+    url: /axyra/dev-ref/Installation
+    children:
+      - title: "Installation"
+        url: /axyra/dev-ref/Installation
+      - title: "Native Library Loading"
+        url: /axyra/dev-ref/Native_Loader
+      - title: "Architecture"
+        url: /axyra/dev-ref/Architecture
+      - title: "Licensing"
+        url: /axyra/dev-ref/License
+  - title: The Object Model
+    url: /axyra/dev-ref/Workbook_and_Sheet
+    children:
+      - title: "Workbook and Sheet"
+        url: /axyra/dev-ref/Workbook_and_Sheet
+      - title: "Cells and Ranges"
+        url: /axyra/dev-ref/Cell_and_Range
+      - title: "Formulas"
+        url: /axyra/dev-ref/Formulas
+      - title: "Styles and Formats"
+        url: /axyra/dev-ref/Styles
+  - title: Content
+    url: /axyra/dev-ref/Charts
+    children:
+      - title: "Charts"
+        url: /axyra/dev-ref/Charts
+      - title: "Pivot Tables"
+        url: /axyra/dev-ref/Pivot_Table
+      - title: "Tables and Content Objects"
+        url: /axyra/dev-ref/Content_Objects
+  - title: Input and Output
+    url: /axyra/dev-ref/Import_and_Export
+    children:
+      - title: "Import and Export"
+        url: /axyra/dev-ref/Import_and_Export
+      - title: "Supported Formats"
+        url: /axyra/dev-ref/Supported_Formats
+      - title: "Rendering"
+        url: /axyra/dev-ref/Rendering
+      - title: "Streaming Large Files"
+        url: /axyra/dev-ref/Streaming
+      - title: "Smart Markers"
+        url: /axyra/dev-ref/Smart_Markers
+  - title: Comparison
+    url: /axyra/dev-ref/Axyra_vs_Keikai
+    children:
+      - title: "Axyra Sheets vs. Keikai Spreadsheet"
+        url: /axyra/dev-ref/Axyra_vs_Keikai
+  - title: Javadoc
+    url: https://keikai.io/javadoc/axyra/latest/
+
 tutorial:
   - title: "Tutorial"
     url: /tutorial

@@ -40,6 +40,22 @@ defaults:
     values:
       sidebar:
         nav: "tutorial"
+  # Axyra Sheets is a separate product: its own sidebars, never the Keikai ones.
+  - scope:
+      path: "axyra"
+    values:
+      sidebar:
+        nav: "axyra"
+  - scope:
+      path: "axyra/tutorial"
+    values:
+      sidebar:
+        nav: "axyra-tutorial"
+  - scope:
+      path: "axyra/dev-ref"
+    values:
+      sidebar:
+        nav: "axyra-dev-ref"
 
 # disqus admin is hawkchen@potix.com
     
@@ -49,6 +65,28 @@ defaults:
 # base path of developer reference
 devref: "/dev-ref"
 devref_image_folder: "/assets/images/dev-ref"
+baseurl_javadoc_keikai: "https://keikai.io/javadoc/spreadsheet/latest/"
+# base paths of the Axyra Sheets documentation (a separate product from Keikai
+# Spreadsheet -- keep these prefixes distinct from devref/tutorial above)
+axyra: "/axyra"
+axyra_tutorial: "/axyra/tutorial"
+axyra_devref: "/axyra/dev-ref"
+axyra_image_folder: "/assets/images/axyra"
+axyra_javadoc: "https://keikai.io/javadoc/axyra/latest/"
+axyra_version: "0.1.0"
+# Setting `exclude` REPLACES Jekyll's defaults rather than adding to them, so the
+# default entries have to be repeated here. Without them a local
+# `bundle config set --local path vendor/bundle` makes Jekyll try to build the
+# gems under vendor/, which fails on jekyll's own site_template .erb posts.
 exclude:
   - CLAUDE.md
   - README.md
+  - .bundle/
+  - vendor/
+  - Gemfile
+  - Gemfile.lock
+  - gemfiles/
+  - node_modules/
+  - .sass-cache/
+  - .jekyll-cache/
+  - preview.sh
