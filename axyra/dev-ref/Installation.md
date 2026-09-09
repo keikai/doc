@@ -3,6 +3,8 @@ title: 'Installation'
 permalink: /axyra/dev-ref/Installation
 ---
 
+{% include axyra_example.html path="devref/LicenseAndNativeLoaderExample.java" %}
+
 # Maven
 
 ```xml

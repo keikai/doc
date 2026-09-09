@@ -1,9 +1,14 @@
 ---
-title: 'Quick Start'
+title: 'Manual Quick Start'
 permalink: /axyra/tutorial/quick_start
 ---
 
-Ten minutes from an empty project to a saved `.xlsx` file.
+{% include axyra_example.html path="tutorial/QuickStartExample.java" %}
+
+Prefer to write the first program yourself? This path takes you from an empty
+project to a saved `.xlsx` file in about ten minutes. To generate the project
+with a coding assistant instead, use
+[AI-Assisted Development]({{ site.axyra_devref }}/AI_Assisted_Development).
 
 # 1. Add the dependency
 
@@ -21,6 +26,19 @@ from source, you must add the native resource yourself or use the
 `-Daxyra.native.path` development override. See
 [Native Library Loading]({{ site.axyra_devref }}/Native_Loader) for details.
 
+## Evaluation Mode
+
+You do not need a license key to run this Quick Start. Without one, Axyra Sheets
+runs in **Evaluation Mode**: reading, editing, calculation, and rendering work
+normally. In a distributed production build, saved workbooks carry a visible
+evaluation notice and watermark. Evaluation output keeps all of your data; it is
+not truncated. A native library built for development only adds these marks when
+license enforcement is explicitly enabled.
+
+For complete Evaluation Mode behavior, a 30-day full-featured evaluation key,
+and production licensing, see
+[Licensing and Evaluation]({{ site.axyra_devref }}/License).
+
 # 2. Create a workbook
 
 `Workbook` implements `AutoCloseable`. It owns a native handle, so always close
@@ -35,7 +53,7 @@ import java.nio.file.Path;
 public class HelloAxyra {
     public static void main(String[] args) {
         try (Workbook wb = Workbook.create()) {
-            Sheet sheet = wb.sheet(0);
+	    Sheet sheet = wb.createSheet("Sheet1");
 
             sheet.cell(0, 0).setValue(CellValue.text("Item"));
             sheet.cell(0, 1).setValue(CellValue.text("Qty"));

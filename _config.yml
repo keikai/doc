@@ -46,6 +46,10 @@ defaults:
     values:
       sidebar:
         nav: "axyra"
+      # Axyra Sheets is not released yet. Keep the whole section out of search
+      # results until it is -- delete these two lines at release. (Rendered by
+      # _includes/head/custom.html.)
+      noindex: true
   - scope:
       path: "axyra/tutorial"
     values:
@@ -56,6 +60,15 @@ defaults:
     values:
       sidebar:
         nav: "axyra-dev-ref"
+  # Task-oriented articles that answer a search query, as opposed to the
+  # learning path (axyra/tutorial) or the API reference (axyra/dev-ref). They
+  # are entry points: each one links into the reference rather than restating
+  # it, so the two never compete for the same query.
+  - scope:
+      path: "axyra/guides"
+    values:
+      sidebar:
+        nav: "axyra-guides"
 
 # disqus admin is hawkchen@potix.com
     
@@ -70,6 +83,7 @@ baseurl_javadoc_keikai: "https://keikai.io/javadoc/spreadsheet/latest/"
 # Spreadsheet -- keep these prefixes distinct from devref/tutorial above)
 axyra: "/axyra"
 axyra_tutorial: "/axyra/tutorial"
+axyra_guides: "/axyra/guides"
 axyra_devref: "/axyra/dev-ref"
 axyra_image_folder: "/assets/images/axyra"
 axyra_javadoc: "https://keikai.io/javadoc/axyra/latest/"

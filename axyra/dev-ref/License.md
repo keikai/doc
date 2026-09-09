@@ -1,126 +1,145 @@
 ---
-title: 'Licensing'
+title: 'Licensing and Evaluation'
 permalink: /axyra/dev-ref/License
 ---
 
-Axyra Sheets is commercially licensed. A license is a **signed token** you
-install at startup; the engine verifies its signature locally, with no network
-call and no license server.
+{% include axyra_example.html path="devref/LicenseAndNativeLoaderExample.java" %}
 
-# Installing a license
+Axyra Sheets is commercially licensed. You can start without a license key in
+Evaluation Mode, request a 30-day full-featured evaluation key, and install a
+production key when you are ready to deploy.
+
+A license key is a signed token verified locally by the engine. Activation does
+not contact a license server, so Axyra Sheets can run in private networks and
+air-gapped environments.
+
+# Evaluation Mode
+
+Axyra Sheets runs in **Evaluation Mode by default when no license key is
+installed**. You can open real workbooks, edit cells, calculate formulas, render
+them, and exercise the API before purchasing a license.
+
+When license enforcement is active, saving a workbook in Evaluation Mode marks
+the output so that it cannot be mistaken for production output:
+
+- An **Evaluation** notice tab is inserted as the first sheet and made active.
+- A watermark cell is placed below the used range of every sheet.
+- The same evaluation mark is appended to each sheet's page header.
+
+Evaluation Mode never caps rows or drops data. The saved file is complete apart
+from the marks, and the in-memory workbook is not modified. Reading,
+recalculation, and rendering fidelity are unrestricted.
+
+## Enforcement depends on the build
+
+Distributed production builds enforce Evaluation Mode unconditionally. Native
+libraries built for development leave enforcement off by default so automated
+tests and format-fidelity comparisons remain byte-stable. Enable it in a
+development build with either:
+
+```bash
+export AXYRA_LICENSE_ENFORCE=1
+# or
+java -Daxyra.license.enforce=1 ...
+```
+
+The native layer reads this setting when a workbook is saved.
+
+You can inspect the current state at runtime:
 
 ```java
-import io.keikai.axyra.sheets.Workbook;
 import io.keikai.axyra.sheets.LicenseInfo;
+import io.keikai.axyra.sheets.Workbook;
 
-LicenseInfo info = Workbook.setLicense(tokenString);
-LicenseInfo same = Workbook.setLicense(tokenBytes);
-
-try (InputStream in = MyApp.class.getResourceAsStream("/axyra-license.txt")) {
-    Workbook.setLicense(in);
-}
-```
-
-`setLicense` is static and process-wide — call it once during application
-startup, before creating or opening any workbook. It returns the parsed
-`LicenseInfo`.
-
-{: .notice--warning}
-**`setLicense` fails open — it does not throw on a bad token.** A malformed,
-tampered, or expired token leaves the engine in `EVALUATION` rather than raising
-an exception, so a `try`/`catch` around the call tells you nothing. The only way
-to know a license took effect is to inspect what it returns:
-
-```java
-LicenseInfo info = Workbook.setLicense(tokenString);
-if (!info.isLicensed()) {
-    throw new IllegalStateException("Axyra Sheets license not in force: " + info.state());
-}
-```
-
-Do this at startup. Without it, a deployment with a bad token runs with degraded
-output and no signal that anything is wrong.
-
-# Checking status
-
-```java
 LicenseInfo info = Workbook.licenseStatus();
-
-info.state();        // UNLICENSED | EVALUATION | LICENSED | GRACE
-info.edition();
-info.licensee();
-info.features();     // the feature names the token grants
-info.expiresAt();    // epoch seconds, or null for a perpetual license
-info.isLicensed();
-info.hasFeature("render.pdf");
+System.out.println(info.state());
 ```
 
-`License` offers the same two questions as a shorthand:
+# 30-Day Evaluation License
+
+A 30-day evaluation license enables all features and produces clean,
+unwatermarked output during the evaluation period, making it suitable for
+realistic performance and deployment testing.
+
+[Contact us](https://keikai.io/contact) to request a 30-day Axyra Sheets
+evaluation license. Include your organisation, intended use case, deployment
+platforms, and contact details. You will receive a signed license-key file.
+
+Install the key once during application startup, before creating or opening a
+workbook:
 
 ```java
-import io.keikai.axyra.sheets.License;
+import io.keikai.axyra.sheets.LicenseInfo;
+import io.keikai.axyra.sheets.Workbook;
 
-License.status();
-License.isFeatureEnabled("render.pdf");
+import java.io.InputStream;
+
+try (InputStream key = MyApplication.class
+		.getResourceAsStream("/licenses/axyra-evaluation.lic")) {
+	if (key == null) {
+		System.getLogger("app").log(System.Logger.Level.WARNING,
+				"Axyra Sheets license key not found; using Evaluation Mode");
+	} else {
+		LicenseInfo info = Workbook.setLicense(key);
+		if (!info.isLicensed()) {
+			System.getLogger("app").log(System.Logger.Level.WARNING,
+					"Axyra Sheets evaluation license is not active: " + info.state());
+		}
+	}
+}
 ```
 
-## The four states
+`Workbook.setLicense(...)` is static and process-wide. Call it once rather than
+once per workbook. The API also accepts the token as a `String` or `byte[]`.
+
+During the evaluation period, `licenseStatus()` reports `LICENSED`. A short grace
+period may follow the 30 days; during it, the state is `GRACE` and output remains
+clean. After the grace period, Axyra Sheets returns to Evaluation Mode.
+
+# Production License
+
+[Contact us](https://keikai.io/contact) to purchase an Axyra Sheets production
+license. Our sales team will confirm the appropriate edition, deployment scope,
+and license term for your application. After purchase, you receive a signed
+production license-key file.
+
+Install a production key through the same process-wide API used for a 30-day
+evaluation key. In production, load it from a secret manager, environment
+variable, or mounted file rather than committing it to source control:
+
+```java
+String token = System.getenv("AXYRA_LICENSE");
+if (token == null || token.isBlank()) {
+	System.getLogger("app").log(System.Logger.Level.WARNING,
+			"AXYRA_LICENSE is not configured; using Evaluation Mode");
+} else {
+	LicenseInfo info = Workbook.setLicense(token);
+	if (!info.isLicensed()) {
+		System.getLogger("app").log(System.Logger.Level.WARNING,
+				"Axyra Sheets production license is not active: " + info.state());
+	}
+}
+```
+
+Check the returned status during startup instead of waiting to discover a
+watermark in generated output. Invalid, malformed, or expired keys fall back to
+Evaluation Mode rather than preventing Axyra Sheets from starting.
+
+The possible states are:
 
 | State | Meaning |
 |---|---|
-| `UNLICENSED` | No token installed. Evaluation limits apply. |
-| `EVALUATION` | A token is installed but is not currently in force: invalid, not yet valid, or expired past its grace period. |
-| `LICENSED` | A valid production token. |
-| `GRACE` | The token has expired but the engine is still operating, within a grace period. |
+| `UNLICENSED` | No key is installed; Evaluation Mode applies. |
+| `EVALUATION` | A key was rejected or is no longer valid; Evaluation Mode applies. |
+| `LICENSED` | A valid license is active. |
+| `GRACE` | A time-limited license has expired but remains active during its grace period. |
 
-`GRACE` is the state to watch for in production monitoring. It means the license
-has expired and you have a limited window to replace it — surface it as an alert,
-not as a log line nobody reads.
+Monitor `GRACE` in production so the key can be renewed before the application
+returns to Evaluation Mode. `LicenseInfo.features()` and
+`LicenseInfo.hasFeature(...)` report the capabilities granted by the installed
+key. For example, the canonical feature names include `pdf_render`, `pivot`, and
+`signatures`; `*` grants every feature.
 
-```java
-if (Workbook.licenseStatus().state() == LicenseStatus.GRACE) {
-    alerting.warn("Axyra Sheets license expired — in grace period");
-}
-```
-
-# Feature gating
-
-A token grants a set of named features, and features are checked at the point of
-use. Guard optional capability rather than discovering the limit mid-request:
-
-```java
-if (License.isFeatureEnabled("render.pdf")) {
-    wb.renderPdf(path);
-} else {
-    wb.save(path);
-}
-```
-
-`info.features()` lists exactly what your token grants — the authoritative
-answer for your license, in preference to any list in documentation.
-
-# Running unlicensed
-
-The engine runs without a token so you can evaluate it, with limits. Those
-limits are enforced by the engine and are not documented here as a fixed set,
-because they vary by build — check `licenseStatus()` and the errors you get.
-Unlicensed operation is for evaluation and development; it is not a supported
-production configuration.
-
-# Where to keep the token
-
-A license token is a **secret** — it identifies your organisation and it is what
-authorises the software.
-
-- Keep it out of version control.
-- Load it from a secret manager, an environment variable, or a mounted file — the
-  `InputStream` overload exists for this.
-- Do not ship it inside a client-distributed artifact if the token is for
-  server-side use.
-
-Bundling it as a classpath resource is convenient and common for server
-deployments; just make sure that artifact is not published anywhere public.
-
-# Obtaining a license
-
-Contact [Potix](https://keikai.io) for pricing and terms.
+Keep every production or evaluation key out of public repositories and
+client-distributed artifacts. The key identifies your organisation and grants
+the right to use the software.

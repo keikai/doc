@@ -10,9 +10,9 @@ spreadsheet files, evaluates formulas, and renders pages to PDF or images
 entirely on the server — with no browser and no UI.
 
 {: .notice--warning}
-**Axyra Sheets is not Keikai Spreadsheet.** They are two different products under
-the same Keikai brand, with different APIs, different artifacts, and separate
-documentation. If you are looking for the browser-based spreadsheet UI component
+**Axyra Sheets is not Keikai Spreadsheet.** They are separate products with
+separate brands, APIs, artifacts, licenses, and documentation. If you are looking
+for the browser-based Keikai Spreadsheet UI component
 (`io.keikai.api.*`, ZK / JSP / JSF integration), you want the
 [Keikai Spreadsheet documentation]({{ site.baseurl }}/dev-ref) instead — see
 [Axyra Sheets vs. Keikai Spreadsheet]({{ site.axyra_devref }}/Axyra_vs_Keikai)
@@ -22,8 +22,8 @@ for a side-by-side comparison.
 
 | | |
 |---|---|
-| **[Tutorial]({{ site.axyra_tutorial }})** | Start here. Add the dependency, create a workbook, read and write a file, and render a PDF — in about ten minutes. |
-| **[Developer Reference]({{ site.axyra_devref }})** | The full guide: workbook and sheet model, cells and ranges, formulas, styles, charts, pivot tables, import/export, rendering, and licensing. |
+| **[Quick Start]({{ site.axyra_tutorial }})** | Start with AI-assisted development or build your first workbook manually. |
+| **[Developer Reference]({{ site.axyra_devref }})** | The full guide: AI-assisted development, workbook and sheet model, formulas, charts, import/export, rendering, and licensing. |
 | **[Javadoc]({{ site.axyra_javadoc }})** | Generated API documentation for every public class in `io.keikai.axyra.sheets`. |
 
 # What it does

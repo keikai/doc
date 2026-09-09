@@ -3,4 +3,14 @@
 <link rel="shortcut icon" href="//keikai.io/keikai-favicon-8.png">
 <!-- insert favicons. use https://realfavicongenerator.net/ -->
 <script src="/assets/js/page-control.js?t=20200225"></script>
+
+{% comment %}
+  Opt-out of search indexing for a page or a whole section. Set `noindex: true`
+  in front matter, or in a `defaults` scope in _config.yml. Used to keep the
+  unreleased Axyra Sheets docs out of search results -- remove the scope in
+  _config.yml at release, not this include.
+{% endcomment %}
+{%- if page.noindex -%}
+<meta name="robots" content="noindex, nofollow">
+{%- endif -%}
 <!-- end custom head snippets -->

@@ -3,8 +3,9 @@ title: 'Axyra Sheets vs. Keikai Spreadsheet'
 permalink: /axyra/dev-ref/Axyra_vs_Keikai
 ---
 
-Two products, one brand. This page exists so you can tell in thirty seconds
-which one you are looking at, and which one you need.
+Axyra Sheets and Keikai Spreadsheet are separate products with separate brands.
+This page exists so you can tell in thirty seconds which one you are looking at
+and which one you need.
 
 {: .notice--info}
 **In one line:** Keikai Spreadsheet is an interactive spreadsheet **UI** for the
@@ -42,7 +43,7 @@ browser. Axyra Sheets is a headless spreadsheet **engine** for the server.
 The dividing question is simply whether a human interacts with a grid in a
 browser. If yes, you need the UI component. If no, you need the engine.
 
-# How they relate
+# How the technology relates
 
 Since Keikai 7.0.0-Beta, Keikai Spreadsheet uses Axyra Sheets internally as its
 engine. This is an implementation change, not an API change:
@@ -55,10 +56,11 @@ engine. This is an implementation change, not an API change:
 New, headless projects should target `io.keikai.axyra.sheets.*` directly rather
 than going through the UI component's API.
 
-# Naming, so the packages are not surprising
+# Why `keikai` appears in the Java coordinates
 
-Axyra is a **product family** within the Keikai brand — Axyra Sheets is the
-spreadsheet member of it. That is why the names mix:
+Axyra and Keikai are separate brands. The existing `io.keikai` Maven group and
+Java package prefix identify the publisher's technical namespace; they do not
+make Axyra Sheets part of the Keikai brand.
 
 | | |
 |---|---|
@@ -68,8 +70,9 @@ spreadsheet member of it. That is why the names mix:
 | Cargo crates | `axyra-sheets-*` |
 | Documentation | `doc.keikai.io/axyra` |
 
-The `io.keikai` prefix is the brand; `axyra.sheets` is the product. Seeing both
-in one coordinate is expected, not a mistake.
+The product identity is `Axyra Sheets`; the coordinates remain
+`io.keikai:axyra-sheets` and `io.keikai.axyra.sheets.*` for compatibility and
+artifact discovery.
 
 # Do not mix them up
 
@@ -86,7 +89,7 @@ A few concrete traps:
   {{ site.axyra_version }} are unrelated numbers. Do not try to match them.
 - **Licenses are separate products.** A Keikai Spreadsheet license does not cover
   Axyra Sheets, and the token formats differ. See
-  [Licensing]({{ site.axyra_devref }}/License).
+  [Licensing and Evaluation]({{ site.axyra_devref }}/License).
 
 # Migrating from Keikai's API to Axyra Sheets
 

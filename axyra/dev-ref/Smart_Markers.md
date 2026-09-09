@@ -3,6 +3,8 @@ title: 'Smart Markers'
 permalink: /axyra/dev-ref/Smart_Markers
 ---
 
+{% include axyra_example.html path="devref/SmartMarkersExample.java" %}
+
 Smart markers are a templating layer: design a spreadsheet in Excel with
 `${...}` placeholders, then fill it from a Java `Map` at runtime. Your report
 layout lives in a file your users can edit, not in your code.

@@ -3,6 +3,8 @@ title: 'Cells and Ranges'
 permalink: /axyra/dev-ref/Cell_and_Range
 ---
 
+{% include axyra_example.html path="devref/CellAndRangeExample.java" %}
+
 Two ways to reach data: `Cell` for one cell with all of its attachments, and
 `Range` for a rectangular block. Which you pick has real performance
 consequences — see [Bulk access](#bulk-access-and-performance).

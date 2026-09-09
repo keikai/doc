@@ -12,8 +12,10 @@ main:
   #   url: /axyra
 
 axyra_main:
-  - title: "Tutorial"
+  - title: "Quick Start"
     url: /axyra/tutorial
+  - title: "Guides"
+    url: /axyra/guides
   - title: "Developer Reference"
     url: /axyra/dev-ref
   - title: "JavaDoc"
@@ -32,21 +34,25 @@ axyra:
     children:
       - title: "Overview"
         url: /axyra
-      - title: "Tutorial"
+      - title: "Quick Start"
         url: /axyra/tutorial
+      - title: "Guides"
+        url: /axyra/guides
       - title: "Developer Reference"
         url: /axyra/dev-ref
       - title: "Javadoc"
         url: https://keikai.io/javadoc/axyra/latest/
 
 axyra-tutorial:
-  - title: "Axyra Sheets Tutorial"
+  - title: "Axyra Sheets Quick Start"
     url: /axyra/tutorial
     children:
-      - title: "Overview"
+      - title: "Choose Your Path"
         url: /axyra/tutorial
-      - title: "Quick Start"
+      - title: "Manual Development"
         url: /axyra/tutorial/quick_start
+      - title: "AI-Assisted Development"
+        url: /axyra/dev-ref/AI_Assisted_Development
       - title: "Read and Write Files"
         url: /axyra/tutorial/read_write
       - title: "Render to PDF and Images"
@@ -58,10 +64,37 @@ axyra-tutorial:
       - title: "Javadoc"
         url: https://keikai.io/javadoc/axyra/latest/
 
+# Task-oriented articles. One page per search query; each links into the
+# reference rather than duplicating it.
+axyra-guides:
+  - title: "Guides"
+    url: /axyra/guides
+    children:
+      - title: "Overview"
+        url: /axyra/guides
+      - title: "Create an Excel File"
+        url: /axyra/guides/create-excel-file-java
+      - title: "Read an Excel File"
+        url: /axyra/guides/read-excel-file-java
+      - title: "Convert Excel to PDF"
+        url: /axyra/guides/convert-excel-to-pdf-java
+      - title: "Write Data to Excel"
+        url: /axyra/guides/write-data-to-excel-java
+      - title: "Generate Excel Reports"
+        url: /axyra/guides/generate-excel-reports-java
+  - title: "More"
+    children:
+      - title: "Quick Start"
+        url: /axyra/tutorial
+      - title: "Developer Reference"
+        url: /axyra/dev-ref
+      - title: "Javadoc"
+        url: https://keikai.io/javadoc/axyra/latest/
+
 axyra-dev-ref:
   - title: Overview
     url: /axyra/dev-ref
-  - title: Getting Started
+  - title: Setup and Operations
     url: /axyra/dev-ref/Installation
     children:
       - title: "Installation"
@@ -70,8 +103,10 @@ axyra-dev-ref:
         url: /axyra/dev-ref/Native_Loader
       - title: "Architecture"
         url: /axyra/dev-ref/Architecture
-      - title: "Licensing"
+      - title: "Licensing and Evaluation"
         url: /axyra/dev-ref/License
+  - title: AI-Assisted Development
+    url: /axyra/dev-ref/AI_Assisted_Development
   - title: The Object Model
     url: /axyra/dev-ref/Workbook_and_Sheet
     children:

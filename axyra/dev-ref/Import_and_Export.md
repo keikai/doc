@@ -3,6 +3,8 @@ title: 'Import and Export'
 permalink: /axyra/dev-ref/Import_and_Export
 ---
 
+{% include axyra_example.html path="devref/ImportExportExample.java" %}
+
 # Opening
 
 ```java

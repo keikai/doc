@@ -1,0 +1,28 @@
+/axyra/tutorial: tree/main/src/main/java/io/keikai/axyra/examples/tutorial
+/axyra/tutorial/quick_start: blob/main/src/main/java/io/keikai/axyra/examples/tutorial/QuickStartExample.java
+/axyra/tutorial/read_write: blob/main/src/main/java/io/keikai/axyra/examples/tutorial/ReadWriteExample.java
+/axyra/tutorial/render: blob/main/src/main/java/io/keikai/axyra/examples/tutorial/RenderExample.java
+
+/axyra/guides: tree/main/src/main/java/io/keikai/axyra/examples/guides
+/axyra/guides/create-excel-file-java: blob/main/src/main/java/io/keikai/axyra/examples/guides/CreateExcelFileExample.java
+/axyra/guides/read-excel-file-java: blob/main/src/main/java/io/keikai/axyra/examples/guides/ReadExcelFileExample.java
+/axyra/guides/convert-excel-to-pdf-java: blob/main/src/main/java/io/keikai/axyra/examples/guides/ExcelToPdfExample.java
+/axyra/guides/write-data-to-excel-java: blob/main/src/main/java/io/keikai/axyra/examples/guides/WriteDataToExcelExample.java
+/axyra/guides/generate-excel-reports-java: blob/main/src/main/java/io/keikai/axyra/examples/guides/GenerateReportExample.java
+
+/axyra/dev-ref: tree/main/src/main/java/io/keikai/axyra/examples/devref
+/axyra/dev-ref/Cell_and_Range: blob/main/src/main/java/io/keikai/axyra/examples/devref/CellAndRangeExample.java
+/axyra/dev-ref/Charts: blob/main/src/main/java/io/keikai/axyra/examples/devref/ChartsExample.java
+/axyra/dev-ref/Content_Objects: blob/main/src/main/java/io/keikai/axyra/examples/devref/ContentObjectsExample.java
+/axyra/dev-ref/Formulas: blob/main/src/main/java/io/keikai/axyra/examples/devref/FormulasExample.java
+/axyra/dev-ref/Import_and_Export: blob/main/src/main/java/io/keikai/axyra/examples/devref/ImportExportExample.java
+/axyra/dev-ref/Installation: blob/main/src/main/java/io/keikai/axyra/examples/devref/LicenseAndNativeLoaderExample.java
+/axyra/dev-ref/License: blob/main/src/main/java/io/keikai/axyra/examples/devref/LicenseAndNativeLoaderExample.java
+/axyra/dev-ref/Native_Loader: blob/main/src/main/java/io/keikai/axyra/examples/devref/LicenseAndNativeLoaderExample.java
+/axyra/dev-ref/Pivot_Table: blob/main/src/main/java/io/keikai/axyra/examples/devref/PivotTableExample.java
+/axyra/dev-ref/Rendering: blob/main/src/main/java/io/keikai/axyra/examples/devref/RenderingReferenceExample.java
+/axyra/dev-ref/Smart_Markers: blob/main/src/main/java/io/keikai/axyra/examples/devref/SmartMarkersExample.java
+/axyra/dev-ref/Streaming: blob/main/src/main/java/io/keikai/axyra/examples/devref/StreamingExample.java
+/axyra/dev-ref/Styles: blob/main/src/main/java/io/keikai/axyra/examples/devref/StylesExample.java
+/axyra/dev-ref/Supported_Formats: blob/main/src/main/java/io/keikai/axyra/examples/devref/ImportExportExample.java
+/axyra/dev-ref/Workbook_and_Sheet: blob/main/src/main/java/io/keikai/axyra/examples/devref/WorkbookAndSheetExample.java

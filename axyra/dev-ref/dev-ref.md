@@ -6,8 +6,8 @@ toc: false
 
 {: .notice--warning}
 This is the reference for **Axyra Sheets**, the headless spreadsheet engine
-(`io.keikai.axyra.sheets.*`). It is a different product from Keikai Spreadsheet,
-the browser UI component (`io.keikai.api.*`) — that has its
+(`io.keikai.axyra.sheets.*`). It has its own brand and is a different product
+from Keikai Spreadsheet, the browser UI component (`io.keikai.api.*`) — that has its
 [own developer reference]({{ site.baseurl }}/dev-ref). See
 [Axyra Sheets vs. Keikai Spreadsheet]({{ site.axyra_devref }}/Axyra_vs_Keikai).
 
@@ -21,14 +21,20 @@ Java 17 or later, and familiarity with spreadsheet concepts (cells, ranges,
 formulas, number formats). No web framework is assumed — Axyra Sheets is a
 library, not a component.
 
-# Getting started
+# Setup and operations
 
 | | |
 |---|---|
 | [Installation]({{ site.axyra_devref }}/Installation) | Maven coordinates, bundled native libraries, supported platforms |
 | [Native Library Loading]({{ site.axyra_devref }}/Native_Loader) | How the native library is found, extracted, and overridden |
 | [Architecture]({{ site.axyra_devref }}/Architecture) | The Rust engine, the crate layering, and where the JNI boundary sits |
-| [Licensing]({{ site.axyra_devref }}/License) | License tokens, feature gating, evaluation limits |
+| [Licensing and Evaluation]({{ site.axyra_devref }}/License) | Evaluation Mode, 30-day evaluation keys, and production licenses |
+
+# AI-assisted development
+
+| | |
+|---|---|
+| [AI-Assisted Development]({{ site.axyra_devref }}/AI_Assisted_Development) | Give an AI coding assistant reliable Axyra context, generate a project, and verify its workbook output |
 
 # The object model
 

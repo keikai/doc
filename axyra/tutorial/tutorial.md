@@ -1,46 +1,34 @@
 ---
-title: 'Axyra Sheets Tutorial'
+title: 'Axyra Sheets Quick Start'
 permalink: /axyra/tutorial
 ---
 
 {: .notice--warning}
-This is the tutorial for **Axyra Sheets**, the headless spreadsheet engine. For
+This is the Quick Start for **Axyra Sheets**, the headless spreadsheet engine. For
 the browser-based Keikai Spreadsheet UI component, see the
 [Keikai tutorial]({{ site.baseurl }}/tutorial).
 
-# Overview
+# Choose how you want to start
 
-Axyra Sheets is a spreadsheet engine you embed in your own application. There is
-no UI and no server to run: you add a dependency, open or create a `Workbook`,
-and work with it through plain Java calls.
+Axyra Sheets supports two equally valid development paths. Both produce the same
+Java project and use the same public API; the difference is whether you write the
+first implementation yourself or collaborate with an AI coding assistant.
 
-The engine itself is written in Rust and loaded as a native library. The Java SDK
-is a thin, typed layer over it, so file parsing, formula evaluation, and
-rendering all happen in native code — Java holds only handles.
+| Path | Start here |
+|---|---|
+| **AI-assisted development** | **[Build with an AI coding assistant]({{ site.axyra_devref }}/AI_Assisted_Development)** — give your assistant the Axyra documentation and examples, describe the spreadsheet task, then verify the generated workbook. |
+| **Manual development** | **[Build your first workbook by hand]({{ site.axyra_tutorial }}/quick_start)** — add the dependency, create cells and formulas, recalculate, and save an XLSX file. |
 
-```
-┌──────────────────────────────────────────────┐
-│  Your application (Java)                     │
-├──────────────────────────────────────────────┤
-│  io.keikai.axyra.sheets   — the Java SDK     │
-├──────────────────────────────────────────────┤
-│  JNI bridge (libaxyra_jni)                   │
-├──────────────────────────────────────────────┤
-│  Rust engine                                 │
-│  model · formula · format · ooxml · xls ·    │
-│  csv · json · html · render · signature      │
-└──────────────────────────────────────────────┘
-```
+If you are unsure, start with the AI-assisted path. It still shows the generated
+code and the commands used to build it, so you remain in control of the result.
 
-# What you will build
+# Continue learning
 
-Three short exercises, each standing on its own:
+After creating your first workbook, continue with these short exercises:
 
-1. **[Quick Start]({{ site.axyra_tutorial }}/quick_start)** — add the dependency
-   and write your first workbook to disk.
-2. **[Read and Write Files]({{ site.axyra_tutorial }}/read_write)** — open an
+1. **[Read and Write Files]({{ site.axyra_tutorial }}/read_write)** — open an
    existing XLSX, edit it, recalculate, and save it back.
-3. **[Render to PDF and Images]({{ site.axyra_tutorial }}/render)** — turn a
+2. **[Render to PDF and Images]({{ site.axyra_tutorial }}/render)** — turn a
    workbook into a paginated PDF or a PNG.
 
 # Requirements
@@ -49,9 +37,9 @@ Three short exercises, each standing on its own:
 - One of the supported platforms: macOS (x86-64, aarch64), Linux (x86-64,
   aarch64), Windows (x86-64). The published SDK bundles a native library for
   each supported platform.
-- A license token for production use. See
-  [Licensing]({{ site.axyra_devref }}/License) — the engine runs unlicensed for
-  evaluation, with limits.
+- No license key is required to start. The SDK initially runs in Evaluation
+  Mode; distributed production builds mark saved workbook output. See
+  [Licensing and Evaluation]({{ site.axyra_devref }}/License).
 
 # Where to go next
 

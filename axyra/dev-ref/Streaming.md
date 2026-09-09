@@ -3,6 +3,8 @@ title: 'Streaming Large Files'
 permalink: /axyra/dev-ref/Streaming
 ---
 
+{% include axyra_example.html path="devref/StreamingExample.java" %}
+
 Two independent mechanisms for workbooks that are too large to treat casually:
 a **streaming writer** for generating big files, and a **columnar backend** for
 holding big sheets in memory.
