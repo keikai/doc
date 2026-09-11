@@ -2,11 +2,7 @@
 title: 'Axyra Sheets Quick Start'
 permalink: /axyra/quick-start
 ---
-
-{: .notice--warning}
-This is the Quick Start for **Axyra Sheets**, the headless spreadsheet engine. For
-the browser-based Keikai Spreadsheet UI component, see the
-[Keikai tutorial]({{ site.baseurl }}/tutorial).
+Axyra Sheets is a Java API for server-side spreadsheet processing, including reading, writing, calculating, and rendering Excel files. It supports modern formulas, charts, pivot tables, PDF/image output, and other advanced spreadsheet workflows without requiring Microsoft Office.
 
 # Choose how you want to start
 
