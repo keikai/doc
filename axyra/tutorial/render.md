@@ -5,10 +5,7 @@ permalink: /axyra/quick-start/render
 
 {% include axyra_example.html path="tutorial/RenderExample.java" %}
 
-Axyra Sheets includes a full rendering pipeline: it lays out pages the way a
-spreadsheet application would — honouring page setup, print areas, scaling,
-freeze panes, fonts, borders, charts, and images — and rasterises or vectorises
-the result.
+Axyra Sheets includes a full rendering pipeline that lays out pages much like a spreadsheet application, honoring page setup, print areas, scaling, fonts, borders, charts, and images, and exports the result to PDF or image formats. Licensing and Evaluation.
 
 # A PDF in one line
 
