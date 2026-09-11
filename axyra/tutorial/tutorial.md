@@ -1,6 +1,6 @@
 ---
 title: 'Axyra Sheets Quick Start'
-permalink: /axyra/tutorial
+permalink: /axyra/quick-start
 ---
 
 {: .notice--warning}

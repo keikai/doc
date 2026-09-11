@@ -1,6 +1,6 @@
 ---
 title: 'Render to PDF and Images'
-permalink: /axyra/tutorial/render
+permalink: /axyra/quick-start/render
 ---
 
 {% include axyra_example.html path="tutorial/RenderExample.java" %}

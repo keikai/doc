@@ -3,8 +3,6 @@ title: 'How to Read an Excel File in Java (XLSX Parsing Guide)'
 permalink: /axyra/guides/read-excel-file-java
 ---
 
-{% include axyra_example.html path="guides/ReadExcelFileExample.java" %}
-
 This guide opens a spreadsheet you did not write, finds where the data actually
 is, reads it out in bulk, and handles the awkward parts — typed values, formula
 results, error cells, and dates. The same code path reads XLSX, XLSM, XLSB, XLS,

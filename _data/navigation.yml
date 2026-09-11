@@ -12,15 +12,14 @@ main:
   #   url: /axyra
 
 axyra_main:
-  - title: "Quick Start"
-    url: /axyra/tutorial
-  - title: "Guides"
-    url: /axyra/guides
-  - title: "Developer Reference"
-    url: /axyra/dev-ref
-  - title: "JavaDoc"
-    url: https://keikai.io/javadoc/axyra/latest/
-  - title: "Keikai Spreadsheet"
+  - title: "Quickstart"
+    url: /axyra/quick-start
+  - title: "Demo"
+    url: https://keikai.io/demo
+  - title: "Contact"
+    url: https://keikai.io/contact
+  - divider: true
+  - title: "Keikai"
     url: /dev-ref
 
 # ---------------------------------------------------------------------------
@@ -35,7 +34,7 @@ axyra:
       - title: "Overview"
         url: /axyra
       - title: "Quick Start"
-        url: /axyra/tutorial
+        url: /axyra/quick-start
       - title: "Guides"
         url: /axyra/guides
       - title: "Developer Reference"
@@ -45,18 +44,18 @@ axyra:
 
 axyra-tutorial:
   - title: "Axyra Sheets Quick Start"
-    url: /axyra/tutorial
+    url: /axyra/quick-start
     children:
       - title: "Choose Your Path"
-        url: /axyra/tutorial
+        url: /axyra/quick-start
       - title: "Manual Development"
-        url: /axyra/tutorial/quick_start
+        url: /axyra/quick-start/quick_start
       - title: "AI-Assisted Development"
         url: /axyra/dev-ref/AI_Assisted_Development
       - title: "Read and Write Files"
-        url: /axyra/tutorial/read_write
+        url: /axyra/quick-start/read_write
       - title: "Render to PDF and Images"
-        url: /axyra/tutorial/render
+        url: /axyra/quick-start/render
   - title: "More"
     children:
       - title: "Developer Reference"
@@ -85,7 +84,7 @@ axyra-guides:
   - title: "More"
     children:
       - title: "Quick Start"
-        url: /axyra/tutorial
+        url: /axyra/quick-start
       - title: "Developer Reference"
         url: /axyra/dev-ref
       - title: "Javadoc"

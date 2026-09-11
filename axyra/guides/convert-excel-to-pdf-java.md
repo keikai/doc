@@ -3,8 +3,6 @@ title: 'How to Convert Excel to PDF in Java'
 permalink: /axyra/guides/convert-excel-to-pdf-java
 ---
 
-{% include axyra_example.html path="guides/ExcelToPdfExample.java" %}
-
 Converting a spreadsheet to PDF on the server, with no Excel installed and no
 headless Office process. Axyra Sheets lays out pages the way a spreadsheet
 application would — page setup, print areas, scaling, freeze panes, fonts,

@@ -3,8 +3,6 @@ title: 'How to Create Excel Reports Automatically in Java'
 permalink: /axyra/guides/generate-excel-reports-java
 ---
 
-{% include axyra_example.html path="guides/GenerateReportExample.java" %}
-
 Building a report by writing layout code — set this cell, style that range, hope
 the totals line up — does not survive contact with people who want the report to
 look different next month. The alternative: let them design the workbook in

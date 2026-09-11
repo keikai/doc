@@ -2,7 +2,7 @@
 
 {% assign axyra_prefix = page.url | slice: 0, 7 %}
 {% if page.url == "/axyra" or axyra_prefix == "/axyra/" %}
-  {% assign masthead_title = "Axyra Sheets" %}
+  {% assign masthead_title = "Axyra" %}
   {% assign masthead_url = "/axyra" | relative_url %}
   {% assign masthead_links = site.data.navigation.axyra_main %}
 {% else %}
@@ -18,22 +18,26 @@
         {% unless logo_path == empty %}
           <a class="site-logo" href="{{ masthead_url }}"><img src="{{ logo_path | relative_url }}" alt=""></a>
         {% endunless %}
-        <a class="site-title" href="{{ masthead_url }}">{{ masthead_title }}</a>
+        <a class="site-title{% if masthead_title == "Axyra" %} site-title--axyra{% endif %}" href="{{ masthead_url }}">{{ masthead_title }}</a>
         <ul class="visible-links">
           {% unless page.head == "doc" %}
             {%- for link in masthead_links -%}
-              {%- if link.url contains "://" -%}
-                {%- assign url = link.url -%}
+              {%- if link.divider -%}
+                <li class="masthead__menu-item masthead__menu-divider" aria-hidden="true">|</li>
               {%- else -%}
-                {%- assign url = link.url | relative_url -%}
+                {%- if link.url contains "://" -%}
+                  {%- assign url = link.url -%}
+                {%- else -%}
+                  {%- assign url = link.url | relative_url -%}
+                {%- endif -%}
+                <li class="masthead__menu-item">
+                  <a href="{{ url }}" {% if link.description %}title="{{ link.description }}"{% endif %}>{{ link.title }}</a>
+                </li>
               {%- endif -%}
-              <li class="masthead__menu-item">
-                <a href="{{ url }}" {% if link.description %}title="{{ link.description }}"{% endif %}>{{ link.title }}</a>
-              </li>
             {%- endfor -%}
           {% endunless %}
         </ul>
-        {% if site.search == true %}
+        {% if site.search == true and masthead_title != "Axyra" %}
         <button class="search__toggle" type="button">
           <span class="visually-hidden">{{ site.data.ui-text[site.locale].search_label | default: "Toggle search" }}</span>
           <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.99 16">

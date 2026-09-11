@@ -3,8 +3,6 @@ title: 'How to Create an Excel File in Java (Step-by-Step)'
 permalink: /axyra/guides/create-excel-file-java
 ---
 
-{% include axyra_example.html path="guides/CreateExcelFileExample.java" %}
-
 This guide builds a real `.xlsx` file from an empty Java project: a small sales
 report with a styled header row, currency formatting, a formula, a frozen header,
 and sensible column widths. Every snippet is part of one program, and the whole

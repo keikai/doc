@@ -1,7 +1,7 @@
-/axyra/tutorial: tree/main/src/main/java/io/keikai/axyra/examples/tutorial
-/axyra/tutorial/quick_start: blob/main/src/main/java/io/keikai/axyra/examples/tutorial/QuickStartExample.java
-/axyra/tutorial/read_write: blob/main/src/main/java/io/keikai/axyra/examples/tutorial/ReadWriteExample.java
-/axyra/tutorial/render: blob/main/src/main/java/io/keikai/axyra/examples/tutorial/RenderExample.java
+/axyra/quick-start: tree/main/src/main/java/io/keikai/axyra/examples/tutorial
+/axyra/quick-start/quick_start: blob/main/src/main/java/io/keikai/axyra/examples/tutorial/QuickStartExample.java
+/axyra/quick-start/read_write: blob/main/src/main/java/io/keikai/axyra/examples/tutorial/ReadWriteExample.java
+/axyra/quick-start/render: blob/main/src/main/java/io/keikai/axyra/examples/tutorial/RenderExample.java
 
 /axyra/guides: tree/main/src/main/java/io/keikai/axyra/examples/guides
 /axyra/guides/create-excel-file-java: blob/main/src/main/java/io/keikai/axyra/examples/guides/CreateExcelFileExample.java

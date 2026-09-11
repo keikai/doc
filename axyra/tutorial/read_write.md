@@ -1,6 +1,6 @@
 ---
 title: 'Read and Write Files'
-permalink: /axyra/tutorial/read_write
+permalink: /axyra/quick-start/read_write
 ---
 
 {% include axyra_example.html path="tutorial/ReadWriteExample.java" %}

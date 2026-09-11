@@ -3,8 +3,6 @@ title: 'How to Write Data to Excel in Java (From a Database or JSON)'
 permalink: /axyra/guides/write-data-to-excel-java
 ---
 
-{% include axyra_example.html path="guides/WriteDataToExcelExample.java" %}
-
 Getting rows out of a `ResultSet` or a JSON payload and into an `.xlsx`. There
 are three ways to do it, and picking the wrong one is the difference between a
 200 ms export and one that times out.

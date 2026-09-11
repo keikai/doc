@@ -1,6 +1,6 @@
 ---
 title: 'Manual Quick Start'
-permalink: /axyra/tutorial/quick_start
+permalink: /axyra/quick-start/quick_start
 ---
 
 {% include axyra_example.html path="tutorial/QuickStartExample.java" %}
