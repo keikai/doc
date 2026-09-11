@@ -26,15 +26,9 @@ from source, you must add the native resource yourself or use the
 
 ## Evaluation Mode
 
-You do not need a license key to run this Quick Start. Without one, Axyra Sheets
-runs in **Evaluation Mode**: reading, editing, calculation, and rendering work
-normally. In a distributed production build, saved workbooks carry a visible
-evaluation notice and watermark. Evaluation output keeps all of your data; it is
-not truncated. A native library built for development only adds these marks when
-license enforcement is explicitly enabled.
+You do not need a license key to follow this Quick Start. Without a key, Axyra Sheets runs in Evaluation Mode, which is intended for evaluation purposes only.
 
-For complete Evaluation Mode behavior, a 30-day full-featured evaluation key,
-and production licensing, see
+Evaluation output may include an evaluation notice or watermark. For full Evaluation Mode behavior, a 30-day full-featured evaluation key, and production licensing, see
 [Licensing and Evaluation]({{ site.axyra_devref }}/License).
 
 # 2. Create a workbook
