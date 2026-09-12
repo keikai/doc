@@ -9,15 +9,6 @@ in Rust and shipped to Java through a native SDK, so it reads and writes real
 spreadsheet files, evaluates formulas, and renders pages to PDF or images
 entirely on the server — with no browser and no UI.
 
-{: .notice--warning}
-**Axyra Sheets is not Keikai Spreadsheet.** They are separate products with
-separate brands, APIs, artifacts, licenses, and documentation. If you are looking
-for the browser-based Keikai Spreadsheet UI component
-(`io.keikai.api.*`, ZK / JSP / JSF integration), you want the
-[Keikai Spreadsheet documentation]({{ site.baseurl }}/dev-ref) instead — see
-[Axyra Sheets vs. Keikai Spreadsheet]({{ site.axyra_devref }}/Axyra_vs_Keikai)
-for a side-by-side comparison.
-
 # Documentation
 
 | | |
@@ -37,15 +28,5 @@ for a side-by-side comparison.
 | **Security** | Workbook encryption (read and write), OPC digital signatures, sheet and range protection |
 | **Scale** | A columnar backend and a streaming writer for large sheets |
 
-# Which product do I need?
-
-| You want to… | Use |
-|---|---|
-| Show an interactive, Excel-like spreadsheet **in the browser** | [Keikai Spreadsheet]({{ site.baseurl }}/dev-ref) |
-| Read, write, calculate, or render spreadsheet files **on the server**, headless | **Axyra Sheets** |
-| Both — a UI plus server-side file processing | Keikai Spreadsheet for the UI; Axyra Sheets is the engine underneath it |
-
-Keikai Spreadsheet's own API (`io.keikai.api.*`) is unchanged and remains
-supported. Internally it now delegates to Axyra Sheets, but existing callers do
-not need to change anything. New, headless projects should target
-`io.keikai.axyra.sheets.*` directly.
+{: .notice--warning}
+Looking for a UI spreadsheet component? Visit [Keikai Spreadsheet](https://keikai.io) instead, or see [how Axyra Sheets and Keikai Spreadsheet compare]({{ site.axyra_devref }}/Axyra_vs_Keikai).
