@@ -10,17 +10,15 @@ Evaluation Mode, request a 30-day full-featured evaluation key, and install a
 production key when you are ready to deploy.
 
 A license key is a signed token verified locally by the engine. Activation does
-not contact a license server, so Axyra Sheets can run in private networks and
-air-gapped environments.
+not contact a license server, so Axyra Sheets can run in private networks.
 
 # Evaluation Mode
 
 Axyra Sheets runs in **Evaluation Mode by default when no license key is
 installed**. You can open real workbooks, edit cells, calculate formulas, render
-them, and exercise the API before purchasing a license.
+them, and exercise the API to test out the product before purchasing a license.
 
-When license enforcement is active, saving a workbook in Evaluation Mode marks
-the output so that it cannot be mistaken for production output:
+When you save a workbook in Evaluation Mode, Axyra adds evaluation marks so the output cannot be mistaken for production output:
 
 - An **Evaluation** notice tab is inserted as the first sheet and made active.
 - A watermark cell is placed below the used range of every sheet.
@@ -29,31 +27,6 @@ the output so that it cannot be mistaken for production output:
 Evaluation Mode never caps rows or drops data. The saved file is complete apart
 from the marks, and the in-memory workbook is not modified. Reading,
 recalculation, and rendering fidelity are unrestricted.
-
-## Enforcement depends on the build
-
-Distributed production builds enforce Evaluation Mode unconditionally. Native
-libraries built for development leave enforcement off by default so automated
-tests and format-fidelity comparisons remain byte-stable. Enable it in a
-development build with either:
-
-```bash
-export AXYRA_LICENSE_ENFORCE=1
-# or
-java -Daxyra.license.enforce=1 ...
-```
-
-The native layer reads this setting when a workbook is saved.
-
-You can inspect the current state at runtime:
-
-```java
-import io.keikai.axyra.sheets.LicenseInfo;
-import io.keikai.axyra.sheets.Workbook;
-
-LicenseInfo info = Workbook.licenseStatus();
-System.out.println(info.state());
-```
 
 # 30-Day Evaluation License
 
