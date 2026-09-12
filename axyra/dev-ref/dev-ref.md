@@ -4,12 +4,7 @@ permalink: /axyra/dev-ref
 toc: false
 ---
 
-{: .notice--warning}
-This is the reference for **Axyra Sheets**, the headless spreadsheet engine
-(`io.keikai.axyra.sheets.*`). It has its own brand and is a different product
-from Keikai Spreadsheet, the browser UI component (`io.keikai.api.*`) — that has its
-[own developer reference]({{ site.baseurl }}/dev-ref). See
-[Axyra Sheets vs. Keikai Spreadsheet]({{ site.axyra_devref }}/Axyra_vs_Keikai).
+Axyra Sheets is a Java API for processing spreadsheets on the server. It can read, write, calculate, and render Excel files, with support for modern formulas, charts, pivot tables, and PDF/image output.
 
 This documentation covers what you need to build with Axyra Sheets: the object
 model, the API surface area by area, per-format behaviour, and the operational
@@ -23,6 +18,7 @@ library, not a component.
 
 # Setup and operations
 
+New to Axyra Sheets? Start with the [Quick Start]({{ site.axyra_devref }}/quick-start).
 | | |
 |---|---|
 | [Installation]({{ site.axyra_devref }}/Installation) | Maven coordinates, bundled native libraries, supported platforms |
@@ -63,11 +59,11 @@ library, not a component.
 | [Streaming Large Files]({{ site.axyra_devref }}/Streaming) | The write-only streaming API and the columnar backend |
 | [Smart Markers]({{ site.axyra_devref }}/Smart_Markers) | Filling a template from Java objects |
 
-# Migrating
+# Choosing the right product
 
 | | |
 |---|---|
-| [Axyra Sheets vs. Keikai Spreadsheet]({{ site.axyra_devref }}/Axyra_vs_Keikai) | How the two products differ, and which to pick |
+| [Axyra Sheets vs. Keikai Spreadsheet]({{ site.axyra_devref }}/Axyra_vs_Keikai) | Potix offers two spreadsheet solutions. How they differ and which to pick |
 
 # Javadoc
 
