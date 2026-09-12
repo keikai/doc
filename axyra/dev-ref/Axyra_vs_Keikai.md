@@ -3,7 +3,7 @@ title: 'Axyra Sheets vs. Keikai Spreadsheet'
 permalink: /axyra/dev-ref/Axyra_vs_Keikai
 ---
 
-Axyra Sheets and Keikai Spreadsheet are separate products with separate brands.
+Axyra Sheets and Keikai Spreadsheet are separate products from Potix Corporation, each with its own brand and purpose.
 This page exists so you can tell in thirty seconds which one you are looking at
 and which one you need.
 
