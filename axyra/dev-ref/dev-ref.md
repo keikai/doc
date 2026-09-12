@@ -19,6 +19,7 @@ library, not a component.
 # Setup and operations
 
 New to Axyra Sheets? Start with the [Quick Start]({{ site.axyra_devref }}/quick-start).
+
 | | |
 |---|---|
 | [Installation]({{ site.axyra_devref }}/Installation) | Maven coordinates, bundled native libraries, supported platforms |
