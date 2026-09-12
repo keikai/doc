@@ -18,7 +18,7 @@ library, not a component.
 
 # Setup and operations
 
-New to Axyra Sheets? Start with the [Quick Start]({{ site.axyra_devref }}/quick-start).
+New to Axyra Sheets? Start with the [Quick Start]({{ site.axyra_tutorial }}).
 
 | | |
 |---|---|
