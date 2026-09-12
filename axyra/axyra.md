@@ -18,6 +18,7 @@ entirely on the server — with no browser and no UI.
 | **[Javadoc]({{ site.axyra_javadoc }})** | Generated API documentation for every public class in `io.keikai.axyra.sheets`. |
 
 # What it does
+Axyra Sheets provides server-side spreadsheet processing for Java applications, from file import and formula calculation to charts, pivot tables, and PDF/image rendering. It works directly with Excel files without requiring Microsoft Office.
 
 | Area | Summary |
 |---|---|
