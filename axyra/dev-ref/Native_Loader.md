@@ -11,7 +11,7 @@ This page covers how that works and what goes wrong.
 
 # How resolution works
 
-On first use of any API that touches the engine, the SDK:
+On first use of any API that touches the engine, the native loader:
 
 1. Checks the `axyra.native.path` system property. If set, it loads that file
    directly and stops.
@@ -43,7 +43,7 @@ platform check that would otherwise catch an architecture mismatch.
 
 | Symptom | Cause |
 |---|---|
-| `UnsatisfiedLinkError: axyra native lib: native lib not found on classpath: /native/osx-aarch64/libaxyra_jni.dylib` | The SDK jar does not contain a native library for this platform, or a repackaging step dropped it. |
+| `UnsatisfiedLinkError: axyra native lib: native lib not found on classpath: /native/osx-aarch64/libaxyra_jni.dylib` | The Axyra Sheets JAR does not contain a native library for this platform, or a repackaging step dropped it. |
 | `UnsatisfiedLinkError` *without* the `native lib not found` text | A library was found but the OS refused to load it — usually the wrong architecture, or a missing system dependency such as an old glibc. |
 | Works locally, fails in the container | The classic one. Your machine's platform is bundled; the container's is not. |
 | Works in tests, fails in the shaded jar | The shading step dropped one or more `native/**` resources. |

@@ -3,10 +3,14 @@ title: 'How to Read an Excel File in Java (XLSX Parsing Guide)'
 permalink: /axyra/guides/read-excel-file-java
 ---
 
-This guide opens a spreadsheet you did not write, finds where the data actually
-is, reads it out in bulk, and handles the awkward parts — typed values, formula
-results, error cells, and dates. The same code path reads XLSX, XLSM, XLSB, XLS,
-ODS, CSV, and JSON.
+Reading Excel files in Java is a common starting point for processing customer
+uploads, importing business records, or checking data from another system. In
+this guide, we’ll use Axyra Sheets for Java to open an XLSX workbook, locate its
+populated cells, and extract values in bulk. We’ll also handle dates, formatted
+text, formula results, and error cells so your application can interpret the
+data correctly.
+
+The same code path reads XLSX, XLSM, XLSB, XLS, ODS, CSV, and JSON.
 
 {: .notice--info}
 **Writing a file instead?** See
@@ -152,7 +156,7 @@ static String describe(CellValue v) {
 {: .notice--info}
 **On Java 21 or later** you can switch over the variants instead
 (`case CellValue.Number n -> ...`) and let the compiler prove exhaustiveness.
-The SDK itself targets Java 17, where pattern matching for `switch` is not yet
+The Java library targets Java 17, where pattern matching for `switch` is not yet
 available, so the samples here use `instanceof`.
 
 If you want what a spreadsheet application would *show* — the number format
@@ -290,3 +294,11 @@ public class ReadExcelFile {
 - [Cells and Ranges]({{ site.axyra_devref }}/Cell_and_Range) — the full data-access API
 - [Supported Formats]({{ site.axyra_devref }}/Supported_Formats) — per-format behaviour and limits
 - [Formulas]({{ site.axyra_devref }}/Formulas) — evaluation, arrays, error semantics
+
+# Beyond Reading Excel Data
+
+Once your application can read spreadsheet values, it can check them against
+business rules, map them to database records, or pass them to another service.
+With Axyra Sheets, you can also update the open workbook, recalculate formulas,
+and save the result or render it as PDF. This lets an Excel import grow into a
+workflow that reads incoming data, processes it, and returns an updated report.

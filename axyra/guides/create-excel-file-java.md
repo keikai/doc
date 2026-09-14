@@ -3,10 +3,12 @@ title: 'How to Create an Excel File in Java (Step-by-Step)'
 permalink: /axyra/guides/create-excel-file-java
 ---
 
-This guide builds a real `.xlsx` file from an empty Java project: a small sales
-report with a styled header row, currency formatting, a formula, a frozen header,
-and sensible column widths. Every snippet is part of one program, and the whole
-thing is assembled at the end.
+Creating an Excel file in Java lets applications deliver sales summaries,
+inventory lists, and other business data in a format people can review and
+edit. In this guide, we’ll use Axyra Sheets for Java to build an XLSX sales
+report from scratch, with headers, numeric data, formulas, number formatting,
+and a frozen header row. The steps come together in a complete program that
+saves a workbook you can open in Excel.
 
 {: .notice--info}
 **Already know the object model?** The
@@ -294,3 +296,12 @@ stays put when you scroll.
   render what you just built
 - [Cells and Ranges]({{ site.axyra_devref }}/Cell_and_Range) — the full data-access API
 - [Styles and Formats]({{ site.axyra_devref }}/Styles) — fonts, fills, borders, number formats
+
+# Beyond Your First Excel File
+
+Once you can create and format a workbook, you can connect it to live
+application data and build reports with multiple sheets, charts, and pivot
+tables. Axyra Sheets can also render the workbook as PDF or images, giving you
+both an editable Excel file and a version for sharing or previewing. The same
+workbook creation steps can become part of a download endpoint or a scheduled
+reporting job.

@@ -19,8 +19,8 @@ with a coding assistant instead, use
 </dependency>
 ```
 
-The published SDK jar includes native libraries for the supported platforms.
-The loader selects the matching library at runtime. If you build a thin SDK jar
+The published JAR includes native libraries for the supported platforms.
+The loader selects the matching library at runtime. If you build a thin JAR
 from source, you must add the native resource yourself or use the
 `-Daxyra.native.path` development override. See
 [Native Library Loading]({{ site.axyra_devref }}/Native_Loader) for details.

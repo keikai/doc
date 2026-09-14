@@ -3,9 +3,10 @@ title: 'How to Write Data to Excel in Java (From a Database or JSON)'
 permalink: /axyra/guides/write-data-to-excel-java
 ---
 
-Getting rows out of a `ResultSet` or a JSON payload and into an `.xlsx`. There
-are three ways to do it, and picking the wrong one is the difference between a
-200 ms export and one that times out.
+Exporting application data to Excel is a common backend task, whether the source
+is a database, JSON response, or another service. In this guide, we’ll use Axyra
+Sheets for Java to turn structured data into an XLSX file, including headers,
+data types, and basic formatting.
 
 # Which approach
 
@@ -106,7 +107,7 @@ question does not arise.
 
 # From JSON
 
-`jackson-databind` is already on the classpath — the SDK uses it across the JNI
+`jackson-databind` is already on the classpath — the library uses it across the JNI
 boundary — so deserialize into the same kind of record and reuse the path above.
 
 ```java
@@ -120,7 +121,7 @@ sheet.importData(0, 0, rows, options);
 ```
 
 {: .notice--info}
-**`java.time` types need one more Jackson artifact.** The SDK pulls in
+**`java.time` types need one more Jackson artifact.** The library pulls in
 `jackson-databind` but not `jackson-datatype-jsr310`, so a record with a
 `LocalDate` component fails to deserialize until you add it and register the
 module:
@@ -267,3 +268,10 @@ comparison, including the columnar backend for holding big sheets in memory.
 - [Cells and Ranges]({{ site.axyra_devref }}/Cell_and_Range#importing-java-objects) — the `importData` reference
 - [Streaming Large Files]({{ site.axyra_devref }}/Streaming) — streaming writer and columnar backend
 - [Styles and Formats]({{ site.axyra_devref }}/Styles) — number format codes
+
+# Beyond Basic Data Export
+
+Once the data is in a workbook, Axyra can also handle formulas, formatting,
+charts, pivot tables, and PDF or image rendering. This lets the same workflow
+grow from a simple data export into more complete reporting and spreadsheet
+automation.

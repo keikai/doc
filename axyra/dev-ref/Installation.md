@@ -23,7 +23,7 @@ implementation "io.keikai:axyra-sheets:{{ site.axyra_version }}"
 
 # The native library
 
-The engine is a native library. The Java SDK locates it on the **classpath**, at
+The engine is a native library. The Java library locates it on the **classpath**, at
 `/native/<os>-<arch>/`, and extracts it on first use:
 
 | Classpath path | Platform |
@@ -34,8 +34,8 @@ The engine is a native library. The Java SDK locates it on the **classpath**, at
 | `/native/linux-aarch64/libaxyra_jni.so` | Linux, glibc, aarch64 |
 | `/native/windows-x86_64/axyra_jni.dll` | Windows, x86-64 |
 
-The published SDK jar bundles these libraries, so the Maven or Gradle dependency
-above is sufficient. A thin SDK jar built directly from source does not contain
+The published JAR bundles these libraries, so the Maven or Gradle dependency
+above is sufficient. A thin JAR built directly from source does not contain
 them; for that case, place the required library at the matching classpath path or
 use the development override below.
 
@@ -55,9 +55,9 @@ resolution order and the failure modes.
 
 # Dependencies
 
-The SDK pulls in `jackson-databind` — the Java and native sides exchange
+The Java library pulls in `jackson-databind` — the Java and native sides exchange
 structured values (styles, charts, pivot definitions, filters) as JSON across the
-JNI boundary. If your application pins a different Jackson version, the SDK works
+JNI boundary. If your application pins a different Jackson version, the library works
 with any 2.x that is API-compatible.
 
 # Java version

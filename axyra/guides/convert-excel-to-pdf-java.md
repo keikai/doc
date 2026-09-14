@@ -3,10 +3,12 @@ title: 'How to Convert Excel to PDF in Java'
 permalink: /axyra/guides/convert-excel-to-pdf-java
 ---
 
-Converting a spreadsheet to PDF on the server, with no Excel installed and no
-headless Office process. Axyra Sheets lays out pages the way a spreadsheet
-application would — page setup, print areas, scaling, freeze panes, fonts,
-borders, charts, and images — and writes the PDF itself.
+Converting Excel to PDF in Java helps applications share reports, invoices, and
+other spreadsheet documents in a format intended for viewing and printing. In
+this guide, we’ll use Axyra Sheets for Java to render an Excel workbook as PDF
+on the server, without installing Excel or running an Office process. We’ll
+start with a basic conversion, then configure sheet selection, page layout,
+fonts, watermarks, and PDF output options.
 
 # The one-liner
 
@@ -259,3 +261,12 @@ paginated output, HTML export is usually the better fit; see
 - [How to Create Excel Reports Automatically in Java]({{ site.axyra_guides }}/generate-excel-reports-java) — generate the workbook you are converting
 - [Charts]({{ site.axyra_devref }}/Charts) — what renders and how
 - [Supported Formats]({{ site.axyra_devref }}/Supported_Formats) — every output format
+
+# Beyond Excel-to-PDF Conversion
+
+PDF conversion can be the final step of an automated reporting workflow.
+Before rendering, Axyra Sheets can populate a workbook from application data,
+recalculate formulas, and add charts or formatting. You can then save an
+editable XLSX alongside the PDF, or render individual sheets as images for
+previews. This allows one workbook to supply both the working spreadsheet and
+the documents your application distributes.

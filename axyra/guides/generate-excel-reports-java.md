@@ -3,10 +3,12 @@ title: 'How to Create Excel Reports Automatically in Java'
 permalink: /axyra/guides/generate-excel-reports-java
 ---
 
-Building a report by writing layout code — set this cell, style that range, hope
-the totals line up — does not survive contact with people who want the report to
-look different next month. The alternative: let them design the workbook in
-Excel, mark the cells that should be filled, and have Java fill it.
+Generating Excel reports automatically in Java helps teams produce recurring
+sales summaries, invoices, and operational reports from current application
+data. In this guide, we’ll use Axyra Sheets for Java to fill a reusable Excel
+template with records, grouped data, and totals, then save the report as XLSX
+and PDF. Keeping the layout in a template lets report authors adjust its
+appearance in Excel while the Java code supplies the data.
 
 That is what **smart markers** do. A marker is `${...}` in a text cell of a
 template you hand to `SmartMarkers.process`.
@@ -192,3 +194,13 @@ Smart markers fill a designed layout. They are the wrong tool when:
 - [How to Convert Excel to PDF in Java]({{ site.axyra_guides }}/convert-excel-to-pdf-java) — distribution format
 - [Pivot Tables]({{ site.axyra_devref }}/Pivot_Table) — real pivots rather than grouped lists
 - [Tables and Content Objects]({{ site.axyra_devref }}/Content_Objects) — table styles and banding for template rows
+
+# Beyond a Single Report Template
+
+Once a template can be filled from Java, your application can run the same
+process for different customers, departments, or reporting periods. Combine
+Axyra Sheets with your application's scheduler and delivery logic to generate
+updated XLSX and PDF reports on demand or at regular intervals. Charts, pivot
+tables, and image rendering can extend the output with visual summaries and
+previews, turning a template-based report into a broader spreadsheet automation
+workflow.

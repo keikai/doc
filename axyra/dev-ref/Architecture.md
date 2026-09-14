@@ -10,7 +10,7 @@ modelled versus preserved, or about why an API is shaped the way it is.
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│  SDK       Java                                             │
+│  API       Java                                             │
 ├─────────────────────────────────────────────────────────────┤
 │  FFI       JNI bridge (libaxyra_jni)                        │
 ├─────────────────────────────────────────────────────────────┤
@@ -47,7 +47,7 @@ Rust, organised as a Cargo workspace:
 | `axyra-sheets-render` | Page layout, PDF, images, SVG, fonts, chart drawing |
 | `axyra-sheets-signature` | OPC package digital signatures |
 | `axyra-sheets-license` | Signed license tokens and enforcement |
-| `axyra-sheets-ffi-jni` | The JNI bridge the Java SDK binds to |
+| `axyra-sheets-ffi-jni` | The JNI bridge the Java library binds to |
 
 `Book` is the model's hub — the type nearly everything else reaches through, and
 the reason `Workbook` is the root of the Java API too.
@@ -56,7 +56,7 @@ the reason `Workbook` is the root of the Java API too.
 
 This is the part with practical consequences.
 
-The Java SDK is a thin, typed layer. A `Workbook` holds a native handle;
+The Java API is a thin, typed layer. A `Workbook` holds a native handle;
 `Sheet`, `Range`, and `Cell` are lightweight views that carry coordinates, not
 data. Nothing is mirrored on the Java side.
 
@@ -68,7 +68,7 @@ That means:
   of magnitude — see
   [Cells and Ranges]({{ site.axyra_devref }}/Cell_and_Range).
 - **Structured values cross as JSON.** Styles, charts, pivot definitions, and
-  filters are serialised rather than mapped field by field, which is why the SDK
+  filters are serialised rather than mapped field by field, which is why the library
   depends on Jackson. It also means these objects are cheap to cache on the Java
   side and comparatively expensive to set in a tight loop.
 - **Views are only valid while the workbook is open.** Closing a workbook frees

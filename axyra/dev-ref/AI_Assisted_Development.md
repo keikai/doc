@@ -18,7 +18,6 @@ Give the assistant authoritative Axyra context instead of asking it to guess the
 API:
 
 - [Axyra Sheets Developer Reference]({{ site.axyra_devref }})
-- [Axyra Sheets Javadoc]({{ site.axyra_javadoc }})
 - [Runnable examples](https://github.com/keikai/axyra-sheets-examples)
 
 State that the project uses Java 17 or later and the Maven artifact
@@ -80,7 +79,8 @@ when enforcement is enabled. This is expected during the Quick Start. See
 - Assigning a formula does not calculate it. Call `recalculateDirty()` or
   `recalculate()` before consuming its result.
 - Do not invent API names from Apache POI, Keikai Spreadsheet, or another
-  spreadsheet library. Verify every unfamiliar call against the Axyra Javadoc.
+  spreadsheet library. Verify unfamiliar calls against the Developer Reference
+  and compile the generated code.
 - Do not hide or remove Evaluation Mode markings. Use a 30-day evaluation or
   production license when clean output is required.
 

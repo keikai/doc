@@ -65,8 +65,3 @@ New to Axyra Sheets? Start with the [Quick Start]({{ site.axyra_tutorial }}/quic
 | | |
 |---|---|
 | [Axyra Sheets vs. Keikai Spreadsheet]({{ site.axyra_devref }}/Axyra_vs_Keikai) | Potix offers two spreadsheet solutions. How they differ and which to pick |
-
-# Javadoc
-
-Generated API documentation for every public class:
-[{{ site.axyra_javadoc }}]({{ site.axyra_javadoc }})

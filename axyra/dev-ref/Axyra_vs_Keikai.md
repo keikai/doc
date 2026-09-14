@@ -20,11 +20,10 @@ browser. Axyra Sheets is a headless spreadsheet **engine** for the server.
 | **User interface** | Excel-like grid, toolbar, formula bar, sheet tabs | None |
 | **Java package** | `io.keikai.api.*` | `io.keikai.axyra.sheets.*` |
 | **Maven artifact** | `io.keikai:keikai` and friends | `io.keikai:axyra-sheets` |
-| **Implementation** | Java | Rust engine with a Java SDK |
+| **Implementation** | Java | Rust engine with a Java library |
 | **Native library** | No | Yes — a per-platform binary |
 | **Integration** | ZK, JSP, JSF | Plain Java; no framework |
 | **Documentation** | [doc.keikai.io/dev-ref]({{ site.baseurl }}/dev-ref) | [doc.keikai.io/axyra]({{ site.axyra_devref }}) |
-| **Javadoc** | [keikai.io/javadoc/spreadsheet]({{ site.baseurl_javadoc_keikai }}) | [{{ site.axyra_javadoc }}]({{ site.axyra_javadoc }}) |
 
 # Which one do I need?
 

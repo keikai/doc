@@ -31,14 +31,14 @@ After creating your first workbook, continue with these short exercises:
 
 - **Java 17** or later.
 - One of the supported platforms: macOS (x86-64, aarch64), Linux (x86-64,
-  aarch64), Windows (x86-64). The published SDK bundles a native library for
+  aarch64), Windows (x86-64). The published JAR bundles a native library for
   each supported platform.
-- No license key is required to start. The SDK initially runs in Evaluation
-  Mode; distributed production builds mark saved workbook output. See
+- No license key is required to start. Axyra Sheets runs in Evaluation Mode by
+  default; distributed production builds mark saved workbook output. See
   [Licensing and Evaluation]({{ site.axyra_devref }}/License).
 
 # Where to go next
 
-Once the tutorial makes sense, the
-[Developer Reference]({{ site.axyra_devref }}) covers each area in depth, and
-the [Javadoc]({{ site.axyra_javadoc }}) documents every public class.
+Once the tutorial makes sense, continue with the
+[Developer Reference]({{ site.axyra_devref }}) for detailed coverage of each
+area.
