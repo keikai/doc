@@ -3,8 +3,6 @@ title: 'Styles and Formats'
 permalink: /axyra/dev-ref/Styles
 ---
 
-{% include axyra_example.html path="devref/StylesExample.java" %}
-
 # CellStyle
 
 `CellStyle` is an immutable value built through a builder, and applied to a cell,

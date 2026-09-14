@@ -3,8 +3,6 @@ title: 'Licensing and Evaluation'
 permalink: /axyra/dev-ref/License
 ---
 
-{% include axyra_example.html path="devref/LicenseAndNativeLoaderExample.java" %}
-
 Axyra Sheets is commercially licensed. You can start without a license key in
 Evaluation Mode, request a 30-day full-featured evaluation key, and install a
 production key when you are ready to deploy.

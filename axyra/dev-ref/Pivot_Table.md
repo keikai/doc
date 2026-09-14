@@ -3,8 +3,6 @@ title: 'Pivot Tables'
 permalink: /axyra/dev-ref/Pivot_Table
 ---
 
-{% include axyra_example.html path="devref/PivotTableExample.java" %}
-
 Axyra Sheets does not merely preserve pivot tables through a round trip — it
 computes them. The engine holds the pivot cache, applies the field layout,
 filters, groupings, and calculated fields, and writes the resulting grid into the

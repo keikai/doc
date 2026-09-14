@@ -3,8 +3,6 @@ title: 'Workbook and Sheet'
 permalink: /axyra/dev-ref/Workbook_and_Sheet
 ---
 
-{% include axyra_example.html path="devref/WorkbookAndSheetExample.java" %}
-
 `Workbook` is the root of the object model and the owner of the native handle.
 Everything else — sheets, ranges, cells, content objects — is reached from it,
 and is only valid while it is open.

@@ -3,8 +3,6 @@ title: 'Native Library Loading'
 permalink: /axyra/dev-ref/Native_Loader
 ---
 
-{% include axyra_example.html path="devref/LicenseAndNativeLoaderExample.java" %}
-
 Axyra Sheets is a native engine behind a Java API, so there is one operational
 concern that a pure-Java library does not have: getting the right binary loaded.
 This page covers how that works and what goes wrong.

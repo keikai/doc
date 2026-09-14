@@ -3,8 +3,6 @@ title: 'Tables and Content Objects'
 permalink: /axyra/dev-ref/Content_Objects
 ---
 
-{% include axyra_example.html path="devref/ContentObjectsExample.java" %}
-
 Everything a workbook holds beyond values, formulas, and styles: tables,
 conditional formats, validation, comments, hyperlinks, form controls, SmartArt,
 sparklines, embedded objects. All are read, written, and — where they are

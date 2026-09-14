@@ -3,8 +3,6 @@ title: 'Read and Write Files'
 permalink: /axyra/quick-start/read_write
 ---
 
-{% include axyra_example.html path="tutorial/ReadWriteExample.java" %}
-
 Opening an existing spreadsheet, changing it, and saving it back — without
 losing anything the engine does not model.
 

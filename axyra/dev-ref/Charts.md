@@ -3,8 +3,6 @@ title: 'Charts'
 permalink: /axyra/dev-ref/Charts
 ---
 
-{% include axyra_example.html path="devref/ChartsExample.java" %}
-
 Charts are built with a per-type builder, anchored to a cell region, and either
 embedded in a sheet or given a chart sheet of their own. They round-trip through
 the file formats and are drawn by the [rendering

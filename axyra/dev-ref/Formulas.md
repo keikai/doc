@@ -3,8 +3,6 @@ title: 'Formulas'
 permalink: /axyra/dev-ref/Formulas
 ---
 
-{% include axyra_example.html path="devref/FormulasExample.java" %}
-
 Axyra Sheets carries a complete Excel-compatible formula parser and evaluator:
 around 490 built-in functions, dynamic arrays with spill, structured references,
 iterative calculation, and user-defined functions.

@@ -2,8 +2,6 @@
 title: 'Manual Quick Start'
 permalink: /axyra/quick-start/quick_start
 ---
-{% include axyra_example.html path="tutorial/QuickStartExample.java" %}
-
 Prefer to write the first program yourself? This path takes you from an empty
 project to a saved `.xlsx` file in about ten minutes. To generate the project
 with a coding assistant instead, use

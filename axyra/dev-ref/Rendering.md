@@ -3,8 +3,6 @@ title: 'Rendering'
 permalink: /axyra/dev-ref/Rendering
 ---
 
-{% include axyra_example.html path="devref/RenderingReferenceExample.java" %}
-
 The rendering pipeline lays out a workbook into pages much like a spreadsheet application, then exports those pages to PDF, image formats such as PNG, or SVG. These formats use the same page layout, so a PDF page and a PNG of the same sheet remain consistent. HTML export is handled separately and represents a sheet as a styled table.
 
 # PDF
