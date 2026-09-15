@@ -1,6 +1,6 @@
 ---
 title: 'Axyra Sheets Developer Reference'
-permalink: /axyra/dev-ref
+permalink: /axyra/dev-ref/
 toc: false
 ---
 

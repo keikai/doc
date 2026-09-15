@@ -82,6 +82,10 @@ baseurl_javadoc_keikai: "https://keikai.io/javadoc/spreadsheet/latest/"
 # base paths of the Axyra Sheets documentation (a separate product from Keikai
 # Spreadsheet -- keep these prefixes distinct from devref/tutorial above)
 axyra: "/axyra"
+# Where the Axyra masthead title leaves for, from the documentation overview
+# page only (the Axyra counterpart of `title_link`). Point this at the public
+# product page at release.
+axyra_site_link: "https://test.keikai.io/axyra"
 axyra_tutorial: "/axyra/quick-start"
 axyra_guides: "/axyra/guides"
 axyra_devref: "/axyra/dev-ref"

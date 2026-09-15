@@ -1,9 +1,19 @@
 {% capture logo_path %}{{ site.logo }}{% endcapture %}
 
+{% assign axyra_home = site.axyra | append: "/" %}
 {% assign axyra_prefix = page.url | slice: 0, 7 %}
-{% if page.url == "/axyra" or axyra_prefix == "/axyra/" %}
+{% if page.url == site.axyra or axyra_prefix == "/axyra/" %}
   {% assign masthead_title = "Axyra" %}
-  {% assign masthead_url = "https://test.keikai.io/axyra" %}
+  {% comment %}
+    On the overview page itself the title leaves for the Axyra product site, the
+    way Keikai's masthead uses `title_link`. Every other Axyra page links back to
+    the documentation overview.
+  {% endcomment %}
+  {% if page.url == site.axyra or page.url == axyra_home %}
+    {% assign masthead_url = site.axyra_site_link %}
+  {% else %}
+    {% assign masthead_url = axyra_home | relative_url %}
+  {% endif %}
   {% assign masthead_links = site.data.navigation.axyra_main %}
 {% else %}
   {% assign masthead_title = site.masthead_title | default: site.title %}

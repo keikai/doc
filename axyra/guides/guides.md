@@ -1,6 +1,6 @@
 ---
 title: 'Axyra Sheets Guides'
-permalink: /axyra/guides
+permalink: /axyra/guides/
 toc: false
 ---
 

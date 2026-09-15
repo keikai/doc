@@ -1,6 +1,6 @@
 ---
 title: 'Axyra Sheets Quick Start'
-permalink: /axyra/quick-start
+permalink: /axyra/quick-start/
 ---
 Axyra Sheets is a Java API for server-side spreadsheet processing, including reading, writing, calculating, and rendering Excel files. It supports modern formulas, charts, pivot tables, PDF/image output, and other advanced spreadsheet workflows without requiring Microsoft Office.
 
