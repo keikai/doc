@@ -1,16 +1,18 @@
 ---
 title: 'How to Read an Excel File in Java (XLSX Parsing Guide)'
+excerpt: 'How to read an Excel file in Java with Axyra Sheets: open an XLSX workbook, read cell values in bulk, and handle dates, formulas, and error cells.'
 permalink: /axyra/guides/read-excel-file-java
 ---
 
 Reading Excel files in Java is a common starting point for processing customer
 uploads, importing business records, or checking data from another system. In
-this guide, we’ll use Axyra Sheets for Java to open an XLSX workbook, locate its
-populated cells, and extract values in bulk. We’ll also handle dates, formatted
-text, formula results, and error cells so your application can interpret the
-data correctly.
+this guide, we’ll show how to read an Excel file in Java with Axyra Sheets for
+Java: open an XLSX workbook, locate its populated cells, and extract values in
+bulk. We’ll also handle dates, formatted text, formula results, and error cells
+so your application can interpret the data correctly.
 
-The same code path reads XLSX, XLSM, XLSB, XLS, ODS, CSV, and JSON.
+The same code you use to read XLSX in Java also reads XLSM, XLSB, XLS, ODS, CSV,
+and JSON.
 
 {: .notice--info}
 **Writing a file instead?** See
@@ -107,7 +109,7 @@ System.out.printf("data in rows %d-%d, cols %d-%d (%d x %d)%n",
 Remember that these indices are **0-based**, so `firstRow() == 0` is spreadsheet
 row 1.
 
-# Step 4 — Read the values in bulk
+# Step 4 — Read the Excel values in bulk
 
 One `Range` call crosses the JNI boundary once for the whole block. A loop of
 `sheet.value(r, c)` crosses it once per cell, which is the difference between
@@ -216,7 +218,7 @@ Which epoch the serial refers to depends on the workbook's `date1904` flag,
 which the conversion already accounts for — see
 [Cells and Ranges]({{ site.axyra_devref }}/Cell_and_Range#dates).
 
-# The complete program
+# The complete program to read an Excel file in Java
 
 Reads every worksheet and prints the used range as TSV.
 
@@ -275,7 +277,7 @@ public class ReadExcelFile {
 }
 ```
 
-# Common mistakes
+# Common mistakes when reading Excel files in Java
 
 | Symptom | Cause |
 |---|---|
@@ -287,6 +289,43 @@ public class ReadExcelFile {
 | Formula cells look stale | You are seeing the cache the writing tool left. Call `recalculate()`. |
 | Iterating sheets hits something with no grid | Chart, dialog, and macro sheets are sheets too. Filter on `sheetType()`. |
 
+# Frequently asked questions
+
+## How do I read an Excel file in Java?
+
+Open the workbook with `Workbook.open(Path.of("report.xlsx"))` in a
+try-with-resources block, get each worksheet's populated block with
+`sheet.usedRange()`, and read all of its values in one call with
+`Range.values()`. Each value is a `CellValue` that you check by type: number,
+text, boolean, error, array, or blank. The complete program above shows the
+whole flow.
+
+## How do I read an XLSX file in Java from an upload or a database?
+
+When there is no file name to detect the format from, pass the format
+explicitly. Use `Workbook.openBytes(bytes, "xlsx")` for a byte array or
+`Workbook.open(in, "xlsx")` for an `InputStream`, such as the body of an HTTP
+request.
+
+## Why is my Java code slow when reading an Excel file?
+
+The usual cause is reading one cell at a time with `sheet.value(r, c)`, which
+crosses the JNI boundary once per cell. Reading the whole block with
+`Range.values()`, or with `numbers()` for numeric data, crosses it once.
+
+## How do I read dates from an Excel file in Java?
+
+Excel stores dates as serial numbers, so a date cell reads back as
+`CellValue.Number`. Call `cell.dateValue()` or `cell.dateTimeValue()` to get a
+`LocalDate` or `LocalDateTime`. The conversion accounts for the workbook's
+`date1904` flag.
+
+## When I read a formula cell, do I get the formula or the result?
+
+`values()` returns the result that the writing application cached, and
+`formulas()` returns the formula strings. If you do not trust the cached
+results, call `wb.recalculate()` before reading.
+
 # Next steps
 
 - [How to Convert Excel to PDF in Java]({{ site.axyra_guides }}/convert-excel-to-pdf-java) —
@@ -297,7 +336,8 @@ public class ReadExcelFile {
 
 # Beyond Reading Excel Data
 
-Once your application can read spreadsheet values, it can check them against
+Reading an Excel file in Java is usually the first step of a larger task. Once
+your application can read spreadsheet values, it can check them against
 business rules, map them to database records, or pass them to another service.
 With Axyra Sheets, you can also update the open workbook, recalculate formulas,
 and save the result or render it as PDF. This lets an Excel import grow into a
