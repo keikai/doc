@@ -1,14 +1,16 @@
 ---
 title: 'How to Write Data to Excel in Java (From a Database or JSON)'
+excerpt: 'How to write an XLSX file in Java with Axyra Sheets: export data to Excel from a database or JSON, format dates and numbers, and stream large exports.'
 permalink: /axyra/guides/write-data-to-excel-java
 ---
 
-Exporting application data to Excel is a common backend task, whether the source
-is a database, JSON response, or another service. In this guide, we’ll use Axyra
-Sheets for Java to turn structured data into an XLSX file, including headers,
-data types, and basic formatting.
+Exporting data to Excel from a Java application is a common backend task,
+whether the source is a database, JSON response, or another service. In this
+guide, we’ll show how to write an XLSX file in Java with Axyra Sheets for Java,
+turning structured data into a workbook that includes headers, data types, and
+basic formatting.
 
-# Which approach
+# Which approach to use when writing an Excel file in Java
 
 | Your data | Use | Why |
 |---|---|---|
@@ -20,7 +22,7 @@ data types, and basic formatting.
 What all four have in common: **never loop per cell.** Every `Cell` call crosses
 the JNI boundary, so a million-cell loop is a million crossings.
 
-# From a database
+# Export data to Excel from a database
 
 Map the `ResultSet` to records first, then hand the list over. Records are the
 best fit because `importData` reads their components *in declaration order*,
@@ -105,7 +107,7 @@ what the conversion has to assume. Read them as `LocalDate` /
 `LocalDateTime` from the driver (`rs.getObject(col, LocalDate.class)`) and the
 question does not arise.
 
-# From JSON
+# Export JSON data to Excel
 
 `jackson-databind` is already on the classpath — the library uses it across the JNI
 boundary — so deserialize into the same kind of record and reuse the path above.
@@ -248,7 +250,7 @@ What you give up in exchange for flat memory:
 See [Streaming Large Files]({{ site.axyra_devref }}/Streaming) for the full
 comparison, including the columnar backend for holding big sheets in memory.
 
-# Common mistakes
+# Common mistakes when writing XLSX files in Java
 
 | Symptom | Cause |
 |---|---|
@@ -262,6 +264,42 @@ comparison, including the columnar backend for holding big sheets in memory.
 | Streaming writer throws on a row | Rows must be written in ascending order, and each needs `commit()`. |
 | Formulas are blank in the streamed file | The streaming writer never recalculates. Supply a cached value. |
 
+# Frequently asked questions
+
+## How do I write an XLSX file in Java?
+
+Create a workbook with `Workbook.create()`, add a sheet with `createSheet`, and
+write your data in bulk with `importData`, `setValues`, or `setNumbers`
+depending on its shape. Then call `wb.save(Path.of("output.xlsx"))`. Open the
+workbook in a try-with-resources block so its native memory is released.
+
+## How do I export data from a database to Excel in Java?
+
+Map the `ResultSet` to a list of records, then pass the list to
+`sheet.importData` with the column list pinned through `.columns(...)`. If the
+result set is too large to hold in memory, write it row by row with
+`StreamWorkbook` instead.
+
+## How do I write a very large Excel file in Java without running out of memory?
+
+Use `StreamWorkbook`, which writes each row to disk as it arrives, so memory use
+stays flat regardless of row count. In exchange, rows must be written in
+ascending order, formulas are not recalculated, and formatting is limited to
+values, number formats, bold, and italic.
+
+## Why does a date column show a number like 45900?
+
+Excel stores dates as serial numbers, and `importData` writes the serial without
+applying a number format. Apply a date format such as `yyyy-mm-dd` to the
+column with `setStyle`.
+
+## Can I read and write Excel files in Java with the same library?
+
+Yes. Axyra Sheets uses the same `Workbook` API for both directions: you can open
+an existing file, read or edit its values, and save it again. See
+[How to Read an Excel File in Java]({{ site.axyra_guides }}/read-excel-file-java)
+for the reading side.
+
 # Next steps
 
 - [How to Create Excel Reports Automatically in Java]({{ site.axyra_guides }}/generate-excel-reports-java) — fill a designed template instead of building layout in code
@@ -271,7 +309,8 @@ comparison, including the columnar backend for holding big sheets in memory.
 
 # Beyond Basic Data Export
 
-Once the data is in a workbook, Axyra can also handle formulas, formatting,
-charts, pivot tables, and PDF or image rendering. This lets the same workflow
-grow from a simple data export into more complete reporting and spreadsheet
-automation.
+Writing an XLSX file in Java is often only one half of the job, because many
+applications also read Excel files back in. Once the data is in a workbook,
+Axyra can also handle formulas, formatting, charts, pivot tables, and PDF or
+image rendering. This lets the same workflow grow from a simple data export into
+more complete reporting and spreadsheet automation.
