@@ -114,3 +114,4 @@ exclude:
   - .sass-cache/
   - .jekyll-cache/
   - preview.sh
+  - tasks
