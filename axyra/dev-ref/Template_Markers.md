@@ -1,14 +1,14 @@
 ---
-title: 'Smart Markers'
-permalink: /axyra/dev-ref/Smart_Markers
+title: 'Template Markers'
+permalink: /axyra/dev-ref/Template_Markers
 ---
 
-Smart markers are a templating layer: design a spreadsheet in Excel with
+Template markers are a templating layer: design a spreadsheet in Excel with
 `${...}` placeholders, then fill it from a Java `Map` at runtime. Your report
 layout lives in a file your users can edit, not in your code.
 
 ```java
-import io.keikai.axyra.sheets.template.SmartMarkers;
+import io.keikai.axyra.sheets.template.TemplateMarkers;
 
 try (Workbook wb = Workbook.open(Path.of("invoice-template.xlsx"))) {
     Map<String, Object> data = Map.of(
@@ -16,7 +16,7 @@ try (Workbook wb = Workbook.open(Path.of("invoice-template.xlsx"))) {
             "lines", lineItems,            // a List
             "logo", logoBytes);
 
-    SmartMarkers.process(wb.sheet(0), data);
+    TemplateMarkers.process(wb.sheet(0), data);
     wb.recalculateDirty();
     wb.renderPdf(Path.of("invoice.pdf"));
 }
@@ -119,7 +119,7 @@ Map<String, Object> data = Map.of(
                 new Line("Widget", 12, 51.0),
                 new Line("Gadget", 3, 27.0)));
 
-SmartMarkers.process(wb.sheet(0), data);
+TemplateMarkers.process(wb.sheet(0), data);
 ```
 
 Row 3 repeats twice, `=B3*1.05` becomes `=B3*1.05` and `=B4*1.05`, and the total
@@ -130,17 +130,23 @@ in row 5 sums the amounts.
 - **Unknown markers resolve to empty**, not to an error. A template referring to
   a field your data does not carry produces a blank cell. Convenient for
   optional fields; quiet when you have a typo — check the output.
-- **Cell styles are not copied to inserted rows.** Style the template row via
-  its row style, or apply styling after processing.
+- **Inserted rows copy the template row's cell styles** — font, fill, borders,
+  and number format — so style the template row the way every data row should
+  look. (Builds before 0.1.0.FL.20260922-Eval did not copy them; apply styling
+  after processing there.)
+- **Formulas outside the repeated row keep their ranges.** A `=SUM(B3:B3)` below
+  the block is not widened to cover the inserted rows. Put totals in an aggregate
+  marker such as `${lines.amount:sum}` instead.
 - **Markers are text, so processing is destructive.** `process` rewrites the
   sheet. Open the template fresh for each render rather than reusing a processed
   workbook.
-- **Recalculate afterwards.** Filled-down formulas are formulas; they hold no
-  value until you recalculate.
+- **Recalculate afterwards.** Filled-down formulas are ordinary formulas. They are
+  evaluated as they are written, but call `recalculate()` before saving so every
+  dependent result is current.
 
 # When to use something else
 
-Smart markers are built entirely on the public read/write API, and they are the
+Template markers are built entirely on the public read/write API, and they are the
 right tool when a non-programmer owns the layout. When the layout is fixed and
 lives in code, `Sheet.importData` is more direct — see
 [Cells and Ranges]({{ site.axyra_devref }}/Cell_and_Range).

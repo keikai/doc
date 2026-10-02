@@ -5,6 +5,32 @@ permalink: /axyra/dev-ref/Rendering
 
 The rendering pipeline lays out a workbook into pages much like a spreadsheet application, then exports those pages to PDF, image formats such as PNG, or SVG. These formats use the same page layout, so a PDF page and a PNG of the same sheet remain consistent. HTML export is handled separately and represents a sheet as a styled table.
 
+# Page setup
+
+Pagination comes from the workbook's own page setup, so most of what decides how
+output looks is on the `Sheet`, set before you render. The render options carry
+document-level concerns — which sheets, which pages, metadata, encryption — and
+cannot substitute for it.
+
+```java
+Sheet sheet = wb.sheet(0);
+
+sheet.setPrintArea("A1:H60");        // or null to clear
+sheet.setLandscape(true);
+sheet.setPaperSize(9);               // ECMA-376 ST_PaperSize: 1=Letter, 9=A4
+sheet.setPageMargins(0.5, 0.5, 0.75, 0.75, 0.3, 0.3);  // L R T B header footer, inches
+sheet.setPrintTitleRows("$1:$1");    // repeat the header row on every page
+sheet.setPageScale(80);              // percent; disables fit-to-page
+sheet.fitToPage(1, 1);               // or fit the printout to 1 page wide by 1 tall
+```
+
+Headers and footers, gridline and heading printing, page breaks, and page order
+live on the sheet as well; the Javadoc for `Sheet` lists the full set. Because
+PDF and image output share one layout pass, these settings apply to both.
+
+[How to Convert Excel to PDF in Java]({{ site.axyra_guides }}/convert-excel-to-pdf-java)
+walks through a complete A4, landscape, repeated-header conversion.
+
 # PDF
 
 ```java
@@ -114,25 +140,29 @@ computing it yourself.
 HTML export is not paginated. It reproduces the sheet as a styled table, which is
 the right shape for a browser preview and the wrong shape for print.
 
+There are two output shapes, and `HtmlOptions` picks between them.
+
 ```java
-wb.saveHtml(Path.of("out.html"), HtmlOptions.create()
-        .singleFile(true)
-        .imagesAsBase64(true)
-        .cssSeparately(false)
-        .attachedFilesDirectory("assets")
-        .imageUrlPrefix("/static/sheets/"));
+// The package (the default for a path)
+wb.saveHtml(Path.of("report.html"), HtmlOptions.create());
+
+// The single document
+wb.saveHtml(Path.of("report.html"), HtmlOptions.create().singleFile(true));
 ```
 
-| Option | Effect |
+| Shape | What is written |
 |---|---|
-| `singleFile(true)` | Everything in one `.html` — no sidecar files |
-| `imagesAsBase64(true)` | Inline images as data URIs; needed for a true single file |
-| `cssSeparately(true)` | Emit a separate stylesheet instead of inline styles |
-| `attachedFilesDirectory` | Where sidecar files are written |
-| `imageUrlPrefix` | Prefix for image URLs, when they are served from elsewhere |
+| Package — the default | `report.html` plus a `report_files/` directory beside it: one page per sheet (`sheetNNN.htm`), the shared `stylesheet.css`, the sheet tab strip `tabstrip.htm`, one file per image (`imageNNN.png`), and the `filelist.xml` manifest |
+| `singleFile(true)` | One self-contained file with every sheet in it and every image inlined as a `data:` URI |
 
-`singleFile(true)` with `imagesAsBase64(false)` is contradictory — the images
-would have nowhere to live. Set them together.
+The package is the shape Excel's own *Save as Web Page* writes, and what tools
+that consume exported spreadsheet HTML expect — without it a multi-sheet workbook
+has no way to reach sheets 2..n. Choose the single document when the page is
+mailed, embedded, or served from memory and there must be nothing to lose track of.
+
+`Workbook.save(path)` on a `.html` or `.htm` name writes the package. A byte sink
+has nowhere to put a second file, so `Workbook.saveBytes("html")` always produces
+the single document.
 
 # Fonts
 

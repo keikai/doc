@@ -32,6 +32,10 @@ coordinates or hit a platform problem.
 </dependency>
 ```
 
+The artifact is served from ZK's repository rather than Maven Central, so your
+build also needs the `<repositories>` entry shown in
+[Installation]({{ site.axyra_devref }}/Installation).
+
 # Step 1 — Open the workbook
 
 The format is detected from the file name, so one call covers every supported

@@ -34,6 +34,10 @@ to someone.
 implementation "io.keikai:axyra-sheets:{{ site.axyra_version }}"
 ```
 
+The artifact is served from ZK's repository rather than Maven Central, so your
+build also needs the `<repositories>` entry shown in
+[Installation]({{ site.axyra_devref }}/Installation).
+
 # Step 1 — Create the workbook
 
 `Workbook.create()` gives you an empty workbook. Add the first sheet explicitly
@@ -100,13 +104,17 @@ sheet.range("B5:D5").setFormula("SUM(B2:B4)");
 
 `Range.setFormula` writes *the same formula text* to every cell in the range, so
 `B5:D5` all get `SUM(B2:B4)` — which is wrong for `C5` and `D5`. To shift the
-references the way Excel's fill handle does, write one cell and auto-fill from it
-instead:
+references the way Excel's fill handle does, write one cell and copy it with
+`Range.copyTo`, which adjusts relative references for the destination:
 
 ```java
 sheet.cell(4, 1).setFormula("SUM(B2:B4)");
-sheet.range("B5:B5").autoFill(sheet.range("B5:D5"));
+sheet.range("B5").copyTo(sheet, 4, 2);   // C5 = SUM(C2:C4)
+sheet.range("B5").copyTo(sheet, 4, 3);   // D5 = SUM(D2:D4)
 ```
+
+`Range.autoFill` is not a substitute here: it copies the formula text unchanged,
+so every total would still read `SUM(B2:B4)`.
 
 {: .notice--warning}
 **Assigning a formula does not evaluate it.** Saving does not either. Call
@@ -237,7 +245,8 @@ public class CreateExcelFile {
 
             sheet.cell(4, 0).setValue(CellValue.text("Total"));
             sheet.cell(4, 1).setFormula("SUM(B2:B4)");
-            sheet.range("B5:B5").autoFill(sheet.range("B5:D5"));
+            sheet.range("B5").copyTo(sheet, 4, 2);   // C5 = SUM(C2:C4)
+            sheet.range("B5").copyTo(sheet, 4, 3);   // D5 = SUM(D2:D4)
 
             wb.recalculate();
 
@@ -283,7 +292,7 @@ stays put when you scroll.
 |---|---|
 | Computed cells are empty in the saved file | `recalculate()` was never called. Assigning a formula does not evaluate it, and saving does not either. |
 | The formula refers to the wrong row | Indices are 0-based, A1 references are 1-based. Row index 1 is row `2`. |
-| Every cell in a range has an identical formula | That is what `Range.setFormula` does. Use `autoFill` to shift references. |
+| Every cell in a range has an identical formula | That is what `Range.setFormula` does (and `Range.autoFill` too). Use `Range.copyTo`, or write each cell with `setFormulas`, to shift references. |
 | Native memory grows over time in a service | A `Workbook` escaped its try-with-resources. Close every one. |
 | `IllegalStateException` on a `Sheet` or `Range` | The workbook was already closed. These are views, not copies. |
 | `UnsatisfiedLinkError` in a container but not locally | The image was built for a different architecture, or a shading step dropped `native/**`. See [Native Library Loading]({{ site.axyra_devref }}/Native_Loader). |

@@ -21,7 +21,7 @@ covers the object model these guides assume.
 | [How to Read an Excel File in Java]({{ site.axyra_guides }}/read-excel-file-java) | Opening a workbook, reading typed values in bulk, handling formula errors |
 | [How to Convert Excel to PDF in Java]({{ site.axyra_guides }}/convert-excel-to-pdf-java) | Server-side PDF rendering, page setup, fonts, watermarks |
 | [How to Write Data to Excel in Java]({{ site.axyra_guides }}/write-data-to-excel-java) | Populating a sheet from a `ResultSet` or JSON, including very large exports |
-| [How to Create Excel Reports Automatically in Java]({{ site.axyra_guides }}/generate-excel-reports-java) | Filling a designed template with smart markers, on a schedule |
+| [How to Create Excel Reports Automatically in Java]({{ site.axyra_guides }}/generate-excel-reports-java) | Filling a designed template with template markers, on a schedule |
 
 # Where to go next
 

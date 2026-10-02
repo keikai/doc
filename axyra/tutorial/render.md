@@ -109,16 +109,17 @@ a browser.
 ```java
 import io.keikai.axyra.sheets.io.HtmlOptions;
 
-// One self-contained file: every sheet in it, every image inlined.
-wb.saveHtml(Path.of("report.html"), HtmlOptions.create().singleFile(true));
+// The package shape Excel's "Save as Web Page" writes — report.html plus a
+// report_files/ sidecar holding each sheet, the stylesheet and the images.
+wb.saveHtml(Path.of("report.html"), HtmlOptions.create());
 
-// Or the package shape Excel's "Save as Web Page" writes — report.html plus a
-// report_files/ sidecar — but with images inlined so the sidecar holds none.
-wb.saveHtml(Path.of("report.html"), HtmlOptions.create().imagesAsBase64(true));
+// Or one self-contained file: every sheet in it, every image inlined.
+wb.saveHtml(Path.of("report.html"), HtmlOptions.create().singleFile(true));
 ```
 
-`singleFile` and `imagesAsBase64` are not combined: a single document always
-inlines its images, so `imagesAsBase64` is ignored when `singleFile` is set.
+The package is the default for a path, and the shape a multi-sheet workbook needs
+for its sheet tabs to work. Pick the single document when the file has to travel
+on its own.
 
 # Next
 

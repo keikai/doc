@@ -162,8 +162,10 @@ r.spillRange();               // the area a dynamic-array formula actually spill
 ```
 
 The distinction matters: `setFormula` writes the same formula text to every
-cell. To shift relative references as Excel's fill handle does, set the formula
-on a source range and call `autoFill(destination)`. `setArrayFormula` writes a
+cell. To shift relative references as Excel's fill handle does, write the formula
+in a source cell and copy it with `copyTo(sheet, row, column)`, or write each
+cell's own formula with `setFormulas`. `autoFill(destination)` copies formula text
+unchanged, so it does not shift references. `setArrayFormula` writes a
 single formula occupying the whole range. Modern dynamic arrays spill on their
 own — see
 [Formulas]({{ site.axyra_devref }}/Formulas).
@@ -226,4 +228,4 @@ properties are written in declaration order — pin the column list explicitly i
 the class may gain fields later.
 
 For filling an existing template rather than writing a fresh block, see
-[Smart Markers]({{ site.axyra_devref }}/Smart_Markers).
+[Template Markers]({{ site.axyra_devref }}/Template_Markers).

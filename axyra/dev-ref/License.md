@@ -18,13 +18,21 @@ them, and exercise the API to test out the product before purchasing a license.
 
 When you save a workbook in Evaluation Mode, Axyra adds evaluation marks so the output cannot be mistaken for production output:
 
-- An **Evaluation** notice tab is inserted as the first sheet and made active.
+- An **Axyra Evaluation Copy** notice tab is inserted as the first sheet and
+  made active, so sheet indices in the saved file shift by one.
 - A watermark cell is placed below the used range of every sheet.
 - The same evaluation mark is appended to each sheet's page header.
 
+CSV, TXT, and JSON output carries the notice text without the extra tab. PDF and
+image output carries a one-line evaluation banner at the top of every page.
+
 Evaluation Mode never caps rows or drops data. The saved file is complete apart
-from the marks, and the in-memory workbook is not modified. Reading,
-recalculation, and rendering fidelity are unrestricted.
+from the marks, and the in-memory workbook is not modified. Reading and
+recalculation are unrestricted, and rendering fidelity is unchanged apart from
+the banner.
+
+An invalid or expired key does not throw: `setLicense` returns a `LicenseInfo`
+whose state is `EVALUATION`, so check `info.isLicensed()` as shown below.
 
 # 30-Day Evaluation License
 

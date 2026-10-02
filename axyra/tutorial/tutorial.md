@@ -12,7 +12,7 @@ first implementation yourself or collaborate with an AI coding assistant.
 
 | Path | Start here |
 |---|---|
-| **AI-assisted development** | **[Build with an AI coding assistant]({{ site.axyra_devref }}/AI_Assisted_Development)** — give your assistant the Axyra documentation and examples, describe the spreadsheet task, then verify the generated workbook. |
+| **AI-assisted development** | **[Build with the Axyra Sheets skill]({{ site.axyra_devref }}/AI_Assisted_Development)** — install the skill, describe your spreadsheet task or migration, and verify the generated application. |
 | **Manual development** | **[Build your first workbook by hand]({{ site.axyra_tutorial }}/quick_start)** — add the dependency, create cells and formulas, recalculate, and save an XLSX file. |
 
 If you are unsure, start with the AI-assisted path. It still shows the generated
@@ -42,3 +42,5 @@ After creating your first workbook, continue with these short exercises:
 Once the tutorial makes sense, continue with the
 [Developer Reference]({{ site.axyra_devref }}) for detailed coverage of each
 area.
+
+For the full API surface, the [Javadoc]({{ site.axyra_javadoc }}) documents every public class.

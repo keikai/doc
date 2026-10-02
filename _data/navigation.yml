@@ -39,6 +39,8 @@ axyra:
         url: /axyra/guides
       - title: "Developer Reference"
         url: /axyra/dev-ref
+      - title: "Javadoc"
+        url: https://keikai.io/javadoc/axyra/latest/
 
 axyra-tutorial:
   - title: "Axyra Sheets Quick Start"
@@ -58,6 +60,8 @@ axyra-tutorial:
     children:
       - title: "Developer Reference"
         url: /axyra/dev-ref
+      - title: "Javadoc"
+        url: https://keikai.io/javadoc/axyra/latest/
 
 # Task-oriented articles. One page per search query; each links into the
 # reference rather than duplicating it.
@@ -83,6 +87,8 @@ axyra-guides:
         url: /axyra/quick-start
       - title: "Developer Reference"
         url: /axyra/dev-ref
+      - title: "Javadoc"
+        url: https://keikai.io/javadoc/axyra/latest/
 
 axyra-dev-ref:
   - title: Overview
@@ -131,13 +137,15 @@ axyra-dev-ref:
         url: /axyra/dev-ref/Rendering
       - title: "Streaming Large Files"
         url: /axyra/dev-ref/Streaming
-      - title: "Smart Markers"
-        url: /axyra/dev-ref/Smart_Markers
+      - title: "Template Markers"
+        url: /axyra/dev-ref/Template_Markers
   - title: Comparison
     url: /axyra/dev-ref/Axyra_vs_Keikai
     children:
       - title: "Axyra Sheets vs. Keikai Spreadsheet"
         url: /axyra/dev-ref/Axyra_vs_Keikai
+  - title: Javadoc
+    url: https://keikai.io/javadoc/axyra/latest/
 
 tutorial:
   - title: "Tutorial"

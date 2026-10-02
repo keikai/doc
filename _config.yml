@@ -90,12 +90,19 @@ axyra_tutorial: "/axyra/quick-start"
 axyra_guides: "/axyra/guides"
 axyra_devref: "/axyra/dev-ref"
 axyra_image_folder: "/assets/images/axyra"
-axyra_version: "0.1.0"
+axyra_javadoc: "https://keikai.io/javadoc/axyra/latest/"
+axyra_version: "0.1.0.FL.20260930-Eval"
+# Axyra Sheets is not on Maven Central: the evaluation build is served from
+# ZK's repository, so every dependency snippet needs this repository too.
+axyra_repo_url: "https://mavensync.zkoss.org/eval"
+axyra_repo_id: "keikai-eval"
 # Setting `exclude` REPLACES Jekyll's defaults rather than adding to them, so the
 # default entries have to be repeated here. Without them a local
 # `bundle config set --local path vendor/bundle` makes Jekyll try to build the
 # gems under vendor/, which fails on jekyll's own site_template .erb posts.
 exclude:
+  - skills/
+  - scripts/package-axyra-skill.py
   - CLAUDE.md
   - README.md
   - .bundle/

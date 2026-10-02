@@ -1,0 +1,4 @@
+interface:
+  display_name: "Axyra Sheets"
+  short_description: "Build Java spreadsheet workflows and migrate to Axyra"
+  default_prompt: "Use $axyra-sheets to implement or migrate my Java spreadsheet workflow using the documentation, verified API signatures, and runnable examples."

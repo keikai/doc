@@ -21,7 +21,7 @@
 /axyra/dev-ref/Native_Loader: blob/main/src/main/java/io/keikai/axyra/examples/devref/LicenseAndNativeLoaderExample.java
 /axyra/dev-ref/Pivot_Table: blob/main/src/main/java/io/keikai/axyra/examples/devref/PivotTableExample.java
 /axyra/dev-ref/Rendering: blob/main/src/main/java/io/keikai/axyra/examples/devref/RenderingReferenceExample.java
-/axyra/dev-ref/Smart_Markers: blob/main/src/main/java/io/keikai/axyra/examples/devref/SmartMarkersExample.java
+/axyra/dev-ref/Template_Markers: blob/main/src/main/java/io/keikai/axyra/examples/devref/TemplateMarkersExample.java
 /axyra/dev-ref/Streaming: blob/main/src/main/java/io/keikai/axyra/examples/devref/StreamingExample.java
 /axyra/dev-ref/Styles: blob/main/src/main/java/io/keikai/axyra/examples/devref/StylesExample.java
 /axyra/dev-ref/Supported_Formats: blob/main/src/main/java/io/keikai/axyra/examples/devref/ImportExportExample.java

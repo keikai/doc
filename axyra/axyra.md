@@ -16,6 +16,7 @@ requiring Microsoft Office.
 | **[Quick Start]({{ site.axyra_tutorial }})** | Start with AI-assisted development or build your first workbook manually. |
 | **[Guides]({{ site.axyra_guides }})** | Task-oriented walkthroughs for creating and reading Excel files, exporting application data, generating reports, and converting Excel to PDF. |
 | **[Developer Reference]({{ site.axyra_devref }})** | The full guide: AI-assisted development, workbook and sheet model, formulas, charts, import/export, rendering, and licensing. |
+| **[Javadoc]({{ site.axyra_javadoc }})** | Generated API documentation for every public class in `io.keikai.axyra.sheets`. |
 
 # What it does
 Axyra Sheets provides server-side spreadsheet processing for Java applications, from file import and formula calculation to charts, pivot tables, and PDF/image rendering. It works directly with Excel files without requiring Microsoft Office.

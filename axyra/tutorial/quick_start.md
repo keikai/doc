@@ -10,12 +10,21 @@ with a coding assistant instead, use
 # 1. Add the dependency
 
 ```xml
+<repositories>
+    <repository>
+        <id>{{ site.axyra_repo_id }}</id>
+        <url>{{ site.axyra_repo_url }}</url>
+    </repository>
+</repositories>
+
 <dependency>
     <groupId>io.keikai</groupId>
     <artifactId>axyra-sheets</artifactId>
     <version>{{ site.axyra_version }}</version>
 </dependency>
 ```
+
+Axyra Sheets is not on Maven Central, so the repository is required.
 
 The published JAR includes native libraries for the supported platforms.
 The loader selects the matching library at runtime. If you build a thin JAR

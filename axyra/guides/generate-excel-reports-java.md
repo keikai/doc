@@ -10,8 +10,8 @@ template with records, grouped data, and totals, then save the report as XLSX
 and PDF. Keeping the layout in a template lets report authors adjust its
 appearance in Excel while the Java code supplies the data.
 
-That is what **smart markers** do. A marker is `${...}` in a text cell of a
-template you hand to `SmartMarkers.process`.
+That is what **template markers** do. A marker is `${...}` in a text cell of a
+template you hand to `TemplateMarkers.process`.
 
 # The template
 
@@ -33,7 +33,7 @@ as needed. Row 4 slides down accordingly.
 
 ```java
 import io.keikai.axyra.sheets.Workbook;
-import io.keikai.axyra.sheets.template.SmartMarkers;
+import io.keikai.axyra.sheets.template.TemplateMarkers;
 
 import java.nio.file.Path;
 import java.util.List;
@@ -42,7 +42,7 @@ import java.util.Map;
 record Line(String region, String product, int qty, double amount) {}
 
 try (Workbook wb = Workbook.open(Path.of("sales-template.xlsx"))) {
-    SmartMarkers.process(wb.sheet(0), Map.of(
+    TemplateMarkers.process(wb.sheet(0), Map.of(
             "title", "Q3 2026",
             "lines", List.of(
                     new Line("APAC", "Widget", 12, 51.00),
@@ -110,7 +110,7 @@ renders a PDF for distribution, and writes both.
 import io.keikai.axyra.sheets.Sheet;
 import io.keikai.axyra.sheets.Workbook;
 import io.keikai.axyra.sheets.io.PdfOptions;
-import io.keikai.axyra.sheets.template.SmartMarkers;
+import io.keikai.axyra.sheets.template.TemplateMarkers;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -138,7 +138,7 @@ public class QuarterlyReport {
         try (Workbook wb = Workbook.open(TEMPLATE)) {
             Sheet sheet = wb.sheet(0);
 
-            SmartMarkers.process(sheet, data);
+            TemplateMarkers.process(sheet, data);
             wb.recalculate();
 
             wb.save(xlsx);
@@ -164,7 +164,7 @@ report's appearance can change it without a release.
 
 # When to build in code instead
 
-Smart markers fill a designed layout. They are the wrong tool when:
+Template markers fill a designed layout. They are the wrong tool when:
 
 - **The shape is not known in advance** — a variable number of columns, a
   pivot whose fields depend on the data. Build it with the API; see
@@ -190,7 +190,7 @@ Smart markers fill a designed layout. They are the wrong tool when:
 
 # Next steps
 
-- [Smart Markers]({{ site.axyra_devref }}/Smart_Markers) — the full marker reference
+- [Template Markers]({{ site.axyra_devref }}/Template_Markers) — the full marker reference
 - [How to Convert Excel to PDF in Java]({{ site.axyra_guides }}/convert-excel-to-pdf-java) — distribution format
 - [Pivot Tables]({{ site.axyra_devref }}/Pivot_Table) — real pivots rather than grouped lists
 - [Tables and Content Objects]({{ site.axyra_devref }}/Content_Objects) — table styles and banding for template rows

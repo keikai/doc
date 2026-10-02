@@ -3,9 +3,19 @@ title: 'Installation'
 permalink: /axyra/dev-ref/Installation
 ---
 
+Axyra Sheets is not published to Maven Central. Declare the repository below
+alongside the dependency, or your build will fail to resolve it.
+
 # Maven
 
 ```xml
+<repositories>
+    <repository>
+        <id>{{ site.axyra_repo_id }}</id>
+        <url>{{ site.axyra_repo_url }}</url>
+    </repository>
+</repositories>
+
 <dependency>
     <groupId>io.keikai</groupId>
     <artifactId>axyra-sheets</artifactId>
@@ -16,8 +26,17 @@ permalink: /axyra/dev-ref/Installation
 # Gradle
 
 ```groovy
+repositories {
+    mavenCentral()
+    maven { url "{{ site.axyra_repo_url }}" }
+}
+
 implementation "io.keikai:axyra-sheets:{{ site.axyra_version }}"
 ```
+
+The `-Eval` version is an evaluation build. It runs unrestricted, and saved
+output carries the evaluation notice described in
+[License]({{ site.axyra_devref }}/License).
 
 # The native library
 

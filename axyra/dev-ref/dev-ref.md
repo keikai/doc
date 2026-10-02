@@ -58,10 +58,14 @@ New to Axyra Sheets? Start with the [Quick Start]({{ site.axyra_tutorial }}/quic
 | [Supported Formats]({{ site.axyra_devref }}/Supported_Formats) | Per-format support matrix and known limits |
 | [Rendering]({{ site.axyra_devref }}/Rendering) | PDF, images, and HTML; page layout and font resolution |
 | [Streaming Large Files]({{ site.axyra_devref }}/Streaming) | The write-only streaming API and the columnar backend |
-| [Smart Markers]({{ site.axyra_devref }}/Smart_Markers) | Filling a template from Java objects |
+| [Template Markers]({{ site.axyra_devref }}/Template_Markers) | Filling a template from Java objects |
 
 # Choosing the right product
 
 | | |
 |---|---|
 | [Axyra Sheets vs. Keikai Spreadsheet]({{ site.axyra_devref }}/Axyra_vs_Keikai) | Potix offers two spreadsheet solutions. How they differ and which to pick |
+
+# Javadoc
+
+[{{ site.axyra_javadoc }}]({{ site.axyra_javadoc }})
