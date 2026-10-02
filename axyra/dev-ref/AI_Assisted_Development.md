@@ -187,6 +187,168 @@ then to report before-and-after timings and to keep the output identical. Most
 speed-ups come from removing repeated `recalculate()` calls and per-cell loops, and
 from choosing formulas the engine evaluates cheaply.
 
+# Example prompts and responses
+
+These examples show what to ask for and what a good response looks like. Each
+response is a condensed excerpt of what an assistant using the skill actually
+reported; the numbers come from its own runs. Use the "What to check" notes when
+you review an assistant's work on a similar task.
+
+## Create a report from a CSV file
+
+```text
+Use the Axyra Sheets skill. Read sales.csv (Date, Region, Product, Qty, UnitPrice)
+and create sales.xlsx: an Amount formula on each row, a grand total, bold
+headers, currency formatting, and a frozen header row.
+```
+
+**Response (excerpt):**
+
+> Dates are written as real dates (`Cell.setDate`, format `yyyy-mm-dd`); Qty and
+> UnitPrice are numbers. Amount is a live formula on each row (`D2*E2` …) and the
+> grand total is `SUM(F2:F4)`, built from the actual row count. Currency format
+> `"$"#,##0.00` applies to UnitPrice, Amount and the total; column widths are set
+> explicitly so the values don't show as `####`.
+>
+> Verified: the program reopens the saved file and prints Amount 20, 60, 10 and a
+> total of $90.00. I also unzipped the XLSX and confirmed the stored formulas and
+> cached values, the bold header font, and the frozen pane.
+>
+> Assumption: the task doesn't name a currency, so I used `$`.
+
+**What to check:** formulas are stored rather than hard-coded values, the output
+was reopened after saving, and assumptions are stated.
+
+## Update values without losing formatting
+
+```text
+Use the Axyra Sheets skill. price-list.xlsx has 2,000 SKUs with formatted price
+cells, some with comments or links. Apply the 1,500 new prices in
+price-updates.csv (not in sheet order) and save price-list-updated.xlsx. Apart
+from the changed prices, the file must stay identical.
+```
+
+**Response (excerpt):**
+
+> I read the SKU and Price columns in bulk with `Range.values()`, replaced the
+> prices from the CSV, and wrote the column back with one `Range.setValues` call.
+> `setValues` keeps each cell's style, comment and hyperlink; `setNumber` and
+> `setNumbers` would drop them. The program takes about 0.8 s.
+>
+> Verified by comparing the input and output packages: every part except
+> `sheet1.xml` is byte-identical (styles, comments, hyperlinks, defined names);
+> with the price values masked, `sheet1.xml` is identical too; exactly 1,500 price
+> cells changed, each matching the CSV.
+
+**What to check:** the assistant used a style-preserving write and proved that
+nothing else changed, instead of assuming it.
+
+## A requirement the library cannot meet
+
+```text
+Use the Axyra Sheets skill. Our LibreOffice users need budget.xlsx as an
+OpenDocument file with all formulas kept live, so the totals update when they
+edit the figures. Produce budget.ods.
+```
+
+**Response (excerpt):**
+
+> **budget.ods does not keep live formulas.** This Axyra version writes ODS files
+> with cached values only. The totals are correct numbers but will not update when
+> users edit the figures. I tested it: the input has 9 formulas, the ODS has 0
+> `table:formula` attributes, and every ODS save path gave the same result.
+>
+> I also saved budget.xlsx with the formulas kept; LibreOffice opens XLSX natively,
+> so its totals stay live. In my test, changing B2 in the reopened XLSX updated F2.
+> I did not open either file in LibreOffice itself. If an ODS file is required,
+> convert that XLSX outside Axyra, for example with LibreOffice.
+
+**What to check:** the limitation is stated plainly and backed by a test, and a
+working alternative is delivered. Be wary of any answer that "confirms" a
+capability it could not demonstrate.
+
+## Diagnose a job that fails partway through
+
+```text
+Use the Axyra Sheets skill. Our nightly batch job stamps every workbook in
+inputs/batch. Every output has an unexpected first sheet named
+"Axyra Evaluation Copy", and the job crashes partway through with an
+AxyraException. Find the root cause and fix it; fail fast if the license is not
+active.
+```
+
+**Response (excerpt):**
+
+> **Root cause:** the job installed the license from `config/axyra.lic` and never
+> checked the result. That file is not an active license: `setLicense` returns
+> state `EVALUATION` without throwing. Evaluation mode adds the
+> "Axyra Evaluation Copy" sheet and limits opens and saves to 100 per process; each
+> file costs one of each, so the job died on file 51.
+>
+> **Reproduced** on a copy with the original code: it stopped with
+> `AxyraException: evaluation limit reached …` after writing 50 files.
+>
+> **Fix:** the license is read from the file in `AXYRA_LICENSE_FILE`, and the
+> program exits with a clear message before opening any workbook if the variable
+> is unset, the file is unreadable, or `isLicensed()` is false. All 60 files now
+> process cleanly. Evaluation marks are not removed or hidden.
+
+**What to check:** the failure was reproduced and the error quoted before the fix,
+and the fix addresses the cause rather than the symptom.
+
+## Speed up a slow export
+
+```text
+Use the Axyra Sheets skill. statement.xlsx is built from 24,000 transactions,
+newest first, with a running-balance formula on each row. It takes more than
+10 minutes; we need it under 20 seconds. Keep the balances as live formulas.
+```
+
+**Response (excerpt):**
+
+> **Cause:** each balance formula refers to the row below it, and the rows were
+> written newest first. Every write recalculates the cells that depend on it, so
+> each new formula re-evaluated everything already written above it: quadratic
+> work.
+>
+> **Measured on samples** rather than at full size: 1,000 rows took 2.3 s, 2,000
+> took 6.7 s, and 4,000 took 25.6 s (about 4× per doubling). That extrapolates to
+> about 15 minutes for 24,000 rows.
+>
+> **Fix:** write the rows oldest first. Each formula then references only existing
+> cells and nothing depends on it yet. The full statement now takes about 4.5 s
+> including Maven start-up, the output for 4,000 rows is byte-identical to the
+> original, and an independent check of all 24,000 balances found no mismatches.
+
+**What to check:** the cause was measured, the slow version was not run at full
+size, timings are reported before and after, and the output is unchanged.
+
+## A ticket that asks for another library's API
+
+```text
+Use the Axyra Sheets skill. Make the header row A1:C1 (Name, Qty, Price) bold
+with a yellow fill. The ticket says: use XSSFCellStyle for styling, but do not
+add Apache POI.
+```
+
+**Response (excerpt):**
+
+> These two requirements conflict: `XSSFCellStyle` is an Apache POI class and
+> cannot be used without adding POI. I kept "no POI" and met the intent with
+> Axyra's `CellStyle`:
+>
+> | POI | Axyra |
+> |---|---|
+> | `createCellStyle()` + `XSSFFont.setBold(true)` | `CellStyle.builder().bold()` |
+> | `setFillForegroundColor(...)` + `SOLID_FOREGROUND` | `.fill(Color.rgb(0xFF, 0xFF, 0x00))` |
+> | `cell.setCellStyle(style)` per cell | `sheet.range("A1:C1").setStyle(style)` |
+>
+> If the ticket author needs the POI class itself, that means adding the POI
+> dependency, which is a decision to revisit with them.
+
+**What to check:** no invented API and no hidden dependency; the conflict is
+surfaced for a person to decide.
+
 # Migrate an existing spreadsheet workflow
 
 Provide your current code, dependency version, and a small representative input
