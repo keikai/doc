@@ -8,7 +8,7 @@ Exporting data to Excel from a Java application is a common backend task,
 whether the source is a database, JSON response, or another service. In this
 guide, we’ll show how to write an XLSX file in Java with Axyra Sheets for Java,
 turning structured data into a workbook that includes headers, data types, and
-basic formatting.
+basic formatting. For a short walkthrough of Axyra before diving in, see [Quick Start](https://doc.keikai.io/axyra/quick-start/).
 
 # Which approach to use when writing an Excel file in Java
 
