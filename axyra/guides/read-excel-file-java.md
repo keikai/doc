@@ -22,7 +22,7 @@ and JSON.
 
 Java 17 or later plus the dependency; the native libraries ship inside the jar.
 See [Installation]({{ site.axyra_devref }}/Installation) if you need the Gradle
-coordinates or hit a platform problem.
+coordinates or hit a platform problem. For a short walkthrough of Axyra before diving in, see [Quick Start](https://doc.keikai.io/axyra/quick-start/).
 
 ```xml
 <dependency>
