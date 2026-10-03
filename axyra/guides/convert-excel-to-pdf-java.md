@@ -8,7 +8,7 @@ other spreadsheet documents in a format intended for viewing and printing. In
 this guide, we’ll use Axyra Sheets for Java to render an Excel workbook as PDF
 on the server, without installing Excel or running an Office process. We’ll
 start with a basic conversion, then configure sheet selection, page layout,
-fonts, watermarks, and PDF output options.
+fonts, watermarks, and PDF output options. For a short walkthrough of Axyra before diving in, see [Quick Start](https://doc.keikai.io/axyra/quick-start/).
 
 # The one-liner
 
