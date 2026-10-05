@@ -9,8 +9,7 @@ with a coding assistant instead, use
 
 # 1. Add the dependency
 
-```xml
-<repositories>
+{% capture maven_dependency %}<repositories>
     <repository>
         <id>{{ site.axyra_repo_id }}</id>
         <url>{{ site.axyra_repo_url }}</url>
@@ -22,7 +21,8 @@ with a coding assistant instead, use
     <artifactId>axyra-sheets</artifactId>
     <version>{{ site.axyra_version }}</version>
 </dependency>
-```
+{% endcapture %}
+{% include copy_code.html code=maven_dependency language="xml" event="copy_maven_code" %}
 
 Axyra Sheets is not on Maven Central, so the repository is required.
 

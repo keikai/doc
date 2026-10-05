@@ -1,0 +1,17 @@
+---
+layout: null
+permalink: /axyra/search.json
+sitemap: false
+---
+[
+{%- assign first_result = true -%}
+{%- for entry in site.pages -%}
+  {%- assign entry_prefix = entry.url | slice: 0, 7 -%}
+  {%- if entry.title and entry_prefix == '/axyra/' -%}
+    {%- unless first_result -%},{%- endunless -%}
+    {%- assign search_content = entry.content | markdownify | strip_html | normalize_whitespace -%}
+    {"title":{{ entry.title | jsonify }},"url":{{ entry.url | relative_url | jsonify }},"content":{{ search_content | jsonify }}}
+    {%- assign first_result = false -%}
+  {%- endif -%}
+{%- endfor -%}
+]

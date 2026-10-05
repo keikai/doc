@@ -1,0 +1,28 @@
+<div class="axyra-search" id="axyra-search" hidden
+     data-search-index="{{ '/axyra/search.json' | relative_url }}">
+  <button class="axyra-search__backdrop" type="button" data-search-close
+          aria-label="Close search"></button>
+  <section class="axyra-search__dialog" role="dialog" aria-modal="true"
+           aria-labelledby="axyra-search-title">
+    <header class="axyra-search__header">
+      <h2 id="axyra-search-title">Search Axyra Docs</h2>
+      <button class="axyra-search__close" type="button" data-search-close
+              aria-label="Close search">&times;</button>
+    </header>
+    <label class="visually-hidden" for="axyra-search-input">Search Axyra documentation</label>
+    <div class="axyra-search__input-wrap">
+      <svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18"
+           fill="none" stroke="currentColor" stroke-width="2"
+           stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="11" cy="11" r="7"/>
+        <path d="m20 20-4-4"/>
+      </svg>
+      <input id="axyra-search-input" type="search" autocomplete="off"
+             placeholder="Search guides, tutorials, and reference…">
+    </div>
+    <p class="axyra-search__status" id="axyra-search-status" aria-live="polite">
+      Start typing to search Axyra documentation.
+    </p>
+    <ol class="axyra-search__results" id="axyra-search-results"></ol>
+  </section>
+</div>

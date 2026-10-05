@@ -13,15 +13,40 @@ AI assistance is a development workflow, not a separate Axyra API. The generated
 application uses the same `io.keikai.axyra.sheets.*` classes as manually written
 code.
 
+The skill covers Excel import and export, template reports, formulas, charts,
+pivots, PDF and image rendering, streaming exports, licensing problems, and
+migration from Aspose.Cells, Apache POI, or another spreadsheet library. It does
+not cover Axyra Docs or the Keikai browser spreadsheet UI (`io.keikai.api.*`).
+Its rules and API index were verified against Axyra Sheets
+`0.1.0.FL.20260930-Eval`.
+
 # Get the Axyra Sheets skill
 
-[Download the Axyra Sheets skill (ZIP)]({{ '/assets/downloads/axyra-sheets-skill.zip' | relative_url }}){: .btn .btn--success}
+Choose the installation method that fits your coding assistant:
+
+<div class="axyra-install-options">
+  <section class="axyra-install-option">
+    <h2>Agent Skills CLI</h2>
+    <p>Install from the Agent Skills marketplace into a supported coding assistant:</p>
+    {% capture agent_skill_install %}npx skills add https://github.com/keikai/doc/tree/master/skills/axyra-sheets{% endcapture %}
+    {% include copy_code.html code=agent_skill_install language="shell" event="copy_agent_skill_install" %}
+  </section>
+  <section class="axyra-install-option">
+    <h2>Download ZIP</h2>
+    <p>Download the folder and install it manually in your assistant's skill directory.</p>
+    <a class="btn btn--success"
+       href="{{ '/assets/downloads/axyra-sheets-skill.zip' | relative_url }}"
+       download data-ga-event="download_agent_skill">Download the Axyra Sheets skill (ZIP)</a>
+  </section>
+</div>
 
 The ZIP contains an `axyra-sheets` folder. Keep it intact so the assistant can
 follow its links:
 
 - `SKILL.md` — the decision rules, a short API cheat sheet, the license start-up
   code, and how to verify results. Most tasks need nothing else.
+- `agents/openai.yaml` — the display name and default prompt that Codex shows
+  for the skill.
 - `references/api-index.md` — every public type and method of the library
   version, one per line. The assistant searches it for exact signatures instead
   of reading Javadoc pages.
@@ -39,7 +64,9 @@ not appear in the skill list. Review an existing installation before replacing i
 
 For Claude Code, extract it into `~/.claude/skills/` for all your projects, or into
 your project's `.claude/skills/` directory to share it with your team, so that the
-result includes `.../skills/axyra-sheets/SKILL.md`.
+result includes `.../skills/axyra-sheets/SKILL.md`. Claude Code loads the skill
+automatically when a task matches it; type `/axyra-sheets` to invoke it
+explicitly.
 
 For other assistants that support skills, use their documented skill installation
 location. If your assistant does not support skill installation, extract the folder
@@ -82,7 +109,7 @@ existing project, verify APIs against the version it actually resolves.
 Copy this prompt into your coding assistant and change the workbook task. The
 prompts on this page name the skill in plain words, so they work with any
 assistant. If yours uses a shorthand for invoking an installed skill, you can use
-it instead -- in Codex, `$axyra-sheets` invokes it explicitly. If the skill is not
+it instead: `$axyra-sheets` in Codex, `/axyra-sheets` in Claude Code. If the skill is not
 installed, replace the opening phrase with `Read axyra-sheets/SKILL.md and the
 references it links, then`.
 
@@ -126,9 +153,21 @@ Without a license key, the application runs in Evaluation Mode. Distributed
 production builds visibly mark saved workbook output; development builds do so
 when enforcement is enabled. This is expected during the Quick Start. An invalid
 or expired key does not throw either, so ask the assistant to check
-`isLicensed()` right after `setLicense` and stop with a clear message. A batch job
-that fails partway through with an "evaluation limit reached" `AxyraException`
-is usually running unlicensed. See
+`isLicensed()` right after `setLicense` and stop with a clear message. The skill
+includes this start-up code:
+
+```java
+LicenseInfo info = Workbook.setLicense(
+        Files.readString(Path.of(System.getenv("AXYRA_LICENSE_FILE"))).trim());
+if (!info.isLicensed()) {
+    throw new IllegalStateException("Axyra license not active: " + info.state());
+}
+```
+
+Evaluation Mode adds an "Axyra Evaluation Copy" first sheet to saved workbooks
+and a banner to PDF and image pages, and allows 100 opens, saves, and renders per
+process. A batch job that fails partway through with an "evaluation limit reached"
+`AxyraException` is usually running unlicensed. See
 [Licensing and Evaluation]({{ site.axyra_devref }}/License).
 
 # Rules that prevent common AI mistakes
@@ -140,8 +179,9 @@ They are also a useful checklist when you review generated code.
 - Keep every `Workbook`, `Sheet`, `Range`, and `Cell` use inside the workbook's
   try-with-resources block. These objects are views over native memory; return
   extracted values, not views.
-- Do not share one `Workbook` (or its views) between threads. For parallel jobs,
-  read a template once as bytes and open a separate workbook in each task.
+- Do not share one `Workbook` (or its views) between threads; doing so throws
+  `AxyraException: workbook is already in use`. For parallel jobs, read a template
+  once as bytes and open a separate workbook in each task (`Workbook.openBytes`).
 
 **Writing**
 - Java row and column indices are 0-based; formulas and A1 references are
@@ -149,14 +189,24 @@ They are also a useful checklist when you review generated code.
 - Update existing cells with `Cell.setValue` or `Range.setValues`.
   `setNumber`/`setNumbers` replace the whole cell, so its style, comment and
   hyperlink are lost.
+- `Range.setStyle` replaces the whole style. To change one attribute, such as
+  bold, on cells with mixed formatting, update each cell from
+  `cell.style().toBuilder()`.
 - To fill a formula down, use `Range.copyTo` or per-cell `setFormulas`;
   `autoFill` copies formulas without shifting their references.
+- `Sheet.importData` does not support `Map` elements, writes `LocalDate` values
+  without a date format, and orders JavaBean properties alphabetically. For maps
+  or dynamic JSON, build a `CellValue[][]` and call `setValues`; set columns and
+  date formats explicitly.
 - Keep identifiers such as `00042` as text, and give dates an explicit date format.
 
 **Calculation and speed**
-- Calculate at most once, before reading results or saving — never call
-  `recalculate()` inside a loop, where it re-evaluates the whole workbook on every
-  iteration.
+- Every write already recalculates the formulas that depend on it, so results are
+  normally current. `save` does not recalculate: call `recalculate()` once before
+  saving after `autoFill`, with volatile functions such as `NOW`, or when an opened
+  file's formulas were not touched. Never call it inside a loop, where it
+  re-evaluates the whole workbook on every iteration.
+- `setCalcMode(MANUAL)` does not pause recalculation and is not saved.
 - Read and write ranges in bulk (`Range.values()`, `Range.setValues`) instead of
   cell by cell, and find the data extent once instead of probing cells.
 
@@ -165,8 +215,20 @@ They are also a useful checklist when you review generated code.
   stay live, and say so.
 - Refresh a pivot table before saving or rendering it, or its cells are empty
   outside Excel.
+- Chart `showDataLabels(true)` affects rendered images only; add
+  `.dataLabels(DataLabels.value())` after each series to save the labels.
+- `Validation.list(...)` hides Excel's dropdown arrow; build list validation with
+  `Validation.builder().type("list")` and `showDropdown(false)`.
+- `autoFitColumn` ignores number formats, so formatted numbers can show as `####`;
+  set those column widths explicitly.
+- In templates, a marker cell holding a `LocalDate` becomes text, and with
+  `:group` only the first inserted row reliably keeps its date format. Set dates
+  with `Cell.setDate` and re-apply the data-row styles after
+  `TemplateMarkers.process`.
 - The streaming writer is for new, write-only, forward-only files: it cannot open
   or edit a workbook, recalculate, or add charts, pivots, or images.
+- VBA in `.xlsm` files is preserved but never executed. Ask for a Java port of the
+  macro logic instead.
 
 **Honesty**
 - Do not invent API names from Apache POI, Keikai Spreadsheet, or another
@@ -348,6 +410,240 @@ add Apache POI.
 
 **What to check:** no invented API and no hidden dependency; the conflict is
 surfaced for a person to decide.
+
+## Export JSON with correct types
+
+```text
+Use the Axyra Sheets skill. Export orders.json to orders.xlsx: one row per order with
+columns orderId, customer, orderDate, amount, discount, coupon and a bold header. Keep
+orderId as text with its leading zeros, make orderDate a real date shown as yyyy-mm-dd,
+show amount with two decimals, and leave missing or null values blank. Customer names
+are untrusted input.
+```
+
+**Response (excerpt):**
+
+> I build a `CellValue[][]` from the JSON and write it with one `Range.setValues`
+> call. `orderId`, `customer` and `coupon` are written with `CellValue.text`, so
+> `00042` keeps its zeros and a customer named `=HYPERLINK("http://evil")` is
+> stored as a plain string, never as a formula. `orderDate` is parsed to a
+> `LocalDate` and written with `Cell.setDate` in a `yyyy-mm-dd` style; `amount` is
+> a number with format `0.00`. Missing keys, JSON `null` and empty strings become
+> blank cells.
+>
+> Verified by unzipping the XLSX: the IDs are text cells with format `@`, the
+> sheet has no formula anywhere, dates are numeric serials (46082 = 2026-03-01),
+> and null or missing fields have no cell at all.
+>
+> Note: the names are safe in the XLSX because they are text cells. If this data
+> is later exported to CSV, it needs separate escaping.
+
+**What to check:** IDs stay text, dates are real dates, and formula-like input is
+never stored as a formula.
+
+## Fill formulas down
+
+```text
+Use the Axyra Sheets skill. In orders.xlsx only row 2 has formulas: D2 = B2*C2 and
+E2 = D2*(1+$H$1). Fill D2:E2 down through row 1001 exactly as Excel's fill handle
+would, make H3 total all 1,000 amounts (it sums only D2 now), and save
+orders-filled.xlsx with calculated results.
+```
+
+**Response (excerpt):**
+
+> I filled down by copying `D2:E2` to each of rows 3–1001 with `Range.copyTo`;
+> `autoFill` does not shift references, so I avoided it. `copyTo` shifts relative
+> references, keeps `$` anchors, and carries the source formatting. The program
+> checks every filled formula against the expected text (`B{n}*C{n}`,
+> `D{n}*(1+$H$1)`), sets `H3` to `SUM(D2:D1001)`, calls `Workbook.recalculate()`
+> once, and saves.
+>
+> Verified: the run prints `H3 = SUM(D2:D1001) = 89833.0`. Read back from the
+> saved file, D3 is `=B3*C3` = 22, E3 is `=D3*(1+$H$1)` = 23.1, E1001 is 24.15,
+> and row 1002 is empty. The sheet has 2,001 formulas, each with a cached value.
+
+**What to check:** relative references shifted and anchors stayed, proved on the
+saved file rather than assumed.
+
+## Export a pivot table to PDF
+
+```text
+Use the Axyra Sheets skill. sales-data.xlsx has 200 sales rows (Region, Product,
+Quarter, Amount). Add a Summary sheet with a pivot table: Region as rows, Quarter as
+columns, Sum of Amount as values. Set it to print on one A4 landscape page, save
+summary.xlsx, and export only the Summary sheet to summary.pdf.
+```
+
+**Response (excerpt):**
+
+> I added a `Summary` sheet with a pivot over `Data!$A$1:$D$201` and called
+> `refresh()`, so the pivot's cells exist in the saved file and in the PDF. The
+> refreshed pivot fills `A1:F7`, including grand totals. Page setup belongs to
+> the sheet: paper size 9 (A4), landscape, print area `$A$1:$F$7`, and
+> `fitToPage(1, 1)`. The PDF is rendered with
+> `PdfOptions.builder().sheetNames("Summary")`.
+>
+> Verified: a checker reopened summary.xlsx and summed the 200 rows by Region and
+> Quarter, with 0 mismatches and a grand total of 59,100. `pdfinfo` reports one
+> 841.89 × 595.28 pt page (A4 landscape), and `pdftotext` shows only the pivot. I
+> did not check the PDF's appearance visually.
+
+**What to check:** the pivot was refreshed before saving and rendering, and the
+PDF was checked for page count, size, and content.
+
+## Generate files in parallel
+
+```text
+Use the Axyra Sheets skill. Generate one invoice per customer from
+invoice-template.xlsx and lines.csv (24 customers) as invoices/<customerId>.xlsx,
+using a fixed pool of 4 worker threads. Load the template once. Fill in the customer
+id, line items, a 5% tax rate, subtotal, tax rounded to cents and total, and keep the
+template's layout and logo. Report the wall time.
+```
+
+**Response (excerpt):**
+
+> The template is read into bytes once. A `Workbook` must not be shared between
+> threads, so each task opens its own copy with `Workbook.openBytes(bytes, "xlsx")`
+> on `Executors.newFixedThreadPool(4)`. Tasks find their cells through the
+> template's named ranges (`CustomerId`, `LineItems`, `TaxRate`, `Subtotal`,
+> `Tax`, `Total`), and the tax is `ROUND(D14*B18,2)`. All writes go to cells the
+> template already has, so its number formats stay.
+>
+> Wall time, from reading the template to the last save and excluding JVM
+> start-up: 26–29 ms over 4 runs for all 24 invoices.
+>
+> Verified: a checker reopened all 24 files and compared id, subtotal, tax and
+> total with the CSV, with no mismatches. The logo image has the same SHA-1 as
+> the template's.
+
+**What to check:** one workbook per task, every output checked, and a measured
+time rather than an estimate.
+
+## Scale an export to 100,000 rows
+
+```text
+Use the Axyra Sheets skill. This program writes data.xlsx with N rows (row i holds
+i, 2i, 3i, 4i, 5i; column A formatted 0, columns B–E #,##0.00). Make it handle
+100,000 rows efficiently while keeping the same values, column order, number formats
+and command line; it must still work for 1,000 rows. Explain any API or design changes.
+```
+
+**Response (excerpt):**
+
+> The export only creates a new file and writes it once, in order, so I switched
+> from `Workbook` to `StreamWorkbook`. The old code made two native calls per cell
+> (`setValue` and `setStyle`), 1,000,000 calls for 100,000 rows. Now each format
+> is registered once with `addStyle(StreamStyle.defaults().withNumberFormat(...))`,
+> each row is written with `row(r).addNumber(x, style)` and `commit()`, and
+> `finish()` closes the file.
+>
+> | Rows | Before (time / peak memory) | After |
+> |---|---|---|
+> | 1,000 | 0.77 s / 93 MB | 0.72–0.77 s / 79–84 MB |
+> | 100,000 | 2.31 s / 384 MB | 1.00 s / 79 MB |
+>
+> Trade-off: `StreamWorkbook` is write-only and forward-only. It cannot open
+> files, recalculate, or add charts, pivots, merges, validation, or rendering; if
+> the export later needs any of those, it has to go back to `Workbook`. A verifier
+> found no wrong values or formats at either size.
+
+**What to check:** before-and-after numbers at both sizes, identical output, and
+the trade-off stated.
+
+## Run a VBA macro
+
+```text
+Use the Axyra Sheets skill. Open prices.xlsx, run the ApplyDiscount VBA macro
+(ApplyDiscount.bas) on it, and save discounted.xlsx. If that can't be done, explain
+the limit and the closest supported alternative.
+```
+
+**Response (excerpt):**
+
+> **Axyra cannot execute VBA.** No public API runs macros. `Workbook.vbaModules()`
+> reads macro source embedded in a workbook, and VBA is kept when you save as
+> `.xlsm`, but it is never run. In this case prices.xlsx has no VBA project at
+> all; the macro exists only as the separate `.bas` file.
+>
+> The closest supported alternative is a Java port of the macro's logic. It reads
+> `B2:B4`, the macro's range, with `Range.values()`, multiplies each value by 0.9,
+> and writes back with `Range.setValues`, which keeps the cell styles. It follows
+> VBA's coercion: an empty cell counts as 0, numeric text becomes a number, and
+> anything else fails with "Type mismatch".
+>
+> Verified: B2:B4 went from 100, 250, 40 to 90, 225, 36. This is a hand port, not
+> execution, so if the `.bas` file changes, the Java code must be updated to match.
+
+**What to check:** the limit is stated first, no macro API is invented, and the
+port is labeled as a port.
+
+## Diagnose a container deployment failure
+
+```text
+Use the Axyra Sheets skill. Our report service ran fine as a plain java job on an
+Ubuntu VM. In its new container image every run fails with "NoClassDefFoundError:
+Could not initialize class io.keikai.axyra.sheets.Workbook", although the Axyra JAR is
+on the classpath. Using the Dockerfile, the Kubernetes CronJob and the smoke-test log,
+find the root cause and fix the deployment. The cluster requires non-root, a read-only
+root filesystem, no privilege escalation and all capabilities dropped; the license
+comes from a secret.
+```
+
+**Response (excerpt):**
+
+> **Root cause:** the base image is Alpine, which uses musl libc, while Axyra's
+> native engine `libaxyra_jni.so` is built for glibc. The error in the ticket is a
+> consequence. The first error in the log is `UnsatisfiedLinkError … Error loading
+> shared library liblzma.so.5`, raised while `Workbook` initializes. The license
+> code logged it as a warning and carried on, so every later use of `Workbook`
+> failed with `NoClassDefFoundError`.
+>
+> **Second, latent failure:** the native library is extracted to
+> `java.io.tmpdir` on every start, and the CronJob's read-only root filesystem
+> leaves nothing writable at `/tmp`. I reproduced this locally with a read-only
+> temporary directory.
+>
+> **Fix:** a glibc base image (`eclipse-temurin:21.0.4_7-jre-jammy`), an
+> `emptyDir` volume mounted at `/tmp`, and a start-up check that exits if the
+> engine cannot load or the license is not active. Not verified: there is no
+> Docker or Kubernetes here, so the image build and a cluster run still need
+> checking in CI.
+
+**What to check:** the first error in the log was found, not just the last one,
+and what was verified is separated from what still needs checking.
+
+## Fix totals that miss inserted rows
+
+```text
+Use the Axyra Sheets skill. Our generator fills budget-template.xlsx with the lines in
+lines.csv. The Lines tab total is right, but the Summary tab shows one line's amount as
+the total and counts only 2 lines, the chart is missing our lines, and the PDF stops
+after the third line. Inserting the rows by hand in Excel works. Find the root cause
+and fix the generator.
+```
+
+**Response (excerpt):**
+
+> **Root cause:** the generator relied on `Sheet.insertRows(4, 43)` behaving like
+> Excel's Insert Rows. In this Axyra version it moves the cells and rewrites
+> formulas only on the Lines sheet itself, which is why the Lines total was right.
+> I reproduced it with the original code: Summary still read `Lines!D6` and
+> `COUNTA(Lines!A4:A5)`, and the `BudgetLines` name, the print area, the chart
+> series, the highlight rule, and the dropdown all kept their two-row ranges.
+>
+> **Fix:** before the insert, the generator records every reference to the line
+> block and afterwards writes each one back, shifted the way Excel would. Probes
+> found one more trap: on an opened template, `setPrintArea` is not saved until
+> the old `_xlnm.Print_Area` name is removed with `removeName`.
+>
+> Verified: the Summary formulas now cover `Lines!D4:D48`, and the total is
+> 2,266,797.59 over 45 lines, matching an independent sum of the CSV. The PDF
+> lists all 45 lines and the total.
+
+**What to check:** the bug was reproduced with the original code, and every
+dependent reference was checked, not just the visible total.
 
 # Migrate an existing spreadsheet workflow
 

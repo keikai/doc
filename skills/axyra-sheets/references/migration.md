@@ -29,6 +29,30 @@ The template entry point is `TemplateMarkers` from `0.1.0.FL.20260915-Eval` on a
 `SmartMarkers` before; there is no alias, so confirm which one the resolved artifact
 has. The marker grammar and expansion rules are in [pitfalls-templates.md](pitfalls-templates.md).
 
+Classify vendor template processing (Aspose Smart Markers `&=`, DsExcel `{{ }}`) as
+redesign, never as a direct mapping: besides the syntax, grouping, subtotals, date
+values and the styles of generated rows change.
+
+When more than a few templates must move, or new ones will keep arriving, write a
+small converter in the project instead of editing files by hand:
+- Never modify the originals; write converted copies.
+- When an option has no marker equivalent but its effect can be reproduced in code
+  around `TemplateMarkers.process` (for example sorting records first, or blanking or
+  merging group cells afterwards), reproduce it, check it against the expected output,
+  and record it as a semantic difference.
+- Still list every marker or option without an Axyra marker equivalent, by file and
+  cell, and say whether code reproduces it (and how that was verified) or a person must
+  decide. New templates may use the same options. Do not guess, and never let a report
+  that lacks such an effect look complete.
+- Report per template what the calling code must change (for example subtotal rows
+  holding values, dates passed as serials, repeated group labels, styles of grouped rows).
+- Verify each converted template: process it with sample data, check that no `&=`,
+  `{{` or `${` text remains, and compare with the source library's output when it is
+  available.
+
+For a single template, convert it once but keep the conversion as a script so it can
+be repeated.
+
 Libraries that recalculate lazily, or only on request, map to Axyra calls that
 recalculate on every write. Keep an explicit `recalculate()` where the source
 called its evaluator, but do not port manual-calculation settings: Axyra neither
