@@ -2,6 +2,11 @@
 title: 'AI-Assisted Development'
 permalink: /axyra/dev-ref/AI_Assisted_Development
 ---
+# AI-friendly API
+
+Axyra’s APIs are designed and refined for clarity, making them easier for AI coding agents to understand and use. For example, a method named `get` can be misleading if it also modifies data. We test how coding agents interpret and use our APIs, then refine them to reduce such ambiguity. The Axyra Agent Skill complements this API design with guidance grounded in official documentation and verified examples.
+
+# Axyra Agent Skill
 
 Use the **Axyra Sheets skill** with an AI coding assistant to build Java
 spreadsheet workflows or migrate existing spreadsheet code. The skill gives your
