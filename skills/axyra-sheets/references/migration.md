@@ -64,6 +64,94 @@ Use fully qualified names during migration if both libraries define `Workbook` o
 after remaining usages have been checked; never delete it while other code needs it.
 Keikai UI migration is not a substitute for spreadsheet-library migration.
 
+## Matching the old output
+
+These apply whenever the replaced program's output is available. They describe Axyra; what
+the old library did is read from its output, never assumed.
+
+**Default font of workbooks the code creates.** A workbook created with `Workbook.create()`
+uses Calibri 11 with no colour as its default ("Normal") font, and every cell without its own
+font shows it. Spreadsheet libraries differ here. When the code creates a workbook (not when
+it opens a file), read the default font of the old output (name, size and colour: the first
+`<font>` in `xl/styles.xml`, or the style of any unformatted cell) and set the same right after
+creating the workbook:
+
+```java
+Workbook wb = Workbook.create();
+wb.setDefaultFont(wb.defaultStyle().toBuilder()
+        .fontName(name)          // as read from the old output
+        .fontSize(size)
+        .fontColor(color)        // e.g. Color.theme(1) when the old output stores theme="1"
+        .build());
+```
+
+A workbook opened from a file keeps the default it was saved with; do not change it.
+A workbook opened from HTML, CSV or text is the exception: those files store no default font,
+so it gets the created-workbook default (Calibri 11) and the rule above applies to it.
+
+**Default row height.** `Workbook.setDefaultFont` does not change a sheet's default row
+height (15 pt for a created sheet). Read `<sheetFormatPr defaultRowHeight>` from the old
+output and call `Sheet.setDefaultRowHeight(h)` on each sheet the code creates. Charts
+anchored to rows and every rendered page depend on it.
+
+**Pivot tables.** `addPivotTable` and the field setters write no cells;
+`PivotTableView.refresh()` writes the pivot body into the sheet as cells. In a migration,
+call `refresh()` where the original program updates the pivot's data, or before rendering
+it. If the old output's pivot area is blank, do not refresh. The `.xls` writer does not keep
+the pivot definition (`pivotCount()` is 0 after reopening a saved `.xls`).
+
+**Subtotals.** `Sheet.subtotal(firstRow, lastRow, groupColumn, hasHeaders, SubtotalFunction,
+columns...)` inserts subtotal rows the way Excel's Data > Subtotal does (with
+`hasHeaders = true` the block's first non-blank row is its header). Columns are sheet
+columns, not offsets into the block. It returns the number of rows inserted, and 0 when the
+block has no data, in which case Excel writes nothing either. Use it rather than building
+subtotal rows by hand, and never add rows it did not insert.
+
+**Text files.** `Workbook.save(Path)` chooses the format from the extension (`.csv`;
+`.tsv` and `.txt` are tab-separated), and `saveBytes("csv" | "tsv" | "txt")` returns the
+same bytes. Both write the active sheet (`Workbook.setActiveSheet(i)`), from A1, with CRLF
+line ends; Excel's Save As Text also writes the active sheet.
+
+**When the old output contradicts the program.** If the old output disagrees with what the
+program's own calls ask for (for example, the program sets something the old output does not
+show), implement the calls the way Excel performs them and list the
+difference as a gap. Do not hand-write content only to reproduce the old output.
+
+**Images and PDF pages.** Render exactly what the old code rendered, at the same size:
+
+| Old output | Axyra call |
+|---|---|
+| a chart as an image | `Sheet.renderChartToPng(chartIndex, widthPx, heightPx)` (or `renderChartToSvg`) |
+| a cell range as an image | `Workbook.renderRangePng(sheetIndex, "A1:D10", options)` |
+| one page of a sheet | `Workbook.renderSheetPng(sheetIndex, options)`, with `ImageOptions.builder().page(n)` (1-based, the PDF's page numbering) |
+| the workbook as PDF | `Workbook.renderPdf(path, PdfOptions)`; page setup lives on the `Sheet` |
+
+Size an image with `ImageOptions.builder().targetWidthPx(w)` (the height keeps the aspect ratio)
+or `scale(dpi / 96.0)`. Paper size is `Sheet.setPaperSize(code)` (ECMA-376 `ST_PaperSize`
+codes); orientation, margins, print area and fit-to-page are also on the `Sheet`. Read the old
+image's pixel size, or the old PDF's page size and count, and match them.
+
+**A whole sheet on one page (PDF).** Excel cannot print a page cut to a sheet's content; it prints
+on the sheet's own paper (`Sheet.paperSize()`), measured on Excel 16.0. When the program prints
+each sheet on one page, keep the sheet's paper and fit the sheet onto it:
+`PdfOptions.builder().fitTo(PdfOptions.Fit.PAGE)` (Excel's Fit Sheet on One Page); for all
+columns on one page, `PdfOptions.Fit.WIDTH` (Fit All Columns on One Page). Keep the sheet's
+orientation too. Use the option as it is: never compute a print scale, a paper size or an
+orientation of your own to get closer to the old PDF (no `setPageScale`, `setLandscape` or
+`setCustomPaperSize` that the original program does not call), and accept the page count the
+option gives. List the old page size and count as a gap. Images are not pages: an image of a whole sheet still
+matches the old image's pixel size, as above.
+
+**Saving a picture from the workbook.** When the program saves a picture stored in the
+workbook in that picture's own format, write `Sheet.pictureData(i)` unchanged
+(`Sheet.pictureFormat(i)` names the format). Those bytes are the picture itself; decoding
+and re-encoding changes its pixels. Do this even when the old output's file differs
+from the stored bytes; list that difference as a gap.
+
+**Tables.** A table's look comes from its table style, which is not the same as cell formats.
+Compare the formats of the table's cells (a bold header row, fills) with the old output, and
+add or remove explicit cell styles until they match.
+
 ## Evidence of equivalence
 
 Use synthetic or approved fixtures covering ordinary rows, blanks, dates, decimal
