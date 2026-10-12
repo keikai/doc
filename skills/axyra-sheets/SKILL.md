@@ -7,7 +7,8 @@ description: Build and troubleshoot Java spreadsheet workflows with Axyra Sheets
 
 Axyra Sheets is a Java spreadsheet engine (`io.keikai.axyra.sheets.*`). It is not
 Keikai's `io.keikai.api.*` UI API. Facts here were measured on `0.1.0.FL.20260922-Eval` and re-verified on
-`0.1.0.FL.20260930-Eval` (same public API; every probed behaviour unchanged).
+`0.1.0.FL.20260930-Eval` (same public API; every probed behaviour unchanged); the migration rules
+were also probed on `1.0.0-Beta.FL.20261008-Eval`.
 
 ## How to use this skill
 
@@ -15,7 +16,8 @@ This file is enough for most tasks. Work in this order and stop as soon as you c
 
 1. **Rules and pitfalls below.** They cover the behaviours that break code most often.
 2. **Signatures: grep [api-index.md](references/api-index.md)** — every public type and
-   member of 1.0.0-Beta.FL.20261008-Eval (0.1.0.FL.20260930-Eval plus 55 members, none removed), one per line. Never read it whole:
+   member of 1.0.0-Beta.FL.20261008-Eval, one per line; entries marked `(since 1.0.0-Beta)` are not in
+   0.1.0.FL.20260930-Eval. Never read it whole:
    `grep -E '^Sheet\.(set|cell)' .../api-index.md`, `grep -i '^pdfoptions' ...`.
    Do not unzip the `-javadoc` JAR for signatures; use it only when you need Javadoc
    *prose*, and grep inside it rather than reading pages. If the project resolves a
@@ -85,11 +87,13 @@ Imports — exact packages, never guess them (grep `' :: '` in api-index for any
 
 ```
 io.keikai.axyra.sheets           Workbook, Sheet, Cell, Range, CellValue, CellRef, ChartView,
-                                 PivotTableView, ImportOptions
+                                 PivotTableView, ImportOptions, SubtotalFunction,
+                                 LicenseMode (since 1.0.0-Beta)
 io.keikai.axyra.sheets.style     CellStyle, Color, BorderStyle
 io.keikai.axyra.sheets.content   Chart, DataLabels, Validation, ConditionalFormat, Table, FormControl
 io.keikai.axyra.sheets.io        PdfOptions, ImageOptions, Renderer, SaveOptions,
-                                 StreamWorkbook, StreamRow, StreamStyle
+                                 StreamWorkbook, StreamRow, StreamStyle,
+                                 CsvOptions (since 1.0.0-Beta)
 io.keikai.axyra.sheets.template  TemplateMarkers
 ```
 
@@ -117,8 +121,8 @@ io.keikai.axyra.sheets.template  TemplateMarkers
 - `Range` has no A1-address method. Use `firstRow()`, `firstColumn()`, `lastRow()`,
   `lastColumn()` (0-based), and `new CellRef(sheetIndex, row, column).a1()` for one cell's A1 text.
 - There is no `Workbook.sheetNames()`: iterate `sheets()` (or `sheetCount()` and `sheet(i)`)
-  and read `name()`. Sheets appear in the order `createSheet` added them, so create them in
-  the order the output must have.
+  and read `name()`. `createSheet` appends a sheet; use `insertSheet(index, name)` or
+  `moveSheet(from, to)` when the output's order differs from the creation order.
 - `Sheet.usedRange()` returns `null` for an empty sheet; check before calling `values()` or
   `firstRow()` on it.
 - `Sheet.freezePanes(rows, cols)` does not move the active cell: `Sheet.activeCell()` keeps
@@ -172,13 +176,8 @@ behaviour before claiming it; do not assert version-dependent behaviour you did 
 observe.
 
 **When there is output to match (a migration).** The program being replaced, or the output it
-produced, is the specification. Before claiming anything, compare your output with it:
-for a workbook, every written cell's value, formula, number format, font (name, size, colour,
-bold, italic), fill and alignment, plus merged cells, sheet names and order, tables and charts;
-for an image or PDF, its pixel or page size and page count; for console output, every line
-except text that names the library or its version. Report `complete` only when all of it
-matches, and list each difference that remains. The open-and-reread check above is not enough
-on its own.
+produced, is the specification: compare your output with it before reporting `complete`, and
+list every difference that remains (checklist: references/migration.md, "Matching the old output").
 In a migration, a workbook the code creates first takes the old output's default font and
 default row height (references/migration.md, "Matching the old output").
 When you search, count the matches (`grep -c`) before cutting a list with `head`, so a

@@ -69,8 +69,15 @@ Keikai UI migration is not a substitute for spreadsheet-library migration.
 These apply whenever the replaced program's output is available. They describe Axyra; what
 the old library did is read from its output, never assumed.
 
+**What to compare before reporting `complete`.** For a workbook: every written cell's value,
+formula, number format, font (name, size, colour, bold, italic), fill and alignment, plus merged
+cells, sheet names and order, tables and charts. For an image or PDF: its pixel or page size and
+page count. For console output: every line except text that names the library or its version.
+Reopening the file you wrote is not enough on its own; list each difference that remains.
+
 **Default font of workbooks the code creates.** A workbook created with `Workbook.create()`
-uses Calibri 11 with no colour as its default ("Normal") font, and every cell without its own
+uses Calibri 11 with automatic colour (no explicit colour element in `styles.xml`) as its
+default ("Normal") font, and every cell without its own
 font shows it. Spreadsheet libraries differ here. When the code creates a workbook (not when
 it opens a file), read the default font of the old output (name, size and colour: the first
 `<font>` in `xl/styles.xml`, or the style of any unformatted cell) and set the same right after
@@ -97,7 +104,9 @@ anchored to rows and every rendered page depend on it.
 **Pivot tables.** `addPivotTable` and the field setters write no cells;
 `PivotTableView.refresh()` writes the pivot body into the sheet as cells. In a migration,
 call `refresh()` where the original program updates the pivot's data, or before rendering
-it. If the old output's pivot area is blank, do not refresh. The `.xls` writer does not keep
+it. A program that never updates the pivot leaves its area blank, so do not refresh it then;
+a program that does update it is refreshed even if the old output's area is blank, and that
+difference is listed as a gap (see "When the old output contradicts the program"). The `.xls` writer does not keep
 the pivot definition (`pivotCount()` is 0 after reopening a saved `.xls`).
 
 **Subtotals.** `Sheet.subtotal(firstRow, lastRow, groupColumn, hasHeaders, SubtotalFunction,
@@ -107,10 +116,14 @@ columns, not offsets into the block. It returns the number of rows inserted, and
 block has no data, in which case Excel writes nothing either. Use it rather than building
 subtotal rows by hand, and never add rows it did not insert.
 
-**Text files.** `Workbook.save(Path)` chooses the format from the extension (`.csv`;
-`.tsv` and `.txt` are tab-separated), and `saveBytes("csv" | "tsv" | "txt")` returns the
-same bytes. Both write the active sheet (`Workbook.setActiveSheet(i)`), from A1, with CRLF
-line ends; Excel's Save As Text also writes the active sheet.
+**Text files.** For CSV, use `Workbook.saveCsv(path, CsvOptions.create().sheet(i))` (since
+1.0.0-Beta): `sheet(int)` or `sheet(String)` picks the sheet without changing the active
+sheet, and `delimiter(char)`, `values(CsvOptions.Values.RAW | FORMATTED)` and
+`utf8Bom(boolean)` set the rest. `Workbook.save(Path)` chooses the format from the extension
+(`.csv`; `.tsv` and `.txt` are tab-separated) and `saveBytes("csv" | "tsv" | "txt")` returns
+the same bytes; both write the active sheet, from A1, with CRLF line ends, as Excel's Save As
+Text does. Use them for TSV and TXT, or when the active sheet is what should be written:
+selecting a sheet with `Workbook.setActiveSheet(i)` changes the workbook for any later save.
 
 **When the old output contradicts the program.** If the old output disagrees with what the
 program's own calls ask for (for example, the program sets something the old output does not
@@ -138,7 +151,7 @@ each sheet on one page, keep the sheet's paper and fit the sheet onto it:
 columns on one page, `PdfOptions.Fit.WIDTH` (Fit All Columns on One Page). Keep the sheet's
 orientation too. Use the option as it is: never compute a print scale, a paper size or an
 orientation of your own to get closer to the old PDF (no `setPageScale`, `setLandscape` or
-`setCustomPaperSize` that the original program does not call), and accept the page count the
+`setPaperSize` call that the original program does not make), and accept the page count the
 option gives. List the old page size and count as a gap. Images are not pages: an image of a whole sheet still
 matches the old image's pixel size, as above.
 

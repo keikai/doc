@@ -10,6 +10,7 @@ Signatures only: behavior is in SKILL.md and the pitfalls files.
 `grep -E '^Sheet\.(set|cell)' api-index.md`, `grep -i '^pdfoptions' api-index.md`,
 `grep ' :: ' api-index.md` (all types with their packages). If the project resolves
 another version, confirm with `javap` on that JAR.
+Entries marked `(since 1.0.0-Beta)` are not in 0.1.0.FL.20260930-Eval.
 
 AggregateFunction :: class in io.keikai.axyra.sheets (extends Enum<AggregateFunction>)
 AggregateFunction.SUM (field AggregateFunction)
@@ -249,15 +250,15 @@ Chart.titleFormula() → String
 Chart.style() → int
 Chart.barShape() → String
 Chart.seriesBubbleSizes(int) → String
-Chart.seriesType(int) → String
-Chart.seriesSecondaryAxis(int) → boolean
+Chart.seriesType(int) → String (since 1.0.0-Beta)
+Chart.seriesSecondaryAxis(int) → boolean (since 1.0.0-Beta)
 Chart.seriesCount() → int
 Chart.legendPosition() → LegendPosition
 Chart.showDataLabels() → boolean
 Chart.is3d() → boolean
 Chart.categoryAxisTitle() → String
 Chart.valueAxisTitle() → String
-Chart.valueAxisGridlines() → boolean
+Chart.valueAxisGridlines() → boolean (since 1.0.0-Beta)
 Chart.pivotSource() → String
 Chart.Builder :: class in io.keikai.axyra.sheets.content
 Chart.Builder.title(String) → Chart.Builder
@@ -266,7 +267,7 @@ Chart.Builder.legend(LegendPosition) → Chart.Builder
 Chart.Builder.legendVisible(boolean) → Chart.Builder
 Chart.Builder.categoryAxisVisible(boolean) → Chart.Builder
 Chart.Builder.valueAxisVisible(boolean) → Chart.Builder
-Chart.Builder.valueAxisGridlines(boolean) → Chart.Builder
+Chart.Builder.valueAxisGridlines(boolean) → Chart.Builder (since 1.0.0-Beta)
 Chart.Builder.showDataLabels(boolean) → Chart.Builder
 Chart.Builder.type(String) → Chart.Builder
 Chart.Builder.threeD(boolean) → Chart.Builder
@@ -304,8 +305,8 @@ Chart.Builder.titleLayout(double, double, double, double) → Chart.Builder
 Chart.Builder.trendline(Trendline) → Chart.Builder
 Chart.Builder.errorBars(ErrorBars) → Chart.Builder
 Chart.Builder.dataLabels(DataLabels) → Chart.Builder
-Chart.Builder.seriesType(String) → Chart.Builder
-Chart.Builder.secondaryAxis(boolean) → Chart.Builder
+Chart.Builder.seriesType(String) → Chart.Builder (since 1.0.0-Beta)
+Chart.Builder.secondaryAxis(boolean) → Chart.Builder (since 1.0.0-Beta)
 Chart.Builder.extendedApparatus(String, String, String) → Chart.Builder
 Chart.Builder.categoryAxisTitle(String) → Chart.Builder
 Chart.Builder.valueAxisTitle(String) → Chart.Builder
@@ -346,7 +347,7 @@ ChartView.seriesValues(int) → String
 ChartView.seriesCategories(int) → String
 ChartView.seriesBubbleSizes(int) → String
 ChartView.seriesType(int) → String
-ChartView.seriesSecondaryAxis(int) → boolean
+ChartView.seriesSecondaryAxis(int) → boolean (since 1.0.0-Beta)
 ChartView.seriesFill(int) → Color
 ChartView.seriesPointFills(int) → Map<Integer,Color>
 ChartView.seriesPointLabels(int) → Map<Integer,String>
@@ -368,7 +369,7 @@ ChartView.titleAuto() → boolean
 ChartView.legendVisible() → boolean
 ChartView.categoryAxisVisible() → boolean
 ChartView.valueAxisVisible() → boolean
-ChartView.valueAxisGridlines() → boolean
+ChartView.valueAxisGridlines() → boolean (since 1.0.0-Beta)
 ChartView.trendlines(int) → List<Trendline>
 ChartView.seriesDataLabels(int) → DataLabels
 ChartView.errorBars(int) → ErrorBars
@@ -381,11 +382,11 @@ ChartView.setLegend(LegendPosition) → ChartView
 ChartView.setLegendVisible(boolean) → ChartView
 ChartView.setCategoryAxisVisible(boolean) → ChartView
 ChartView.setValueAxisVisible(boolean) → ChartView
-ChartView.setValueAxisGridlines(boolean) → ChartView
+ChartView.setValueAxisGridlines(boolean) → ChartView (since 1.0.0-Beta)
 ChartView.setAutoTitle(boolean) → ChartView
 ChartView.setSeriesFill(int, Color) → ChartView
-ChartView.setSeriesType(int, String) → ChartView
-ChartView.setSeriesSecondaryAxis(int, boolean) → ChartView
+ChartView.setSeriesType(int, String) → ChartView (since 1.0.0-Beta)
+ChartView.setSeriesSecondaryAxis(int, boolean) → ChartView (since 1.0.0-Beta)
 ChartView.setShowDataLabels(boolean) → ChartView
 ChartView.setThreeD(boolean) → ChartView
 ChartView.setGapWidth(int) → ChartView
@@ -549,24 +550,24 @@ ConsolidateFunction.VAR (field ConsolidateFunction)
 ConsolidateFunction.VAR_P (field ConsolidateFunction)
 ConsolidateFunction.values() → static ConsolidateFunction[]
 ConsolidateFunction.valueOf(String) → static ConsolidateFunction
-CsvOptions :: class in io.keikai.axyra.sheets.io
-new CsvOptions()
-CsvOptions.create() → static CsvOptions
-CsvOptions.sheet(int) → CsvOptions
-CsvOptions.sheet(String) → CsvOptions
-CsvOptions.delimiter(char) → CsvOptions
-CsvOptions.values(CsvOptions.Values) → CsvOptions
-CsvOptions.utf8Bom(boolean) → CsvOptions
-CsvOptions.sheetIndex() → int
-CsvOptions.sheetName() → String
-CsvOptions.delimiter() → char
-CsvOptions.values() → CsvOptions.Values
-CsvOptions.utf8Bom() → boolean
-CsvOptions.Values :: class in io.keikai.axyra.sheets.io (extends Enum<CsvOptions.Values>)
-CsvOptions.Values.FORMATTED (field CsvOptions.Values)
-CsvOptions.Values.RAW (field CsvOptions.Values)
-CsvOptions.Values.values() → static CsvOptions.Values[]
-CsvOptions.Values.valueOf(String) → static CsvOptions.Values
+CsvOptions :: class in io.keikai.axyra.sheets.io (since 1.0.0-Beta)
+new CsvOptions() (since 1.0.0-Beta)
+CsvOptions.create() → static CsvOptions (since 1.0.0-Beta)
+CsvOptions.sheet(int) → CsvOptions (since 1.0.0-Beta)
+CsvOptions.sheet(String) → CsvOptions (since 1.0.0-Beta)
+CsvOptions.delimiter(char) → CsvOptions (since 1.0.0-Beta)
+CsvOptions.values(CsvOptions.Values) → CsvOptions (since 1.0.0-Beta)
+CsvOptions.utf8Bom(boolean) → CsvOptions (since 1.0.0-Beta)
+CsvOptions.sheetIndex() → int (since 1.0.0-Beta)
+CsvOptions.sheetName() → String (since 1.0.0-Beta)
+CsvOptions.delimiter() → char (since 1.0.0-Beta)
+CsvOptions.values() → CsvOptions.Values (since 1.0.0-Beta)
+CsvOptions.utf8Bom() → boolean (since 1.0.0-Beta)
+CsvOptions.Values :: class in io.keikai.axyra.sheets.io (extends Enum<CsvOptions.Values>) (since 1.0.0-Beta)
+CsvOptions.Values.FORMATTED (field CsvOptions.Values) (since 1.0.0-Beta)
+CsvOptions.Values.RAW (field CsvOptions.Values) (since 1.0.0-Beta)
+CsvOptions.Values.values() → static CsvOptions.Values[] (since 1.0.0-Beta)
+CsvOptions.Values.valueOf(String) → static CsvOptions.Values (since 1.0.0-Beta)
 CustomProperty :: class in io.keikai.axyra.sheets (extends Record)
 new CustomProperty(String, CustomProperty.Value)
 CustomProperty.name() → String
@@ -872,12 +873,12 @@ License.status() → static LicenseInfo
 License.isFeatureEnabled(String) → static boolean
 LicenseInfo :: class in io.keikai.axyra.sheets (extends Record)
 new LicenseInfo(LicenseStatus, String, String, List<String>, Long)
-new LicenseInfo(LicenseStatus, String, String, List<String>, Long, String)
-new LicenseInfo(LicenseStatus, String, String, List<String>, Long, String, String, String, String, String, String, String, String, String, Long, Long)
-LicenseInfo.expiresAtInstant() → Instant
-LicenseInfo.validFromInstant() → Instant
-LicenseInfo.maintenanceUntilInstant() → Instant
-LicenseInfo.isPerpetual() → boolean
+new LicenseInfo(LicenseStatus, String, String, List<String>, Long, String) (since 1.0.0-Beta)
+new LicenseInfo(LicenseStatus, String, String, List<String>, Long, String, String, String, String, String, String, String, String, String, Long, Long) (since 1.0.0-Beta)
+LicenseInfo.expiresAtInstant() → Instant (since 1.0.0-Beta)
+LicenseInfo.validFromInstant() → Instant (since 1.0.0-Beta)
+LicenseInfo.maintenanceUntilInstant() → Instant (since 1.0.0-Beta)
+LicenseInfo.isPerpetual() → boolean (since 1.0.0-Beta)
 LicenseInfo.hasFeature(String) → boolean
 LicenseInfo.isLicensed() → boolean
 LicenseInfo.state() → LicenseStatus
@@ -885,22 +886,22 @@ LicenseInfo.edition() → String
 LicenseInfo.licensee() → String
 LicenseInfo.features() → List<String>
 LicenseInfo.expiresAt() → Long
-LicenseInfo.reason() → String
-LicenseInfo.product() → String
-LicenseInfo.platform() → String
-LicenseInfo.licenseType() → String
-LicenseInfo.licensedDevelopers() → String
-LicenseInfo.customerId() → String
-LicenseInfo.certificateNo() → String
-LicenseInfo.keyUsage() → String
-LicenseInfo.licenseId() → String
-LicenseInfo.validFrom() → Long
-LicenseInfo.maintenanceUntil() → Long
-LicenseMode :: class in io.keikai.axyra.sheets (extends Enum<LicenseMode>)
-LicenseMode.FALLBACK_TO_EVALUATION (field LicenseMode)
-LicenseMode.REQUIRED (field LicenseMode)
-LicenseMode.values() → static LicenseMode[]
-LicenseMode.valueOf(String) → static LicenseMode
+LicenseInfo.reason() → String (since 1.0.0-Beta)
+LicenseInfo.product() → String (since 1.0.0-Beta)
+LicenseInfo.platform() → String (since 1.0.0-Beta)
+LicenseInfo.licenseType() → String (since 1.0.0-Beta)
+LicenseInfo.licensedDevelopers() → String (since 1.0.0-Beta)
+LicenseInfo.customerId() → String (since 1.0.0-Beta)
+LicenseInfo.certificateNo() → String (since 1.0.0-Beta)
+LicenseInfo.keyUsage() → String (since 1.0.0-Beta)
+LicenseInfo.licenseId() → String (since 1.0.0-Beta)
+LicenseInfo.validFrom() → Long (since 1.0.0-Beta)
+LicenseInfo.maintenanceUntil() → Long (since 1.0.0-Beta)
+LicenseMode :: class in io.keikai.axyra.sheets (extends Enum<LicenseMode>) (since 1.0.0-Beta)
+LicenseMode.FALLBACK_TO_EVALUATION (field LicenseMode) (since 1.0.0-Beta)
+LicenseMode.REQUIRED (field LicenseMode) (since 1.0.0-Beta)
+LicenseMode.values() → static LicenseMode[] (since 1.0.0-Beta)
+LicenseMode.valueOf(String) → static LicenseMode (since 1.0.0-Beta)
 LicenseStatus :: class in io.keikai.axyra.sheets (extends Enum<LicenseStatus>)
 LicenseStatus.UNLICENSED (field LicenseStatus)
 LicenseStatus.EVALUATION (field LicenseStatus)
@@ -1300,7 +1301,7 @@ SaveOptions.formulaPolicy(FormulaPolicy) → SaveOptions
 SaveOptions.skipComments(boolean) → SaveOptions
 SaveOptions.skipHyperlinks(boolean) → SaveOptions
 SaveOptions.formulaPolicy() → FormulaPolicy
-SaveOptions.formulaPolicyExplicit() → boolean
+SaveOptions.formulaPolicyExplicit() → boolean (since 1.0.0-Beta)
 SaveOptions.skipComments() → boolean
 SaveOptions.skipHyperlinks() → boolean
 Sheet :: class in io.keikai.axyra.sheets
@@ -2047,7 +2048,7 @@ Workbook.open(Path, String) → static Workbook
 Workbook.save(Path) → void
 Workbook.saveHtml(Path, HtmlOptions) → void
 Workbook.save(Path, SaveOptions) → void
-Workbook.saveCsv(Path, CsvOptions) → void
+Workbook.saveCsv(Path, CsvOptions) → void (since 1.0.0-Beta)
 Workbook.saveEncrypted(Path, String) → void
 Workbook.saveBytes(String) → byte[]
 Workbook.save(OutputStream, String) → void
@@ -2087,9 +2088,9 @@ Workbook.removeExternalLink(int) → boolean
 Workbook.setExternalLinkSource(int, String) → boolean
 Workbook.externalLinkSource(int) → String
 Workbook.setLicense(byte[]) → static LicenseInfo
-Workbook.setLicense(byte[], LicenseMode) → static LicenseInfo
+Workbook.setLicense(byte[], LicenseMode) → static LicenseInfo (since 1.0.0-Beta)
 Workbook.setLicense(String) → static LicenseInfo
-Workbook.setLicense(String, LicenseMode) → static LicenseInfo
+Workbook.setLicense(String, LicenseMode) → static LicenseInfo (since 1.0.0-Beta)
 Workbook.setLicense(InputStream) → static LicenseInfo
 Workbook.licenseStatus() → static LicenseInfo
 Workbook.recalculate() → void
