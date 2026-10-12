@@ -7,7 +7,8 @@ description: Build and troubleshoot Java spreadsheet workflows with Axyra Sheets
 
 Axyra Sheets is a Java spreadsheet engine (`io.keikai.axyra.sheets.*`). It is not
 Keikai's `io.keikai.api.*` UI API. Facts here were measured on `0.1.0.FL.20260922-Eval` and re-verified on
-`0.1.0.FL.20260930-Eval` (same public API; every probed behaviour unchanged).
+`0.1.0.FL.20260930-Eval` (same public API; every probed behaviour unchanged); the migration rules
+were also probed on `1.0.0-Beta.FL.20261008-Eval`.
 
 ## How to use this skill
 
@@ -15,7 +16,8 @@ This file is enough for most tasks. Work in this order and stop as soon as you c
 
 1. **Rules and pitfalls below.** They cover the behaviours that break code most often.
 2. **Signatures: grep [api-index.md](references/api-index.md)** — every public type and
-   member of 0.1.0.FL.20260930-Eval (identical to 20260922), one per line. Never read it whole:
+   member of 1.0.0-Beta.FL.20261008-Eval, one per line; entries marked `(since 1.0.0-Beta)` are not in
+   0.1.0.FL.20260930-Eval. Never read it whole:
    `grep -E '^Sheet\.(set|cell)' .../api-index.md`, `grep -i '^pdfoptions' ...`.
    Do not unzip the `-javadoc` JAR for signatures; use it only when you need Javadoc
    *prose*, and grep inside it rather than reading pages. If the project resolves a
@@ -81,6 +83,20 @@ TemplateMarkers.process(Sheet, Map<String,Object>)
 
 Indices are zero-based; A1 strings are one-based. Formula strings omit the leading `=`.
 
+Imports — exact packages, never guess them (grep `' :: '` in api-index for any other type):
+
+```
+io.keikai.axyra.sheets           Workbook, Sheet, Cell, Range, CellValue, CellRef, ChartView,
+                                 PivotTableView, ImportOptions, SubtotalFunction,
+                                 LicenseMode (since 1.0.0-Beta)
+io.keikai.axyra.sheets.style     CellStyle, Color, BorderStyle
+io.keikai.axyra.sheets.content   Chart, DataLabels, Validation, ConditionalFormat, Table, FormControl
+io.keikai.axyra.sheets.io        PdfOptions, ImageOptions, Renderer, SaveOptions,
+                                 StreamWorkbook, StreamRow, StreamStyle,
+                                 CsvOptions (since 1.0.0-Beta)
+io.keikai.axyra.sheets.template  TemplateMarkers
+```
+
 ## Rules and pitfalls that break code most often
 
 **Lifetime and threads**
@@ -100,6 +116,18 @@ Indices are zero-based; A1 strings are one-based. Formula strings omit the leadi
   and `setValues`. `LocalDate` becomes a date serial *without* a date format: apply one
   (or use `Cell.setDate`). JavaBeans export properties alphabetically; set columns explicitly.
 - Keep identifiers like `00042` as text; strings starting with `=` written as text stay text.
+
+**Reading and addressing**
+- `Range` has no A1-address method. Use `firstRow()`, `firstColumn()`, `lastRow()`,
+  `lastColumn()` (0-based), and `new CellRef(sheetIndex, row, column).a1()` for one cell's A1 text.
+- There is no `Workbook.sheetNames()`: iterate `sheets()` (or `sheetCount()` and `sheet(i)`)
+  and read `name()`. `createSheet` appends a sheet; use `insertSheet(index, name)` or
+  `moveSheet(from, to)` when the output's order differs from the creation order.
+- `Sheet.usedRange()` returns `null` for an empty sheet; check before calling `values()` or
+  `firstRow()` on it.
+- `Sheet.freezePanes(rows, cols)` does not move the active cell: `Sheet.activeCell()` keeps
+  the value it had. When the output's active cell matters, set it with
+  `Sheet.setActiveCell(a1, null)`.
 
 **Calculation**
 - Writes recalculate dependents and reads re-evaluate, so results are normally fresh;
@@ -146,6 +174,19 @@ Write the program, compile, and run one focused check: save, reopen (or unzip th
 XLSX) and confirm the values, types, formulas and formats the task asks for. Test a
 behaviour before claiming it; do not assert version-dependent behaviour you did not
 observe.
+
+**When there is output to match (a migration).** The program being replaced, or the output it
+produced, is the specification: compare your output with it before reporting `complete`, and
+list every difference that remains (checklist: references/migration.md, "Matching the old output").
+In a migration, a workbook the code creates first takes the old output's default font and
+default row height (references/migration.md, "Matching the old output").
+When you search, count the matches (`grep -c`) before cutting a list with `head`, so a
+member is never lost off the end. File formats are string arguments of `save(Path)` and
+`saveBytes(String)`; their Javadoc lists them.
+
+**Before you report that something is unsupported**, grep api-index for the feature's nouns
+and their synonyms (for example `grep -i -E 'glow|shadow|effect'`, `grep -i -E 'vba|macro'`)
+and look the type up in the Javadoc. Name the searches you ran, so the claim can be checked.
 
 This skill tells you what to look for; it is not evidence of what happened in the
 user's environment. When diagnosing a reported failure, reproduce it first (on a copy,
