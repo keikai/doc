@@ -15,7 +15,7 @@ This file is enough for most tasks. Work in this order and stop as soon as you c
 
 1. **Rules and pitfalls below.** They cover the behaviours that break code most often.
 2. **Signatures: grep [api-index.md](references/api-index.md)** — every public type and
-   member of 0.1.0.FL.20260930-Eval (identical to 20260922), one per line. Never read it whole:
+   member of 1.0.0-Beta.FL.20261008-Eval (0.1.0.FL.20260930-Eval plus 55 members, none removed), one per line. Never read it whole:
    `grep -E '^Sheet\.(set|cell)' .../api-index.md`, `grep -i '^pdfoptions' ...`.
    Do not unzip the `-javadoc` JAR for signatures; use it only when you need Javadoc
    *prose*, and grep inside it rather than reading pages. If the project resolves a
