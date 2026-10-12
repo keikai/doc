@@ -18,12 +18,7 @@ AI assistance is a development workflow, not a separate Axyra API. The generated
 application uses the same `io.keikai.axyra.sheets.*` classes as manually written
 code.
 
-The skill covers Excel import and export, template reports, formulas, charts,
-pivots, PDF and image rendering, streaming exports, licensing problems, and
-migration from Aspose.Cells, Apache POI, or another spreadsheet library. It does
-not cover Axyra Docs or the Keikai browser spreadsheet UI (`io.keikai.api.*`).
-Its rules and API index were verified against Axyra Sheets
-`0.1.0.FL.20260930-Eval`.
+The skill covers Excel import and export, template reports, formulas, charts, pivots, PDF and image rendering, streaming exports, licensing issues, and guidance for migrating existing spreadsheet code to Axyra, including code written with Aspose.Cells or Apache POI. Its rules and API index were verified against Axyra Sheets `0.1.0.FL.20260930-Eval`.
 
 # Get the Axyra Sheets skill
 
