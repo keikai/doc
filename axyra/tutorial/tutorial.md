@@ -33,8 +33,10 @@ After creating your first workbook, continue with these short exercises:
 - One of the supported platforms: macOS (x86-64, aarch64), Linux (x86-64,
   aarch64), Windows (x86-64). The published JAR bundles a native library for
   each supported platform.
-- No license key is required to start. Axyra Sheets runs in Evaluation Mode by
-  default; distributed production builds mark saved workbook output. See
+- No license key is required to start. Without one, Axyra Sheets runs in
+  Evaluation Mode: saved workbooks and rendered pages carry evaluation notices,
+  and a process can perform at most 100 opens, saves, renders, and streaming
+  workbook creations combined. See
   [Licensing and Evaluation]({{ site.axyra_devref }}/License).
 
 # Where to go next

@@ -16,7 +16,7 @@ modelled versus preserved, or about why an API is shaped the way it is.
 ├─────────────────────────────────────────────────────────────┤
 │  I/O       ooxml · xls · csv · json · html · render         │
 ├─────────────────────────────────────────────────────────────┤
-│  Eval      formula — parser, evaluator, ~490 functions      │
+│  Eval      formula — parser, evaluator, 500+ functions      │
 ├─────────────────────────────────────────────────────────────┤
 │  Format    format — number and date format codes            │
 ├─────────────────────────────────────────────────────────────┤
@@ -41,8 +41,8 @@ Rust, organised as a Cargo workspace:
 | `axyra-sheets-format` | Number and date format codes, parsing user input |
 | `axyra-sheets-ooxml` | XLSX / XLSM / XLSB reading and writing; ODS; encryption |
 | `axyra-sheets-xls` | Legacy BIFF8 `.xls` |
-| `axyra-sheets-csv` | CSV import with type sniffing, export with injection defence |
-| `axyra-sheets-json` | JSON representation |
+| `axyra-sheets-csv` | CSV import with type sniffing, and export |
+| `axyra-sheets-json` | JSON import and export of sheet data as row objects |
 | `axyra-sheets-html` | HTML export |
 | `axyra-sheets-render` | Page layout, PDF, images, SVG, fonts, chart drawing |
 | `axyra-sheets-signature` | OPC package digital signatures |
@@ -63,9 +63,9 @@ data. Nothing is mirrored on the Java side.
 That means:
 
 - **Every call crosses the boundary.** A crossing is cheap but not free, so a
-  loop over 100,000 cells makes 100,000 crossings. `Range.numbers()` makes one.
-  This is why the bulk accessors exist and why they are usually worth an order
-  of magnitude — see
+  loop over 100,000 cells makes 100,000 crossings. `Range.values()` makes one.
+  This is why the bulk accessors exist and why they are usually several times
+  faster — see
   [Cells and Ranges]({{ site.axyra_devref }}/Cell_and_Range).
 - **Structured values cross as JSON.** Styles, charts, pivot definitions, and
   filters are serialised rather than mapped field by field, which is why the library

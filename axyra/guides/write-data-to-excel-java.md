@@ -8,13 +8,13 @@ Exporting data to Excel from a Java application is a common backend task,
 whether the source is a database, JSON response, or another service. In this
 guide, we’ll show how to write an XLSX file in Java with Axyra Sheets for Java,
 turning structured data into a workbook that includes headers, data types, and
-basic formatting. For a short walkthrough of Axyra before diving in, see [Quick Start](https://doc.keikai.io/axyra/quick-start/).
+basic formatting. For a short walkthrough of Axyra before diving in, see [Quick Start]({{ site.axyra_tutorial }}/).
 
 # Which approach to use when writing an Excel file in Java
 
 | Your data | Use | Why |
 |---|---|---|
-| A list of records or POJOs | `Sheet.importData` | Reflects the properties into columns, writes a header row, one JNI crossing per chunk |
+| A list of records, POJOs, or maps | `Sheet.importData` | Reflects the properties into columns, writes a header row, one JNI crossing per chunk |
 | A numeric matrix | `Range.setNumbers` | Flat `double[]`, no boxing, no `CellValue` allocation — the fastest path in the API |
 | Mixed types, known shape | `Range.setValues` | One crossing for the whole block |
 | More rows than fit in memory | `StreamWorkbook` | Writes row by row to disk; flat memory regardless of row count |
@@ -80,8 +80,9 @@ enabled.
 
 {: .notice--warning}
 **Pin the column list.** Without `.columns(...)`, every readable property is
-written in declaration order — so adding a field to the record silently adds a
-column to next quarter's export. Naming the columns makes that a compile-time
+written: records in component order, JavaBeans in alphabetical property order,
+maps in the key order of the first map. Adding a field to the record then
+silently adds a column to next quarter's export. Naming the columns makes that a compile-time
 concern instead of a surprise in a spreadsheet.
 
 ## Dates need a number format
@@ -99,13 +100,6 @@ int lastRow = rows.size();                      // header is row 0
 sheet.range(1, 2, lastRow, 2).setStyle(dateStyle);   // column C
 sheet.range(1, 3, lastRow, 3).setStyle(money);       // column D
 ```
-
-{: .notice--warning}
-**`java.sql.Date` and `java.sql.Timestamp` are converted through the JVM's
-default time zone**, because they are `java.util.Date` subclasses and that is
-what the conversion has to assume. Read them as `LocalDate` /
-`LocalDateTime` from the driver (`rs.getObject(col, LocalDate.class)`) and the
-question does not arise.
 
 # Export JSON data to Excel
 
@@ -132,6 +126,9 @@ module:
 <dependency>
     <groupId>com.fasterxml.jackson.datatype</groupId>
     <artifactId>jackson-datatype-jsr310</artifactId>
+    <!-- match the jackson-databind version Axyra Sheets brings in;
+         `mvn dependency:tree` shows it -->
+    <version>2.22.3</version>
 </dependency>
 ```
 
@@ -140,13 +137,29 @@ ObjectMapper mapper = new ObjectMapper()
         .registerModule(new com.fasterxml.jackson.datatype.jsr310.JavaTimeModule());
 ```
 
-{: .notice--info}
-**`importData` does not read `Map`s.** Properties are discovered by reflection:
-records first, then JavaBean getters, then public fields. A
-`List<Map<String, Object>>` from a generic JSON parse will not work — bind to a
-record, or build the block yourself with `setValues` as shown next.
+## Import maps without a record
 
-If the JSON shape is genuinely dynamic, drive the columns yourself:
+`importData` also accepts a `List<Map<String, Object>>`, such as the result of a
+generic JSON parse. Columns follow the key order of the first map; a key that
+appears only in later maps becomes an extra column, and a missing or `null`
+value becomes a blank cell. Pin the columns as you would for records:
+
+```java
+import java.util.Map;
+
+List<Map<String, Object>> maps = mapper.readValue(json,
+        new TypeReference<List<Map<String, Object>>>() {});
+
+sheet.importData(0, 0, maps, ImportOptions.builder()
+        .columns("region", "product", "amount")
+        .columnLabels("Region", "Product", "Amount")
+        .build());
+```
+
+A JSON date parsed into a map is still a string, so it arrives as text. Bind to a
+record with a `LocalDate` component when the column must hold real dates.
+
+If you need full control over each cell's type, drive the columns yourself:
 
 ```java
 import com.fasterxml.jackson.databind.JsonNode;
@@ -244,8 +257,8 @@ What you give up in exchange for flat memory:
   `setFormula(column, formula, cachedValue, style)`.
 - **Styles are registered up front.** `addStyle` returns an `int` id; pass the id
   to the cell writers.
-- **Commit every row.** The row builder is reused, so `commit()` is what actually
-  emits it.
+- **Commit every row.** `commit()` is what actually writes the row; a row you
+  never commit is silently dropped, with no error.
 
 See [Streaming Large Files]({{ site.axyra_devref }}/Streaming) for the full
 comparison, including the columnar backend for holding big sheets in memory.
@@ -256,12 +269,12 @@ comparison, including the columnar backend for holding big sheets in memory.
 |---|---|
 | Export takes minutes | A per-cell loop. Use `importData`, `setValues`, or `setNumbers`. |
 | A date column shows `45900` | `importData` writes serials but applies no format. Style the column. |
-| Dates are off by one day | `java.sql.Date` converted through the default time zone. Read `LocalDate` from the driver instead. |
-| `importData` writes nothing useful from JSON | It cannot reflect over `Map`. Bind to a record, or build the block with `setValues`. |
+| A date column from JSON is text | Values parsed into a `Map` stay strings. Bind to a record with a `LocalDate` component. |
 | A new column appeared in the export after a code change | `.columns(...)` was not pinned, so a new field became a new column. |
 | `AxyraException` from `importData` | Mixed element types in the list, or an unknown name in `.columns(...)`. |
 | `setValues` throws | The array shape does not match the range. |
-| Streaming writer throws on a row | Rows must be written in ascending order, and each needs `commit()`. |
+| Streaming writer throws on a row | Rows must be written in ascending order; going back to an earlier row throws. |
+| A row is missing from the streamed file | The row was never committed. A row without `commit()` is silently discarded. |
 | Formulas are blank in the streamed file | The streaming writer never recalculates. Supply a cached value. |
 
 # Frequently asked questions

@@ -15,8 +15,9 @@ template you hand to `TemplateMarkers.process`.
 
 # The template
 
-Design `sales-template.xlsx` in Excel with whatever fonts, colours, borders,
-merges, and charts you want. Put markers where the data belongs:
+Design `sales-template.xlsx` in Excel with whatever fonts, colors, borders,
+merges, and charts you want. Name the sheet **Sales Report** and put markers
+where the data belongs:
 
 | | A | B | C | D |
 |---|---|---|---|---|
@@ -42,14 +43,14 @@ import java.util.Map;
 record Line(String region, String product, int qty, double amount) {}
 
 try (Workbook wb = Workbook.open(Path.of("sales-template.xlsx"))) {
-    TemplateMarkers.process(wb.sheet(0), Map.of(
+    TemplateMarkers.process(wb.sheet("Sales Report"), Map.of(
             "title", "Q3 2026",
             "lines", List.of(
                     new Line("APAC", "Widget", 12, 51.00),
                     new Line("APAC", "Gadget", 3, 27.00),
                     new Line("EMEA", "Widget", 8, 34.00))));
 
-    wb.recalculate();
+    wb.recalculate();   // refresh template formulas that process did not touch
     wb.save(Path.of("q3-sales.xlsx"));
 }
 ```
@@ -58,11 +59,20 @@ The data is a `Map<String, Object>`. Each marker's leading segment is a key in
 it; the rest of the path resolves through map keys, record components, JavaBean
 getters, or public fields.
 
+Look the template sheet up by name rather than with `wb.sheet(0)`: a file saved
+in Evaluation Mode starts with an extra **Axyra Evaluation Copy** sheet, so index
+`0` would not be your template.
+
+The markers write values and the formulas on the template row are filled down and
+calculated as they are inserted. `recalculate()` is there for the template's
+other formulas, which keep the results cached in the template file until
+recalculated.
+
 # What the markers can do
 
 | Marker | Meaning |
 |---|---|
-| `${title}` | Scalar. A cell that is *exactly* one marker keeps the value's type — number stays numeric, boolean stays boolean. A marker embedded in other text yields text. |
+| `${title}` | Scalar. A cell that is *exactly* one marker keeps the value's type — number stays numeric, boolean stays boolean, and a `LocalDate` becomes a date formatted `yyyy-mm-dd`. A marker embedded in other text yields text. |
 | `${customer.address.city}` | Nested path. A `null` anywhere along the chain renders blank. |
 | `${lines.region}` | List field — marks the template row, repeated per record. |
 | `${lines.amount:sum}` | Aggregate over the whole list. Also `:avg`, `:count`, `:min`, `:max`. |
@@ -95,11 +105,11 @@ Records are grouped in stable first-appearance key order, keeping their original
 order inside each group, and row 4 is emitted once per group.
 
 {: .notice--warning}
-**A subtotal row is only recognised directly under a grouped template row**, and
-**cell styles are not copied to inserted rows.** Put the formatting you want on
-the template row itself — the engine copies its static content and formulas, but
-banding or per-row styling has to come from a table style or a conditional
-format in the template rather than from the row you are cloning.
+**A subtotal row is only recognized directly under a grouped template row.**
+Inserted rows copy the template row's cell styles, so put the formatting you
+want on the template row itself.
+Banding that alternates between rows has to come from a table style or a
+conditional format in the template.
 
 # The complete program
 
@@ -136,14 +146,14 @@ public class QuarterlyReport {
         Path pdf = outDir.resolve("sales-" + quarter + ".pdf");
 
         try (Workbook wb = Workbook.open(TEMPLATE)) {
-            Sheet sheet = wb.sheet(0);
+            Sheet sheet = wb.sheet("Sales Report");   // by name, not index
 
             TemplateMarkers.process(sheet, data);
-            wb.recalculate();
-
-            wb.save(xlsx);
+            wb.recalculate();   // refresh template formulas that process did not touch
 
             sheet.setPrintTitleRows("$1:$2");   // title + header on every page
+            wb.save(xlsx);
+
             wb.renderPdf(pdf, PdfOptions.builder()
                     .title("Sales Report " + quarter)
                     .fitTo(PdfOptions.Fit.WIDTH)
@@ -154,7 +164,7 @@ public class QuarterlyReport {
 }
 ```
 
-Open the template in Excel, change a colour, save it — the next run picks it up.
+Open the template in Excel, change a color, save it — the next run picks it up.
 No Java changes, no redeploy.
 
 {: .notice--info}
@@ -179,11 +189,9 @@ Template markers fill a designed layout. They are the wrong tool when:
 
 | Symptom | Cause |
 |---|---|
-| A marker stays as literal `${...}` text | The leading segment is not a key in the data map. Unknown markers resolve to empty, so a *visible* marker means the cell text was not an exact match — check for stray spaces or Excel autocorrect. |
+| A marker stays as literal `${...}` text | The cell was never processed: `process` was given a different sheet (for example `wb.sheet(0)` on a file with an evaluation sheet in front), or the marker is not plain text in the cell. Unknown keys render blank, not literal. |
 | A value silently does not appear | Same cause, from the other direction: unknown markers resolve to empty rather than failing. Verify the path against your record components. |
 | Only one row appears instead of many | The bound value is not a `List`, or a different list marker won the row. One list binds per template row. |
-| Inserted rows lost their formatting | Styles are not copied to inserted rows. Use a table style or conditional format in the template. |
-| Totals are blank in the saved file | `recalculate()` was not called after `process`. |
 | A subtotal row was ignored | It must sit directly below a template row carrying a `:group` marker. |
 | A number arrives as text | The cell contained the marker plus other text. A cell that is exactly one marker preserves the type. |
 | An image marker left the cell blank | The value was not a `byte[]`. |

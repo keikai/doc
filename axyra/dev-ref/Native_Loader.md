@@ -21,7 +21,9 @@ On first use of any API that touches the engine, the native loader:
    extraction is cached for the life of the process.
 
 `arm64` and `aarch64` are both mapped to `aarch64`, so a JVM reporting either
-resolves correctly.
+resolves correctly. Every other architecture is mapped to `x86_64`, so an
+unsupported platform such as Windows on ARM finds the x86-64 library and fails
+to load it.
 
 # The development override
 
@@ -34,8 +36,8 @@ run against a library you just built yourself. The engine's own test suite uses
 it, and it is the fastest edit-build-run loop when you are working on the Rust
 side.
 
-Do not use it in production: it hard-codes an absolute path and skips the
-platform check that would otherwise catch an architecture mismatch.
+Do not use it in production: it hard-codes an absolute path and bypasses the
+per-platform lookup, so an architecture mismatch surfaces only as a load error.
 
 # Failure modes
 
@@ -43,6 +45,7 @@ platform check that would otherwise catch an architecture mismatch.
 |---|---|
 | `UnsatisfiedLinkError: axyra native lib: native lib not found on classpath: /native/osx-aarch64/libaxyra_jni.dylib` | The Axyra Sheets JAR does not contain a native library for this platform, or a repackaging step dropped it. |
 | `UnsatisfiedLinkError` *without* the `native lib not found` text | A library was found but the OS refused to load it — usually the wrong architecture, or a missing system dependency such as an old glibc. |
+| `NoClassDefFoundError: Could not initialize class io.keikai.axyra.sheets.Workbook` | A later symptom of a failed load. The first error in the log is the `UnsatisfiedLinkError` that explains it. |
 | Works locally, fails in the container | The classic one. Your machine's platform is bundled; the container's is not. |
 | Works in tests, fails in the shaded jar | The shading step dropped one or more `native/**` resources. |
 
@@ -66,7 +69,8 @@ run under emulation at a fraction of the speed. Set the platform explicitly in
 your build.
 
 A slim base image may also lack a suitable glibc. The Linux builds target glibc;
-Alpine and other musl distributions are not supported.
+Alpine and other musl distributions are not supported, and neither is Windows
+on ARM.
 
 # Temp directory
 
@@ -96,11 +100,12 @@ public static void main(String[] args) {
 
 # Threading and memory
 
-- **Native calls are serialized process-wide.** Calling an API method from
-  different threads does not corrupt engine state, but calls do not execute in
-  parallel, even across separate workbooks. Compound read-modify-write sequences
-  are not atomic; synchronize them in your application when they must act as one
-  operation.
+- **One `Workbook` belongs to one thread at a time.** Using the same workbook
+  (or its `Sheet`, `Range`, and `Cell` views) from two threads concurrently
+  throws `AxyraException: workbook is already in use` rather than blocking.
+  Separate workbooks run in parallel, so give each thread or task its own
+  workbook — for example, read a template into bytes once and open it per task
+  with `Workbook.openBytes`.
 - **A `Workbook` owns native memory** that the JVM's garbage collector cannot
   reclaim. Always close it. In a request-scoped service, a workbook that escapes
   its try-with-resources is a leak no heap tuning will fix.

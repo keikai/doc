@@ -26,6 +26,11 @@ Chart chart = Chart.column()
 int index = sheet.addChart(chart);
 ```
 
+`showDataLabels(true)` is saved with the chart and drawn in rendered output; for
+per-series label settings, add `.dataLabels(DataLabels.value())` (or another
+`DataLabels` configuration) after a `.series(...)`. (0.1.0 builds did not save
+`showDataLabels`; use `.dataLabels(...)` there.)
+
 Series references are ordinary A1 strings and should be **absolute and
 sheet-qualified** — a chart is not anchored to the cell its references are
 relative to, so a relative reference has no useful base.
@@ -135,8 +140,14 @@ drawn during rendering.
 # Rendering a chart on its own
 
 ```java
-byte[] png = wb.renderSheetPng(chartSheetIndex, ImageOptions.builder().scale(2.0).build());
+int sheetIndex = wb.sheet("Revenue").index();   // the chart sheet's workbook index
+byte[] png = wb.renderSheetPng(sheetIndex, ImageOptions.builder().scale(2.0).build());
 ```
+
+`renderSheetPng` takes the sheet's position in the workbook. The `int` that
+`addChartSheet` returns is the chart sheet's position among chart sheets only —
+the index for `chartSheetChart`, `chartSheetName`, and `removeChartSheet` — so do
+not pass it here.
 
 Rendering a chart sheet gives you the chart as an image without the surrounding
 grid — the simplest way to get a chart out of a workbook and into a report or an

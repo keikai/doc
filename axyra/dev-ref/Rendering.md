@@ -13,7 +13,7 @@ document-level concerns — which sheets, which pages, metadata, encryption — 
 cannot substitute for it.
 
 ```java
-Sheet sheet = wb.sheet(0);
+Sheet sheet = wb.sheet("Summary");
 
 sheet.setPrintArea("A1:H60");        // or null to clear
 sheet.setLandscape(true);
@@ -107,12 +107,13 @@ ImageOptions image = ImageOptions.builder()
         .fontDirs(List.of("/opt/corp-fonts"))
         .build();
 
-byte[] png = wb.renderSheetPng(0, image);
-byte[] svg = wb.renderSheetSvg(0, image);
-byte[] jpg = Renderer.toJpeg(wb, 0, image);
-byte[] gif = Renderer.toGif(wb, 0, image);
-byte[] bmp = Renderer.toBmp(wb, 0, image);
-byte[] tif = Renderer.toTiff(wb, 0, image);
+int summary = wb.sheet("Summary").index();
+byte[] png = wb.renderSheetPng(summary, image);
+byte[] svg = wb.renderSheetSvg(summary, image);
+byte[] jpg = Renderer.toJpeg(wb, summary, image);
+byte[] gif = Renderer.toGif(wb, summary, image);
+byte[] bmp = Renderer.toBmp(wb, summary, image);
+byte[] tif = Renderer.toTiff(wb, summary, image);
 ```
 
 Set `scale` **or** `targetWidthPx`, not both — the latter wins and makes the
@@ -127,8 +128,9 @@ output matters; use HTML when searchable text matters.
 ## Page counts
 
 ```java
-int pages = wb.sheetPageCount(0);
-int same  = Renderer.pageCount(wb, 0);
+int summary = wb.sheet("Summary").index();
+int pages = wb.sheetPageCount(summary);
+int same  = Renderer.pageCount(wb, summary);
 ```
 
 Pagination depends on page setup, scaling, print area, and the fonts available —

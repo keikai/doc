@@ -12,7 +12,7 @@ saves a workbook you can open in Excel.
 
 {: .notice--info}
 **Already know the object model?** The
-[Quick Start]({{ site.axyra_tutorial }}/quick_start) is the five-minute version.
+[Quick Start]({{ site.axyra_tutorial }}/quick_start) is the shorter version.
 This guide is the longer one, and it produces a file you would be willing to send
 to someone.
 
@@ -31,11 +31,18 @@ to someone.
 ```
 
 ```groovy
-implementation "io.keikai:axyra-sheets:{{ site.axyra_version }}"
+repositories {
+    mavenCentral()
+    maven { url "{{ site.axyra_repo_url }}" }
+}
+
+dependencies {
+    implementation "io.keikai:axyra-sheets:{{ site.axyra_version }}"
+}
 ```
 
-The artifact is served from ZK's repository rather than Maven Central, so your
-build also needs the `<repositories>` entry shown in
+The artifact is served from ZK's repository rather than Maven Central, so a
+Maven build also needs the `<repositories>` entry shown in
 [Installation]({{ site.axyra_devref }}/Installation).
 
 # Step 1 — Create the workbook
@@ -94,36 +101,28 @@ when the data comes out of a database; see
 Write the per-row total into column D, and a grand total underneath the data.
 
 ```java
-sheet.cell(1, 3).setFormula("B2+C2");
-sheet.cell(2, 3).setFormula("B3+C3");
-sheet.cell(3, 3).setFormula("B4+C4");
+sheet.range("D2:D4").setFormula("B2+C2");          // D3 = B3+C3, D4 = B4+C4
 
 sheet.cell(4, 0).setValue(CellValue.text("Total"));
-sheet.range("B5:D5").setFormula("SUM(B2:B4)");
+sheet.range("B5:D5").setFormula("SUM(B2:B4)");     // C5 = SUM(C2:C4), D5 = SUM(D2:D4)
 ```
 
-`Range.setFormula` writes *the same formula text* to every cell in the range, so
-`B5:D5` all get `SUM(B2:B4)` — which is wrong for `C5` and `D5`. To shift the
-references the way Excel's fill handle does, write one cell and copy it with
-`Range.copyTo`, which adjusts relative references for the destination:
+`Range.setFormula` on a multi-cell range fills it the way Excel's Ctrl+Enter
+does: the formula text is written for the top-left cell, and relative references
+shift for every other cell, while `$`-anchored references stay fixed.
+`Range.copyTo` and `Range.autoFill` shift references the same way when you copy
+an existing formula.
 
-```java
-sheet.cell(4, 1).setFormula("SUM(B2:B4)");
-sheet.range("B5").copyTo(sheet, 4, 2);   // C5 = SUM(C2:C4)
-sheet.range("B5").copyTo(sheet, 4, 3);   // D5 = SUM(D2:D4)
-```
+Do not fill a range with a formula that spills, such as `SEQUENCE(5)`: every cell
+becomes its own dynamic-array anchor and shows `#SPILL!`. Put a spilling formula
+in a single cell.
 
-`Range.autoFill` is not a substitute here: it copies the formula text unchanged,
-so every total would still read `SUM(B2:B4)`.
-
-{: .notice--warning}
-**Assigning a formula does not evaluate it.** Saving does not either. Call
-`wb.recalculate()` (or `wb.recalculateDirty()`) before you read a computed value
-or write the file, or the cells will carry no result.
-
-```java
-wb.recalculate();
-```
+{: .notice--info}
+**Formulas are calculated as you write them.** Each write recalculates the
+cells that depend on it, so `D5` already holds `8060` here and the saved file
+carries that result. Saving itself does not recalculate: call `wb.recalculate()`
+once before saving only when results can be stale — in `CalcMode.MANUAL`, or
+for untouched formulas in a workbook you opened.
 
 # Step 4 — Style it
 
@@ -182,9 +181,8 @@ sheet.freezePanes(1, 0);         // keep row 1 visible while scrolling
 
 Column width is in Excel's character units (the width of the `0` glyph in the
 default font), not points — row height is the one measured in points.
-`autoFitColumn` measures the rendered text, so it needs the fonts the workbook
-asks for to be available; see [Rendering]({{ site.axyra_devref }}/Rendering) if
-your output runs in a container.
+`autoFitColumn` sizes the column to the formatted text of its cells, so call it
+after you apply number formats, as here.
 
 # Step 6 — Save
 
@@ -238,17 +236,10 @@ public class CreateExcelFile {
                 { CellValue.text("Americas"), CellValue.number(1610), CellValue.number(1720) },
             });
 
-            // Per-row totals, then a grand-total row.
-            sheet.cell(1, 3).setFormula("B2+C2");
-            sheet.cell(2, 3).setFormula("B3+C3");
-            sheet.cell(3, 3).setFormula("B4+C4");
-
+            // Per-row totals, then a grand-total row. References shift per cell.
+            sheet.range("D2:D4").setFormula("B2+C2");
             sheet.cell(4, 0).setValue(CellValue.text("Total"));
-            sheet.cell(4, 1).setFormula("SUM(B2:B4)");
-            sheet.range("B5").copyTo(sheet, 4, 2);   // C5 = SUM(C2:C4)
-            sheet.range("B5").copyTo(sheet, 4, 3);   // D5 = SUM(D2:D4)
-
-            wb.recalculate();
+            sheet.range("B5:D5").setFormula("SUM(B2:B4)");
 
             // Styling.
             CellStyle header = CellStyle.builder()
@@ -290,9 +281,9 @@ stays put when you scroll.
 
 | Symptom | Cause |
 |---|---|
-| Computed cells are empty in the saved file | `recalculate()` was never called. Assigning a formula does not evaluate it, and saving does not either. |
+| Computed cells are stale in the saved file | The workbook is in `CalcMode.MANUAL`, or formulas in an opened file were not touched. Saving does not recalculate; call `recalculate()` once before saving. |
 | The formula refers to the wrong row | Indices are 0-based, A1 references are 1-based. Row index 1 is row `2`. |
-| Every cell in a range has an identical formula | That is what `Range.setFormula` does (and `Range.autoFill` too). Use `Range.copyTo`, or write each cell with `setFormulas`, to shift references. |
+| A filled range shows `#SPILL!` | A spilling (dynamic-array) formula was written into a multi-cell range. Put it in a single cell. |
 | Native memory grows over time in a service | A `Workbook` escaped its try-with-resources. Close every one. |
 | `IllegalStateException` on a `Sheet` or `Range` | The workbook was already closed. These are views, not copies. |
 | `UnsatisfiedLinkError` in a container but not locally | The image was built for a different architecture, or a shading step dropped `native/**`. See [Native Library Loading]({{ site.axyra_devref }}/Native_Loader). |

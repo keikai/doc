@@ -18,7 +18,8 @@ AI assistance is a development workflow, not a separate Axyra API. The generated
 application uses the same `io.keikai.axyra.sheets.*` classes as manually written
 code.
 
-The skill covers Excel import and export, template reports, formulas, charts, pivots, PDF and image rendering, streaming exports, licensing issues, and guidance for migrating existing spreadsheet code to Axyra, including code written with Aspose.Cells or Apache POI. Its rules and API index were verified against Axyra Sheets `0.1.0.FL.20260930-Eval`.
+The skill covers Excel import and export, template reports, formulas, charts,
+pivots, PDF and image rendering, streaming exports, licensing issues, and guidance for migrating existing spreadsheet code to Axyra, including code written with Aspose.Cells or Apache POI. Its rules and API index were verified against Axyra Sheets `1.0.0-Beta.FL.20261008-Eval`.
 
 # Get the Axyra Sheets skill
 
@@ -149,24 +150,25 @@ Check all three layers:
 3. **Output:** open the XLSX, PDF, or image and verify layout, fonts, formulas,
    and page breaks.
 
-Without a license key, the application runs in Evaluation Mode. Distributed
-production builds visibly mark saved workbook output; development builds do so
-when enforcement is enabled. This is expected during the Quick Start. An invalid
-or expired key does not throw either, so ask the assistant to check
-`isLicensed()` right after `setLicense` and stop with a clear message. The skill
-includes this start-up code:
+Without a license key, the application runs in Evaluation Mode: saved
+workbooks, PDFs, and images carry evaluation marks. This is expected during the
+Quick Start. By default an invalid or expired key does not throw either; for
+production code, ask the assistant to install the key with
+`LicenseMode.REQUIRED`, which throws instead of falling back to Evaluation Mode:
 
 ```java
-LicenseInfo info = Workbook.setLicense(
-        Files.readString(Path.of(System.getenv("AXYRA_LICENSE_FILE"))).trim());
-if (!info.isLicensed()) {
-    throw new IllegalStateException("Axyra license not active: " + info.state());
+String licenseFile = System.getenv("AXYRA_LICENSE_FILE");
+if (licenseFile == null || licenseFile.isBlank()) {
+    throw new IllegalStateException("AXYRA_LICENSE_FILE is not set");
 }
+Workbook.setLicense(
+        Files.readString(Path.of(licenseFile)).trim(),
+        LicenseMode.REQUIRED);   // throws AxyraException if the key is not in force
 ```
 
 Evaluation Mode adds an "Axyra Evaluation Copy" first sheet to saved workbooks
-and a banner to PDF and image pages, and allows 100 opens, saves, and renders per
-process. A batch job that fails partway through with an "evaluation limit reached"
+and a banner to PDF and image pages, and allows 100 opens, saves, renders, and
+streaming workbook creations combined per process. A batch job that fails partway through with an "evaluation limit reached"
 `AxyraException` is usually running unlicensed. See
 [Licensing and Evaluation]({{ site.axyra_devref }}/License).
 
@@ -186,45 +188,26 @@ They are also a useful checklist when you review generated code.
 **Writing**
 - Java row and column indices are 0-based; formulas and A1 references are
   1-based. Formula strings omit the leading `=`.
-- Update existing cells with `Cell.setValue` or `Range.setValues`.
-  `setNumber`/`setNumbers` replace the whole cell, so its style, comment and
-  hyperlink are lost.
 - `Range.setStyle` replaces the whole style. To change one attribute, such as
   bold, on cells with mixed formatting, update each cell from
   `cell.style().toBuilder()`.
-- To fill a formula down, use `Range.copyTo` or per-cell `setFormulas`;
-  `autoFill` copies formulas without shifting their references.
-- `Sheet.importData` does not support `Map` elements, writes `LocalDate` values
-  without a date format, and orders JavaBean properties alphabetically. For maps
-  or dynamic JSON, build a `CellValue[][]` and call `setValues`; set columns and
-  date formats explicitly.
+- `Sheet.importData` orders JavaBean properties alphabetically and writes
+  `LocalDate` values as date serials without a date format. Set columns
+  explicitly, and apply a date format (or use `Cell.setDate`).
 - Keep identifiers such as `00042` as text, and give dates an explicit date format.
 
 **Calculation and speed**
 - Every write already recalculates the formulas that depend on it, so results are
   normally current. `save` does not recalculate: call `recalculate()` once before
-  saving after `autoFill`, with volatile functions such as `NOW`, or when an opened
-  file's formulas were not touched. Never call it inside a loop, where it
-  re-evaluates the whole workbook on every iteration.
-- `setCalcMode(MANUAL)` does not pause recalculation and is not saved.
+  saving when an opened file's formulas were not touched, or in `MANUAL`
+  calculation mode. Never call it inside a loop,
+  where it re-evaluates the whole workbook on every iteration.
 - Read and write ranges in bulk (`Range.values()`, `Range.setValues`) instead of
   cell by cell, and find the data extent once instead of probing cells.
 
 **Output formats**
-- `.ods` output keeps values, not formulas. Deliver `.xlsx` when formulas must
-  stay live, and say so.
-- Refresh a pivot table before saving or rendering it, or its cells are empty
-  outside Excel.
-- Chart `showDataLabels(true)` affects rendered images only; add
-  `.dataLabels(DataLabels.value())` after each series to save the labels.
-- `Validation.list(...)` hides Excel's dropdown arrow; build list validation with
-  `Validation.builder().type("list")` and `showDropdown(false)`.
-- `autoFitColumn` ignores number formats, so formatted numbers can show as `####`;
-  set those column widths explicitly.
-- In templates, a marker cell holding a `LocalDate` becomes text, and with
-  `:group` only the first inserted row reliably keeps its date format. Set dates
-  with `Cell.setDate` and re-apply the data-row styles after
-  `TemplateMarkers.process`.
+- A pivot table's cells exist only after `PivotTableView.refresh()`; call it
+  before reading them in code. Saving and rendering refresh it for you.
 - The streaming writer is for new, write-only, forward-only files: it cannot open
   or edit a workbook, recalculate, or add charts, pivots, or images.
 - VBA in `.xlsm` files is preserved but never executed. Ask for a Java port of the
@@ -253,8 +236,9 @@ from choosing formulas the engine evaluates cheaply.
 
 These examples show what to ask for and what a good response looks like. Each
 response is a condensed excerpt of what an assistant using the skill actually
-reported; the numbers come from its own runs. Use the "What to check" notes when
-you review an assistant's work on a similar task.
+reported in runs on Axyra Sheets 0.1.0; the numbers come from its own runs, and
+the behaviour shown still applies to 1.0.0-Beta. Use the "What to check" notes
+when you review an assistant's work on a similar task.
 
 ## Create a report from a CSV file
 
@@ -294,8 +278,8 @@ from the changed prices, the file must stay identical.
 
 > I read the SKU and Price columns in bulk with `Range.values()`, replaced the
 > prices from the CSV, and wrote the column back with one `Range.setValues` call.
-> `setValues` keeps each cell's style, comment and hyperlink; `setNumber` and
-> `setNumbers` would drop them. The program takes about 0.8 s.
+> `setValues` keeps each cell's style, comment and hyperlink. The program takes
+> about 0.8 s.
 >
 > Verified by comparing the input and output packages: every part except
 > `sheet1.xml` is byte-identical (styles, comments, hyperlinks, defined names);
@@ -304,30 +288,6 @@ from the changed prices, the file must stay identical.
 
 **What to check:** the assistant used a style-preserving write and proved that
 nothing else changed, instead of assuming it.
-
-## A requirement the library cannot meet
-
-```text
-Use the Axyra Sheets skill. Our LibreOffice users need budget.xlsx as an
-OpenDocument file with all formulas kept live, so the totals update when they
-edit the figures. Produce budget.ods.
-```
-
-**Response (excerpt):**
-
-> **budget.ods does not keep live formulas.** This Axyra version writes ODS files
-> with cached values only. The totals are correct numbers but will not update when
-> users edit the figures. I tested it: the input has 9 formulas, the ODS has 0
-> `table:formula` attributes, and every ODS save path gave the same result.
->
-> I also saved budget.xlsx with the formulas kept; LibreOffice opens XLSX natively,
-> so its totals stay live. In my test, changing B2 in the reopened XLSX updated F2.
-> I did not open either file in LibreOffice itself. If an ODS file is required,
-> convert that XLSX outside Axyra, for example with LibreOffice.
-
-**What to check:** the limitation is stated plainly and backed by a test, and a
-working alternative is delivered. Be wary of any answer that "confirms" a
-capability it could not demonstrate.
 
 ## Diagnose a job that fails partway through
 
@@ -440,31 +400,6 @@ are untrusted input.
 
 **What to check:** IDs stay text, dates are real dates, and formula-like input is
 never stored as a formula.
-
-## Fill formulas down
-
-```text
-Use the Axyra Sheets skill. In orders.xlsx only row 2 has formulas: D2 = B2*C2 and
-E2 = D2*(1+$H$1). Fill D2:E2 down through row 1001 exactly as Excel's fill handle
-would, make H3 total all 1,000 amounts (it sums only D2 now), and save
-orders-filled.xlsx with calculated results.
-```
-
-**Response (excerpt):**
-
-> I filled down by copying `D2:E2` to each of rows 3–1001 with `Range.copyTo`;
-> `autoFill` does not shift references, so I avoided it. `copyTo` shifts relative
-> references, keeps `$` anchors, and carries the source formatting. The program
-> checks every filled formula against the expected text (`B{n}*C{n}`,
-> `D{n}*(1+$H$1)`), sets `H3` to `SUM(D2:D1001)`, calls `Workbook.recalculate()`
-> once, and saves.
->
-> Verified: the run prints `H3 = SUM(D2:D1001) = 89833.0`. Read back from the
-> saved file, D3 is `=B3*C3` = 22, E3 is `=D3*(1+$H$1)` = 23.1, E1001 is 24.15,
-> and row 1002 is empty. The sheet has 2,001 formulas, each with a cached value.
-
-**What to check:** relative references shifted and anchors stayed, proved on the
-saved file rather than assumed.
 
 ## Export a pivot table to PDF
 
@@ -613,37 +548,6 @@ comes from a secret.
 
 **What to check:** the first error in the log was found, not just the last one,
 and what was verified is separated from what still needs checking.
-
-## Fix totals that miss inserted rows
-
-```text
-Use the Axyra Sheets skill. Our generator fills budget-template.xlsx with the lines in
-lines.csv. The Lines tab total is right, but the Summary tab shows one line's amount as
-the total and counts only 2 lines, the chart is missing our lines, and the PDF stops
-after the third line. Inserting the rows by hand in Excel works. Find the root cause
-and fix the generator.
-```
-
-**Response (excerpt):**
-
-> **Root cause:** the generator relied on `Sheet.insertRows(4, 43)` behaving like
-> Excel's Insert Rows. In this Axyra version it moves the cells and rewrites
-> formulas only on the Lines sheet itself, which is why the Lines total was right.
-> I reproduced it with the original code: Summary still read `Lines!D6` and
-> `COUNTA(Lines!A4:A5)`, and the `BudgetLines` name, the print area, the chart
-> series, the highlight rule, and the dropdown all kept their two-row ranges.
->
-> **Fix:** before the insert, the generator records every reference to the line
-> block and afterwards writes each one back, shifted the way Excel would. Probes
-> found one more trap: on an opened template, `setPrintArea` is not saved until
-> the old `_xlnm.Print_Area` name is removed with `removeName`.
->
-> Verified: the Summary formulas now cover `Lines!D4:D48`, and the total is
-> 2,266,797.59 over 45 lines, matching an independent sum of the CSV. The PDF
-> lists all 45 lines and the total.
-
-**What to check:** the bug was reproduced with the original code, and every
-dependent reference was checked, not just the visible total.
 
 # Migrate an existing spreadsheet workflow
 

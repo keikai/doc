@@ -69,6 +69,14 @@ defaults:
     values:
       sidebar:
         nav: "axyra-guides"
+  # Review builds use `--drafts`; give the Axyra article drafts the same
+  # navigation and indexing policy they will have after publication.
+  - scope:
+      path: "_drafts/axyra-group2"
+    values:
+      sidebar:
+        nav: "axyra-guides"
+      noindex: true
 
 # disqus admin is hawkchen@potix.com
     
@@ -91,7 +99,7 @@ axyra_guides: "/axyra/guides"
 axyra_devref: "/axyra/dev-ref"
 axyra_image_folder: "/assets/images/axyra"
 axyra_javadoc: "https://keikai.io/javadoc/axyra/latest/"
-axyra_version: "0.1.0.FL.20260930-Eval"
+axyra_version: "1.0.0-Beta.FL.20261012-Eval"
 # Axyra Sheets is not on Maven Central: the evaluation build is served from
 # ZK's repository, so every dependency snippet needs this repository too.
 axyra_repo_url: "https://mavensync.zkoss.org/eval"
@@ -115,3 +123,6 @@ exclude:
   - .jekyll-cache/
   - preview.sh
   - tasks
+  # DOCX review copies live beside their Markdown sources, but are not Jekyll
+  # content and must not be decoded as UTF-8 during `jekyll build --drafts`.
+  - "_drafts/**/*.docx"

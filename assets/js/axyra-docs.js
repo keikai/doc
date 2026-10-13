@@ -169,9 +169,12 @@
         }).map(function (match) { return match.item; });
 
         render(matches, terms);
-        status.textContent = matches.length
-          ? matches.length + (matches.length === 1 ? " result" : " results")
-          : "No Axyra documentation matched your search.";
+        var shown = Math.min(matches.length, 12);
+        status.textContent = !matches.length
+          ? "No Axyra documentation matched your search."
+          : shown < matches.length
+            ? "Showing " + shown + " of " + matches.length + " results"
+            : matches.length + (matches.length === 1 ? " result" : " results");
       }).catch(function () {
         results.replaceChildren();
         status.textContent = "Search is temporarily unavailable. Please try again later.";

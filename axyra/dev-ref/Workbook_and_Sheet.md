@@ -29,9 +29,9 @@ request must close every one of them.
 
 | Call | Purpose |
 |---|---|
-| `Workbook.create()` | An empty workbook with one sheet |
+| `Workbook.create()` | An empty workbook with no sheets — add one with `createSheet` |
 | `Workbook.createColumnar()` | Empty, using the columnar storage backend — see [Streaming]({{ site.axyra_devref }}/Streaming) |
-| `Workbook.open(Path)` | Open a file; format inferred from the name |
+| `Workbook.open(Path)` | Open a file; format inferred from the extension |
 | `Workbook.open(Path, String password)` | Open an encrypted file |
 | `Workbook.openBytes(byte[], String format)` | Open from memory |
 | `Workbook.openBytes(byte[], String format, String password)` | Open encrypted, from memory |
@@ -58,8 +58,9 @@ Sheet active = wb.activeSheet();
 ```
 
 Sheet indices are 0-based and shift when sheets are inserted, deleted, or moved.
-If you hold a `Sheet` across such an operation, re-fetch it — its index is no
-longer what it was.
+In 1.0.0 builds, a held `Sheet` continues to refer to the same tab and its
+`index()` changes with the tab. In 0.1.0 builds a `Sheet` is bound to its old
+index instead, so re-fetch it by name after a structural sheet operation there.
 
 ## Sheet properties
 
@@ -118,9 +119,14 @@ different scales. `isRowHeightCustom(row)` and `isColumnWidthCustom(col)`
 distinguish an authored size from an inherited default — relevant when you are
 deciding whether to auto-fit.
 
-Inserting and deleting rows or columns adjusts formulas, merged regions, named
-ranges, conditional formats, validations, tables, and anchored objects that
-reference the shifted area.
+Inserting and deleting rows or columns adjusts what references the shifted
+area, on every sheet: formulas (including references from other sheets), merged
+regions, named ranges, conditional formats, validations, tables, chart series,
+the print area, and anchored objects.
+
+0.1.0 builds adjusted only same-sheet formulas and merged regions; references
+from other sheets, names, conditional formats, validations, chart series, and
+the print area kept their old ranges.
 
 # Workbook settings
 
@@ -139,10 +145,13 @@ serial numbers — set it before populating dates, not after.
 A chart sheet is a sheet whose entire body is one chart:
 
 ```java
-int index = wb.addChartSheet("Revenue", chart);
-ChartView view = wb.chartSheetChart(0);
-wb.removeChartSheet(0);
+int index = wb.addChartSheet("Revenue", chart);   // position among chart sheets
+ChartView view = wb.chartSheetChart(index);
+wb.removeChartSheet(index);
 ```
+
+The chart-sheet methods take a chart sheet's position among the chart sheets,
+not its index among all sheets.
 
 See [Charts]({{ site.axyra_devref }}/Charts).
 

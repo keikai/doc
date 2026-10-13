@@ -150,8 +150,14 @@ String[][] formulas = r.formulas();
 r.setFormulas(formulas);
 ```
 
-`numbers()` / `setNumbers(double[])` are row-major and flat. They are the fastest
-path in the API and the right choice for loading a matrix out of a database.
+`numbers()` / `setNumbers(double[])` are row-major and flat, and the right choice
+for loading a matrix out of a database. `numbers()` returns `NaN` for every cell
+that is not a number (blank, text, boolean, error). Like `setValues`, they keep
+each cell's style, comment, and hyperlink.
+
+0.1.0 builds: `setNumbers` (and `Sheet.setNumber`) replaced the cells completely,
+dropping style, comment, and hyperlink; update formatted cells with `setValues`
+on those builds.
 
 ## Formulas over a range
 
@@ -162,10 +168,12 @@ r.spillRange();               // the area a dynamic-array formula actually spill
 ```
 
 The distinction matters: `setFormula` writes the same formula text to every
-cell. To shift relative references as Excel's fill handle does, write the formula
-in a source cell and copy it with `copyTo(sheet, row, column)`, or write each
-cell's own formula with `setFormulas`. `autoFill(destination)` copies formula text
-unchanged, so it does not shift references. `setArrayFormula` writes a
+cell. To shift relative references as Excel's fill handle does, use
+`autoFill(destination)` from a source range, copy the source with
+`copyTo(sheet, row, column)`, or write each cell's own formula with
+`setFormulas`; all three keep `$`-anchored references fixed. (0.1.0 builds:
+`autoFill` copied formula text without shifting it — use `copyTo` or
+`setFormulas` there.) `setArrayFormula` writes a
 single formula occupying the whole range. Modern dynamic arrays spill on their
 own — see
 [Formulas]({{ site.axyra_devref }}/Formulas).
@@ -178,7 +186,7 @@ r.sort(0, true);                       // one column, ascending
 r.sortLeftToRight(SortKey.asc(0));     // sort columns instead of rows
 r.sort(SortKey.customOrder(1, "High", "Medium", "Low"));
 
-r.autoFill(sheet.range("A10:D20"));    // extend a series
+sheet.range("A2:D2").autoFill(sheet.range("A2:D20"));   // extend row 2 down
 r.removeDuplicates(new int[] {0, 1}, true);
 
 r.copyTo(otherSheet, 0, 0);
@@ -188,6 +196,10 @@ r.merge();
 r.unmerge();
 r.autoMerge(true);
 ```
+
+`autoFill` follows Excel's fill handle: the destination must be on the same
+sheet, contain the source range, and extend it along one axis. It continues
+numeric series, repeats text, and shifts relative references in formulas.
 
 `copyTo` with a paste type covers paste-special: values only, formats only,
 formulas, and so on. Without it, everything is copied.
@@ -223,9 +235,11 @@ sheet.importData(0, 0, sales, ImportOptions.builder()
         .build());
 ```
 
-Returns the number of rows written. Without `columns(...)`, all readable
-properties are written in declaration order — pin the column list explicitly if
-the class may gain fields later.
+Returns the number of rows written, including the header row. Without
+`columns(...)`, a record's components are written in declaration order, but a
+JavaBean's `getX`/`isX` properties are written in **alphabetical** order — pin
+the column list explicitly whenever the order matters or the class may gain
+fields later.
 
 For filling an existing template rather than writing a fresh block, see
 [Template Markers]({{ site.axyra_devref }}/Template_Markers).

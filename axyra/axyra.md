@@ -24,7 +24,7 @@ Axyra Sheets provides server-side spreadsheet processing for Java applications, 
 | Area | Summary |
 |---|---|
 | **File formats** | XLSX, XLSM, XLSB, legacy XLS (BIFF8), ODS, CSV, JSON — read and write |
-| **Formulas** | Excel-compatible parser and evaluator, ~490 built-in functions, array/spill semantics, iterative calculation, user-defined functions |
+| **Formulas** | Excel-compatible parser and evaluator, 500+ built-in functions, array/spill semantics, iterative calculation, user-defined functions |
 | **Content objects** | Charts, pivot tables, tables, slicers, timelines, conditional formats, data validation, comments and threaded comments, hyperlinks, form controls, SmartArt, sparklines, OLE objects, VBA modules |
 | **Output** | PDF (with encryption, watermarks, PDF/A), PNG / SVG / JPEG / GIF / BMP / TIFF, HTML |
 | **Security** | Workbook encryption (read and write), OPC digital signatures, sheet and range protection |

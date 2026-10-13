@@ -18,16 +18,15 @@ matrices are discovery aids, not proof of compatibility or performance.
 | POI workbook/sheet/row/cell | `Workbook`, `Sheet`, zero-based `cell(r, c)` and bulk ranges; no row objects | Missing cells, blanks, formula caches, dates; column width in characters (POI `15*256` → `15`) |
 | Vendor styles (font + style objects) | One immutable `CellStyle` per look, built with `CellStyle.builder()` | `setStyle` replaces the whole style; number-format codes, fills, borders, fonts |
 | Formula calculation (`evaluateAll`) | `Workbook.recalculate()`; writes already recalculate dependents | Supported formulas and error values; compare cached results |
-| Vendor template processing | `TemplateMarkers` (`${...}` markers) | Marker grammar, empty lists, grouping, types; inserted rows do not copy styles |
+| Vendor template processing | `TemplateMarkers` (`${...}` markers) | Marker grammar, empty lists, grouping, types; styles of grouped rows |
 | Vendor PDF conversion | Axyra rendering options | Fonts, print areas, scaling, pagination, chart support |
 | Vendor streaming API | Axyra streaming writer if requirements fit | Forward-only rows, commits, feature limits, and memory measurements |
 
 Aspose marker templates cannot be assumed to work unchanged with Axyra's `${...}`
 syntax. Inspect the actual template and convert it explicitly only within the
 requested scope. Check expansion effects on formulas, totals, images, and formatting.
-The template entry point is `TemplateMarkers` from `0.1.0.FL.20260915-Eval` on and
-`SmartMarkers` before; there is no alias, so confirm which one the resolved artifact
-has. The marker grammar and expansion rules are in [pitfalls-templates.md](pitfalls-templates.md).
+The template entry point is `TemplateMarkers`; its marker grammar and expansion
+rules are in [pitfalls-templates.md](pitfalls-templates.md).
 
 Classify vendor template processing (Aspose Smart Markers `&=`, DsExcel `{{ }}`) as
 redesign, never as a direct mapping: besides the syntax, grouping, subtotals, date
@@ -55,8 +54,8 @@ be repeated.
 
 Libraries that recalculate lazily, or only on request, map to Axyra calls that
 recalculate on every write. Keep an explicit `recalculate()` where the source
-called its evaluator, but do not port manual-calculation settings: Axyra neither
-honors nor saves them. POI `getCreationHelper()` and `XSSF*` classes have no Axyra
+called its evaluator. Port a manual-calculation setting only if the old output
+shows it: `CalcMode.MANUAL` is honoured and saved. POI `getCreationHelper()` and `XSSF*` classes have no Axyra
 counterpart; map the behavior, not the class.
 
 Use fully qualified names during migration if both libraries define `Workbook` or
@@ -101,13 +100,13 @@ height (15 pt for a created sheet). Read `<sheetFormatPr defaultRowHeight>` from
 output and call `Sheet.setDefaultRowHeight(h)` on each sheet the code creates. Charts
 anchored to rows and every rendered page depend on it.
 
-**Pivot tables.** `addPivotTable` and the field setters write no cells;
-`PivotTableView.refresh()` writes the pivot body into the sheet as cells. In a migration,
-call `refresh()` where the original program updates the pivot's data, or before rendering
-it. A program that never updates the pivot leaves its area blank, so do not refresh it then;
-a program that does update it is refreshed even if the old output's area is blank, and that
-difference is listed as a gap (see "When the old output contradicts the program"). The `.xls` writer does not keep
-the pivot definition (`pivotCount()` is 0 after reopening a saved `.xls`).
+**Pivot tables.** A pivot the code creates or changes is built into the sheet as cells
+when the workbook is saved or rendered, whether or not `refresh()` was called; there is
+no way to save it with a blank area. Call `refresh()` where the original program updates
+the pivot's data, and before reading pivot cells. A pivot in an opened file that the code
+does not change keeps the cells the file had. If the old output's pivot area is blank
+while Axyra's is filled, list that as a gap. The `.xls` writer does not keep the pivot definition (`pivotCount()` is 0
+after reopening a saved `.xls`).
 
 **Subtotals.** `Sheet.subtotal(firstRow, lastRow, groupColumn, hasHeaders, SubtotalFunction,
 columns...)` inserts subtotal rows the way Excel's Data > Subtotal does (with
@@ -119,7 +118,8 @@ subtotal rows by hand, and never add rows it did not insert.
 **Text files.** For CSV, use `Workbook.saveCsv(path, CsvOptions.create().sheet(i))` (since
 1.0.0-Beta): `sheet(int)` or `sheet(String)` picks the sheet without changing the active
 sheet, and `delimiter(char)`, `values(CsvOptions.Values.RAW | FORMATTED)` and
-`utf8Bom(boolean)` set the rest. `Workbook.save(Path)` chooses the format from the extension
+`utf8Bom(boolean)` set the rest; values default to the formatted text (`"1,234.50"`),
+`RAW` writes stored values. `Workbook.save(Path)` chooses the format from the extension
 (`.csv`; `.tsv` and `.txt` are tab-separated) and `saveBytes("csv" | "tsv" | "txt")` returns
 the same bytes; both write the active sheet, from A1, with CRLF line ends, as Excel's Save As
 Text does. Use them for TSV and TXT, or when the active sheet is what should be written:

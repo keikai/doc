@@ -5,7 +5,7 @@ toc: false
 ---
 
 Task-oriented walkthroughs. Each one starts from an empty project and ends with
-a file you can open, and each links into the
+a complete, runnable program, and each links into the
 [Developer Reference]({{ site.axyra_devref }}) for the full API rather than
 restating it.
 
@@ -25,7 +25,7 @@ covers the object model these guides assume.
 
 # Where to go next
 
-- [Tutorial]({{ site.axyra_tutorial }}) — the guided path, in order
+- [Quick Start]({{ site.axyra_tutorial }}/) — the guided path, in order
 - [Developer Reference]({{ site.axyra_devref }}) — the API, by topic
 - [Supported Formats]({{ site.axyra_devref }}/Supported_Formats) — what is
-  modelled, what is preserved, and the known limits
+  modeled, what is preserved, and the known limits

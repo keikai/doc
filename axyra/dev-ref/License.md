@@ -31,8 +31,20 @@ from the marks, and the in-memory workbook is not modified. Reading and
 recalculation are unrestricted, and rendering fidelity is unchanged apart from
 the banner.
 
-An invalid or expired key does not throw: `setLicense` returns a `LicenseInfo`
-whose state is `EVALUATION`, so check `info.isLicensed()` as shown below.
+Evaluation Mode does limit how long and how much one process may work:
+
+- A process may perform at most **100 opens, saves, renders, and streaming
+  workbook creations combined**.
+  The operation that exceeds the limit throws `AxyraException: evaluation limit
+  reached …`. A batch job that fails partway through is the typical symptom.
+- A process also has a maximum running time in Evaluation Mode.
+
+Restart the process to continue evaluating, or install a license key.
+
+An invalid or expired key does not throw by default: `setLicense` returns a
+`LicenseInfo` whose state is `EVALUATION`, so check `info.isLicensed()` as shown
+below, or pass `LicenseMode.REQUIRED` to make it throw (see
+[Production License](#production-license)).
 
 # 30-Day Evaluation License
 
@@ -101,8 +113,21 @@ if (token == null || token.isBlank()) {
 ```
 
 Check the returned status during startup instead of waiting to discover a
-watermark in generated output. Invalid, malformed, or expired keys fall back to
-Evaluation Mode rather than preventing Axyra Sheets from starting.
+watermark in generated output. By default, invalid, malformed, or expired keys
+fall back to Evaluation Mode rather than preventing Axyra Sheets from starting.
+
+For production code that must never write a marked file, install the key with
+`LicenseMode.REQUIRED` (new in 1.0.0-Beta). A key that does not put a license in
+force then throws `AxyraException`, whose message names the cause:
+
+```java
+import io.keikai.axyra.sheets.LicenseMode;
+
+Workbook.setLicense(token, LicenseMode.REQUIRED);   // throws if not licensed
+```
+
+`LicenseMode.FALLBACK_TO_EVALUATION` is the default behaviour. The two-argument
+form accepts the token as a `String` or `byte[]`.
 
 The possible states are:
 

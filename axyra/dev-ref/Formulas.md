@@ -4,7 +4,7 @@ permalink: /axyra/dev-ref/Formulas
 ---
 
 Axyra Sheets carries a complete Excel-compatible formula parser and evaluator:
-around 490 built-in functions, dynamic arrays with spill, structured references,
+more than 500 built-in functions, dynamic arrays with spill, structured references,
 iterative calculation, and user-defined functions.
 
 ```java
@@ -18,19 +18,25 @@ any list in documentation.
 
 # Writing and evaluating
 
-Assigning a formula does not evaluate it. This is deliberate: bulk edits stay
-cheap, and you decide when to pay for calculation.
+In the default automatic mode, results are kept current for you. Writing a
+formula evaluates it, and every later write recalculates the formulas that
+depend on the changed cell, incrementally:
 
 ```java
 sheet.cell(1, 3).setFormula("B2*C2");
+CellValue v = sheet.cell(1, 3).value();   // already evaluated
 
-wb.recalculateDirty();   // only cells whose inputs changed
-wb.recalculate();        // the whole dependency graph
+wb.recalculateDirty();   // only cells marked dirty since the last calculation
+wb.recalculate();        // every formula cell
 ```
 
-`recalculateDirty()` is what you want almost always. `recalculate()` exists for
-the cases where the dirty set cannot be trusted — after loading a file written by
-another tool, or after registering a user-defined function whose results changed.
+`save` does not recalculate, so call `recalculate()` once before saving when a
+result can be stale: for the untouched formulas (including volatile ones such as
+`NOW`) of a file written by another tool (their stored results are
+trusted until something they depend on changes), after registering a
+user-defined function whose results changed, or in `MANUAL` mode. Never call it
+inside a loop — it re-evaluates the whole workbook each time, while the
+incremental updates are already cheap.
 
 To evaluate an expression without writing it into a cell:
 
@@ -49,13 +55,15 @@ CalcMode mode = wb.calcMode();
 | Mode | Behaviour |
 |---|---|
 | `AUTOMATIC` | The default |
-| `MANUAL` | Nothing recalculates until you ask |
+| `MANUAL` | Dependents are not recalculated when their inputs change; call `recalculateDirty()` or `recalculate()` |
 | `AUTOMATIC_EXCEPT_TABLES` | Automatic, except data tables |
 
-The mode is a property of the workbook and is written to the file, so it
-round-trips. Note that it describes intent for a spreadsheet *application* — in
-Axyra Sheets you drive calculation explicitly regardless, so treat the setting as
-metadata you preserve for whoever opens the file next.
+In `MANUAL` mode a formula is still evaluated when you write it; only the
+automatic update of its dependents stops. The mode is a property of the workbook
+and is written to the file (`<calcPr calcMode="manual">`), so it round-trips and
+also tells Excel how to treat the file.
+
+0.1.0 builds: `setCalcMode(MANUAL)` neither pauses recalculation nor is saved.
 
 ## Iterative calculation
 
@@ -75,7 +83,6 @@ and to the right:
 
 ```java
 sheet.cell(0, 0).setFormula("SORT(UNIQUE(A2:A100))");
-wb.recalculateDirty();
 
 String spilled = sheet.range("A1:A1").spillRange();   // e.g. "A1:A37"
 ```
@@ -128,7 +135,6 @@ Register a Java function and use it from a formula:
 wb.registerFunction("TRIANGLE", args -> args[0] * (args[0] + 1) / 2);
 
 sheet.cell(0, 0).setFormula("TRIANGLE(10)");
-wb.recalculateDirty();
 CellValue result = sheet.value(0, 0);
 double value = ((CellValue.Number) result).value();   // 55.0
 ```

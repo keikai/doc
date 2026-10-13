@@ -11,9 +11,13 @@ permalink: /axyra/dev-ref/Supported_Formats
 | Excel Macro-Enabled Workbook | `.xlsm` | ✔ | ✔ | VBA preserved, never executed |
 | Excel Binary Workbook | `.xlsb` | ✔ | ✔ | Binary OOXML; faster and smaller than `.xlsx` |
 | Excel 97–2003 | `.xls` | ✔ | ✔ | BIFF8. Subject to the format's own limits — 65,536 rows, 256 columns |
-| OpenDocument Spreadsheet | `.ods` | ✔ | ✔ | Including encrypted ODS |
-| Comma-Separated Values | `.csv` | ✔ | ✔ | One sheet; type sniffing on import, injection defence on export |
-| JSON | `.json` | ✔ | ✔ | Structural representation of the workbook |
+| OpenDocument Spreadsheet | `.ods` | ✔ | ✔ | Formulas and values; including encrypted ODS. 0.1.0 builds wrote and read values only |
+| Comma-Separated Values | `.csv` | ✔ | ✔ | One sheet of values; type sniffing on import. Text is exported as is — see [Import and Export]({{ site.axyra_devref }}/Import_and_Export#csv) |
+| JSON | `.json` | ✔ | ✔ | One sheet as an array of row objects keyed by the header row; values only |
+
+`Workbook.open(Path)` also reads the template variants `.xltx` and `.xltm`,
+tab-separated `.tsv` and `.txt`, `.html`/`.htm` tables, `.ots`, `.sxc`, and
+flat `.fods`, and SpreadsheetML 2003 `.xml`.
 
 # Output formats
 
@@ -34,7 +38,7 @@ applicable, written, and rendered:
 
 | | |
 |---|---|
-| Formulas | ~490 functions, dynamic arrays and spill, structured references, iterative calculation, shared formulas, external references with cached values |
+| Formulas | 500+ functions, dynamic arrays and spill, structured references, iterative calculation, shared formulas, external references with cached values |
 | Number formats | Full Excel format-code syntax, including conditional sections and locale-aware formatting |
 | Styles | Fonts, fills (solid, patterned, gradient), borders, alignment, rotation, indent, themes, named styles, indexed and theme colours |
 | Charts | 20+ types, series, axes, data labels, error bars, trendlines, 3-D views, chart sheets. Map charts are read and written but currently render as a placeholder frame. |

@@ -22,7 +22,7 @@ and JSON.
 
 Java 17 or later plus the dependency; the native libraries ship inside the jar.
 See [Installation]({{ site.axyra_devref }}/Installation) if you need the Gradle
-coordinates or hit a platform problem. For a short walkthrough of Axyra before diving in, see [Quick Start](https://doc.keikai.io/axyra/quick-start/).
+coordinates or hit a platform problem. For a short walkthrough of Axyra before diving in, see [Quick Start]({{ site.axyra_tutorial }}/).
 
 ```xml
 <dependency>
@@ -86,6 +86,10 @@ for (int i = 0; i < wb.sheetCount(); i++) {
 
 Sheet byName = wb.sheet("Q3 Sales");
 ```
+
+Prefer looking a sheet up by name over a fixed index. A file saved by Axyra Sheets
+in Evaluation Mode starts with an extra **Axyra Evaluation Copy** sheet, which
+shifts every index by one.
 
 `sheetType()` matters when you are iterating blindly: a workbook can contain
 chart sheets, dialog sheets, and macro sheets, and only `WORKSHEET` holds a
@@ -178,12 +182,13 @@ That is a per-cell call, so use it for display, not for bulk extraction.
 # Step 6 — Formula results and error cells
 
 A formula cell carries the value the writing application cached, so reading it
-usually needs no work on your part. Recalculate when you do not trust that cache
-— a file written by another tool, or one you have just edited:
+usually needs no work on your part. Your own edits recalculate the formulas that
+depend on them, but formulas you have not touched keep the cached result.
+Recalculate once when you do not trust that cache — a file written by another
+tool, or one with volatile functions such as `NOW()`:
 
 ```java
-wb.recalculate();        // everything
-wb.recalculateDirty();   // only what your edits invalidated
+wb.recalculate();        // the whole workbook; call it once, not per cell
 ```
 
 {: .notice--info}
@@ -335,7 +340,7 @@ results, call `wb.recalculate()` before reading.
 - [How to Convert Excel to PDF in Java]({{ site.axyra_guides }}/convert-excel-to-pdf-java) —
   render what you just opened
 - [Cells and Ranges]({{ site.axyra_devref }}/Cell_and_Range) — the full data-access API
-- [Supported Formats]({{ site.axyra_devref }}/Supported_Formats) — per-format behaviour and limits
+- [Supported Formats]({{ site.axyra_devref }}/Supported_Formats) — per-format behavior and limits
 - [Formulas]({{ site.axyra_devref }}/Formulas) — evaluation, arrays, error semantics
 
 # Beyond Reading Excel Data

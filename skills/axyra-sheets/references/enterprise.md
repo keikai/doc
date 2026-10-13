@@ -2,7 +2,7 @@
 
 Select a workflow from the user's input, output, scale, and deployment constraints.
 Reuse source routing in [sources.md](sources.md) instead of inventing API names. Facts below
-describe `0.1.0.FL.20260922-Eval` and were re-verified on `0.1.0.FL.20260930-Eval`; recheck them for the resolved build.
+were verified on `1.0.0-Beta.FL.20261012-Eval`; recheck them for the resolved build.
 
 ## Database or JSON to Excel
 

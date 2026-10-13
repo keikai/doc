@@ -113,13 +113,21 @@ The builder adds the input message, the error alert, and the dropdown behaviour:
 Validation.builder()
         .type("list")
         .formula1("\"APAC,EMEA,Americas\"")
-        .showDropdown(true)
         .allowBlank(false)
         .inputMessage("Region", "Pick a sales region.")
         .errorMessage("Invalid region", "Pick one of the listed regions.")
         .errorStyle("stop")
         .build();
 ```
+
+A list rule shows its in-cell dropdown arrow unless you call
+`showDropdown(false)`, which hides it (written as OOXML `showDropDown="1"`, whose
+name reads the other way round). `Validation.list(...)` writes a quoted list and
+shows the arrow.
+
+0.1.0 builds: `Validation.list(...)` wrote the items unquoted, and both it and
+`showDropdown(true)` hid the arrow. On those builds, use the builder and omit
+`showDropdown`, which shows the arrow on every build.
 
 Validation is metadata: Axyra Sheets stores and preserves it, and a consuming
 application enforces it. Writing a value that violates a rule is not rejected —

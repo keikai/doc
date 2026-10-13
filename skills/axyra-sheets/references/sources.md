@@ -30,12 +30,11 @@ name the one you used:
 1. **The `-javadoc` JAR for the resolved version, already on disk.** Look in the
    local Maven cache (`~/.m2/repository/io/keikai/axyra-sheets/<version>/`) or the
    Gradle cache. It matches the build exactly, so it is the default source.
-2. **The same JAR from the repository.** Evaluation builds from
-   `0.1.0.FL.20260916-Eval` on carry `axyra-sheets-<version>-javadoc.jar` next to
+2. **The same JAR from the repository.** Evaluation builds carry
+   `axyra-sheets-<version>-javadoc.jar` next to
    the binary at `https://mavensync.zkoss.org/eval/io/keikai/axyra-sheets/<version>/`.
    Download it into a temporary directory and unzip it. It is documentation, not
-   the runtime dependency. Earlier builds have none, and no `-sources` JAR is
-   published.
+   the runtime dependency. No `-sources` JAR is published.
 3. **`javap` on the resolved binary JAR**, for exact signatures when no Javadoc JAR
    exists: `javap -cp <artifact.jar> io.keikai.axyra.sheets.Workbook` (and the other
    public classes). The examples repository also compiles against a real version
@@ -55,8 +54,7 @@ the Javadoc before telling a user that Axyra cannot do something, and say which
 source you checked.
 
 Signatures do not establish behavior, and Javadoc prose can disagree with the
-build. For example, it says `CalcMode.MANUAL` recalculates only on request, yet
-writes still recalculate their dependents. When behavior matters, a focused test
+build. When behavior matters, a focused test
 against the selected artifact outranks the prose. Report the disagreement and check
 the topic pitfalls file (`pitfalls-*.md`). Do not report a signature as verified
 when it was only inferred from prose or read from a Javadoc page whose version does
@@ -73,7 +71,7 @@ Example paths are relative to
 | First workbook | `quick-start/quick_start` | `Workbook`, `Sheet`, `CellValue` | `tutorial/QuickStartExample.java` |
 | Read/edit files | `guides/read-excel-file-java`, `dev-ref/Import_and_Export` | `Workbook.open/save`, `Sheet.usedRange`, `Range.values` | `guides/ReadExcelFileExample.java`, `tutorial/ReadWriteExample.java`, `devref/ImportExportExample.java` |
 | Database/JSON export | `guides/write-data-to-excel-java` | `ImportOptions`, `Sheet.importData`, `Range.setValues` | `guides/WriteDataToExcelExample.java` |
-| Formulas | `dev-ref/Formulas` | `Workbook.recalculate`, `Range.setFormulas`, `Range.copyTo` (shifts references; `autoFill` does not) | `devref/FormulasExample.java` |
+| Formulas | `dev-ref/Formulas` | `Workbook.recalculate`, `Range.setFormula(s)`, `Range.copyTo`, `Range.autoFill` | `devref/FormulasExample.java` |
 | Formatting | `dev-ref/Styles` | `style/CellStyle`, `style/Color` | `devref/StylesExample.java` |
 | Templates | `dev-ref/Template_Markers`, `guides/generate-excel-reports-java` | `template/TemplateMarkers` | `guides/GenerateReportExample.java`, `devref/TemplateMarkersExample.java` |
 | Charts/pivots | `dev-ref/Charts`, `dev-ref/Pivot_Table` | `ChartView`, `PivotTableView`, `PivotField`, `PivotLayout` | `devref/ChartsExample.java`, `devref/PivotTableExample.java` |
@@ -82,20 +80,25 @@ Example paths are relative to
 | Page setup and print | `guides/convert-excel-to-pdf-java` | `Sheet` page-setup members: paper size, landscape, `setPageMargins`, `setPrintArea`, `setPrintTitleRows` | `guides/ExcelToPdfExample.java` |
 | Deployment/license | `dev-ref/Native_Loader`, `dev-ref/License` | Native loader; `Workbook.setLicense/licenseStatus` | `devref/LicenseAndNativeLoaderExample.java` |
 
-Each documentation page links to its own example source in the examples repository;
-follow that link if an example has been renamed, rather than guessing a file name.
-The template entry point was renamed from `SmartMarkers` to `TemplateMarkers` in
-`0.1.0.FL.20260915-Eval`, with no deprecated alias; the marker syntax and
-`process(Sheet, Map)` signature did not change. Check the resolved artifact before
-writing or changing imports, and treat a name in prose as a claim to verify.
+Documentation pages link to their matching example through the **Get code at
+GitHub** button, using `_data/axyra_code_links.yml` in the documentation
+repository. If a file named above is missing, check that mapping and list the
+examples repository's `src/main/java/io/keikai/axyra/examples/` tree rather than
+guessing a name.
+The template entry point is `TemplateMarkers.process(Sheet, Map)`. Check the
+resolved artifact before writing or changing imports, and treat a name in prose
+as a claim to verify.
 
 ## Example execution
 
 Read the examples POM and README before using its commands. As reviewed, the
-examples target Java 17 and pin one `io.keikai:axyra-sheets` version in an
-`axyra.version` property; both are observations about that checkout, not
-requirements for the user's project. The version the user already depends on
-governs, and the documentation site may show a different one.
+examples target Java 17, set the `io.keikai:axyra-sheets` dependency version in
+the `axyra.version` property, and declare the evaluation repository at
+`https://mavensync.zkoss.org/eval`; the checkout therefore resolves without an
+extra repository override. The POM's top-level `0.1.0-SNAPSHOT` is the version of
+the examples application itself, not the Axyra Sheets dependency. The version the
+user already depends on governs, and the documentation site may show a different
+one.
 
 From the examples checkout, its documented runner accepts:
 

@@ -20,7 +20,11 @@ try (Workbook wb = Workbook.open(Path.of("report.xlsx"))) {
 }
 ```
 
-The format is detected from the file. XLSX, XLSM, XLSB, XLS (BIFF8), ODS, CSV,
+A file saved in Evaluation Mode starts with an extra **Axyra Evaluation Copy**
+sheet, which shifts every sheet index by one. Look sheets up by name
+(`wb.sheet("Q3")`) rather than by position.
+
+The format is detected from the file extension. XLSX, XLSM, XLSB, XLS (BIFF8), ODS, CSV,
 and JSON all open through the same call — see
 [Supported Formats]({{ site.axyra_devref }}/Supported_Formats).
 
@@ -68,11 +72,17 @@ it once for the whole block.
 
 # Recalculate
 
-Editing marks dependents dirty but does not evaluate them.
+Every edit recalculates the formulas that depend on it, so values you read back
+are normally current without any extra call. Saving does not recalculate.
+
+Formulas in an opened file that your edits did not touch keep the results the
+file was saved with. Call `recalculate()` once, before reading or saving, when
+those cached results may be stale (a file written by another tool), when the
+workbook uses volatile functions such as `NOW()` or `RAND()`, or when the
+workbook is in `CalcMode.MANUAL`:
 
 ```java
-wb.recalculateDirty();   // only what changed — the usual choice
-wb.recalculate();        // everything, unconditionally
+wb.recalculate();        // the whole workbook; once, not inside a loop
 ```
 
 You can also evaluate an expression without storing it anywhere:
@@ -111,8 +121,8 @@ wb.save(Path.of("report.xlsx"), SaveOptions.create()
 
 `VALUES_ONLY` writes each formula's last calculated result instead of the
 formula, which is what you want when the recipient should not see how a number
-was derived. Recalculate before saving, or you will write stale values. The
-other formats ignore these options.
+was derived. Recalculate first if any of the cases above applies, or you will
+write stale values. The other formats ignore these options.
 
 # What survives a round trip
 
@@ -129,6 +139,6 @@ files, test it against your files.
 
 - [Render to PDF and Images]({{ site.axyra_tutorial }}/render)
 - [Import and Export]({{ site.axyra_devref }}/Import_and_Export) — per-format
-  behaviour and options
+  behavior and options
 - [Streaming Large Files]({{ site.axyra_devref }}/Streaming) — for sheets too
   large to hold in memory

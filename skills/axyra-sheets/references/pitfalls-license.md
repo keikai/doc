@@ -1,18 +1,21 @@
 # Pitfalls: license, evaluation mode and runtime
 
-Measured on `0.1.0.FL.20260922-Eval`, re-verified on `0.1.0.FL.20260930-Eval`; recheck against the resolved build. Docs:
+Measured on `1.0.0-Beta.FL.20261012-Eval`; recheck against the resolved build. Docs:
 `https://doc.keikai.io/axyra/dev-ref/License` and `dev-ref/Native_Loader`.
 
 ## Installing a license
 
 Axyra is commercially licensed. Install a legitimate token once at startup with
-`Workbook.setLicense`, which returns a `LicenseInfo`. Check `info.isLicensed()` or
-`Workbook.licenseStatus().state()`, which is one of `LicenseStatus.LICENSED`,
-`GRACE`, `EVALUATION` or `UNLICENSED`. There is no `status()` method.
+`Workbook.setLicense(token, LicenseMode.REQUIRED)` (1.0.0-Beta), which throws
+`AxyraException` naming the reason when the token is not in force. It returns a
+`LicenseInfo`; `info.state()` / `Workbook.licenseStatus().state()` is one of
+`LicenseStatus.LICENSED`, `GRACE`, `EVALUATION` or `UNLICENSED`, and `reason()`
+(1.0.0-Beta) says why a token was not applied. `License.status()` is the equivalent
+process-global status accessor; `LicenseInfo` itself has no `status()` method.
 
 | Behavior | Consequence | Workaround |
 |---|---|---|
-| An invalid or expired token does **not** throw. It leaves the process in evaluation mode | The program keeps running and produces marked output, then fails later | Fail fast: check `isLicensed()` right after `setLicense` and stop with a clear message |
+| Without `LicenseMode.REQUIRED` (the one-argument overloads), an invalid or expired token does **not** throw: it prints a notice to stderr and leaves the process in evaluation mode | The program keeps running and produces marked output, then fails later | Use `LicenseMode.REQUIRED` |
 | The license state is process-wide | One bad install affects every workbook in the process | Install once at startup |
 
 Never copy license values into generated code, logs or reports, never remove
@@ -27,9 +30,11 @@ It applies when no valid license is installed, and released builds enforce it:
   row below each sheet's data and in page headers. CSV/TXT/JSON get the notice
   without the tab.
 - PDF and image pages get a banner line.
-- Opens, saves, renders and stream creations are limited to **100 per process**,
-  and refused 72 hours after the first. The operation that exceeds a limit throws
-  `AxyraException`. A batch job that crashes partway through is a typical symptom.
+- Opens, saves, renders and stream creations share **one counter of 100 per
+  process**, and are refused 72 hours after the first. The 101st throws
+  `AxyraException: evaluation limit reached` (its message says "open or save", but
+  renders and streams count too). A batch job that crashes partway through is a
+  typical symptom.
 - Reopening an evaluation file shifts sheet indices and used ranges.
 
 Verify `Workbook.licenseStatus()` in the target environment. Do not infer

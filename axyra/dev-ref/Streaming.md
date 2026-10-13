@@ -75,6 +75,10 @@ The sequential and positional styles can be mixed on one row; `skip()` leaves a
 column blank when appending. After composing the row, call `commit()` exactly
 once.
 
+A formula is written without a result, because the streaming writer does not
+calculate. Excel calculates it when it opens the file, but other readers and
+renderers see an empty cell.
+
 `addDate` requires a style, because a date with no number format displays as a
 serial number — the API makes you supply one rather than producing output that
 looks broken.
@@ -114,7 +118,7 @@ What actually helps, in order of effect:
 1. **Use `Range` bulk accessors, not per-cell loops.** `numbers()` and
    `setNumbers(double[])` are one native call for a whole block and involve no
    boxing at all. This is usually the difference that matters, and it is often
-   worth an order of magnitude.
+   several times faster than a per-cell loop.
 2. **Use the columnar backend** when the sheet suits it.
 3. **Close workbooks promptly.** They hold native memory the JVM's garbage
    collector will not reclaim for you. In a request-scoped service, a leaked

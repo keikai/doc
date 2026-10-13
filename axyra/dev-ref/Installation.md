@@ -34,9 +34,11 @@ repositories {
 implementation "io.keikai:axyra-sheets:{{ site.axyra_version }}"
 ```
 
-The `-Eval` version is an evaluation build. It runs unrestricted, and saved
-output carries the evaluation notice described in
-[License]({{ site.axyra_devref }}/License).
+The `-Eval` version is an evaluation build. Until a license key is installed it
+runs in Evaluation Mode: saved, rendered, and exported output carries the
+evaluation marks, and one process may perform at most 100 opens, saves, renders,
+and streaming workbook creations combined. See
+[Licensing and Evaluation]({{ site.axyra_devref }}/License).
 
 # The native library
 

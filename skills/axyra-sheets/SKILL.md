@@ -6,9 +6,10 @@ description: Build and troubleshoot Java spreadsheet workflows with Axyra Sheets
 # Axyra Sheets development
 
 Axyra Sheets is a Java spreadsheet engine (`io.keikai.axyra.sheets.*`). It is not
-Keikai's `io.keikai.api.*` UI API. Facts here were measured on `0.1.0.FL.20260922-Eval` and re-verified on
-`0.1.0.FL.20260930-Eval` (same public API; every probed behaviour unchanged); the migration rules
-were also probed on `1.0.0-Beta.FL.20261008-Eval`.
+Keikai's `io.keikai.api.*` UI API. The rules here were measured on
+`1.0.0-Beta.FL.20261012-Eval`. **First check the version the project resolves** (the
+`io.keikai:axyra-sheets` version in the POM/Gradle file, or the JAR name). The
+rules below are for 1.0.0-Beta only; do not apply them to a `0.1.0.FL.*` build.
 
 ## How to use this skill
 
@@ -16,8 +17,7 @@ This file is enough for most tasks. Work in this order and stop as soon as you c
 
 1. **Rules and pitfalls below.** They cover the behaviours that break code most often.
 2. **Signatures: grep [api-index.md](references/api-index.md)** — every public type and
-   member of 1.0.0-Beta.FL.20261008-Eval, one per line; entries marked `(since 1.0.0-Beta)` are not in
-   0.1.0.FL.20260930-Eval. Never read it whole:
+   member of `1.0.0-Beta.FL.20261012-Eval`, one per line. Never read it whole:
    `grep -E '^Sheet\.(set|cell)' .../api-index.md`, `grep -i '^pdfoptions' ...`.
    Do not unzip the `-javadoc` JAR for signatures; use it only when you need Javadoc
    *prose*, and grep inside it rather than reading pages. If the project resolves a
@@ -27,10 +27,11 @@ This file is enough for most tasks. Work in this order and stop as soon as you c
 | Open only if the task… | File |
 |---|---|
 | uses `TemplateMarkers` / `${...}` templates | [pitfalls-templates.md](references/pitfalls-templates.md) |
-| imports records/beans/JSON with `importData`, or edits formatted cells in bulk | [pitfalls-writing.md](references/pitfalls-writing.md) |
+| imports records/beans/maps/JSON with `importData`, or edits formatted cells in bulk | [pitfalls-writing.md](references/pitfalls-writing.md) |
 | renders PNG, or a chart/pivot/validation result looks wrong | [pitfalls-output.md](references/pitfalls-output.md) |
 | is *about* a license problem, evaluation marks, native loading or threads | [pitfalls-license.md](references/pitfalls-license.md) |
 | needs PDF page setup, fonts, or `StreamWorkbook` details | [enterprise.md](references/enterprise.md) |
+| uses drawings, tables, conditional formatting, protection, signatures, slicers, timelines, subtotals or consolidation | [feature-recipes.md](references/feature-recipes.md) |
 | ports Aspose.Cells / POI / other-library code | [migration.md](references/migration.md) |
 | needs a documentation page or official example for a topic this file does not cover | [sources.md](references/sources.md) |
 
@@ -45,53 +46,65 @@ or your own test. Never cite a page you did not read.
 ## License (standard start-up)
 
 ```java
-LicenseInfo info = Workbook.setLicense(Files.readString(Path.of(System.getenv("AXYRA_LICENSE_FILE"))).trim());
-if (!info.isLicensed()) throw new IllegalStateException("Axyra license not active: " + info.state());
+// throws AxyraException (with the reason) when the token is not in force
+String licenseFile = System.getenv("AXYRA_LICENSE_FILE");
+if (licenseFile == null || licenseFile.isBlank()) {
+    throw new IllegalStateException("AXYRA_LICENSE_FILE is not set");
+}
+LicenseInfo info = Workbook.setLicense(
+        Files.readString(Path.of(licenseFile)).trim(), LicenseMode.REQUIRED);
 ```
 
-An invalid or expired license does **not** throw; the process silently enters
-evaluation mode ("Axyra Evaluation Copy" first tab, banner on PDF/PNG, 100
-opens/saves/renders per process, then `AxyraException`). Never copy license values
-into code or reports, and never remove or hide evaluation marks.
+Without `LicenseMode.REQUIRED` an invalid or expired
+license does **not** throw: check `if (!info.isLicensed()) throw ...` yourself. Otherwise
+the process silently enters evaluation mode ("Axyra Evaluation Copy" first tab, notice
+rows, banner on PDF/PNG, and one shared limit of 100 opens, saves, renders and stream
+creations per process; the 101st throws `AxyraException: evaluation limit reached`,
+whose message says "open or save"). Never copy license values into code or reports,
+and never remove or hide evaluation marks.
 
 ## Core API (exact signatures; imports in api-index `Type :: … in package`)
 
 ```
 Workbook.create()/open(Path) → Workbook   (AutoCloseable; create() has 0 sheets)
 Workbook.createSheet(String) · sheet(String|int) · save(Path) · save(Path, SaveOptions)
-Workbook.recalculate() · renderPdf(Path, PdfOptions) · static licenseStatus()
+Workbook.recalculate() · renderPdf(Path, PdfOptions) · static licenseStatus() · License.status()
 Sheet.cell(int r, int c) · range(String a1) · range(r1,c1,r2,c2) · usedRange()
 Sheet.importData(int r, int c, List<T>[, ImportOptions]) · freezePanes(int rows, int cols)
-Sheet.setColumnWidth(int col, double chars) · addChart(Chart) · addPivotTable(String, String, String)
+Sheet.setColumnWidth(int col, double chars) · addChart(Chart) · addPivotTable(name, location, sourceRef)
 Sheet.pivotTable(int|String) → PivotTableView.refresh() · setPaperSize(9=A4) · setLandscape(boolean)
 Sheet.setPrintArea(String) · fitToPage(int w, int h)
 Cell.value() → CellValue · setValue(CellValue) · setFormula(String) · setDate(LocalDate)
 Cell.formula() → String|null · setStyle(CellStyle) · style()
-Range.values() → CellValue[][] · setValues(CellValue[][]) · setFormulas(String[][]) · formulas()
+Range.values() → CellValue[][] · setValues(CellValue[][]) · setFormula(String) · setFormulas(String[][]) · formulas()
 Range.copyTo(Sheet, int r, int c) · setStyle(CellStyle) · setValidation(Validation) · addConditionalFormat(ConditionalFormat)
 CellValue.number(double) · text(String) · bool(boolean) · blank()
   read: if (v instanceof CellValue.Number n) n.value()   (records Number/Text/Bool/Error/Blank/Array)
 CellStyle.builder().bold().fill(Color.rgb(r,g,b)).numberFormat("#,##0.00").build(); style.toBuilder()
 PdfOptions.builder().sheetNames("Report").build()
 Chart.column()/bar()/line() → Chart.Builder .title(..) .series(name, valuesRef, categoriesRef) .anchor(..) .build()
-Validation.builder() · ConditionalFormat.builder() · DataLabels.value() · ImportOptions.builder()
-StreamWorkbook.create(Path) · addStyle(StreamStyle) → int · startSheet(String) · row(int) → StreamRow
+Validation.list(String...) · Validation.builder() · ConditionalFormat.builder() · DataLabels.value() · ImportOptions.builder()
+StreamWorkbook.create(Path) · addStyle(StreamStyle) → int · startSheet(String) · row(int) → StreamRow · finish()/close()
 StreamStyle.defaults().withNumberFormat(String).withBold()
-StreamRow.addNumber(double[, int style]) · addText(..) · addDate(LocalDate, int style) · commit(); finish()/close()
+StreamRow.addNumber(double[, int style]) · addText(..) · addDate(LocalDate, int style) · commit()
 TemplateMarkers.process(Sheet, Map<String,Object>)
 ```
 
-Indices are zero-based; A1 strings are one-based. Formula strings omit the leading `=`.
+Sheet, row and column indices are zero-based; A1 strings are one-based. The exception is
+`formulaToR1C1` / `formulaToA1`: their anchor row and column are **1-based**. Formula
+strings omit the leading `=`.
 
 Imports — exact packages, never guess them (grep `' :: '` in api-index for any other type):
 
 ```
 io.keikai.axyra.sheets           Workbook, Sheet, Cell, Range, CellValue, CellRef, ChartView,
-                                 PivotTableView, ImportOptions, SubtotalFunction,
+                                 PivotTableView, AggregateFunction, ImportOptions, SubtotalFunction,
+                                 AxyraException, License, LicenseInfo, LicenseStatus,
                                  LicenseMode (since 1.0.0-Beta)
+io.keikai.axyra.sheets.calc      CalcMode
 io.keikai.axyra.sheets.style     CellStyle, Color, BorderStyle
 io.keikai.axyra.sheets.content   Chart, DataLabels, Validation, ConditionalFormat, Table, FormControl
-io.keikai.axyra.sheets.io        PdfOptions, ImageOptions, Renderer, SaveOptions,
+io.keikai.axyra.sheets.io        PdfOptions, ImageOptions, Renderer, SaveOptions, FormulaPolicy,
                                  StreamWorkbook, StreamRow, StreamStyle,
                                  CsvOptions (since 1.0.0-Beta)
 io.keikai.axyra.sheets.template  TemplateMarkers
@@ -106,15 +119,15 @@ io.keikai.axyra.sheets.template  TemplateMarkers
   already in use`. Separate workbooks run in parallel: load or open a template once per thread (or per task).
 
 **Writing**
-- `setNumber`/`setNumbers` replace the cell, dropping its style, comment and hyperlink.
-  Update existing cells with `Cell.setValue` / `Range.setValues` (they keep all three).
+- Value writes (`setValue`, `setValues`, `setNumber`, `setNumbers`) keep the cell's style,
+  comment and hyperlink; `setDate` keeps them too and adds a date format.
 - `Range.setStyle` replaces the whole style; change one attribute per cell with
   `cell.setStyle(cell.style().toBuilder()...build())`.
-- `autoFill` does not shift references. Fill down with `Range.copyTo` or per-cell
-  `setFormulas`; `Range.setFormula` on a multi-cell range writes the same unshifted text.
-- `importData`: `Map` elements are not supported (wrong columns) — build `CellValue[][]`
-  and `setValues`. `LocalDate` becomes a date serial *without* a date format: apply one
-  (or use `Cell.setDate`). JavaBeans export properties alphabetically; set columns explicitly.
+- `Range.setFormula` on a multi-cell range, `autoFill` and `copyTo` all shift relative
+  references (`$` anchors stay). Use `setFormulas(String[][])` for per-cell text.
+- `importData`: `LocalDate` becomes a date serial *without* a date format: apply one
+  (or use `Cell.setDate`). JavaBeans export properties alphabetically and `Map` rows use
+  keys in first-met order; set `ImportOptions` columns explicitly.
 - Keep identifiers like `00042` as text; strings starting with `=` written as text stay text.
 
 **Reading and addressing**
@@ -131,11 +144,12 @@ io.keikai.axyra.sheets.template  TemplateMarkers
 
 **Calculation**
 - Writes recalculate dependents and reads re-evaluate, so results are normally fresh;
-  `save` itself does not recalculate. Call `recalculate()` before saving after
-  `autoFill`, with volatile functions, or for an opened file's untouched formulas.
-- `setCalcMode(MANUAL)` does not stop that and is not saved (the Javadoc says otherwise).
+  `save` itself does not recalculate. Call `recalculate()` once before saving when the
+  workbook is in `CalcMode.MANUAL` (honoured, and saved to and read from XLSX), or when an
+  opened file's formulas you did not touch may carry stale results (stored results are
+  trusted and saved as they are).
 
-**Performance** (measured: 20,000 rows, 40,000 formulas)
+**Performance** (historical benchmark: 20,000 rows, 40,000 formulas; remeasure on the target build)
 - Every write already recalculates its dependents incrementally (~7 µs per edit here),
   while `Workbook.recalculate()` re-evaluates the whole workbook (~120 ms here). Never call
   `recalculate()` inside a loop; call it at most once, before saving, when a case under
@@ -150,20 +164,26 @@ io.keikai.axyra.sheets.template  TemplateMarkers
   speed up editing an existing workbook.
 
 **Output**
-- `.ods` output keeps cached values only, never formulas (SaveOptions/FormulaPolicy apply to
-  XLSX only). Use `.xlsx` for live formulas and state the gap; never claim ODS formulas work.
-- Pivots have no cells until `PivotTableView.refresh()` — call it before saving or rendering.
-- Chart `showDataLabels(true)` is render-only; add `.dataLabels(DataLabels.value())` after each series.
-- `Validation.list(...)` writes an unquoted list and hides the dropdown arrow; use
-  `Validation.builder().type("list").formula1("\"A,B,C\"").showDropdown(false)`.
-- `autoFitColumn` ignores number formats (`8,060.00` can show `####`); set widths explicitly.
+- `.ods` keeps a formula only when it has an OpenFormula translation; others are written as
+  values. An explicit `FormulaPolicy.KEEP` makes such a save (and any CSV/TXT save) throw.
+- A pivot created or changed through the API is built automatically on save and render,
+  but its cells stay blank in memory until then: call `PivotTableView.refresh()` before
+  reading them. A pivot in an opened file that you do not change is rebuilt only by `refresh()`.
+- Drop-down lists: `Validation.list("A", "B")` (quoted, arrow shown). `showDropdown(false)`
+  on the builder *hides* the arrow (OOXML `showDropDown="1"`); leave it unset.
+- `Workbook.theme()` is `null` on a newly created workbook. A style colour can be
+  automatic, indexed, themed or RGB; call `color.isRgb()` before `color.toHex()`.
+- `addSparkline(type, dataRef, location)` creates exactly one sparkline. Qualify the data
+  reference with its sheet and pass one destination cell; call it once per output row.
+- `consolidate` aligns source ranges by position, not by matching labels.
+- `formulaToR1C1` / `formulaToA1` take 1-based anchor coordinates, unlike cell APIs.
 - Single-sheet PDF: `wb.renderPdf(path, PdfOptions.builder().sheetNames("X").build())`;
   page setup (paper, landscape, print area, fit) belongs to the `Sheet`.
 - `StreamWorkbook` is write-only and forward-only (strictly ascending rows, `commit()` each
   row, `finish()`): no opening files, recalculation, charts, pivots, images, merges,
   validation or rendering.
-- Templates: a marker cell holding a `LocalDate` becomes text; with `:group` only the first
-  inserted row reliably keeps the date format — re-apply data-row styles after `process`.
+- Templates with `:group`: detail rows can take the subtotal row's style (bold);
+  re-apply data-row styles after `process`.
 - VBA is preserved in `.xlsm` but never executed; no API runs macros. Offer a Java port.
 - POI's `getCreationHelper()` / `XSSF*` classes and other vendors' APIs do not exist in
   Axyra; map the behaviour, not the class.

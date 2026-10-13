@@ -37,9 +37,15 @@ pivot.addPageField("Year");
 pivot.refresh();
 ```
 
-**Nothing appears in the sheet until `refresh()`.** It recomputes the pivot from
+**The pivot's cells are written by `refresh()`.** It recomputes the pivot from
 the cache and writes the grid; it returns the number of cells written. Batch your
-layout changes and refresh once.
+layout changes and refresh once. Saving and rendering refresh the pivot for you,
+but until then its cells are empty, so call `refresh()` before reading them in
+code. (0.1.0 builds did not refresh on save or render: call `refresh()` before
+either there.)
+
+`addPageField` is an alias of `addFilterField` (the OOXML name for a report
+filter).
 
 Fields are positional. `removeRowField(position)`, `removeDataField(position)`,
 and `moveRowField(from, to)` work on the 0-based position within that axis, not

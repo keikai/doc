@@ -8,7 +8,7 @@ other spreadsheet documents in a format intended for viewing and printing. In
 this guide, we’ll use Axyra Sheets for Java to render an Excel workbook as PDF
 on the server, without installing Excel or running an Office process. We’ll
 start with a basic conversion, then configure sheet selection, page layout,
-fonts, watermarks, and PDF output options. For a short walkthrough of Axyra before diving in, see [Quick Start](https://doc.keikai.io/axyra/quick-start/).
+fonts, watermarks, and PDF output options. For a short walkthrough of Axyra before diving in, see [Quick Start]({{ site.axyra_tutorial }}/).
 
 # The one-liner
 
@@ -26,9 +26,11 @@ That is the whole conversion. Everything below is about controlling the result.
 To stream it to an HTTP response instead of writing a file:
 
 ```java
-byte[] pdf = wb.renderPdf(options);
-response.setContentType("application/pdf");
-response.getOutputStream().write(pdf);
+try (Workbook wb = Workbook.open(Path.of("report.xlsx"))) {
+    byte[] pdf = wb.renderPdf(PdfOptions.builder().build());
+    response.setContentType("application/pdf");
+    response.getOutputStream().write(pdf);
+}
 ```
 
 # Choosing what goes in
@@ -67,7 +69,7 @@ control is on the `Sheet`, before you render:
 ```java
 import io.keikai.axyra.sheets.Sheet;
 
-Sheet sheet = wb.sheet(0);
+Sheet sheet = wb.sheet("Summary");
 
 sheet.setPrintArea("A1:H60");        // or null to clear
 sheet.setLandscape(true);
@@ -100,14 +102,24 @@ layout reference.
 Useful for progress reporting, or for splitting a big render into chunks:
 
 ```java
-int pages = wb.sheetPageCount(0);
+int pages = wb.sheetPageCount(wb.sheet("Summary").index());
 ```
+
+Page counts and the image methods take a sheet index. Resolve it from the name:
+a file saved in Evaluation Mode starts with an extra **Axyra Evaluation Copy**
+sheet, so index `0` is not necessarily your first sheet.
 
 # Fonts
 
 This is the one that bites in production. The renderer needs the fonts the
-workbook asks for; a missing font falls back to a metric-compatible substitute,
-which changes line breaks and therefore pagination.
+workbook asks for. Metric-compatible substitutes are bundled only for Calibri
+(Carlito), Cambria (Caladea), and Arial (Liberation Sans); any other missing font
+falls back to a font with different metrics, which changes line breaks and
+therefore pagination. CJK text needs CJK fonts, such as Noto, installed.
+
+The renderer scans the usual macOS and Linux font directories, but **not
+`C:\Windows\Fonts`**. On Windows, pass that folder, or your application's font
+folder, in `fontDirs`.
 
 ```java
 import java.util.List;
@@ -123,7 +135,7 @@ rather than as an error.
 
 {: .notice--warning}
 **A slim container image usually ships no fonts at all.** If output must be
-byte-stable across machines, install the fonts in the image (or mount them) and
+pixel-stable across machines, install the fonts in the image (or mount them) and
 point `fontDirs` at them. "It looks right on my laptop" is not evidence.
 
 # Watermarks
@@ -161,12 +173,13 @@ be combined with the password options above.
 
 # The complete program
 
-Converts a workbook to a landscape, A4, fit-to-width PDF with a repeated header
-row and per-sheet bookmarks.
+Converts every visible worksheet to a landscape, A4, fit-to-width PDF with a
+repeated header row and per-sheet bookmarks.
 
 ```java
 import io.keikai.axyra.sheets.Sheet;
 import io.keikai.axyra.sheets.SheetType;
+import io.keikai.axyra.sheets.Visibility;
 import io.keikai.axyra.sheets.Workbook;
 import io.keikai.axyra.sheets.io.PdfOptions;
 
@@ -185,7 +198,9 @@ public class ExcelToPdf {
 
             for (int i = 0; i < wb.sheetCount(); i++) {
                 Sheet sheet = wb.sheet(i);
-                if (sheet.sheetType() != SheetType.WORKSHEET) {
+                // Naming a hidden sheet would render it, so skip those too.
+                if (sheet.sheetType() != SheetType.WORKSHEET
+                        || sheet.visibility() != Visibility.VISIBLE) {
                     continue;
                 }
                 worksheets.add(sheet.name());
@@ -207,8 +222,9 @@ public class ExcelToPdf {
 
             wb.renderPdf(target, options);
 
-            int pages = wb.sheetPageCount(0);
-            System.out.println("wrote " + target + "; first sheet is " + pages + " page(s)");
+            String first = worksheets.get(0);
+            int pages = wb.sheetPageCount(wb.sheet(first).index());
+            System.out.println("wrote " + target + "; " + first + " is " + pages + " page(s)");
         }
     }
 }
@@ -229,10 +245,12 @@ ImageOptions image = ImageOptions.builder()
         .page(1)             // one page of a multi-page sheet
         .build();
 
-byte[] png  = wb.renderSheetPng(0, image);
-byte[] svg  = wb.renderSheetSvg(0, image);
-byte[] jpg  = Renderer.toJpeg(wb, 0, image);
-byte[] tiff = Renderer.toTiff(wb, 0, image);
+int summary = wb.sheet("Summary").index();
+
+byte[] png  = wb.renderSheetPng(summary, image);
+byte[] svg  = wb.renderSheetSvg(summary, image);
+byte[] jpg  = Renderer.toJpeg(wb, summary, image);
+byte[] tiff = Renderer.toTiff(wb, summary, image);
 ```
 
 Use `targetWidthPx(...)` instead of `scale(...)` when you need an exact pixel
@@ -247,7 +265,7 @@ paginated output, HTML export is usually the better fit; see
 
 | Symptom | Cause |
 |---|---|
-| Line breaks and pagination differ between machines | Different fonts available. Ship the fonts and set `fontDirs`. |
+| Line breaks and pagination differ between machines | Different fonts available. Ship the fonts and set `fontDirs` (on Windows, include `C:\Windows\Fonts`). |
 | Columns spill onto a second page | The sheet's own scale/fit setting. Use `fitTo(Fit.WIDTH)` or `setPageScale`. |
 | The header row appears only on page 1 | `setPrintTitleRows("$1:$1")` was not set. |
 | Render fails with an unknown sheet name | `sheetNames` is case-sensitive and rejects unknown names. Read names from the workbook. |

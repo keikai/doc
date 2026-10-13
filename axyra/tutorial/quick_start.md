@@ -36,7 +36,14 @@ from source, you must add the native resource yourself or use the
 
 You do not need a license key to follow this Quick Start. Without a key, Axyra Sheets runs in Evaluation Mode, which is intended for evaluation purposes only.
 
-Evaluation output may include an evaluation notice or watermark. For full Evaluation Mode behavior, a 30-day full-featured evaluation key, and production licensing, see
+In Evaluation Mode, every saved workbook gets an extra first sheet named
+**Axyra Evaluation Copy**, a notice row below each sheet's data, and a notice in
+the page header. PDF and image output carries a one-line banner. A process can
+perform at most 100 opens, saves, renders, and streaming workbook creations
+combined; the next attempt throws `AxyraException`, so restart the process to
+continue. The program also prints a one-line evaluation
+notice when it starts. For the full Evaluation Mode behavior, a 30-day
+full-featured evaluation key, and production licensing, see
 [Licensing and Evaluation]({{ site.axyra_devref }}/License).
 
 # 2. Create a workbook
@@ -53,7 +60,7 @@ import java.nio.file.Path;
 public class HelloAxyra {
     public static void main(String[] args) {
         try (Workbook wb = Workbook.create()) {
-	    Sheet sheet = wb.createSheet("Sheet1");
+            Sheet sheet = wb.createSheet("Sheet1");
 
             sheet.cell(0, 0).setValue(CellValue.text("Item"));
             sheet.cell(0, 1).setValue(CellValue.text("Qty"));
@@ -63,9 +70,8 @@ public class HelloAxyra {
             sheet.setNumber(1, 1, 12);
             sheet.setNumber(1, 2, 4.25);
 
-            sheet.cell(1, 3).setFormula("B2*C2");
+            sheet.cell(1, 3).setFormula("B2*C2");   // calculated right away
 
-            wb.recalculate();
             wb.save(Path.of("hello.xlsx"));
         }
     }
@@ -79,9 +85,12 @@ A few things worth noting:
 - **Values are a sealed type.** `CellValue.text(...)`, `.number(...)`,
   `.bool(...)`, `.blank()`, `.error(code)`, and `.array(...)` are the factories.
   For plain numbers, `sheet.setNumber(row, col, value)` is a shortcut.
-- **Formulas are not evaluated on assignment.** Call `wb.recalculate()` (or
-  `wb.recalculateDirty()`) when you want values. Saving does not implicitly
-  recalculate.
+- **Formulas are calculated as you write.** Setting a value or a formula
+  recalculates the cells that depend on it, so `D2` already holds `51` and the
+  saved file carries that result. Saving itself never recalculates. Call
+  `wb.recalculate()` once before saving only when results can be stale: in
+  `CalcMode.MANUAL`, or for formulas in an opened file that your edits did not
+  touch.
 
 # 3. Read a value back
 

@@ -26,6 +26,53 @@ Signatures only: behavior is in SKILL.md and the pitfalls files.
 another version, confirm with `javap` on that JAR.
 """
 
+# javap normally omits MethodParameters.  These overloads are especially easy
+# to misuse because several adjacent parameters have the same type, so preserve
+# their source-level meaning in the generated index.  Keys use the shortened
+# signature emitted by this script; values replace only the parameter list.
+PARAMETER_NAMES = {
+    "Sheet.addPivotTable(String, String, String)":
+        "String name, String location, String sourceRef",
+    "Sheet.addPicture(byte[], String, int, int, int, int)":
+        "byte[] imageData, String format, int fromRow, int fromColumn, int toRow, int toColumn",
+    "Sheet.addPicture(byte[], String, int, int, int, int, int, int, int, int)":
+        "byte[] imageData, String format, int fromRow, int fromColumn, int fromRowOffset, "
+        "int fromColumnOffset, int toRow, int toColumn, int toRowOffset, int toColumnOffset",
+    "Sheet.subtotal(int, int, int, SubtotalFunction, int...)":
+        "int firstDataRow, int lastRow, int groupByColumn, SubtotalFunction function, "
+        "int... totalColumns",
+    "Sheet.subtotal(int, int, int, boolean, SubtotalFunction, int...)":
+        "int firstRow, int lastRow, int groupByColumn, boolean hasHeaders, "
+        "SubtotalFunction function, int... totalColumns",
+    "Sheet.consolidate(int, int, ConsolidateFunction, Range...)":
+        "int destinationRow, int destinationColumn, ConsolidateFunction function, Range... sources",
+    "Sheet.addSparkline(String, String, String)":
+        "String type, String sheetQualifiedDataRef, String singleCellLocation",
+    "Workbook.sign(byte[], byte[])":
+        "byte[] privateKey, byte[] certificate",
+    "Workbook.sign(Path, byte[], byte[])":
+        "Path file, byte[] privateKey, byte[] certificate",
+    "Workbook.addSlicer(String, String)":
+        "String name, String source",
+    "Workbook.addSlicer(String, String, String, int, int, int, int, int)":
+        "String name, String source, String pivotTable, int sheetIndex, int row, int column, "
+        "int endRow, int endColumn",
+    "Workbook.addSlicer(String, String, String, String, int, int, int, int, int)":
+        "String name, String source, String pivotTable, String cacheName, int sheetIndex, "
+        "int row, int column, int endRow, int endColumn",
+    "Workbook.addTimeline(String, String, String)":
+        "String name, String source, String dateField",
+    "Workbook.addTimeline(String, String, String, int, int, int, int, int)":
+        "String name, String source, String dateField, int sheetIndex, int row, int column, "
+        "int endRow, int endColumn",
+    "Workbook.splitToFiles(Path, String)":
+        "Path directory, String namePattern",
+    "Workbook.formulaToR1C1(String, int, int)":
+        "String formula, int oneBasedAnchorRow, int oneBasedAnchorColumn",
+    "Workbook.formulaToA1(String, int, int)":
+        "String formula, int oneBasedAnchorRow, int oneBasedAnchorColumn",
+}
+
 
 def short(s):
     s = re.sub(r"io\.keikai\.axyra\.sheets\.(?:[a-z]+\.)?", "", s)
@@ -74,7 +121,9 @@ def main(jar, dst):
                 lines.append(f"new {cls}({c.group(2)})")
             elif m:
                 st, ret, mn, args = m.groups()
-                lines.append(f"{cls}.{mn}({args}) → {'static ' if st else ''}{ret}")
+                signature = f"{cls}.{mn}({args})"
+                named_args = PARAMETER_NAMES.get(signature, args)
+                lines.append(f"{cls}.{mn}({named_args}) → {'static ' if st else ''}{ret}")
             elif re.match(r"(static )?\S+ \S+$", l) and kind == "enum":
                 consts.append(l.split()[-1])
             elif re.match(r"(static )?\S+ \S+$", l):

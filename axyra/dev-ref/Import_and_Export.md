@@ -13,9 +13,11 @@ Workbook.openBytes(bytes, "xlsx", "pa55w0rd");
 Workbook.open(inputStream, "xlsx");
 ```
 
-From a `Path`, the format comes from the file. From bytes or a stream there is no
-name to inspect, so the format is an explicit lowercase extension: `"xlsx"`,
-`"xlsm"`, `"xlsb"`, `"xls"`, `"ods"`, `"csv"`, `"json"`.
+From a `Path`, the format comes from the file extension; when the extension and
+the container disagree (a ZIP package named `.xls`), the container wins. An
+unrecognised extension is refused with a list of the readable ones. From bytes
+or a stream there is no name to inspect, so the format is an explicit lowercase
+extension: `"xlsx"`, `"xlsm"`, `"xlsb"`, `"xls"`, `"ods"`, `"csv"`, `"json"`.
 
 ## Import options
 
@@ -84,16 +86,27 @@ encryption is supported as well.
 OPC package signatures (XML-DSig), as Excel's "Add a Digital Signature" produces:
 
 ```java
+byte[] privateKey  = Files.readAllBytes(Path.of("signer.key"));   // PKCS#8 DER or PEM
+byte[] certificate = Files.readAllBytes(Path.of("signer.crt"));   // X.509 DER or PEM
+
 byte[] signed = wb.sign(privateKey, certificate);
 wb.sign(Path.of("signed.xlsx"), privateKey, certificate);
 
-for (SignatureInfo info : wb.signatures()) {
-    System.out.println(info);
+try (Workbook check = Workbook.open(Path.of("signed.xlsx"))) {
+    for (SignatureInfo info : check.signatures()) {
+        System.out.println(info);
+    }
 }
 ```
 
-Signing covers the package as saved. Editing a signed workbook and saving it
-again invalidates the signature, which is the point — sign last.
+The key may also be an RSA PKCS#1 key. `signatures()` reports on the file as it
+was opened, so it is empty for a workbook created in code; reopen the signed file
+to verify it.
+
+Signing covers the package as saved and does not change the workbook object.
+Saving it again writes an **unsigned** file — the writer drops the signature
+parts rather than emit one that no longer verifies — so sign last, and re-sign
+after every save that must stay signed.
 
 # Verbatim preservation
 
@@ -130,21 +143,33 @@ Workbook wb = Workbook.open(Path.of("data.csv"));
 wb.save(Path.of("data-out.csv"));
 ```
 
-On export, cells beginning with `=`, `+`, `-`, or `@` are neutralised so that
-opening the file in a spreadsheet application does not execute them as formulas.
-This is CSV injection defence and it is on by default — worth knowing if you
-were expecting a formula to survive an export to CSV.
+On export, a formula cell is written as its value; no formula survives. Cell
+text is written as is: the export does **not** neutralise text that begins with
+`=`, `+`, `-`, or `@`. If a CSV file built from untrusted input will be opened in
+a spreadsheet application, escape such text yourself (CSV injection).
+
+`saveCsv(Path, CsvOptions)` (`io.keikai.axyra.sheets.io.CsvOptions`, new in
+1.0.0-Beta) picks the sheet, the delimiter, raw or formatted
+numbers, and a UTF-8 byte-order mark:
+
+```java
+wb.saveCsv(Path.of("payments.csv"), CsvOptions.create()
+        .sheet("Payments")
+        .values(CsvOptions.Values.RAW));
+```
 
 # JSON
 
-A structural JSON representation of the workbook, useful for diffing, for
-storing a workbook in a document database, or for handing sheet data to a
-front end:
+JSON output is an array of row objects from one sheet, keyed by the header row —
+the shape a front end or a REST client expects:
 
 ```java
-byte[] json = wb.saveBytes("json");
-Workbook restored = Workbook.openBytes(json, "json");
+byte[] json = wb.saveBytes("json");   // [{"Region":"APAC","Amount":5.0}, …]
 ```
+
+It carries values only: no formulas, styles, or other sheets, so it is not a way
+to store or diff a whole workbook. Opening JSON (`Workbook.openBytes(json,
+"json")`) reads such an array back into a single sheet.
 
 # Next
 

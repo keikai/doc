@@ -64,8 +64,13 @@ directories when the defaults are not enough:
 PdfOptions.builder().fontDirs(List.of("/usr/share/fonts", "/opt/corp-fonts")).build();
 ```
 
-A missing font falls back to a metric-compatible substitute, which changes line
-breaks. If output must be pixel-stable across machines, ship the fonts.
+The renderer scans the usual macOS and Linux font directories, but not
+`C:\Windows\Fonts`; on Windows, pass that folder (or your application's font
+folder) in `fontDirs`. Metric-compatible substitutes are bundled for Calibri
+(Carlito), Cambria (Caladea), and Arial (Liberation Sans). Other missing fonts
+fall back to a different font, which changes line breaks, and CJK text needs
+CJK fonts (such as Noto) installed. If output must be pixel-stable across
+machines, ship the fonts.
 
 # Images
 
@@ -81,13 +86,19 @@ ImageOptions image = ImageOptions.builder()
         .page(1)             // one page of a multi-page sheet
         .build();
 
-byte[] png = wb.renderSheetPng(0, image);
-byte[] svg = wb.renderSheetSvg(0, image);
+int summary = wb.sheet("Summary").index();   // look the sheet up by name
+
+byte[] png = wb.renderSheetPng(summary, image);
+byte[] svg = wb.renderSheetSvg(summary, image);
 
 // The Renderer facade covers the rest
-byte[] jpg  = Renderer.toJpeg(wb, 0, image);
-byte[] tiff = Renderer.toTiff(wb, 0, image);
+byte[] jpg  = Renderer.toJpeg(wb, summary, image);
+byte[] tiff = Renderer.toTiff(wb, summary, image);
 ```
+
+The methods take a sheet index. Resolve it from the sheet name: a file saved in
+Evaluation Mode starts with an extra **Axyra Evaluation Copy** sheet, so index
+`0` is not necessarily your first sheet.
 
 Use `scale(...)` for a multiple of the nominal size, or `targetWidthPx(...)` to
 pin the output to an exact pixel width and let the engine derive the scale.
@@ -97,7 +108,7 @@ pin the output to an exact pixel width and let the engine derive the scale.
 Useful for progress reporting, or for splitting a large render into chunks:
 
 ```java
-int pages = wb.sheetPageCount(0);
+int pages = wb.sheetPageCount(wb.sheet("Summary").index());
 ```
 
 # HTML

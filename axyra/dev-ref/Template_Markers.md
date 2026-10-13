@@ -7,6 +7,10 @@ Template markers are a templating layer: design a spreadsheet in Excel with
 `${...}` placeholders, then fill it from a Java `Map` at runtime. Your report
 layout lives in a file your users can edit, not in your code.
 
+The examples below assume the template worksheet is named `Invoice`. Use the
+actual worksheet name from your template rather than relying on its index; an
+Evaluation Mode save can insert a notice sheet at index 0.
+
 ```java
 import io.keikai.axyra.sheets.template.TemplateMarkers;
 
@@ -16,8 +20,8 @@ try (Workbook wb = Workbook.open(Path.of("invoice-template.xlsx"))) {
             "lines", lineItems,            // a List
             "logo", logoBytes);
 
-    TemplateMarkers.process(wb.sheet(0), data);
-    wb.recalculateDirty();
+    TemplateMarkers.process(wb.sheet("Invoice"), data);
+    wb.recalculate();
     wb.renderPdf(Path.of("invoice.pdf"));
 }
 ```
@@ -38,7 +42,10 @@ a public field — in that order. A `null` anywhere along the chain renders as a
 blank cell, so a partially-populated object does not break the report.
 
 A cell that is **exactly** one marker keeps the value's type — a number stays a
-number, a boolean stays a boolean. A marker embedded in surrounding text
+number, a boolean stays a boolean, and a `LocalDate` becomes a date serial
+formatted `yyyy-mm-dd` unless the template cell already has a number format.
+(0.1.0 builds wrote a `LocalDate` as text; set dates with `Cell.setDate` after
+`process` there.) A marker embedded in surrounding text
 (`Dear ${customer.name},`) yields text. This distinction matters if you intend
 to sum the column afterwards.
 
@@ -119,7 +126,7 @@ Map<String, Object> data = Map.of(
                 new Line("Widget", 12, 51.0),
                 new Line("Gadget", 3, 27.0)));
 
-TemplateMarkers.process(wb.sheet(0), data);
+TemplateMarkers.process(wb.sheet("Invoice"), data);
 ```
 
 Row 3 repeats twice, `=B3*1.05` becomes `=B3*1.05` and `=B4*1.05`, and the total
@@ -132,8 +139,7 @@ in row 5 sums the amounts.
   optional fields; quiet when you have a typo — check the output.
 - **Inserted rows copy the template row's cell styles** — font, fill, borders,
   and number format — so style the template row the way every data row should
-  look. (Builds before 0.1.0.FL.20260922-Eval did not copy them; apply styling
-  after processing there.)
+  look.
 - **Formulas outside the repeated row keep their ranges.** A `=SUM(B3:B3)` below
   the block is not widened to cover the inserted rows. Put totals in an aggregate
   marker such as `${lines.amount:sum}` instead.
