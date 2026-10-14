@@ -10,10 +10,21 @@ Axyra Sheets supports two equally valid development paths. Both produce the same
 Java project and use the same public API; the difference is whether you write the
 first implementation yourself or collaborate with an AI coding assistant.
 
-| Path | Start here |
-|---|---|
-| **AI-assisted development** | **[Build with the Axyra Sheets skill]({{ site.axyra_devref }}/AI_Assisted_Development)** — install the skill, describe your spreadsheet task or migration, and verify the generated application. |
-| **Manual development** | **[Build your first workbook by hand]({{ site.axyra_tutorial }}/quick_start)** — add the dependency, create cells and formulas, recalculate, and save an XLSX file. |
+<div class="axyra-install-options">
+  <section class="axyra-install-option">
+    <h2>AI-assisted development</h2>
+    <p>Install the skill, describe your spreadsheet task or migration, and verify the generated application.</p>
+    <a class="btn btn--success"
+       href="{{ site.axyra_devref }}/AI_Assisted_Development">Build with the Axyra Sheets skill</a>
+    <span class="axyra-badge">Recommended if you are unsure</span>
+  </section>
+  <section class="axyra-install-option">
+    <h2>Manual development</h2>
+    <p>Add the dependency, create cells and formulas, recalculate, and save an XLSX file.</p>
+    <a class="btn btn--success"
+       href="{{ site.axyra_tutorial }}/quick_start">Build your first workbook by hand</a>
+  </section>
+</div>
 
 If you are unsure, start with the AI-assisted path. It still shows the generated
 code and the commands used to build it, so you remain in control of the result.

@@ -74,9 +74,26 @@
 }
 
 .axyra-install-option {
-  border: 1px solid #e0e3e7;
+  background: #fff;
+  border: 1px solid #d0d0d0;
   border-radius: 0.45rem;
   padding: 1rem;
+}
+
+.axyra-badge {
+  background: #e8dbbd;
+  border-radius: 3px;
+  color: #5c4a24;
+  display: block;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 1.4;
+  padding: 4px 10px;
+  width: fit-content;
+}
+
+.axyra-install-option .btn + .axyra-badge {
+  margin-top: 0.6rem;
 }
 
 .axyra-install-option > :first-child {
