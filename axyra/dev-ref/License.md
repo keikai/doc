@@ -42,7 +42,7 @@ Evaluation Mode does limit how long and how much one process may work:
 Restart the process to continue evaluating, or install a license key.
 
 An invalid or expired key does not throw by default: `setLicense` returns a
-`LicenseInfo` whose state is `EVALUATION`, so check `info.isLicensed()` as shown
+`LicenseInfo` whose state is `INVALID` or `EXPIRED`, so check `info.isLicensed()` as shown
 below, or pass `LicenseMode.REQUIRED` to make it throw (see
 [Production License](#production-license)).
 
@@ -134,7 +134,8 @@ The possible states are:
 | State | Meaning |
 |---|---|
 | `UNLICENSED` | No key is installed; Evaluation Mode applies. |
-| `EVALUATION` | A key was rejected or is no longer valid; Evaluation Mode applies. |
+| `INVALID` | A key was rejected; Evaluation Mode applies. `reason()` says why. |
+| `EXPIRED` | A time-limited key has expired; Evaluation Mode applies. |
 | `LICENSED` | A valid license is active. |
 | `GRACE` | A time-limited license has expired but remains active during its grace period. |
 

@@ -302,8 +302,8 @@ active.
 **Response (excerpt):**
 
 > **Root cause:** the job installed the license from `config/axyra.lic` and never
-> checked the result. That file is not an active license: `setLicense` returns
-> state `EVALUATION` without throwing. Evaluation mode adds the
+> checked the result. That file is not an active license: `setLicense` falls
+> back to Evaluation Mode without throwing. Evaluation mode adds the
 > "Axyra Evaluation Copy" sheet and limits opens and saves to 100 per process; each
 > file costs one of each, so the job died on file 51.
 >

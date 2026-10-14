@@ -1,6 +1,6 @@
 # Pitfalls: license, evaluation mode and runtime
 
-Measured on `1.0.0-Beta.FL.20261012-Eval`; recheck against the resolved build. Docs:
+Measured on `1.0.0-Beta.FL.20261013-Eval`; recheck against the resolved build. Docs:
 `https://doc.keikai.io/axyra/dev-ref/License` and `dev-ref/Native_Loader`.
 
 ## Installing a license
@@ -9,7 +9,8 @@ Axyra is commercially licensed. Install a legitimate token once at startup with
 `Workbook.setLicense(token, LicenseMode.REQUIRED)` (1.0.0-Beta), which throws
 `AxyraException` naming the reason when the token is not in force. It returns a
 `LicenseInfo`; `info.state()` / `Workbook.licenseStatus().state()` is one of
-`LicenseStatus.LICENSED`, `GRACE`, `EVALUATION` or `UNLICENSED`, and `reason()`
+`LicenseStatus.LICENSED`, `GRACE`, `UNLICENSED`, `EXPIRED` or `INVALID` (builds
+before 20261013 had `EVALUATION` instead of the last two), and `reason()`
 (1.0.0-Beta) says why a token was not applied. `License.status()` is the equivalent
 process-global status accessor; `LicenseInfo` itself has no `status()` method.
 

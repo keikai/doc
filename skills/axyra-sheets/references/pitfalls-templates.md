@@ -1,6 +1,6 @@
 # Pitfalls: TemplateMarkers reports
 
-Measured on `1.0.0-Beta.FL.20261012-Eval`; recheck against the resolved build. Docs:
+Measured on `1.0.0-Beta.FL.20261013-Eval`; recheck against the resolved build. Docs:
 `https://doc.keikai.io/axyra/dev-ref/Template_Markers` and
 `guides/generate-excel-reports-java`. Examples: `devref/TemplateMarkersExample.java`,
 `guides/GenerateReportExample.java` in the examples repository.

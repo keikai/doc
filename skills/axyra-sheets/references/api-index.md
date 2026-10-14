@@ -1,6 +1,6 @@
-# Axyra Sheets API index — 1.0.0-Beta.FL.20261012-Eval
+# Axyra Sheets API index — 1.0.0-Beta.FL.20261013-Eval
 
-Generated with `javap -public` from `axyra-sheets-1.0.0-Beta.FL.20261012-Eval.jar` (every public
+Generated with `javap -public` from `axyra-sheets-1.0.0-Beta.FL.20261013-Eval.jar` (every public
 type except `internal`). One member per line: `Type.method(params) → return`. The
 `io.keikai.axyra.sheets.` and `java.*` package prefixes are dropped, nested types are
 written `Outer.Inner`, and each type line (`Type :: kind in package`) gives the import.
@@ -889,7 +889,7 @@ LicenseInfo.reason() → String
 LicenseInfo.product() → String
 LicenseInfo.platform() → String
 LicenseInfo.licenseType() → String
-LicenseInfo.licensedDevelopers() → String
+LicenseInfo.licenseCount() → String
 LicenseInfo.customerId() → String
 LicenseInfo.certificateNo() → String
 LicenseInfo.keyUsage() → String
@@ -903,7 +903,8 @@ LicenseMode.values() → static LicenseMode[]
 LicenseMode.valueOf(String) → static LicenseMode
 LicenseStatus :: class in io.keikai.axyra.sheets (extends Enum<LicenseStatus>)
 LicenseStatus.UNLICENSED (field LicenseStatus)
-LicenseStatus.EVALUATION (field LicenseStatus)
+LicenseStatus.EXPIRED (field LicenseStatus)
+LicenseStatus.INVALID (field LicenseStatus)
 LicenseStatus.LICENSED (field LicenseStatus)
 LicenseStatus.GRACE (field LicenseStatus)
 LicenseStatus.values() → static LicenseStatus[]
