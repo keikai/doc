@@ -96,6 +96,18 @@ axyra_version: "1.0.0-Beta.FL.20261013-Eval"
 # ZK's repository, so every dependency snippet needs this repository too.
 axyra_repo_url: "https://mavensync.zkoss.org/eval"
 axyra_repo_id: "keikai-eval"
+# Optional email capture and lead routing on the Axyra pages
+# (_includes/axyra_lead_form.html). Subscriptions, evaluation requests and
+# commercial inquiries go to separate endpoints and are recorded separately.
+# Leave an endpoint empty to run its form in preview mode: it validates and
+# shows the payload, but sends nothing.
+axyra_leads:
+  campaign: "axyra_skills_pilot"
+  subscribe_endpoint: ""
+  evaluation_endpoint: ""
+  commercial_endpoint: ""
+  # Proposed cadence: Marketing must confirm it before the form goes live.
+  subscribe_cadence: "Up to two emails per month, with an unsubscribe link in every message."
 # Setting `exclude` REPLACES Jekyll's defaults rather than adding to them, so the
 # default entries have to be repeated here. Without them a local
 # `bundle config set --local path vendor/bundle` makes Jekyll try to build the

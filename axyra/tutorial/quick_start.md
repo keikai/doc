@@ -45,6 +45,8 @@ continue. The program also prints a one-line evaluation
 notice when it starts. For the full Evaluation Mode behavior, a 30-day
 full-featured evaluation key, and production licensing, see
 [Licensing and Evaluation]({{ site.axyra_devref }}/License).
+Stuck at any step?
+[Request evaluation help]({{ '/axyra/evaluation-help' | relative_url }}?src=quickstart_eval_mode).
 
 # 2. Create a workbook
 
@@ -117,6 +119,8 @@ import io.keikai.axyra.sheets.Range;
 
 Range header = sheet.range("A1:D1");    // same as sheet.range(0, 0, 0, 3)
 ```
+
+{% include axyra_cta.html touchpoint="manual_quickstart_end" ab=true topic="migration" %}
 
 # Next
 

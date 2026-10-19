@@ -37,8 +37,18 @@ Choose the installation method that fits your coding assistant:
     <p>Download the folder and install it manually in your assistant's skill directory.</p>
     <a class="btn btn--success"
        href="{{ '/assets/downloads/axyra-sheets-skill.zip' | relative_url }}"
-       download data-ga-event="download_agent_skill">Download the Axyra Sheets skill (ZIP)</a>
+       download data-ga-event="download_agent_skill" data-download-trigger>Download the Axyra Sheets skill (ZIP)</a>
   </section>
+</div>
+
+<div class="axyra-download-dialog-host">
+<dialog class="axyra-download-dialog" data-download-complete aria-labelledby="axyra-download-dialog-title">
+  <button class="axyra-dialog-close" type="button" data-dialog-close aria-label="Close">&times;</button>
+  <p class="axyra-download-complete__status">&#10003; Your download has started. If it did not, <a href="{{ '/assets/downloads/axyra-sheets-skill.zip' | relative_url }}" download>download the ZIP again</a>.</p>
+  <p id="axyra-download-dialog-title" class="axyra-dialog-title">Optional: get Axyra migration examples and compatibility updates</p>
+{% include axyra_lead_form.html type="subscribe" touchpoint="download_complete" compact=true %}
+  <button class="axyra-dialog-dismiss" type="button" data-dialog-close>No thanks</button>
+</dialog>
 </div>
 
 The ZIP contains an `axyra-sheets` folder. Keep it intact so the assistant can
@@ -171,6 +181,8 @@ and a banner to PDF and image pages, and allows 100 opens, saves, renders, and
 streaming workbook creations combined per process. A batch job that fails partway through with an "evaluation limit reached"
 `AxyraException` is usually running unlicensed. See
 [Licensing and Evaluation]({{ site.axyra_devref }}/License).
+
+{% include axyra_cta.html touchpoint="ai_quickstart_end" ab=true topic="migration" %}
 
 # Rules that prevent common AI mistakes
 

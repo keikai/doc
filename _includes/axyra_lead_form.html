@@ -1,0 +1,92 @@
+{%- comment -%}
+  Optional lead capture for the Axyra pages. One form per lead type, recorded
+  separately: a subscription never implies an evaluation or sales request, and
+  neither of those subscribes anyone.
+
+    type        subscribe | evaluation | commercial
+    touchpoint  label of the surface that shows the form; a form page leaves it
+                out and takes `?src=` from the link that opened it instead
+    compact     true to drop the intro line (inline download-completion form)
+
+  With no endpoint in site.axyra_leads the form runs in preview mode: it
+  validates and shows the payload a live endpoint would receive, but sends
+  nothing. Emails are never sent to analytics.
+  Keep this include free of blank lines: it is used inside Markdown HTML blocks.
+{%- endcomment -%}
+{%- assign leads = site.axyra_leads -%}
+{%- if include.type == "evaluation" -%}
+  {%- assign endpoint = leads.evaluation_endpoint -%}
+{%- elsif include.type == "commercial" -%}
+  {%- assign endpoint = leads.commercial_endpoint -%}
+{%- else -%}
+  {%- assign endpoint = leads.subscribe_endpoint -%}
+{%- endif -%}
+<form class="axyra-lead-form{% if include.compact %} axyra-lead-form--compact{% endif %}" data-axyra-lead-form novalidate
+      data-lead-type="{{ include.type | default: 'subscribe' }}"
+      data-endpoint="{{ endpoint }}"
+      data-campaign="{{ leads.campaign }}"
+      data-touchpoint="{{ include.touchpoint }}">
+{%- if include.type == "evaluation" %}
+  <label class="axyra-field">
+    <span>Work email</span>
+    <input type="email" name="email" autocomplete="email" required>
+  </label>
+  <label class="axyra-field">
+    <span>Product and version</span>
+    <input type="text" name="product_version" value="Axyra Sheets {{ site.axyra_version }}" required>
+  </label>
+  <label class="axyra-field">
+    <span>What are you building or migrating?</span>
+    <textarea name="use_case" rows="3" required placeholder="For example: nightly XLSX and PDF sales reports, migrating from Apache POI"></textarea>
+  </label>
+  <label class="axyra-field">
+    <span>What is blocking you? <em>(optional)</em></span>
+    <textarea name="blocker" rows="3" placeholder="An error message, an unexpected result, or a license question"></textarea>
+  </label>
+  <p class="axyra-form-note">Our developer support team replies by email to help with your evaluation and to explain the license options available for your case. Submitting this does not subscribe you to newsletters.</p>
+  <button class="btn btn--success" type="submit">Request evaluation help</button>
+{%- elsif include.type == "commercial" %}
+  <label class="axyra-field">
+    <span>Work email</span>
+    <input type="email" name="email" autocomplete="email" required>
+  </label>
+  <label class="axyra-field">
+    <span>Your question about pricing or deployment</span>
+    <textarea name="question" rows="4" required placeholder="For example: number of servers, container or cloud deployment, expected volume"></textarea>
+  </label>
+  <label class="axyra-field">
+    <span>Organization <em>(optional)</em></span>
+    <input type="text" name="organization" autocomplete="organization">
+  </label>
+  <label class="axyra-field">
+    <span>Timing <em>(optional)</em></span>
+    <select name="timing">
+      <option value="">Not decided</option>
+      <option value="this_quarter">Within this quarter</option>
+      <option value="next_quarter">Next quarter</option>
+      <option value="later">Later</option>
+    </select>
+  </label>
+  <p class="axyra-form-note">Our sales team replies by email to clarify your project and agree on a next step. Submitting this does not subscribe you to newsletters.</p>
+  <button class="btn btn--success" type="submit">Discuss pricing or deployment</button>
+{%- else %}
+  {%- unless include.compact %}
+  <p class="axyra-form-intro">Receive practical examples, Skill changes and compatibility guidance for the Axyra topics you choose.</p>
+  {%- endunless %}
+  <label class="axyra-field">
+    <span>Email</span>
+    <input type="email" name="email" autocomplete="email" required>
+  </label>
+  <fieldset class="axyra-topics">
+    <legend>Topics</legend>
+    <label><input type="checkbox" name="topics" value="migration" checked> Migration examples (Apache POI, Aspose.Cells)</label>
+    <label><input type="checkbox" name="topics" value="compatibility" checked> Compatibility and release updates</label>
+    <label><input type="checkbox" name="topics" value="skill"> Agent Skill changes</label>
+    <label><input type="checkbox" name="topics" value="evaluation"> Evaluation tips and license options</label>
+  </fieldset>
+  <p class="axyra-form-note">{{ leads.subscribe_cadence }}</p>
+  <button class="btn btn--success" type="submit">Send me developer updates</button>
+{%- endif %}
+  <label class="axyra-hp" aria-hidden="true">Leave empty <input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+  <div class="axyra-form-status" role="status" aria-live="polite"></div>
+</form>

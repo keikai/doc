@@ -46,6 +46,8 @@ An invalid or expired key does not throw by default: `setLicense` returns a
 below, or pass `LicenseMode.REQUIRED` to make it throw (see
 [Production License](#production-license)).
 
+{% include axyra_cta.html type="evaluation" touchpoint="license_evaluation" %}
+
 # 30-Day Evaluation License
 
 A 30-day evaluation license enables all features and produces clean,
@@ -93,6 +95,8 @@ clean. After the grace period, Axyra Sheets returns to Evaluation Mode.
 license. Our sales team will confirm the appropriate edition, deployment scope,
 and license term for your application. After purchase, you receive a signed
 production license-key file.
+
+{% include axyra_cta.html type="commercial" touchpoint="license_production" %}
 
 Install a production key through the same process-wide API used for a 30-day
 evaluation key. In production, load it from a secret manager, environment

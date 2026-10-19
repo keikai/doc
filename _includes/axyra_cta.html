@@ -1,0 +1,39 @@
+{%- comment -%}
+  An optional next-step invitation on an Axyra page. Never a gate: the page
+  content stays usable without it.
+
+    touchpoint  label reported with impressions, clicks and submissions
+    type        subscribe | evaluation | commercial
+    ab          true to compare the generic and the migration-specific copy on
+                this surface (subscribe only; placement and offer stay the same)
+    title, text, button   copy; defaults follow the lead type
+
+  Keep this include free of blank lines: it is used inside Markdown HTML blocks.
+{%- endcomment -%}
+{%- assign type = include.type | default: "subscribe" -%}
+{%- if type == "evaluation" -%}
+  {%- assign page_url = "/axyra/evaluation-help" -%}
+  {%- assign title = include.title | default: "Evaluating Axyra Sheets for a project?" -%}
+  {%- assign text = include.text | default: "Request evaluation help and learn about available license options." -%}
+  {%- assign button = include.button | default: "Request evaluation help" -%}
+{%- elsif type == "commercial" -%}
+  {%- assign page_url = "/axyra/contact-sales" -%}
+  {%- assign title = include.title | default: "Planning a production deployment?" -%}
+  {%- assign text = include.text | default: "Discuss pricing or deployment with our sales team." -%}
+  {%- assign button = include.button | default: "Discuss pricing or deployment" -%}
+{%- else -%}
+  {%- assign page_url = "/axyra/developer-updates" -%}
+  {%- assign title = include.title | default: "Get Axyra migration examples and compatibility updates." -%}
+  {%- assign text = include.text | default: "Optional email subscription: practical examples, Skill changes and compatibility guidance for the topics you choose." -%}
+  {%- assign button = include.button | default: "Send me developer updates" -%}
+{%- endif -%}
+<aside class="axyra-cta axyra-cta--{{ type }}" data-axyra-cta data-lead-type="{{ type }}" data-touchpoint="{{ include.touchpoint }}"{% if include.ab %} data-ab="generic,migration"{% endif %}>
+{%- if include.ab %}
+  <p class="axyra-cta__title" data-cta-variant="migration">Get Axyra migration examples and compatibility updates.</p>
+  <p class="axyra-cta__title" data-cta-variant="generic" hidden>Get Axyra developer updates.</p>
+{%- else %}
+  <p class="axyra-cta__title">{{ title }}</p>
+{%- endif %}
+  <p class="axyra-cta__text">{{ text }}</p>
+  <a class="btn btn--primary" data-cta-link href="{{ page_url | relative_url }}?src={{ include.touchpoint | url_encode }}{% if include.topic %}&amp;topic={{ include.topic | url_encode }}{% endif %}">{{ button }}</a>
+</aside>

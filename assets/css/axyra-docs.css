@@ -104,6 +104,226 @@
   margin-bottom: 0;
 }
 
+.axyra-cta,
+.axyra-form-card {
+  background: #fff;
+  border: 1px solid #d0d0d0;
+  border-radius: 0.45rem;
+  margin: 1.5rem 0;
+  padding: 1rem 1.1rem;
+}
+
+.axyra-cta {
+  border-left: 4px solid #0073b7;
+}
+
+.axyra-cta--evaluation {
+  border-left-color: #176c4b;
+}
+
+.axyra-cta--commercial {
+  border-left-color: #8a6d2f;
+}
+
+.axyra-cta__title {
+  font-weight: 700;
+  margin: 0 0 0.3rem;
+}
+
+.axyra-cta__text {
+  color: #555;
+  font-size: 0.85em;
+  margin: 0 0 0.8rem;
+}
+
+.axyra-cta .btn {
+  margin: 0;
+}
+
+.axyra-download-dialog {
+  background: #fff;
+  border: 0;
+  border-radius: 0.55rem;
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.3);
+  box-sizing: border-box;
+  max-height: calc(100vh - 2rem);
+  max-width: 34rem;
+  overflow: auto;
+  padding: 1.4rem 1.5rem 1.1rem;
+  position: fixed;
+  width: calc(100% - 2rem);
+}
+
+.axyra-download-dialog::backdrop {
+  background: rgba(20, 24, 31, 0.68);
+}
+
+.axyra-dialog-close {
+  background: transparent;
+  border: 0;
+  color: #555;
+  cursor: pointer;
+  font-size: 1.8rem;
+  line-height: 1;
+  padding: 0.1rem 0.35rem;
+  position: absolute;
+  right: 0.6rem;
+  top: 0.4rem;
+}
+
+.axyra-dialog-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.4;
+  margin: 0 0 1rem;
+}
+
+.axyra-dialog-dismiss {
+  background: transparent;
+  border: 0;
+  color: #666;
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.8rem;
+  margin-top: 0.6rem;
+  padding: 0;
+  text-decoration: underline;
+}
+
+.axyra-download-complete__status {
+  color: #176c4b;
+  font-size: 0.85em;
+  margin: 0 2rem 0.8rem 0;
+}
+
+/* Reset the theme's default form panel (gray fill, padding) */
+.axyra-lead-form {
+  background: transparent;
+  font-size: 0.85em;
+  margin: 0;
+  padding: 0;
+}
+
+.axyra-form-intro,
+.axyra-form-note {
+  color: #555;
+  margin: 0 0 0.9rem;
+}
+
+.axyra-field {
+  display: block;
+  margin: 0 0 0.9rem;
+}
+
+.axyra-field > span {
+  display: block;
+  font-weight: 700;
+  margin-bottom: 0.3rem;
+}
+
+.axyra-field em {
+  color: #777;
+  font-style: normal;
+  font-weight: 400;
+}
+
+.axyra-field input,
+.axyra-field textarea,
+.axyra-field select {
+  background: #fff;
+  border: 1px solid #aeb5bf;
+  border-radius: 0.35rem;
+  box-shadow: none;
+  font: inherit;
+  margin: 0;
+  max-width: 32rem;
+  padding: 0.5rem 0.6rem;
+  width: 100%;
+}
+
+.axyra-field input:focus,
+.axyra-field textarea:focus,
+.axyra-field select:focus {
+  border-color: #0073b7;
+  box-shadow: 0 0 0 2px rgba(0, 115, 183, 0.18);
+  outline: 0;
+}
+
+.axyra-field [aria-invalid],
+.axyra-topics[aria-invalid] {
+  border-color: #b3261e;
+}
+
+.axyra-topics {
+  border: 1px solid transparent;
+  border-radius: 0.35rem;
+  margin: 0 0 0.9rem;
+  padding: 0;
+}
+
+.axyra-topics legend {
+  font-weight: 700;
+  margin-bottom: 0.3rem;
+  padding: 0;
+}
+
+.axyra-topics label {
+  align-items: center;
+  display: flex;
+  gap: 0.5rem;
+  margin: 0.3rem 0;
+}
+
+.axyra-topics input {
+  flex: none;
+  margin: 0;
+  width: auto;
+}
+
+/* Spam trap: invisible to people, filled in by naive bots */
+.axyra-hp {
+  height: 1px;
+  left: -10000px;
+  overflow: hidden;
+  position: absolute;
+  width: 1px;
+}
+
+.axyra-form-status:empty {
+  display: none;
+}
+
+.axyra-form-status {
+  border-radius: 0.35rem;
+  margin-top: 0.9rem;
+  padding: 0.7rem 0.8rem;
+}
+
+.axyra-form-status p {
+  margin: 0;
+}
+
+.axyra-form-status pre {
+  font-size: 0.9em;
+  margin: 0.6rem 0 0;
+  white-space: pre-wrap;
+}
+
+.axyra-form-status.is-success {
+  background: #e6f4ec;
+  color: #14543a;
+}
+
+.axyra-form-status.is-error {
+  background: #fdecea;
+  color: #8c1d18;
+}
+
+.axyra-form-status.is-preview {
+  background: #fff7e0;
+  color: #5c4a24;
+}
+
 .axyra-search__toggle {
   background: transparent;
   border: 0;
