@@ -8,6 +8,8 @@
                 this surface (subscribe only; placement and offer stay the same)
     title, text, button   copy; defaults follow the lead type
 
+  A subscribe invitation links to the prefilled keikai.io contact form.
+
   Keep this include free of blank lines: it is used inside Markdown HTML blocks.
 {%- endcomment -%}
 {%- assign type = include.type | default: "subscribe" -%}
@@ -22,10 +24,10 @@
   {%- assign text = include.text | default: "Discuss pricing or deployment with our sales team." -%}
   {%- assign button = include.button | default: "Discuss pricing or deployment" -%}
 {%- else -%}
-  {%- assign page_url = "/axyra/developer-updates" -%}
+  {%- capture page_url -%}{{ site.axyra_leads.contact_url }}?product={{ site.axyra_leads.updates_product | url_encode }}&amp;message={{ site.axyra_leads.updates_message | url_encode }}{%- endcapture -%}
   {%- assign title = include.title | default: "Get Axyra migration examples and compatibility updates." -%}
-  {%- assign text = include.text | default: "Optional email subscription: practical examples, Skill changes and compatibility guidance for the topics you choose." -%}
-  {%- assign button = include.button | default: "Send me developer updates" -%}
+  {%- assign text = include.text | default: "Get Axyra tips, examples, and updates about new releases and the Axyra Agent Skill by email." -%}
+  {%- assign button = include.button | default: "Keep me updated" -%}
 {%- endif -%}
 <aside class="axyra-cta axyra-cta--{{ type }}" data-axyra-cta data-lead-type="{{ type }}" data-touchpoint="{{ include.touchpoint }}"{% if include.ab %} data-ab="generic,migration"{% endif %}>
 {%- if include.ab %}
@@ -35,5 +37,10 @@
   <p class="axyra-cta__title">{{ title }}</p>
 {%- endif %}
   <p class="axyra-cta__text">{{ text }}</p>
-  <a class="btn btn--primary" data-cta-link href="{{ page_url | relative_url }}?src={{ include.touchpoint | url_encode }}{% if include.topic %}&amp;topic={{ include.topic | url_encode }}{% endif %}">{{ button }}</a>
+  {%- if type == "subscribe" %}
+  <a class="btn btn--primary" data-cta-link href="{{ page_url }}&amp;src={{ include.touchpoint | url_encode }}" target="_blank" rel="noopener">{{ button }}</a>
+  <p class="axyra-cta__legal">You can unsubscribe at any time by emailing <a href="mailto:{{ site.axyra_leads.unsubscribe_email }}">{{ site.axyra_leads.unsubscribe_email }}</a>. See our <a href="{{ site.axyra_leads.privacy_url }}" target="_blank" rel="noopener">Privacy Policy</a>.</p>
+  {%- else %}
+  <a class="btn btn--primary" data-cta-link href="{{ page_url | relative_url }}?src={{ include.touchpoint | url_encode }}">{{ button }}</a>
+  {%- endif %}
 </aside>

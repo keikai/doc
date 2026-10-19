@@ -172,28 +172,80 @@
 }
 
 .axyra-dialog-title {
-  font-size: 1.05rem;
+  font-size: 1.25rem;
   font-weight: 700;
-  line-height: 1.4;
-  margin: 0 0 1rem;
+  line-height: 1.3;
+  margin: 0 0 0.4rem;
+}
+
+.axyra-dialog-text {
+  color: #555;
+  font-size: 0.85rem;
+  margin: 0 0 1.1rem;
+}
+
+.axyra-updates-form {
+  background: transparent;
+  font-size: 0.85rem;
+  margin: 0;
+  padding: 0;
+}
+
+.axyra-updates-form .axyra-field input {
+  max-width: none;
+}
+
+.axyra-dialog-actions {
+  align-items: center;
+  display: flex;
+  gap: 1.25rem;
+}
+
+.axyra-dialog-actions .btn {
+  margin: 0;
+}
+
+.axyra-dialog-legal,
+.axyra-form-legal,
+.axyra-cta__legal {
+  color: #666;
+  font-size: 0.72rem;
+  font-style: italic;
+  margin: 0;
+}
+
+.axyra-dialog-legal {
+  border-top: 1px solid #e8eaed;
+  margin-top: 1.1rem;
+  padding-top: 0.8rem;
+}
+
+.axyra-form-legal {
+  margin-top: 0.9rem;
+}
+
+.axyra-cta__legal {
+  margin-top: 0.7rem;
 }
 
 .axyra-dialog-dismiss {
   background: transparent;
   border: 0;
-  color: #666;
+  color: #444;
   cursor: pointer;
   font: inherit;
   font-size: 0.8rem;
-  margin-top: 0.6rem;
   padding: 0;
   text-decoration: underline;
 }
 
 .axyra-download-complete__status {
-  color: #176c4b;
-  font-size: 0.85em;
-  margin: 0 2rem 0.8rem 0;
+  background: #e6f4ec;
+  border-radius: 0.35rem;
+  color: #14543a;
+  font-size: 0.8rem;
+  margin: 0 2rem 1.2rem 0;
+  padding: 0.55rem 0.8rem;
 }
 
 /* Reset the theme's default form panel (gray fill, padding) */
@@ -541,4 +593,47 @@ body.axyra-search-open {
     top: 0;
     width: 100%;
   }
+}
+
+/*
+ * The theme sizes paragraphs inside page content; scope the dialog's type so
+ * the title, body and legal line keep their intended hierarchy.
+ */
+.axyra-download-dialog p.axyra-download-complete__status {
+  font-size: 14px;
+}
+
+.axyra-download-dialog p.axyra-dialog-title {
+  font-size: 22px;
+}
+
+.axyra-download-dialog p.axyra-dialog-text {
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.axyra-download-dialog .axyra-updates-form {
+  font-size: 15px;
+}
+
+.axyra-download-dialog .axyra-dialog-actions {
+  margin-bottom: 0.2rem;
+}
+
+.axyra-download-dialog .axyra-dialog-dismiss {
+  font-size: 15px;
+}
+
+.axyra-download-dialog p.axyra-dialog-legal {
+  font-size: 13px;
+  margin-top: 1.4rem;
+}
+
+.axyra-download-dialog p.axyra-dialog-title + p.axyra-dialog-text {
+  margin-top: 0;
+}
+
+.axyra-download-dialog .axyra-dialog-actions .btn {
+  font-size: 15px;
+  padding: 0.6em 1.3em;
 }

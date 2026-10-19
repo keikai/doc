@@ -3,3 +3,6 @@ _site/
 .sass-cache/
 .bundle/
 vendor/bundle/
+
+# Local marker the Axyra skill writes after offering developer updates once
+skills/axyra-sheets/.updates-offered

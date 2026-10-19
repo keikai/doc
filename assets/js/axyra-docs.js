@@ -141,8 +141,22 @@
     });
   }
 
+  // Developer updates are handled by the keikai.io contact form. Open it in a
+  // new tab with the product and message prefilled; the email goes in the
+  // fragment, which never reaches server logs or analytics page URLs.
+  function openUpdatesContact(form, email) {
+    var url = new URL(form.dataset.contactUrl);
+    url.searchParams.set("product", form.dataset.product);
+    url.searchParams.set("message", form.dataset.message);
+    url.searchParams.set("src", form.dataset.touchpoint || "unknown");
+    url.searchParams.set("cta", "default");
+    url.hash = "email=" + encodeURIComponent(email);
+    window.open(url.toString(), "_blank", "noopener");
+  }
+
   // The download is never held back: the invitation opens as a dialog after
-  // the click starts it. It stays closed once this browser has subscribed.
+  // the click starts it. It stays closed once this browser has continued to
+  // the sign-up form.
   function setupDownloadCompletion() {
     var dialog = document.querySelector("[data-download-complete]");
     if (!dialog || typeof dialog.showModal !== "function") return;
@@ -178,6 +192,30 @@
     });
     dialog.addEventListener("click", function (event) {
       if (event.target === dialog) close("backdrop");
+    });
+
+    var form = dialog.querySelector("[data-axyra-updates-form]");
+    if (!form) return;
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+      var field = form.elements.email;
+      var email = field.value.trim();
+      var invalid = !email || !field.checkValidity();
+      field.toggleAttribute("aria-invalid", invalid);
+      if (invalid) {
+        showStatus(form, "error", "Please enter a valid email address.");
+        field.focus();
+        return;
+      }
+      openUpdatesContact(form, email);
+      stored("axyra-subscribed", "1");
+      trackEvent("axyra_cta_click", {
+        touchpoint: form.dataset.touchpoint,
+        lead_type: "subscribe",
+        cta_variant: "default"
+      });
+      form.reset();
+      dialog.close();
     });
   }
 
@@ -245,7 +283,6 @@
   }
 
   var SUCCESS = {
-    subscribe: "Thanks. Check your inbox for a welcome email; every message has an unsubscribe link.",
     evaluation: "Thanks. Your request has been sent to our developer support team, who will reply by email.",
     commercial: "Thanks. Your inquiry has been sent to our sales team, who will reply by email."
   };
@@ -282,7 +319,6 @@
 
         function done() {
           stored(key, payload.submitted_at);
-          if (payload.lead_type === "subscribe") stored("axyra-subscribed", "1");
           trackEvent("axyra_lead_submit", analytics);
         }
 
@@ -306,7 +342,7 @@
           if (!response.ok) throw new Error("HTTP " + response.status);
           done();
           form.reset();
-          showStatus(form, "success", SUCCESS[payload.lead_type] || SUCCESS.subscribe);
+          showStatus(form, "success", SUCCESS[payload.lead_type] || SUCCESS.evaluation);
         }).catch(function () {
           trackEvent("axyra_lead_error", analytics);
           showStatus(form, "error", "Sorry, the form could not be sent. Please try again later.");

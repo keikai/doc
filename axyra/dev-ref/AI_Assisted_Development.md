@@ -44,10 +44,25 @@ Choose the installation method that fits your coding assistant:
 <div class="axyra-download-dialog-host">
 <dialog class="axyra-download-dialog" data-download-complete aria-labelledby="axyra-download-dialog-title">
   <button class="axyra-dialog-close" type="button" data-dialog-close aria-label="Close">&times;</button>
-  <p class="axyra-download-complete__status">&#10003; Your download has started. If it did not, <a href="{{ '/assets/downloads/axyra-sheets-skill.zip' | relative_url }}" download>download the ZIP again</a>.</p>
-  <p id="axyra-download-dialog-title" class="axyra-dialog-title">Optional: get Axyra migration examples and compatibility updates</p>
-{% include axyra_lead_form.html type="subscribe" touchpoint="download_complete" compact=true %}
-  <button class="axyra-dialog-dismiss" type="button" data-dialog-close>No thanks</button>
+  <p class="axyra-download-complete__status">&#10003; Your download has started. If it didn&rsquo;t, <a href="{{ '/assets/downloads/axyra-sheets-skill.zip' | relative_url }}" download>download the ZIP again</a>.</p>
+  <p id="axyra-download-dialog-title" class="axyra-dialog-title">Stay up to date with Axyra</p>
+  <p class="axyra-dialog-text">Get Axyra tips, examples, and updates about new releases and the Axyra Agent Skill by email.</p>
+  <form class="axyra-updates-form" data-axyra-updates-form novalidate
+        data-contact-url="{{ site.axyra_leads.contact_url }}"
+        data-product="{{ site.axyra_leads.updates_product }}"
+        data-message="{{ site.axyra_leads.updates_message }}"
+        data-touchpoint="download_complete">
+    <label class="axyra-field">
+      <span>Email</span>
+      <input type="email" name="email" autocomplete="email" placeholder="you@company.com" required>
+    </label>
+    <div class="axyra-dialog-actions">
+      <button class="btn btn--success" type="submit">Keep me updated</button>
+      <button class="axyra-dialog-dismiss" type="button" data-dialog-close>No thanks</button>
+    </div>
+    <div class="axyra-form-status" role="status" aria-live="polite"></div>
+  </form>
+  <p class="axyra-dialog-legal">You can unsubscribe at any time by emailing <a href="mailto:{{ site.axyra_leads.unsubscribe_email }}">{{ site.axyra_leads.unsubscribe_email }}</a>. See our <a href="{{ site.axyra_leads.privacy_url }}" target="_blank" rel="noopener">Privacy Policy</a>.</p>
 </dialog>
 </div>
 

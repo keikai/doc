@@ -1,12 +1,11 @@
 {%- comment -%}
-  Optional lead capture for the Axyra pages. One form per lead type, recorded
-  separately: a subscription never implies an evaluation or sales request, and
-  neither of those subscribes anyone.
+  Evaluation-help and commercial-inquiry forms for the Axyra pages, recorded
+  separately. Neither subscribes anyone to developer updates, which go through
+  the keikai.io contact form instead (see axyra_cta.html).
 
-    type        subscribe | evaluation | commercial
+    type        evaluation | commercial
     touchpoint  label of the surface that shows the form; a form page leaves it
                 out and takes `?src=` from the link that opened it instead
-    compact     true to drop the intro line (inline download-completion form)
 
   With no endpoint in site.axyra_leads the form runs in preview mode: it
   validates and shows the payload a live endpoint would receive, but sends
@@ -14,19 +13,17 @@
   Keep this include free of blank lines: it is used inside Markdown HTML blocks.
 {%- endcomment -%}
 {%- assign leads = site.axyra_leads -%}
-{%- if include.type == "evaluation" -%}
-  {%- assign endpoint = leads.evaluation_endpoint -%}
-{%- elsif include.type == "commercial" -%}
+{%- if include.type == "commercial" -%}
   {%- assign endpoint = leads.commercial_endpoint -%}
 {%- else -%}
-  {%- assign endpoint = leads.subscribe_endpoint -%}
+  {%- assign endpoint = leads.evaluation_endpoint -%}
 {%- endif -%}
-<form class="axyra-lead-form{% if include.compact %} axyra-lead-form--compact{% endif %}" data-axyra-lead-form novalidate
-      data-lead-type="{{ include.type | default: 'subscribe' }}"
+<form class="axyra-lead-form" data-axyra-lead-form novalidate
+      data-lead-type="{{ include.type | default: 'evaluation' }}"
       data-endpoint="{{ endpoint }}"
       data-campaign="{{ leads.campaign }}"
       data-touchpoint="{{ include.touchpoint }}">
-{%- if include.type == "evaluation" %}
+{%- if include.type != "commercial" %}
   <label class="axyra-field">
     <span>Work email</span>
     <input type="email" name="email" autocomplete="email" required>
@@ -69,24 +66,8 @@
   </label>
   <p class="axyra-form-note">Our sales team replies by email to clarify your project and agree on a next step. Submitting this does not subscribe you to newsletters.</p>
   <button class="btn btn--success" type="submit">Discuss pricing or deployment</button>
-{%- else %}
-  {%- unless include.compact %}
-  <p class="axyra-form-intro">Receive practical examples, Skill changes and compatibility guidance for the Axyra topics you choose.</p>
-  {%- endunless %}
-  <label class="axyra-field">
-    <span>Email</span>
-    <input type="email" name="email" autocomplete="email" required>
-  </label>
-  <fieldset class="axyra-topics">
-    <legend>Topics</legend>
-    <label><input type="checkbox" name="topics" value="migration" checked> Migration examples (Apache POI, Aspose.Cells)</label>
-    <label><input type="checkbox" name="topics" value="compatibility" checked> Compatibility and release updates</label>
-    <label><input type="checkbox" name="topics" value="skill"> Agent Skill changes</label>
-    <label><input type="checkbox" name="topics" value="evaluation"> Evaluation tips and license options</label>
-  </fieldset>
-  <p class="axyra-form-note">{{ leads.subscribe_cadence }}</p>
-  <button class="btn btn--success" type="submit">Send me developer updates</button>
 {%- endif %}
   <label class="axyra-hp" aria-hidden="true">Leave empty <input type="text" name="website" tabindex="-1" autocomplete="off"></label>
   <div class="axyra-form-status" role="status" aria-live="polite"></div>
+  <p class="axyra-form-legal">We use these details only to answer this request. See our <a href="{{ leads.privacy_url }}" target="_blank" rel="noopener">Privacy Policy</a>.</p>
 </form>
