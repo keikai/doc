@@ -1,6 +1,6 @@
 # Feature recipes: content, protection and data tools
 
-Measured on `1.0.0-Beta.FL.20261013-Eval`. Use these recipes when adjacent
+Measured on `1.0.0-Beta.FL.20261019-Eval`. Use these recipes when adjacent
 parameters have the same Java type; the parameter order is part of the example.
 Save and reopen the result for verification.
 
@@ -40,15 +40,13 @@ sheet.addPicture(pngBytes, "png", 1, 1, 6, 5);
 sheet.addTextBox("Quarterly sales", 0, 7, 3, 11);
 sheet.addShape("rect", "Review", 4, 7, 7, 11);
 
-for (int row = 1; row <= 5; row++) {
-    sheet.addSparkline("line", "Data!B" + (row + 1) + ":M" + (row + 1),
-            "N" + (row + 1));
-}
+sheet.addSparkline("line", "Data!B2:M6", "N2:N6");   // five sparklines, one group
 ```
 
-Each `addSparkline` call creates one sparkline. Its data reference must be
-sheet-qualified and its destination must be one cell; do not pass two multi-row
-ranges and expect automatic expansion.
+`addSparkline` makes one sparkline per destination cell: a single data row (or
+column) for one cell, or a block whose row count matches a destination column, as
+Excel's Insert > Sparklines does. An unqualified data reference is qualified with
+the sheet's name. Any other shape throws `AxyraException`.
 
 ## Tables and conditional formats
 
@@ -149,15 +147,12 @@ String rgb = color != null && color.isRgb() ? color.toHex() : null;
 Do not force automatic, indexed or theme colours through `toHex()`; preserve their
 kind or resolve them deliberately against a non-null workbook theme.
 
-## Known engine limitations
+## Older builds
 
-- `Workbook.evaluate("SUM(DefinedName)")` can return `#VALUE!` for a multi-cell
-  defined name even when the same formula in a cell calculates correctly. Prefer a
-  cell formula or an explicit sheet-qualified range for direct evaluation.
-- Manual row/column page breaks currently read back only in memory; they are not
-  written to XLSX and do not affect PDF pagination.
-- In manual calculation mode, run `recalculate()` before `goalSeek`; otherwise the
-  goal seek can read stale values and return `NaN`.
-- Formula text for array and dynamic-array formulas can be normalized after reopen
-  (for example braces or `_xlfn` prefixes). Compare formula meaning and results, not
-  raw text alone.
+Builds before `1.0.0-Beta.FL.20261019-Eval` have these defects; on such a build,
+work around them or upgrade:
+- `Workbook.evaluate("SUM(DefinedName)")` returns `#VALUE!` for a multi-cell name.
+- `addRowPageBreak`/`addColumnPageBreak` are not saved and do not paginate.
+- `goalSeek` returns `NaN` in `CalcMode.MANUAL`; switch to `AUTOMATIC` around it.
+- Array formulas read back as `{=...}` and with `_xlfn.` prefixes after reopen.
+- A multi-row `addSparkline` call is saved as one invalid sparkline.

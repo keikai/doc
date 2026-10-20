@@ -1,6 +1,6 @@
 # Pitfalls: output formats, rendering and content objects
 
-Measured on `1.0.0-Beta.FL.20261013-Eval`; recheck against the resolved build by saving,
+Measured on `1.0.0-Beta.FL.20261019-Eval`; recheck against the resolved build by saving,
 reopening and inspecting the output. Page setup, `PdfOptions` and fonts are in
 [enterprise.md](enterprise.md).
 
@@ -11,8 +11,6 @@ reopening and inspecting the output. Page setup, `PdfOptions` and fonts are in
 | `Validation.list(...)` writes a quoted list and shows the in-cell arrow; a value containing a comma throws. On the builder, `showDropdown(false)` *hides* the arrow (OOXML `showDropDown="1"`) | Arrow missing when `showDropdown(false)` is set | Use `Validation.list`, or the builder with `showDropdown` unset; for values with commas use a range: `builder().type("list").formula1("$X$1:$X$9")`. Check the saved `dataValidation` |
 | `ConditionalFormat` `fillColor` writes a solid pattern with the colour as foreground; Excel's own files use the background colour | Usually renders the same, but differs from files saved by Excel | Accept, or compare in the target viewer when fidelity matters |
 | `Workbook.theme()` returns `null` for a newly created workbook; a loaded style colour can be automatic, indexed, themed or RGB | Calling a theme method or `Color.toHex()` unconditionally can throw | Null-check the theme and call `color.isRgb()` before `toHex()`; preserve non-RGB colours by kind |
-| `addSparkline` creates one sparkline per call and accepts its references verbatim | A multi-row data range plus multi-cell destination can be saved as an invalid Excel sparkline | Use a sheet-qualified data reference and one destination cell; loop once per row |
-| Manual row/column page breaks are not currently carried into saved XLSX or rendering | `addRowPageBreak` reads back in memory but disappears after save and does not affect PDF pagination | Treat manual breaks as an engine limitation; use print area and fit-to-page, and report the gap |
 | `renderSheetPng`/`renderRangePng` produce one full print page (A4 portrait ≈ 794 px wide at scale 1.0). The range variant only limits the content to that range; it does not crop the image | Small data sits in the corner of a large image | Adjust `ImageOptions.scale`/`targetWidthPx`, or crop the image afterwards |
 | A streaming writer (`StreamWorkbook`) is write-only | It cannot open files and has no recalculation, charts, pivots, images, merges, validation or rendering | Use a full `Workbook` for those; see [enterprise.md](enterprise.md) |
 

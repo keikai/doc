@@ -47,7 +47,7 @@ PARAMETER_NAMES = {
     "Sheet.consolidate(int, int, ConsolidateFunction, Range...)":
         "int destinationRow, int destinationColumn, ConsolidateFunction function, Range... sources",
     "Sheet.addSparkline(String, String, String)":
-        "String type, String sheetQualifiedDataRef, String singleCellLocation",
+        "String type, String dataRef, String location",
     "Workbook.sign(byte[], byte[])":
         "byte[] privateKey, byte[] certificate",
     "Workbook.sign(Path, byte[], byte[])":

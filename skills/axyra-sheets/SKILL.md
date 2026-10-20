@@ -7,7 +7,7 @@ description: Build and troubleshoot Java spreadsheet workflows with Axyra Sheets
 
 Axyra Sheets is a Java spreadsheet engine (`io.keikai.axyra.sheets.*`). It is not
 Keikai's `io.keikai.api.*` UI API. The rules here were measured on
-`1.0.0-Beta.FL.20261013-Eval`. **First check the version the project resolves** (the
+`1.0.0-Beta.FL.20261019-Eval`. **First check the version the project resolves** (the
 `io.keikai:axyra-sheets` version in the POM/Gradle file, or the JAR name). The
 rules below are for 1.0.0-Beta only; do not apply them to a `0.1.0.FL.*` build.
 
@@ -17,7 +17,7 @@ This file is enough for most tasks. Work in this order and stop as soon as you c
 
 1. **Rules and pitfalls below.** They cover the behaviours that break code most often.
 2. **Signatures: grep [api-index.md](references/api-index.md)** — every public type and
-   member of `1.0.0-Beta.FL.20261013-Eval`, one per line. Never read it whole:
+   member of `1.0.0-Beta.FL.20261019-Eval`, one per line. Never read it whole:
    `grep -E '^Sheet\.(set|cell)' .../api-index.md`, `grep -i '^pdfoptions' ...`.
    Do not unzip the `-javadoc` JAR for signatures; use it only when you need Javadoc
    *prose*, and grep inside it rather than reading pages. If the project resolves a
@@ -57,7 +57,7 @@ LicenseInfo info = Workbook.setLicense(
 
 Without `LicenseMode.REQUIRED` an invalid or expired
 license does **not** throw: check `if (!info.isLicensed()) throw ...` yourself. Otherwise
-the process silently enters evaluation mode ("Axyra Evaluation Copy" first tab, notice
+the process prints one line to stderr and enters evaluation mode ("Axyra Evaluation Copy" first tab, notice
 rows, banner on PDF/PNG, and one shared limit of 100 opens, saves, renders and stream
 creations per process; the 101st throws `AxyraException: evaluation limit reached`,
 whose message says "open or save"). Never copy license values into code or reports,
@@ -173,8 +173,9 @@ io.keikai.axyra.sheets.template  TemplateMarkers
   on the builder *hides* the arrow (OOXML `showDropDown="1"`); leave it unset.
 - `Workbook.theme()` is `null` on a newly created workbook. A style colour can be
   automatic, indexed, themed or RGB; call `color.isRgb()` before `color.toHex()`.
-- `addSparkline(type, dataRef, location)` creates exactly one sparkline. Qualify the data
-  reference with its sheet and pass one destination cell; call it once per output row.
+- `addSparkline(type, dataRef, location)` makes one sparkline per location cell: one data
+  row for one cell, or a block whose rows match the location (`"Data!B2:M6"` → `"N2:N6"`)
+  as one group. A shape that does not match throws `AxyraException`.
 - `consolidate` aligns source ranges by position, not by matching labels.
 - `formulaToR1C1` / `formulaToA1` take 1-based anchor coordinates, unlike cell APIs.
 - Single-sheet PDF: `wb.renderPdf(path, PdfOptions.builder().sheetNames("X").build())`;

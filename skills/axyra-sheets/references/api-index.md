@@ -1,6 +1,6 @@
-# Axyra Sheets API index — 1.0.0-Beta.FL.20261013-Eval
+# Axyra Sheets API index — 1.0.0-Beta.FL.20261019-Eval
 
-Generated with `javap -public` from `axyra-sheets-1.0.0-Beta.FL.20261013-Eval.jar` (every public
+Generated with `javap -public` from `axyra-sheets-1.0.0-Beta.FL.20261019-Eval.jar` (every public
 type except `internal`). One member per line: `Type.method(params) → return`. The
 `io.keikai.axyra.sheets.` and `java.*` package prefixes are dropped, nested types are
 written `Outer.Inner`, and each type line (`Type :: kind in package`) gives the import.
@@ -1219,6 +1219,7 @@ Range.numbers() → double[]
 Range.setNumbers(double[]) → void
 Range.setValues(CellValue[][]) → void
 Range.formulas() → String[][]
+Range.arrayFormulaRefs() → String[][]
 Range.setFormula(String) → void
 Range.setFormulas(String[][]) → void
 Range.setArrayFormula(String) → void
@@ -1572,7 +1573,7 @@ Sheet.autoFitColumn(int) → void
 Sheet.subtotal(int firstDataRow, int lastRow, int groupByColumn, SubtotalFunction function, int... totalColumns) → int
 Sheet.subtotal(int firstRow, int lastRow, int groupByColumn, boolean hasHeaders, SubtotalFunction function, int... totalColumns) → int
 Sheet.consolidate(int destinationRow, int destinationColumn, ConsolidateFunction function, Range... sources) → int[]
-Sheet.addSparkline(String type, String sheetQualifiedDataRef, String singleCellLocation) → int
+Sheet.addSparkline(String type, String dataRef, String location) → int
 Sheet.setSparklineStyle(int, SparklineStyle) → boolean
 Sheet.sparklineGroupCount() → int
 Sheet.sparklines() → List<SparklineGroup>
@@ -1584,6 +1585,7 @@ Sheet.addConnector(String, int, int, int, int) → int
 Sheet.shapeCount() → int
 Sheet.removeShape(int) → boolean
 Sheet.shapeType(int) → String
+Sheet.isTextBox(int) → boolean
 Sheet.shapeText(int) → String
 Sheet.shapeFillColor(int) → Color
 Sheet.shapeLineColor(int) → Color
