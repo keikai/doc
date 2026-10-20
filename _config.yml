@@ -97,15 +97,18 @@ axyra_version: "1.0.0-Beta.FL.20261019-Eval"
 axyra_repo_url: "https://mavensync.zkoss.org/eval"
 axyra_repo_id: "keikai-eval"
 # Optional email capture and lead routing on the Axyra pages.
-# Developer updates go to the keikai.io contact form, prefilled from the link
-# (product and message in the query, email in the #fragment so it never reaches
-# server logs or analytics); the visitor adds a name and submits there.
+# Developer updates: the download dialog posts the email straight to the
+# keikai.io mail service (updates_endpoint; it must allow this site's origin).
+# Other links, and the dialog when that post fails, open the keikai.io contact
+# form prefilled (product and message in the query, email in the #fragment so it
+# never reaches server logs or analytics). Local previews never post.
 # Evaluation requests and commercial inquiries use the forms in
 # _includes/axyra_lead_form.html: leave an endpoint empty to run that form in
 # preview mode (it validates and shows the payload, but sends nothing).
 axyra_leads:
   campaign: "axyra_skills_pilot"
   contact_url: "https://keikai.io/contact/"
+  updates_endpoint: "https://keikai.io/contact/mail/"
   privacy_url: "https://keikai.io/privacy/"
   unsubscribe_email: "axyra@keikai.io"
   updates_product: "Axyra"

@@ -154,6 +154,33 @@
     window.open(url.toString(), "_blank", "noopener");
   }
 
+  // Same fields as the keikai.io contact form, with no name: the mail service
+  // records the sign-up and creates the lead.
+  function updatesRequestBody(form, email) {
+    var now = new Date();
+    var referrer = window.location.origin + window.location.pathname +
+      "?src=" + encodeURIComponent(form.dataset.touchpoint || "unknown") + "&cta=default";
+    var body = new URLSearchParams({
+      data: JSON.stringify({
+        type: "mail",
+        product: form.dataset.product,
+        productInterested: form.dataset.product,
+        name: "",
+        email: email,
+        message: form.dataset.message
+      }),
+      browserTime: now.toString(),
+      timezoneOffset: String(now.getTimezoneOffset()),
+      timezoneLabel: (window.Intl && Intl.DateTimeFormat().resolvedOptions().timeZone) || "",
+      referrer: referrer
+    });
+    return body;
+  }
+
+  function isLocalPreview() {
+    return /^(localhost|127\.0\.0\.1)$/.test(window.location.hostname);
+  }
+
   // The download is never held back: the invitation opens as a dialog after
   // the click starts it. It stays closed once this browser has continued to
   // the sign-up form.
@@ -190,14 +217,35 @@
       event.preventDefault();
       close("escape");
     });
-    dialog.addEventListener("click", function (event) {
-      if (event.target === dialog) close("backdrop");
-    });
+    // No close on a backdrop click: the first click after a download often
+    // just dismisses the browser's download panel.
 
     var form = dialog.querySelector("[data-axyra-updates-form]");
+    var done = dialog.querySelector("[data-updates-done]");
     if (!form) return;
+    var analytics = {
+      touchpoint: form.dataset.touchpoint,
+      lead_type: "subscribe",
+      cta_variant: "default"
+    };
+
+    function subscribed(email, preview) {
+      if (!preview) {
+        stored("axyra-subscribed", "1");
+        trackEvent("axyra_lead_submit", analytics);
+      }
+      showStatus(form, "preview", "");
+      done.querySelector("[data-updates-preview]").hidden = !preview;
+      form.hidden = true;
+      dialog.querySelectorAll("[data-updates-ask]").forEach(function (part) { part.hidden = true; });
+      done.querySelector("[data-updates-email]").textContent = email;
+      done.hidden = false;
+      done.querySelector("button").focus();
+    }
+
     form.addEventListener("submit", function (event) {
       event.preventDefault();
+      if (form.elements.website && form.elements.website.value) return;
       var field = form.elements.email;
       var email = field.value.trim();
       var invalid = !email || !field.checkValidity();
@@ -207,15 +255,29 @@
         field.focus();
         return;
       }
-      openUpdatesContact(form, email);
-      stored("axyra-subscribed", "1");
-      trackEvent("axyra_cta_click", {
-        touchpoint: form.dataset.touchpoint,
-        lead_type: "subscribe",
-        cta_variant: "default"
+
+      var body = updatesRequestBody(form, email);
+      if (isLocalPreview()) {
+        if (window.console) console.info("[axyra updates preview] POST " + form.dataset.endpoint, Object.fromEntries(body));
+        subscribed(email, true);
+        return;
+      }
+      var button = form.querySelector('button[type="submit"]');
+      button.disabled = true;
+      showStatus(form, "preview", "Sending…");
+      fetch(form.dataset.endpoint, { method: "POST", body: body }).then(function (response) {
+        if (!response.ok) throw new Error("HTTP " + response.status);
+      }).then(function () {
+        subscribed(email);
+      }).catch(function () {
+        // The mail service is unreachable or refused the origin: finish on
+        // the prefilled contact form instead of losing the sign-up.
+        trackEvent("axyra_lead_error", analytics);
+        openUpdatesContact(form, email);
+        showStatus(form, "error", "We couldn't sign you up from here, so the contact form opened in a new tab with your email filled in.");
+      }).then(function () {
+        button.disabled = false;
       });
-      form.reset();
-      dialog.close();
     });
   }
 

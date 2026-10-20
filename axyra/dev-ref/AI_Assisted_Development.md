@@ -43,11 +43,14 @@ Choose the installation method that fits your coding assistant:
 
 <div class="axyra-download-dialog-host">
 <dialog class="axyra-download-dialog" data-download-complete aria-labelledby="axyra-download-dialog-title">
-  <button class="axyra-dialog-close" type="button" data-dialog-close aria-label="Close">&times;</button>
-  <p class="axyra-download-complete__status">&#10003; Your download has started. If it didn&rsquo;t, <a href="{{ '/assets/downloads/axyra-sheets-skill.zip' | relative_url }}" download>download the ZIP again</a>.</p>
-  <p id="axyra-download-dialog-title" class="axyra-dialog-title">Stay up to date with Axyra</p>
-  <p class="axyra-dialog-text">Get Axyra tips, examples, and updates about new releases and the Axyra Agent Skill by email.</p>
+  <div class="axyra-dialog-head">
+    <p class="axyra-download-complete__status">&#10003; Your download has started. If it didn&rsquo;t, <a href="{{ '/assets/downloads/axyra-sheets-skill.zip' | relative_url }}" download>download the ZIP again</a>.</p>
+    <button class="axyra-dialog-close" type="button" data-dialog-close aria-label="Close">&times;</button>
+  </div>
+  <p id="axyra-download-dialog-title" class="axyra-dialog-title" data-updates-ask>Stay up to date with Axyra</p>
+  <p class="axyra-dialog-text" data-updates-ask>Get Axyra tips, examples, and updates about new releases and the Axyra Agent Skill by email.</p>
   <form class="axyra-updates-form" data-axyra-updates-form novalidate
+        data-endpoint="{{ site.axyra_leads.updates_endpoint }}"
         data-contact-url="{{ site.axyra_leads.contact_url }}"
         data-product="{{ site.axyra_leads.updates_product }}"
         data-message="{{ site.axyra_leads.updates_message }}"
@@ -62,6 +65,12 @@ Choose the installation method that fits your coding assistant:
     </div>
     <div class="axyra-form-status" role="status" aria-live="polite"></div>
   </form>
+  <div class="axyra-dialog-done" data-updates-done hidden>
+    <p class="axyra-dialog-title">Thanks, you&rsquo;re on the list</p>
+    <p class="axyra-dialog-text">We&rsquo;ll email Axyra tips, examples, and release updates to <strong data-updates-email></strong>.</p>
+    <p class="axyra-form-note" data-updates-preview hidden>Local preview: nothing was sent. The request is logged in the browser console.</p>
+    <button class="btn btn--success" type="button" data-dialog-close>Close</button>
+  </div>
   <p class="axyra-dialog-legal">You can unsubscribe at any time by emailing <a href="mailto:{{ site.axyra_leads.unsubscribe_email }}">{{ site.axyra_leads.unsubscribe_email }}</a>. See our <a href="{{ site.axyra_leads.privacy_url }}" target="_blank" rel="noopener">Privacy Policy</a>.</p>
 </dialog>
 </div>
