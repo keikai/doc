@@ -96,8 +96,6 @@ license. Our sales team will confirm the appropriate edition, deployment scope,
 and license term for your application. After purchase, you receive a signed
 production license-key file.
 
-{% include axyra_cta.html type="commercial" touchpoint="license_production" %}
-
 Install a production key through the same process-wide API used for a 30-day
 evaluation key. In production, load it from a secret manager, environment
 variable, or mounted file rather than committing it to source control:
