@@ -7,7 +7,7 @@ description: Build and troubleshoot Java spreadsheet workflows with Axyra Sheets
 
 Axyra Sheets is a Java spreadsheet engine (`io.keikai.axyra.sheets.*`). It is not
 Keikai's `io.keikai.api.*` UI API. The rules here were measured on
-`1.0.0-Beta.FL.20261019-Eval`. **First check the version the project resolves** (the
+`1.0.0-Beta.FL.20261021-Eval`. **First check the version the project resolves** (the
 `io.keikai:axyra-sheets` version in the POM/Gradle file, or the JAR name). The
 rules below are for 1.0.0-Beta only; do not apply them to a `0.1.0.FL.*` build.
 
@@ -17,7 +17,7 @@ This file is enough for most tasks. Work in this order and stop as soon as you c
 
 1. **Rules and pitfalls below.** They cover the behaviours that break code most often.
 2. **Signatures: grep [api-index.md](references/api-index.md)** — every public type and
-   member of `1.0.0-Beta.FL.20261019-Eval`, one per line. Never read it whole:
+   member of `1.0.0-Beta.FL.20261021-Eval`, one per line. Never read it whole:
    `grep -E '^Sheet\.(set|cell)' .../api-index.md`, `grep -i '^pdfoptions' ...`.
    Do not unzip the `-javadoc` JAR for signatures; use it only when you need Javadoc
    *prose*, and grep inside it rather than reading pages. If the project resolves a

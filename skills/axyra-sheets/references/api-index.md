@@ -1,6 +1,6 @@
-# Axyra Sheets API index — 1.0.0-Beta.FL.20261019-Eval
+# Axyra Sheets API index — 1.0.0-Beta.FL.20261021-Eval
 
-Generated with `javap -public` from `axyra-sheets-1.0.0-Beta.FL.20261019-Eval.jar` (every public
+Generated with `javap -public` from `axyra-sheets-1.0.0-Beta.FL.20261021-Eval.jar` (every public
 type except `internal`). One member per line: `Type.method(params) → return`. The
 `io.keikai.axyra.sheets.` and `java.*` package prefixes are dropped, nested types are
 written `Outer.Inner`, and each type line (`Type :: kind in package`) gives the import.

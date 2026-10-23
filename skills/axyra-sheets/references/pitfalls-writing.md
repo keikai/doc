@@ -1,6 +1,6 @@
 # Pitfalls: writing values, formulas and styles
 
-Measured on `1.0.0-Beta.FL.20261019-Eval`. Treat each row as a hypothesis for the version
+Measured on `1.0.0-Beta.FL.20261021-Eval`. Treat each row as a hypothesis for the version
 the project resolves: confirm it by writing, saving, reopening and reading back.
 
 ## Workbook, sheets and cells
