@@ -91,7 +91,7 @@ axyra_guides: "/axyra/guides"
 axyra_devref: "/axyra/dev-ref"
 axyra_image_folder: "/assets/images/axyra"
 axyra_javadoc: "https://keikai.io/javadoc/axyra/latest/"
-axyra_version: "1.0.0-Beta.FL.20261021-Eval"
+axyra_version: "1.0.0.FL.20261022-Eval"
 # Axyra Sheets is not on Maven Central: the evaluation build is served from
 # ZK's repository, so every dependency snippet needs this repository too.
 axyra_repo_url: "https://mavensync.zkoss.org/eval"

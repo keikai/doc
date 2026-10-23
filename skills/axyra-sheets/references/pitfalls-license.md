@@ -1,6 +1,6 @@
 # Pitfalls: license, evaluation mode and runtime
 
-Measured on `1.0.0-Beta.FL.20261021-Eval`; recheck against the resolved build. Docs:
+Measured on `1.0.0.FL.20261022-Eval`; recheck against the resolved build. Docs:
 `https://doc.keikai.io/axyra/dev-ref/License` and `dev-ref/Native_Loader`.
 
 ## Installing a license

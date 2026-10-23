@@ -1,6 +1,6 @@
-# Axyra Sheets API index — 1.0.0-Beta.FL.20261021-Eval
+# Axyra Sheets API index — 1.0.0.FL.20261022-Eval
 
-Generated with `javap -public` from `axyra-sheets-1.0.0-Beta.FL.20261021-Eval.jar` (every public
+Generated with `javap -public` from `axyra-sheets-1.0.0.FL.20261022-Eval.jar` (every public
 type except `internal`). One member per line: `Type.method(params) → return`. The
 `io.keikai.axyra.sheets.` and `java.*` package prefixes are dropped, nested types are
 written `Outer.Inner`, and each type line (`Type :: kind in package`) gives the import.
@@ -1086,6 +1086,10 @@ PivotShowDataAsType.RUNNING_TOTAL (field PivotShowDataAsType)
 PivotShowDataAsType.RANK_ASCENDING (field PivotShowDataAsType)
 PivotShowDataAsType.RANK_DESCENDING (field PivotShowDataAsType)
 PivotShowDataAsType.INDEX (field PivotShowDataAsType)
+PivotShowDataAsType.PERCENT_OF (field PivotShowDataAsType)
+PivotShowDataAsType.PERCENT_OF_PARENT_ROW (field PivotShowDataAsType)
+PivotShowDataAsType.PERCENT_OF_PARENT_COLUMN (field PivotShowDataAsType)
+PivotShowDataAsType.RUNNING_TOTAL_PERCENT (field PivotShowDataAsType)
 PivotShowDataAsType.values() → static PivotShowDataAsType[]
 PivotShowDataAsType.valueOf(String) → static PivotShowDataAsType
 PivotShowDataAsType.wire() → String
