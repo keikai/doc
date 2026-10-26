@@ -107,9 +107,7 @@ could not verify.
 ```
 
 If your assistant uses a shorthand for invoking an installed skill, use
-`$axyra-sheets` in Codex or `/axyra-sheets` in Claude Code. If it does not support
-installed skills, put the downloaded folder in your workspace and begin with
-`Read axyra-sheets/SKILL.md and the references it links, then ...`.
+`$axyra-sheets` in Codex or `/axyra-sheets` in Claude Code. If your coding assistant does not support installed skills, extract the downloaded folder into your workspace and ask the assistant to read `axyra-sheets/SKILL.md` before starting your task.
 
 # Build and verify
 
@@ -125,8 +123,6 @@ Without a license key, Axyra runs in Evaluation Mode and adds evaluation marks t
 saved and rendered output. For production license configuration and evaluation
 limits, see [Licensing and Evaluation]({{ site.axyra_devref }}/License).
 
-{% include axyra_cta.html touchpoint="ai_quickstart_end" ab=true topic="migration" %}
-
 # Tips for working with AI
 
 - Provide your Axyra dependency version.
@@ -136,8 +132,7 @@ limits, see [Licensing and Evaluation]({{ site.axyra_devref }}/License).
 
 # Prompt examples
 
-Use **prompt → expected result → what to verify** when describing a task.
-This keeps the request reproducible and the success criteria visible.
+The following examples show what to ask your coding assistant, the results to expect, and what to check in the generated output. Adapt the prompts to your own files and requirements.
 
 ## Create a report from CSV
 
@@ -234,7 +229,8 @@ complete error log so the assistant can reproduce the smallest failing case.
 
 ## Build an enterprise reporting workflow
 
-For an enterprise reporting workflow, state the input schema, output
-requirements, deployment platform, row counts, memory constraints, and important
-edge cases. Scheduling, storage, and delivery remain responsibilities of your
-application.
+Explore our [financial workflow](https://keikai.io/axyra/demo/demo.zul?id=financialDataFlow), [data cleansing](https://keikai.io/axyra/demo/demo.zul?id=financialDataCleansing) and [reporting](https://keikai.io/axyra/demo/demo.zul?id=financialDataCleansing) examples to see how Axyra fits into a larger application. Try the live demos, then use the corresponding [GitHub projects](https://github.com/keikai/axyra-sheets-examples) as a starting point for your own workflow.
+
+Give your coding assistant the example code, describe your input data and reporting requirements, and ask it to adapt the workflow to your application.
+
+{% include axyra_cta.html touchpoint="ai_quickstart_end" ab=true topic="migration" %}
