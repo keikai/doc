@@ -1,6 +1,7 @@
 ---
 title: 'AI-Assisted Development'
 permalink: /axyra/dev-ref/AI_Assisted_Development
+excerpt: 'Use the Axyra Sheets skill to generate, migrate, build, and verify Java spreadsheet workflows with an AI coding assistant.'
 ---
 # AI-friendly API
 
@@ -189,26 +190,97 @@ as bulk range operations or a streaming export, with its limitations explained.
 **What to verify:** Compare before-and-after measurements and confirm that the
 optimized output still meets the same checks as the original.
 
-# Next steps
-
 ## Migrate an existing spreadsheet workflow
 
-Provide the current code, dependency versions, and a representative input or
-expected output. Migration is an operation-by-operation mapping, not a package
-name replacement.
+Give the assistant the code that produces the current workbook. For example,
+this Apache POI export creates a text identifier, a date, an amount, a formula,
+two number formats, a bold header, and a frozen row:
 
-```text
-Use the Axyra Sheets skill to migrate the attached Apache POI sales export to
-Axyra Sheets. Preserve sheet names, text identifiers, dates, formulas, styles,
-and number formats. First map the POI operations to Axyra and identify any gaps.
-Then implement the migration, remove POI only after no code uses it, build and
-run both versions where possible, and compare their output. Do not claim
-equivalence for anything you could not verify.
+**Starting Apache POI code**
+
+```java
+Path output = Path.of("poi-sales.xlsx");
+try (XSSFWorkbook wb = new XSSFWorkbook()) {
+    Sheet sheet = wb.createSheet("Sales");
+    Row header = sheet.createRow(0);
+    String[] labels = {"Order ID", "Date", "Amount", "With Tax"};
+    for (int c = 0; c < labels.length; c++) {
+        header.createCell(c).setCellValue(labels[c]);
+    }
+
+    CellStyle headerStyle = wb.createCellStyle();
+    Font headerFont = wb.createFont();
+    headerFont.setBold(true);
+    headerStyle.setFont(headerFont);
+    for (Cell cell : header) cell.setCellStyle(headerStyle);
+
+    Row row = sheet.createRow(1);
+    row.createCell(0).setCellValue("00042");
+    row.createCell(1).setCellValue(Date.valueOf("2026-10-27"));
+    row.createCell(2).setCellValue(1250.0);
+    row.createCell(3).setCellFormula("C2*1.2");
+
+    DataFormat formats = wb.createDataFormat();
+    CellStyle dateStyle = wb.createCellStyle();
+    dateStyle.setDataFormat(formats.getFormat("yyyy-mm-dd"));
+    row.getCell(1).setCellStyle(dateStyle);
+    CellStyle moneyStyle = wb.createCellStyle();
+    moneyStyle.setDataFormat(formats.getFormat("#,##0.00"));
+    row.getCell(2).setCellStyle(moneyStyle);
+    row.getCell(3).setCellStyle(moneyStyle);
+    sheet.createFreezePane(0, 1);
+    wb.getCreationHelper().createFormulaEvaluator().evaluateAll();
+
+    try (OutputStream out = Files.newOutputStream(output)) {
+        wb.write(out);
+    }
+}
 ```
 
-If the original library cannot run in your environment, provide a baseline file
-or explicit expected values. Template syntax and rendering behavior may differ
-between libraries and require separate checks.
+**Prompt**
+
+```text
+Use the Axyra Sheets skill to migrate the Apache POI code above to Axyra Sheets
+{{ site.axyra_version }}. Preserve the Sales sheet name, the text value "00042",
+the date, formula, number formats, bold header, and frozen row. Build and run both
+versions, reopen both files, compare their values, types, formulas, formats, and
+sheet structure, and report every difference. Remove POI only after confirming
+that no source file still uses it.
+```
+
+**Expected result:** A runnable Axyra implementation with an operation mapping
+and comparison report. The migrated core should look like this:
+
+```java
+Path output = Path.of("axyra-sales.xlsx");
+try (Workbook wb = Workbook.create()) {
+    Sheet sheet = wb.createSheet("Sales");
+    sheet.range("A1:D1").setValues(new CellValue[][] { {
+        CellValue.text("Order ID"), CellValue.text("Date"),
+        CellValue.text("Amount"), CellValue.text("With Tax")
+    } });
+    sheet.range("A1:D1").setStyle(CellStyle.builder().bold().build());
+
+    sheet.cell(1, 0).setValue(CellValue.text("00042"));
+    sheet.cell(1, 1).setDate(LocalDate.of(2026, 10, 27));
+    sheet.cell(1, 2).setValue(CellValue.number(1250.0));
+    sheet.cell(1, 3).setFormula("C2*1.2");
+    sheet.cell(1, 1).setStyle(CellStyle.builder()
+            .numberFormat("yyyy-mm-dd").build());
+    sheet.range("C2:D2").setStyle(CellStyle.builder()
+            .numberFormat("#,##0.00").build());
+    sheet.freezePanes(1, 0);
+    wb.save(output);
+}
+```
+
+**What to verify:** Reopen both workbooks and compare the `Sales` sheet name,
+cell types and values in `A1:D2`, formula text and cached result in `D2`, bold
+header, date and money formats, frozen pane, default font, and default row
+height. If POI cannot run, use its saved workbook as the baseline and say that
+execution equivalence was not verified.
+
+# Next steps
 
 ## Continue from a working example
 

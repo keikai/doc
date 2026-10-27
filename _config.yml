@@ -3,10 +3,12 @@ plugins:
   - jekyll-remote-theme
   - jekyll-include-cache  #required by minimal-mistakes
   - jekyll-paginate
+  - jekyll-sitemap
 minimal_mistakes_skin: "dirt"
 title: "KEIKAI"
 title_link: "https://keikai.io"
 name: "Potix Corporation"
+url: "https://doc.keikai.io"
 
 search                    : true
 search_full_content       : true
@@ -46,10 +48,6 @@ defaults:
     values:
       sidebar:
         nav: "axyra"
-      # Axyra Sheets is not released yet. Keep the whole section out of search
-      # results until it is -- delete these two lines at release. (Rendered by
-      # _includes/head/custom.html.)
-      noindex: true
   - scope:
       path: "axyra/tutorial"
     values:

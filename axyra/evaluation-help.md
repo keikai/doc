@@ -4,6 +4,8 @@ permalink: /axyra/evaluation-help
 toc: false
 comments: false
 share: false
+noindex: true
+sitemap: false
 ---
 Tell us what you are evaluating Axyra Sheets for and where you are stuck. We
 will answer your question and explain the license options available for your

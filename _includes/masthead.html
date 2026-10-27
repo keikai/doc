@@ -2,8 +2,10 @@
 
 {% assign axyra_home = site.axyra | append: "/" %}
 {% assign axyra_prefix = page.url | slice: 0, 7 %}
+{% assign is_axyra_page = false %}
 {% if page.url == site.axyra or axyra_prefix == "/axyra/" %}
-  {% assign masthead_title = "Axyra" %}
+  {% assign is_axyra_page = true %}
+  {% assign masthead_title = site.title | append: " | Axyra" %}
   {% comment %}
     On the overview page itself the title leaves for the Axyra product site, the
     way Keikai's masthead uses `title_link`. Every other Axyra page links back to
@@ -28,7 +30,7 @@
         {% unless logo_path == empty %}
           <a class="site-logo" href="{{ masthead_url }}"><img src="{{ logo_path | relative_url }}" alt=""></a>
         {% endunless %}
-        <a class="site-title{% if masthead_title == "Axyra" %} site-title--axyra{% endif %}" href="{{ masthead_url }}">{{ masthead_title }}</a>
+        <a class="site-title{% if is_axyra_page %} site-title--axyra{% endif %}" href="{{ masthead_url }}">{{ masthead_title }}</a>
         <ul class="visible-links">
           {% unless page.head == "doc" %}
             {%- for link in masthead_links -%}
@@ -47,7 +49,7 @@
             {%- endfor -%}
           {% endunless %}
         </ul>
-		{% if masthead_title == "Axyra" %}
+		{% if is_axyra_page %}
 		<button class="axyra-search__toggle" type="button" data-axyra-search-toggle
 				aria-controls="axyra-search" aria-expanded="false">
 			<span class="visually-hidden">Search Axyra Docs</span>

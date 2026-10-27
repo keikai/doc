@@ -4,6 +4,8 @@ permalink: /axyra/contact-sales
 toc: false
 comments: false
 share: false
+noindex: true
+sitemap: false
 ---
 Ask about pricing, licensing for your deployment, or the purchasing process. Our
 sales team will clarify your project and timeline and agree a next step with you.

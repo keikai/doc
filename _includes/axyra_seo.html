@@ -1,4 +1,9 @@
 <!-- begin axyra_seo.html -->
-<meta property="og:description" content="Axyra Sheets is an embeddable Excel-compatible spreadsheet engine written in Rust, available to Java applications as a library. Read and write XLSX/XLS/ODS/CSV, evaluate formulas, and render to PDF and images — headless, no UI required.">
-<meta name="description" content="Axyra Sheets is an embeddable Excel-compatible spreadsheet engine written in Rust, available to Java applications as a library. Read and write XLSX/XLS/ODS/CSV, evaluate formulas, and render to PDF and images — headless, no UI required.">
+{% capture axyra_default_description %}Axyra Sheets is an embeddable Excel-compatible spreadsheet engine written in Rust, available to Java applications as a library. Read and write XLSX/XLS/ODS/CSV, evaluate formulas, and render to PDF and images — headless, no UI required.{% endcapture %}
+{% assign axyra_description = page.description | default: page.excerpt | default: axyra_default_description %}
+{% assign axyra_description = axyra_description | markdownify | strip_html | strip_newlines | escape_once %}
+{% unless page.excerpt %}
+<meta property="og:description" content="{{ axyra_description }}">
+{% endunless %}
+<meta name="description" content="{{ axyra_description }}">
 <!-- end axyra_seo/seo.html -->
