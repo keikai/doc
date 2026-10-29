@@ -301,7 +301,7 @@ complete error log so the assistant can reproduce the smallest failing case.
 
 ## Build an enterprise reporting workflow
 
-Explore our [financial workflow](https://keikai.io/axyra/demo/demo.zul?id=financialDataFlow), [data cleansing](https://keikai.io/axyra/demo/demo.zul?id=financialDataCleansing) and [reporting](https://keikai.io/axyra/demo/demo.zul?id=financialDataCleansing) examples to see how Axyra fits into a larger application. Try the live demos, then use the corresponding [GitHub projects](https://github.com/keikai/axyra-sheets-examples) as a starting point for your own workflow.
+Explore our [financial workflow](https://keikai.io/axyra/demo/demo.zul?id=financialDataFlow), [data cleansing](https://keikai.io/axyra/demo/demo.zul?id=financialDataCleansing) and [reporting](https://keikai.io/axyra/demo/demo.zul?id=financialReporting) examples to see how Axyra fits into a larger application. Try the live demos, then use the corresponding [GitHub projects](https://github.com/keikai/axyra-sheets-examples) as a starting point for your own workflow.
 
 Give your coding assistant the example code, describe your input data and reporting requirements, and ask it to adapt the workflow to your application.
 
