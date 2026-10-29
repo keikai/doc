@@ -79,8 +79,18 @@ axyra-guides:
         url: /axyra/guides/convert-excel-to-pdf-java
       - title: "Write Data to Excel"
         url: /axyra/guides/write-data-to-excel-java
+      - title: "Export Database Data"
+        url: /axyra/guides/export-database-to-excel-java
+      - title: "Import Excel to a Database"
+        url: /axyra/guides/import-excel-to-database-java
+      - title: "Spring Boot Import and Export"
+        url: /axyra/guides/spring-boot-excel-import-export
+      - title: "Export Excel Files"
+        url: /axyra/guides/export-excel-files-java
       - title: "Generate Excel Reports"
         url: /axyra/guides/generate-excel-reports-java
+      - title: "Populate a P&L Template"
+        url: /axyra/guides/populate-excel-template-database-java
   - title: "More"
     children:
       - title: "Quick Start"

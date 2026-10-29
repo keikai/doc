@@ -21,7 +21,12 @@ covers the object model these guides assume.
 | [How to Read an Excel File in Java]({{ site.axyra_guides }}/read-excel-file-java) | Opening a workbook, reading typed values in bulk, handling formula errors |
 | [How to Convert Excel to PDF in Java]({{ site.axyra_guides }}/convert-excel-to-pdf-java) | Server-side PDF rendering, page setup, fonts, watermarks |
 | [How to Write Data to Excel in Java]({{ site.axyra_guides }}/write-data-to-excel-java) | Populating a sheet from a `ResultSet` or JSON, including very large exports |
-| [How to Create Excel Reports Automatically in Java]({{ site.axyra_guides }}/generate-excel-reports-java) | Filling a designed template with template markers, on a schedule |
+| [Export Database Data to Excel with Java and JDBC]({{ site.axyra_guides }}/export-database-to-excel-java) | Mapping JDBC results to typed cells and streaming large database exports |
+| [Import Excel Data into a Database with Java]({{ site.axyra_guides }}/import-excel-to-database-java) | Validating uploaded rows, inserting batches, and returning an annotated error workbook |
+| [Spring Boot Excel Import and Export]({{ site.axyra_guides }}/spring-boot-excel-import-export) | XLSX and PDF download endpoints, workbook uploads, and production deployment settings |
+| [How to Export Excel Files in Java]({{ site.axyra_guides }}/export-excel-files-java) | XLSX, XLS, CSV, ODS, JSON, PDF, HTML, encryption, and values-only output |
+| [Automate Excel Reports in Java with Templates]({{ site.axyra_guides }}/generate-excel-reports-java) | Filling a designed template with template markers, totals, PDF output, and scheduling |
+| [Populate a Profit and Loss Excel Template from Java]({{ site.axyra_guides }}/populate-excel-template-database-java) | Querying database totals, filling a fixed P&L template, and verifying formulas |
 
 # Where to go next
 

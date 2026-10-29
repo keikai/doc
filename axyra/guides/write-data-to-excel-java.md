@@ -35,13 +35,14 @@ import io.keikai.axyra.sheets.Sheet;
 import io.keikai.axyra.sheets.Workbook;
 import io.keikai.axyra.sheets.style.CellStyle;
 
+import java.math.BigDecimal;
 import java.nio.file.Path;
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-record Sale(String region, String product, LocalDate orderDate, double amount) {}
+record Sale(String region, String product, LocalDate orderDate, Double amount) {}
 
 List<Sale> rows = new ArrayList<>();
 try (PreparedStatement ps = conn.prepareStatement(
@@ -49,11 +50,12 @@ try (PreparedStatement ps = conn.prepareStatement(
     ps.setString(1, "Q3");
     try (ResultSet rs = ps.executeQuery()) {
         while (rs.next()) {
+            BigDecimal amount = rs.getBigDecimal("amount");
             rows.add(new Sale(
                     rs.getString("region"),
                     rs.getString("product"),
                     rs.getObject("order_date", LocalDate.class),
-                    rs.getDouble("amount")));
+                    amount == null ? null : amount.doubleValue()));
         }
     }
 }
@@ -217,8 +219,11 @@ when you are pouring a result set into a file. `StreamWorkbook` writes each row
 as it arrives, so a million rows costs the same memory as ten.
 
 ```java
+import io.keikai.axyra.sheets.io.StreamRow;
 import io.keikai.axyra.sheets.io.StreamStyle;
 import io.keikai.axyra.sheets.io.StreamWorkbook;
+
+import java.math.BigDecimal;
 
 try (StreamWorkbook out = StreamWorkbook.create(Path.of("big-export.xlsx"))) {
     int header = out.addStyle(StreamStyle.defaults().withBold());
@@ -235,11 +240,16 @@ try (StreamWorkbook out = StreamWorkbook.create(Path.of("big-export.xlsx"))) {
     int r = 1;
     try (ResultSet rs = ps.executeQuery()) {
         while (rs.next()) {
-            out.row(r++)
-               .addText(rs.getString("region"))
-               .addDate(rs.getObject("order_date", LocalDate.class), date)
-               .addNumber(rs.getDouble("amount"), money)
-               .commit();
+            StreamRow row = out.row(r++)
+                    .addText(rs.getString("region"))
+                    .addDate(rs.getObject("order_date", LocalDate.class), date);
+            BigDecimal amount = rs.getBigDecimal("amount");
+            if (amount == null) {
+                row.skip();
+            } else {
+                row.addNumber(amount.doubleValue(), money);
+            }
+            row.commit();
         }
     }
 }
