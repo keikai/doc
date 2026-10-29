@@ -21,7 +21,7 @@ code.
 The skill covers Excel import and export, template reports, formulas, charts,
 pivots, PDF and image rendering, streaming exports, licensing issues, and
 migration from Aspose.Cells, Apache POI, or another spreadsheet library. It was
-verified against Axyra Sheets `1.0.0.FL.20261022-Eval`.
+verified against Axyra Sheets `{{ site.axyra_version }}`.
 
 # Get the Axyra Sheets skill
 

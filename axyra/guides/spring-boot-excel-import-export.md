@@ -64,14 +64,14 @@ Add the Spring web and JDBC starters and Axyra Sheets. The Axyra artifact is ser
     <dependency>
         <groupId>io.keikai</groupId>
         <artifactId>axyra-sheets</artifactId>
-        <version>1.0.0.FL.20261022-Eval</version>
+        <version>{{ site.axyra_version }}</version>
     </dependency>
 </dependencies>
 
 <repositories>
     <repository>
-        <id>keikai-eval</id>
-        <url>https://mavensync.zkoss.org/eval</url>
+        <id>{{ site.axyra_repo_id }}</id>
+        <url>{{ site.axyra_repo_url }}</url>
     </repository>
 </repositories>
 ```

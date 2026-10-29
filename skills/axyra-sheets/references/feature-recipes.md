@@ -1,6 +1,6 @@
 # Feature recipes: content, protection and data tools
 
-Measured on `1.0.0.FL.20261022-Eval`. Use these recipes when adjacent
+Measured on `1.0.0-Beta-Eval`. Use these recipes when adjacent
 parameters have the same Java type; the parameter order is part of the example.
 Save and reopen the result for verification.
 

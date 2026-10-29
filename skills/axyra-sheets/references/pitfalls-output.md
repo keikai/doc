@@ -1,6 +1,6 @@
 # Pitfalls: output formats, rendering and content objects
 
-Measured on `1.0.0.FL.20261022-Eval`; recheck against the resolved build by saving,
+Measured on `1.0.0-Beta-Eval`; recheck against the resolved build by saving,
 reopening and inspecting the output. Page setup, `PdfOptions` and fonts are in
 [enterprise.md](enterprise.md).
 

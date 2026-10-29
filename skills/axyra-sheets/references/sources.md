@@ -6,11 +6,17 @@ Axyra Sheets is consumed as a published dependency. The engine's own source is
 not distributed, so every instruction here must work from the public docs, the
 artifact the project already resolves, and the public examples.
 
+The released artifacts are `io.keikai:axyra-sheets:1.0.0-Beta-Eval` in the
+public evaluation repository and `io.keikai:axyra-sheets:1.0.0-Beta` in the
+authenticated EE repository. Prefer the version already selected by the user's
+project; never replace an EE dependency with Eval merely to avoid configuring
+repository credentials.
+
 | Source | Public entry | Local checkout, if the user happens to have one |
 |---|---|---|
 | Product docs | https://doc.keikai.io/axyra | a `doc` checkout, under its `axyra/` directory |
 | Runnable examples | https://github.com/keikai/axyra-sheets-examples | an `axyra-sheets-examples` checkout |
-| Javadoc | the `-javadoc` JAR next to the resolved artifact (see below); https://keikai.io/javadoc/axyra/latest/ only as a last resort | none; the JAR is the version-matched copy |
+| Javadoc | the `-javadoc` JAR next to the resolved artifact (see below); https://keikai.io/javadoc/axyra-sheets/latest/index.html for the latest public API | none; the JAR is the version-matched copy |
 
 Use a local checkout only after confirming it exists in the user's workspace and
 matches the selected version; otherwise use the public entry. Never require, clone,
@@ -34,17 +40,18 @@ name the one you used:
    `axyra-sheets-<version>-javadoc.jar` next to
    the binary at `https://mavensync.zkoss.org/eval/io/keikai/axyra-sheets/<version>/`.
    Download it into a temporary directory and unzip it. It is documentation, not
-   the runtime dependency. No `-sources` JAR is published.
+   the runtime dependency. EE builds are served from the authenticated repository
+   at `https://maven.zkoss.org/repo/keikai/ee`; use the user's configured credentials
+   and do not ask them to expose secrets. No `-sources` JAR is published.
 3. **`javap` on the resolved binary JAR**, for exact signatures when no Javadoc JAR
    exists: `javap -cp <artifact.jar> io.keikai.axyra.sheets.Workbook` (and the other
    public classes). The examples repository also compiles against a real version
    and so demonstrates signatures that exist. Do not describe `javap` output as
    Javadoc.
-4. **The public website, `https://keikai.io/javadoc/axyra/latest/`**, only when the
-   JARs are unavailable. It documents the **latest** release, so it can describe a
-   class that a pinned or older version lacks, or name it differently. It may also
-   be offline: it has returned 404, and some hosts redirect it to the keikai.io home
-   page. Treat a 404 or a page without API content as unavailable, and do not retry.
+4. **The public website, `https://keikai.io/javadoc/axyra-sheets/latest/index.html`**,
+   when the version-matched JARs are unavailable. It documents the **latest** release,
+   so it can describe a class that a pinned or older version lacks, or name it
+   differently. Confirm version-sensitive signatures against the resolved artifact.
 
 The Javadoc is the complete public surface; the documentation site is a curated
 subset that teaches the common paths. Read-back getters, and whole families such as
@@ -93,7 +100,8 @@ as a claim to verify.
 
 Read the examples POM and README before using its commands. As reviewed, the
 examples target Java 17, set the `io.keikai:axyra-sheets` dependency version in
-the `axyra.version` property, and declare the evaluation repository at
+the `axyra.version` property (`1.0.0-Beta-Eval` in the release checkout), and
+declare the evaluation repository at
 `https://mavensync.zkoss.org/eval`; the checkout therefore resolves without an
 extra repository override. The POM's top-level `0.1.0-SNAPSHOT` is the version of
 the examples application itself, not the Axyra Sheets dependency. The version the

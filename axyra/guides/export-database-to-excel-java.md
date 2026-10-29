@@ -37,7 +37,7 @@ You need Java 17 or later, a JDBC driver for your database, and the Axyra Sheets
 <dependency>
     <groupId>io.keikai</groupId>
     <artifactId>axyra-sheets</artifactId>
-    <version>1.0.0.FL.20261022-Eval</version>
+    <version>{{ site.axyra_version }}</version>
 </dependency>
 ```
 

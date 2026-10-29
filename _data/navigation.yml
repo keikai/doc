@@ -40,7 +40,7 @@ axyra:
       - title: "Developer Reference"
         url: /axyra/dev-ref/
       - title: "Javadoc"
-        url: https://keikai.io/javadoc/axyra/latest/
+        url: https://keikai.io/javadoc/axyra-sheets/latest/index.html
 
 axyra-tutorial:
   - title: "Axyra Sheets Quick Start"
@@ -61,7 +61,7 @@ axyra-tutorial:
       - title: "Developer Reference"
         url: /axyra/dev-ref/
       - title: "Javadoc"
-        url: https://keikai.io/javadoc/axyra/latest/
+        url: https://keikai.io/javadoc/axyra-sheets/latest/index.html
 
 # Task-oriented articles. One page per search query; each links into the
 # reference rather than duplicating it.
@@ -98,7 +98,7 @@ axyra-guides:
       - title: "Developer Reference"
         url: /axyra/dev-ref/
       - title: "Javadoc"
-        url: https://keikai.io/javadoc/axyra/latest/
+        url: https://keikai.io/javadoc/axyra-sheets/latest/index.html
 
 axyra-dev-ref:
   - title: Overview
@@ -155,7 +155,7 @@ axyra-dev-ref:
       - title: "Axyra Sheets vs. Keikai Spreadsheet"
         url: /axyra/dev-ref/Axyra_vs_Keikai
   - title: Javadoc
-    url: https://keikai.io/javadoc/axyra/latest/
+    url: https://keikai.io/javadoc/axyra-sheets/latest/index.html
 
 tutorial:
   - title: "Tutorial"

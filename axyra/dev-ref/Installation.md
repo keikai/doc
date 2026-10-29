@@ -3,10 +3,16 @@ title: 'Installation'
 permalink: /axyra/dev-ref/Installation
 ---
 
-Axyra Sheets is not published to Maven Central. Declare the repository below
-alongside the dependency, or your build will fail to resolve it.
+Axyra Sheets is not published to Maven Central. Choose the public evaluation
+build or the authenticated Enterprise Edition (EE) build, and declare its
+repository alongside the dependency.
 
-# Maven
+# Evaluation build
+
+Use `{{ site.axyra_version }}` to evaluate Axyra Sheets without repository
+credentials.
+
+## Maven
 
 ```xml
 <repositories>
@@ -23,7 +29,7 @@ alongside the dependency, or your build will fail to resolve it.
 </dependency>
 ```
 
-# Gradle
+## Gradle
 
 ```groovy
 repositories {
@@ -39,6 +45,36 @@ runs in Evaluation Mode: saved, rendered, and exported output carries the
 evaluation marks, and one process may perform at most 100 opens, saves, renders,
 and streaming workbook creations combined. See
 [Licensing and Evaluation]({{ site.axyra_devref }}/License).
+
+# Enterprise Edition
+
+EE customers can use `{{ site.axyra_ee_version }}` from the authenticated
+Keikai repository:
+
+```xml
+<repositories>
+    <repository>
+        <id>{{ site.axyra_ee_repo_id }}</id>
+        <url>{{ site.axyra_ee_repo_url }}</url>
+    </repository>
+</repositories>
+
+<dependency>
+    <groupId>io.keikai</groupId>
+    <artifactId>axyra-sheets</artifactId>
+    <version>{{ site.axyra_ee_version }}</version>
+</dependency>
+```
+
+Keep repository credentials out of `pom.xml`. Configure a Maven `server` with
+the matching `{{ site.axyra_ee_repo_id }}` ID in `~/.m2/settings.xml`, or use
+your build system's credential store. For Gradle, use the same repository URL
+with authenticated Maven repository credentials.
+
+The released artifacts are available in the
+[Eval repository]({{ site.axyra_repo_url }}/io/keikai/axyra-sheets/{{ site.axyra_version }}/)
+and the authenticated
+[EE repository]({{ site.axyra_ee_repo_url }}/io/keikai/axyra-sheets/{{ site.axyra_ee_version }}/).
 
 # The native library
 

@@ -88,12 +88,15 @@ axyra_tutorial: "/axyra/quick-start"
 axyra_guides: "/axyra/guides"
 axyra_devref: "/axyra/dev-ref"
 axyra_image_folder: "/assets/images/axyra"
-axyra_javadoc: "https://keikai.io/javadoc/axyra/latest/"
-axyra_version: "1.0.0.FL.20261022-Eval"
-# Axyra Sheets is not on Maven Central: the evaluation build is served from
-# ZK's repository, so every dependency snippet needs this repository too.
+axyra_javadoc: "https://keikai.io/javadoc/axyra-sheets/latest/index.html"
+axyra_version: "1.0.0-Beta-Eval"
+# Axyra Sheets is not on Maven Central. Public examples use the evaluation
+# build; authenticated EE customers can use the commercial repository below.
 axyra_repo_url: "https://mavensync.zkoss.org/eval"
 axyra_repo_id: "keikai-eval"
+axyra_ee_version: "1.0.0-Beta"
+axyra_ee_repo_url: "https://maven.zkoss.org/repo/keikai/ee"
+axyra_ee_repo_id: "keikai-ee"
 # Optional email capture and lead routing on the Axyra pages.
 # Developer updates: the download dialog posts the email straight to the
 # keikai.io mail service (updates_endpoint; it must allow this site's origin).
