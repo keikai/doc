@@ -3,8 +3,7 @@ title: 'Read and Write Files'
 permalink: /axyra/quick-start/read_write
 ---
 
-Opening an existing spreadsheet, changing it, and saving it back — without
-losing anything the engine does not model.
+Open, read, modify, recalculate, and save Excel files with Axyra Sheets for Java.
 
 # Open a file
 
@@ -20,13 +19,11 @@ try (Workbook wb = Workbook.open(Path.of("report.xlsx"))) {
 }
 ```
 
-A file saved in Evaluation Mode starts with an extra **Axyra Evaluation Copy**
-sheet, which shifts every sheet index by one. Look sheets up by name
-(`wb.sheet("Q3")`) rather than by position.
-
 The format is detected from the file extension. XLSX, XLSM, XLSB, XLS (BIFF8), ODS, CSV,
 and JSON all open through the same call — see
 [Supported Formats]({{ site.axyra_devref }}/Supported_Formats).
+
+Evaluation note: Files saved in Evaluation Mode include an Axyra Evaluation Copy sheet. When working with evaluated output, prefer looking up sheets by name rather than relying on sheet position.
 
 For an encrypted workbook, pass the password:
 
