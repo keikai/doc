@@ -12,6 +12,8 @@ main:
   #   url: /axyra
 
 axyra_main:
+  - title: "Overview"
+    url: /axyra/
   - title: "Quick Start"
     url: /axyra/quick-start/
   - title: "Guides"
