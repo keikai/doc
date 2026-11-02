@@ -329,6 +329,7 @@ for the reading side.
 - [Cells and Ranges]({{ site.axyra_devref }}/Cell_and_Range#importing-java-objects) — the `importData` reference
 - [Streaming Large Files]({{ site.axyra_devref }}/Streaming) — streaming writer and columnar backend
 - [Styles and Formats]({{ site.axyra_devref }}/Styles) — number format codes
+- **Explore Axyra Sheets** — See [live demos]({{ site.axyra_site_link }}/demo/), [pricing]({{ site.axyra_site_link }}/java#pricing), and [product details]({{ site.axyra_site_link }}).
 
 # Beyond Basic Data Export
 

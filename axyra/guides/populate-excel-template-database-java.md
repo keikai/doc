@@ -183,3 +183,4 @@ Axyra Sheets fills and calculates XLSX templates from Java data. It does not run
 - [Template Markers](https://doc.keikai.io/axyra/dev-ref/Template_Markers) explains scalar, list, aggregate, and grouping markers.
 - [How to Create Excel Reports Automatically in Java]({{ site.axyra_guides }}/generate-excel-reports-java) adds repeating rows and PDF output.
 - [How to Export Database Data to Excel in Java]({{ site.axyra_guides }}/export-database-to-excel-java) covers a generic JDBC result export without a template.
+- **Explore Axyra Sheets** — See [live demos]({{ site.axyra_site_link }}/demo/), [pricing]({{ site.axyra_site_link }}/java#pricing), and [product details]({{ site.axyra_site_link }}).

@@ -19,6 +19,9 @@ covers the object model these guides assume.
 |---|---|
 | [How to Create an Excel File in Java]({{ site.axyra_guides }}/create-excel-file-java) | An `.xlsx` from scratch: values, formulas, formatting, column widths |
 | [How to Read an Excel File in Java]({{ site.axyra_guides }}/read-excel-file-java) | Opening a workbook, reading typed values in bulk, handling formula errors |
+| [Read Excel Cell Values in Java]({{ site.axyra_guides }}/read-excel-cell-values-java) | Text, numbers, dates, blanks, errors, and formula results mapped to typed Java fields |
+| [Read Large Excel Files Efficiently in Java]({{ site.axyra_guides }}/read-large-excel-files-efficiently-java) | Bulk range reads, bounded row batches, numeric fast paths, memory and concurrency limits |
+| [Recalculate Excel Formulas in Java]({{ site.axyra_guides }}/evaluate-recalculate-excel-formulas-java) | Automatic and manual calculation, `recalculate()` vs `recalculateDirty()`, expression evaluation, formula errors |
 | [How to Convert Excel to PDF in Java]({{ site.axyra_guides }}/convert-excel-to-pdf-java) | Server-side PDF rendering, page setup, fonts, watermarks |
 | [How to Write Data to Excel in Java]({{ site.axyra_guides }}/write-data-to-excel-java) | Populating a sheet from a `ResultSet` or JSON, including very large exports |
 | [Export Database Data to Excel with Java and JDBC]({{ site.axyra_guides }}/export-database-to-excel-java) | Mapping JDBC results to typed cells and streaming large database exports |

@@ -85,7 +85,7 @@ try (OutputStream out = response.getOutputStream()) {
 byte[] bytes = wb.saveBytes("xlsx");
 ```
 
-Open the stream in a `try` block, as above, so it is closed after the workbook has been written. For a complete web example with upload and download endpoints, see Import and Export Excel Files in Spring Boot (PLACEHOLDER-URL) <!-- TODO: author to insert the real link once the Spring Boot guide is published -->.
+Open the stream in a `try` block, as above, so it is closed after the workbook has been written. For a complete web example with upload and download endpoints, see [Import and Export Excel Files in Spring Boot]({{ site.axyra_guides }}/spring-boot-excel-import-export).
 
 ## How do you export values without formulas?
 
@@ -211,3 +211,4 @@ For PDF, pass the sheet name with `PdfOptions.builder().sheetNames("Summary")`. 
 - [Import and Export](https://doc.keikai.io/axyra/dev-ref/Import_and_Export) is the reference for every open and save option.
 - [How to Create an Excel File in Java](https://doc.keikai.io/axyra/guides/create-excel-file-java) shows how to build the workbook you are exporting.
 - How to Export Database Data to Excel in Java (PLACEHOLDER-URL) <!-- TODO: author to insert the real link once the database export guide is published --> covers exports that start from SQL.
+- **Explore Axyra Sheets** — See [live demos]({{ site.axyra_site_link }}/demo/), [pricing]({{ site.axyra_site_link }}/java#pricing), and [product details]({{ site.axyra_site_link }}).

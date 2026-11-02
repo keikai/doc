@@ -342,6 +342,7 @@ results, call `wb.recalculate()` before reading.
 - [Cells and Ranges]({{ site.axyra_devref }}/Cell_and_Range) — the full data-access API
 - [Supported Formats]({{ site.axyra_devref }}/Supported_Formats) — per-format behavior and limits
 - [Formulas]({{ site.axyra_devref }}/Formulas) — evaluation, arrays, error semantics
+- **Explore Axyra Sheets** — See [live demos]({{ site.axyra_site_link }}/demo/), [pricing]({{ site.axyra_site_link }}/java#pricing), and [product details]({{ site.axyra_site_link }}).
 
 # Beyond Reading Excel Data
 

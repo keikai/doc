@@ -296,6 +296,7 @@ stays put when you scroll.
   render what you just built
 - [Cells and Ranges]({{ site.axyra_devref }}/Cell_and_Range) — the full data-access API
 - [Styles and Formats]({{ site.axyra_devref }}/Styles) — fonts, fills, borders, number formats
+- **Explore Axyra Sheets** — See [live demos]({{ site.axyra_site_link }}/demo/), [pricing]({{ site.axyra_site_link }}/java#pricing), and [product details]({{ site.axyra_site_link }}).
 
 # Beyond Your First Excel File
 

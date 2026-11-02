@@ -265,3 +265,4 @@ No, Axyra Sheets handles only workbook processing, which means filling, calculat
 - [Template Markers](https://doc.keikai.io/axyra/dev-ref/Template_Markers) is the full marker reference.
 - [How to Convert Excel to PDF in Java](https://doc.keikai.io/axyra/guides/convert-excel-to-pdf-java) covers the distribution format.
 - [Tables and Content Objects](https://doc.keikai.io/axyra/dev-ref/Content_Objects) explains table styles and banding for template rows.
+- **Explore Axyra Sheets** — See [live demos]({{ site.axyra_site_link }}/demo/), [pricing]({{ site.axyra_site_link }}/java#pricing), and [product details]({{ site.axyra_site_link }}).

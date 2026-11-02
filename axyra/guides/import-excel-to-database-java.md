@@ -324,3 +324,4 @@ Write the errors back into the uploaded workbook. Give each invalid cell a fill 
 - [How to Read an Excel File in Java](https://doc.keikai.io/axyra/guides/read-excel-file-java) explains bulk reading and value types.
 - [How to Export Database Data to Excel in Java]({{ site.axyra_guides }}/export-database-to-excel-java) covers the opposite direction.
 - [Cells and Ranges](https://doc.keikai.io/axyra/dev-ref/Cell_and_Range) is the full data-access reference.
+- **Explore Axyra Sheets** — See [live demos]({{ site.axyra_site_link }}/demo/), [pricing]({{ site.axyra_site_link }}/java#pricing), and [product details]({{ site.axyra_site_link }}).

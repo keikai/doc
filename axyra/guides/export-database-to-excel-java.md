@@ -344,3 +344,4 @@ Save the same workbook with a `.csv` file name, for example `wb.save(Path.of("or
 - [How to Create Excel Reports Automatically in Java](https://doc.keikai.io/axyra/guides/generate-excel-reports-java) shows how to fill a designed template instead of building the layout in code.
 - [How to Import Excel Data into a Database in Java]({{ site.axyra_guides }}/import-excel-to-database-java) covers the opposite direction.
 - [Streaming Large Files](https://doc.keikai.io/axyra/dev-ref/Streaming) describes the streaming writer in detail.
+- **Explore Axyra Sheets** — See [live demos]({{ site.axyra_site_link }}/demo/), [pricing]({{ site.axyra_site_link }}/java#pricing), and [product details]({{ site.axyra_site_link }}).

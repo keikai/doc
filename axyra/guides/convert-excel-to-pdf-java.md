@@ -279,6 +279,7 @@ paginated output, HTML export is usually the better fit; see
 - [How to Create Excel Reports Automatically in Java]({{ site.axyra_guides }}/generate-excel-reports-java) — generate the workbook you are converting
 - [Charts]({{ site.axyra_devref }}/Charts) — what renders and how
 - [Supported Formats]({{ site.axyra_devref }}/Supported_Formats) — every output format
+- **Explore Axyra Sheets** — See [live demos]({{ site.axyra_site_link }}/demo/), [pricing]({{ site.axyra_site_link }}/java#pricing), and [product details]({{ site.axyra_site_link }}).
 
 # Beyond Excel-to-PDF Conversion
 

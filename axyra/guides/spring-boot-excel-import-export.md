@@ -433,3 +433,4 @@ Yes, but the Axyra calls are blocking. Run them on a bounded elastic scheduler, 
 - [How to Export Excel Files in Java]({{ site.axyra_guides }}/export-excel-files-java) covers every output format and save option.
 - [How to Read an Excel File in Java](https://doc.keikai.io/axyra/guides/read-excel-file-java) explains bulk reading and value types.
 - [Native Loader](https://doc.keikai.io/axyra/dev-ref/Native_Loader) explains packaging, containers, and threading.
+- **Explore Axyra Sheets** — See [live demos]({{ site.axyra_site_link }}/demo/), [pricing]({{ site.axyra_site_link }}/java#pricing), and [product details]({{ site.axyra_site_link }}).

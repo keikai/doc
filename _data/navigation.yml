@@ -77,6 +77,12 @@ axyra-guides:
         url: /axyra/guides/create-excel-file-java
       - title: "Read an Excel File"
         url: /axyra/guides/read-excel-file-java
+      - title: "Read Excel Cell Values"
+        url: /axyra/guides/read-excel-cell-values-java
+      - title: "Read Large Excel Files"
+        url: /axyra/guides/read-large-excel-files-efficiently-java
+      - title: "Recalculate Formulas"
+        url: /axyra/guides/evaluate-recalculate-excel-formulas-java
       - title: "Convert Excel to PDF"
         url: /axyra/guides/convert-excel-to-pdf-java
       - title: "Write Data to Excel"
