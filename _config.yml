@@ -23,6 +23,7 @@ analytics:
   google:
     tracking_id: "G-6GR1K96LB8"
     policy_url: "https://keikai.io/privacy"
+    ads_id: "AW-18521710216" # Google Ads tag, same account as keikai.io
 
 defaults:
   - scope:
