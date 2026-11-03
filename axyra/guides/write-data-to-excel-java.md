@@ -4,23 +4,32 @@ excerpt: 'How to write an XLSX file in Java with Axyra Sheets: export data to Ex
 permalink: /axyra/guides/write-data-to-excel-java
 ---
 
-Exporting data to Excel from a Java application is a common backend task,
-whether the source is a database, JSON response, or another service. In this
-guide, we’ll show how to write an XLSX file in Java with Axyra Sheets for Java,
-turning structured data into a workbook that includes headers, data types, and
-basic formatting. For a short walkthrough of Axyra before diving in, see [Quick Start]({{ site.axyra_tutorial }}/).
+Writing data to Excel in Java usually involves creating a workbook, mapping
+your data to rows and columns, applying suitable formats, and saving an XLSX
+file. The best approach depends on the data source, its structure, and the size
+of the export.
+
+This guide explains how to export database results and JSON data, with concrete
+examples using Axyra Sheets for Java. It also covers dates, numeric values, and
+larger exports.
+
+[Set Up Axyra for This Tutorial →](https://doc.keikai.io/axyra/quick-start/) · [Database Example ↓](#export-data-to-excel-from-a-database) · [JSON Example ↓](#export-json-data-to-excel)
 
 # Which approach to use when writing an Excel file in Java
 
 | Your data | Use | Why |
 |---|---|---|
-| A list of records, POJOs, or maps | `Sheet.importData` | Reflects the properties into columns, writes a header row, one JNI crossing per chunk |
-| A numeric matrix | `Range.setNumbers` | Flat `double[]`, no boxing, no `CellValue` allocation — the fastest path in the API |
-| Mixed types, known shape | `Range.setValues` | One crossing for the whole block |
-| More rows than fit in memory | `StreamWorkbook` | Writes row by row to disk; flat memory regardless of row count |
+| A list of records, POJOs, or maps | `Sheet.importData` | Turns each object into a row and its properties into columns, with an optional header row, so you write no cell-by-cell code |
+| A numeric matrix | `Range.setNumbers` | The fastest way to write a block that is all numbers, such as measurements or aggregated totals |
+| Mixed types, known shape | `Range.setValues` | Writes a whole block of text, numbers, booleans, and blanks in one call while you decide each cell's type |
+| More rows than fit in memory | `StreamWorkbook` | Exports very large result sets by writing rows to disk as they arrive, so memory use stays flat |
 
-What all four have in common: **never loop per cell.** Every `Cell` call crosses
-the JNI boundary, so a million-cell loop is a million crossings.
+{: .notice--info}
+**Performance note.** Whichever you choose, never loop per cell. Every `Cell`
+call crosses the JNI boundary, so a million-cell loop is a million crossings.
+`importData` crosses once per chunk, `setValues` once for the whole block, and
+`setNumbers` takes a flat `double[]` with no boxing and no `CellValue`
+allocation — the fastest path in the API.
 
 # Export data to Excel from a database
 
@@ -102,6 +111,15 @@ int lastRow = rows.size();                      // header is row 0
 sheet.range(1, 2, lastRow, 2).setStyle(dateStyle);   // column C
 sheet.range(1, 3, lastRow, 3).setStyle(money);       // column D
 ```
+
+The result is `q3-sales.xlsx` with a bold header row, one row per sale, order
+dates shown as `yyyy-mm-dd`, and amounts with thousands separators and two
+decimal places.
+
+{: .notice--success}
+**Try it with your own data.** Adapt this example to export your database
+results into a formatted workbook. For dependency setup and your first Axyra
+program, follow the [Quickstart →](https://doc.keikai.io/axyra/quick-start/)
 
 # Export JSON data to Excel
 
@@ -193,6 +211,11 @@ sheet.range(1, 0, array.size(), columns.length - 1).setValues(body);
 
 `setValues` requires the array shape to match the range exactly, which is why
 the row count is computed rather than guessed.
+
+{: .notice--info}
+**Build your Excel export faster with AI assistance.** Use the Axyra Agent Skill
+to help turn your data structure and formatting requirements into working Java
+code. [Set Up the Axyra Agent Skill →](https://doc.keikai.io/axyra/dev-ref/AI_Assisted_Development#axyra-agent-skill)
 
 # The fast path for numbers
 
@@ -331,10 +354,10 @@ for the reading side.
 - [Styles and Formats]({{ site.axyra_devref }}/Styles) — number format codes
 - **Explore Axyra Sheets** — See [live demos]({{ site.axyra_site_link }}/demo/), [pricing]({{ site.axyra_site_link }}/java#pricing), and [product details]({{ site.axyra_site_link }}).
 
-# Beyond Basic Data Export
+# Turn Data Exports into Finished Reports
 
-Writing an XLSX file in Java is often only one half of the job, because many
-applications also read Excel files back in. Once the data is in a workbook,
-Axyra can also handle formulas, formatting, charts, pivot tables, and PDF or
-image rendering. This lets the same workflow grow from a simple data export into
-more complete reporting and spreadsheet automation.
+Take your Java export further with calculated totals, charts, pivot tables, and
+PDF or image output. Axyra Sheets for Java brings these capabilities together so
+you can extend your workflow as requirements grow.
+
+[Explore Reporting Demos →]({{ site.axyra_site_link }}/demo/) · [Start with Axyra →](https://doc.keikai.io/axyra/quick-start/)
