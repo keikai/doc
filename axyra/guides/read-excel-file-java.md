@@ -4,12 +4,16 @@ excerpt: 'How to read an Excel file in Java with Axyra Sheets: open an XLSX work
 permalink: /axyra/guides/read-excel-file-java
 ---
 
-Reading Excel files in Java is a common starting point for processing customer
-uploads, importing business records, or checking data from another system. In
-this guide, we’ll show how to read an Excel file in Java with Axyra Sheets for
-Java: open an XLSX workbook, locate its populated cells, and extract values in
-bulk. We’ll also handle dates, formatted text, formula results, and error cells
-so your application can interpret the data correctly.
+To read an Excel file in Java, you need a library that can open the workbook,
+access its worksheets, and retrieve cell values. Reading an XLSX file also
+involves handling different data types, including text, numbers, dates, and
+formulas.
+
+This guide explains the main steps and common pitfalls, with concrete examples
+using Axyra Sheets for Java and a complete program you can adapt to your
+application.
+
+[Jump to Complete Example ↓](#the-complete-program-to-read-an-excel-file-in-java) · [Set Up Axyra for This Tutorial →](https://doc.keikai.io/axyra/quick-start/)
 
 The same code you use to read XLSX in Java also reads XLSM, XLSB, XLS, ODS, CSV,
 and JSON.
@@ -22,7 +26,7 @@ and JSON.
 
 Java 17 or later plus the dependency; the native libraries ship inside the jar.
 See [Installation]({{ site.axyra_devref }}/Installation) if you need the Gradle
-coordinates or hit a platform problem. For a short walkthrough of Axyra before diving in, see [Quick Start]({{ site.axyra_tutorial }}/).
+coordinates or hit a platform problem. For additional setup help, see [Quick Start](https://doc.keikai.io/axyra/quick-start/).
 
 ```xml
 <dependency>
@@ -285,6 +289,11 @@ public class ReadExcelFile {
     }
 }
 ```
+
+{: .notice--success}
+**Try it with your own workbook.** Adapt the example above to read your Excel
+data. For setup instructions and more workbook operations, follow the
+[Axyra Quickstart →](https://doc.keikai.io/axyra/quick-start/)
 
 # Common mistakes when reading Excel files in Java
 
