@@ -88,7 +88,8 @@ The skill guides your coding assistant; it does not install the Axyra library.
 Your application still needs Java 17 or later and the Axyra Sheets dependency.
 See [Installation]({{ site.axyra_devref }}/Installation).
 
-{: .notice--info} Recommended setup: For best results, use Claude Code with Opus 5.5. Sonnet 5.5 is also supported. Codex support is experimental, and we’re working to improve its reliability.
+{: .notice--info} 
+Recommended setup: For best results, use Claude Code with Opus 5.5. Sonnet 5.5 is also supported. Codex support is experimental, and we’re working to improve its reliability.
 
 # Start with a focused prompt
 
