@@ -77,6 +77,9 @@ Choose the installation method that fits your coding assistant:
 </dialog>
 </div>
 
+{: .notice--info} 
+Recommended setup: For best results, use Claude Code with Opus 5.5 or above. Sonnet 5.5 is also supported. Codex support is experimental, and we’re working to improve its reliability.
+
 For Codex, install the `axyra-sheets` folder in `~/.codex/skills/` (or your
 configured `$CODEX_HOME/skills/` directory), then start a new session. For
 Claude Code, install it in `~/.claude/skills/` or your project's
@@ -87,9 +90,6 @@ directory; follow their installation documentation. You can also inspect the
 The skill guides your coding assistant; it does not install the Axyra library.
 Your application still needs Java 17 or later and the Axyra Sheets dependency.
 See [Installation]({{ site.axyra_devref }}/Installation).
-
-{: .notice--info} 
-Recommended setup: For best results, use Claude Code with Opus 5.5 or above. Sonnet 5.5 is also supported. Codex support is experimental, and we’re working to improve its reliability.
 
 # Start with a focused prompt
 
