@@ -81,9 +81,9 @@ Choose the installation method that fits your coding assistant:
 Recommended setup: For best results, use Claude Code with Opus 5.5 or above. Sonnet 5.5 is also supported. Codex support is experimental, and we’re working to improve its reliability.
 
 For Claude Code, install it in `~/.claude/skills/` or your project's
-`.claude/skills/` directory. Other assistants may use a different skill
-directory; follow their installation documentation. For Codex, install the `axyra-sheets` folder in `~/.codex/skills/` (or your
-configured `$CODEX_HOME/skills/` directory), then start a new session. You can also inspect the
+`.claude/skills/` directory. For Codex, install the `axyra-sheets` folder in `~/.codex/skills/` (or your
+configured `$CODEX_HOME/skills/` directory), then start a new session. Other assistants may use a different skill
+directory; follow their installation documentation. You can also inspect the
 [skill source on GitHub](https://github.com/keikai/doc/tree/master/skills/axyra-sheets).
 
 The skill guides your coding assistant; it does not install the Axyra library.
