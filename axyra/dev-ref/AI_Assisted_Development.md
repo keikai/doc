@@ -136,7 +136,7 @@ limits, see [Licensing and Evaluation]({{ site.axyra_devref }}/License).
 
 # Prompt examples
 
-The following examples show what to ask your coding assistant, the results to expect, and what to check in the generated output. Adapt the prompts to your own files and requirements.
+The following examples show what to ask your coding assistant, the results to expect, and what to check in the generated output. Adapt the prompts to your own files and requirements. To see the Axyra Agent Skill in action, explore the **Built with AI** examples on our [demo page](https://keikai.io/axyra/demo/).
 
 ## Create a report from CSV
 
