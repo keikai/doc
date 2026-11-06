@@ -78,7 +78,7 @@ Choose the installation method that fits your coding assistant:
 </div>
 
 {: .notice--info} 
-Recommended setup: For best results, use Claude Code with Opus 5.5 or above. Sonnet 5.5 is also supported. Codex support is experimental, and we’re working to improve its reliability.
+Recommended setup: For best results, we recommend Claude Code with Opus 5.5 or OpenAI Codex with 6.1 Sol. Claude Code with Sonnet 5.5 is also supported.
 
 For Claude Code, install it in `~/.claude/skills/` or your project's
 `.claude/skills/` directory. For Codex, install the `axyra-sheets` folder in `~/.codex/skills/` (or your
