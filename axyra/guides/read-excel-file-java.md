@@ -19,8 +19,7 @@ The same code you use to read XLSX in Java also reads XLSM, XLSB, XLS, ODS, CSV,
 and JSON.
 
 {: .notice--info}
-**Writing a file instead?** See
-[How to Create an Excel File in Java]({{ site.axyra_guides }}/create-excel-file-java).
+**Prefer AI-assisted development?** [Get started here](https://doc.keikai.io/axyra/dev-ref/AI_Assisted_Development).
 
 # What you need
 
