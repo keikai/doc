@@ -15,6 +15,9 @@ larger exports.
 
 [Set Up Axyra for This Tutorial →](https://doc.keikai.io/axyra/quick-start/) · [Database Example ↓](#export-data-to-excel-from-a-database) · [JSON Example ↓](#export-json-data-to-excel)
 
+{: .notice--info}
+**Prefer AI-assisted development?** [Get started here](https://doc.keikai.io/axyra/dev-ref/AI_Assisted_Development).
+
 # Which approach to use when writing an Excel file in Java
 
 | Your data | Use | Why |
