@@ -1,44 +1,56 @@
 ---
-title: 'How to Write Data to Excel in Java (From a Database or JSON)'
-excerpt: 'How to write an XLSX file in Java with Axyra Sheets: export data to Excel from a database or JSON, format dates and numbers, and stream large exports.'
+title: 'How to Write Data to Excel in Java (List, Database, or JSON)'
+excerpt: 'Turn Java records into a formatted Excel report with importData, numeric amounts, and a formula total. Includes runnable code and a recorded AI-assisted export.'
 permalink: /axyra/guides/write-data-to-excel-java
 ---
 
-Writing data to Excel in Java usually involves creating a workbook, mapping
-your data to rows and columns, applying suitable formats, and saving an XLSX
-file. The best approach depends on the data source, its structure, and the size
-of the export.
+Turn Java records into a formatted Excel report without writing every data cell one by one. Axyra Sheets maps a list of objects to worksheet rows with `importData()`. Start with two records; add a header, number formats, and a formula total in the complete example below.
 
-This guide explains how to export database results and JSON data, with concrete
-examples using Axyra Sheets for Java. It also covers dates, numeric values, and
-larger exports.
+**Minimal export — records only.** This excerpt runs inside `main`; use [the complete Java class](#complete-example) for a runnable program and the formatted result below:
 
-[Set Up Axyra for This Tutorial →](https://doc.keikai.io/axyra/quick-start/) · [Database Example ↓](#export-data-to-excel-from-a-database) · [JSON Example ↓](#export-json-data-to-excel)
+```java
+record Sale(String orderId, String product, double amount) {}
+List<Sale> sales = List.of(
+        new Sale("00042", "Laptop", 1250),
+        new Sale("00043", "Mouse", 80));
+try (Workbook wb = Workbook.create()) {
+    Sheet sheet = wb.createSheet("Sales");
+    sheet.importData(0, 0, sales, ImportOptions.builder()
+            .columns("orderId", "product", "amount")
+            .headers(true).build());
+    wb.save(Path.of("sales.xlsx"));
+}
+```
 
-{: .notice--info}
-**Prefer AI-assisted development?** [Get started here](https://doc.keikai.io/axyra/dev-ref/AI_Assisted_Development).
+The minimal example exports the records. The complete example below adds the formatting and formula shown here: readable column labels, a bold header, `#,##0.00`, and `SUM(C2:C3)`.
 
-# Which approach to use when writing an Excel file in Java
+| Order ID | Product | Amount |
+| --- | --- | ---: |
+| 00042 | Laptop | 1,250.00 |
+| 00043 | Mouse | 80.00 |
+| Total | | 1,330.00 |
 
-| Your data | Use | Why |
-|---|---|---|
-| A list of records, POJOs, or maps | `Sheet.importData` | Turns each object into a row and its properties into columns, with an optional header row, so you write no cell-by-cell code |
-| A numeric matrix | `Range.setNumbers` | The fastest way to write a block that is all numbers, such as measurements or aggregated totals |
-| Mixed types, known shape | `Range.setValues` | Writes a whole block of text, numbers, booleans, and blanks in one call while you decide each cell's type |
-| More rows than fit in memory | `StreamWorkbook` | Exports very large result sets by writing rows to disk as they arrive, so memory use stays flat |
+![Two Java records, a bulk import, and the verified saved Excel workbook data]({{ '/assets/images/axyra-guides/write-excel-flow.svg' | relative_url }})
 
-{: .notice--info}
-**Performance note.** Whichever you choose, never loop per cell. Every `Cell`
-call crosses the JNI boundary, so a million-cell loop is a million crossings.
-`importData` crosses once per chunk, `setValues` once for the whole block, and
-`setNumbers` takes a flat `double[]` with no boxing and no `CellValue`
-allocation — the fastest path in the API.
+The figure and table show the complete example's output: IDs stay text, amounts stay numeric, and `C4` stores a formula. You can inspect the workbook and run the project before connecting a database.
 
-# Export data to Excel from a database
+[Download the project and generated XLSX]({{ '/assets/downloads/axyra-read-write-examples.zip' | relative_url }}) · [Run it](#setup) · [See the recorded AI export](#ai)
 
-Map the `ResultSet` to records first, then hand the list over. Records are the
-best fit because `importData` reads their components *in declaration order*,
-which gives you deterministic column order for free.
+## Run the complete example
+{: #setup}
+
+Use Java 17+ and Maven; Microsoft Excel is not required. Unzip the project, open a terminal in `axyra-read-write`, and run:
+
+```shell
+mvn -q compile exec:java -Dexec.mainClass=WriteExcelFile
+```
+
+The project includes its POM and creates the output directory. Evaluation needs no key and adds notices; production use requires a commercial license. [Licensing details]({{ site.axyra_devref }}/License).
+
+### Complete Java class
+{: #complete-example}
+
+Save this as `src/main/java/WriteExcelFile.java`:
 
 ```java
 import io.keikai.axyra.sheets.CellValue;
@@ -46,321 +58,138 @@ import io.keikai.axyra.sheets.ImportOptions;
 import io.keikai.axyra.sheets.Sheet;
 import io.keikai.axyra.sheets.Workbook;
 import io.keikai.axyra.sheets.style.CellStyle;
-
-import java.math.BigDecimal;
+import java.nio.file.Files;
 import java.nio.file.Path;
-import java.sql.*;
-import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
-record Sale(String region, String product, LocalDate orderDate, Double amount) {}
+public final class WriteExcelFile {
+    public record Sale(String orderId, String product, double amount) {}
 
-List<Sale> rows = new ArrayList<>();
-try (PreparedStatement ps = conn.prepareStatement(
-             "SELECT region, product, order_date, amount FROM sales WHERE quarter = ?")) {
-    ps.setString(1, "Q3");
-    try (ResultSet rs = ps.executeQuery()) {
-        while (rs.next()) {
-            BigDecimal amount = rs.getBigDecimal("amount");
-            rows.add(new Sale(
-                    rs.getString("region"),
-                    rs.getString("product"),
-                    rs.getObject("order_date", LocalDate.class),
-                    amount == null ? null : amount.doubleValue()));
+    public static void main(String[] args) throws Exception {
+        Path output = Path.of("output/sales.xlsx");
+        Files.createDirectories(output.getParent());
+        List<Sale> sales = List.of(
+                new Sale("00042", "Laptop", 1250),
+                new Sale("00043", "Mouse", 80));
+        try (Workbook wb = Workbook.create()) {
+            Sheet sheet = wb.createSheet("Sales");
+            sheet.importData(0, 0, sales, ImportOptions.builder()
+                    .columns("orderId", "product", "amount")
+                    .headers(true)
+                    .columnLabels("Order ID", "Product", "Amount")
+                    .headerStyle(CellStyle.builder().bold().build())
+                    .build());
+            sheet.cell(3, 0).setValue(CellValue.text("Total"));
+            sheet.cell(3, 2).setFormula("SUM(C2:C3)");
+            sheet.range("C2:C4").setStyle(CellStyle.builder()
+                    .numberFormat("#,##0.00").build());
+            for (int c = 0; c < 3; c++) sheet.setColumnWidth(c, 18);
+            wb.save(output);
         }
+        System.out.println("Saved " + output);
     }
 }
-
-try (Workbook wb = Workbook.create()) {
-    Sheet sheet = wb.createSheet("Q3 Sales");
-
-    CellStyle headerStyle = CellStyle.builder().bold().build();
-
-    int written = sheet.importData(0, 0, rows, ImportOptions.builder()
-            .columns("region", "product", "orderDate", "amount")
-            .headers(true)
-            .columnLabels("Region", "Product", "Order Date", "Amount")
-            .headerStyle(headerStyle)
-            .build());
-
-    System.out.println(written + " rows including the header");
-    wb.save(Path.of("q3-sales.xlsx"));
-}
 ```
 
-`importData` returns the number of rows written, counting the header when it is
-enabled.
+The file is `output/sales.xlsx`. The column list fixes the schema; number formats control display while preserving numeric values. All formatting is applied before saving, inside the open workbook.
 
-{: .notice--warning}
-**Pin the column list.** Without `.columns(...)`, every readable property is
-written: records in component order, JavaBeans in alphabetical property order,
-maps in the key order of the first map. Adding a field to the record then
-silently adds a column to next quarter's export. Naming the columns makes that a compile-time
-concern instead of a surprise in a spreadsheet.
-
-## Dates need a number format
-
-`importData` converts `LocalDate`, `LocalDateTime`, and `java.util.Date` to
-Excel date serials, but it does **not** apply a number format. Only the header
-row gets a style, and only the one you pass. So a date column arrives looking
-like `45900` until you format it:
-
-```java
-CellStyle dateStyle = CellStyle.builder().numberFormat("yyyy-mm-dd").build();
-CellStyle money = CellStyle.builder().numberFormat("#,##0.00").build();
-
-int lastRow = rows.size();                      // header is row 0
-sheet.range(1, 2, lastRow, 2).setStyle(dateStyle);   // column C
-sheet.range(1, 3, lastRow, 3).setStyle(money);       // column D
-```
-
-The result is `q3-sales.xlsx` with a bold header row, one row per sale, order
-dates shown as `yyyy-mm-dd`, and amounts with thousands separators and two
-decimal places.
-
-{: .notice--success}
-**Try it with your own data.** Adapt this example to export your database
-results into a formatted workbook. For dependency setup and your first Axyra
-program, follow the [Quickstart →](https://doc.keikai.io/axyra/quick-start/)
-
-# Export JSON data to Excel
-
-`jackson-databind` is already on the classpath — the library uses it across the JNI
-boundary — so deserialize into the same kind of record and reuse the path above.
-
-```java
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.core.type.TypeReference;
-
-ObjectMapper mapper = new ObjectMapper();
-
-List<Sale> rows = mapper.readValue(json, new TypeReference<List<Sale>>() {});
-sheet.importData(0, 0, rows, options);
-```
-
-{: .notice--info}
-**`java.time` types need one more Jackson artifact.** The library pulls in
-`jackson-databind` but not `jackson-datatype-jsr310`, so a record with a
-`LocalDate` component fails to deserialize until you add it and register the
-module:
+<details markdown="1">
+<summary>Already have a Maven project? Add the repository and dependency</summary>
 
 ```xml
-<dependency>
-    <groupId>com.fasterxml.jackson.datatype</groupId>
-    <artifactId>jackson-datatype-jsr310</artifactId>
-    <!-- match the jackson-databind version Axyra Sheets brings in;
-         `mvn dependency:tree` shows it -->
-    <version>2.22.3</version>
-</dependency>
+<repositories>
+  <repository>
+    <id>{{ site.axyra_repo_id }}</id>
+    <url>{{ site.axyra_repo_url }}</url>
+  </repository>
+</repositories>
+<dependencies>
+  <dependency>
+    <groupId>io.keikai</groupId>
+    <artifactId>axyra-sheets</artifactId>
+    <version>{{ site.axyra_version }}</version>
+  </dependency>
+</dependencies>
 ```
+
+Target Java 17 or later. The download's POM includes compiler and execution plugins. [Gradle and supported platforms]({{ site.axyra_devref }}/Installation).
+
+</details>
+
+## Recorded AI export: describe, generate, verify
+{: #ai}
+
+This new Codex run used the Axyra Agent Skill and the existing project to turn a short report request into an export. The prompt supplied input records, not the expected total.
+
+**Describe the report:**
+
+```text
+Use Axyra Sheets to export these orders to output/ai-sales-simple.xlsx:
+(00042, Laptop, 1250), (00043, Mouse, 80). Keep IDs as text, format amounts
+to two decimals, add bold headers and a SUM total. Build and run it,
+then reopen and check the workbook.
+```
+
+**Generated Java:** `SimpleSkillWriter.java` derives the total row from the data. This is an excerpt:
 
 ```java
-ObjectMapper mapper = new ObjectMapper()
-        .registerModule(new com.fasterxml.jackson.datatype.jsr310.JavaTimeModule());
+int totalRow = sales.size() + 1;
+sheet.cell(totalRow, 0).setValue(CellValue.text("Total"));
+if (sales.isEmpty()) sheet.cell(totalRow, 2).setValue(CellValue.number(0));
+else sheet.cell(totalRow, 2).setFormula("SUM(C2:C" + totalRow + ")");
 ```
 
-## Import maps without a record
+**Verified result:** `output/ai-sales-simple.xlsx` contains two order rows, text IDs, numeric amounts, bold headers, and a stored SUM formula. Reopening the workbook gave a displayed total of **1,330.00**.
 
-`importData` also accepts a `List<Map<String, Object>>`, such as the result of a
-generic JSON parse. Columns follow the key order of the first map; a key that
-appears only in later maps becomes an extra column, and a missing or `null`
-value becomes a blank cell. Pin the columns as you would for records:
+<details markdown="1">
+<summary>Reproduce this run: full context, source, and expected/actual results</summary>
 
-```java
-import java.util.Map;
+The displayed prompt is the exact prompt for this new run. Codex had the installed skill, existing project and earlier examples in context; this was not a blind or timed trial. The project supplied Java 17 and Axyra Sheets `1.0.0-Beta-Eval`.
 
-List<Map<String, Object>> maps = mapper.readValue(json,
-        new TypeReference<List<Map<String, Object>>>() {});
+The ZIP includes `ai-session-simple/write-prompt.txt`, `CONTEXT.txt`, complete generated source, the saved workbook, raw stdout/stderr, and a manifest with commands, exit codes, and file hashes. Reproduce both examples and their checks with:
 
-sheet.importData(0, 0, maps, ImportOptions.builder()
-        .columns("region", "product", "amount")
-        .columnLabels("Region", "Product", "Amount")
-        .build());
+```shell
+mvn -q compile exec:java -Dexec.mainClass=SimpleSkillReader
+mvn -q exec:java -Dexec.mainClass=SimpleSkillWriter
+mvn -q exec:java -Dexec.mainClass=VerifySimpleSkill
 ```
 
-A JSON date parsed into a map is still a string, so it arrives as text. Bind to a
-record with a `LocalDate` component when the column must hold real dates.
+The verifier calculated its expected total from the input records, then compared it with the read and saved workbook values. Its recorded output was:
 
-If you need full control over each cell's type, drive the columns yourself:
-
-```java
-import com.fasterxml.jackson.databind.JsonNode;
-
-JsonNode array = mapper.readTree(json);
-String[] columns = { "region", "product", "amount" };
-
-// Header.
-CellValue[][] header = new CellValue[1][columns.length];
-for (int c = 0; c < columns.length; c++) {
-    header[0][c] = CellValue.text(columns[c]);
-}
-sheet.range(0, 0, 0, columns.length - 1).setValues(header);
-
-// Body, in one crossing.
-CellValue[][] body = new CellValue[array.size()][columns.length];
-for (int r = 0; r < array.size(); r++) {
-    JsonNode node = array.get(r);
-    for (int c = 0; c < columns.length; c++) {
-        JsonNode field = node.get(columns[c]);
-        body[r][c] = field == null || field.isNull() ? CellValue.blank()
-                : field.isNumber() ? CellValue.number(field.asDouble())
-                : field.isBoolean() ? CellValue.bool(field.asBoolean())
-                : CellValue.text(field.asText());
-    }
-}
-sheet.range(1, 0, array.size(), columns.length - 1).setValues(body);
+```text
+Reader total: expected 1330.00; actual 1330.00
+Saved total: expected 1330.00; actual 1330.00
+Stored formula: SUM(C2:C3); displayed total: 1,330.00
+PASS: text IDs, Java records, numeric amounts, bold headers, and formats
 ```
 
-`setValues` requires the array shape to match the range exactly, which is why
-the row count is computed rather than guessed.
+`ai-session-simple/expected-actual.json` retains the detailed comparisons. The earlier long-prompt run remains unchanged under `ai-session/`.
 
-{: .notice--info}
-**Build your Excel export faster with AI assistance.** Use the Axyra Agent Skill
-to help turn your data structure and formatting requirements into working Java
-code. [Set Up the Axyra Agent Skill →](https://doc.keikai.io/axyra/dev-ref/AI_Assisted_Development#axyra-agent-skill)
+</details>
 
-# The fast path for numbers
+For your own report, [install the Axyra Sheets skill]({{ site.axyra_devref }}/AI_Assisted_Development) in a supported assistant. It guides development and is not a runtime dependency; compile and inspect each adaptation.
 
-When the block is entirely numeric — a measurement matrix, a pivot of
-aggregates — skip `CellValue` altogether. `setNumbers` takes a flat, row-major
-`double[]`:
+## Adjust row counts, formats, and formulas
 
-```java
-int rowCount = 10_000, colCount = 12;
-double[] flat = new double[rowCount * colCount];
-// fill row-major: flat[r * colCount + c]
+**More or fewer records.** The first complete program is a fixed two-row fixture. For variable-length input, derive the total row from list size and extend its number-format range. The generated `SimpleSkillWriter.write(...)` implementation in the download does this and uses a numeric zero total for an empty list.
 
-sheet.range(1, 0, rowCount, colCount - 1).setNumbers(flat);
-```
+**Dates and financial amounts.** `importData` writes Java dates as Excel serials; apply a date format such as `yyyy-mm-dd` to display them as dates. Excel numeric cells use floating-point values, so define source precision and rounding rules for financial data.
 
-This is the fastest way to get numbers into a sheet and the right choice for
-loading a matrix out of a database.
+**Calculated totals.** Store formula source with `setFormula("SUM(C2:C3)")`, without a leading `=`. Normal edits update dependent formulas; for manual calculation or untrusted input caches, recalculate before saving and verify the reopened result.
 
-# When the export is too big to hold in memory
+## Continue with a template, database, or JSON
+{: #sources}
 
-`Workbook` builds the whole book in memory before writing a byte — the right
-trade when you need to read, edit, recalculate, or lay out, and the wrong one
-when you are pouring a result set into a file. `StreamWorkbook` writes each row
-as it arrives, so a million rows costs the same memory as ten.
+**Already have a designed report?** Keep its existing report layout, formulas, and formatting while Java fills the template's marked cells. Open a copy of the workbook instead of rebuilding the report in code. For a concrete example, [fill a Profit and Loss template from database totals]({{ site.axyra_guides }}/populate-excel-template-database-java): the template owns labels, formats, and profit formulas, while Java supplies the monthly values. For repeating detail rows, see [the template report guide]({{ site.axyra_guides }}/generate-excel-reports-java).
 
-```java
-import io.keikai.axyra.sheets.io.StreamRow;
-import io.keikai.axyra.sheets.io.StreamStyle;
-import io.keikai.axyra.sheets.io.StreamWorkbook;
+**Database or JSON input.** Map the source into records, then use the same bulk-writing path. The download includes `DatabaseSalesReport.java` and `WriteJsonSalesReport.java` for a four-column schema with dates. Their saved outputs were reopened to check date and amount formats. The JSON example registers Jackson's Java time module; the POM includes it. [Full database export walkthrough]({{ site.axyra_guides }}/export-database-to-excel-java).
 
-import java.math.BigDecimal;
+**A large forward-only export.** Consider [StreamWorkbook]({{ site.axyra_devref }}/Streaming) when you should not hold all records in a list. It does not calculate formulas or edit an existing workbook. Maps, numeric matrices, and explicit typed blocks are covered in the download's advanced notes and the [cell and range reference]({{ site.axyra_devref }}/Cell_and_Range).
 
-try (StreamWorkbook out = StreamWorkbook.create(Path.of("big-export.xlsx"))) {
-    int header = out.addStyle(StreamStyle.defaults().withBold());
-    int money  = out.addStyle(StreamStyle.defaults().withNumberFormat("#,##0.00"));
-    int date   = out.addStyle(StreamStyle.defaults().withNumberFormat("yyyy-mm-dd"));
+## Troubleshooting and FAQ
 
-    out.startSheet("Sales");
+**Why do dates display as numbers?** Date imports need a date number format; apply it before saving. The dated examples in the download show the complete sequence.
 
-    out.row(0).addText("Region", header)
-              .addText("Order Date", header)
-              .addText("Amount", header)
-              .commit();
+**Why are columns missing or reordered?** Set `.columns(...)` explicitly. Property names are strings and are checked at runtime; adding a field should not silently change your export schema.
 
-    int r = 1;
-    try (ResultSet rs = ps.executeQuery()) {
-        while (rs.next()) {
-            StreamRow row = out.row(r++)
-                    .addText(rs.getString("region"))
-                    .addDate(rs.getObject("order_date", LocalDate.class), date);
-            BigDecimal amount = rs.getBigDecimal("amount");
-            if (amount == null) {
-                row.skip();
-            } else {
-                row.addNumber(amount.doubleValue(), money);
-            }
-            row.commit();
-        }
-    }
-}
-```
-
-What you give up in exchange for flat memory:
-
-- **Forward-only.** Rows go out in ascending index order and never come back;
-  writing row 5 after row 9 throws.
-- **Values, number formats, bold and italic only.** No charts, images, merges,
-  conditional formats, comments, or validation — those need the whole-workbook
-  model.
-- **No recalculation.** Formulas are written verbatim. If the consumer must see
-  a number before opening the file in Excel, supply the cached value with
-  `setFormula(column, formula, cachedValue, style)`.
-- **Styles are registered up front.** `addStyle` returns an `int` id; pass the id
-  to the cell writers.
-- **Commit every row.** `commit()` is what actually writes the row; a row you
-  never commit is silently dropped, with no error.
-
-See [Streaming Large Files]({{ site.axyra_devref }}/Streaming) for the full
-comparison, including the columnar backend for holding big sheets in memory.
-
-# Common mistakes when writing XLSX files in Java
-
-| Symptom | Cause |
-|---|---|
-| Export takes minutes | A per-cell loop. Use `importData`, `setValues`, or `setNumbers`. |
-| A date column shows `45900` | `importData` writes serials but applies no format. Style the column. |
-| A date column from JSON is text | Values parsed into a `Map` stay strings. Bind to a record with a `LocalDate` component. |
-| A new column appeared in the export after a code change | `.columns(...)` was not pinned, so a new field became a new column. |
-| `AxyraException` from `importData` | Mixed element types in the list, or an unknown name in `.columns(...)`. |
-| `setValues` throws | The array shape does not match the range. |
-| Streaming writer throws on a row | Rows must be written in ascending order; going back to an earlier row throws. |
-| A row is missing from the streamed file | The row was never committed. A row without `commit()` is silently discarded. |
-| Formulas are blank in the streamed file | The streaming writer never recalculates. Supply a cached value. |
-
-# Frequently asked questions
-
-## How do I write an XLSX file in Java?
-
-Create a workbook with `Workbook.create()`, add a sheet with `createSheet`, and
-write your data in bulk with `importData`, `setValues`, or `setNumbers`
-depending on its shape. Then call `wb.save(Path.of("output.xlsx"))`. Open the
-workbook in a try-with-resources block so its native memory is released.
-
-## How do I export data from a database to Excel in Java?
-
-Map the `ResultSet` to a list of records, then pass the list to
-`sheet.importData` with the column list pinned through `.columns(...)`. If the
-result set is too large to hold in memory, write it row by row with
-`StreamWorkbook` instead.
-
-## How do I write a very large Excel file in Java without running out of memory?
-
-Use `StreamWorkbook`, which writes each row to disk as it arrives, so memory use
-stays flat regardless of row count. In exchange, rows must be written in
-ascending order, formulas are not recalculated, and formatting is limited to
-values, number formats, bold, and italic.
-
-## Why does a date column show a number like 45900?
-
-Excel stores dates as serial numbers, and `importData` writes the serial without
-applying a number format. Apply a date format such as `yyyy-mm-dd` to the
-column with `setStyle`.
-
-## Can I read and write Excel files in Java with the same library?
-
-Yes. Axyra Sheets uses the same `Workbook` API for both directions: you can open
-an existing file, read or edit its values, and save it again. See
-[How to Read an Excel File in Java]({{ site.axyra_guides }}/read-excel-file-java)
-for the reading side.
-
-# Next steps
-
-- [How to Create Excel Reports Automatically in Java]({{ site.axyra_guides }}/generate-excel-reports-java) — fill a designed template instead of building layout in code
-- [Cells and Ranges]({{ site.axyra_devref }}/Cell_and_Range#importing-java-objects) — the `importData` reference
-- [Streaming Large Files]({{ site.axyra_devref }}/Streaming) — streaming writer and columnar backend
-- [Styles and Formats]({{ site.axyra_devref }}/Styles) — number format codes
-- **Explore Axyra Sheets** — See [live demos]({{ site.axyra_site_link }}/demo/), [pricing]({{ site.axyra_site_link }}/java#pricing), and [product details]({{ site.axyra_site_link }}).
-
-# Turn Data Exports into Finished Reports
-
-Take your Java export further with calculated totals, charts, pivot tables, and
-PDF or image output. Axyra Sheets for Java brings these capabilities together so
-you can extend your workflow as requirements grow.
-
-[Explore Reporting Demos →]({{ site.axyra_site_link }}/demo/) · [Start with Axyra →](https://doc.keikai.io/axyra/quick-start/)
+**Need to read or update the output?** [The paired reading guide]({{ site.axyra_guides }}/read-excel-file-java) opens the same sales workbook, changes an amount, and verifies the new total after saving.
