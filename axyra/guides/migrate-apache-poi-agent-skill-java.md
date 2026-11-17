@@ -134,21 +134,6 @@ mvn exec:java -Dexec.mainClass=CompareReports
 
 [Comparison transcript](https://github.com/keikai/axyra-sheets-examples/blob/main/guide-projects/poi-migration/expected/comparison.txt) · [Detailed commands and checks](https://github.com/keikai/axyra-sheets-examples/blob/main/guide-projects/poi-migration/expected/verification.txt) · [Migrated workbook](https://github.com/keikai/axyra-sheets-examples/blob/main/guide-projects/poi-migration/expected/axyra-sales.xlsx)
 
-<details markdown="1">
-<summary>Reproduce the non-Eval reference checks</summary>
-
-Configure the authenticated `keikai-ee` repository in Maven settings and set `AXYRA_LICENSE_FILE` to your license-file path. Run all three commands from the project directory:
-
-```shell
-mvn -Pee compile exec:java -Dexec.mainClass=PoiSalesReport
-mvn -Pee -Daxyra.requireLicense=true exec:java -Dexec.mainClass=AxyraSalesReport
-mvn -Pee exec:java -Dexec.mainClass=CompareReports
-```
-
-The Axyra program installs the license with `LicenseMode.REQUIRED` at startup. The comparator checks saved values, types, formulas and cached results, number formats, selected styles, defaults, widths, panes, merged ranges, and table counts. It verifies this fixture rather than promising compatibility for every POI workbook. See the README and transcript for the full comparison scope.
-
-</details>
-
 ## Try the workflow with your own POI report
 
 Start with the sample POI report: ask your assistant to use the Axyra Agent Skill to migrate it and compare both workbooks. Then repeat with your own source and sample data.

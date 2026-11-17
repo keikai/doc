@@ -139,21 +139,6 @@ The reference run produced `output/acme-sales.xlsx` and verified the customer, p
 
 [Completed workbook](https://github.com/keikai/axyra-sheets-examples/blob/main/guide-projects/template-report/expected/acme-sales.xlsx) · [Detailed verification results](https://github.com/keikai/axyra-sheets-examples/blob/main/guide-projects/template-report/expected/verification.txt) · [Full prompt](https://github.com/keikai/axyra-sheets-examples/blob/main/guide-projects/template-report/prompt.txt)
 
-<details markdown="1">
-<summary>Reproduce the non-Eval reference checks</summary>
-
-Configure the authenticated `keikai-ee` repository in Maven settings and set `AXYRA_LICENSE_FILE` to your license-file path. Then use the same `ee` profile for each command:
-
-```shell
-mvn -Pee -Daxyra.requireLicense=true compile exec:java -Dexec.mainClass=CreateReportTemplate
-mvn -Pee -Daxyra.requireLicense=true exec:java -Dexec.mainClass=FillReportTemplate
-mvn -Pee -Daxyra.requireLicense=true exec:java -Dexec.mainClass=TemplateCases
-```
-
-The first command creates the template from its source layout. The startup helper installs the configured license with `LicenseMode.REQUIRED` before opening any workbook. Keep the license file and Maven credentials outside the repository.
-
-</details>
-
 ## Best practices for reliable Excel reports
 
 - Keep identifiers such as SKUs as text; use numeric fields for quantities and prices.
