@@ -99,6 +99,10 @@ axyra-guides:
         url: /axyra/guides/generate-excel-reports-java
       - title: "Populate a P&L Template"
         url: /axyra/guides/populate-excel-template-database-java
+      - title: "Fill Templates with the Agent Skill"
+        url: /axyra/guides/fill-excel-template-agent-skill-java
+      - title: "Migrate POI with the Agent Skill"
+        url: /axyra/guides/migrate-apache-poi-agent-skill-java
   - title: "More"
     children:
       - title: "Quick Start"

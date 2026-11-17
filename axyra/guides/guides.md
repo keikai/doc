@@ -30,6 +30,8 @@ covers the object model these guides assume.
 | [How to Export Excel Files in Java]({{ site.axyra_guides }}/export-excel-files-java) | XLSX, XLS, CSV, ODS, JSON, PDF, HTML, encryption, and values-only output |
 | [Automate Excel Reports in Java with Templates]({{ site.axyra_guides }}/generate-excel-reports-java) | Filling a designed template with template markers, totals, PDF output, and scheduling |
 | [Populate a Profit and Loss Excel Template from Java]({{ site.axyra_guides }}/populate-excel-template-database-java) | Querying database totals, filling a fixed P&L template, and verifying formulas |
+| [Fill an Excel Template with Java Data Using Axyra Agent Skill]({{ site.axyra_guides }}/fill-excel-template-agent-skill-java) | Asking a coding assistant to fill an existing template, expand formatted rows, and verify the completed report |
+| [Migrate Apache POI to Axyra Sheets with the Axyra Agent Skill]({{ site.axyra_guides }}/migrate-apache-poi-agent-skill-java) | Translating a POI sales report with AI assistance and comparing saved values, formulas, formatting, and totals |
 
 # Where to go next
 

@@ -9,6 +9,8 @@
 /axyra/guides/convert-excel-to-pdf-java: blob/main/src/main/java/io/keikai/axyra/examples/guides/ExcelToPdfExample.java
 /axyra/guides/write-data-to-excel-java: blob/main/src/main/java/io/keikai/axyra/examples/guides/WriteDataToExcelExample.java
 /axyra/guides/generate-excel-reports-java: blob/main/src/main/java/io/keikai/axyra/examples/guides/GenerateReportExample.java
+/axyra/guides/fill-excel-template-agent-skill-java: tree/main/guide-projects/template-report
+/axyra/guides/migrate-apache-poi-agent-skill-java: tree/main/guide-projects/poi-migration
 
 /axyra/dev-ref/: tree/main/src/main/java/io/keikai/axyra/examples/devref
 /axyra/dev-ref/Cell_and_Range: blob/main/src/main/java/io/keikai/axyra/examples/devref/CellAndRangeExample.java
