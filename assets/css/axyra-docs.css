@@ -657,3 +657,14 @@ body.axyra-search-open {
 .axyra-download-dialog p.axyra-form-note {
   font-size: 13px;
 }
+
+/* Keep button labels readable inside the blue AI callout. */
+.axyra-ai-entry a.btn {
+  color: #fff;
+  background-color: #176b86;
+}
+
+.axyra-ai-entry a.btn:hover,
+.axyra-ai-entry a.btn:focus-visible {
+  background-color: #12546a;
+}

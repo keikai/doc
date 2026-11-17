@@ -1,6 +1,7 @@
 ---
 title: 'How to Read an Excel File in Java (XLSX Example)'
 excerpt: 'Read Excel rows in Java, preserve text IDs, and handle numbers and formulas. Includes a runnable project and a recorded AI-assisted coding example.'
+code_link_style: text
 permalink: /axyra/guides/read-excel-file-java
 ---
 
@@ -31,26 +32,38 @@ Total                1330.0
 
 The figure previews actual workbook cells and recorded output. The sample's range is `A1:C4`; see [unknown row counts](#adapt) for other layouts.
 
-[Download the runnable project and sample XLSX]({{ '/assets/downloads/axyra-read-write-examples.zip' | relative_url }}) · [Run it](#setup) · [See the recorded AI example](#ai)
+[Get runnable example](https://github.com/keikai/axyra-sheets-examples/tree/main/guide-projects/axyra-read-write){: .btn .btn--success }
+
+<div class="notice--info axyra-ai-entry" markdown="1">
+**Build your own Excel workflow with AI.** Use the Axyra Agent Skill to generate, run, and verify Java code for your own Excel files or report requirements.
+
+[See the AI-assisted example](#ai){: .btn .btn--info }
+</div>
+
+[View source on GitHub](https://github.com/keikai/axyra-sheets-examples/tree/main/guide-projects/axyra-read-write) · [Run instructions](#setup)
 
 ## Run the complete example
 {: #setup}
 
-Use Java 17+ and Maven; Microsoft Excel is not required. Unzip the project, open a terminal in `axyra-read-write`, and run:
+Use Java 17+ and Maven; Microsoft Excel is not required. Clone the examples repository, enter this guide's standalone project, and run:
 
 ```shell
+git clone https://github.com/keikai/axyra-sheets-examples.git
+cd axyra-sheets-examples/guide-projects/axyra-read-write
 mvn -q compile exec:java -Dexec.mainClass=ReadExcelFile
 ```
 
-The project includes `input/sales.xlsx` and the complete POM. Evaluation needs no key and adds notices; production use requires a commercial license. [Licensing details]({{ site.axyra_devref }}/License).
+The project includes the [sample workbook](https://github.com/keikai/axyra-sheets-examples/blob/main/guide-projects/axyra-read-write/input/sales.xlsx) and [complete POM](https://github.com/keikai/axyra-sheets-examples/blob/main/guide-projects/axyra-read-write/pom.xml). Evaluation needs no key and adds notices; production use requires a commercial license. [Licensing details]({{ site.axyra_devref }}/License).
 
 ### Complete Java class
 {: #complete-example}
 
-Save this as `src/main/java/ReadExcelFile.java`:
+<details markdown="1">
+<summary>Expand complete Java class and copy code</summary>
 
-```java
-import io.keikai.axyra.sheets.CellValue;
+Full source: [ReadExcelFile.java](https://github.com/keikai/axyra-sheets-examples/blob/main/guide-projects/axyra-read-write/src/main/java/ReadExcelFile.java).
+
+{% capture complete_java %}import io.keikai.axyra.sheets.CellValue;
 import io.keikai.axyra.sheets.Sheet;
 import io.keikai.axyra.sheets.Workbook;
 import java.nio.file.Path;
@@ -75,10 +88,12 @@ public final class ReadExcelFile {
         if (value instanceof CellValue.Array) return "[array]";
         return "";
     }
-}
-```
+}{% endcapture %}
+{% include copy_code.html code=complete_java language="java" event="copy_read_excel_example" %}
 
 To use another workbook with the same layout, add `-Dexec.args="/path/to/file.xlsx"`. For a different layout, change the `"Sales"` sheet name and the range too.
+
+</details>
 
 <details markdown="1">
 <summary>Already have a Maven project? Add the repository and dependency</summary>
@@ -99,11 +114,11 @@ To use another workbook with the same layout, add `-Dexec.args="/path/to/file.xl
 </dependencies>
 ```
 
-Target Java 17 or later. The download's POM includes compiler and execution plugins. [Gradle and supported platforms]({{ site.axyra_devref }}/Installation).
+Target Java 17 or later. The project's POM includes compiler and execution plugins. [Gradle and supported platforms]({{ site.axyra_devref }}/Installation).
 
 </details>
 
-## Recorded AI example: describe, generate, verify
+## Read Excel into Java records with AI
 {: #ai}
 
 Here is a new Codex run using the Axyra Agent Skill and the existing sample project. The short prompt below did not supply the expected total.
@@ -138,17 +153,19 @@ Workbook total = 1330.00
 
 The displayed prompt is the exact prompt for this new run. Codex had the installed skill, existing project and earlier examples in context; this was not a blind or timed trial. The project supplied Java 17 and Axyra Sheets `1.0.0-Beta-Eval`.
 
-The ZIP contains `ai-session-simple/read-prompt.txt`, `CONTEXT.txt`, the complete `SimpleSkillReader.java`, raw stdout/stderr, and a manifest with commands, exit codes, and file hashes. The reader expects the workbook's Order ID / Product / Amount headers and a `Total` footer; adapt that contract for other layouts.
+The [recorded run on GitHub](https://github.com/keikai/axyra-sheets-examples/tree/main/guide-projects/axyra-read-write/ai-session-simple) contains the [exact prompt](https://github.com/keikai/axyra-sheets-examples/blob/main/guide-projects/axyra-read-write/ai-session-simple/read-prompt.txt), project context, complete [generated source](https://github.com/keikai/axyra-sheets-examples/blob/main/guide-projects/axyra-read-write/src/main/java/SimpleSkillReader.java), raw stdout/stderr, and a [manifest](https://github.com/keikai/axyra-sheets-examples/blob/main/guide-projects/axyra-read-write/ai-session-simple/manifest.json) with commands, exit codes, and file hashes. The reader expects the workbook's Order ID / Product / Amount headers and a `Total` footer; adapt that contract for other layouts.
 
 ```shell
 mvn -q compile exec:java -Dexec.mainClass=SimpleSkillReader
 ```
 
-The separate verification run compared the extracted records and total with the workbook and source data. `ai-session-simple/expected-actual.json` keeps expected and actual values; the earlier long-prompt run remains unchanged under `ai-session/`.
+The separate verification run compared the extracted records and total with the workbook and source data. The [expected/actual comparison](https://github.com/keikai/axyra-sheets-examples/blob/main/guide-projects/axyra-read-write/ai-session-simple/expected-actual.json) keeps the checked values; the [earlier long-prompt run](https://github.com/keikai/axyra-sheets-examples/tree/main/guide-projects/axyra-read-write/ai-session) is also available.
 
 </details>
 
 To adapt your own workbook, [install the Axyra Sheets skill]({{ site.axyra_devref }}/AI_Assisted_Development) in a supported assistant. The skill guides development and is not required at runtime; build and verify each adaptation.
+
+[Get the Axyra Agent Skill]({{ site.axyra_devref }}/AI_Assisted_Development#get-the-axyra-sheets-skill){: .btn .btn--success }
 
 ## Common reading scenarios
 {: #adapt}
@@ -176,7 +193,7 @@ A used range may include totals, formatting, or evaluation notices. It is not au
 
 Dates are stored as serial numbers. Formula results can come from saved caches; call `wb.recalculate()` before reading when those caches may be stale. A `CellValue.Error` should be reported or rejected according to your import rules, rather than silently converted to zero.
 
-**Uploaded file or a larger workbook.** Use `Workbook.open(in, "xlsx")` for an input stream or `Workbook.openBytes(bytes, "xlsx")` for bytes, inside try-with-resources. For bounded processing, follow [the large Excel reading guide]({{ site.axyra_guides }}/read-large-excel-files-efficiently-java). The download includes `ReadAllWorksheets.java` for diagnostic scans, plus advanced recipe notes; it is optional for this first example.
+**Uploaded file or a larger workbook.** Use `Workbook.open(in, "xlsx")` for an input stream or `Workbook.openBytes(bytes, "xlsx")` for bytes, inside try-with-resources. For bounded processing, follow [the large Excel reading guide]({{ site.axyra_guides }}/read-large-excel-files-efficiently-java). The GitHub project includes [ReadAllWorksheets.java](https://github.com/keikai/axyra-sheets-examples/blob/main/guide-projects/axyra-read-write/src/main/java/ReadAllWorksheets.java) for diagnostic scans and [advanced reading notes](https://github.com/keikai/axyra-sheets-examples/blob/main/guide-projects/axyra-read-write/advanced/read-excel-file-java-reference.txt); it is optional for this first example.
 
 ## Continue: update, calculate, and save
 {: #update}
@@ -193,7 +210,7 @@ try (Workbook wb = Workbook.open(Path.of("input/sales.xlsx"))) {
 }
 ```
 
-`UpdateSalesReport.java` in the download runs this change and reopens the file to verify the saved total of `1580`. [See the paired guide to writing Java data to Excel]({{ site.axyra_guides }}/write-data-to-excel-java).
+[UpdateSalesReport.java](https://github.com/keikai/axyra-sheets-examples/blob/main/guide-projects/axyra-read-write/src/main/java/UpdateSalesReport.java) runs this change and reopens the file to verify the saved total of `1580`. [See the paired guide to writing Java data to Excel]({{ site.axyra_guides }}/write-data-to-excel-java).
 
 ## Troubleshooting and FAQ
 
@@ -202,3 +219,17 @@ try (Workbook wb = Workbook.open(Path.of("input/sales.xlsx"))) {
 **Why is access failing after the method returns?** `Sheet` and `Range` belong to their open workbook. Return extracted Java values and close the workbook after extraction.
 
 **Need to import business records?** Validate required headers and values before persistence. Continue with [Excel-to-database validation]({{ site.axyra_guides }}/import-excel-to-database-java) or the [cell and range reference]({{ site.axyra_devref }}/Cell_and_Range).
+
+## Explore more with Axyra
+
+Continue with a related workflow:
+
+- **[Import Excel to a database with validation]({{ site.axyra_guides }}/import-excel-to-database-java)** — validate headers and business values before saving records.
+- **[Modify, recalculate, and save Excel](#update)** — change an amount and verify the saved formula total.
+
+Try the live demos:
+
+- **[Financial data cleansing]({{ site.axyra_site_link }}/demo/demo.zul?id=financialDataCleansing)** — explore a validation and cleansing workflow.
+- **[Formulas and recalculation]({{ site.axyra_site_link }}/demo/demo.zul?id=engineFormulas)** — explore calculated workbook results.
+
+[Explore Axyra demos]({{ site.axyra_site_link }}/demo/){: .btn .btn--success }

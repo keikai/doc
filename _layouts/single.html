@@ -54,7 +54,7 @@ layout: default
           {% assign code_url = code_url | append: "/" | append: axyra_code_path %}
         {% endif %}
       {% endif %}
-      <a href="{{ code_url }}" target="_blank" class="btn btn--success">Get code at GitHub</a>
+      <a href="{{ code_url }}" target="_blank" {% unless page.code_link_style == "text" %}class="btn btn--success"{% endunless %}>Get code at GitHub</a>
 
       <footer class="page__meta">
         {% if site.data.ui-text[site.locale].meta_label %}
