@@ -54,15 +54,15 @@ The supplied workbook uses an `Invoice` worksheet with the following cells. Form
 
 The three detail amounts are **99.00**, **75.00**, and **220.00**; the total is **394.00**. The preview comes from the generated workbook.
 
-[Try the Excel template example](https://github.com/keikai/axyra-sheets-examples/tree/main/guide-projects/template-report){: .btn .btn--success }
+[Try the Excel template example](https://github.com/keikai/axyra-sheets-examples/tree/main/java/guide-projects/template-report){: .btn .btn--success }
 
 ## Get started with the template example
 
-Clone the examples repository and open `guide-projects/template-report` in your coding assistant. It contains the prepared template, Java records, runnable reference implementation, and expected output. Use Java 17+ and Maven.
+Clone the examples repository and open `java/guide-projects/template-report` in your coding assistant. It contains the prepared template, Java records, runnable reference implementation, and expected output. Use Java 17+ and Maven.
 
 ```shell
 git clone https://github.com/keikai/axyra-sheets-examples.git
-cd axyra-sheets-examples/guide-projects/template-report
+cd axyra-sheets-examples/java/guide-projects/template-report
 ```
 
 Install the Axyra Agent Skill:
@@ -71,9 +71,9 @@ Install the Axyra Agent Skill:
 npx skills add https://github.com/keikai/doc/tree/master/skills/axyra-sheets
 ```
 
-[Skill setup]({{ site.axyra_devref }}/AI_Assisted_Development) · [Java dependency setup]({{ site.axyra_devref }}/Installation) · [Input workbook](https://github.com/keikai/axyra-sheets-examples/blob/main/guide-projects/template-report/input/sales-template.xlsx)
+[Skill setup]({{ site.axyra_devref }}/AI_Assisted_Development) · [Java dependency setup]({{ site.axyra_devref }}/Installation) · [Input workbook](https://github.com/keikai/axyra-sheets-examples/blob/main/java/guide-projects/template-report/input/sales-template.xlsx)
 
-The public POM defaults to the evaluation dependency; the `ee` Maven profile selects **Axyra Sheets 1.0.0-Beta**, the non-Eval build used with an active license for the reference checks. See the project's [run instructions](https://github.com/keikai/axyra-sheets-examples/blob/main/guide-projects/template-report/README.md) for repository credentials and license setup.
+The public POM defaults to the evaluation dependency; the `ee` Maven profile selects **Axyra Sheets 1.0.0-Beta**, the non-Eval build used with an active license for the reference checks. See the project's [run instructions](https://github.com/keikai/axyra-sheets-examples/blob/main/java/guide-projects/template-report/README.md) for repository credentials and license setup.
 
 The Skill guides development; the finished Java program runs with Axyra Sheets. Instead of finding the APIs and implementing row expansion yourself, you can ask the assistant to build and verify the workflow against your template.
 
@@ -124,7 +124,7 @@ try (Workbook wb = Workbook.open(input)) {
 
 Each detail Amount remains an Excel formula: `C5*D5`, `C6*D6`, and `C7*D7`. The `${lines.amount:sum}` marker instead sums the Java records' `amount` fields and writes the **numeric value 394.00** into the total cell, now E8. Editing a detail value in the delivered workbook therefore recalculates its line formula, but does not automatically update that numeric total. If recipients need an editable total, ask the assistant to write and verify a `SUM` formula covering the generated detail rows.
 
-[Complete Java source](https://github.com/keikai/axyra-sheets-examples/blob/main/guide-projects/template-report/src/main/java/FillReportTemplate.java) · [Template Markers reference]({{ site.axyra_devref }}/Template_Markers)
+[Complete Java source](https://github.com/keikai/axyra-sheets-examples/blob/main/java/guide-projects/template-report/src/main/java/FillReportTemplate.java) · [Template Markers reference]({{ site.axyra_devref }}/Template_Markers)
 
 ## Run the example and review the result
 
@@ -137,7 +137,7 @@ mvn exec:java -Dexec.mainClass=TemplateCases
 
 The reference run produced `output/acme-sales.xlsx` and verified the customer, period, text SKUs, products, numeric fields, detail formulas, money formats, and total. One-record and empty-input cases also passed.
 
-[Completed workbook](https://github.com/keikai/axyra-sheets-examples/blob/main/guide-projects/template-report/expected/acme-sales.xlsx) · [Detailed verification results](https://github.com/keikai/axyra-sheets-examples/blob/main/guide-projects/template-report/expected/verification.txt) · [Full prompt](https://github.com/keikai/axyra-sheets-examples/blob/main/guide-projects/template-report/prompt.txt)
+[Completed workbook](https://github.com/keikai/axyra-sheets-examples/blob/main/java/guide-projects/template-report/expected/acme-sales.xlsx) · [Detailed verification results](https://github.com/keikai/axyra-sheets-examples/blob/main/java/guide-projects/template-report/expected/verification.txt) · [Full prompt](https://github.com/keikai/axyra-sheets-examples/blob/main/java/guide-projects/template-report/prompt.txt)
 
 ## Best practices for reliable Excel reports
 
@@ -146,6 +146,6 @@ The reference run produced `output/acme-sales.xlsx` and verified the customer, p
 
 Try the complete example with your own Excel template: clone the project, install the Axyra Agent Skill, and ask your coding assistant to generate and check your report.
 
-[Try the Excel Template Example](https://github.com/keikai/axyra-sheets-examples/tree/main/guide-projects/template-report){: .btn .btn--success }
+[Try the Excel Template Example](https://github.com/keikai/axyra-sheets-examples/tree/main/java/guide-projects/template-report){: .btn .btn--success }
 
 For an API-focused walkthrough, see [Automate Excel Reports in Java with Templates]({{ site.axyra_guides }}/generate-excel-reports-java).

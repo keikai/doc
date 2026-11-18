@@ -32,7 +32,7 @@ Total                1330.0
 
 The figure previews actual workbook cells and recorded output. The sample's range is `A1:C4`; see [unknown row counts](#adapt) for other layouts.
 
-[Get runnable example](https://github.com/keikai/axyra-sheets-examples/tree/main/guide-projects/axyra-read-write){: .btn .btn--success }
+[Get runnable example](https://github.com/keikai/axyra-sheets-examples/tree/main/java/guide-projects/axyra-read-write){: .btn .btn--success }
 
 <div class="notice--info axyra-ai-entry" markdown="1">
 **Build your own Excel workflow with AI.** Use the Axyra Agent Skill to generate, run, and verify Java code for your own Excel files or report requirements.
@@ -40,7 +40,7 @@ The figure previews actual workbook cells and recorded output. The sample's rang
 [See the AI-assisted example](#ai){: .btn .btn--info }
 </div>
 
-[View source on GitHub](https://github.com/keikai/axyra-sheets-examples/tree/main/guide-projects/axyra-read-write) · [Run instructions](#setup)
+[View source on GitHub](https://github.com/keikai/axyra-sheets-examples/tree/main/java/guide-projects/axyra-read-write) · [Run instructions](#setup)
 
 ## Run the complete example
 {: #setup}
@@ -49,11 +49,11 @@ Use Java 17+ and Maven; Microsoft Excel is not required. Clone the examples repo
 
 ```shell
 git clone https://github.com/keikai/axyra-sheets-examples.git
-cd axyra-sheets-examples/guide-projects/axyra-read-write
+cd axyra-sheets-examples/java/guide-projects/axyra-read-write
 mvn -q compile exec:java -Dexec.mainClass=ReadExcelFile
 ```
 
-The project includes the [sample workbook](https://github.com/keikai/axyra-sheets-examples/blob/main/guide-projects/axyra-read-write/input/sales.xlsx) and [complete POM](https://github.com/keikai/axyra-sheets-examples/blob/main/guide-projects/axyra-read-write/pom.xml). Evaluation needs no key and adds notices; production use requires a commercial license. [Licensing details]({{ site.axyra_devref }}/License).
+The project includes the [sample workbook](https://github.com/keikai/axyra-sheets-examples/blob/main/java/guide-projects/axyra-read-write/input/sales.xlsx) and [complete POM](https://github.com/keikai/axyra-sheets-examples/blob/main/java/guide-projects/axyra-read-write/pom.xml). Evaluation needs no key and adds notices; production use requires a commercial license. [Licensing details]({{ site.axyra_devref }}/License).
 
 ### Complete Java class
 {: #complete-example}
@@ -61,7 +61,7 @@ The project includes the [sample workbook](https://github.com/keikai/axyra-sheet
 <details markdown="1">
 <summary>Expand complete Java class and copy code</summary>
 
-Full source: [ReadExcelFile.java](https://github.com/keikai/axyra-sheets-examples/blob/main/guide-projects/axyra-read-write/src/main/java/ReadExcelFile.java).
+Full source: [ReadExcelFile.java](https://github.com/keikai/axyra-sheets-examples/blob/main/java/guide-projects/axyra-read-write/src/main/java/ReadExcelFile.java).
 
 {% capture complete_java %}import io.keikai.axyra.sheets.CellValue;
 import io.keikai.axyra.sheets.Sheet;
@@ -153,13 +153,13 @@ Workbook total = 1330.00
 
 The displayed prompt is the exact prompt for this new run. Codex had the installed skill, existing project and earlier examples in context; this was not a blind or timed trial. The project supplied Java 17 and Axyra Sheets `1.0.0-Beta-Eval`.
 
-The [recorded run on GitHub](https://github.com/keikai/axyra-sheets-examples/tree/main/guide-projects/axyra-read-write/ai-session-simple) contains the [exact prompt](https://github.com/keikai/axyra-sheets-examples/blob/main/guide-projects/axyra-read-write/ai-session-simple/read-prompt.txt), project context, complete [generated source](https://github.com/keikai/axyra-sheets-examples/blob/main/guide-projects/axyra-read-write/src/main/java/SimpleSkillReader.java), raw stdout/stderr, and a [manifest](https://github.com/keikai/axyra-sheets-examples/blob/main/guide-projects/axyra-read-write/ai-session-simple/manifest.json) with commands, exit codes, and file hashes. The reader expects the workbook's Order ID / Product / Amount headers and a `Total` footer; adapt that contract for other layouts.
+The [recorded run on GitHub](https://github.com/keikai/axyra-sheets-examples/tree/main/java/guide-projects/axyra-read-write/ai-session-simple) contains the [exact prompt](https://github.com/keikai/axyra-sheets-examples/blob/main/java/guide-projects/axyra-read-write/ai-session-simple/read-prompt.txt), project context, complete [generated source](https://github.com/keikai/axyra-sheets-examples/blob/main/java/guide-projects/axyra-read-write/src/main/java/SimpleSkillReader.java), raw stdout/stderr, and a [manifest](https://github.com/keikai/axyra-sheets-examples/blob/main/java/guide-projects/axyra-read-write/ai-session-simple/manifest.json) with commands, exit codes, and file hashes. The reader expects the workbook's Order ID / Product / Amount headers and a `Total` footer; adapt that contract for other layouts.
 
 ```shell
 mvn -q compile exec:java -Dexec.mainClass=SimpleSkillReader
 ```
 
-The separate verification run compared the extracted records and total with the workbook and source data. The [expected/actual comparison](https://github.com/keikai/axyra-sheets-examples/blob/main/guide-projects/axyra-read-write/ai-session-simple/expected-actual.json) keeps the checked values; the [earlier long-prompt run](https://github.com/keikai/axyra-sheets-examples/tree/main/guide-projects/axyra-read-write/ai-session) is also available.
+The separate verification run compared the extracted records and total with the workbook and source data. The [expected/actual comparison](https://github.com/keikai/axyra-sheets-examples/blob/main/java/guide-projects/axyra-read-write/ai-session-simple/expected-actual.json) keeps the checked values; the [earlier long-prompt run](https://github.com/keikai/axyra-sheets-examples/tree/main/java/guide-projects/axyra-read-write/ai-session) is also available.
 
 </details>
 
@@ -193,7 +193,7 @@ A used range may include totals, formatting, or evaluation notices. It is not au
 
 Dates are stored as serial numbers. Formula results can come from saved caches; call `wb.recalculate()` before reading when those caches may be stale. A `CellValue.Error` should be reported or rejected according to your import rules, rather than silently converted to zero.
 
-**Uploaded file or a larger workbook.** Use `Workbook.open(in, "xlsx")` for an input stream or `Workbook.openBytes(bytes, "xlsx")` for bytes, inside try-with-resources. For bounded processing, follow [the large Excel reading guide]({{ site.axyra_guides }}/read-large-excel-files-efficiently-java). The GitHub project includes [ReadAllWorksheets.java](https://github.com/keikai/axyra-sheets-examples/blob/main/guide-projects/axyra-read-write/src/main/java/ReadAllWorksheets.java) for diagnostic scans and [advanced reading notes](https://github.com/keikai/axyra-sheets-examples/blob/main/guide-projects/axyra-read-write/advanced/read-excel-file-java-reference.txt); it is optional for this first example.
+**Uploaded file or a larger workbook.** Use `Workbook.open(in, "xlsx")` for an input stream or `Workbook.openBytes(bytes, "xlsx")` for bytes, inside try-with-resources. For bounded processing, follow [the large Excel reading guide]({{ site.axyra_guides }}/read-large-excel-files-efficiently-java). The GitHub project includes [ReadAllWorksheets.java](https://github.com/keikai/axyra-sheets-examples/blob/main/java/guide-projects/axyra-read-write/src/main/java/ReadAllWorksheets.java) for diagnostic scans and [advanced reading notes](https://github.com/keikai/axyra-sheets-examples/blob/main/java/guide-projects/axyra-read-write/advanced/read-excel-file-java-reference.txt); it is optional for this first example.
 
 ## Continue: update, calculate, and save
 {: #update}
@@ -210,7 +210,7 @@ try (Workbook wb = Workbook.open(Path.of("input/sales.xlsx"))) {
 }
 ```
 
-[UpdateSalesReport.java](https://github.com/keikai/axyra-sheets-examples/blob/main/guide-projects/axyra-read-write/src/main/java/UpdateSalesReport.java) runs this change and reopens the file to verify the saved total of `1580`. [See the paired guide to writing Java data to Excel]({{ site.axyra_guides }}/write-data-to-excel-java).
+[UpdateSalesReport.java](https://github.com/keikai/axyra-sheets-examples/blob/main/java/guide-projects/axyra-read-write/src/main/java/UpdateSalesReport.java) runs this change and reopens the file to verify the saved total of `1580`. [See the paired guide to writing Java data to Excel]({{ site.axyra_guides }}/write-data-to-excel-java).
 
 ## Troubleshooting and FAQ
 

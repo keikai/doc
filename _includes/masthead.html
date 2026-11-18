@@ -12,6 +12,9 @@
   {% endcomment %}
   {% assign masthead_url = site.axyra_site_link %}
   {% assign masthead_links = site.data.navigation.axyra_main %}
+  {% if page.url contains "/axyra/dotnet/" %}
+    {% assign masthead_links = site.data.navigation.axyra_dotnet_main %}
+  {% endif %}
 {% else %}
   {% assign masthead_title = site.masthead_title | default: site.title %}
   {% assign masthead_url = site.title_link %}

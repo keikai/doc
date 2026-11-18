@@ -47,15 +47,15 @@ The walkthrough uses a small sales report so you can follow each step, then appl
 
 These results apply to the selected workbook properties and authored cells in this Sales report example.
 
-[Try the Apache POI migration example](https://github.com/keikai/axyra-sheets-examples/tree/main/guide-projects/poi-migration){: .btn .btn--success }
+[Try the Apache POI migration example](https://github.com/keikai/axyra-sheets-examples/tree/main/java/guide-projects/poi-migration){: .btn .btn--success }
 
 ## Get started with the POI migration example
 
-Clone the repository and open `guide-projects/poi-migration` in your coding assistant. Use Java 17+ and Maven. The project pins Apache POI 5.3.0 for the original report and independent comparison reader; its `ee` profile selects **Axyra Sheets 1.0.0-Beta**, the non-Eval build used with an active license for the reference checks. The default public dependency is the evaluation build.
+Clone the repository and open `java/guide-projects/poi-migration` in your coding assistant. Use Java 17+ and Maven. The project pins Apache POI 5.3.0 for the original report and independent comparison reader; its `ee` profile selects **Axyra Sheets 1.0.0-Beta**, the non-Eval build used with an active license for the reference checks. The default public dependency is the evaluation build.
 
 ```shell
 git clone https://github.com/keikai/axyra-sheets-examples.git
-cd axyra-sheets-examples/guide-projects/poi-migration
+cd axyra-sheets-examples/java/guide-projects/poi-migration
 ```
 
 Install the Axyra Agent Skill, then run the original program to generate the baseline:
@@ -65,7 +65,7 @@ npx skills add https://github.com/keikai/doc/tree/master/skills/axyra-sheets
 mvn compile exec:java -Dexec.mainClass=PoiSalesReport
 ```
 
-[Skill setup]({{ site.axyra_devref }}/AI_Assisted_Development) · [Java dependency setup]({{ site.axyra_devref }}/Installation) · [Project and run instructions](https://github.com/keikai/axyra-sheets-examples/blob/main/guide-projects/poi-migration/README.md)
+[Skill setup]({{ site.axyra_devref }}/AI_Assisted_Development) · [Java dependency setup]({{ site.axyra_devref }}/Installation) · [Project and run instructions](https://github.com/keikai/axyra-sheets-examples/blob/main/java/guide-projects/poi-migration/README.md)
 
 The baseline is `output/poi-sales.xlsx`. Its two orders preserve IDs `00042` and `00043` as text, use a fixed 1.2 tax multiplier, and calculate totals of 1330.00 and 1596.00.
 
@@ -94,7 +94,7 @@ Provide the migrated Java source, the completed Excel file,
 a short API mapping, and a verification summary.
 ```
 
-[Full prompt and acceptance checks](https://github.com/keikai/axyra-sheets-examples/blob/main/guide-projects/poi-migration/prompt.txt)
+[Full prompt and acceptance checks](https://github.com/keikai/axyra-sheets-examples/blob/main/java/guide-projects/poi-migration/prompt.txt)
 
 ## Review the core Java changes
 
@@ -119,7 +119,7 @@ sheet.cell(1, 3).setFormula("C2*1.2");
 
 The Skill helps the assistant translate these operations with the report requirements in context, so you can review the generated output instead of mapping every API manually.
 
-[Complete migrated Java source](https://github.com/keikai/axyra-sheets-examples/blob/main/guide-projects/poi-migration/src/main/java/AxyraSalesReport.java)
+[Complete migrated Java source](https://github.com/keikai/axyra-sheets-examples/blob/main/java/guide-projects/poi-migration/src/main/java/AxyraSalesReport.java)
 
 ## Run the migrated report and compare results
 
@@ -132,12 +132,12 @@ mvn exec:java -Dexec.mainClass=CompareReports
 
 `CompareReports` uses Apache POI to reopen both saved files and check `Sales!A1:D4` plus selected formatting and worksheet properties. All four result groups passed in the non-Eval reference run.
 
-[Comparison transcript](https://github.com/keikai/axyra-sheets-examples/blob/main/guide-projects/poi-migration/expected/comparison.txt) · [Detailed commands and checks](https://github.com/keikai/axyra-sheets-examples/blob/main/guide-projects/poi-migration/expected/verification.txt) · [Migrated workbook](https://github.com/keikai/axyra-sheets-examples/blob/main/guide-projects/poi-migration/expected/axyra-sales.xlsx)
+[Comparison transcript](https://github.com/keikai/axyra-sheets-examples/blob/main/java/guide-projects/poi-migration/expected/comparison.txt) · [Detailed commands and checks](https://github.com/keikai/axyra-sheets-examples/blob/main/java/guide-projects/poi-migration/expected/verification.txt) · [Migrated workbook](https://github.com/keikai/axyra-sheets-examples/blob/main/java/guide-projects/poi-migration/expected/axyra-sales.xlsx)
 
 ## Try the workflow with your own POI report
 
 Start with the sample POI report: ask your assistant to use the Axyra Agent Skill to migrate it and compare both workbooks. Then repeat with your own source and sample data.
 
-[Try the Apache POI Migration Example](https://github.com/keikai/axyra-sheets-examples/tree/main/guide-projects/poi-migration){: .btn .btn--success }
+[Try the Apache POI Migration Example](https://github.com/keikai/axyra-sheets-examples/tree/main/java/guide-projects/poi-migration){: .btn .btn--success }
 
 [Set up the Axyra Agent Skill]({{ site.axyra_devref }}/AI_Assisted_Development).

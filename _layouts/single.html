@@ -52,6 +52,10 @@ layout: default
         {% assign axyra_code_path = site.data.axyra_code_links[page.permalink] %}
         {% if axyra_code_path %}
           {% assign code_url = code_url | append: "/" | append: axyra_code_path %}
+        {% elsif page.url contains "/axyra/dotnet/" %}
+          {% assign code_url = code_url | append: "/tree/main/dotnet" %}
+        {% else %}
+          {% assign code_url = code_url | append: "/tree/main/java" %}
         {% endif %}
       {% endif %}
       <a href="{{ code_url }}" target="_blank" {% unless page.code_link_style == "text" %}class="btn btn--success"{% endunless %}>Get code at GitHub</a>

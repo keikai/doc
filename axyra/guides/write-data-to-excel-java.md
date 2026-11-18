@@ -33,9 +33,9 @@ The minimal example exports the records. The complete example below adds the for
 
 ![Two Java records, a bulk import, and the verified saved Excel workbook data]({{ '/assets/images/axyra-guides/write-excel-flow.svg' | relative_url }})
 
-The figure and table show the [complete example's workbook](https://github.com/keikai/axyra-sheets-examples/blob/main/guide-projects/axyra-read-write/expected/sales.xlsx): IDs stay text, amounts stay numeric, and `C4` stores a formula. You can inspect the workbook and run the project before connecting a database.
+The figure and table show the [complete example's workbook](https://github.com/keikai/axyra-sheets-examples/blob/main/java/guide-projects/axyra-read-write/expected/sales.xlsx): IDs stay text, amounts stay numeric, and `C4` stores a formula. You can inspect the workbook and run the project before connecting a database.
 
-[Get runnable example](https://github.com/keikai/axyra-sheets-examples/tree/main/guide-projects/axyra-read-write){: .btn .btn--success }
+[Get runnable example](https://github.com/keikai/axyra-sheets-examples/tree/main/java/guide-projects/axyra-read-write){: .btn .btn--success }
 
 <div class="notice--info axyra-ai-entry" markdown="1">
 **Build your own Excel workflow with AI.** Use the Axyra Agent Skill to generate, run, and verify Java code for your own Excel files or report requirements.
@@ -43,7 +43,7 @@ The figure and table show the [complete example's workbook](https://github.com/k
 [See the AI-assisted example](#ai){: .btn .btn--info }
 </div>
 
-[View source on GitHub](https://github.com/keikai/axyra-sheets-examples/tree/main/guide-projects/axyra-read-write) · [Run instructions](#setup)
+[View source on GitHub](https://github.com/keikai/axyra-sheets-examples/tree/main/java/guide-projects/axyra-read-write) · [Run instructions](#setup)
 
 ## Run the complete example
 {: #setup}
@@ -52,11 +52,11 @@ Use Java 17+ and Maven; Microsoft Excel is not required. Clone the examples repo
 
 ```shell
 git clone https://github.com/keikai/axyra-sheets-examples.git
-cd axyra-sheets-examples/guide-projects/axyra-read-write
+cd axyra-sheets-examples/java/guide-projects/axyra-read-write
 mvn -q compile exec:java -Dexec.mainClass=WriteExcelFile
 ```
 
-The project includes its [POM](https://github.com/keikai/axyra-sheets-examples/blob/main/guide-projects/axyra-read-write/pom.xml) and creates the output directory. Evaluation needs no key and adds notices; production use requires a commercial license. [Licensing details]({{ site.axyra_devref }}/License).
+The project includes its [POM](https://github.com/keikai/axyra-sheets-examples/blob/main/java/guide-projects/axyra-read-write/pom.xml) and creates the output directory. Evaluation needs no key and adds notices; production use requires a commercial license. [Licensing details]({{ site.axyra_devref }}/License).
 
 ### Complete Java class
 {: #complete-example}
@@ -64,7 +64,7 @@ The project includes its [POM](https://github.com/keikai/axyra-sheets-examples/b
 <details markdown="1">
 <summary>Expand complete Java class and copy code</summary>
 
-Full source: [WriteExcelFile.java](https://github.com/keikai/axyra-sheets-examples/blob/main/guide-projects/axyra-read-write/src/main/java/WriteExcelFile.java).
+Full source: [WriteExcelFile.java](https://github.com/keikai/axyra-sheets-examples/blob/main/java/guide-projects/axyra-read-write/src/main/java/WriteExcelFile.java).
 
 {% capture complete_java %}import io.keikai.axyra.sheets.CellValue;
 import io.keikai.axyra.sheets.ImportOptions;
@@ -154,14 +154,14 @@ if (sales.isEmpty()) sheet.cell(totalRow, 2).setValue(CellValue.number(0));
 else sheet.cell(totalRow, 2).setFormula("SUM(C2:C" + totalRow + ")");
 ```
 
-**Verified result:** the [saved workbook](https://github.com/keikai/axyra-sheets-examples/blob/main/guide-projects/axyra-read-write/expected/ai-sales-simple.xlsx) (`output/ai-sales-simple.xlsx` when generated locally) contains two order rows, text IDs, numeric amounts, bold headers, and a stored SUM formula. Reopening the workbook gave a displayed total of **1,330.00**.
+**Verified result:** the [saved workbook](https://github.com/keikai/axyra-sheets-examples/blob/main/java/guide-projects/axyra-read-write/expected/ai-sales-simple.xlsx) (`output/ai-sales-simple.xlsx` when generated locally) contains two order rows, text IDs, numeric amounts, bold headers, and a stored SUM formula. Reopening the workbook gave a displayed total of **1,330.00**.
 
 <details markdown="1">
 <summary>Reproduce this run: full context, source, and expected/actual results</summary>
 
 The displayed prompt is the exact prompt for this new run. Codex had the installed skill, existing project and earlier examples in context; this was not a blind or timed trial. The project supplied Java 17 and Axyra Sheets `1.0.0-Beta-Eval`.
 
-The [recorded run on GitHub](https://github.com/keikai/axyra-sheets-examples/tree/main/guide-projects/axyra-read-write/ai-session-simple) includes the [exact prompt](https://github.com/keikai/axyra-sheets-examples/blob/main/guide-projects/axyra-read-write/ai-session-simple/write-prompt.txt), project context, complete [generated source](https://github.com/keikai/axyra-sheets-examples/blob/main/guide-projects/axyra-read-write/src/main/java/SimpleSkillWriter.java), the saved workbook, raw stdout/stderr, and a [manifest](https://github.com/keikai/axyra-sheets-examples/blob/main/guide-projects/axyra-read-write/ai-session-simple/manifest.json) with commands, exit codes, and file hashes. Reproduce both examples and their checks with:
+The [recorded run on GitHub](https://github.com/keikai/axyra-sheets-examples/tree/main/java/guide-projects/axyra-read-write/ai-session-simple) includes the [exact prompt](https://github.com/keikai/axyra-sheets-examples/blob/main/java/guide-projects/axyra-read-write/ai-session-simple/write-prompt.txt), project context, complete [generated source](https://github.com/keikai/axyra-sheets-examples/blob/main/java/guide-projects/axyra-read-write/src/main/java/SimpleSkillWriter.java), the saved workbook, raw stdout/stderr, and a [manifest](https://github.com/keikai/axyra-sheets-examples/blob/main/java/guide-projects/axyra-read-write/ai-session-simple/manifest.json) with commands, exit codes, and file hashes. Reproduce both examples and their checks with:
 
 ```shell
 mvn -q compile exec:java -Dexec.mainClass=SimpleSkillReader
@@ -178,7 +178,7 @@ Stored formula: SUM(C2:C3); displayed total: 1,330.00
 PASS: text IDs, Java records, numeric amounts, bold headers, and formats
 ```
 
-The [expected/actual comparison](https://github.com/keikai/axyra-sheets-examples/blob/main/guide-projects/axyra-read-write/ai-session-simple/expected-actual.json) retains the detailed checks. The [earlier long-prompt run](https://github.com/keikai/axyra-sheets-examples/tree/main/guide-projects/axyra-read-write/ai-session) is also available.
+The [expected/actual comparison](https://github.com/keikai/axyra-sheets-examples/blob/main/java/guide-projects/axyra-read-write/ai-session-simple/expected-actual.json) retains the detailed checks. The [earlier long-prompt run](https://github.com/keikai/axyra-sheets-examples/tree/main/java/guide-projects/axyra-read-write/ai-session) is also available.
 
 </details>
 
@@ -188,7 +188,7 @@ For your own report, [install the Axyra Sheets skill]({{ site.axyra_devref }}/AI
 
 ## Adjust row counts, formats, and formulas
 
-**More or fewer records.** The first complete program is a fixed two-row fixture. For variable-length input, derive the total row from list size and extend its number-format range. The generated [SimpleSkillWriter.write(...)](https://github.com/keikai/axyra-sheets-examples/blob/main/guide-projects/axyra-read-write/src/main/java/SimpleSkillWriter.java) implementation does this and uses a numeric zero total for an empty list.
+**More or fewer records.** The first complete program is a fixed two-row fixture. For variable-length input, derive the total row from list size and extend its number-format range. The generated [SimpleSkillWriter.write(...)](https://github.com/keikai/axyra-sheets-examples/blob/main/java/guide-projects/axyra-read-write/src/main/java/SimpleSkillWriter.java) implementation does this and uses a numeric zero total for an empty list.
 
 **Dates and financial amounts.** `importData` writes Java dates as Excel serials; apply a date format such as `yyyy-mm-dd` to display them as dates. Excel numeric cells use floating-point values, so define source precision and rounding rules for financial data.
 
@@ -202,13 +202,13 @@ Choose the next report workflow:
 - **[Fill an existing Excel template]({{ site.axyra_guides }}/populate-excel-template-database-java)** — fill a Profit and Loss template from database totals while keeping its labels, formats, and profit formulas. Java supplies the monthly values. For repeating detail rows, see [the template report guide]({{ site.axyra_guides }}/generate-excel-reports-java).
 - **[Generate a report from a database]({{ site.axyra_guides }}/export-database-to-excel-java)** — query the source data and export a formatted workbook.
 
-**Database or JSON input.** Map the source into records, then use the same bulk-writing path. The GitHub project includes [DatabaseSalesReport.java](https://github.com/keikai/axyra-sheets-examples/blob/main/guide-projects/axyra-read-write/src/main/java/DatabaseSalesReport.java) and [WriteJsonSalesReport.java](https://github.com/keikai/axyra-sheets-examples/blob/main/guide-projects/axyra-read-write/src/main/java/WriteJsonSalesReport.java) for a four-column schema with dates. Their saved outputs were reopened to check date and amount formats. The JSON example registers Jackson's Java time module; the POM includes it.
+**Database or JSON input.** Map the source into records, then use the same bulk-writing path. The GitHub project includes [DatabaseSalesReport.java](https://github.com/keikai/axyra-sheets-examples/blob/main/java/guide-projects/axyra-read-write/src/main/java/DatabaseSalesReport.java) and [WriteJsonSalesReport.java](https://github.com/keikai/axyra-sheets-examples/blob/main/java/guide-projects/axyra-read-write/src/main/java/WriteJsonSalesReport.java) for a four-column schema with dates. Their saved outputs were reopened to check date and amount formats. The JSON example registers Jackson's Java time module; the POM includes it.
 
-**A large forward-only export.** Consider [StreamWorkbook]({{ site.axyra_devref }}/Streaming) when you should not hold all records in a list. It does not calculate formulas or edit an existing workbook. Maps, numeric matrices, and explicit typed blocks are covered in the [advanced writing notes](https://github.com/keikai/axyra-sheets-examples/blob/main/guide-projects/axyra-read-write/advanced/write-data-to-excel-java-reference.txt) and the [cell and range reference]({{ site.axyra_devref }}/Cell_and_Range).
+**A large forward-only export.** Consider [StreamWorkbook]({{ site.axyra_devref }}/Streaming) when you should not hold all records in a list. It does not calculate formulas or edit an existing workbook. Maps, numeric matrices, and explicit typed blocks are covered in the [advanced writing notes](https://github.com/keikai/axyra-sheets-examples/blob/main/java/guide-projects/axyra-read-write/advanced/write-data-to-excel-java-reference.txt) and the [cell and range reference]({{ site.axyra_devref }}/Cell_and_Range).
 
 ## Troubleshooting and FAQ
 
-**Why do dates display as numbers?** Date imports need a date number format; apply it before saving. The [dated examples](https://github.com/keikai/axyra-sheets-examples/blob/main/guide-projects/axyra-read-write/src/main/java/WriteJsonSalesReport.java) show the complete sequence.
+**Why do dates display as numbers?** Date imports need a date number format; apply it before saving. The [dated examples](https://github.com/keikai/axyra-sheets-examples/blob/main/java/guide-projects/axyra-read-write/src/main/java/WriteJsonSalesReport.java) show the complete sequence.
 
 **Why are columns missing or reordered?** Set `.columns(...)` explicitly. Property names are strings and are checked at runtime; adding a field should not silently change your export schema.
 
