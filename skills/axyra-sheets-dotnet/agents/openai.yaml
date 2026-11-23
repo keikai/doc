@@ -1,0 +1,4 @@
+interface:
+  display_name: "Axyra Sheets for .NET"
+  short_description: "Build C#/.NET spreadsheet workflows and migrate to Axyra"
+  default_prompt: "Use $axyra-sheets-dotnet to implement or migrate my C#/.NET spreadsheet workflow using the documentation, verified API signatures, and runnable examples."
