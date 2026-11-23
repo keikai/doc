@@ -51,10 +51,10 @@ defaults:
       sidebar:
         nav: "axyra"
   - scope:
-      path: "axyra/sheets/java/tutorial"
+      path: "axyra/sheets/java/quick-start"
     values:
       sidebar:
-        nav: "axyra-tutorial"
+        nav: "axyra-quick-start"
   - scope:
       path: "axyra/sheets/java/dev-ref"
     values:
@@ -76,10 +76,10 @@ defaults:
       sidebar:
         nav: "axyra-dotnet"
   - scope:
-      path: "axyra/sheets/dotnet/tutorial"
+      path: "axyra/sheets/dotnet/quick-start"
     values:
       sidebar:
-        nav: "axyra-dotnet-tutorial"
+        nav: "axyra-dotnet-quick-start"
   - scope:
       path: "axyra/sheets/dotnet/dev-ref"
     values:

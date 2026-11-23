@@ -46,7 +46,7 @@ axyra:
       - title: "Javadoc"
         url: https://keikai.io/javadoc/axyra-sheets/latest/index.html
 
-axyra-tutorial:
+axyra-quick-start:
   - title: "Axyra Sheets Quick Start"
     url: /axyra/sheets/java/quick-start/
     children:
@@ -380,7 +380,7 @@ axyra-dotnet:
         url: /axyra/sheets/dotnet/dev-ref/
 
 
-axyra-dotnet-tutorial:
+axyra-dotnet-quick-start:
   - title: "Axyra Sheets for .NET Quick Start"
     url: /axyra/sheets/dotnet/quick-start/
     children:
