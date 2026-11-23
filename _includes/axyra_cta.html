@@ -14,12 +14,12 @@
 {%- endcomment -%}
 {%- assign type = include.type | default: "subscribe" -%}
 {%- if type == "evaluation" -%}
-  {%- assign page_url = "/axyra/evaluation-help" -%}
+  {%- assign page_url = "/axyra/sheets/evaluation-help" -%}
   {%- assign title = include.title | default: "Evaluating Axyra Sheets for a project?" -%}
   {%- assign text = include.text | default: "Request evaluation help and learn about available license options." -%}
   {%- assign button = include.button | default: "Request evaluation help" -%}
 {%- elsif type == "commercial" -%}
-  {%- assign page_url = "/axyra/contact-sales" -%}
+  {%- assign page_url = "/axyra/sheets/contact-sales" -%}
   {%- assign title = include.title | default: "Planning a production deployment?" -%}
   {%- assign text = include.text | default: "Discuss pricing or deployment with our sales team." -%}
   {%- assign button = include.button | default: "Discuss pricing or deployment" -%}

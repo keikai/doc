@@ -4,6 +4,7 @@ plugins:
   - jekyll-include-cache  #required by minimal-mistakes
   - jekyll-paginate
   - jekyll-sitemap
+  - jekyll-redirect-from  # old /axyra/... URLs -> /axyra/sheets/...
 minimal_mistakes_skin: "dirt"
 title: "KEIKAI"
 title_link: "https://keikai.io"
@@ -45,29 +46,50 @@ defaults:
         nav: "tutorial"
   # Axyra Sheets is a separate product: its own sidebars, never the Keikai ones.
   - scope:
-      path: "axyra"
+      path: "axyra/sheets/java"
     values:
       sidebar:
         nav: "axyra"
   - scope:
-      path: "axyra/tutorial"
+      path: "axyra/sheets/java/tutorial"
     values:
       sidebar:
         nav: "axyra-tutorial"
   - scope:
-      path: "axyra/dev-ref"
+      path: "axyra/sheets/java/dev-ref"
     values:
       sidebar:
         nav: "axyra-dev-ref"
   # Task-oriented articles that answer a search query, as opposed to the
-  # learning path (axyra/quick-start) or the API reference (axyra/dev-ref). They
+  # learning path (axyra/sheets/java/quick-start) or the API reference (axyra/sheets/java/dev-ref). They
   # are entry points: each one links into the reference rather than restating
   # it, so the two never compete for the same query.
   - scope:
-      path: "axyra/guides"
+      path: "axyra/sheets/java/guides"
     values:
       sidebar:
         nav: "axyra-guides"
+
+  - scope:
+      path: "axyra/sheets/dotnet"
+    values:
+      sidebar:
+        nav: "axyra-dotnet"
+  - scope:
+      path: "axyra/sheets/dotnet/tutorial"
+    values:
+      sidebar:
+        nav: "axyra-dotnet-tutorial"
+  - scope:
+      path: "axyra/sheets/dotnet/dev-ref"
+    values:
+      sidebar:
+        nav: "axyra-dotnet-dev-ref"
+  - scope:
+      path: "axyra/sheets/dotnet/guides"
+    values:
+      sidebar:
+        nav: "axyra-dotnet-guides"
 
 # disqus admin is hawkchen@potix.com
     
@@ -80,17 +102,27 @@ devref_image_folder: "/assets/images/dev-ref"
 baseurl_javadoc_keikai: "https://keikai.io/javadoc/spreadsheet/latest/"
 # base paths of the Axyra Sheets documentation (a separate product from Keikai
 # Spreadsheet -- keep these prefixes distinct from devref/tutorial above)
-axyra: "/axyra"
+# Root shared by both languages (evaluation help, contact sales, search index).
+axyra_sheets: "/axyra/sheets"
+axyra: "/axyra/sheets/java"
 # Where the Axyra masthead title leaves for, from the documentation overview
 # page only (the Axyra counterpart of `title_link`). Point this at the public
 # product page at release.
 axyra_site_link: "https://keikai.io/axyra"
-axyra_tutorial: "/axyra/quick-start"
-axyra_guides: "/axyra/guides"
-axyra_devref: "/axyra/dev-ref"
+axyra_tutorial: "/axyra/sheets/java/quick-start"
+axyra_guides: "/axyra/sheets/java/guides"
+axyra_devref: "/axyra/sheets/java/dev-ref"
 axyra_image_folder: "/assets/images/axyra"
 axyra_javadoc: "https://keikai.io/javadoc/axyra-sheets/latest/index.html"
 axyra_version: "1.0.0-Beta-Eval"
+# .NET uses the same examples repository, with an independent package version.
+axyra_dotnet: "/axyra/sheets/dotnet"
+axyra_dotnet_tutorial: "/axyra/sheets/dotnet/quick-start"
+axyra_dotnet_guides: "/axyra/sheets/dotnet/guides"
+axyra_dotnet_devref: "/axyra/sheets/dotnet/dev-ref"
+axyra_dotnet_version: "1.0.0-fl.20261116"
+axyra_dotnet_feed_url: "https://mavensync.zkoss.org/eval/nuget/index.json"
+axyra_dotnet_examples: "https://github.com/keikai/axyra-sheets-examples/blob/main/dotnet"
 # Axyra Sheets is not on Maven Central. Public examples use the evaluation
 # build; authenticated EE customers can use the commercial repository below.
 axyra_repo_url: "https://mavensync.zkoss.org/eval"
@@ -123,7 +155,7 @@ axyra_leads:
 # gems under vendor/, which fails on jekyll's own site_template .erb posts.
 exclude:
   - skills/
-  - scripts/package-axyra-skill.py
+  - scripts/
   - CLAUDE.md
   - README.md
   - .bundle/

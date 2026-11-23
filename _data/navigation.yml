@@ -6,62 +6,64 @@ main:
   - title: "JavaDoc"
     url: https://keikai.io/javadoc/spreadsheet/latest/
   # Axyra Sheets is not released yet, so it is not advertised from the Keikai
-  # masthead. Uncomment at release. The /axyra/ pages stay reachable by URL and
+  # masthead. Uncomment at release. The /axyra/sheets/java/ pages stay reachable by URL and
   # keep their own masthead (axyra_main) in the meantime.
   # - title: "Axyra Sheets"
-  #   url: /axyra
+  #   url: /axyra/sheets/java
 
 axyra_main:
   - title: "Overview"
-    url: /axyra/
+    url: /axyra/sheets/java/
   - title: "Quick Start"
-    url: /axyra/quick-start/
+    url: /axyra/sheets/java/quick-start/
   - title: "Guides"
-    url: /axyra/guides/
+    url: /axyra/sheets/java/guides/
   - title: "Developer Reference"
-    url: /axyra/dev-ref/
+    url: /axyra/sheets/java/dev-ref/
+  - title: ".NET"
+    url: /axyra/sheets/dotnet/
   - divider: true
   - title: "Keikai"
     url: /dev-ref
 
 # ---------------------------------------------------------------------------
 # Axyra Sheets -- a SEPARATE product from Keikai Spreadsheet.
-# These three navs are used only by pages under /axyra/. Never add Keikai
+# These three navs are used only by pages under /axyra/sheets/. Never add Keikai
 # Spreadsheet pages here, and never add Axyra pages to `tutorial` or `dev-ref`.
 # ---------------------------------------------------------------------------
 axyra:
   - title: "Axyra Sheets"
-    url: /axyra/
+    url: /axyra/sheets/java/
     children:
       - title: "Overview"
-        url: /axyra/
+        url: /axyra/sheets/java/
       - title: "Quick Start"
-        url: /axyra/quick-start/
+        url: /axyra/sheets/java/quick-start/
       - title: "Guides"
-        url: /axyra/guides/
+        url: /axyra/sheets/java/guides/
       - title: "Developer Reference"
-        url: /axyra/dev-ref/
+        url: /axyra/sheets/java/dev-ref/
       - title: "Javadoc"
         url: https://keikai.io/javadoc/axyra-sheets/latest/index.html
 
 axyra-tutorial:
   - title: "Axyra Sheets Quick Start"
-    url: /axyra/quick-start/
+    url: /axyra/sheets/java/quick-start/
     children:
       - title: "Choose Your Path"
-        url: /axyra/quick-start/
+        url: /axyra/sheets/java/quick-start/
       - title: "Manual Development"
-        url: /axyra/quick-start/quick_start
+        url: /axyra/sheets/java/quick-start/quick_start
       - title: "AI-Assisted Development"
-        url: /axyra/dev-ref/AI_Assisted_Development
+        url: /axyra/sheets/java/dev-ref/AI_Assisted_Development
       - title: "Read and Write Files"
-        url: /axyra/quick-start/read_write
+        url: /axyra/sheets/java/quick-start/read_write
       - title: "Render to PDF and Images"
-        url: /axyra/quick-start/render
+        url: /axyra/sheets/java/quick-start/render
   - title: "More"
     children:
       - title: "Developer Reference"
-        url: /axyra/dev-ref/
+        url: /axyra/sheets/java/dev-ref/
       - title: "Javadoc"
         url: https://keikai.io/javadoc/axyra-sheets/latest/index.html
 
@@ -69,103 +71,103 @@ axyra-tutorial:
 # reference rather than duplicating it.
 axyra-guides:
   - title: "Guides"
-    url: /axyra/guides/
+    url: /axyra/sheets/java/guides/
     children:
       - title: "Overview"
-        url: /axyra/guides/
+        url: /axyra/sheets/java/guides/
       - title: "Create an Excel File"
-        url: /axyra/guides/create-excel-file-java
+        url: /axyra/sheets/java/guides/create-excel-file-java
       - title: "Read an Excel File"
-        url: /axyra/guides/read-excel-file-java
+        url: /axyra/sheets/java/guides/read-excel-file-java
       - title: "Read Excel Cell Values"
-        url: /axyra/guides/read-excel-cell-values-java
+        url: /axyra/sheets/java/guides/read-excel-cell-values-java
       - title: "Read Large Excel Files"
-        url: /axyra/guides/read-large-excel-files-efficiently-java
+        url: /axyra/sheets/java/guides/read-large-excel-files-efficiently-java
       - title: "Recalculate Formulas"
-        url: /axyra/guides/evaluate-recalculate-excel-formulas-java
+        url: /axyra/sheets/java/guides/evaluate-recalculate-excel-formulas-java
       - title: "Convert Excel to PDF"
-        url: /axyra/guides/convert-excel-to-pdf-java
+        url: /axyra/sheets/java/guides/convert-excel-to-pdf-java
       - title: "Write Data to Excel"
-        url: /axyra/guides/write-data-to-excel-java
+        url: /axyra/sheets/java/guides/write-data-to-excel-java
       - title: "Export Database Data"
-        url: /axyra/guides/export-database-to-excel-java
+        url: /axyra/sheets/java/guides/export-database-to-excel-java
       - title: "Import Excel to a Database"
-        url: /axyra/guides/import-excel-to-database-java
+        url: /axyra/sheets/java/guides/import-excel-to-database-java
       - title: "Spring Boot Import and Export"
-        url: /axyra/guides/spring-boot-excel-import-export
+        url: /axyra/sheets/java/guides/spring-boot-excel-import-export
       - title: "Export Excel Files"
-        url: /axyra/guides/export-excel-files-java
+        url: /axyra/sheets/java/guides/export-excel-files-java
       - title: "Generate Excel Reports"
-        url: /axyra/guides/generate-excel-reports-java
+        url: /axyra/sheets/java/guides/generate-excel-reports-java
       - title: "Populate a P&L Template"
-        url: /axyra/guides/populate-excel-template-database-java
+        url: /axyra/sheets/java/guides/populate-excel-template-database-java
       - title: "Fill Templates with the Agent Skill"
-        url: /axyra/guides/fill-excel-template-agent-skill-java
+        url: /axyra/sheets/java/guides/fill-excel-template-agent-skill-java
       - title: "Migrate POI with the Agent Skill"
-        url: /axyra/guides/migrate-apache-poi-agent-skill-java
+        url: /axyra/sheets/java/guides/migrate-apache-poi-agent-skill-java
   - title: "More"
     children:
       - title: "Quick Start"
-        url: /axyra/quick-start/
+        url: /axyra/sheets/java/quick-start/
       - title: "Developer Reference"
-        url: /axyra/dev-ref/
+        url: /axyra/sheets/java/dev-ref/
       - title: "Javadoc"
         url: https://keikai.io/javadoc/axyra-sheets/latest/index.html
 
 axyra-dev-ref:
   - title: Overview
-    url: /axyra/dev-ref/
+    url: /axyra/sheets/java/dev-ref/
   - title: Setup and Operations
-    url: /axyra/dev-ref/Installation
+    url: /axyra/sheets/java/dev-ref/Installation
     children:
       - title: "Installation"
-        url: /axyra/dev-ref/Installation
+        url: /axyra/sheets/java/dev-ref/Installation
       - title: "Native Library Loading"
-        url: /axyra/dev-ref/Native_Loader
+        url: /axyra/sheets/java/dev-ref/Native_Loader
       - title: "Architecture"
-        url: /axyra/dev-ref/Architecture
+        url: /axyra/sheets/java/dev-ref/Architecture
       - title: "Licensing and Evaluation"
-        url: /axyra/dev-ref/License
+        url: /axyra/sheets/java/dev-ref/License
   - title: AI-Assisted Development
-    url: /axyra/dev-ref/AI_Assisted_Development
+    url: /axyra/sheets/java/dev-ref/AI_Assisted_Development
   - title: The Object Model
-    url: /axyra/dev-ref/Workbook_and_Sheet
+    url: /axyra/sheets/java/dev-ref/Workbook_and_Sheet
     children:
       - title: "Workbook and Sheet"
-        url: /axyra/dev-ref/Workbook_and_Sheet
+        url: /axyra/sheets/java/dev-ref/Workbook_and_Sheet
       - title: "Cells and Ranges"
-        url: /axyra/dev-ref/Cell_and_Range
+        url: /axyra/sheets/java/dev-ref/Cell_and_Range
       - title: "Formulas"
-        url: /axyra/dev-ref/Formulas
+        url: /axyra/sheets/java/dev-ref/Formulas
       - title: "Styles and Formats"
-        url: /axyra/dev-ref/Styles
+        url: /axyra/sheets/java/dev-ref/Styles
   - title: Content
-    url: /axyra/dev-ref/Charts
+    url: /axyra/sheets/java/dev-ref/Charts
     children:
       - title: "Charts"
-        url: /axyra/dev-ref/Charts
+        url: /axyra/sheets/java/dev-ref/Charts
       - title: "Pivot Tables"
-        url: /axyra/dev-ref/Pivot_Table
+        url: /axyra/sheets/java/dev-ref/Pivot_Table
       - title: "Tables and Content Objects"
-        url: /axyra/dev-ref/Content_Objects
+        url: /axyra/sheets/java/dev-ref/Content_Objects
   - title: Input and Output
-    url: /axyra/dev-ref/Import_and_Export
+    url: /axyra/sheets/java/dev-ref/Import_and_Export
     children:
       - title: "Import and Export"
-        url: /axyra/dev-ref/Import_and_Export
+        url: /axyra/sheets/java/dev-ref/Import_and_Export
       - title: "Supported Formats"
-        url: /axyra/dev-ref/Supported_Formats
+        url: /axyra/sheets/java/dev-ref/Supported_Formats
       - title: "Rendering"
-        url: /axyra/dev-ref/Rendering
+        url: /axyra/sheets/java/dev-ref/Rendering
       - title: "Streaming Large Files"
-        url: /axyra/dev-ref/Streaming
+        url: /axyra/sheets/java/dev-ref/Streaming
       - title: "Template Markers"
-        url: /axyra/dev-ref/Template_Markers
+        url: /axyra/sheets/java/dev-ref/Template_Markers
   - title: Comparison
-    url: /axyra/dev-ref/Axyra_vs_Keikai
+    url: /axyra/sheets/java/dev-ref/Axyra_vs_Keikai
     children:
       - title: "Axyra Sheets vs. Keikai Spreadsheet"
-        url: /axyra/dev-ref/Axyra_vs_Keikai
+        url: /axyra/sheets/java/dev-ref/Axyra_vs_Keikai
   - title: Javadoc
     url: https://keikai.io/javadoc/axyra-sheets/latest/index.html
 
@@ -349,3 +351,132 @@ dev-ref:
     url: /dev-ref/License_Install
   - title: Release Notes
     url: https://keikai.io/releasenotes
+
+
+# .NET documentation keeps its own masthead and sidebars.
+axyra_dotnet_main:
+  - title: ".NET Overview"
+    url: /axyra/sheets/dotnet/
+  - title: "Quick Start"
+    url: /axyra/sheets/dotnet/quick-start/
+  - title: "Guides"
+    url: /axyra/sheets/dotnet/guides/
+  - title: "Developer Reference"
+    url: /axyra/sheets/dotnet/dev-ref/
+  - title: "Java"
+    url: /axyra/sheets/java/
+
+axyra-dotnet:
+  - title: "Axyra Sheets for .NET"
+    url: /axyra/sheets/dotnet/
+    children:
+      - title: "Overview"
+        url: /axyra/sheets/dotnet/
+      - title: "Quick Start"
+        url: /axyra/sheets/dotnet/quick-start/
+      - title: "Guides"
+        url: /axyra/sheets/dotnet/guides/
+      - title: "Developer Reference"
+        url: /axyra/sheets/dotnet/dev-ref/
+
+
+axyra-dotnet-tutorial:
+  - title: "Axyra Sheets for .NET Quick Start"
+    url: /axyra/sheets/dotnet/quick-start/
+    children:
+      - title: "Choose Your Path"
+        url: /axyra/sheets/dotnet/quick-start/
+      - title: "Manual Development"
+        url: /axyra/sheets/dotnet/quick-start/quick_start
+      - title: "AI-Assisted Development"
+        url: /axyra/sheets/dotnet/dev-ref/AI_Assisted_Development
+      - title: "Read and Write Files"
+        url: /axyra/sheets/dotnet/quick-start/read_write
+      - title: "Render to PDF and Images"
+        url: /axyra/sheets/dotnet/quick-start/render
+  - title: "More"
+    children:
+      - title: "Developer Reference"
+        url: /axyra/sheets/dotnet/dev-ref/
+
+# Task-oriented articles. One page per search query; each links into the
+# reference rather than duplicating it.
+
+axyra-dotnet-dev-ref:
+  - title: Overview
+    url: /axyra/sheets/dotnet/dev-ref/
+  - title: Setup and Operations
+    url: /axyra/sheets/dotnet/dev-ref/Installation
+    children:
+      - title: "Installation"
+        url: /axyra/sheets/dotnet/dev-ref/Installation
+      - title: "Native Library Loading"
+        url: /axyra/sheets/dotnet/dev-ref/Native_Loader
+      - title: "Architecture"
+        url: /axyra/sheets/dotnet/dev-ref/Architecture
+      - title: "Licensing and Evaluation"
+        url: /axyra/sheets/dotnet/dev-ref/License
+  - title: AI-Assisted Development
+    url: /axyra/sheets/dotnet/dev-ref/AI_Assisted_Development
+  - title: The Object Model
+    url: /axyra/sheets/dotnet/dev-ref/Workbook_and_Sheet
+    children:
+      - title: "Workbook and Sheet"
+        url: /axyra/sheets/dotnet/dev-ref/Workbook_and_Sheet
+      - title: "Cells and Ranges"
+        url: /axyra/sheets/dotnet/dev-ref/Cell_and_Range
+      - title: "Formulas"
+        url: /axyra/sheets/dotnet/dev-ref/Formulas
+      - title: "Styles and Formats"
+        url: /axyra/sheets/dotnet/dev-ref/Styles
+  - title: Content
+    url: /axyra/sheets/dotnet/dev-ref/Charts
+    children:
+      - title: "Charts"
+        url: /axyra/sheets/dotnet/dev-ref/Charts
+      - title: "Pivot Tables"
+        url: /axyra/sheets/dotnet/dev-ref/Pivot_Table
+      - title: "Tables and Content Objects"
+        url: /axyra/sheets/dotnet/dev-ref/Content_Objects
+  - title: Input and Output
+    url: /axyra/sheets/dotnet/dev-ref/Import_and_Export
+    children:
+      - title: "Import and Export"
+        url: /axyra/sheets/dotnet/dev-ref/Import_and_Export
+      - title: "Supported Formats"
+        url: /axyra/sheets/dotnet/dev-ref/Supported_Formats
+      - title: "Rendering"
+        url: /axyra/sheets/dotnet/dev-ref/Rendering
+      - title: "Streaming Large Files"
+        url: /axyra/sheets/dotnet/dev-ref/Streaming
+      - title: "Template Markers"
+        url: /axyra/sheets/dotnet/dev-ref/Template_Markers
+  - title: Comparison
+    url: /axyra/sheets/dotnet/dev-ref/Axyra_vs_Keikai
+    children:
+      - title: "Axyra Sheets for .NET vs. Keikai Spreadsheet"
+        url: /axyra/sheets/dotnet/dev-ref/Axyra_vs_Keikai
+
+
+axyra-dotnet-guides:
+  - title: "C# / .NET Guides"
+    url: /axyra/sheets/dotnet/guides/
+    children:
+      - title: "How to Convert Excel to PDF in C#"
+        url: /axyra/sheets/dotnet/guides/convert-excel-to-pdf-csharp
+      - title: "How to Create an Excel File in C# (Step-by-Step)"
+        url: /axyra/sheets/dotnet/guides/create-excel-file-csharp
+      - title: "Recalculate Excel Formulas in C# with Axyra Sheets"
+        url: /axyra/sheets/dotnet/guides/evaluate-recalculate-excel-formulas-csharp
+      - title: "How to Export Excel Files in C# (XLSX, CSV, PDF, and More)"
+        url: /axyra/sheets/dotnet/guides/export-excel-files-csharp
+      - title: "Automate Excel Reports in C# with Templates"
+        url: /axyra/sheets/dotnet/guides/generate-excel-reports-csharp
+      - title: "Read Excel Cell Values in C# with Axyra Sheets"
+        url: /axyra/sheets/dotnet/guides/read-excel-cell-values-csharp
+      - title: "How to Read an Excel File in C# (XLSX Example)"
+        url: /axyra/sheets/dotnet/guides/read-excel-file-csharp
+      - title: "Read Large Excel Files Efficiently in C# with Axyra Sheets"
+        url: /axyra/sheets/dotnet/guides/read-large-excel-files-efficiently-csharp
+      - title: "How to Write Data to Excel in C# (List, Database, or JSON)"
+        url: /axyra/sheets/dotnet/guides/write-data-to-excel-csharp

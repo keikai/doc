@@ -1,0 +1,120 @@
+---
+title: 'Architecture (.NET)'
+permalink: /axyra/sheets/dotnet/dev-ref/Architecture
+redirect_from:
+  - /axyra/dotnet/dev-ref/Architecture
+---
+
+Useful background when you are reasoning about performance, about what is
+modelled versus preserved, or about why an API is shaped the way it is.
+
+# Layers
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│  API       .NET (C#) — the Axyra.Sheets assembly            │
+├─────────────────────────────────────────────────────────────┤
+│  FFI       C ABI (libaxyra), called through P/Invoke        │
+├─────────────────────────────────────────────────────────────┤
+│  I/O       ooxml · xls · csv · json · html · render         │
+├─────────────────────────────────────────────────────────────┤
+│  Eval      formula — parser, evaluator, 500+ functions      │
+├─────────────────────────────────────────────────────────────┤
+│  Format    format — number and date format codes            │
+├─────────────────────────────────────────────────────────────┤
+│  Model     model — Book · Sheet · Cell · Range · Style ·    │
+│                    Chart · PivotTable                       │
+└─────────────────────────────────────────────────────────────┘
+```
+
+Each layer depends only on layers below it, with no cycles. The consequence you
+can rely on: the model does not know about file formats, and the formula engine
+does not know about rendering. A bug in XLSX writing cannot change how a formula
+evaluates.
+
+The engine below the FFI layer is the same one every Axyra Sheets SDK uses, so a
+workbook calculates, saves, and renders identically from .NET and from Java.
+
+# The engine
+
+Rust, organised as a Cargo workspace:
+
+| Crate | Responsibility |
+|---|---|
+| `axyra-sheets-model` | The workbook model — sheets, cells, ranges, styles, charts, pivot tables. Includes both the row-oriented and columnar storage backends. |
+| `axyra-sheets-formula` | Formula parsing and evaluation, the function library, dependency tracking, spill |
+| `axyra-sheets-format` | Number and date format codes, parsing user input |
+| `axyra-sheets-ooxml` | XLSX / XLSM / XLSB reading and writing; ODS; encryption |
+| `axyra-sheets-xls` | Legacy BIFF8 `.xls` |
+| `axyra-sheets-csv` | CSV import with type sniffing, and export |
+| `axyra-sheets-json` | JSON import and export of sheet data as row objects |
+| `axyra-sheets-html` | HTML export |
+| `axyra-sheets-render` | Page layout, PDF, images, SVG, fonts, chart drawing |
+| `axyra-sheets-signature` | OPC package digital signatures |
+| `axyra-sheets-license` | Signed license tokens and enforcement |
+| `axyra-sheets-ffi-c` | The C ABI (`libaxyra`) the .NET assembly binds to |
+
+`Book` is the model's hub — the type nearly everything else reaches through, and
+the reason `Workbook` is the root of the .NET API too.
+
+# The native boundary
+
+This is the part with practical consequences.
+
+The .NET API is a thin, typed layer. A `Workbook` holds a native handle;
+`Sheet`, `CellRange`, and `Cell` are lightweight views that carry coordinates, not
+data. Nothing is mirrored on the managed side.
+
+That means:
+
+- **Every call crosses the boundary.** A crossing is cheap but not free, so a
+  loop over 100,000 cells makes 100,000 crossings. `CellRange.GetValues()` makes
+  one. This is why the bulk members exist and why they are usually several times
+  faster — see
+  [Cells and Ranges]({{ site.axyra_dotnet_devref }}/Cell_and_Range).
+- **Structured values cross as JSON.** Styles, charts, pivot definitions, and
+  filters are serialised rather than mapped field by field (with the in-box
+  `System.Text.Json`, so the package needs no dependency). It also means these
+  values are cheap to keep on the managed side — they are immutable records — and
+  comparatively expensive to set in a tight loop.
+- **Views are only valid while the workbook is open.** Disposing a workbook frees
+  the native model; using a derived `Sheet`, `CellRange`, or `Cell` afterwards
+  throws `ObjectDisposedException`.
+- **Native memory sits outside the managed heap**, so the garbage collector
+  neither sees nor bounds it. Disposing workbooks is not optional.
+
+# Modelled versus preserved
+
+The engine distinguishes two kinds of content, and the distinction shows up
+throughout the documentation:
+
+**Modelled** content is parsed into the model, computed where applicable,
+adjusted by structural edits, written back, and rendered. Formulas, styles,
+charts, pivot tables, conditional formats, and drawings are modelled.
+
+**Preserved** content is carried through a round trip byte-for-byte without being
+interpreted. VBA projects, ActiveX controls, custom XML parts, OLE embeddings,
+and unknown extension lists are preserved.
+
+Preservation is what lets a `.xlsm` keep its macros, and what lets a workbook
+using an Excel feature newer than your build survive a round trip. It is not the
+same as support: a preserved part will not be recalculated, rendered, or adjusted
+when you insert a row. If a feature matters to your application logic, confirm
+that it is modelled.
+
+# Correctness methodology
+
+Behaviour is derived from measurement rather than from specification reading. The
+engine's test suite compares its output against Microsoft Excel's actual
+behaviour on generated cases, and the derived rules are what the implementation
+targets. The same language-neutral conformance suite runs against the engine and
+against every SDK, the .NET one included. This is why the documentation prefers
+`BuiltInFunctions.Names` over a printed function list, and why the honest answer
+to "does it handle X exactly like Excel?" is a test against your files.
+
+# Relationship to Keikai Spreadsheet
+
+Keikai Spreadsheet, the browser UI component for Java web applications, uses
+Axyra Sheets as its engine since Keikai 7.0.0-Beta. Its own API is unchanged and
+remains supported. See
+[Axyra Sheets vs. Keikai Spreadsheet]({{ site.axyra_dotnet_devref }}/Axyra_vs_Keikai).

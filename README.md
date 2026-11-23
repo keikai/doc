@@ -71,4 +71,30 @@ You may also optionally specify a branch, tag, or commit to use by appending an 
 # search engine
 https://programmablesearchengine.google.com/controlpanel/all
 
+## Axyra Java / .NET documentation
+
+Java pages live under `axyra/sheets/java/`; .NET pages live under `axyra/sheets/dotnet/`, with
+separate masthead/sidebar navigation. Both use the sibling examples repository:
+Java sources are under `axyra-sheets-examples/java/` and C# sources under
+`axyra-sheets-examples/dotnet/`. Maintain page-to-source mappings in
+`_data/axyra_code_links.yml`; language-specific URLs are configured in `_config.yml`.
+
+The implementation repository's .NET API guides are in
+`../axyra-sheets/docs/dotnet-api/`. Website pages should use the matching released
+package behavior; the current evaluation package has known differences from newer SDK source.
+
+Build the skill downloads from their canonical source directories:
+
+```sh
+python3 scripts/package-axyra-skill.py
+python3 scripts/package-axyra-skill.py --skill axyra-sheets-dotnet
+```
+
+Add `--check` to verify that an archive matches its source. Standalone Java guide
+downloads are built by `scripts/package-axyra-guide-examples.py`, which reads
+`../axyra-sheets-examples/java/guide-projects/`.
+
+The local `../axyra-dotnet-tests` workspace retains snippet verification tools;
+its examples, website content and .NET skill paths link to these canonical repositories.
+
 
