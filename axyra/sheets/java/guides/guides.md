@@ -24,6 +24,9 @@ covers the object model these guides assume.
 | [Read Excel Cell Values in Java]({{ site.axyra_guides }}/read-excel-cell-values-java) | Text, numbers, dates, blanks, errors, and formula results mapped to typed Java fields |
 | [Read Large Excel Files Efficiently in Java]({{ site.axyra_guides }}/read-large-excel-files-efficiently-java) | Bulk range reads, bounded row batches, numeric fast paths, memory and concurrency limits |
 | [Recalculate Excel Formulas in Java]({{ site.axyra_guides }}/evaluate-recalculate-excel-formulas-java) | Automatic and manual calculation, `recalculate()` vs `recalculateDirty()`, expression evaluation, formula errors |
+| [Calculate Excel Formulas in Java: XLOOKUP, FILTER & More]({{ site.axyra_guides }}/calculate-modern-excel-formulas-java) | XLOOKUP prices, FILTER order detail, UNIQUE and SORT region lists, and automatic formula updates |
+| [How to Create Charts in Excel Using Java]({{ site.axyra_guides }}/create-excel-charts-java) | Editable sales charts, series and axes, new data, and PNG/PDF output |
+| [How to Apply Styles and Formatting in Excel Using Java]({{ site.axyra_guides }}/apply-excel-styles-formatting-java) | Reusable report styles, dates, currency, percentages, existing formatting, and conditional text formatting |
 | [How to Convert Excel to PDF in Java]({{ site.axyra_guides }}/convert-excel-to-pdf-java) | Server-side PDF rendering, page setup, fonts, watermarks |
 | [How to Write Data to Excel in Java]({{ site.axyra_guides }}/write-data-to-excel-java) | Populating a sheet from a `ResultSet` or JSON, including very large exports |
 | [Export Database Data to Excel with Java and JDBC]({{ site.axyra_guides }}/export-database-to-excel-java) | Mapping JDBC results to typed cells and streaming large database exports |

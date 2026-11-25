@@ -12,6 +12,10 @@
 /axyra/sheets/java/guides/fill-excel-template-agent-skill-java: tree/main/java/guide-projects/template-report
 /axyra/sheets/java/guides/migrate-apache-poi-agent-skill-java: tree/main/java/guide-projects/poi-migration
 
+/axyra/sheets/java/guides/calculate-modern-excel-formulas-java: blob/main/java/guide-projects/calculate-formulas/src/main/java/ModernFormulaBatch.java
+/axyra/sheets/java/guides/create-excel-charts-java: blob/main/java/guide-projects/create-charts/src/main/java/CreateExcelCharts.java
+/axyra/sheets/java/guides/apply-excel-styles-formatting-java: blob/main/java/guide-projects/format-cells/src/main/java/FormatExcelReport.java
+
 /axyra/sheets/java/dev-ref/: tree/main/java/src/main/java/io/keikai/axyra/examples/devref
 /axyra/sheets/java/dev-ref/Cell_and_Range: blob/main/java/src/main/java/io/keikai/axyra/examples/devref/CellAndRangeExample.java
 /axyra/sheets/java/dev-ref/Charts: blob/main/java/src/main/java/io/keikai/axyra/examples/devref/ChartsExample.java

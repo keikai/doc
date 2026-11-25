@@ -85,6 +85,12 @@ axyra-guides:
         url: /axyra/sheets/java/guides/read-large-excel-files-efficiently-java
       - title: "Recalculate Formulas"
         url: /axyra/sheets/java/guides/evaluate-recalculate-excel-formulas-java
+      - title: "Modern Excel Formulas"
+        url: /axyra/sheets/java/guides/calculate-modern-excel-formulas-java
+      - title: "Create Excel Charts"
+        url: /axyra/sheets/java/guides/create-excel-charts-java
+      - title: "Format Excel Cells"
+        url: /axyra/sheets/java/guides/apply-excel-styles-formatting-java
       - title: "Convert Excel to PDF"
         url: /axyra/sheets/java/guides/convert-excel-to-pdf-java
       - title: "Write Data to Excel"
